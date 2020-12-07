@@ -1,28 +1,3 @@
-module GetServerSideProps = {
-  module Req = {
-    type t;
-  };
-
-  module Res = {
-    type t;
-
-    [@bs.send] external setHeader: (t, string, string) => unit = "setHeader";
-    [@bs.send] external write: (t, string) => unit = "write";
-    [@bs.send] external end_: t => unit = "end";
-  };
-
-  // See: https://github.com/zeit/next.js/blob/canary/packages/next/types/index.d.ts
-  type context('props, 'params) = {
-    params: Js.t('params),
-    query: Js.Dict.t(string),
-    req: Req.t,
-    res: Res.t,
-  };
-
-  type t('props, 'params) =
-    context('props, 'params) => Js.Promise.t({. "props": 'props});
-};
-
 module GetStaticProps = {
   // See: https://github.com/zeit/next.js/blob/canary/packages/next/types/index.d.ts
   type context('props, 'params, 'previewData) = {

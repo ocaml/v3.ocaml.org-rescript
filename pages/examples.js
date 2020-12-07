@@ -9,10 +9,10 @@ function $$default(props) {
                 }, "`pages/examples.re`"));
 }
 
-function getServerSideProps(_ctx) {
+function getStaticProps(_ctx) {
   return Promise.resolve({
               props: {
-                msg: "This page was rendered with getServerSideProps. You can find the source code here: ",
+                msg: "This page was rendered with getStaticProps. You can find the source code here: ",
                 href: "https://github.com/ryyppy/nextjs-default/tree/master/pages/examples.re"
               }
             });
@@ -21,7 +21,7 @@ function getServerSideProps(_ctx) {
 export {
   $$default ,
   $$default as default,
-  getServerSideProps ,
+  getStaticProps ,
   
 }
 /* react Not a pure module */

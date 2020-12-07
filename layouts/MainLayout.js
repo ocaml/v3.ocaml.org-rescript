@@ -10,10 +10,7 @@ function MainLayout$Navigation(Props) {
                   href: "/",
                   children: React.createElement("a", {
                         className: "flex items-center w-1/3"
-                      }, React.createElement("img", {
-                            className: "w-5",
-                            src: "/static/zeit-black-triangle.svg"
-                          }), React.createElement("span", {
+                      }, React.createElement("span", {
                             className: "text-xl ml-2 align-middle font-semibold"
                           }, "Next", React.createElement("span", {
                                 className: "text-orange-800"

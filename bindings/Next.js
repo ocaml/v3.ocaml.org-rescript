@@ -1,15 +1,6 @@
 
 
 
-var Req = {};
-
-var Res = {};
-
-var GetServerSideProps = {
-  Req: Req,
-  Res: Res
-};
-
 var GetStaticProps = {};
 
 var GetStaticPaths = {};
@@ -29,7 +20,6 @@ var $$Error = {};
 var Dynamic = {};
 
 export {
-  GetServerSideProps ,
   GetStaticProps ,
   GetStaticPaths ,
   Link ,

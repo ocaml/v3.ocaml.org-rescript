@@ -7,7 +7,6 @@ module Navigation = {
       className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">
       <Link href="/">
         <a className="flex items-center w-1/3">
-          <img className="w-5" src="/static/zeit-black-triangle.svg" />
           <span className="text-xl ml-2 align-middle font-semibold">
           {React.string("Next")}
             <span className="text-orange-800"> {React.string("RE")} </span>

@@ -11,10 +11,10 @@ let default = (props: props) =>
     </a>
   </div>;
 
-let getServerSideProps =
-  _ctx => {
+let getStaticProps =
+  (_ctx) => {
     let props = {
-      msg: "This page was rendered with getServerSideProps. You can find the source code here: ",
+      msg: "This page was rendered with getStaticProps. You can find the source code here: ",
       href: "https://github.com/ryyppy/nextjs-default/tree/master/pages/examples.re",
     };
     Js.Promise.resolve({"props": props});
