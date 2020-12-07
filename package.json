@@ -1,8 +1,8 @@
 {
-  "name": "rescript-nextjs-template",
+  "name": "ocamlorg",
   "version": "1.0.0",
-  "author": "Patrick Stapfer <ryyppy@users.noreply.github.com>",
-  "license": "Apache License 2.0",
+  "author": "The OCaml.org team",
+  "license": "See LICENSE.md file",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "gentype": "^3.35.0",
@@ -17,7 +17,7 @@
     "dev": "next",
     "debug": "NODE_OPTIONS='--inspect' next",
     "build": "bsb -clean-world -make-world && next build",
-    "now-build": "bsb -clean-world -make-world && next build",
+    "ci-build": "bsb -clean-world -make-world && next build",
     "export": "next export",
     "start": "next start -p $PORT",
     "res:build": "bsb -make-world",
