@@ -1,6 +1,6 @@
 .PHONY: ci-install-deps
 ci-install-deps:
-    nvm install
+	nvm install
 	nmv use
 	npm install -g esy@1.6.7 # for eventually dune install
 	npx yarn@1.22 install
