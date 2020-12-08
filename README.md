@@ -7,18 +7,32 @@ This is a NextJS based template with following setup:
 - Basic ReScript Bindings for Next
 - Preconfigured Dependencies: `reason-react`
 
+## Setup
+
+```
+# Ensure you have the correct node version.
+# (Assumes that you have nvm installed already)
+nvm install
+
+# Set the appropriate node version
+nvm use
+
+# For first time clone / build (install dependencies)
+npx yarn@1.22 install
+```
+
 ## Development
 
 Run ReScript in dev mode:
 
 ```
-npm run res:start
+npx yarn@1.22 res:start
 ```
 
 In another tab, run the Next dev server:
 
 ```
-npm run dev
+npx yarn@1.22 dev
 ```
 
 ## Tips
@@ -26,9 +40,6 @@ npm run dev
 ### Filenames with special characters
 
 ReScript > 8.3 now supports filenames with special characters: e.g. `pages/blog/[slug].res`.
-If you can't upgrade yet, you can create a e.g. `pages/blog/[slug].js` file, a `re_pages/blog_slug.re` file and then reexport the React component within the `[slug].js` file.
-
-We recommend upgrading to the newest ReScript (bs-platform) version as soon as possible to get the best experience for Next!
 
 ### Fast Refresh & ReScript
 
@@ -38,11 +49,11 @@ Fast Refresh requires you to **only export React components**, and it's easy to 
 
 ## Useful commands
 
-Build CSS seperately via `postcss` (useful for debugging)
+Build CSS seperately via `npx postcss` (useful for debugging)
 
 ```
 # Devmode
-postcss styles/main.css -o test.css
+npx postcss styles/main.css -o test.css
 
 # Production
 NODE_ENV=production postcss styles/main.css -o test.css
@@ -52,7 +63,7 @@ NODE_ENV=production postcss styles/main.css -o test.css
 
 ```
 # Make sure to uncomment the `target` attribute in `now.json` first, before you run this:
-npm run build
-PORT=3001 npm start
+npx yarn@1.22 build
+PORT=3001 npx yarn@1.22 start
 ```
 
