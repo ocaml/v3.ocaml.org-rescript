@@ -4,7 +4,9 @@ ci-install-deps:
 	# need to setup NVM_DIR and source nvm.sh here 
 	# nvm install
 	# nvm use
-	npm install -g esy@0.6.7 # for eventually dune install
+	# installing esy globally encounters permission error
+	# npm install -g esy@0.6.7 # for eventually dune install
+	npx esy@0.6.7 --version
 	npx yarn@1.22 install
 
 .PHONY: ci-build
