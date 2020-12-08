@@ -4,7 +4,7 @@ ci-install-deps:
 	# need to setup NVM_DIR and source nvm.sh here 
 	# nvm install
 	# nvm use
-	npm install -g esy@1.6.7 # for eventually dune install
+	npm install -g esy@0.6.7 # for eventually dune install
 	npx yarn@1.22 install
 
 .PHONY: ci-build
