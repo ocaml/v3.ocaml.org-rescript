@@ -1,5 +1,6 @@
 .PHONY: ci-install-deps
 ci-install-deps:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 	nvm install
 	nmv use
 	npm install -g esy@1.6.7 # for eventually dune install
