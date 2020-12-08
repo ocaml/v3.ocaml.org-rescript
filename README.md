@@ -35,6 +35,7 @@ In another tab, run the Next dev server:
 npx yarn@1.22 dev
 ```
 
+
 ## Tips
 
 ### Filenames with special characters
