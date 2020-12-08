@@ -1,8 +1,12 @@
 {
-  "name": "ocamlorg",
-  "version": "1.0.0",
+  "name": "ocaml.org",
+  "private": true,
+  "version": "0.0.0",
   "author": "The OCaml.org team",
-  "license": "See LICENSE.md file",
+  "license": "ISC",
+  "engines": {
+    "node": ">=12.x"
+  },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "gentype": "^3.35.0",
