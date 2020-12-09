@@ -10,7 +10,7 @@ function MainLayout$Navigation(Props) {
                   href: "/",
                   children: React.createElement("a", {
                         className: "flex items-center w-1/3"
-                      }, React.createElement("span", {
+                      }, null, React.createElement("span", {
                             className: "text-xl ml-2 align-middle font-semibold text-orange-600"
                           }, "OCaml"))
                 }), React.createElement("div", {

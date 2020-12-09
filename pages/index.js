@@ -12,13 +12,17 @@ function Index$P(Props) {
 function $$default(param) {
   return React.createElement("div", undefined, React.createElement("h1", {
                   className: "text-3xl font-semibold"
-                }, "What is this about?"), React.createElement(Index$P, {
-                  children: "This is a simple template for a Next\n      project using ReScript & TailwindCSS."
+                }, "OCaml is an industrial-strength programming language \n      supporting functional, imperative and object-oriented styles"), React.createElement(Index$P, {
+                  children: "Install OCaml"
                 }), React.createElement("h2", {
                   className: "text-2xl font-semibold mt-5"
-                }, "Quick Start"), React.createElement(Index$P, {
-                  children: "git clone https://github.com/ryyppy/nextjs-default.git my-project\ncd my-project\nrm -rf .git"
-                }));
+                }, "Learn"), React.createElement("h2", {
+                  className: "text-2xl font-semibold mt-5"
+                }, "Documentation"), React.createElement("h2", {
+                  className: "text-2xl font-semibold mt-5"
+                }, "Packages"), React.createElement("h2", {
+                  className: "text-2xl font-semibold mt-5"
+                }, "Community"));
 }
 
 export {

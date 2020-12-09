@@ -6,22 +6,20 @@ module P = {
 let default = () =>
   <div>
     <h1 className="text-3xl font-semibold">
-      {React.string("What is this about?")}
+      {React.string("OCaml is an industrial-strength programming language 
+      supporting functional, imperative and object-oriented styles")}
     </h1>
-    <P>
-      {React.string(
-         "This is a simple template for a Next
-      project using ReScript & TailwindCSS.",
-       )}
-    </P>
+    <P>{React.string("Install OCaml")}</P>
     <h2 className="text-2xl font-semibold mt-5">
-      {React.string("Quick Start")}
+      {React.string("Learn")}
     </h2>
-    <P>
-        {React.string(
-           "git clone https://github.com/ryyppy/nextjs-default.git my-project
-cd my-project
-rm -rf .git"
-         )}
-    </P>
+    <h2 className="text-2xl font-semibold mt-5">
+      {React.string("Documentation")}
+    </h2>
+    <h2 className="text-2xl font-semibold mt-5">
+      {React.string("Packages")}
+    </h2>
+    <h2 className="text-2xl font-semibold mt-5">
+      {React.string("Community")}
+    </h2>
   </div>;
