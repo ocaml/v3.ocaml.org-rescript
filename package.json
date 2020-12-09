@@ -17,8 +17,8 @@
     "reason-react": "^0.9.1"
   },
   "scripts": {
-    "dev": "next",
-    "debug": "NODE_OPTIONS='--inspect' next",
+    "dev": "next dev",
+    "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "bsb -clean-world -make-world && next build",
     "export": "next export",
     "start": "next start -p $PORT",
