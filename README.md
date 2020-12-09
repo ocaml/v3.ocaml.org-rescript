@@ -66,7 +66,7 @@ NODE_ENV=production npx postcss styles/main.css -o test.css
 
 ## Test production setup with Next
 
-TODO: change this to use `export` and start with 
+TODO: change this to use `export` and nginx instead of `start`
 ```
 npx yarn@1.22 build
 PORT=3001 npx yarn@1.22 start

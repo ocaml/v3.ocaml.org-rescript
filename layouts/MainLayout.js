@@ -11,27 +11,41 @@ function MainLayout$Navigation(Props) {
                   children: React.createElement("a", {
                         className: "flex items-center w-1/3"
                       }, React.createElement("span", {
-                            className: "text-xl ml-2 align-middle font-semibold"
-                          }, "Next", React.createElement("span", {
-                                className: "text-orange-800"
-                              }, "RE")))
+                            className: "text-xl ml-2 align-middle font-semibold text-orange-600"
+                          }, "OCaml"))
                 }), React.createElement("div", {
                   className: "flex w-2/3 justify-end"
                 }, React.createElement(Link, {
-                      href: "/",
+                      href: "/learn",
                       children: React.createElement("a", {
                             className: "px-3"
-                          }, "Home")
+                          }, "Learn")
                     }), React.createElement(Link, {
-                      href: "/examples",
+                      href: "/documentation",
                       children: React.createElement("a", {
                             className: "px-3"
-                          }, "Examples")
+                          }, "Documentation")
                     }), React.createElement("a", {
                       className: "px-3 font-bold",
-                      href: "https://github.com/ryyppy/nextjs-default",
+                      href: "https://opam.ocaml.org",
                       target: "_blank"
-                    }, "Github")));
+                    }, "Packages"), React.createElement(Link, {
+                      href: "/community",
+                      children: React.createElement("a", {
+                            className: "px-3"
+                          }, "Community")
+                    }), React.createElement(Link, {
+                      href: "/news",
+                      children: React.createElement("a", {
+                            className: "px-3"
+                          }, "News")
+                    }), React.createElement("span", {
+                      className: "px-3"
+                    }, "Search"), React.createElement("a", {
+                      className: "px-3 font-bold",
+                      href: "https://github.com/ocaml/ocaml.org",
+                      target: "_blank"
+                    }, "Edit")));
 }
 
 var Navigation = {

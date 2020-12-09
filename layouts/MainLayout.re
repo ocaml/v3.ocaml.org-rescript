@@ -9,20 +9,28 @@ module Navigation = {
       className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">
       <Link href="/">
         <a className="flex items-center w-1/3">
-          <span className="text-xl ml-2 align-middle font-semibold">
-          {React.string("Next")}
-            <span className="text-orange-800"> {React.string("RE")} </span>
+          <span className="text-xl ml-2 align-middle font-semibold text-orange-600">
+          {React.string("OCaml")}
           </span>
         </a>
       </Link>
       <div className="flex w-2/3 justify-end">
-        <Link href="/"> <a className="px-3"> {React.string("Home")} </a> </Link>
-        <Link href="/examples"> <a className="px-3"> {React.string("Examples")} </a> </Link>
-        <a
+        <Link href="/learn"> <a className="px-3"> {React.string("Learn")} </a> </Link>
+        <Link href="/documentation"> <a className="px-3"> {React.string("Documentation")} </a> </Link>
+        <a 
           className="px-3 font-bold"
           target="_blank"
-          href="https://github.com/ryyppy/nextjs-default">
-          {React.string("Github")}
+          href="https://opam.ocaml.org">
+          {React.string("Packages")} 
+        </a>
+        <Link href="/community"> <a className="px-3"> {React.string("Community")} </a> </Link>
+        <Link href="/news"> <a className="px-3"> {React.string("News")} </a> </Link>
+        <span className="px-3"> {React.string("Search")} </span>
+        <a 
+          className="px-3 font-bold"
+          target="_blank"
+          href="https://github.com/ocaml/ocaml.org">
+          {React.string("Edit")} 
         </a>
       </div>
     </nav>;
