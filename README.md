@@ -6,13 +6,13 @@ Feel free to use any approach that you prefer. The dev team
 suggests the following:
 - create an issue noting your intent to start work and ask
 any clarifying questions or discuss approach, if needed
-- fork the repo
+- fork the repo (link: )
 - either work in the master branch, or create your own branch with
-a useful name
-- add a small initial commit and create a draft PR from your repo branch to the original repo
+a useful name (link: )
+- add a small initial commit and create a draft PR (link: ) from your repo branch to the original repo
 - continue developing, feel free to ask questions in your issue or
-the PR, if you run into obstacles or uncertainty, as you make changes
-- change PR to ready to review
+the PR, if you run into obstacles or uncertainty as you make changes
+- change PR status to ready to review (link: )
 
 ## Setup
 
@@ -51,6 +51,11 @@ npx yarn@1.22 dev
 Make sure to create interface files (`.resi`) for each `page/*.res` file.
 
 Fast Refresh requires you to **only export React components**, and it's easy to unintenionally export other values than that.
+
+### Do not use getServerSideProps
+
+In order to ensure that this site remains a fully static, do not make use of nextjs's
+`getServerSideProps` functionality.
 
 ## Useful commands
 
