@@ -18,12 +18,10 @@ let default = () =>
       {React.string("Quick Start")}
     </h2>
     <P>
-      <pre>
         {React.string(
            "git clone https://github.com/ryyppy/nextjs-default.git my-project
 cd my-project
 rm -rf .git"
          )}
-      </pre>
     </P>
   </div>;

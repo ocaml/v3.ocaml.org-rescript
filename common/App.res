@@ -1,5 +1,4 @@
-%raw
-"import '../styles/main.css'";
+%%raw("require('../styles/main.css')");
 
 // This type is based on the getInitialProps return value.
 // If you are using getServerSideProps or getStaticProps, you probably
@@ -8,25 +7,25 @@
 type pageProps = {.};
 
 module PageComponent = {
-  type t = React.component(pageProps);
+  type t = React.component<pageProps>;
 };
 
 type props = {
-  [@bs.as "Component"]
-  component: PageComponent.t,
-  pageProps,
+  "Component": PageComponent.t,
+  "pageProps": pageProps
 };
 
 // We are not using `[@react.component]` since we will never
-
 // use <App/> within our Reason code. It's only used within `pages/_app.js`
-let default = (props: props): React.element => {
-  let {component, pageProps} = props;
+let make = (props: props): React.element => {
+
+  let component = props["Component"];
+  let pageProps = props["pageProps"];
 
   let router = Next.Router.useRouter();
 
   let content = React.createElement(component, pageProps);
-
+  Js.log(router.route)
   switch (router.route) {
   | "/examples" =>
     <MainLayout>

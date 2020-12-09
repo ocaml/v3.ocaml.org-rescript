@@ -54,9 +54,9 @@ module Router = {
       (
         t,
         @bs.string [
-          | #routeChangeStart(string => unit)
-          | #routeChangeComplete(string => unit)
-          | #hashChangeComplete(string => unit)
+          |#routeChangeStart(string => unit)
+          |#routeChangeComplete(string => unit)
+          |#hashChangeComplete(string => unit)
         ]
       ) =>
       unit =
