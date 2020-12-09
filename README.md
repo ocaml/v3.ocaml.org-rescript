@@ -1,11 +1,4 @@
-# ReScript NextJS Starter
-
-This is a NextJS based template with following setup:
-
-- Full Tailwind config & basic css scaffold (+ production setup w/ purge-css & cssnano)
-- [ReScript](https://rescript-lang.org) + React
-- Basic ReScript Bindings for Next
-- Preconfigured Dependencies: `reason-react`
+# ocaml.org
 
 ## Setup
 
@@ -68,3 +61,9 @@ npx yarn@1.22 build
 PORT=3001 npx yarn@1.22 start
 ```
 
+## Reference
+
+This is a NextJS based template with following setup:
+
+- [ReScript](https://rescript-lang.org) + React (reason-react)
+- Full Tailwind config & basic css scaffold (+ production setup w/ purge-css & cssnano)
