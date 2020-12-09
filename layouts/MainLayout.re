@@ -1,7 +1,9 @@
 module Link = Next.Link;
 
+// Converting this file to rescript causes the stylesheets
+//  to fail to load. Need to troubleshoot further.
 module Navigation = {
-  @react.component
+  [@react.component]
   let make = () =>
     <nav
       className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">
@@ -26,7 +28,7 @@ module Navigation = {
     </nav>;
 };
 
-@react.component
+[@react.component]
 let make = (~children) => {
   let minWidth = ReactDOMRe.Style.make(~minWidth="20rem", ());
   <div style=minWidth className="flex lg:justify-center">
