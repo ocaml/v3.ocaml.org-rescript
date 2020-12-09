@@ -1,9 +1,11 @@
 {
-  "name": "rescript-nextjs-template",
+  "name": "ocamlorg",
   "namespace": false,
   "reason": { "react-jsx": 3 },
   "refmt": 3,
-  "bs-dependencies": ["reason-react"],
+  "bs-dependencies": [
+    "reason-react"
+  ],
   "ppx-flags": [],
   "sources": [
     { "dir": "common" },
