@@ -6,13 +6,15 @@ Feel free to use any approach that you prefer. The dev team
 suggests the following:
 - create an issue noting your intent to start work and ask
 any clarifying questions or discuss approach, if needed
-- fork the repo (link: )
+- fork the repo
 - either work in the master branch, or create your own branch with
-a useful name (link: )
-- add a small initial commit and create a draft PR (link: ) from your repo branch to the original repo
+a useful name
+- add a small initial commit and create a draft PR from your repo branch to the original repo
 - continue developing, feel free to ask questions in your issue or
 the PR, if you run into obstacles or uncertainty as you make changes
-- change PR status to ready to review (link: )
+- once you feel your branch is ready, check the PR preview to ensure the changes
+match your local view and appear correct
+- change PR status to "ready to review"
 
 ## Setup
 
