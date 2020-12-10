@@ -46,6 +46,8 @@ nvm use
 npx yarn@1.22 next:dev
 ```
 
+Go to localhost:3000
+
 ## Tips
 
 ### Fast Refresh & ReScript
