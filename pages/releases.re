@@ -2,33 +2,33 @@ module Link = Next.Link;
 
 // TODO: move this page under a directory
 module P = {
-  @react.component
+  [@react.component]
   let make = (~children) => <p className="mb-6"> children </p>;
 };
 module H1 = {
-  @react.component
+  [@react.component]
   let make = (~children) => 
     <h1 className="font-sans text-4xl font-bold leading-snub mb-1.5"> children </h1>;
 };
 module UL = {
-  @react.component
+  [@react.component]
   let make = (~children) => 
     <ul className="mb-6 ml-6 -mt-3 list-disc"> children </ul>;
 };
 module LI = {
-  @react.component
+  [@react.component]
   let make = (~children) => 
     <li className="mb-3"> children </li>;
 };
 module A = {
   // TODO: get precise orange color from tailwind config
-  @react.component
+  [@react.component]
   let make = (~children) => 
     <a className="text-orange-600 hover:underline"> children </a>;
 };
 module AEXT = {
   // TODO: get precise orange color from tailwind config
-  @react.component
+  [@react.component]
   let make = (~children, ~href) => 
     <a href={href} className="text-orange-600 hover:underline" target="_blank" > children </a>;
 };
