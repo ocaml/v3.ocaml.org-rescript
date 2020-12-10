@@ -36,14 +36,14 @@ Run ReScript in dev mode:
 
 ```
 nvm use
-npx yarn@1.22 res:start
+npx yarn@1.22 rescript:start
 ```
 
 In another tab, run the Next dev server:
 
 ```
 nvm use
-npx yarn@1.22 dev
+npx yarn@1.22 next:dev
 ```
 
 ## Tips
@@ -76,7 +76,7 @@ NODE_ENV=production npx postcss styles/main.css -o test.css
 TODO: change this to use `export` and nginx instead of `start`
 ```
 npx yarn@1.22 build
-PORT=3001 npx yarn@1.22 start
+PORT=3001 npx yarn@1.22 next:start
 ```
 
 ## Reference
