@@ -1,6 +1,6 @@
 module Link = Next.Link;
 
-// TODO: move this page under a directory
+// TODO: rename this file to index.re once duplicate names issue resolved
 module P = {
   [@react.component]
   let make = (~children) => <p className="mb-6"> children </p>;
