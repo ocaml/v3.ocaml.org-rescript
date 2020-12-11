@@ -28,10 +28,10 @@ let make = (props: props): React.element => {
   Js.log(router.route)
   switch (router.route) {
   | "/examples" =>
-    <MainLayout>
+    <MainLayout editpath="site/index.md">
       <h1 className="font-bold"> {React.string("Examples Section")} </h1>
       <div> content </div>
     </MainLayout>
-  | _ => <MainLayout> content </MainLayout>
+  | _ => <MainLayout editpath="site/index.md"> content </MainLayout>
   };
 };

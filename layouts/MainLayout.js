@@ -4,6 +4,8 @@ import * as React from "react";
 import Link from "next/link";
 
 function MainLayout$Navigation(Props) {
+  var editpath = Props.editpath;
+  var editUrl = "https://github.com/ocaml/ocaml.org/edit/master/" + editpath;
   return React.createElement("nav", {
               className: "p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm"
             }, React.createElement(Link, {
@@ -43,7 +45,7 @@ function MainLayout$Navigation(Props) {
                       className: "px-3"
                     }, "Search"), React.createElement("a", {
                       className: "px-3 font-bold",
-                      href: "https://github.com/ocaml/ocaml.org",
+                      href: editUrl,
                       target: "_blank"
                     }, "Edit")));
 }
@@ -54,6 +56,7 @@ var Navigation = {
 
 function MainLayout(Props) {
   var children = Props.children;
+  var editpath = Props.editpath;
   var minWidth = {
     minWidth: "20rem"
   };
@@ -62,7 +65,9 @@ function MainLayout(Props) {
               style: minWidth
             }, React.createElement("div", {
                   className: "max-w-5xl w-full lg:w-3/4 text-gray-900 font-base"
-                }, React.createElement(MainLayout$Navigation, {}), React.createElement("main", {
+                }, React.createElement(MainLayout$Navigation, {
+                      editpath: editpath
+                    }), React.createElement("main", {
                       className: "mt-4 mx-4"
                     }, children)));
 }

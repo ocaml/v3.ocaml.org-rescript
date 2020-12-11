@@ -16,13 +16,15 @@ function make(props) {
   var match = router.route;
   if (match === "/examples") {
     return React.createElement(MainLayout.make, {
-                children: null
+                children: null,
+                editpath: "site/index.md"
               }, React.createElement("h1", {
                     className: "font-bold"
                   }, "Examples Section"), React.createElement("div", undefined, content));
   } else {
     return React.createElement(MainLayout.make, {
-                children: content
+                children: content,
+                editpath: "site/index.md"
               });
   }
 }

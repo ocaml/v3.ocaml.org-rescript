@@ -4,7 +4,8 @@ module Link = Next.Link;
 //  to fail to load. Need to troubleshoot further.
 module Navigation = {
   [@react.component]
-  let make = () =>
+  let make = (~editpath) => {
+    let editUrl = "https://github.com/ocaml/ocaml.org/edit/master/" ++ editpath;
     <nav
       className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">
       <Link href="/">
@@ -30,19 +31,20 @@ module Navigation = {
         <a 
           className="px-3 font-bold"
           target="_blank"
-          href="https://github.com/ocaml/ocaml.org">
-          {React.string("Edit")} 
+          href={editUrl}>
+          {React.string("Edit")}
         </a>
       </div>
     </nav>;
+  }
 };
 
 [@react.component]
-let make = (~children) => {
+let make = (~children, ~editpath) => {
   let minWidth = ReactDOMRe.Style.make(~minWidth="20rem", ());
   <div style=minWidth className="flex lg:justify-center">
     <div className="max-w-5xl w-full lg:w-3/4 text-gray-900 font-base">
-      <Navigation />
+      <Navigation editpath={editpath} />
       <main className="mt-4 mx-4"> children </main>
     </div>
   </div>;
