@@ -50,6 +50,15 @@ Go to localhost:3000
 
 ## Tips
 
+### res_pages vs pages
+
+ReScript can only handle one module named "index". This clashes with nextjs
+page-based routing, which expects the filepath starting from `/pages/` to match
+the route exposed. So, in order to completely avoid any problems from this issue,
+we always create pages in `res_pages/` and create a symlink `cd pages/releases &&
+ln -s ../../res_pages/releases/releases_index.js index.js`. Also, note that
+we choose to repeat the folder name "releases" in the module name "releases_index.js".
+
 ### Fast Refresh & ReScript
 
 Make sure to create interface files (`.resi`) for each `page/*.res` file.

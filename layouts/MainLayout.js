@@ -13,7 +13,7 @@ function MainLayout$Navigation(Props) {
                   children: React.createElement("a", {
                         className: "flex items-center w-1/3"
                       }, null, React.createElement("span", {
-                            className: "text-xl ml-2 align-middle font-semibold text-orange-600"
+                            className: "text-xl ml-2 align-middle font-semibold text-ocamlorange"
                           }, "OCaml"))
                 }), React.createElement("div", {
                   className: "flex w-2/3 justify-end"

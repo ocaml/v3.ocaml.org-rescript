@@ -11,7 +11,7 @@ module Navigation = {
       <Link href="/">
         <a className="flex items-center w-1/3">
           {/* TODO: add ocaml logo */ React.null}
-          <span className="text-xl ml-2 align-middle font-semibold text-orange-600">
+          <span className="text-xl ml-2 align-middle font-semibold text-ocamlorange">
           {React.string("OCaml")}
           </span>
         </a>
