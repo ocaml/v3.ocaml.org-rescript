@@ -34,7 +34,7 @@ function Releases$LI(Props) {
 function Releases$A(Props) {
   var children = Props.children;
   return React.createElement("a", {
-              className: "text-orange-600 hover:underline"
+              className: "text-ocamlorange hover:underline"
             }, children);
 }
 
@@ -42,7 +42,7 @@ function Releases$AEXT(Props) {
   var children = Props.children;
   var href = Props.href;
   return React.createElement("a", {
-              className: "text-orange-600 hover:underline",
+              className: "text-ocamlorange hover:underline",
               href: href,
               target: "_blank"
             }, children);

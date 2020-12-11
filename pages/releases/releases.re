@@ -21,16 +21,14 @@ module LI = {
     <li className="mb-3"> children </li>;
 };
 module A = {
-  // TODO: get precise orange color from tailwind config
   [@react.component]
   let make = (~children) => 
-    <a className="text-orange-600 hover:underline"> children </a>;
+    <a className="text-ocamlorange hover:underline"> children </a>;
 };
 module AEXT = {
-  // TODO: get precise orange color from tailwind config
   [@react.component]
   let make = (~children, ~href) => 
-    <a href={href} className="text-orange-600 hover:underline" target="_blank" > children </a>;
+    <a href={href} className="text-ocamlorange hover:underline" target="_blank" > children </a>;
 };
 
 let default = () =>
