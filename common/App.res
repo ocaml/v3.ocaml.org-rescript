@@ -27,9 +27,9 @@ let make = (props: props): React.element => {
   let content = React.createElement(component, pageProps);
   Js.log(router.route)
   switch (router.route) {
-  | "/examples" =>
+  | "/releases/releases" =>
     <MainLayout editpath="site/index.md">
-      <h1 className="font-bold"> {React.string("Examples Section")} </h1>
+      <h1 className="font-bold"> {React.string("Releases Section")} </h1>
       <div> content </div>
     </MainLayout>
   | _ => <MainLayout editpath="site/index.md"> content </MainLayout>
