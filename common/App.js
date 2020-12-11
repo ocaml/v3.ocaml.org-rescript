@@ -14,7 +14,7 @@ function make(props) {
   var content = React.createElement(component, pageProps);
   console.log(router.route);
   var match = router.route;
-  if (match === "/releases/") {
+  if (match === "/releases") {
     return React.createElement(MainLayout.make, {
                 children: null,
                 editpath: "site/index.md"
