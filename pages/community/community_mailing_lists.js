@@ -62,7 +62,29 @@ function $$default(param) {
                       href: "https://discuss.ocaml.org"
                     }), "This is the most active forum about OCaml. Topics are grouped into a \n    variety of categories, which can be followed independently. This forum welcomes \n    people at all levels of proficiency, including beginners. A mailing-list mode \n    is also available for those who wish to receive all messages."), React.createElement(Community_mailing_lists$P, {
                   children: "Most categories are in English but categories in other languages \n    are welcome."
-                }));
+                }), React.createElement(Community_mailing_lists$H2, {
+                  children: "Mailing Lists"
+                }), React.createElement(Community_mailing_lists$H3, {
+                  children: "Official OCaml List"
+                }), React.createElement(Community_mailing_lists$P, {
+                  children: "caml-list AT inria.fr The OCaml mailing list is intended for all \n    users of the OCaml implementations developed at Inria. The purpose of this list is \n    to share experience, exchange ideas and code, and report on applications of the \n    OCaml language. This list is not moderated, but posting is restricted to the \n    subscribers of the list. Messages are generally in English but sometimes also in French."
+                }), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$AEXT, {
+                      children: "Subscribe",
+                      href: "https://sympa.inria.fr/sympa/subscribe/caml-list"
+                    }), " | ", React.createElement(Community_mailing_lists$AEXT, {
+                      children: "OCaml Archives",
+                      href: "https://inbox.ocaml.org/caml-list"
+                    }), " | ", React.createElement(Community_mailing_lists$AEXT, {
+                      children: "Inria Archives",
+                      href: "https://sympa.inria.fr/sympa/arc/caml-list"
+                    })), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, "The ", React.createElement(Community_mailing_lists$AEXT, {
+                      children: "OCaml Weekly News",
+                      href: "http://alan.petitepomme.net/cwn/"
+                    }), " also provides a curated summary of camll-list discussions."));
 }
 
 export {

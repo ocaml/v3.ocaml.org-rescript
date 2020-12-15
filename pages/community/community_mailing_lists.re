@@ -54,4 +54,22 @@ let default = () =>
     <P>{React.string("Most categories are in English but categories in other languages 
     are welcome.")} 
     </P>
+    <H2>{React.string("Mailing Lists")}</H2>
+    <H3>{React.string("Official OCaml List")}</H3>
+    <P>{React.string("caml-list AT inria.fr The OCaml mailing list is intended for all 
+    users of the OCaml implementations developed at Inria. The purpose of this list is 
+    to share experience, exchange ideas and code, and report on applications of the 
+    OCaml language. This list is not moderated, but posting is restricted to the 
+    subscribers of the list. Messages are generally in English but sometimes also in French.")} 
+    </P>
+    <P><AEXT href="https://sympa.inria.fr/sympa/subscribe/caml-list">{React.string("Subscribe")}</AEXT>
+    {React.string(" | ")}
+    <AEXT href="https://inbox.ocaml.org/caml-list">{React.string("OCaml Archives")}</AEXT>
+    {React.string(" | ")}
+    <AEXT href="https://sympa.inria.fr/sympa/arc/caml-list">{React.string("Inria Archives")}</AEXT>    
+    </P> 
+    <P>{React.string("The ")}
+    <AEXT href="http://alan.petitepomme.net/cwn/">{React.string("OCaml Weekly News")}</AEXT>
+    {React.string(" also provides a curated summary of camll-list discussions.")}
+    </P>
   </>;
