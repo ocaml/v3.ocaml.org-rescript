@@ -76,9 +76,11 @@ Build CSS seperately via `npx postcss` (useful for debugging)
 
 ```
 # Devmode
+nvm use
 npx postcss styles/main.css -o test.css
 
 # Production
+nvm use
 NODE_ENV=production npx postcss styles/main.css -o test.css
 ```
 
@@ -86,6 +88,7 @@ NODE_ENV=production npx postcss styles/main.css -o test.css
 
 TODO: change this to use `export` and nginx instead of `start`
 ```
+nvm use
 npx yarn build
 PORT=3001 npx yarn next:start
 ```
