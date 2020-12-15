@@ -1,7 +1,6 @@
 
 
 import * as React from "react";
-import Link from "next/link";
 
 function Community_mailing_lists$P(Props) {
   var children = Props.children;
@@ -17,24 +16,27 @@ function Community_mailing_lists$H1(Props) {
             }, children);
 }
 
-function Community_mailing_lists$UL(Props) {
+function Community_mailing_lists$H2(Props) {
   var children = Props.children;
-  return React.createElement("ul", {
-              className: "mb-6 ml-6 -mt-3 list-disc"
+  return React.createElement("h2", {
+              className: "font-sans text-3xl font-bold leading-snub mb-1.5"
             }, children);
 }
 
-function Community_mailing_lists$LI(Props) {
+function Community_mailing_lists$H3(Props) {
   var children = Props.children;
-  return React.createElement("li", {
-              className: "mb-3"
+  return React.createElement("h3", {
+              className: "font-sans text-xl font-bold leading-snub mb-1.5"
             }, children);
 }
 
-function Community_mailing_lists$A(Props) {
+function Community_mailing_lists$AEXT(Props) {
   var children = Props.children;
+  var href = Props.href;
   return React.createElement("a", {
-              className: "text-ocamlorange hover:underline"
+              className: "text-ocamlorange hover:underline",
+              href: href,
+              target: "_blank"
             }, children);
 }
 
@@ -43,27 +45,23 @@ function $$default(param) {
                   children: "Mailing Lists and Web Forums"
                 }), React.createElement(Community_mailing_lists$P, {
                   children: null
-                }, "The ", React.createElement(Link, {
-                      href: "/releases/latest/",
-                      children: React.createElement(Community_mailing_lists$A, {
-                            children: "latest"
-                          })
-                    }), " page points to the most recent release of the OCaml compiler \n     distribution. Below is a list of the recent releases."), React.createElement(Community_mailing_lists$P, {
+                }, "Mailing lists and other forums used to discuss OCaml in \n    general are listed below. There are thousands of other forums related to \n    individual projects. Several mailing lists are hosted on the ", React.createElement(Community_mailing_lists$AEXT, {
+                      children: "lists.ocaml.org",
+                      href: "http://lists.ocaml.org"
+                    }), " domain. Projects on ", React.createElement(Community_mailing_lists$AEXT, {
+                      children: "GitHub",
+                      href: "https://github.com/trending?l=ocaml&since=monthly"
+                    }), " actively use GitHub's Issue system for discussions."), React.createElement(Community_mailing_lists$H2, {
+                  children: "Web Forums"
+                }), React.createElement(Community_mailing_lists$H3, {
+                  children: "Discuss at OCaml.org"
+                }), React.createElement(Community_mailing_lists$P, {
                   children: null
-                }, "See also the ", React.createElement(Link, {
-                      href: "/docs/install.html",
-                      children: React.createElement(Community_mailing_lists$A, {
-                            children: "install"
-                          })
-                    }), " page for instructions on installing OCaml by other means, such as\n    the OPAM package manager and platform specific package managers."), React.createElement(Community_mailing_lists$UL, {
-                  children: React.createElement(Community_mailing_lists$LI, {
-                        children: null
-                      }, "OCaml ", React.createElement(Link, {
-                            href: "/releases/4.11.1.html",
-                            children: React.createElement(Community_mailing_lists$A, {
-                                  children: "4.11.1"
-                                })
-                          }), ", released Aug 31, 2020.")
+                }, React.createElement(Community_mailing_lists$AEXT, {
+                      children: "discuss.ocaml.org",
+                      href: "https://discuss.ocaml.org"
+                    }), "This is the most active forum about OCaml. Topics are grouped into a \n    variety of categories, which can be followed independently. This forum welcomes \n    people at all levels of proficiency, including beginners. A mailing-list mode \n    is also available for those who wish to receive all messages."), React.createElement(Community_mailing_lists$P, {
+                  children: "Most categories are in English but categories in other languages \n    are welcome."
                 }));
 }
 
