@@ -31,6 +31,11 @@ module AEXT = {
   let make = (~children, ~href) => 
     <a href={href} className="text-ocamlorange hover:underline" target="_blank" > children </a>;
 };
+module ITAL = {
+  [@react.component]
+  let make = (~children) =>
+    <span className="italic">children</span>;
+}
 
 let default = () =>
   <>
@@ -56,7 +61,7 @@ let default = () =>
     </P>
     <H2>{React.string("Mailing Lists")}</H2>
     <H3>{React.string("Official OCaml List")}</H3>
-    <P>{React.string("caml-list AT inria.fr The OCaml mailing list is intended for all 
+    <P><ITAL>{React.string("caml-list AT inria.fr")}</ITAL>{React.string(" The OCaml mailing list is intended for all 
     users of the OCaml implementations developed at Inria. The purpose of this list is 
     to share experience, exchange ideas and code, and report on applications of the 
     OCaml language. This list is not moderated, but posting is restricted to the 
@@ -73,7 +78,7 @@ let default = () =>
     {React.string(" also provides a curated summary of camll-list discussions.")}
     </P>
     <H3>{React.string("OCaml Jobs and Internships")}</H3>
-    <P>{React.string("ocaml-jobs AT inria.fr This list is for exchanges 
+    <P><ITAL>{React.string("ocaml-jobs AT inria.fr")}</ITAL>{React.string(" This list is for exchanges 
     between people looking for a job or an internship requiring skills 
     in OCaml and people, corporations, universities, ..., offering such jobs 
     or internships.")}
@@ -82,7 +87,7 @@ let default = () =>
     <AEXT href="https://sympa.inria.fr/sympa/info/ocaml-jobs">{React.string("(Un)subscribe")}</AEXT>
     </P>
     <H3>{React.string("OCaml Announcements")}</H3>
-    <P>{React.string("caml-announce AT inria.fr This is a low-traffic, moderated list 
+    <P><ITAL>{React.string("caml-announce AT inria.fr")}</ITAL>{React.string(" This is a low-traffic, moderated list 
     for announcements of OCaml releases and new OCaml-related software, libraries, 
     documents, etc.")}
     </P>
@@ -91,7 +96,7 @@ let default = () =>
     </P>
     <H2>{React.string("Discussion Groups")}</H2>
     <H3>{React.string("IRC Channel - English")}</H3>
-    <P>{React.string("irc.freenode.net #ocaml This is a real-time communication channel, where 
+    <P><ITAL>{React.string("irc.freenode.net #ocaml")}</ITAL>{React.string(" This is a real-time communication channel, where 
     you can ask for help. There are about a hundred users hanging around; don't ask 
     if you can ask, just ask, and be patient: not everyone is in the same timezone. 
     The IRC Channel can be accessed through a web interface or any regular IRC client.")} 
@@ -112,9 +117,9 @@ let default = () =>
     and automatically connects to the main IRC channel.")} 
     </P>
     <H3>{React.string("IRC Channel - French")}</H3>
-    <P>{React.string("irc.freenode.net #ocaml-fr As above, but for French speakers.")}</P>
+    <P><ITAL>{React.string("irc.freenode.net #ocaml-fr")}</ITAL>{React.string(" As above, but for French speakers.")}</P>
     <H3>{React.string("About ML")}</H3>
-    <P>{React.string("comp.lang.ml This is a moderated Usenet newsgroup about all variants of ML. 
+    <P><ITAL>{React.string("comp.lang.ml")}</ITAL>{React.string(" This is a moderated Usenet newsgroup about all variants of ML. 
     Discussions generally concern Standard ML implementations (such as SML-NJ), but some threads 
     concern the OCaml branch.")}</P>
     <P><AEXT href="http://groups.google.com/groups?group=comp.lang.ml">{React.string("Archives at Google Groups")}</AEXT>
@@ -122,7 +127,7 @@ let default = () =>
     <AEXT href="http://www.faqs.org/faqs/meta-lang-faq/">{React.string("FAQ")}</AEXT>
     </P> 
     <H3>{React.string("About Functional Languages")}</H3>
-    <P>{React.string("comp.lang.functional This is an unmoderated usenet newsgroup for the discussion 
+    <P><ITAL>{React.string("comp.lang.functional")}</ITAL>{React.string(" This is an unmoderated usenet newsgroup for the discussion 
     of all aspects of functional programming languages, including their design, application, 
     theoretical foundation, and implementation. Discussions concern all families of functional 
     programming languages including non-strict ones (e.g. Haskell) and strict ones (e.g. Scheme, 

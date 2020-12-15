@@ -40,6 +40,13 @@ function Community_mailing_lists$AEXT(Props) {
             }, children);
 }
 
+function Community_mailing_lists$ITAL(Props) {
+  var children = Props.children;
+  return React.createElement("span", {
+              className: "italic"
+            }, children);
+}
+
 function $$default(param) {
   return React.createElement(React.Fragment, undefined, React.createElement(Community_mailing_lists$H1, {
                   children: "Mailing Lists and Web Forums"
@@ -67,8 +74,10 @@ function $$default(param) {
                 }), React.createElement(Community_mailing_lists$H3, {
                   children: "Official OCaml List"
                 }), React.createElement(Community_mailing_lists$P, {
-                  children: "caml-list AT inria.fr The OCaml mailing list is intended for all \n    users of the OCaml implementations developed at Inria. The purpose of this list is \n    to share experience, exchange ideas and code, and report on applications of the \n    OCaml language. This list is not moderated, but posting is restricted to the \n    subscribers of the list. Messages are generally in English but sometimes also in French."
-                }), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$ITAL, {
+                      children: "caml-list AT inria.fr"
+                    }), " The OCaml mailing list is intended for all \n    users of the OCaml implementations developed at Inria. The purpose of this list is \n    to share experience, exchange ideas and code, and report on applications of the \n    OCaml language. This list is not moderated, but posting is restricted to the \n    subscribers of the list. Messages are generally in English but sometimes also in French."), React.createElement(Community_mailing_lists$P, {
                   children: null
                 }, React.createElement(Community_mailing_lists$AEXT, {
                       children: "Subscribe",
@@ -87,8 +96,10 @@ function $$default(param) {
                     }), " also provides a curated summary of camll-list discussions."), React.createElement(Community_mailing_lists$H3, {
                   children: "OCaml Jobs and Internships"
                 }), React.createElement(Community_mailing_lists$P, {
-                  children: "ocaml-jobs AT inria.fr This list is for exchanges \n    between people looking for a job or an internship requiring skills \n    in OCaml and people, corporations, universities, ..., offering such jobs \n    or internships."
-                }), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$ITAL, {
+                      children: "ocaml-jobs AT inria.fr"
+                    }), " This list is for exchanges \n    between people looking for a job or an internship requiring skills \n    in OCaml and people, corporations, universities, ..., offering such jobs \n    or internships."), React.createElement(Community_mailing_lists$P, {
                   children: React.createElement(Community_mailing_lists$AEXT, {
                         children: "(Un)subscribe",
                         href: "https://sympa.inria.fr/sympa/info/ocaml-jobs"
@@ -96,8 +107,10 @@ function $$default(param) {
                 }), React.createElement(Community_mailing_lists$H3, {
                   children: "OCaml Announcements"
                 }), React.createElement(Community_mailing_lists$P, {
-                  children: "caml-announce AT inria.fr This is a low-traffic, moderated list \n    for announcements of OCaml releases and new OCaml-related software, libraries, \n    documents, etc."
-                }), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$ITAL, {
+                      children: "caml-announce AT inria.fr"
+                    }), " This is a low-traffic, moderated list \n    for announcements of OCaml releases and new OCaml-related software, libraries, \n    documents, etc."), React.createElement(Community_mailing_lists$P, {
                   children: React.createElement(Community_mailing_lists$AEXT, {
                         children: "(Un)subscribe",
                         href: "https://sympa.inria.fr/sympa/subscribe/caml-announce"
@@ -107,8 +120,10 @@ function $$default(param) {
                 }), React.createElement(Community_mailing_lists$H3, {
                   children: "IRC Channel - English"
                 }), React.createElement(Community_mailing_lists$P, {
-                  children: "irc.freenode.net #ocaml This is a real-time communication channel, where \n    you can ask for help. There are about a hundred users hanging around; don't ask \n    if you can ask, just ask, and be patient: not everyone is in the same timezone. \n    The IRC Channel can be accessed through a web interface or any regular IRC client."
-                }), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$ITAL, {
+                      children: "irc.freenode.net #ocaml"
+                    }), " This is a real-time communication channel, where \n    you can ask for help. There are about a hundred users hanging around; don't ask \n    if you can ask, just ask, and be patient: not everyone is in the same timezone. \n    The IRC Channel can be accessed through a web interface or any regular IRC client."), React.createElement(Community_mailing_lists$P, {
                   children: null
                 }, "Public channel logs are available at ", React.createElement(Community_mailing_lists$AEXT, {
                       children: "http://irclog.whitequark.org/ocaml/",
@@ -128,12 +143,16 @@ function $$default(param) {
                     }), ": As a more recent addition to the OCaml community, the OCaml discord \n    server benefits from the proximity of the ReasonML community's discord server, as well \n    as discord's ability to have multiple channels. One of the channels is called #IRC, \n    and automatically connects to the main IRC channel."), React.createElement(Community_mailing_lists$H3, {
                   children: "IRC Channel - French"
                 }), React.createElement(Community_mailing_lists$P, {
-                  children: "irc.freenode.net #ocaml-fr As above, but for French speakers."
-                }), React.createElement(Community_mailing_lists$H3, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$ITAL, {
+                      children: "irc.freenode.net #ocaml-fr"
+                    }), " As above, but for French speakers."), React.createElement(Community_mailing_lists$H3, {
                   children: "About ML"
                 }), React.createElement(Community_mailing_lists$P, {
-                  children: "comp.lang.ml This is a moderated Usenet newsgroup about all variants of ML. \n    Discussions generally concern Standard ML implementations (such as SML-NJ), but some threads \n    concern the OCaml branch."
-                }), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$ITAL, {
+                      children: "comp.lang.ml"
+                    }), " This is a moderated Usenet newsgroup about all variants of ML. \n    Discussions generally concern Standard ML implementations (such as SML-NJ), but some threads \n    concern the OCaml branch."), React.createElement(Community_mailing_lists$P, {
                   children: null
                 }, React.createElement(Community_mailing_lists$AEXT, {
                       children: "Archives at Google Groups",
@@ -144,8 +163,10 @@ function $$default(param) {
                     })), React.createElement(Community_mailing_lists$H3, {
                   children: "About Functional Languages"
                 }), React.createElement(Community_mailing_lists$P, {
-                  children: "comp.lang.functional This is an unmoderated usenet newsgroup for the discussion \n    of all aspects of functional programming languages, including their design, application, \n    theoretical foundation, and implementation. Discussions concern all families of functional \n    programming languages including non-strict ones (e.g. Haskell) and strict ones (e.g. Scheme, \n    SML or OCaml)."
-                }), React.createElement(Community_mailing_lists$P, {
+                  children: null
+                }, React.createElement(Community_mailing_lists$ITAL, {
+                      children: "comp.lang.functional"
+                    }), " This is an unmoderated usenet newsgroup for the discussion \n    of all aspects of functional programming languages, including their design, application, \n    theoretical foundation, and implementation. Discussions concern all families of functional \n    programming languages including non-strict ones (e.g. Haskell) and strict ones (e.g. Scheme, \n    SML or OCaml)."), React.createElement(Community_mailing_lists$P, {
                   children: null
                 }, React.createElement(Community_mailing_lists$AEXT, {
                       children: "Archives at Google Groups",
