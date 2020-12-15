@@ -5,15 +5,10 @@ module.exports = {
   },
   purge: {
     // Specify the paths to all of the template files in your project
-    // TODO: remove .re once all .re files have been converted
     content: [
-      './components/**/*.re',
       './components/**/*.res',
-      './pages/**/*.re',
       './pages/**/*.res',
-      './layouts/**/*.re',
       './layouts/**/*.res',
-      './res_pages/**/*.re',
       './res_pages/**/*.res',
     ],
     options: {
