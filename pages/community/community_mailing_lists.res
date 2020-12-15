@@ -1,31 +1,31 @@
 module P = {
-  [@react.component]
+  @react.component
   let make = (~children) => <p className="mb-6"> children </p>;
 };
 module H1 = {
   // TODO: use mb-1.5 and tailwind 2
-  [@react.component]
+  @react.component
   let make = (~children) => 
     <h1 className="font-sans text-4xl font-bold leading-snug mb-2"> children </h1>;
 };
 module H2 = {
-  [@react.component]
+  @react.component
   let make = (~children) => 
     <h2 className="font-sans text-2xl font-bold leading-normal mb-2"> children </h2>;
 };
 module H3 = {
   // TODO: use mb-2.5 and tailwind 2
-  [@react.component]
+  @react.component
   let make = (~children) => 
     <h3 className="font-sans text-lg font-bold leading-normal mb-3"> children </h3>;
 };
 module AEXT = {
-  [@react.component]
+  @react.component
   let make = (~children, ~href) => 
     <a href={href} className="text-ocamlorange hover:underline" target="_blank" > children </a>;
 };
 module ITAL = {
-  [@react.component]
+  @react.component
   let make = (~children) =>
     <span className="italic">children</span>;
 }
