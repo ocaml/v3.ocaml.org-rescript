@@ -6,9 +6,10 @@ module P = {
   let make = (~children) => <p className="mb-6"> children </p>;
 };
 module H1 = {
+  // TODO: use mb-1.5 and tailwind 2
   [@react.component]
   let make = (~children) => 
-    <h1 className="font-sans text-4xl font-bold leading-snug mb-1.5"> children </h1>;
+    <h1 className="font-sans text-4xl font-bold leading-snug mb-2"> children </h1>;
 };
 module UL = {
   [@react.component]

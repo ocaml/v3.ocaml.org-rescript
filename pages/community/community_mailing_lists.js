@@ -12,7 +12,7 @@ function Community_mailing_lists$P(Props) {
 function Community_mailing_lists$H1(Props) {
   var children = Props.children;
   return React.createElement("h1", {
-              className: "font-sans text-4xl font-bold leading-snug mb-1.5"
+              className: "font-sans text-4xl font-bold leading-snug mb-2"
             }, children);
 }
 
@@ -26,7 +26,7 @@ function Community_mailing_lists$H2(Props) {
 function Community_mailing_lists$H3(Props) {
   var children = Props.children;
   return React.createElement("h3", {
-              className: "font-sans text-lg font-bold leading-normal mb-2.5"
+              className: "font-sans text-lg font-bold leading-normal mb-3"
             }, children);
 }
 
