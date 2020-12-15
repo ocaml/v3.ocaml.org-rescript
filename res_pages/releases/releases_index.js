@@ -13,7 +13,7 @@ function Releases_index$P(Props) {
 function Releases_index$H1(Props) {
   var children = Props.children;
   return React.createElement("h1", {
-              className: "font-sans text-4xl font-bold leading-snub mb-1.5"
+              className: "font-sans text-4xl font-bold leading-snug mb-1.5"
             }, children);
 }
 

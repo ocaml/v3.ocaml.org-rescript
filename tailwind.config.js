@@ -7,8 +7,13 @@ module.exports = {
     // Specify the paths to all of the template files in your project
     content: [
       './components/**/*.re',
+      './components/**/*.res',
       './pages/**/*.re',
+      './pages/**/*.res',
       './layouts/**/*.re',
+      './layouts/**/*.res',
+      './res_pages/**/*.re',
+      './res_pages/**/*.res',
     ],
     options: {
       whitelist: ["html", "body"],

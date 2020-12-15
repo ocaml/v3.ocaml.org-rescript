@@ -1,5 +1,3 @@
-module Link = Next.Link;
-
 module P = {
   [@react.component]
   let make = (~children) => <p className="mb-6"> children </p>;
@@ -7,24 +5,19 @@ module P = {
 module H1 = {
   [@react.component]
   let make = (~children) => 
-    <h1 className="font-sans text-4xl font-bold leading-snub mb-1.5"> children </h1>;
+    <h1 className="font-sans text-4xl font-bold leading-snug mb-1.5"> children </h1>;
 };
 module H2 = {
   // TODO: STYLE
   [@react.component]
   let make = (~children) => 
-    <h2 className="font-sans text-3xl font-bold leading-snub mb-1.5"> children </h2>;
+    <h2 className="font-sans text-2xl font-bold leading-normal mb-2"> children </h2>;
 };
 module H3 = {
   // TODO: STYLE
   [@react.component]
   let make = (~children) => 
-    <h3 className="font-sans text-xl font-bold leading-snub mb-1.5"> children </h3>;
-};
-module A = {
-  [@react.component]
-  let make = (~children) => 
-    <a className="text-ocamlorange hover:underline"> children </a>;
+    <h3 className="font-sans text-lg font-bold leading-normal mb-2.5"> children </h3>;
 };
 module AEXT = {
   [@react.component]

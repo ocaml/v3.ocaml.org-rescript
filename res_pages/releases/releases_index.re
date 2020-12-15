@@ -8,7 +8,7 @@ module P = {
 module H1 = {
   [@react.component]
   let make = (~children) => 
-    <h1 className="font-sans text-4xl font-bold leading-snub mb-1.5"> children </h1>;
+    <h1 className="font-sans text-4xl font-bold leading-snug mb-1.5"> children </h1>;
 };
 module UL = {
   [@react.component]
