@@ -1,10 +1,5 @@
 module Link = Next.Link;
 
-// TODO: rename this file to index.re once duplicate names issue resolved
-module P = {
-  @react.component
-  let make = (~children) => <p className="mb-6"> children </p>;
-};
 module H1 = {
   // TODO: use mb-1.5 and tailwind 2
   @react.component
@@ -106,7 +101,7 @@ let default = () =>
     </LI>
     <LI>
     {React.string(`2013, January 29, 8:00 PM: `)}
-    <AEXT href="http://www.meetup.com/ocaml-paris/events/99222322/">{React.string(`First \"OPAM Party\"`)}</AEXT>
+    <AEXT href="http://www.meetup.com/ocaml-paris/events/99222322/">{React.string(`First "OPAM Party"`)}</AEXT>
     {React.string(`, IRILL 23, avenue d'Italie 75013 Paris. Organized by `)}    
     <AEXT href="http://www.meetup.com/ocaml-paris/">{React.string(`OCaml Users in PariS (OUPS)`)}</AEXT>
     {React.string(`.`)}
