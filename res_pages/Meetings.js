@@ -31,11 +31,15 @@ function Meetings$LI(Props) {
             }, children);
 }
 
-function Meetings$A(Props) {
+function Meetings$LINK(Props) {
+  var href = Props.href;
   var children = Props.children;
-  return React.createElement("a", {
-              className: "text-ocamlorange hover:underline"
-            }, children);
+  return React.createElement(Link, {
+              href: href,
+              children: React.createElement("a", {
+                    className: "text-ocamlorange hover:underline"
+                  }, children)
+            });
 }
 
 function Meetings$AEXT(Props) {
@@ -55,67 +59,49 @@ function $$default(param) {
                   children: null
                 }, React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2020/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2020"
-                              })
+                          children: "OCaml 2020"
                         }), ": Jersey City (New Jersey, USA), August 28, colocated with ICFP 2020."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2019/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2019"
-                              })
+                          children: "OCaml 2019"
                         }), ": Berlin (Germany), August 23, colocated with ICFP 2019."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2018/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2018"
-                              })
+                          children: "OCaml 2018"
                         }), ": St Louis (Missouri, USA), September 27, colocated with ICFP 2018."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2017/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2017"
-                              })
+                          children: "OCaml 2017"
                         }), ": Oxford (UK), September 8, colocated with ICFP 2017."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2016/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2016"
-                              })
+                          children: "OCaml 2016"
                         }), ": Nara (Japan), September 23, colocated with ICFP 2016."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2015/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2015"
-                              })
+                          children: "OCaml 2015"
                         }), ": Vancouver (BC, Canada), September 4, colocated with ICFP 2015."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2014/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2014"
-                              })
+                          children: "OCaml 2014"
                         }), ": Gothenburg (Sweden), September 5, colocated with ICFP 2014."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2013/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OCaml 2013"
-                              })
+                          children: "OCaml 2013"
                         }), ": Boston (MA, USA), September 24, colocated with ICFP 2013."), React.createElement(Meetings$LI, {
                       children: null
-                    }, React.createElement(Link, {
+                    }, React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2012/",
-                          children: React.createElement(Meetings$A, {
-                                children: "OUD 2012"
-                              })
+                          children: "OUD 2012"
                         }), ": Copenhagen (Denmark), September 14th, colocated with ICFP 2012.")), React.createElement(Meetings$H1, {
                   children: "OCaml Meetings"
                 }), React.createElement(Meetings$H2, {
@@ -156,32 +142,24 @@ function $$default(param) {
                           href: "http://www.meetup.com/ocaml-paris/"
                         }), "."), React.createElement(Meetings$LI, {
                       children: null
-                    }, "2011: ", React.createElement(Link, {
+                    }, "2011: ", React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2011/",
-                          children: React.createElement(Meetings$A, {
-                                children: "Paris"
-                              })
+                          children: "Paris"
                         })), React.createElement(Meetings$LI, {
                       children: null
-                    }, "2010: ", React.createElement(Link, {
+                    }, "2010: ", React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2010/",
-                          children: React.createElement(Meetings$A, {
-                                children: "Paris"
-                              })
+                          children: "Paris"
                         })), React.createElement(Meetings$LI, {
                       children: null
-                    }, "2009: ", React.createElement(Link, {
+                    }, "2009: ", React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2009/",
-                          children: React.createElement(Meetings$A, {
-                                children: "Grenoble"
-                              })
+                          children: "Grenoble"
                         })), React.createElement(Meetings$LI, {
                       children: null
-                    }, "2008: ", React.createElement(Link, {
+                    }, "2008: ", React.createElement(Meetings$LINK, {
                           href: "/meetings/ocaml/2008/",
-                          children: React.createElement(Meetings$A, {
-                                children: "Paris"
-                              })
+                          children: "Paris"
                         }))), React.createElement(Meetings$H2, {
                   children: "In Japan"
                 }), React.createElement(Meetings$UL, {
