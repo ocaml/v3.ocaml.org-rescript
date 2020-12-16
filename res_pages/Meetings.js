@@ -125,7 +125,7 @@ function $$default(param) {
                 }, React.createElement(Meetings$LI, {
                       children: null
                     }, "2014, July 8, 7:00 PM: ", React.createElement(Meetings$AEXT, {
-                          children: "Rencontre d'\xc3\xa9t\xc3\xa9",
+                          children: "Rencontre d\'été",
                           href: "http://www.meetup.com/ocaml-paris/events/188634632/"
                         }), ", Mozilla Paris, 16 boulevard Montmartre 75009 Paris. Organized by ", React.createElement(Meetings$AEXT, {
                           children: "OCaml Users in PariS (OUPS)",
