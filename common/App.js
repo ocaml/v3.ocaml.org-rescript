@@ -22,10 +22,7 @@ function make(props) {
                     className: "font-bold"
                   }, "Releases Section"), React.createElement("div", undefined, content));
   } else {
-    return React.createElement(MainLayout.make, {
-                children: content,
-                editpath: "site/index.md"
-              });
+    return content;
   }
 }
 

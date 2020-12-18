@@ -32,6 +32,7 @@ let make = (props: props): React.element => {
       <h1 className="font-bold"> {React.string("Releases Section")} </h1>
       <div> content </div>
     </MainLayout>
-  | _ => <MainLayout editpath="site/index.md"> content </MainLayout>
+  | _ => 
+    content
   };
 };
