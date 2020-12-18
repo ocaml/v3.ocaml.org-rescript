@@ -12,26 +12,60 @@ function $$default(param) {
                 }, "If you are interested in attending future seminars and are \n    not already on our mailing list from previous years, please send an e-mail \n    to Andrea Lass and ask to be added."), React.createElement("h2", {
                   className: "text-2xl font-bold leading-normal mb-2"
                 }, "Upcoming Seminar Titles Include:"), React.createElement("div", {
-                  className: "flex bg-gray-200"
+                  className: "flex border-b border-grey-200"
                 }, React.createElement("div", {
-                      className: "flex-1 text-center bg-gray-400 m-2"
+                      className: ""
+                    }, React.createElement("div", {
+                          className: "text-center mt-2 mr-4 py-1 px-2 border-r border-grey-200 "
+                        }, React.createElement("p", {
+                              className: "text-xs tracking-wider"
+                            }, "JAN"), React.createElement("p", {
+                              className: "text-3xl font-bold"
+                            }, "25"), React.createElement("p", {
+                              className: "text-xs tracking-widest"
+                            }, "2021"))), React.createElement("div", {
+                      className: "flex-none m-2"
+                    }, React.createElement("img", {
+                          className: "w-48",
+                          src: "/static/sm_default.jpeg"
+                        })), React.createElement("div", {
+                      className: "m-2 max-w-lg"
                     }, React.createElement("p", {
-                          className: "text-xs"
-                        }, "JAN"), React.createElement("p", {
-                          className: "text-2xl font-bold"
-                        }, "25"), React.createElement("p", {
-                          className: "text-xs"
-                        }, "2021")), React.createElement("div", {
-                      className: "flex-1 text-center bg-gray-400 m-2"
-                    }, "IAS GRAPHIC"), React.createElement("div", {
-                      className: "flex-1 bg-gray-400 m-2"
-                    }, React.createElement("p", {
-                          className: "font-bold"
-                        }, "Computer Sciences/Discrete Mathematics Seminar I"), React.createElement("p", undefined, "TBA"), React.createElement("p", {
-                          className: "italic"
+                          className: "font-bold text-2xl mb-1"
+                        }, "Computer Sciences/Discrete Mathematics Seminar I"), React.createElement("p", {
+                          className: "text-sm mb-1"
+                        }, "TBA"), React.createElement("p", {
+                          className: "italic text-sm mb-1"
                         }, "Andrew Drucker"), React.createElement("p", {
-                          className: "italic"
-                        }, "11:15am"))), React.createElement("div", undefined, React.createElement("div", undefined, "JAN 26 2021"), React.createElement("div", undefined, "IAS GRAPHIC"), React.createElement("div", undefined, React.createElement("p", undefined, "Computer Sciences/Discrete Mathematics Seminar II"), React.createElement("p", undefined, "TBA"), React.createElement("p", undefined, "Cynthia Vinzant"), React.createElement("p", undefined, "10:30am | Simonyi Hall 101 and Remote Access - see Zoom link below"))), React.createElement("button", undefined, "VIEW MORE"));
+                          className: "italic text-sm mb-3"
+                        }, "11:15am"))), React.createElement("div", {
+                  className: "flex border-b border-grey-200"
+                }, React.createElement("div", {
+                      className: ""
+                    }, React.createElement("div", {
+                          className: "text-center mt-2 mr-4 py-1 px-2 border-r border-grey-200 "
+                        }, React.createElement("p", {
+                              className: "text-xs tracking-wider"
+                            }, "JAN"), React.createElement("p", {
+                              className: "text-3xl font-bold"
+                            }, "26"), React.createElement("p", {
+                              className: "text-xs tracking-widest"
+                            }, "2021"))), React.createElement("div", {
+                      className: "flex-none m-2"
+                    }, React.createElement("img", {
+                          className: "w-48",
+                          src: "/static/sm_default.jpeg"
+                        })), React.createElement("div", {
+                      className: "m-2 max-w-lg"
+                    }, React.createElement("p", {
+                          className: "font-bold text-2xl mb-1"
+                        }, "Computer Sciences/Discrete Mathematics Seminar II"), React.createElement("p", {
+                          className: "text-sm mb-1"
+                        }, "TBA"), React.createElement("p", {
+                          className: "italic text-sm mb-1"
+                        }, "Cynthia Vinzant"), React.createElement("p", {
+                          className: "italic text-sm mb-3"
+                        }, "10:30am | Simonyi Hall 101 and Remote Access - see Zoom link below"))), React.createElement("button", undefined, "VIEW MORE"));
 }
 
 export {

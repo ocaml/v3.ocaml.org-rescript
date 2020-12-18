@@ -1,11 +1,4 @@
-module Link = Next.Link;
-
-module H2 = {
-  @react.component
-  let make = (~children) => 
-    <h2 className="font-sans text-2xl font-bold leading-normal mb-2"> children </h2>;
-};
-
+//    <h2 className="font-sans text-2xl font-bold leading-normal mb-2"> children </h2>;
 let default = () => {
   let s = React.string
   <>
@@ -25,31 +18,42 @@ let default = () => {
       {s(`Upcoming Seminar Titles Include:`)}
     </h2>
 
-    <div className="flex bg-gray-200">
-        <div className="flex-1 text-center bg-gray-400 m-2">
-            <p className="text-xs">{s(`JAN`)}</p>
-            <p className="text-2xl font-bold">{s(`25`)}</p>
-            <p className="text-xs">{s(`2021`)}</p>
+    <div className="flex border-b border-grey-200">
+        <div className="">
+          <div className="text-center mt-2 mr-4 py-1 px-2 border-r border-grey-200 ">
+              <p className="text-xs tracking-wider">{s(`JAN`)}</p>
+              <p className="text-3xl font-bold">{s(`25`)}</p>
+              <p className="text-xs tracking-widest">{s(`2021`)}</p>
+          </div>
         </div>
-        <div className="flex-1 text-center bg-gray-400 m-2">{
-            s(`IAS GRAPHIC`)}
+        <div className="flex-none m-2">
+            <img src="/static/sm_default.jpeg" className="w-48" />
         </div>
-        <div className="flex-1 bg-gray-400 m-2">
-          <p className="font-bold">{s(`Computer Sciences/Discrete Mathematics Seminar I`)}</p>
-          <p>{s(`TBA`)}</p>
-          <p className="italic">{s(`Andrew Drucker`)}</p>
-          <p className="italic">{s(`11:15am`)}</p>
+        <div className="m-2 max-w-lg">
+          <p className="font-bold text-2xl mb-1">{s(`Computer Sciences/Discrete Mathematics Seminar I`)}</p>
+          <p className="text-sm mb-1">{s(`TBA`)}</p>
+          <p className="italic text-sm mb-1">{s(`Andrew Drucker`)}</p>
+          <p className="italic text-sm mb-3">{s(`11:15am`)}</p>
         </div>
     </div>
 
-    <div>
-        <div>{s(`JAN 26 2021`)}</div>
-        <div>{s(`IAS GRAPHIC`)}</div>
-        <div>
-          <p>{s(`Computer Sciences/Discrete Mathematics Seminar II`)}</p>
-          <p>{s(`TBA`)}</p>
-          <p>{s(`Cynthia Vinzant`)}</p>
-          <p>{s(`10:30am | Simonyi Hall 101 and Remote Access - see Zoom link below`)}</p>
+
+    <div className="flex border-b border-grey-200">
+        <div className="">
+          <div className="text-center mt-2 mr-4 py-1 px-2 border-r border-grey-200 ">
+              <p className="text-xs tracking-wider">{s(`JAN`)}</p>
+              <p className="text-3xl font-bold">{s(`26`)}</p>
+              <p className="text-xs tracking-widest">{s(`2021`)}</p>
+          </div>
+        </div>
+        <div className="flex-none m-2">
+            <img src="/static/sm_default.jpeg" className="w-48" />
+        </div>
+        <div className="m-2 max-w-lg">
+          <p className="font-bold text-2xl mb-1">{s(`Computer Sciences/Discrete Mathematics Seminar II`)}</p>
+          <p className="text-sm mb-1">{s(`TBA`)}</p>
+          <p className="italic text-sm mb-1">{s(`Cynthia Vinzant`)}</p>
+          <p className="italic text-sm mb-3">{s(`10:30am | Simonyi Hall 101 and Remote Access - see Zoom link below`)}</p>
         </div>
     </div>
 
