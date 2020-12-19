@@ -15,18 +15,26 @@ function $$default(param) {
                           className: "flex bg-black space-x-20"
                         }, React.createElement("div", {
                               className: "flex bg-red-200 space-x-8"
-                            }, React.createElement("div", undefined, React.createElement("img", {
+                            }, React.createElement("div", {
+                                  className: "flex-1"
+                                }, React.createElement("img", {
                                       className: "w-64 bg-orange-100",
                                       src: "static/Jelani-Nelson_520x292-520x292.jpeg"
-                                    })), React.createElement("div", undefined, React.createElement("p", {
-                                      className: "bg-green-200"
-                                    }, "Q & A"), React.createElement("p", {
+                                    })), React.createElement("div", {
+                                  className: "flex-1"
+                                }, React.createElement("p", {
+                                      className: "bg-green-200 text-xs"
+                                    }, "Q & A"), React.createElement("h3", {
+                                      className: "bg-purple-200 text-xl font-bold"
+                                    }, "The Computer Scientist Who Shrinks Big Data"), React.createElement("p", {
                                       className: "bg-white"
-                                    }, "By ALLISON WHITTEN | DECEMBER 7, 2020 | ch-ic | tag-ic"), React.createElement("p", {
-                                      className: "bg-blue-100"
-                                    }, "Jelani Nelson designs clever algorithms that only \n                have to remember slivers of massive data sets. He also\n                teaches kids in Ethiopia how to code."))), React.createElement("div", {
-                              className: "bg-yellow-100"
-                            }, React.createElement("h2", undefined, "Topics"), React.createElement("div", undefined, "Search"), React.createElement("h3", undefined, "View All Topics"), React.createElement("h2", undefined, "Follow Quanta"))))));
+                                    }, React.createElement("span", {
+                                          className: "italic text-xs"
+                                        }, "By"), React.createElement("span", {
+                                          className: "text-xs"
+                                        }, " ALLISON WHITTEN | DECEMBER 7, 2020 | ch-ic | tag-ic")), React.createElement("p", {
+                                      className: "text-sm bg-blue-100"
+                                    }, "Jelani Nelson designs clever algorithms that only \n                have to remember slivers of massive data sets. He also\n                teaches kids in Ethiopia how to code.")))))));
 }
 
 export {
