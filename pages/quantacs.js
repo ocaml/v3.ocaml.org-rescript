@@ -18,16 +18,16 @@ function $$default(param) {
                             }, React.createElement("div", {
                                   className: "flex-1"
                                 }, React.createElement("img", {
-                                      className: "w-64 bg-orange-100",
+                                      className: "bg-orange-100",
                                       src: "static/Jelani-Nelson_520x292-520x292.jpeg"
                                     })), React.createElement("div", {
                                   className: "flex-1"
                                 }, React.createElement("p", {
-                                      className: "bg-green-200 text-xs"
+                                      className: "pb-2 text-xs bg-green-200"
                                     }, "Q & A"), React.createElement("h3", {
-                                      className: "bg-purple-200 text-xl font-bold"
+                                      className: "pb-2 text-xl font-bold bg-purple-200"
                                     }, "The Computer Scientist Who Shrinks Big Data"), React.createElement("p", {
-                                      className: "bg-white"
+                                      className: "pb-2 bg-white"
                                     }, React.createElement("span", {
                                           className: "italic text-xs"
                                         }, "By"), React.createElement("span", {

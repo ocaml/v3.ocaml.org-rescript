@@ -12,12 +12,12 @@ let default = () => {
   <div className="flex bg-black space-x-20">
     <div className="flex bg-red-200 space-x-8">
       <div className="flex-1">
-        <img className="w-64 bg-orange-100" src="static/Jelani-Nelson_520x292-520x292.jpeg"/>
+        <img className="bg-orange-100" src="static/Jelani-Nelson_520x292-520x292.jpeg"/>
       </div>
       <div className="flex-1">
-        <p className="bg-green-200 text-xs">{s(`Q & A`)}</p>
-        <h3 className="bg-purple-200 text-xl font-bold">{s(`The Computer Scientist Who Shrinks Big Data`)}</h3>
-        <p className="bg-white">
+        <p className="pb-2 text-xs bg-green-200">{s(`Q & A`)}</p>
+        <h3 className="pb-2 text-xl font-bold bg-purple-200">{s(`The Computer Scientist Who Shrinks Big Data`)}</h3>
+        <p className="pb-2 bg-white">
           <span className="italic text-xs">{s(`By`)}</span>
           <span className="text-xs">
           {s(` ALLISON WHITTEN | DECEMBER 7, 2020 | ch-ic | tag-ic`)}
