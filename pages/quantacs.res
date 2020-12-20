@@ -9,8 +9,8 @@ let default = () => {
 <h1 className="text-center text-5xl font-bold leading-snug mb-16">{s(`Computer Science`)}</h1>
 
 <div className="p-16 bg-white">
-  <div className="flex bg-black space-x-20">
-    <div className="flex bg-red-200 space-x-8">
+  <div className="bg-black">
+    <div className="float-left w-4/6 flex bg-red-200 space-x-8 pr-16">
       <div className="flex-1">
         <img className="bg-orange-100" src="static/Jelani-Nelson_520x292-520x292.jpeg"/>
       </div>
@@ -29,6 +29,12 @@ let default = () => {
       </div>
     </div>
 
+    <div className="float-left w-2/6 bg-yellow-100 pl-16 border-l-2">
+      <h2 className="font-bold text-xl mb-4">{s(`Topics`)}</h2>
+      <div className="mb-4"><select className="w-48"/></div>
+      <p className="text-sm font-bold text-orange-500 mb-8">{s(`View All Topics`)}</p>
+      <h2 className="font-bold text-xl">{s(`Follow Quanta`)}</h2>
+    </div>
   </div>
 </div>
 
@@ -36,11 +42,4 @@ let default = () => {
   </>
 }
 
-/*
-    <div className="bg-yellow-100">
-      <h2>{s(`Topics`)}</h2>
-      <div>{s(`Search`)}</div>
-      <h3>{s(`View All Topics`)}</h3>
-      <h2>{s(`Follow Quanta`)}</h2>    
-    </div>
-*/
+     

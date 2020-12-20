@@ -12,9 +12,9 @@ function $$default(param) {
                     }, "Computer Science"), React.createElement("div", {
                       className: "p-16 bg-white"
                     }, React.createElement("div", {
-                          className: "flex bg-black space-x-20"
+                          className: "bg-black"
                         }, React.createElement("div", {
-                              className: "flex bg-red-200 space-x-8"
+                              className: "float-left w-4/6 flex bg-red-200 space-x-8 pr-16"
                             }, React.createElement("div", {
                                   className: "flex-1"
                                 }, React.createElement("img", {
@@ -34,7 +34,19 @@ function $$default(param) {
                                           className: "text-xs"
                                         }, " ALLISON WHITTEN | DECEMBER 7, 2020 | ch-ic | tag-ic")), React.createElement("p", {
                                       className: "text-sm bg-blue-100"
-                                    }, "Jelani Nelson designs clever algorithms that only \n                have to remember slivers of massive data sets. He also\n                teaches kids in Ethiopia how to code.")))))));
+                                    }, "Jelani Nelson designs clever algorithms that only \n                have to remember slivers of massive data sets. He also\n                teaches kids in Ethiopia how to code."))), React.createElement("div", {
+                              className: "float-left w-2/6 bg-yellow-100 pl-16 border-l-2"
+                            }, React.createElement("h2", {
+                                  className: "font-bold text-xl mb-4"
+                                }, "Topics"), React.createElement("div", {
+                                  className: "mb-4"
+                                }, React.createElement("select", {
+                                      className: "w-48"
+                                    })), React.createElement("p", {
+                                  className: "text-sm font-bold text-orange-500 mb-8"
+                                }, "View All Topics"), React.createElement("h2", {
+                                  className: "font-bold text-xl"
+                                }, "Follow Quanta"))))));
 }
 
 export {
