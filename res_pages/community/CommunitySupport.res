@@ -21,7 +21,7 @@ module H3 = {
   let make = (~children) => 
     <h3 className="font-sans text-lg font-bold leading-normal mb-3"> children </h3>;
 };
-// TODO: I haven't been able to implement "A" without include "Link" yet. Troubleshoot why
+// TODO: refactor to only "a" tag, using instructions in next/link docs
 module LINK = {
   @react.component
   let make = (~href, ~children) => 
