@@ -1,7 +1,9 @@
 
 
 import * as React from "react";
+import * as Markdown from "../components/Markdown.js";
 import Link from "next/link";
+import * as React$1 from "@mdx-js/react";
 
 function MainLayout$Navigation(Props) {
   var editpath = Props.editpath;
@@ -67,9 +69,12 @@ function MainLayout(Props) {
                   className: "max-w-5xl w-full lg:w-3/4 text-gray-900 font-base"
                 }, React.createElement(MainLayout$Navigation, {
                       editpath: editpath
-                    }), React.createElement("main", {
-                      className: "mt-4 mx-4"
-                    }, children)));
+                    }), React.createElement(React$1.MDXProvider, {
+                      components: Markdown.$$default,
+                      children: React.createElement("main", {
+                            className: "mt-4 mx-4"
+                          }, children)
+                    })));
 }
 
 var Link$1;

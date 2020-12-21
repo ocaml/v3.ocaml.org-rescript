@@ -45,7 +45,9 @@ let make = (~children, ~editpath) => {
   <div style=minWidth className="flex lg:justify-center">
     <div className="max-w-5xl w-full lg:w-3/4 text-gray-900 font-base">
       <Navigation editpath={editpath} />
-      <main className="mt-4 mx-4"> children </main>
+      <Mdx.Provider components={Markdown.default}>
+        <main className="mt-4 mx-4"> children </main>
+      </Mdx.Provider>
     </div>
   </div>;
 };
