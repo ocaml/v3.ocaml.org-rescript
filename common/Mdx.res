@@ -1,12 +1,6 @@
 module Components = {
   type props = {"children": ReasonReact.reactElement}
 
-  type headerProps = {
-    "id": string,
-    "children": // Used for anchor tags
-    React.element,
-  }
-
   // Used for reflection based logic in
   // components such as `code` or `ul`
   // with runtime reflection
@@ -22,13 +16,13 @@ module Components = {
     @bs.optional
     h1: React.component<props>,
     @bs.optional
-    h2: React.component<headerProps>,
+    h2: React.component<props>,
     @bs.optional
-    h3: React.component<headerProps>,
+    h3: React.component<props>,
     @bs.optional
-    h4: React.component<headerProps>,
+    h4: React.component<props>,
     @bs.optional
-    h5: React.component<headerProps>,
+    h5: React.component<props>,
     @bs.optional
     ul: React.component<props>,
     @bs.optional

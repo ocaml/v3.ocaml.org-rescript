@@ -12,13 +12,13 @@ module H1 = {
 };
 module H2 = {
   @react.component
-  let make = (~children, ~id) => 
+  let make = (~children) => 
     <h2 className="font-sans text-2xl font-bold leading-normal mb-2"> children </h2>;
 };
 module H3 = {
   // TODO: use mb-2.5 and tailwind 2
   @react.component
-  let make = (~children, ~id) => 
+  let make = (~children) => 
     <h3 className="font-sans text-lg font-bold leading-normal mb-3"> children </h3>;
 };
 // TODO: refactor to only "a" tag, using instructions in next/link docs
