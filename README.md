@@ -68,12 +68,15 @@ Go to localhost:3000
 
 ### res_pages vs pages
 
+The following only applies to JSX pages. For mdxjs based pages, no wrapper is needed.
+
 ReScript can only handle one module of a given name, e.g. "Index". This clashes with nextjs
 page-based routing, which expects the filepath starting from `/pages/` to match
 the route exposed. So, in order to completely avoid any problems from this issue,
 we always create pages in `res_pages/` and rewrap the module in the desired location
 in `pages/`. If your module uses `getStaticPaths` or `getStaticProps`, those will also
-need to be re-exposed. Also, note that we choose to repeat the folder name "releases" in the module name "ReleasesIndex.js".
+need to be re-exposed. Also, note that we choose to repeat the folder name (e.g. "releases") 
+in the module name (e.g. "ReleasesIndex.js").
 
 ### Fast Refresh & ReScript
 
