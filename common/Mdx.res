@@ -54,7 +54,6 @@ module Components = {
     @bs.optional
     a: React.component<{
       "children": ReasonReact.reactElement,
-      "target": option<string>,
       "href": string,
     }>,
   }

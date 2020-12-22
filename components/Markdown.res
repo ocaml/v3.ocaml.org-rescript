@@ -24,7 +24,7 @@ module H3 = {
 // TODO: refactor to only "a" tag, using instructions in next/link docs
 module LINK = {
   @react.component
-  let make = (~href, ~children, ~target) => 
+  let make = (~href, ~children) => 
     <Link href={href}><a className="text-ocamlorange hover:underline"> children </a></Link>;
 };
 /* fold this code into a branch in "LINK"
