@@ -4,10 +4,9 @@ const withCSS = require('@zeit/next-css');
 const transpileModules = ["bs-platform"].concat(bsconfig["bs-dependencies"]);
 const withTM = require("next-transpile-modules")(transpileModules);
 
-// TODO: why does rescxript lang define plugin locally
-const withMdx = require("@next/mdx")({
-  extension: /\.mdx?$/,
-});
+// TODO: decide on alternative to add frontmatter support.
+// rescript-lang forked this plugin to add frontmatter support.
+const withMdx = require("@next/mdx")();
 
 const config = {
   target: "serverless",
