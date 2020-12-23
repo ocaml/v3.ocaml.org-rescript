@@ -59,10 +59,3 @@ module Components = {
   }
 }
 
-module Provider = {
-  @bs.module("@mdx-js/react") @react.component
-  external make: (
-    ~components: Components.t,
-    ~children: ReasonReact.reactElement=?,
-  ) => React.element = "MDXProvider"
-}

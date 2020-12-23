@@ -7,13 +7,17 @@ import Hydrate from "next-mdx-remote/hydrate";
 import RenderToString from "next-mdx-remote/render-to-string";
 
 function $$default(props) {
-  var content = Hydrate(props.source, Markdown.$$default);
+  var content = Hydrate(props.source, {
+        components: Markdown.$$default
+      });
   return React.createElement(React.Fragment, undefined, content);
 }
 
 function getStaticProps(_ctx) {
   var source = Fs.readFileSync("_content/support.mdx");
-  var __x = RenderToString(source, Markdown.$$default);
+  var __x = RenderToString(source, {
+        components: Markdown.$$default
+      });
   return __x.then(function (mdxSource) {
               var props = {
                 source: mdxSource
