@@ -1,21 +1,5 @@
-// render
-type renderres = {
-    compiledSource: string,
-    renderedOutput: string,
-    //TODO: bind "scope"
-}
-
-type options = {
-    components: Mdx.Components.t,
-}
-
-module NextMdxRemote = {
-  @bs.module("next-mdx-remote/render-to-string") external renderToString: (string, options) => Js.Promise.t<renderres> = "default";
-  @bs.module("next-mdx-remote/hydrate") external hydrate: (renderres, options) => ReasonReact.reactElement = "default";
-};
-
 type props = {
-    source: renderres,
+    source: NextMdxRemote.renderres,
 }
 
 let default = (props) => {
@@ -23,10 +7,6 @@ let default = (props) => {
   <>
   {content}
   </>
-}
-
-module Fs = {
-  @bs.module("fs") external readFileSync: (string) => string = "readFileSync";
 }
 
 let getStaticProps = _ctx => {
