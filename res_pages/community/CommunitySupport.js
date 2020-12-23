@@ -14,7 +14,7 @@ function $$default(props) {
 }
 
 function getStaticProps(_ctx) {
-  var source = Fs.readFileSync("_content/support.mdx");
+  var source = Fs.readFileSync("_content/community/support.mdx");
   var __x = RenderToString(source, {
         components: Markdown.$$default
       });

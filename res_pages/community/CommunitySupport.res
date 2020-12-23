@@ -12,7 +12,7 @@ let default = (props) => {
 let getStaticProps = _ctx => {
     // TODO: add next file watcher to scripts
     // TODO: export const POSTS_PATH = path.join(process.cwd(), '_contents')
-    let contentFilePath = "_content/support.mdx"
+    let contentFilePath = "_content/community/support.mdx"
     let source = Fs.readFileSync(contentFilePath)
     let mdxSourcePromise = NextMdxRemote.renderToString(source, { components: Markdown.default })
     mdxSourcePromise->Js.Promise.then_(mdxSource => {
