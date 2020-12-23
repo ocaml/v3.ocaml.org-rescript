@@ -4,7 +4,7 @@ module Link = Next.Link;
 let make = (~editpath) => {
     let editUrl = "https://github.com/ocaml/ocaml.org/edit/master/" ++ editpath;
     <nav
-      className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">
+      className="p-2 h-12 flex border-b border-gray-200 items-center text-sm">
 
       <Link href="/">
         <a className="flex items-center w-1/3">
@@ -14,7 +14,7 @@ let make = (~editpath) => {
           </span>
         </a>
       </Link>
-
+      
       <div className="flex w-2/3 justify-end">
         <Link href="/learn"> <a className="px-3"> {React.string("Learn")} </a> </Link>
         <Link href="/documentation"> <a className="px-3"> {React.string("Documentation")} </a> </Link>

@@ -7,7 +7,7 @@ function HeaderNavigation(Props) {
   var editpath = Props.editpath;
   var editUrl = "https://github.com/ocaml/ocaml.org/edit/master/" + editpath;
   return React.createElement("nav", {
-              className: "p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm"
+              className: "p-2 h-12 flex border-b border-gray-200 items-center text-sm"
             }, React.createElement(Link, {
                   href: "/",
                   children: React.createElement("a", {
