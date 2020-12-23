@@ -23,13 +23,19 @@ let default = (props) => {
   </>
 }
 
+module Fs = {
+  @bs.module("fs") external readFileSync: (string) => string = "readFileSync";
+}
+
 let getStaticProps = _ctx => {
-    // TODO: read string from file
-    let mdxSource = NextMdxRemote.renderToString(`# some mdx`, Markdown.default)
-    Js.Promise.then_(vl => {
+    // TODO: export const POSTS_PATH = path.join(process.cwd(), 'posts')
+    let contentFilePath = "_content/support.mdx"
+    let source = Fs.readFileSync(contentFilePath)
+    let mdxSourcePromise = NextMdxRemote.renderToString(source, Markdown.default)
+    mdxSourcePromise->Js.Promise.then_(mdxSource => {
         let props = {
-            source: vl,
+            source: mdxSource,
         }
         Js.Promise.resolve({"props": props})
-    }, mdxSource)
+    }, _)
 }

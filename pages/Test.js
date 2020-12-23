@@ -1,5 +1,6 @@
 
 
+import * as Fs from "fs";
 import * as React from "react";
 import * as Markdown from "../components/Markdown.js";
 import Hydrate from "next-mdx-remote/hydrate";
@@ -11,10 +12,11 @@ function $$default(props) {
 }
 
 function getStaticProps(_ctx) {
-  var mdxSource = RenderToString("# some mdx", Markdown.$$default);
-  return mdxSource.then(function (vl) {
+  var source = Fs.readFileSync("_content/support.mdx");
+  var __x = RenderToString(source, Markdown.$$default);
+  return __x.then(function (mdxSource) {
               var props = {
-                source: vl
+                source: mdxSource
               };
               return Promise.resolve({
                           props: props
@@ -28,4 +30,4 @@ export {
   getStaticProps ,
   
 }
-/* react Not a pure module */
+/* fs Not a pure module */
