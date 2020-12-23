@@ -26,6 +26,7 @@ match your local view and appear correct
 * Update the PR description to indicate relative paths that have changed
 
 ### Reviewer
+
 * Observe the relative paths changed in latest PR Preview
 * ... manual smoke test: ... ...
 * ... MORE CONTENT HERE ...
@@ -67,8 +68,6 @@ Go to localhost:3000
 ## Tips
 
 ### res_pages vs pages
-
-The following only applies to JSX pages. For mdxjs based pages, no wrapper is needed.
 
 ReScript can only handle one module of a given name, e.g. "Index". This clashes with nextjs
 page-based routing, which expects the filepath starting from `/pages/` to match

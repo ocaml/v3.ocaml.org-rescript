@@ -28,6 +28,7 @@ module Fs = {
 }
 
 let getStaticProps = _ctx => {
+    // TODO: add next file watcher to scripts
     // TODO: export const POSTS_PATH = path.join(process.cwd(), 'posts')
     let contentFilePath = "_content/support.mdx"
     let source = Fs.readFileSync(contentFilePath)
