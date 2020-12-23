@@ -1,7 +1,5 @@
 module Link = Next.Link;
 
-// Converting this file to rescript causes the stylesheets
-//  to fail to load. Need to troubleshoot further.
 module Navigation = {
   @react.component
   let make = (~editpath) => {
