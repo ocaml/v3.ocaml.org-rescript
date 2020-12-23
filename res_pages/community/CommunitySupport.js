@@ -2,7 +2,7 @@
 
 import * as Fs from "fs";
 import * as React from "react";
-import * as Markdown from "../components/Markdown.js";
+import * as Markdown from "../../components/Markdown.js";
 import Hydrate from "next-mdx-remote/hydrate";
 import RenderToString from "next-mdx-remote/render-to-string";
 
