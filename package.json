@@ -32,5 +32,11 @@
     "postcss-cli": "7.1.2",
     "tailwindcss": "1.8.10",
     "yarn": "1.22"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
   }
 }
