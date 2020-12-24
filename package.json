@@ -8,7 +8,6 @@
     "node": ">=14.15.1"
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "gentype": "^3.39.0",
     "next": "^9.5.5",
     "next-mdx-remote": "^1.0.1",
