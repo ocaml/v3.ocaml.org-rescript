@@ -33,5 +33,12 @@
     "cssnano": "^4.1.10",
     "tailwindcss": "1.8.10",
     "yarn": "1.22"
+  },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+    ]
   }
 }
