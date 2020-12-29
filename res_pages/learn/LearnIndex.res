@@ -30,7 +30,7 @@ let default = () => {
 
     <div className="flex space-x-8">
         <div className="flex-1">
-            <div className="border-b border-gray-500">
+            <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Code Examples`)}</h2>
             </div>
             <div className="border-2 bg-gray-200">
@@ -59,7 +59,7 @@ let default = () => {
             {s(`.`)}</p>
         </div>
         <div className="flex-1">
-            <div className="border-b border-gray-500">
+            <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Tutorials & FAQ`)}</h2>
             </div>
             <ul className="px-4 list-disc list-inside space-y-3">
@@ -76,11 +76,11 @@ let default = () => {
             <p className="text-sm">{s("See full list")}</p>
         </div>
         <div className="flex-1">
-            <div className="border-b border-gray-500">
+            <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Books`)}</h2>
             </div>
-            <img src="static/real-world-ocaml.jpeg" className="float-left py-3 w-1/2"/>
-            <img src="static/OCaml_from_beginning.png" className="float-left py-3 w-1/2"/>
+            <img src="static/real-world-ocaml.jpeg" className="float-left w-1/2"/>
+            <img src="static/OCaml_from_beginning.png" className="float-left w-1/2"/>
             <span className="clearfix" />
             <p>{s(`There are a number of excellent books, with two new 
             titles published in recent years.`)}</p>
@@ -90,7 +90,7 @@ let default = () => {
 
     <div className="flex space-x-8">
         <div className="flex-1">
-            <div className="border-b border-gray-500">
+            <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Online Courses, Slides & Videos`)}</h2>
             </div>
             <div className="w-64 h-64 bg-black" />
@@ -120,18 +120,18 @@ let default = () => {
             <p className="text-sm">{s(`See more slides and videos`)}</p>
         </div>
         <div className="flex-1">
-            <div className="border-b border-gray-500">
+            <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Industrial Users`)}</h2>
             </div>
-            <img src="static/jane-street.jpeg" className="float-left mb-2 mr-2 mt-2"/>
-            <p className="py-3">{s(`Jane Street is a quantitative proprietary trading firm with 
+            <img src="static/jane-street.jpeg" className="float-left mb-2 mr-2"/>
+            <p className="mb-6">{s(`Jane Street is a quantitative proprietary trading firm with 
             a unique focus on technology and collaborative problem solvinig. Almost all of 
             our systems are written in OCaml: from statistical research code operating 
             over terabytes of data to systems management tools to our real-time trading 
             infrastructure. And those systems are deployed at real scale: on an average day, 
             our trading represents between 1% and 2% of US equity volume.`)}</p>    
-            <img src="static/facebook.png" className="float-left mb-2 mr-2 mt-2"/>
-            <p className="py-3">{s(`To handle their huge PHP codebase, Facebook developed `)}
+            <img src="static/facebook.png" className="float-left mb-2 mr-2"/>
+            <p className="mb-6">{s(`To handle their huge PHP codebase, Facebook developed `)}
             {s(`pfff`)}
             {s(`, a set of tools and APIs to perform static analysis, dynamic analysis, code 
             visualizations, code navigations, and style-preserving source-to-source transformations 
@@ -147,11 +147,11 @@ let default = () => {
             <p className="text-sm">{s(`See more companies using OCaml`)}</p>    
         </div>
         <div className="flex-1">
-            <div className="border-b border-gray-500">
+            <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Success Stories`)}</h2>
             </div>
-            <img src="static/unison-thumb.jpeg" className="float-left mt-3 mr-2"/>
-            <p className="mt-3 mb-4">
+            <img src="static/unison-thumb.jpeg" className="float-left mr-2"/>
+            <p className="mb-6">
                 {s(`Unison`)}
                 {s(` is an innovative two-way file synchronizer stemming from the `)}
                 {s(`latest research`)}
@@ -159,8 +159,8 @@ let default = () => {
                 most flavors of Unix, including MacOSX. OCaml helped the authors to
                 "organize a large and intricate codebase".`)}
             </p>                
-            <img src="static/lexifi-thumb.jpeg" className="float-left mt-3 mr-2"/>
-            <p className="mt-3 mb-4">
+            <img src="static/lexifi-thumb.jpeg" className="float-left mr-2"/>
+            <p className="mb-6">
                 {s(`Developed by `)}
                 {s(`LexiFi`)}
                 {s(` the Modeling Language for Finance (MLFi) is the first formal language that 
@@ -168,7 +168,7 @@ let default = () => {
                 products. MLFii is implemented as an extension of OCaml.`)}
             </p>                
             <img src="static/fftw-thumb.png" className="float-left mt-3 mr-2"/>
-            <p className="mt-3">
+            <p className="mb-6">
                 {s(`FFTW`)}
                 {s(` is a very Fast Fourier Transform library developed at MIT that competes with 
                 vendor-tuned codes while remaining platform independent. The code is generated by `)}

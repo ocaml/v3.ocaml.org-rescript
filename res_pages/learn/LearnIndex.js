@@ -24,7 +24,7 @@ function $$default(param) {
                 }, React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
-                          className: "border-b border-gray-500"
+                          className: "border-b border-gray-500 mb-3"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Code Examples")), React.createElement("div", {
@@ -34,7 +34,7 @@ function $$default(param) {
                         }, "See more ", "Code Examples", ", ", "Pleac", ", and ", "Rosetta", ".")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
-                          className: "border-b border-gray-500"
+                          className: "border-b border-gray-500 mb-3"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Tutorials & FAQ")), React.createElement("ul", {
@@ -44,14 +44,14 @@ function $$default(param) {
                         }, "See full list")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
-                          className: "border-b border-gray-500"
+                          className: "border-b border-gray-500 mb-3"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Books")), React.createElement("img", {
-                          className: "float-left py-3 w-1/2",
+                          className: "float-left w-1/2",
                           src: "static/real-world-ocaml.jpeg"
                         }), React.createElement("img", {
-                          className: "float-left py-3 w-1/2",
+                          className: "float-left w-1/2",
                           src: "static/OCaml_from_beginning.png"
                         }), React.createElement("span", {
                           className: "clearfix"
@@ -62,7 +62,7 @@ function $$default(param) {
                 }, React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
-                          className: "border-b border-gray-500"
+                          className: "border-b border-gray-500 mb-3"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Online Courses, Slides & Videos")), React.createElement("div", {
@@ -76,42 +76,42 @@ function $$default(param) {
                         }, "See more slides and videos")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
-                          className: "border-b border-gray-500"
+                          className: "border-b border-gray-500 mb-3"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Industrial Users")), React.createElement("img", {
-                          className: "float-left mb-2 mr-2 mt-2",
+                          className: "float-left mb-2 mr-2",
                           src: "static/jane-street.jpeg"
                         }), React.createElement("p", {
-                          className: "py-3"
+                          className: "mb-6"
                         }, "Jane Street is a quantitative proprietary trading firm with \n            a unique focus on technology and collaborative problem solvinig. Almost all of \n            our systems are written in OCaml: from statistical research code operating \n            over terabytes of data to systems management tools to our real-time trading \n            infrastructure. And those systems are deployed at real scale: on an average day, \n            our trading represents between 1% and 2% of US equity volume."), React.createElement("img", {
-                          className: "float-left mb-2 mr-2 mt-2",
+                          className: "float-left mb-2 mr-2",
                           src: "static/facebook.png"
                         }), React.createElement("p", {
-                          className: "py-3"
+                          className: "mb-6"
                         }, "To handle their huge PHP codebase, Facebook developed ", "pfff", ", a set of tools and APIs to perform static analysis, dynamic analysis, code \n            visualizations, code navigations, and style-preserving source-to-source transformations \n            such as refactorings on source code. They also designed ", "Hack", ", a new statically typed programming language for HHVM, a fast PHP runtime. \n            See Julien Verlaguet\'s ", "CUFP talk", " and ", "slides", "."), React.createElement("p", {
                           className: "text-sm"
                         }, "See more companies using OCaml")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
-                          className: "border-b border-gray-500"
+                          className: "border-b border-gray-500 mb-3"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Success Stories")), React.createElement("img", {
-                          className: "float-left mt-3 mr-2",
+                          className: "float-left mr-2",
                           src: "static/unison-thumb.jpeg"
                         }), React.createElement("p", {
-                          className: "mt-3 mb-4"
+                          className: "mb-6"
                         }, "Unison", " is an innovative two-way file synchronizer stemming from the ", "latest research", ". It is resilient to failures and runs on Windows as well as \n                most flavors of Unix, including MacOSX. OCaml helped the authors to\n                \"organize a large and intricate codebase\"."), React.createElement("img", {
-                          className: "float-left mt-3 mr-2",
+                          className: "float-left mr-2",
                           src: "static/lexifi-thumb.jpeg"
                         }), React.createElement("p", {
-                          className: "mt-3 mb-4"
+                          className: "mb-6"
                         }, "Developed by ", "LexiFi", " the Modeling Language for Finance (MLFi) is the first formal language that \n                accurately describes the most sophisticated capital market, credit, and investment \n                products. MLFii is implemented as an extension of OCaml."), React.createElement("img", {
                           className: "float-left mt-3 mr-2",
                           src: "static/fftw-thumb.png"
                         }), React.createElement("p", {
-                          className: "mt-3"
+                          className: "mb-6"
                         }, "FFTW", " is a very Fast Fourier Transform library developed at MIT that competes with \n                vendor-tuned codes while remaining platform independent. The code is generated by ", "genfft", ", written in OCaml, that ", "\"discovered\" algorithms that were previously unknown", ". It was awarded the ", "J. H. Wilkinson Prize for Numerical Software", " that rewards software that \n                \"best addresses all phases of the preparation of high quality numerical software.\""), React.createElement("p", {
                           className: "text-sm"
                         }, "See more success stories"))));
