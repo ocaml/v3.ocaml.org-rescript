@@ -73,6 +73,20 @@ let default = () => {
             over terabytes of data to systems management tools to our real-time trading 
             infrastructure. And those systems are deployed at real scale: on an average day, 
             our trading represents between 1% and 2% of US equity volume.`)}</p>    
+            <img src="static/facebook.png" className="float-left mb-2 mr-2 mt-2"/>
+            <p className="py-3">{s(`To handle their huge PHP codebase, Facebook developed `)}
+            {s(`pfff`)}
+            {s(`, a set of tools and APIs to perform static analysis, dynamic analysis, code 
+            visualizations, code navigations, and style-preserving source-to-source transformations 
+            such as refactorings on source code. They also designed `)}
+            {s(`Hack`)}
+            {s(`, a new statically typed programming language for HHVM, a fast PHP runtime. 
+            See Julien Verlaguet's `)}
+            {s(`CUFP talk`)}
+            {s(` and `)}
+            {s(`slides`)}
+            {s(`.`)}
+            </p>    
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500">

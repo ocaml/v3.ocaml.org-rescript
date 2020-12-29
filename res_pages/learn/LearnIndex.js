@@ -66,7 +66,12 @@ function $$default(param) {
                           src: "static/jane-street.jpeg"
                         }), React.createElement("p", {
                           className: "py-3"
-                        }, "Jane Street is a quantitative proprietary trading firm with \n            a unique focus on technology and collaborative problem solvinig. Almost all of \n            our systems are written in OCaml: from statistical research code operating \n            over terabytes of data to systems management tools to our real-time trading \n            infrastructure. And those systems are deployed at real scale: on an average day, \n            our trading represents between 1% and 2% of US equity volume.")), React.createElement("div", {
+                        }, "Jane Street is a quantitative proprietary trading firm with \n            a unique focus on technology and collaborative problem solvinig. Almost all of \n            our systems are written in OCaml: from statistical research code operating \n            over terabytes of data to systems management tools to our real-time trading \n            infrastructure. And those systems are deployed at real scale: on an average day, \n            our trading represents between 1% and 2% of US equity volume."), React.createElement("img", {
+                          className: "float-left mb-2 mr-2 mt-2",
+                          src: "static/facebook.png"
+                        }), React.createElement("p", {
+                          className: "py-3"
+                        }, "To handle their huge PHP codebase, Facebook developed ", "pfff", ", a set of tools and APIs to perform static analysis, dynamic analysis, code \n            visualizations, code navigations, and style-preserving source-to-source transformations \n            such as refactorings on source code. They also designed ", "Hack", ", a new statically typed programming language for HHVM, a fast PHP runtime. \n            See Julien Verlaguet\'s ", "CUFP talk", " and ", "slides", ".")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
                           className: "border-b border-gray-500"
