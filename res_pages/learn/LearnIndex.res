@@ -48,8 +48,8 @@ let default = () => {
             <div className="border-b border-gray-500">
                 <h2 className="text-2xl font-semibold">{s(`Books`)}</h2>
             </div>
-            <img src="static/real-world-ocaml.jpeg" className="float-left py-3 w-2/5"/>
-            <img src="static/OCaml_from_beginning.png" className="float-left py-3 w-2/5"/>
+            <img src="static/real-world-ocaml.jpeg" className="float-left py-3 w-1/2"/>
+            <img src="static/OCaml_from_beginning.png" className="float-left py-3 w-1/2"/>
             <span className="clearfix" />
             <p>{s(`There are a number of excellent books, with two new 
             titles published in recent years.`)}</p>
@@ -66,6 +66,13 @@ let default = () => {
             <div className="border-b border-gray-500">
                 <h2 className="text-2xl font-semibold">{s(`Industrial Users`)}</h2>
             </div>
+            <img src="static/jane-street.jpeg" className="float-left mb-2 mr-2 mt-2"/>
+            <p className="py-3">{s(`Jane Street is a quantitative proprietary trading firm with 
+            a unique focus on technology and collaborative problem solvinig. Almost all of 
+            our systems are written in OCaml: from statistical research code operating 
+            over terabytes of data to systems management tools to our real-time trading 
+            infrastructure. And those systems are deployed at real scale: on an average day, 
+            our trading represents between 1% and 2% of US equity volume.`)}</p>    
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500">

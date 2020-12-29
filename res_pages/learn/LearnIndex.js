@@ -40,10 +40,10 @@ function $$default(param) {
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Books")), React.createElement("img", {
-                          className: "float-left py-3 w-2/5",
+                          className: "float-left py-3 w-1/2",
                           src: "static/real-world-ocaml.jpeg"
                         }), React.createElement("img", {
-                          className: "float-left py-3 w-2/5",
+                          className: "float-left py-3 w-1/2",
                           src: "static/OCaml_from_beginning.png"
                         }), React.createElement("span", {
                           className: "clearfix"
@@ -61,7 +61,12 @@ function $$default(param) {
                           className: "border-b border-gray-500"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
-                            }, "Industrial Users"))), React.createElement("div", {
+                            }, "Industrial Users")), React.createElement("img", {
+                          className: "float-left mb-2 mr-2 mt-2",
+                          src: "static/jane-street.jpeg"
+                        }), React.createElement("p", {
+                          className: "py-3"
+                        }, "Jane Street is a quantitative proprietary trading firm with \n            a unique focus on technology and collaborative problem solvinig. Almost all of \n            our systems are written in OCaml: from statistical research code operating \n            over terabytes of data to systems management tools to our real-time trading \n            infrastructure. And those systems are deployed at real scale: on an average day, \n            our trading represents between 1% and 2% of US equity volume.")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
                           className: "border-b border-gray-500"
