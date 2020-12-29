@@ -25,7 +25,9 @@ function $$default(param) {
                           className: "border-b border-gray-500"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
-                            }, "Code Examples"))), React.createElement("div", {
+                            }, "Code Examples")), React.createElement("div", {
+                          className: "border-2 bg-gray-200"
+                        }, React.createElement("p", undefined, "(* If [1] is the list [e1;...;eN] *)", React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined))), React.createElement("p", undefined, "See more ", "Code Examples", ", ", "Pleac", ", and ", "Rosetta", ".")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
                           className: "border-b border-gray-500"
@@ -33,7 +35,7 @@ function $$default(param) {
                               className: "text-2xl font-semibold"
                             }, "Tutorials & FAQ")), React.createElement("ul", {
                           className: "px-4 list-disc list-inside space-y-3"
-                        }, React.createElement("li", undefined, "Up and Running"), React.createElement("li", undefined, "Basics"), React.createElement("li", undefined, "Structure of OCaml Programs"))), React.createElement("div", {
+                        }, React.createElement("li", undefined, "Up and Running"), React.createElement("li", undefined, "Basics"), React.createElement("li", undefined, "Structure of OCaml Programs"), React.createElement("li", undefined, "Modules"), React.createElement("li", undefined, "Maps (Dictionaries)"), React.createElement("li", undefined, "Sets"), React.createElement("li", undefined, "Hash Tables"), React.createElement("li", undefined, "Comparison of Standard Containers"), React.createElement("li", undefined, "Frequently Asked Questions")), React.createElement("p", undefined, "See full list")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
                           className: "border-b border-gray-500"
@@ -47,7 +49,7 @@ function $$default(param) {
                           src: "static/OCaml_from_beginning.png"
                         }), React.createElement("span", {
                           className: "clearfix"
-                        }), React.createElement("p", undefined, "There are a number of excellent books, with two new \n            titles published in recent years."))), React.createElement("div", {
+                        }), React.createElement("p", undefined, "There are a number of excellent books, with two new \n            titles published in recent years."), React.createElement("p", undefined, "See full list"))), React.createElement("div", {
                   className: "flex space-x-8"
                 }, React.createElement("div", {
                       className: "flex-1"
@@ -55,7 +57,13 @@ function $$default(param) {
                           className: "border-b border-gray-500"
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
-                            }, "Online Courses, Slides & Videos"))), React.createElement("div", {
+                            }, "Online Courses, Slides & Videos")), React.createElement("div", {
+                          className: "w-64 h-64 bg-black"
+                        }), React.createElement("p", undefined, "A massive open online course (MOOC) entirely centered around OCaml", " is now available, and runs once a year!", "Learn more, and ", "register now on the FUN platform!"), React.createElement("div", {
+                          className: "w-64 h-64 bg-black"
+                        }), React.createElement("p", undefined, "An invited talk by Xavier Leroy explaining the current state of OCaml at the ", "OCaml Users and Developers WOrkshop 2014", " in Gothenburg, Sweden (", "PDF slides", ", ", "Video", ")."), React.createElement("div", {
+                          className: "w-64 h-64 bg-black"
+                        }), React.createElement("p", undefined, "A guest lecture given by Yaron Minsky of Jane Street about how to program \n                effectively in ML. The talk was given as part of the intro computer science class \n                at Harvard, CS51, where the students had spent much of the semester programming in \n                OCaml."), React.createElement("p", undefined, "See more slides and videos")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
                           className: "border-b border-gray-500"
@@ -71,7 +79,7 @@ function $$default(param) {
                           src: "static/facebook.png"
                         }), React.createElement("p", {
                           className: "py-3"
-                        }, "To handle their huge PHP codebase, Facebook developed ", "pfff", ", a set of tools and APIs to perform static analysis, dynamic analysis, code \n            visualizations, code navigations, and style-preserving source-to-source transformations \n            such as refactorings on source code. They also designed ", "Hack", ", a new statically typed programming language for HHVM, a fast PHP runtime. \n            See Julien Verlaguet\'s ", "CUFP talk", " and ", "slides", ".")), React.createElement("div", {
+                        }, "To handle their huge PHP codebase, Facebook developed ", "pfff", ", a set of tools and APIs to perform static analysis, dynamic analysis, code \n            visualizations, code navigations, and style-preserving source-to-source transformations \n            such as refactorings on source code. They also designed ", "Hack", ", a new statically typed programming language for HHVM, a fast PHP runtime. \n            See Julien Verlaguet\'s ", "CUFP talk", " and ", "slides", "."), React.createElement("p", undefined, "See more companies using OCaml")), React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
                           className: "border-b border-gray-500"

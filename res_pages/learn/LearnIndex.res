@@ -33,6 +33,30 @@ let default = () => {
             <div className="border-b border-gray-500">
                 <h2 className="text-2xl font-semibold">{s(`Code Examples`)}</h2>
             </div>
+            <div className="border-2 bg-gray-200">
+                <p>
+                    {s(`(* If [1] is the list [e1;...;eN] *)`)}<br />
+                    {s(`(* e1 +. ... +. eN *)`)}<br />
+                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+                    <br />
+                    {s(`(* e1 +. ... +. eN *)`)}<br />
+                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+                    <br />
+                    {s(`(* e1 +. ... +. eN *)`)}<br />
+                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+                    <br />
+                    {s(`(* e1 +. ... +. eN *)`)}<br />
+                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+                </p>
+            </div>
+            <p>{s(`See more `)}
+            {s(`Code Examples`)}
+            {s(`, `)}
+            {s(`Pleac`)}
+            {s(`, and `)}
+            {s(`Rosetta`)}
+            {s(`.`)}</p>
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500">
@@ -42,7 +66,14 @@ let default = () => {
                 <li>{s("Up and Running")}</li>
                 <li>{s("Basics")}</li>
                 <li>{s("Structure of OCaml Programs")}</li>
+                <li>{s("Modules")}</li>
+                <li>{s("Maps (Dictionaries)")}</li>
+                <li>{s("Sets")}</li>
+                <li>{s("Hash Tables")}</li>
+                <li>{s("Comparison of Standard Containers")}</li>
+                <li>{s("Frequently Asked Questions")}</li>
             </ul>
+            <p>{s("See full list")}</p>
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500">
@@ -53,6 +84,7 @@ let default = () => {
             <span className="clearfix" />
             <p>{s(`There are a number of excellent books, with two new 
             titles published in recent years.`)}</p>
+            <p>{s("See full list")}</p>
         </div>
     </div>
 
@@ -61,6 +93,31 @@ let default = () => {
             <div className="border-b border-gray-500">
                 <h2 className="text-2xl font-semibold">{s(`Online Courses, Slides & Videos`)}</h2>
             </div>
+            <div className="w-64 h-64 bg-black" />
+            <p>
+                {s(`A massive open online course (MOOC) entirely centered around OCaml`)}
+                {s(` is now available, and runs once a year!`)}
+                {s(`Learn more, and `)}
+                {s(`register now on the FUN platform!`)}
+            </p>
+            <div className="w-64 h-64 bg-black"/>
+            <p>
+                {s(`An invited talk by Xavier Leroy explaining the current state of OCaml at the `)}
+                {s(`OCaml Users and Developers WOrkshop 2014`)}
+                {s(` in Gothenburg, Sweden (`)}
+                {s(`PDF slides`)}
+                {s(`, `)}
+                {s(`Video`)}
+                {s(`).`)}
+            </p>
+            <div className="w-64 h-64 bg-black"/>
+            <p>
+                {s(`A guest lecture given by Yaron Minsky of Jane Street about how to program 
+                effectively in ML. The talk was given as part of the intro computer science class 
+                at Harvard, CS51, where the students had spent much of the semester programming in 
+                OCaml.`)}
+            </p>
+            <p>{s(`See more slides and videos`)}</p>
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500">
@@ -86,7 +143,8 @@ let default = () => {
             {s(` and `)}
             {s(`slides`)}
             {s(`.`)}
-            </p>    
+            </p>
+            <p>{s(`See more companies using OCaml`)}</p>    
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500">
