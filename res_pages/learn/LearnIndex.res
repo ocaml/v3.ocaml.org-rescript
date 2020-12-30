@@ -1,27 +1,33 @@
+module LINK = Markdown.LINK
+
 let default = () => {
   let s = React.string
   <>
     <h1 className="text-4xl font-bold py-2">{s(`Learn`)}</h1>
-    <div className="flex justify-between space-x-4 py-4 bg-gray-300">
-        <div className="flex-0 self-start bg-orange-200">
+    <div className="flex justify-between space-x-4 py-4">
+        <div className="flex-0 self-start">
             <img src="static/learn-large.svg" className="" />
         </div>
-        <div className="w-3/5 bg-red-200">{s(`What is OCaml? Ocaml is a general purpose
+        <div className="w-3/5">
+        <strong>{s(`What is OCaml?`)}</strong>
+        {s(` Ocaml is a general purpose
         industrial-strength programming language with an emphasis on
         expressiveness and safety. It is the technology of choice in `)}
-        {s(`companies`)}
+        <LINK href="/learn/companies">{s(`companies`)}</LINK>
         {s(` where a single mistake can cost millions and speed matters,
         and there is an `)}
-        {s(`active community`)}
+        <LINK href="/community">{s(`active community`)}</LINK>
         {s(` that has developed a `)}
-        {s(`rich set of libraries`)}
+        <LINK href="https://opam.ocaml.org/packages/">{s(`rich set of libraries`)}</LINK>
         {s(`. It's also a widely used `)}
-        {s(`teaching language`)}
-        {s(`.`)}
-        <span className="text-xs">{s(`Read more`)}
-        {s(`.`)}</span>
+        <LINK href="/learn/teaching-ocaml">{s(`teaching language`)}</LINK>
+        {s(`. `)}
+        <em className="text-xs">
+            <LINK href="/learn/description">{s(`Read more`)}</LINK>
+            {s(`.`)}
+        </em>
         </div>
-        <div className="flex-1 flex justify-center pt-5 bg-yellow-200">
+        <div className="flex-1 flex justify-center pt-5">
             <span>
             <a className="whitespace-no-wrap text-center text-white font-bold inline-block px-5 py-3 bg-green-800 rounded" href="">
             {s(`Install OCaml`)}
@@ -33,7 +39,9 @@ let default = () => {
     <div className="flex space-x-8 mb-5">
         <div className="flex-1">
             <div className="border-b border-gray-500 mb-3">
-                <h2 className="text-2xl font-semibold">{s(`Code Examples`)}</h2>
+                <h2 className="text-2xl font-semibold">
+                    <LINK href="/learn/taste">{s(`Code Examples`)}</LINK>
+                </h2>
             </div>
             <div className="border-2 bg-gray-200 mb-3">
                 <p>
@@ -53,63 +61,82 @@ let default = () => {
                 </p>
             </div>
             <p className="text-sm">{s(`See more `)}
-            {s(`Code Examples`)}
+            <LINK href="/learn/taste">{s(`Code Examples`)}</LINK>
             {s(`, `)}
-            {s(`Pleac`)}
+            <LINK href="http://pleac.sourceforge.net/pleac_ocaml/">{s(`Pleac`)}</LINK>
             {s(`, and `)}
-            {s(`Rosetta`)}
+            <LINK href="http://rosettacode.org/wiki/Category:OCaml">{s(`Rosetta`)}</LINK>
             {s(`.`)}</p>
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500 mb-3">
-                <h2 className="text-2xl font-semibold">{s(`Tutorials & FAQ`)}</h2>
+                <h2 className="text-2xl font-semibold">
+                    <LINK href="/learn/tutorials">{s(`Tutorials`)}</LINK>
+                    {s(` & `)}
+                    <LINK href="/learn/faq">{s(`FAQ`)}</LINK>
+                </h2>
             </div>
             <ul className="px-4 list-disc list-inside space-y-3 mb-6">
-                <li>{s("Up and Running")}</li>
-                <li>{s("Basics")}</li>
-                <li>{s("Structure of OCaml Programs")}</li>
-                <li>{s("Modules")}</li>
-                <li>{s("Maps (Dictionaries)")}</li>
-                <li>{s("Sets")}</li>
-                <li>{s("Hash Tables")}</li>
-                <li>{s("Comparison of Standard Containers")}</li>
-                <li>{s("Frequently Asked Questions")}</li>
+                <li><LINK href="/learn/tutorials/up_and_running">{s("Up and Running")}</LINK></li>
+                <li><LINK href="/learn/tutorials/basic">{s("Basics")}</LINK></li>
+                <li><LINK href="/learn/tutorials/structure_of_ocaml_programs">{s("Structure of OCaml Programs")}</LINK></li>
+                <li><LINK href="/learn/tutorials/modules">{s("Modules")}</LINK></li>
+                <li><LINK href="/learn/tutorials/map">{s("Maps (Dictionaries)")}</LINK></li>
+                <li><LINK href="/learn/tutorials/sets">{s("Sets")}</LINK></li>
+                <li><LINK href="/learn/tutorials/hashtbl">{s("Hash Tables")}</LINK></li>
+                <li><LINK href="/learn/tutorials/comparison_of_standard_containers">{s("Comparison of Standard Containers")}</LINK></li>
+                <li><LINK href="/learn/faq">{s("Frequently Asked Questions")}</LINK></li>
             </ul>
-            <p className="text-sm">{s("See full list")}</p>
+            <p className="text-sm"><LINK href="/learn/tutorials">{s("See full list")}</LINK></p>
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500 mb-3">
-                <h2 className="text-2xl font-semibold">{s(`Books`)}</h2>
+                <h2 className="text-2xl font-semibold">
+                <LINK href="/learn/books">{s(`Books`)}</LINK>
+                </h2>
             </div>
-            <img src="static/real-world-ocaml.jpeg" className="float-left w-5/12 mr-3"/>
-            <img src="static/OCaml_from_beginning.png" className="float-left w-5/12 mb-4"/>
+            <LINK href="https://realworldocaml.org/">
+                <img src="static/real-world-ocaml.jpeg" className="float-left w-5/12 mr-3"/>
+            </LINK>
+            <LINK href="http://ocaml-book.com/">
+                <img src="static/OCaml_from_beginning.png" className="float-left w-5/12 mb-4"/>
+            </LINK>
             <span className="clearfix" />
             <p className="mb-6">{s(`There are a number of excellent books, with two new 
             titles published in recent years.`)}</p>
-            <p className="text-sm">{s("See full list")}</p>
+            <p className="text-sm">
+                <LINK href="/learn/books">{s("See full list")}</LINK>
+            </p>
         </div>
     </div>
 
     <div className="flex space-x-8">
         <div className="flex-1">
             <div className="border-b border-gray-500 mb-3">
-                <h2 className="text-2xl font-semibold">{s(`Online Courses, Slides & Videos`)}</h2>
+                <h2 className="text-2xl font-semibold">
+                <LINK href="/community/media">{s(`Online Courses, Slides & Videos`)}</LINK>
+                </h2>
             </div>
             <div className="w-64 h-64 bg-black mb-2" />
             <p className="mb-6">
+                <LINK href="https://www.dailymotion.com/video/x2ymo3x_fun-mooc-introduction-to-functional-programming-in-ocaml_school">
                 {s(`A massive open online course (MOOC) entirely centered around OCaml`)}
-                {s(` is now available, and runs once a year!`)}
+                </LINK>
+                <em>{s(` is now available, and runs once a year!`)}</em>
+                <br />
                 {s(`Learn more, and `)}
+                <LINK href="https://www.fun-mooc.fr/courses/course-v1:parisdiderot+56002+session03/about">
                 {s(`register now on the FUN platform!`)}
+                </LINK>
             </p>
             <div className="w-64 h-64 bg-black mb-3"/>
             <p className="mb-6">
                 {s(`An invited talk by Xavier Leroy explaining the current state of OCaml at the `)}
-                {s(`OCaml Users and Developers WOrkshop 2014`)}
+                <LINK href="/meetings/ocaml/2014">{s(`OCaml Users and Developers WOrkshop 2014`)}</LINK>
                 {s(` in Gothenburg, Sweden (`)}
-                {s(`PDF slides`)}
+                <LINK href="/meetings/ocaml/2014/OCaml2014-Leroy-slides.pdf">{s(`PDF slides`)}</LINK>
                 {s(`, `)}
-                {s(`Video`)}
+                <LINK href="https://www.youtube.com/watch?v=DMzZy1bqj6Q&list=UUP9g4dLR7xt6KzCYntNqYcw">{s(`Video`)}</LINK>
                 {s(`).`)}
             </p>
             <div className="w-64 h-64 bg-black mb-3"/>
@@ -119,13 +146,19 @@ let default = () => {
                 at Harvard, CS51, where the students had spent much of the semester programming in 
                 OCaml.`)}
             </p>
-            <p className="text-sm">{s(`See more slides and videos`)}</p>
+            <p className="text-sm">
+            <LINK href="/community/media">{s(`See more slides and videos`)}</LINK>
+            </p>
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500 mb-3">
-                <h2 className="text-2xl font-semibold">{s(`Industrial Users`)}</h2>
+                <h2 className="text-2xl font-semibold">
+                <LINK href="/learn/companies">{s(`Industrial Users`)}</LINK>
+                </h2>
             </div>
+            <LINK href="https://janestreet.com">
             <img src="static/jane-street.jpeg" className="float-left mb-2 mr-2"/>
+            </LINK>
             <p className="mb-6">{s(`Jane Street is a quantitative proprietary trading firm with 
             a unique focus on technology and collaborative problem solvinig. Almost all of 
             our systems are written in OCaml: from statistical research code operating 
@@ -134,29 +167,33 @@ let default = () => {
             our trading represents between 1% and 2% of US equity volume.`)}</p>    
             <img src="static/facebook.png" className="float-left mb-2 mr-2"/>
             <p className="mb-6">{s(`To handle their huge PHP codebase, Facebook developed `)}
-            {s(`pfff`)}
+            <LINK href="https://github.com/facebook/pfff/wiki/Main">{s(`pfff`)}</LINK>
             {s(`, a set of tools and APIs to perform static analysis, dynamic analysis, code 
             visualizations, code navigations, and style-preserving source-to-source transformations 
             such as refactorings on source code. They also designed `)}
             {s(`Hack`)}
             {s(`, a new statically typed programming language for HHVM, a fast PHP runtime. 
             See Julien Verlaguet's `)}
-            {s(`CUFP talk`)}
+            <LINK href="http://www.youtube.com/watch?v=gKWNjFagR9k">{s(`CUFP talk`)}</LINK>
             {s(` and `)}
-            {s(`slides`)}
+            <LINK href="http://cufp.org/2013/slides/verlaguet.pdf">{s(`slides`)}</LINK>
             {s(`.`)}
             </p>
-            <p className="text-sm">{s(`See more companies using OCaml`)}</p>    
+            <p className="text-sm">
+            <LINK href="/learn/companies">{s(`See more companies using OCaml`)}</LINK>
+            </p>
         </div>
         <div className="flex-1">
             <div className="border-b border-gray-500 mb-3">
-                <h2 className="text-2xl font-semibold">{s(`Success Stories`)}</h2>
+                <h2 className="text-2xl font-semibold">
+                <LINK href="">{s(`Success Stories`)}</LINK>
+                </h2>
             </div>
-            <img src="static/unison-thumb.jpeg" className="float-left mr-2"/>
+            <LINK href=""><img src="static/unison-thumb.jpeg" className="float-left mr-2"/></LINK>
             <p className="mb-6">
-                {s(`Unison`)}
+                <LINK href="">{s(`Unison`)}</LINK>
                 {s(` is an innovative two-way file synchronizer stemming from the `)}
-                {s(`latest research`)}
+                <LINK href="">{s(`latest research`)}</LINK>
                 {s(`. It is resilient to failures and runs on Windows as well as 
                 most flavors of Unix, including MacOSX. OCaml helped the authors to
                 "organize a large and intricate codebase".`)}
