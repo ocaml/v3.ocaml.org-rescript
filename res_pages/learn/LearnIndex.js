@@ -148,9 +148,14 @@ function $$default(param) {
                             }, React.createElement(Markdown.LINK.make, {
                                   href: "/community/media",
                                   children: "Online Courses, Slides & Videos"
-                                }))), React.createElement("div", {
-                          className: "w-64 h-64 bg-black mb-2"
-                        }), React.createElement("p", {
+                                }))), React.createElement("iframe", {
+                          className: "max-w-full mb-2",
+                          title: "A massive open online course on OCaml",
+                          allowFullScreen: true,
+                          height: "220",
+                          src: "https://www.dailymotion.com/embed/video/x2ymo3x",
+                          width: "380"
+                        }), null, React.createElement("p", {
                           className: "mb-6"
                         }, React.createElement(Markdown.LINK.make, {
                               href: "https://www.dailymotion.com/video/x2ymo3x_fun-mooc-introduction-to-functional-programming-in-ocaml_school",
@@ -158,8 +163,13 @@ function $$default(param) {
                             }), React.createElement("em", undefined, " is now available, and runs once a year!"), React.createElement("br", undefined), "Learn more, and ", React.createElement(Markdown.LINK.make, {
                               href: "https://www.fun-mooc.fr/courses/course-v1:parisdiderot+56002+session03/about",
                               children: "register now on the FUN platform!"
-                            })), React.createElement("div", {
-                          className: "w-64 h-64 bg-black mb-3"
+                            })), React.createElement("iframe", {
+                          className: "max-w-full mb-3 border border-gray-300",
+                          title: "Xavier Leroy presents the state of OCaml 4.02",
+                          allowFullScreen: true,
+                          height: "290",
+                          src: "https://www.slideshare.net/slideshow/embed_code/43836300",
+                          width: "340"
                         }), React.createElement("p", {
                           className: "mb-6"
                         }, "An invited talk by Xavier Leroy explaining the current state of OCaml at the ", React.createElement(Markdown.LINK.make, {
@@ -171,8 +181,12 @@ function $$default(param) {
                             }), ", ", React.createElement(Markdown.LINK.make, {
                               href: "https://www.youtube.com/watch?v=DMzZy1bqj6Q&list=UUP9g4dLR7xt6KzCYntNqYcw",
                               children: "Video"
-                            }), ")."), React.createElement("div", {
-                          className: "w-64 h-64 bg-black mb-3"
+                            }), ")."), React.createElement("iframe", {
+                          className: "max-w-full max-h-full mb-2",
+                          title: "Yaron Minsky explains how to program effectively in ML",
+                          allowFullScreen: true,
+                          height: "170",
+                          src: "https://player.vimeo.com/video/14313378"
                         }), React.createElement("p", {
                           className: "mb-6"
                         }, "A guest lecture given by Yaron Minsky of Jane Street about how to program \n                effectively in ML. The talk was given as part of the intro computer science class \n                at Harvard, CS51, where the students had spent much of the semester programming in \n                OCaml."), React.createElement("p", {
@@ -223,10 +237,10 @@ function $$default(param) {
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, React.createElement(Markdown.LINK.make, {
-                                  href: "",
+                                  href: "/learn/success",
                                   children: "Success Stories"
                                 }))), React.createElement(Markdown.LINK.make, {
-                          href: "",
+                          href: "https://ocaml.org/img/unison.png",
                           children: React.createElement("img", {
                                 className: "float-left mr-2",
                                 src: "static/unison-thumb.jpeg"
@@ -234,24 +248,45 @@ function $$default(param) {
                         }), React.createElement("p", {
                           className: "mb-6"
                         }, React.createElement(Markdown.LINK.make, {
-                              href: "",
+                              href: "http://www.cis.upenn.edu/%7Ebcpierce/unison/",
                               children: "Unison"
                             }), " is an innovative two-way file synchronizer stemming from the ", React.createElement(Markdown.LINK.make, {
-                              href: "",
+                              href: "http://www.cis.upenn.edu/~bcpierce/papers/index.shtml#Synchronization",
                               children: "latest research"
-                            }), ". It is resilient to failures and runs on Windows as well as \n                most flavors of Unix, including MacOSX. OCaml helped the authors to\n                \"organize a large and intricate codebase\"."), React.createElement("img", {
-                          className: "float-left mr-2",
-                          src: "static/lexifi-thumb.jpeg"
+                            }), ". It is resilient to failures and runs on Windows as well as \n                most flavors of Unix, including MacOSX. OCaml helped the authors to\n                \"organize a large and intricate codebase\"."), React.createElement(Markdown.LINK.make, {
+                          href: "https://ocaml.org/img/lexifi.jpg",
+                          children: React.createElement("img", {
+                                className: "float-left mr-2",
+                                src: "static/lexifi-thumb.jpeg"
+                              })
                         }), React.createElement("p", {
                           className: "mb-6"
-                        }, "Developed by ", "LexiFi", " the Modeling Language for Finance (MLFi) is the first formal language that \n                accurately describes the most sophisticated capital market, credit, and investment \n                products. MLFii is implemented as an extension of OCaml."), React.createElement("img", {
-                          className: "float-left mt-3 mr-2",
-                          src: "static/fftw-thumb.png"
+                        }, "Developed by ", React.createElement(Markdown.LINK.make, {
+                              href: "http://www.lexifi.com/",
+                              children: "LexiFi"
+                            }), " the Modeling Language for Finance (MLFi) is the first formal language that \n                accurately describes the most sophisticated capital market, credit, and investment \n                products. MLFii is implemented as an extension of OCaml."), React.createElement(Markdown.LINK.make, {
+                          href: "",
+                          children: React.createElement("img", {
+                                className: "float-left mt-3 mr-2",
+                                src: "static/fftw-thumb.png"
+                              })
                         }), React.createElement("p", {
                           className: "mb-6"
-                        }, "FFTW", " is a very Fast Fourier Transform library developed at MIT that competes with \n                vendor-tuned codes while remaining platform independent. The code is generated by ", "genfft", ", written in OCaml, that ", "\"discovered\" algorithms that were previously unknown", ". It was awarded the ", "J. H. Wilkinson Prize for Numerical Software", " that rewards software that \n                \"best addresses all phases of the preparation of high quality numerical software.\""), React.createElement("p", {
-                          className: "text-sm"
-                        }, "See more success stories"))));
+                        }, React.createElement(Markdown.LINK.make, {
+                              href: "http://www.fftw.org/",
+                              children: "FFTW"
+                            }), " is a very Fast Fourier Transform library developed at MIT that competes with \n                vendor-tuned codes while remaining platform independent. The code is generated by ", "genfft", ", written in OCaml, that ", React.createElement(Markdown.LINK.make, {
+                              href: "http://www.fftw.org/pldi99.ps.gz",
+                              children: "\"discovered\" algorithms that were previously unknown"
+                            }), ". It was awarded the ", React.createElement(Markdown.LINK.make, {
+                              href: "https://en.wikipedia.org/wiki/J._H._Wilkinson_Prize_for_Numerical_Software",
+                              children: "J. H. Wilkinson Prize for Numerical Software"
+                            }), " that rewards software that \n                \"best addresses all phases of the preparation of high quality numerical software.\""), React.createElement(Markdown.LINK.make, {
+                          href: "/learn/success",
+                          children: React.createElement("p", {
+                                className: "text-sm"
+                              }, "See more success stories")
+                        }))));
 }
 
 export {
