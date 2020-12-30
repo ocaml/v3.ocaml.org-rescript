@@ -2,9 +2,11 @@ let default = () => {
   let s = React.string
   <>
     <h1 className="text-4xl font-bold py-2">{s(`Learn`)}</h1>
-    <div className="flex space-x-8 py-4">
-        <img src="static/learn-large.svg" className="flex-0" />
-        <div className="flex-auto">{s(`What is OCaml? Ocaml is a general purpose
+    <div className="flex justify-between space-x-4 py-4 bg-gray-300">
+        <div className="flex-0 self-start bg-orange-200">
+            <img src="static/learn-large.svg" className="" />
+        </div>
+        <div className="w-3/5 bg-red-200">{s(`What is OCaml? Ocaml is a general purpose
         industrial-strength programming language with an emphasis on
         expressiveness and safety. It is the technology of choice in `)}
         {s(`companies`)}
@@ -19,21 +21,21 @@ let default = () => {
         <span className="text-xs">{s(`Read more`)}
         {s(`.`)}</span>
         </div>
-        <div className="flex-auto flex align-center items-center">
+        <div className="flex-1 flex justify-center pt-5 bg-yellow-200">
             <span>
-            <a className="whitespace-no-wrap text-center text-white font-bold inline-block px-2 py-1 bg-green-800 rounded" href="">
+            <a className="whitespace-no-wrap text-center text-white font-bold inline-block px-5 py-3 bg-green-800 rounded" href="">
             {s(`Install OCaml`)}
             </a>
             </span>
         </div>
     </div>
 
-    <div className="flex space-x-8">
+    <div className="flex space-x-8 mb-5">
         <div className="flex-1">
             <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Code Examples`)}</h2>
             </div>
-            <div className="border-2 bg-gray-200">
+            <div className="border-2 bg-gray-200 mb-3">
                 <p>
                     {s(`(* If [1] is the list [e1;...;eN] *)`)}<br />
                     {s(`(* e1 +. ... +. eN *)`)}<br />
@@ -62,7 +64,7 @@ let default = () => {
             <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Tutorials & FAQ`)}</h2>
             </div>
-            <ul className="px-4 list-disc list-inside space-y-3">
+            <ul className="px-4 list-disc list-inside space-y-3 mb-6">
                 <li>{s("Up and Running")}</li>
                 <li>{s("Basics")}</li>
                 <li>{s("Structure of OCaml Programs")}</li>
@@ -79,10 +81,10 @@ let default = () => {
             <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Books`)}</h2>
             </div>
-            <img src="static/real-world-ocaml.jpeg" className="float-left w-1/2"/>
-            <img src="static/OCaml_from_beginning.png" className="float-left w-1/2"/>
+            <img src="static/real-world-ocaml.jpeg" className="float-left w-5/12 mr-3"/>
+            <img src="static/OCaml_from_beginning.png" className="float-left w-5/12 mb-4"/>
             <span className="clearfix" />
-            <p>{s(`There are a number of excellent books, with two new 
+            <p className="mb-6">{s(`There are a number of excellent books, with two new 
             titles published in recent years.`)}</p>
             <p className="text-sm">{s("See full list")}</p>
         </div>
@@ -93,15 +95,15 @@ let default = () => {
             <div className="border-b border-gray-500 mb-3">
                 <h2 className="text-2xl font-semibold">{s(`Online Courses, Slides & Videos`)}</h2>
             </div>
-            <div className="w-64 h-64 bg-black" />
-            <p>
+            <div className="w-64 h-64 bg-black mb-2" />
+            <p className="mb-6">
                 {s(`A massive open online course (MOOC) entirely centered around OCaml`)}
                 {s(` is now available, and runs once a year!`)}
                 {s(`Learn more, and `)}
                 {s(`register now on the FUN platform!`)}
             </p>
-            <div className="w-64 h-64 bg-black"/>
-            <p>
+            <div className="w-64 h-64 bg-black mb-3"/>
+            <p className="mb-6">
                 {s(`An invited talk by Xavier Leroy explaining the current state of OCaml at the `)}
                 {s(`OCaml Users and Developers WOrkshop 2014`)}
                 {s(` in Gothenburg, Sweden (`)}
@@ -110,8 +112,8 @@ let default = () => {
                 {s(`Video`)}
                 {s(`).`)}
             </p>
-            <div className="w-64 h-64 bg-black"/>
-            <p>
+            <div className="w-64 h-64 bg-black mb-3"/>
+            <p className="mb-6">
                 {s(`A guest lecture given by Yaron Minsky of Jane Street about how to program 
                 effectively in ML. The talk was given as part of the intro computer science class 
                 at Harvard, CS51, where the students had spent much of the semester programming in 

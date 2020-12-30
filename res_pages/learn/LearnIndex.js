@@ -6,21 +6,23 @@ function $$default(param) {
   return React.createElement(React.Fragment, undefined, React.createElement("h1", {
                   className: "text-4xl font-bold py-2"
                 }, "Learn"), React.createElement("div", {
-                  className: "flex space-x-8 py-4"
-                }, React.createElement("img", {
-                      className: "flex-0",
-                      src: "static/learn-large.svg"
-                    }), React.createElement("div", {
-                      className: "flex-auto"
+                  className: "flex justify-between space-x-4 py-4 bg-gray-300"
+                }, React.createElement("div", {
+                      className: "flex-0 self-start bg-orange-200"
+                    }, React.createElement("img", {
+                          className: "",
+                          src: "static/learn-large.svg"
+                        })), React.createElement("div", {
+                      className: "w-3/5 bg-red-200"
                     }, "What is OCaml? Ocaml is a general purpose\n        industrial-strength programming language with an emphasis on\n        expressiveness and safety. It is the technology of choice in ", "companies", " where a single mistake can cost millions and speed matters,\n        and there is an ", "active community", " that has developed a ", "rich set of libraries", ". It\'s also a widely used ", "teaching language", ".", React.createElement("span", {
                           className: "text-xs"
                         }, "Read more", ".")), React.createElement("div", {
-                      className: "flex-auto flex align-center items-center"
+                      className: "flex-1 flex justify-center pt-5 bg-yellow-200"
                     }, React.createElement("span", undefined, React.createElement("a", {
-                              className: "whitespace-no-wrap text-center text-white font-bold inline-block px-2 py-1 bg-green-800 rounded",
+                              className: "whitespace-no-wrap text-center text-white font-bold inline-block px-5 py-3 bg-green-800 rounded",
                               href: ""
                             }, "Install OCaml")))), React.createElement("div", {
-                  className: "flex space-x-8"
+                  className: "flex space-x-8 mb-5"
                 }, React.createElement("div", {
                       className: "flex-1"
                     }, React.createElement("div", {
@@ -28,7 +30,7 @@ function $$default(param) {
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Code Examples")), React.createElement("div", {
-                          className: "border-2 bg-gray-200"
+                          className: "border-2 bg-gray-200 mb-3"
                         }, React.createElement("p", undefined, "(* If [1] is the list [e1;...;eN] *)", React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined))), React.createElement("p", {
                           className: "text-sm"
                         }, "See more ", "Code Examples", ", ", "Pleac", ", and ", "Rosetta", ".")), React.createElement("div", {
@@ -38,7 +40,7 @@ function $$default(param) {
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Tutorials & FAQ")), React.createElement("ul", {
-                          className: "px-4 list-disc list-inside space-y-3"
+                          className: "px-4 list-disc list-inside space-y-3 mb-6"
                         }, React.createElement("li", undefined, "Up and Running"), React.createElement("li", undefined, "Basics"), React.createElement("li", undefined, "Structure of OCaml Programs"), React.createElement("li", undefined, "Modules"), React.createElement("li", undefined, "Maps (Dictionaries)"), React.createElement("li", undefined, "Sets"), React.createElement("li", undefined, "Hash Tables"), React.createElement("li", undefined, "Comparison of Standard Containers"), React.createElement("li", undefined, "Frequently Asked Questions")), React.createElement("p", {
                           className: "text-sm"
                         }, "See full list")), React.createElement("div", {
@@ -48,14 +50,16 @@ function $$default(param) {
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Books")), React.createElement("img", {
-                          className: "float-left w-1/2",
+                          className: "float-left w-5/12 mr-3",
                           src: "static/real-world-ocaml.jpeg"
                         }), React.createElement("img", {
-                          className: "float-left w-1/2",
+                          className: "float-left w-5/12 mb-4",
                           src: "static/OCaml_from_beginning.png"
                         }), React.createElement("span", {
                           className: "clearfix"
-                        }), React.createElement("p", undefined, "There are a number of excellent books, with two new \n            titles published in recent years."), React.createElement("p", {
+                        }), React.createElement("p", {
+                          className: "mb-6"
+                        }, "There are a number of excellent books, with two new \n            titles published in recent years."), React.createElement("p", {
                           className: "text-sm"
                         }, "See full list"))), React.createElement("div", {
                   className: "flex space-x-8"
@@ -66,12 +70,18 @@ function $$default(param) {
                         }, React.createElement("h2", {
                               className: "text-2xl font-semibold"
                             }, "Online Courses, Slides & Videos")), React.createElement("div", {
-                          className: "w-64 h-64 bg-black"
-                        }), React.createElement("p", undefined, "A massive open online course (MOOC) entirely centered around OCaml", " is now available, and runs once a year!", "Learn more, and ", "register now on the FUN platform!"), React.createElement("div", {
-                          className: "w-64 h-64 bg-black"
-                        }), React.createElement("p", undefined, "An invited talk by Xavier Leroy explaining the current state of OCaml at the ", "OCaml Users and Developers WOrkshop 2014", " in Gothenburg, Sweden (", "PDF slides", ", ", "Video", ")."), React.createElement("div", {
-                          className: "w-64 h-64 bg-black"
-                        }), React.createElement("p", undefined, "A guest lecture given by Yaron Minsky of Jane Street about how to program \n                effectively in ML. The talk was given as part of the intro computer science class \n                at Harvard, CS51, where the students had spent much of the semester programming in \n                OCaml."), React.createElement("p", {
+                          className: "w-64 h-64 bg-black mb-2"
+                        }), React.createElement("p", {
+                          className: "mb-6"
+                        }, "A massive open online course (MOOC) entirely centered around OCaml", " is now available, and runs once a year!", "Learn more, and ", "register now on the FUN platform!"), React.createElement("div", {
+                          className: "w-64 h-64 bg-black mb-3"
+                        }), React.createElement("p", {
+                          className: "mb-6"
+                        }, "An invited talk by Xavier Leroy explaining the current state of OCaml at the ", "OCaml Users and Developers WOrkshop 2014", " in Gothenburg, Sweden (", "PDF slides", ", ", "Video", ")."), React.createElement("div", {
+                          className: "w-64 h-64 bg-black mb-3"
+                        }), React.createElement("p", {
+                          className: "mb-6"
+                        }, "A guest lecture given by Yaron Minsky of Jane Street about how to program \n                effectively in ML. The talk was given as part of the intro computer science class \n                at Harvard, CS51, where the students had spent much of the semester programming in \n                OCaml."), React.createElement("p", {
                           className: "text-sm"
                         }, "See more slides and videos")), React.createElement("div", {
                       className: "flex-1"
