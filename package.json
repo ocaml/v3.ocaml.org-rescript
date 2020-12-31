@@ -5,7 +5,7 @@
   "author": "The OCaml.org team",
   "license": "ISC",
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
     "//": "change back to >=14.15.1 once vercel build is enhanced"
   },
   "dependencies": {
