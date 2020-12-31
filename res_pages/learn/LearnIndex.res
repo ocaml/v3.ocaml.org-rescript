@@ -43,22 +43,28 @@ let default = () => {
                     <LINK href="/learn/taste">{s(`Code Examples`)}</LINK>
                 </h2>
             </div>
-            <div className="border-2 bg-gray-200 mb-3">
-                <p>
-                    {s(`(* If [1] is the list [e1;...;eN] *)`)}<br />
-                    {s(`(* e1 +. ... +. eN *)`)}<br />
-                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+            <div className="border border-gray-400 bg-gray-100 mb-3 text-sm p-3 rounded">
+                <pre>
+                    <em>{s(`(* If [1] is the list [e1;...;eN] *)`)}<br />
+                    {s(`(* e1 +. ... +. eN *)`)}<br /></em>
+                    <span className="text-green-700">{s(`List`)}</span>
+                    {s(`.fold_left ( +. ) 0. l`)}<br />
                     <br />
                     {s(`(* e1 +. ... +. eN *)`)}<br />
-                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+                    <span className="text-green-700">{s(`List`)}</span>
+                    {s(`.fold_left ( +. ) 1. l`)}<br />
                     <br />
-                    {s(`(* e1 +. ... +. eN *)`)}<br />
-                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
+                    {s(`(* e1 && ... && eN *)`)}<br />
+                    <span className="text-green-700">{s(`List`)}</span>
+                    {s(`.fold_left ( && ) true l`)}<br />
                     <br />
-                    {s(`(* e1 +. ... +. eN *)`)}<br />
-                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
-                    {s(`List.fold_left ( +. ) 0. 1`)}<br />
-                </p>
+                    {s(`(* Reverse: [eN;...;e1] *)`)}<br />
+                    <span className="text-green-700">{s(`List`)}</span>
+                    {s(`.fold_left`)}<br />
+                    {s(`  (`)}
+                    <span className="text-blue-800">{s(`fun`)}</span>
+                    {s(` r e -> e :: r) [] l`)}<br />
+                </pre>
             </div>
             <p className="text-sm">{s(`See more `)}
             <LINK href="/learn/taste">{s(`Code Examples`)}</LINK>

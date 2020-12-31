@@ -49,8 +49,18 @@ function $$default(param) {
                                   href: "/learn/taste",
                                   children: "Code Examples"
                                 }))), React.createElement("div", {
-                          className: "border-2 bg-gray-200 mb-3"
-                        }, React.createElement("p", undefined, "(* If [1] is the list [e1;...;eN] *)", React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined), "List.fold_left ( +. ) 0. 1", React.createElement("br", undefined))), React.createElement("p", {
+                          className: "border border-gray-400 bg-gray-100 mb-3 text-sm p-3 rounded"
+                        }, React.createElement("pre", undefined, React.createElement("em", undefined, "(* If [1] is the list [e1;...;eN] *)", React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined)), React.createElement("span", {
+                                  className: "text-green-700"
+                                }, "List"), ".fold_left ( +. ) 0. l", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 +. ... +. eN *)", React.createElement("br", undefined), React.createElement("span", {
+                                  className: "text-green-700"
+                                }, "List"), ".fold_left ( +. ) 1. l", React.createElement("br", undefined), React.createElement("br", undefined), "(* e1 && ... && eN *)", React.createElement("br", undefined), React.createElement("span", {
+                                  className: "text-green-700"
+                                }, "List"), ".fold_left ( && ) true l", React.createElement("br", undefined), React.createElement("br", undefined), "(* Reverse: [eN;...;e1] *)", React.createElement("br", undefined), React.createElement("span", {
+                                  className: "text-green-700"
+                                }, "List"), ".fold_left", React.createElement("br", undefined), "  (", React.createElement("span", {
+                                  className: "text-blue-800"
+                                }, "fun"), " r e -> e :: r) [] l", React.createElement("br", undefined))), React.createElement("p", {
                           className: "text-sm"
                         }, "See more ", React.createElement(Markdown.LINK.make, {
                               href: "/learn/taste",
