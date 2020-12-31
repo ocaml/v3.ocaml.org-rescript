@@ -141,9 +141,9 @@ function $$default(param) {
                               })
                         }), React.createElement("span", {
                           className: "clearfix"
+                        }), React.createElement(Markdown.P.make, {
+                          children: "There are a number of excellent books, with two new \n            titles published in recent years."
                         }), React.createElement("p", {
-                          className: "mb-6"
-                        }, "There are a number of excellent books, with two new \n            titles published in recent years."), React.createElement("p", {
                           className: "text-sm"
                         }, React.createElement(Markdown.LINK.make, {
                               href: "/learn/books",
@@ -166,8 +166,8 @@ function $$default(param) {
                           height: "220",
                           src: "https://www.dailymotion.com/embed/video/x2ymo3x",
                           width: "380"
-                        }), React.createElement("p", {
-                          className: "mb-6"
+                        }), React.createElement(Markdown.P.make, {
+                          children: null
                         }, React.createElement(Markdown.LINK.make, {
                               href: "https://www.dailymotion.com/video/x2ymo3x_fun-mooc-introduction-to-functional-programming-in-ocaml_school",
                               children: "A massive open online course (MOOC) entirely centered around OCaml"
@@ -181,8 +181,8 @@ function $$default(param) {
                           height: "290",
                           src: "https://www.slideshare.net/slideshow/embed_code/43836300",
                           width: "340"
-                        }), React.createElement("p", {
-                          className: "mb-6"
+                        }), React.createElement(Markdown.P.make, {
+                          children: null
                         }, "An invited talk by Xavier Leroy explaining the current state of OCaml at the ", React.createElement(Markdown.LINK.make, {
                               href: "/meetings/ocaml/2014",
                               children: "OCaml Users and Developers WOrkshop 2014"
@@ -198,9 +198,9 @@ function $$default(param) {
                           allowFullScreen: true,
                           height: "170",
                           src: "https://player.vimeo.com/video/14313378"
+                        }), React.createElement(Markdown.P.make, {
+                          children: "A guest lecture given by Yaron Minsky of Jane Street about how to program \n                effectively in ML. The talk was given as part of the intro computer science class \n                at Harvard, CS51, where the students had spent much of the semester programming in \n                OCaml."
                         }), React.createElement("p", {
-                          className: "mb-6"
-                        }, "A guest lecture given by Yaron Minsky of Jane Street about how to program \n                effectively in ML. The talk was given as part of the intro computer science class \n                at Harvard, CS51, where the students had spent much of the semester programming in \n                OCaml."), React.createElement("p", {
                           className: "text-sm"
                         }, React.createElement(Markdown.LINK.make, {
                               href: "/community/media",
@@ -220,13 +220,13 @@ function $$default(param) {
                                 className: "float-left mb-2 mr-2",
                                 src: "/static/jane-street.jpeg"
                               })
-                        }), React.createElement("p", {
-                          className: "mb-6"
-                        }, "Jane Street is a quantitative proprietary trading firm with \n            a unique focus on technology and collaborative problem solvinig. Almost all of \n            our systems are written in OCaml: from statistical research code operating \n            over terabytes of data to systems management tools to our real-time trading \n            infrastructure. And those systems are deployed at real scale: on an average day, \n            our trading represents between 1% and 2% of US equity volume."), React.createElement("img", {
+                        }), React.createElement(Markdown.P.make, {
+                          children: "Jane Street is a quantitative proprietary trading firm with \n            a unique focus on technology and collaborative problem solvinig. Almost all of \n            our systems are written in OCaml: from statistical research code operating \n            over terabytes of data to systems management tools to our real-time trading \n            infrastructure. And those systems are deployed at real scale: on an average day, \n            our trading represents between 1% and 2% of US equity volume."
+                        }), React.createElement("img", {
                           className: "float-left mb-2 mr-2",
                           src: "/static/facebook.png"
-                        }), React.createElement("p", {
-                          className: "mb-6"
+                        }), React.createElement(Markdown.P.make, {
+                          children: null
                         }, "To handle their huge PHP codebase, Facebook developed ", React.createElement(Markdown.LINK.make, {
                               href: "https://github.com/facebook/pfff/wiki/Main",
                               children: "pfff"
@@ -256,8 +256,8 @@ function $$default(param) {
                                 className: "float-left mr-2",
                                 src: "/static/unison-thumb.jpeg"
                               })
-                        }), React.createElement("p", {
-                          className: "mb-6"
+                        }), React.createElement(Markdown.P.make, {
+                          children: null
                         }, React.createElement(Markdown.LINK.make, {
                               href: "http://www.cis.upenn.edu/%7Ebcpierce/unison/",
                               children: "Unison"
@@ -270,8 +270,8 @@ function $$default(param) {
                                 className: "float-left mr-2",
                                 src: "/static/lexifi-thumb.jpeg"
                               })
-                        }), React.createElement("p", {
-                          className: "mb-6"
+                        }), React.createElement(Markdown.P.make, {
+                          children: null
                         }, "Developed by ", React.createElement(Markdown.LINK.make, {
                               href: "http://www.lexifi.com/",
                               children: "LexiFi"
@@ -281,8 +281,8 @@ function $$default(param) {
                                 className: "float-left mt-3 mr-2",
                                 src: "/static/fftw-thumb.png"
                               })
-                        }), React.createElement("p", {
-                          className: "mb-6"
+                        }), React.createElement(Markdown.P.make, {
+                          children: null
                         }, React.createElement(Markdown.LINK.make, {
                               href: "http://www.fftw.org/",
                               children: "FFTW"

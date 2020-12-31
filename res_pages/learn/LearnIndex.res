@@ -1,5 +1,6 @@
 module LINK = Markdown.LINK
 module H1 = Markdown.H1
+module P = Markdown.P
 
 let s = React.string
 
@@ -112,8 +113,8 @@ let default = () =>
                 <img src="/static/OCaml_from_beginning.png" className="float-left w-5/12 mb-4"/>
             </LINK>
             <span className="clearfix" />
-            <p className="mb-6">{s(`There are a number of excellent books, with two new 
-            titles published in recent years.`)}</p>
+            <P>{s(`There are a number of excellent books, with two new 
+            titles published in recent years.`)}</P>
             <p className="text-sm">
                 <LINK href="/learn/books">{s("See full list")}</LINK>
             </p>
@@ -134,7 +135,7 @@ let default = () =>
               width="380"
               height="220"
               />
-            <p className="mb-6">
+            <P>
                 <LINK href="https://www.dailymotion.com/video/x2ymo3x_fun-mooc-introduction-to-functional-programming-in-ocaml_school">
                 {s(`A massive open online course (MOOC) entirely centered around OCaml`)}
                 </LINK>
@@ -144,7 +145,7 @@ let default = () =>
                 <LINK href="https://www.fun-mooc.fr/courses/course-v1:parisdiderot+56002+session03/about">
                 {s(`register now on the FUN platform!`)}
                 </LINK>
-            </p>
+            </P>
             <iframe 
                 title="Xavier Leroy presents the state of OCaml 4.02" 
                 src="https://www.slideshare.net/slideshow/embed_code/43836300" 
@@ -152,7 +153,7 @@ let default = () =>
                 width="340" 
                 height="290"
                 className="max-w-full mb-3 border border-gray-300"/>
-            <p className="mb-6">
+            <P>
                 {s(`An invited talk by Xavier Leroy explaining the current state of OCaml at the `)}
                 <LINK href="/meetings/ocaml/2014">{s(`OCaml Users and Developers WOrkshop 2014`)}</LINK>
                 {s(` in Gothenburg, Sweden (`)}
@@ -160,19 +161,19 @@ let default = () =>
                 {s(`, `)}
                 <LINK href="https://www.youtube.com/watch?v=DMzZy1bqj6Q&list=UUP9g4dLR7xt6KzCYntNqYcw">{s(`Video`)}</LINK>
                 {s(`).`)}
-            </p>
+            </P>
             <iframe 
                 title="Yaron Minsky explains how to program effectively in ML" 
                 src="https://player.vimeo.com/video/14313378"
                 allowFullScreen=true
                 height="170"
                 className="max-w-full max-h-full mb-2" />
-            <p className="mb-6">
+            <P>
                 {s(`A guest lecture given by Yaron Minsky of Jane Street about how to program 
                 effectively in ML. The talk was given as part of the intro computer science class 
                 at Harvard, CS51, where the students had spent much of the semester programming in 
                 OCaml.`)}
-            </p>
+            </P>
             <p className="text-sm">
             <LINK href="/community/media">{s(`See more slides and videos`)}</LINK>
             </p>
@@ -186,14 +187,14 @@ let default = () =>
             <LINK href="https://janestreet.com">
             <img src="/static/jane-street.jpeg" className="float-left mb-2 mr-2"/>
             </LINK>
-            <p className="mb-6">{s(`Jane Street is a quantitative proprietary trading firm with 
+            <P>{s(`Jane Street is a quantitative proprietary trading firm with 
             a unique focus on technology and collaborative problem solvinig. Almost all of 
             our systems are written in OCaml: from statistical research code operating 
             over terabytes of data to systems management tools to our real-time trading 
             infrastructure. And those systems are deployed at real scale: on an average day, 
-            our trading represents between 1% and 2% of US equity volume.`)}</p>    
+            our trading represents between 1% and 2% of US equity volume.`)}</P>    
             <img src="/static/facebook.png" className="float-left mb-2 mr-2"/>
-            <p className="mb-6">{s(`To handle their huge PHP codebase, Facebook developed `)}
+            <P>{s(`To handle their huge PHP codebase, Facebook developed `)}
             <LINK href="https://github.com/facebook/pfff/wiki/Main">{s(`pfff`)}</LINK>
             {s(`, a set of tools and APIs to perform static analysis, dynamic analysis, code 
             visualizations, code navigations, and style-preserving source-to-source transformations 
@@ -205,7 +206,7 @@ let default = () =>
             {s(` and `)}
             <LINK href="http://cufp.org/2013/slides/verlaguet.pdf">{s(`slides`)}</LINK>
             {s(`.`)}
-            </p>
+            </P>
             <p className="text-sm">
             <LINK href="/learn/companies">{s(`See more companies using OCaml`)}</LINK>
             </p>
@@ -217,28 +218,28 @@ let default = () =>
                 </h2>
             </div>
             <LINK href="https://ocaml.org/img/unison.png"><img src="/static/unison-thumb.jpeg" className="float-left mr-2"/></LINK>
-            <p className="mb-6">
+            <P>
                 <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/unison/">{s(`Unison`)}</LINK>
                 {s(` is an innovative two-way file synchronizer stemming from the `)}
                 <LINK href="http://www.cis.upenn.edu/~bcpierce/papers/index.shtml#Synchronization">{s(`latest research`)}</LINK>
                 {s(`. It is resilient to failures and runs on Windows as well as 
                 most flavors of Unix, including MacOSX. OCaml helped the authors to
                 "organize a large and intricate codebase".`)}
-            </p>                
+            </P>                
             <LINK href="https://ocaml.org/img/lexifi.jpg">
             <img src="/static/lexifi-thumb.jpeg" className="float-left mr-2"/>
             </LINK>
-            <p className="mb-6">
+            <P>
                 {s(`Developed by `)}
                 <LINK href="http://www.lexifi.com/">{s(`LexiFi`)}</LINK>
                 {s(` the Modeling Language for Finance (MLFi) is the first formal language that 
                 accurately describes the most sophisticated capital market, credit, and investment 
                 products. MLFii is implemented as an extension of OCaml.`)}
-            </p>
+            </P>
             <LINK href="">
             <img src="/static/fftw-thumb.png" className="float-left mt-3 mr-2"/>
             </LINK>
-            <p className="mb-6">
+            <P>
                 <LINK href="http://www.fftw.org/">{s(`FFTW`)}</LINK>
                 {s(` is a very Fast Fourier Transform library developed at MIT that competes with 
                 vendor-tuned codes while remaining platform independent. The code is generated by `)}
@@ -249,7 +250,7 @@ let default = () =>
                 <LINK href="https://en.wikipedia.org/wiki/J._H._Wilkinson_Prize_for_Numerical_Software">{s(`J. H. Wilkinson Prize for Numerical Software`)}</LINK>
                 {s(` that rewards software that 
                 "best addresses all phases of the preparation of high quality numerical software."`)}
-            </p>
+            </P>
             <LINK href="/learn/success"><p className="text-sm">{s(`See more success stories`)}</p></LINK>
         </div>
     </div>
