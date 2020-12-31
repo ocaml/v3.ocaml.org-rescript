@@ -4,15 +4,14 @@ import * as React from "react";
 import * as Markdown from "../../components/Markdown.js";
 
 function $$default(param) {
-  return React.createElement(React.Fragment, undefined, React.createElement("h1", {
-                  className: "text-4xl font-bold py-2"
-                }, "Learn"), React.createElement("div", {
+  return React.createElement(React.Fragment, undefined, React.createElement(Markdown.H1.make, {
+                  children: "Learn"
+                }), React.createElement("div", {
                   className: "flex justify-between space-x-4 py-4"
                 }, React.createElement("div", {
                       className: "flex-0 self-start"
                     }, React.createElement("img", {
-                          className: "",
-                          src: "static/learn-large.svg"
+                          src: "/static/learn-large.svg"
                         })), React.createElement("div", {
                       className: "w-3/5"
                     }, React.createElement("strong", undefined, "What is OCaml?"), " Ocaml is a general purpose\n        industrial-strength programming language with an emphasis on\n        expressiveness and safety. It is the technology of choice in ", React.createElement(Markdown.LINK.make, {
@@ -34,10 +33,12 @@ function $$default(param) {
                               children: "Read more"
                             }), ".")), React.createElement("div", {
                       className: "flex-1 flex justify-center pt-5"
-                    }, React.createElement("span", undefined, React.createElement("a", {
-                              className: "whitespace-no-wrap text-center text-white font-bold inline-block px-5 py-3 bg-green-800 rounded",
-                              href: ""
-                            }, "Install OCaml")))), React.createElement("div", {
+                    }, React.createElement("span", undefined, React.createElement(Markdown.LINK.make, {
+                              href: "/docs/install",
+                              children: React.createElement("a", {
+                                    className: "whitespace-no-wrap text-center text-white font-bold inline-block px-5 py-3 bg-green-800 rounded"
+                                  }, "Install OCaml")
+                            })))), React.createElement("div", {
                   className: "flex space-x-8 mb-5"
                 }, React.createElement("div", {
                       className: "flex-1"
@@ -130,13 +131,13 @@ function $$default(param) {
                           href: "https://realworldocaml.org/",
                           children: React.createElement("img", {
                                 className: "float-left w-5/12 mr-3",
-                                src: "static/real-world-ocaml.jpeg"
+                                src: "/static/real-world-ocaml.jpeg"
                               })
                         }), React.createElement(Markdown.LINK.make, {
                           href: "http://ocaml-book.com/",
                           children: React.createElement("img", {
                                 className: "float-left w-5/12 mb-4",
-                                src: "static/OCaml_from_beginning.png"
+                                src: "/static/OCaml_from_beginning.png"
                               })
                         }), React.createElement("span", {
                           className: "clearfix"
@@ -165,7 +166,7 @@ function $$default(param) {
                           height: "220",
                           src: "https://www.dailymotion.com/embed/video/x2ymo3x",
                           width: "380"
-                        }), null, React.createElement("p", {
+                        }), React.createElement("p", {
                           className: "mb-6"
                         }, React.createElement(Markdown.LINK.make, {
                               href: "https://www.dailymotion.com/video/x2ymo3x_fun-mooc-introduction-to-functional-programming-in-ocaml_school",
@@ -217,13 +218,13 @@ function $$default(param) {
                           href: "https://janestreet.com",
                           children: React.createElement("img", {
                                 className: "float-left mb-2 mr-2",
-                                src: "static/jane-street.jpeg"
+                                src: "/static/jane-street.jpeg"
                               })
                         }), React.createElement("p", {
                           className: "mb-6"
                         }, "Jane Street is a quantitative proprietary trading firm with \n            a unique focus on technology and collaborative problem solvinig. Almost all of \n            our systems are written in OCaml: from statistical research code operating \n            over terabytes of data to systems management tools to our real-time trading \n            infrastructure. And those systems are deployed at real scale: on an average day, \n            our trading represents between 1% and 2% of US equity volume."), React.createElement("img", {
                           className: "float-left mb-2 mr-2",
-                          src: "static/facebook.png"
+                          src: "/static/facebook.png"
                         }), React.createElement("p", {
                           className: "mb-6"
                         }, "To handle their huge PHP codebase, Facebook developed ", React.createElement(Markdown.LINK.make, {
@@ -253,7 +254,7 @@ function $$default(param) {
                           href: "https://ocaml.org/img/unison.png",
                           children: React.createElement("img", {
                                 className: "float-left mr-2",
-                                src: "static/unison-thumb.jpeg"
+                                src: "/static/unison-thumb.jpeg"
                               })
                         }), React.createElement("p", {
                           className: "mb-6"
@@ -267,7 +268,7 @@ function $$default(param) {
                           href: "https://ocaml.org/img/lexifi.jpg",
                           children: React.createElement("img", {
                                 className: "float-left mr-2",
-                                src: "static/lexifi-thumb.jpeg"
+                                src: "/static/lexifi-thumb.jpeg"
                               })
                         }), React.createElement("p", {
                           className: "mb-6"
@@ -278,7 +279,7 @@ function $$default(param) {
                           href: "",
                           children: React.createElement("img", {
                                 className: "float-left mt-3 mr-2",
-                                src: "static/fftw-thumb.png"
+                                src: "/static/fftw-thumb.png"
                               })
                         }), React.createElement("p", {
                           className: "mb-6"

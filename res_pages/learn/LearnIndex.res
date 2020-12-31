@@ -1,12 +1,14 @@
 module LINK = Markdown.LINK
+module H1 = Markdown.H1
 
-let default = () => {
-  let s = React.string
+let s = React.string
+
+let default = () =>
   <>
-    <h1 className="text-4xl font-bold py-2">{s(`Learn`)}</h1>
+    <H1>{s(`Learn`)}</H1>
     <div className="flex justify-between space-x-4 py-4">
         <div className="flex-0 self-start">
-            <img src="static/learn-large.svg" className="" />
+            <img src="/static/learn-large.svg" />
         </div>
         <div className="w-3/5">
         <strong>{s(`What is OCaml?`)}</strong>
@@ -29,9 +31,11 @@ let default = () => {
         </div>
         <div className="flex-1 flex justify-center pt-5">
             <span>
-            <a className="whitespace-no-wrap text-center text-white font-bold inline-block px-5 py-3 bg-green-800 rounded" href="">
+            <LINK href="/docs/install">
+            <a className="whitespace-no-wrap text-center text-white font-bold inline-block px-5 py-3 bg-green-800 rounded">
             {s(`Install OCaml`)}
             </a>
+            </LINK>
             </span>
         </div>
     </div>
@@ -102,10 +106,10 @@ let default = () => {
                 </h2>
             </div>
             <LINK href="https://realworldocaml.org/">
-                <img src="static/real-world-ocaml.jpeg" className="float-left w-5/12 mr-3"/>
+                <img src="/static/real-world-ocaml.jpeg" className="float-left w-5/12 mr-3"/>
             </LINK>
             <LINK href="http://ocaml-book.com/">
-                <img src="static/OCaml_from_beginning.png" className="float-left w-5/12 mb-4"/>
+                <img src="/static/OCaml_from_beginning.png" className="float-left w-5/12 mb-4"/>
             </LINK>
             <span className="clearfix" />
             <p className="mb-6">{s(`There are a number of excellent books, with two new 
@@ -130,7 +134,6 @@ let default = () => {
               width="380"
               height="220"
               />
-            { React.null /* <div className="w-64 h-64 bg-black mb-2" /> */ }
             <p className="mb-6">
                 <LINK href="https://www.dailymotion.com/video/x2ymo3x_fun-mooc-introduction-to-functional-programming-in-ocaml_school">
                 {s(`A massive open online course (MOOC) entirely centered around OCaml`)}
@@ -181,7 +184,7 @@ let default = () => {
                 </h2>
             </div>
             <LINK href="https://janestreet.com">
-            <img src="static/jane-street.jpeg" className="float-left mb-2 mr-2"/>
+            <img src="/static/jane-street.jpeg" className="float-left mb-2 mr-2"/>
             </LINK>
             <p className="mb-6">{s(`Jane Street is a quantitative proprietary trading firm with 
             a unique focus on technology and collaborative problem solvinig. Almost all of 
@@ -189,7 +192,7 @@ let default = () => {
             over terabytes of data to systems management tools to our real-time trading 
             infrastructure. And those systems are deployed at real scale: on an average day, 
             our trading represents between 1% and 2% of US equity volume.`)}</p>    
-            <img src="static/facebook.png" className="float-left mb-2 mr-2"/>
+            <img src="/static/facebook.png" className="float-left mb-2 mr-2"/>
             <p className="mb-6">{s(`To handle their huge PHP codebase, Facebook developed `)}
             <LINK href="https://github.com/facebook/pfff/wiki/Main">{s(`pfff`)}</LINK>
             {s(`, a set of tools and APIs to perform static analysis, dynamic analysis, code 
@@ -213,7 +216,7 @@ let default = () => {
                 <LINK href="/learn/success">{s(`Success Stories`)}</LINK>
                 </h2>
             </div>
-            <LINK href="https://ocaml.org/img/unison.png"><img src="static/unison-thumb.jpeg" className="float-left mr-2"/></LINK>
+            <LINK href="https://ocaml.org/img/unison.png"><img src="/static/unison-thumb.jpeg" className="float-left mr-2"/></LINK>
             <p className="mb-6">
                 <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/unison/">{s(`Unison`)}</LINK>
                 {s(` is an innovative two-way file synchronizer stemming from the `)}
@@ -223,7 +226,7 @@ let default = () => {
                 "organize a large and intricate codebase".`)}
             </p>                
             <LINK href="https://ocaml.org/img/lexifi.jpg">
-            <img src="static/lexifi-thumb.jpeg" className="float-left mr-2"/>
+            <img src="/static/lexifi-thumb.jpeg" className="float-left mr-2"/>
             </LINK>
             <p className="mb-6">
                 {s(`Developed by `)}
@@ -233,7 +236,7 @@ let default = () => {
                 products. MLFii is implemented as an extension of OCaml.`)}
             </p>
             <LINK href="">
-            <img src="static/fftw-thumb.png" className="float-left mt-3 mr-2"/>
+            <img src="/static/fftw-thumb.png" className="float-left mt-3 mr-2"/>
             </LINK>
             <p className="mb-6">
                 <LINK href="http://www.fftw.org/">{s(`FFTW`)}</LINK>
@@ -250,6 +253,4 @@ let default = () => {
             <LINK href="/learn/success"><p className="text-sm">{s(`See more success stories`)}</p></LINK>
         </div>
     </div>
-
   </>
-}
