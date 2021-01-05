@@ -52,13 +52,13 @@ nvm exec npx yarn@1.22 install
 Run ReScript in dev mode:
 
 ```
-nvm exec npx yarn rescript:start
+cd . && nvm exec npx yarn rescript:start
 ```
 
 In another tab, run the Next dev server:
 
 ```
-nvm exec npx yarn next:dev
+cd . && nvm exec npx yarn next:dev
 ```
 
 Go to localhost:3000
@@ -75,16 +75,15 @@ in `pages/`. If your module uses `getStaticPaths` or `getStaticProps`, those wil
 need to be re-exposed. Also, note that we choose to repeat the folder name (e.g. "releases") 
 in the module name (e.g. "ReleasesIndex.js").
 
-### Fast Refresh & ReScript
-
-Make sure to create interface files (`.resi`) for each `page/*.res` file.
-
-Fast Refresh requires you to **only export React components**, and it's easy to unintenionally export other values than that.
-
 ### Do not use getServerSideProps
 
 In order to ensure that this site remains a static site, do not make use of nextjs's
 `getServerSideProps` functionality.
+
+### Prefer Simplicity over Accomodating Fast Refresh
+
+We choose to not complicate this project to accomodate Fast Refresh.
+
 
 ## Useful commands
 
@@ -114,6 +113,6 @@ This is a NextJS project using the following:
 The initial structure was defined by imitating a combination of choices in the following projects, with
 rescriptlang.org taking precedence when there was conflicting advice:
 
-- https://github.com/ryyppy/rescript-nextjs-template ; https://github.com/sehyunchung/rescript-nextjs
+- https://github.com/ryyppy/rescript-nextjs-template
 - https://github.com/reason-association/rescript-lang.org
 - (add more links: with-tailwindcss example, with-mdx-remote example)
