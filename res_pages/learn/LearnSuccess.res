@@ -63,4 +63,45 @@ let default = () =>
   interfaces: GTK, web and telnet."`)}
   </p>
   <h2>{s(`LexiFi's Modeling Language for Finance`)}</h2>
+  <p>
+  {s(`Developed by the company `)}
+  {s(`LexiFi`)}
+  {s(`, the Modeling Language for Finance (MLFi) is the first formal language that accurately describes the 
+  most sophisticated capital market, credit, and investment products. MLFi is implemented as an extension of OCaml.`)}
+  </p>
+  <p>
+  {s(`MLFi users derive two important benefits from a functional programming approach. First, the declarative formalism 
+  of functional programming languages is well suited for `)}
+  {s(`specifying`)}
+  {s(`complex data structures and algorithms. Second, functional programming languages have strong `)}
+  {s(`list processing`)}
+  {s(`capabilities. Lists play a central role in finance where they are used extensively to define contract 
+  event and payment schedules.`)}
+  </p>
+  <p>
+  {s(`In addition, MLFi provides crucial business integration capabilities inherited from OCaml and related tools 
+  and libraries. This enables users, for example, to interoperate with C and Java programs, manipulate XML schemas 
+  and documents, and interface with SQL databases.`)}
+  </p>
+  <p>
+  {s(`Data models and object models aiming to encapsulate the definitions and behavior of financial instruments were 
+  developed by the banking industry over the past two decades, but face inherent limitations that OCaml helped overcome.`)}
+  </p>
+  <p>
+  {s(`LexiFi's approach to modeling complex financial contracts received an academic award in 2000, and the 
+  MLFi implementation was elected "Software Product of the Year 2001" by the magazine `)}
+  {s(`Risk`)}
+  {s(`, the leading financial trading and risk management publication. MLFi-based solutions are gaining growing 
+  acceptance throughout Europe and are contributing to spread the use of OCaml in the financial services industry.`)}
+  </p>
+  <h2>{s(`The Coq Proof Assistant`)}</h2>
+  <p>
+  {s(`Jean-Christophe Filliâtre`)}
+  {s(` (CNRS), a Coq developer, says:`)}
+  {s(` "The `)}
+  {s(`Coq`)}
+  {s(` tool is a systemfor manipulating formal mathematical proofs; a proof carried out in Coq is mechanically 
+  verified by the machine. In addition to its applications in mathematics, Coq also allows certifying the 
+  correctness of computer programs."`)}
+  </p>
   </>
