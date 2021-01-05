@@ -6,6 +6,7 @@
   "license": "ISC",
   "engines": {
     "node": ">=12.x"
+
   },
   "enginesDescription": {
     "node": "change back to >=14.15.1 once vercel build is enhanced"
