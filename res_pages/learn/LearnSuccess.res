@@ -31,4 +31,36 @@ let default = () =>
   the replicas and its own private structures in a sensible state at all times, even in case of 
   abnormal termination or communication failures.`)}
   </p>
+  <p>
+  {s(`Benjamin C. Pierce`)}
+  {s(` (University of Pennsylvania), Unison project leader, says:`)}
+  {s(` "I think Unison is a very clear success for OCaml – in particular, for the extreme portability 
+  and overall excellent engineering of the compiler and runtime system. OCaml's strong static typing, 
+  in combination with its powerful module system, helped us organize a large and intricate codebase 
+  with a high degree of encapsulation. This has allowed us to maintain a high level of robustness 
+  through years of work by many different programmers. In fact, Unison may be unique among large OCaml 
+  projects in having been `)}
+  {s(`translated`)}
+  {s(` from Java to OCaml midway through its development. Moving to OCaml was like a breath of fresh air."`)}
+  </p>
+  <h2>{s(`The MLdonkey peer-to-peer client`)}</h2>
+  <p>
+  {s(`MLdonkey`)}
+  {s(` is a multi-platform multi-networks peer-to-peer client. It was the first open-source client to access 
+  the eDonkey network. Today, MLdonkey supports several other large networks, among which Overnet, Bittorrent, 
+  Gnutella, Gnutella2, Fasttrack, Soulseek, Direct-Connect, and Opennap. Searches can be conducted over several 
+  networks concurrently; files are downloaded from and uploaded to multiple peers concurrently.`)}
+  </p>
+  <p>
+  {s(`An MLdonkey developer says:`)}
+  {s(` "Early in 2002, we decided to use OCaml to program a network application in the emerging world of peer-to-peer 
+  systems. The result of our work, MLdonkey, has surpassed our hopes: MLdonkey is currently the most popular 
+  peer-to-peer file-sharing client according to `)}
+  {s(`free(code)`)}
+  {s(` (formerly "freshmeat.net"), with about 10,000 daily users. Moreover, MLdonkey is the only client able 
+  to connect to several peer-to-peer networks, to download and share files. It works as a daemon, running 
+  unattended on the computer, and can be controlled remotely using a choice of three different kinds of 
+  interfaces: GTK, web and telnet."`)}
+  </p>
+  <h2>{s(`LexiFi's Modeling Language for Finance`)}</h2>
   </>
