@@ -7,7 +7,7 @@ function $$default(param) {
   return React.createElement(React.Fragment, undefined, React.createElement(Markdown.H1.make, {
                   children: "Learn"
                 }), React.createElement("div", {
-                  className: "flex justify-between space-x-4 py-4"
+                  className: "flex justify-between space-x-4 mb-4"
                 }, React.createElement("div", {
                       className: "flex-0 self-start"
                     }, React.createElement("img", {
@@ -85,7 +85,7 @@ function $$default(param) {
                                   href: "/learn/faq",
                                   children: "FAQ"
                                 }))), React.createElement("ul", {
-                          className: "px-4 list-disc list-inside space-y-3 mb-6"
+                          className: "pl-8 list-disc space-y-3 mb-6"
                         }, React.createElement("li", undefined, React.createElement(Markdown.LINK.make, {
                                   href: "/learn/tutorials/up_and_running",
                                   children: "Up and Running"

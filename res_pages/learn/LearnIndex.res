@@ -7,7 +7,7 @@ let s = React.string
 let default = () =>
   <>
     <H1>{s(`Learn`)}</H1>
-    <div className="flex justify-between space-x-4 py-4">
+    <div className="flex justify-between space-x-4 mb-4">
         <div className="flex-0 self-start">
             <img src="/static/learn-large.svg" />
         </div>
@@ -87,7 +87,7 @@ let default = () =>
                     <LINK href="/learn/faq">{s(`FAQ`)}</LINK>
                 </h2>
             </div>
-            <ul className="px-4 list-disc list-inside space-y-3 mb-6">
+            <ul className="pl-8 list-disc space-y-3 mb-6">
                 <li><LINK href="/learn/tutorials/up_and_running">{s("Up and Running")}</LINK></li>
                 <li><LINK href="/learn/tutorials/basic">{s("Basics")}</LINK></li>
                 <li><LINK href="/learn/tutorials/structure_of_ocaml_programs">{s("Structure of OCaml Programs")}</LINK></li>
