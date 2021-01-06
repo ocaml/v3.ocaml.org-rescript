@@ -46,8 +46,10 @@ let default = () =>
       abnormal termination or communication failures.`)}
       </p>
       <p>
-      {s(`Benjamin C. Pierce`)}
-      {s(` (University of Pennsylvania), Unison project leader, says:`)}
+      <em>
+        <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/">{s(`Benjamin C. Pierce`)}</LINK>
+        {s(` (University of Pennsylvania), Unison project leader, says:`)}
+      </em>
       {s(` "I think Unison is a very clear success for OCaml – in particular, for the extreme portability 
       and overall excellent engineering of the compiler and runtime system. OCaml's strong static typing, 
       in combination with its powerful module system, helped us organize a large and intricate codebase 
@@ -58,38 +60,44 @@ let default = () =>
       {s(` from Java to OCaml midway through its development. Moving to OCaml was like a breath of fresh air."`)}
       </p>
     <h2>{s(`The MLdonkey peer-to-peer client`)}</h2>
+      <LINK href="/static/mldonkey.jpg">
+        <img src="/static/mldonkey-thumb.jpg" alt="MLDonkey screenshot thumbnail"/>
+      </LINK>
       <p>
-      {s(`MLdonkey`)}
+      <LINK href="http://mldonkey.sourceforge.net/Main_Page">{s(`MLdonkey`)}</LINK>
       {s(` is a multi-platform multi-networks peer-to-peer client. It was the first open-source client to access 
       the eDonkey network. Today, MLdonkey supports several other large networks, among which Overnet, Bittorrent, 
       Gnutella, Gnutella2, Fasttrack, Soulseek, Direct-Connect, and Opennap. Searches can be conducted over several 
       networks concurrently; files are downloaded from and uploaded to multiple peers concurrently.`)}
       </p>
       <p>
-      {s(`An MLdonkey developer says:`)}
+      <em>{s(`An MLdonkey developer says:`)}</em>
       {s(` "Early in 2002, we decided to use OCaml to program a network application in the emerging world of peer-to-peer 
       systems. The result of our work, MLdonkey, has surpassed our hopes: MLdonkey is currently the most popular 
       peer-to-peer file-sharing client according to `)}
-      {s(`free(code)`)}
+      <LINK href="http://freecode.com/">{s(`free(code)`)}</LINK>
       {s(` (formerly "freshmeat.net"), with about 10,000 daily users. Moreover, MLdonkey is the only client able 
       to connect to several peer-to-peer networks, to download and share files. It works as a daemon, running 
       unattended on the computer, and can be controlled remotely using a choice of three different kinds of 
       interfaces: GTK, web and telnet."`)}
       </p>
     <h2>{s(`LexiFi's Modeling Language for Finance`)}</h2>
+      <LINK href="/static/lexifi.jpg">
+        <img src="/static/lexifi-thumb.jpg" alt="Thumbnail of report produced by LexiFi"/>
+      </LINK>
       <p>
       {s(`Developed by the company `)}
-      {s(`LexiFi`)}
+      <LINK href="http://www.lexifi.com/">{s(`LexiFi`)}</LINK>
       {s(`, the Modeling Language for Finance (MLFi) is the first formal language that accurately describes the 
       most sophisticated capital market, credit, and investment products. MLFi is implemented as an extension of OCaml.`)}
       </p>
       <p>
       {s(`MLFi users derive two important benefits from a functional programming approach. First, the declarative formalism 
       of functional programming languages is well suited for `)}
-      {s(`specifying`)}
-      {s(`complex data structures and algorithms. Second, functional programming languages have strong `)}
-      {s(`list processing`)}
-      {s(`capabilities. Lists play a central role in finance where they are used extensively to define contract 
+      <em>{s(`specifying`)}</em>
+      {s(` complex data structures and algorithms. Second, functional programming languages have strong `)}
+      <em>{s(`list processing`)}</em>
+      {s(` capabilities. Lists play a central role in finance where they are used extensively to define contract 
       event and payment schedules.`)}
       </p>
       <p>
@@ -104,16 +112,21 @@ let default = () =>
       <p>
       {s(`LexiFi's approach to modeling complex financial contracts received an academic award in 2000, and the 
       MLFi implementation was elected "Software Product of the Year 2001" by the magazine `)}
-      {s(`Risk`)}
+      <em>{s(`Risk`)}</em>
       {s(`, the leading financial trading and risk management publication. MLFi-based solutions are gaining growing 
       acceptance throughout Europe and are contributing to spread the use of OCaml in the financial services industry.`)}
       </p>
     <h2>{s(`The Coq Proof Assistant`)}</h2>
+      <LINK href="/static/coq.jpg">
+        <img src="/static/coq-thumb.jpg" alt="Coq thumbnail"/>
+      </LINK>
       <p>
-      {s(`Jean-Christophe Filliâtre`)}
-      {s(` (CNRS), a Coq developer, says:`)}
+      <em>
+        <LINK href="https://www.lri.fr/~filliatr/">{s(`Jean-Christophe Filliâtre`)}</LINK>
+        {s(` (CNRS), a Coq developer, says:`)}
+      </em>
       {s(` "The `)}
-      {s(`Coq`)}
+      <LINK href="http://coq.inria.fr/">{s(`Coq`)}</LINK>
       {s(` tool is a systemfor manipulating formal mathematical proofs; a proof carried out in Coq is mechanically 
       verified by the machine. In addition to its applications in mathematics, Coq also allows certifying the 
       correctness of computer programs."`)}
@@ -123,11 +136,14 @@ let default = () =>
       suited for symbolic manipulations, which are of paramount importance in a proof assistant. Furthermore, 
       OCaml's type system, and particularly its notion of abstract type, allow securely encapsulating Coq's critical 
       code base, which guarantees the logical consistency of the whole system. Last, OCaml's strong type system `)}
-      {s(`de facto`)}
+      <em>{s(`de facto`)}</em>
       {s(` grants Coq's code a high level of quality: errors such as "segmentation faults" cannot occur during execution, 
       which is indispensable for a tool whose primary goal is precisely rigor."`)}
       </p>
     <h2>{s(`The ASTRÉE Static Analyzer`)}</h2>
+      <LINK href="http://www.airbus.com/">
+        <img src="/static/astree.gif" alt="A340"/>
+      </LINK>
       <p>
       {s(`David Monniaux`)}
       {s(` (CNRS), member of the ASTRÉE project, says:`)}
