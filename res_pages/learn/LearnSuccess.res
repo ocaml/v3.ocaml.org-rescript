@@ -86,8 +86,8 @@ let default = () =>
         <img src="/static/lexifi-thumb.jpg" alt="Thumbnail of report produced by LexiFi"/>
       </LINK>
       <p>
-      <LINK href="http://www.lexifi.com/">{s(`Developed by the company LexiFi`)}</LINK>
-      {s(`, the Modeling Language for Finance (MLFi) is the first formal language that accurately describes the 
+      <LINK href="http://www.lexifi.com/">{s(`LexiFi is the comanpy that developed the Modeling Language for Finance (MLFi)`)}</LINK>
+      {s(`. MLFi is the first formal language that accurately describes the 
       most sophisticated capital market, credit, and investment products. MLFi is implemented as an extension of OCaml.`)}
       </p>
       <p>
@@ -121,12 +121,12 @@ let default = () =>
       </LINK>
       <p>
       <em>
-        <LINK href="https://www.lri.fr/~filliatr/">{s(`Jean-Christophe Filliâtre`)}</LINK>
-        {s(` (CNRS), a Coq developer, says:`)}
+        <LINK href="https://www.lri.fr/~filliatr/">{s(`Jean-Christophe Filliâtre, a Coq developer at CNRS`)}</LINK>
+        {s(`, says:`)}
       </em>
-      {s(` "The `)}
-      <LINK href="http://coq.inria.fr/">{s(`Coq`)}</LINK>
-      {s(` tool is a systemfor manipulating formal mathematical proofs; a proof carried out in Coq is mechanically 
+      {s(` "`)}
+      <LINK href="http://coq.inria.fr/">{s(`The Coq tool is a system for manipulating formal mathematical proofs`)}</LINK>
+      {s(`; a proof carried out in Coq is mechanically 
       verified by the machine. In addition to its applications in mathematics, Coq also allows certifying the 
       correctness of computer programs."`)}
       </p>
@@ -145,15 +145,16 @@ let default = () =>
       </LINK>
       <p>
       <em>
-        <LINK href="http://www-verimag.imag.fr/~monniaux/">{s(`David Monniaux`)}</LINK>
-        {s(` (CNRS), member of the ASTRÉE project, says:`)}
+        <LINK href="http://www-verimag.imag.fr/~monniaux/">{s(`David Monniaux, member of the ASTRÉE project at CNRS`)}</LINK>
+        {s(`, says:`)}
       </em>
       {s(` "`)}
-      <LINK href="http://www.astree.ens.fr/">{s(`ASTRÉE`)}</LINK>
-      {s(` is a `)}
-      <em>{s(` static analyzer`)}</em>
-      {s(` based on `)}
-      <em><LINK href="http://www.di.ens.fr/%7Ecousot/aiintro.shtml">{s(`abstract interpretation`)}</LINK></em>
+      <LINK href="http://www.astree.ens.fr/">
+      {s(`ASTRÉE is a `)}
+      <em>{s(`static analyzer`)}</em>
+      </LINK>
+      {s(` based on the `)}
+      <em><LINK href="http://www.di.ens.fr/%7Ecousot/aiintro.shtml">{s(`concept of abstract interpretation`)}</LINK></em>
       {s(` that aims at proving the absence of runtime errors in a safety-critical software written in a subset of the C
       programming language."`)}
       </p>
@@ -176,19 +177,18 @@ let default = () =>
       {s(` of all possible outcomes of the system."`)}
       </p>
       <p>
-      {s(`"`)}
-      <LINK href="http://www.astree.ens.fr/">{s(`ASTRÉE`)}</LINK>
-      {s(` is written in OCaml and is about 44000 lines long (plus external libraries). We needed a language with good 
+      {s(`"ASTRÉE is written in OCaml and is about 44000 lines long (plus external libraries). We needed a language with good 
       performance (speed and memory usage) on reasonable equipment, easy support for advanced data structures, and type 
       memory safety. OCaml also allows for modular, clear and compact source code and makes it easy to work with 
       recursive structures such as syntax trees."`)}
       </p>
     <h2>{s(`SLAM`)}</h2>
       <p>
-      {s(`The `)}
-      <LINK href="http://research.microsoft.com/en-us/projects/slam/">{s(`SLAM`)}</LINK>
-      {s(` project originated in Microsoft Research in early 2000. Its goal was to automatically check that a C program 
-      correctly uses the interface to an external library. The project used and extended ideas from symbolic model checking, 
+      <LINK href="http://research.microsoft.com/en-us/projects/slam/">
+        {s(`The SLAM project's goal was to automatically check that a C program correctly uses the interface 
+        to an external library`)}
+      </LINK>
+      {s(`. It originated in Microsoft Research in early 2000. The project used and extended ideas from symbolic model checking, 
       program analysis and theorem proving in novel ways to address this problem. The SLAM analysis engine forms the 
       core of a new tool called Static Driver Verifier (SDV) that systematically analyzes the source code of Windows 
       device drivers against a set of rules that define what it means for a device driver to properly interact with 
