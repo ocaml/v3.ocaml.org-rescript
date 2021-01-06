@@ -1,4 +1,4 @@
-// module LINK = Markdown.LINK
+module LINK = Markdown.LINK
 
 let s = React.string
 
@@ -6,6 +6,9 @@ let default = () =>
   <>
   <h1>{s(`Success Stories`)}</h1>
     <h2>{s(`Jane Street`)}</h2>
+      <LINK href="http://janestreet.com/technology/">
+        <img src="/static/jane-street.jpeg" alt="Jane Street logo"/>
+      </LINK>
       <p>
       {s(`Jane Street is a proprietary trading firm that uses OCaml as its primary development platform. 
       Our operation runs at a large scale, generating billions of dollars of transactions every day from 
@@ -13,15 +16,26 @@ let default = () =>
       time-zones and regulatory regimes.`)}
       </p>
       <p>
+      {s(`Almost all of of our software is written in OCaml, from statistical research code to 
+      systems-administration tools to our real-time trading infrastructure. OCaml’s type system acts 
+      as a rich and well-integrated set of static analysis tools that help improve the quality 
+      of our code, catching bugs at the earliest possible stage. Billions of dollars of transactions 
+      flow through our systems every day, so getting it right matters. At the same time, OCaml is 
+      highly productive, helping us quickly adapt to changing market conditions.`)}
+      </p>
+      <p>
       {s(`Jane Street has been contributing open-source libraries back to the wider community for many years, 
       including Core, our alternative standard library, Async, a cooperative concurrency library, and several 
       syntax extensions like binprot and sexplib. All of these can be found at `)}
-      {s(`http://janestreet.github.io`)}
+      <LINK href="http://janestreet.github.io/">{s(`http://janestreet.github.io`)}</LINK>
       {s(`. All in, we've open-sourced more than 200k lines of code.`)}
       </p>
     <h2>{s(`The Unison File Synchronizer`)}</h2>
+      <LINK href="/static/unison.png">
+        <img src="/static/unison-thumb.jpeg" alt="Unison user interface thumbnail"/>
+      </LINK>
       <p>
-      {s(`Unison`)}
+      <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/unison/">{s(`Unison`)}</LINK>
       {s(` is a popular file-synchronization tool for Windows and most flavors of Unix. It allows two 
       replicas of a collection of files and directories to be stored on different hosts (or different 
       disks on the same host), modified separately, and then brought up to date by propagating the changes 
