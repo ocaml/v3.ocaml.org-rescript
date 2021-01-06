@@ -27,7 +27,7 @@ let default = () =>
       {s(`Jane Street has been contributing open-source libraries back to the wider community for many years, 
       including Core, our alternative standard library, Async, a cooperative concurrency library, and several 
       syntax extensions like binprot and sexplib. All of these can be found at `)}
-      <LINK href="http://janestreet.github.io/">{s(`http://janestreet.github.io`)}</LINK>
+      <LINK href="http://janestreet.github.io/">{s(`Jane Street's open source website`)}</LINK>
       {s(`. All in, we've open-sourced more than 200k lines of code.`)}
       </p>
     <h2>{s(`The Unison File Synchronizer`)}</h2>
@@ -35,7 +35,7 @@ let default = () =>
         <img src="/static/unison-thumb.jpeg" alt="Unison user interface thumbnail"/>
       </LINK>
       <p>
-      <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/unison/">{s(`Unison`)}</LINK>
+      <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/unison/">{s(`Unison File Synchronizer`)}</LINK>
       {s(` is a popular file-synchronization tool for Windows and most flavors of Unix. It allows two 
       replicas of a collection of files and directories to be stored on different hosts (or different 
       disks on the same host), modified separately, and then brought up to date by propagating the changes 
@@ -47,8 +47,8 @@ let default = () =>
       </p>
       <p>
       <em>
-        <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/">{s(`Benjamin C. Pierce`)}</LINK>
-        {s(` (University of Pennsylvania), Unison project leader, says:`)}
+        <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/">{s(`Benjamin C. Pierce, Unison project leader`)}</LINK>
+        {s(` at University of Pennsylvania, says:`)}
       </em>
       {s(` "I think Unison is a very clear success for OCaml – in particular, for the extreme portability 
       and overall excellent engineering of the compiler and runtime system. OCaml's strong static typing, 
@@ -64,8 +64,8 @@ let default = () =>
         <img src="/static/mldonkey-thumb.jpg" alt="MLDonkey screenshot thumbnail"/>
       </LINK>
       <p>
-      <LINK href="http://mldonkey.sourceforge.net/Main_Page">{s(`MLdonkey`)}</LINK>
-      {s(` is a multi-platform multi-networks peer-to-peer client. It was the first open-source client to access 
+      <LINK href="http://mldonkey.sourceforge.net/Main_Page">{s(`MLdonkey is a multi-platform multi-networks peer-to-peer client`)}</LINK>
+      {s(`. It was the first open-source client to access 
       the eDonkey network. Today, MLdonkey supports several other large networks, among which Overnet, Bittorrent, 
       Gnutella, Gnutella2, Fasttrack, Soulseek, Direct-Connect, and Opennap. Searches can be conducted over several 
       networks concurrently; files are downloaded from and uploaded to multiple peers concurrently.`)}
@@ -73,10 +73,10 @@ let default = () =>
       <p>
       <em>{s(`An MLdonkey developer says:`)}</em>
       {s(` "Early in 2002, we decided to use OCaml to program a network application in the emerging world of peer-to-peer 
-      systems. The result of our work, MLdonkey, has surpassed our hopes: MLdonkey is currently the most popular 
-      peer-to-peer file-sharing client according to `)}
-      <LINK href="http://freecode.com/">{s(`free(code)`)}</LINK>
-      {s(` (formerly "freshmeat.net"), with about 10,000 daily users. Moreover, MLdonkey is the only client able 
+      systems. The result of our work, MLdonkey, has surpassed our hopes: `)}
+      <LINK href="http://freecode.com/">{s(`MLdonkey is currently the most popular 
+      peer-to-peer file-sharing client according to free(code (formerly "freshmeat.net"))`)}</LINK>
+      {s(`, with about 10,000 daily users. Moreover, MLdonkey is the only client able 
       to connect to several peer-to-peer networks, to download and share files. It works as a daemon, running 
       unattended on the computer, and can be controlled remotely using a choice of three different kinds of 
       interfaces: GTK, web and telnet."`)}
@@ -86,8 +86,7 @@ let default = () =>
         <img src="/static/lexifi-thumb.jpg" alt="Thumbnail of report produced by LexiFi"/>
       </LINK>
       <p>
-      {s(`Developed by the company `)}
-      <LINK href="http://www.lexifi.com/">{s(`LexiFi`)}</LINK>
+      <LINK href="http://www.lexifi.com/">{s(`Developed by the company LexiFi`)}</LINK>
       {s(`, the Modeling Language for Finance (MLFi) is the first formal language that accurately describes the 
       most sophisticated capital market, credit, and investment products. MLFi is implemented as an extension of OCaml.`)}
       </p>
