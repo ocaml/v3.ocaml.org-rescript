@@ -145,14 +145,16 @@ let default = () =>
         <img src="/static/astree.gif" alt="A340"/>
       </LINK>
       <p>
-      {s(`David Monniaux`)}
-      {s(` (CNRS), member of the ASTRÉE project, says:`)}
+      <em>
+        <LINK href="http://www-verimag.imag.fr/~monniaux/">{s(`David Monniaux`)}</LINK>
+        {s(` (CNRS), member of the ASTRÉE project, says:`)}
+      </em>
       {s(` "`)}
-      {s(`ASTRÉE`)}
+      <LINK href="http://www.astree.ens.fr/">{s(`ASTRÉE`)}</LINK>
       {s(` is a `)}
-      {s(` static analyzer`)}
+      <em>{s(` static analyzer`)}</em>
       {s(` based on `)}
-      {s(`abstract interpretation`)}
+      <em><LINK href="http://www.di.ens.fr/%7Ecousot/aiintro.shtml">{s(`abstract interpretation`)}</LINK></em>
       {s(` that aims at proving the absence of runtime errors in a safety-critical software written in a subset of the C
       programming language."`)}
       </p>
@@ -164,8 +166,19 @@ let default = () =>
       wide range of software."`)}
       </p>
       <p>
+      {s(`"So far, ASTRÉE has proved the absence of runtime errors in the primary control software of the `)}
+      <LINK href="https://www.airbus.com/aircraft/previous-generation-aircraft/a340-family.html">{s(`Airbus A340 family`)}</LINK>
+      {s(`. This would be impossible by `)}
+      <em>{s(`software testing`)}</em>
+      {s(`, for testing only considers a limited `)}
+      <em>{s(`subset`)}</em> 
+      {s(` of the test cases, while abstract interpretation considers a `)}
+      <em>{s(`superset`)}</em>
+      {s(` of all possible outcomes of the system."`)}
+      </p>
+      <p>
       {s(`"`)}
-      {s(`ASTRÉE`)}
+      <LINK href="http://www.astree.ens.fr/">{s(`ASTRÉE`)}</LINK>
       {s(` is written in OCaml and is about 44000 lines long (plus external libraries). We needed a language with good 
       performance (speed and memory usage) on reasonable equipment, easy support for advanced data structures, and type 
       memory safety. OCaml also allows for modular, clear and compact source code and makes it easy to work with 
@@ -174,7 +187,7 @@ let default = () =>
     <h2>{s(`SLAM`)}</h2>
       <p>
       {s(`The `)}
-      {s(`SLAM`)}
+      <LINK href="http://research.microsoft.com/en-us/projects/slam/">{s(`SLAM`)}</LINK>
       {s(` project originated in Microsoft Research in early 2000. Its goal was to automatically check that a C program 
       correctly uses the interface to an external library. The project used and extended ideas from symbolic model checking, 
       program analysis and theorem proving in novel ways to address this problem. The SLAM analysis engine forms the 
@@ -183,20 +196,22 @@ let default = () =>
       the Windows operating system kernel.`)}  
       </p>
       <p>
-      {s(`In technical report `)}
-      {s(`MSR-TR-2004-08`)}
-      {s(`, T.Ball, B.Cook, V.Levin and S.K.Rajamani, the SLAM developers, write:`)}
+      <em>
+        {s(`In technical report `)}
+        <LINK href="http://research.microsoft.com/apps/pubs/default.aspx?id=70038">{s(`MSR-TR-2004-08`)}</LINK>
+        {s(`, T.Ball, B.Cook, V.Levin and S.K.Rajamani, the SLAM developers, write:`)}
+      </em>
       {s(` "The Right Tools for the Job: We developed SLAM using Inria's OCaml functional programming language. The 
       expressiveness of this language and robustness of its implementation provided a great productivity boost."`)}
       </p>
     <h2>{s(`FFTW`)}</h2>
       <p>
-      {s(`FFTW`)}
+      <LINK href="http://www.fftw.org/">{s(`FFTW`)}</LINK>
       {s(` is a `)}
-      {s(`very fast`)}
-      {s(`C library for computing Discrete Fourier Transforms (DFT). It uses a powerful symbolic optimizer written in 
+      <LINK href="http://www.fftw.org/benchfft/">{s(`very fast`)}</LINK>
+      {s(` C library for computing Discrete Fourier Transforms (DFT). It uses a powerful symbolic optimizer written in 
       OCaml which, given an integer N, generates highly optimized C code to compute DFTs of size N. FFTW was awarded the 1999 `)}
-      {s(`Wilkinson prize`)}
+      <LINK href="https://en.wikipedia.org/wiki/J._H._Wilkinson_Prize_for_Numerical_Software">{s(`Wilkinson prize`)}</LINK>
       {s(` for numerical software.`)}
       </p>
       <p>
@@ -208,14 +223,14 @@ let default = () =>
       </p>
     <h2>{s(`Liquidsoap`)}</h2>
       <p>
-      {s(`Liquidsoap`)}
+      <LINK href="http://liquidsoap.fm/">{s(`Liquidsoap`)}</LINK>
       {s(` is clearly well established in the (internet) radio industry. Liquidsoap is well known as a tool with unique 
       abilities, and has lots of users including big commercial ones. It is not developed as a business, but companies 
       develop services or software on top of it. For example, Sourcefabric develops and sells Airtime on top of Liquidsoap.`)}
       </p>
     <h2>{s(`Haxe`)}</h2>
       <p>
-      {s(`Haxe`)}
+      <LINK href="http://haxe.org/">{s(`Haxe`)}</LINK>
       {s(` is an open source toolkit based on a modern, high level, strictly typed programming language, a cross-compiler, 
       a complete cross-platform standard library and ways to access each platform's native capabilities. The Haxe compiler 
       was entirely written in OCaml.`)}
