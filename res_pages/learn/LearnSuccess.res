@@ -86,7 +86,7 @@ let default = () =>
         <img src="/static/lexifi-thumb.jpg" alt="Thumbnail of report produced by LexiFi"/>
       </LINK>
       <p>
-      <LINK href="http://www.lexifi.com/">{s(`LexiFi is the comanpy that developed the Modeling Language for Finance (MLFi)`)}</LINK>
+      <LINK href="http://www.lexifi.com/">{s(`LexiFi is the company that developed the Modeling Language for Finance (MLFi)`)}</LINK>
       {s(`. MLFi is the first formal language that accurately describes the 
       most sophisticated capital market, credit, and investment products. MLFi is implemented as an extension of OCaml.`)}
       </p>
@@ -196,8 +196,10 @@ let default = () =>
       </p>
       <p>
       <em>
-        {s(`In technical report `)}
-        <LINK href="http://research.microsoft.com/apps/pubs/default.aspx?id=70038">{s(`MSR-TR-2004-08`)}</LINK>
+        {s(`In a `)}
+        <LINK href="http://research.microsoft.com/apps/pubs/default.aspx?id=70038">
+          {s(`technical report about the SLAM project`)}
+        </LINK>
         {s(`, T.Ball, B.Cook, V.Levin and S.K.Rajamani, the SLAM developers, write:`)}
       </em>
       {s(` "The Right Tools for the Job: We developed SLAM using Inria's OCaml functional programming language. The 
@@ -205,32 +207,34 @@ let default = () =>
       </p>
     <h2>{s(`FFTW`)}</h2>
       <p>
-      <LINK href="http://www.fftw.org/">{s(`FFTW`)}</LINK>
-      {s(` is a `)}
-      <LINK href="http://www.fftw.org/benchfft/">{s(`very fast`)}</LINK>
-      {s(` C library for computing Discrete Fourier Transforms (DFT). It uses a powerful symbolic optimizer written in 
-      OCaml which, given an integer N, generates highly optimized C code to compute DFTs of size N. FFTW was awarded the 1999 `)}
-      <LINK href="https://en.wikipedia.org/wiki/J._H._Wilkinson_Prize_for_Numerical_Software">{s(`Wilkinson prize`)}</LINK>
-      {s(` for numerical software.`)}
+      <LINK href="http://www.fftw.org/">{s(`FFTW is a C library for computing Discrete Fourier Transforms`)}</LINK>
+      {s(` (DFT). It uses a powerful symbolic optimizer written in 
+      OCaml which, given an integer N, generates highly optimized C code to compute DFTs of size N. `)}
+      <LINK href="https://en.wikipedia.org/wiki/J._H._Wilkinson_Prize_for_Numerical_Software">
+        {s(`FFTW was awarded the 1999 Wilkinson prize for numerical software`)}
+      </LINK>
+      {s(`.`)}
       </p>
       <p>
-      {s(`Benchmarks, performed on on a variety of platforms, show that FFTW's performance is typically superior to that 
-      of other publicly available DFT software, and is even competitive with vendor-tuned codes. In contrast to vendor-tuned 
-      codes, however, FFTW's performance is portable: the same program will perform well on most architectures without 
-      modification. Hence the name, "FFTW," which stands for the somewhat whimsical title of "Fastest Fourier Transform 
-      in the West."`)}
+      <LINK href="http://www.fftw.org/benchfft/">
+        {s(`Benchmarks, performed on on a variety of platforms, show that FFTW's performance is typically superior`)}
+      </LINK>
+      {s(` to that of other publicly available DFT software, and is even competitive with vendor-tuned codes. 
+      In contrast to vendor-tuned codes, however, FFTW's performance is portable: the same program will perform 
+      well on most architectures without modification. Hence the name, "FFTW," which stands for the somewhat 
+      whimsical title of "Fastest Fourier Transform in the West."`)}
       </p>
     <h2>{s(`Liquidsoap`)}</h2>
       <p>
-      <LINK href="http://liquidsoap.fm/">{s(`Liquidsoap`)}</LINK>
-      {s(` is clearly well established in the (internet) radio industry. Liquidsoap is well known as a tool with unique 
+      <LINK href="http://liquidsoap.fm/">{s(`Liquidsoap is clearly well established in the (internet) radio industry`)}</LINK>
+      {s(`. Liquidsoap is well known as a tool with unique 
       abilities, and has lots of users including big commercial ones. It is not developed as a business, but companies 
       develop services or software on top of it. For example, Sourcefabric develops and sells Airtime on top of Liquidsoap.`)}
       </p>
     <h2>{s(`Haxe`)}</h2>
       <p>
-      <LINK href="http://haxe.org/">{s(`Haxe`)}</LINK>
-      {s(` is an open source toolkit based on a modern, high level, strictly typed programming language, a cross-compiler, 
+      <LINK href="http://haxe.org/">{s(`Haxe is an open source toolkit`)}</LINK>
+      {s(` based on a modern, high level, strictly typed programming language, a cross-compiler, 
       a complete cross-platform standard library and ways to access each platform's native capabilities. The Haxe compiler 
       was entirely written in OCaml.`)}
       </p>
