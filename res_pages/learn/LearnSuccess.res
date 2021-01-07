@@ -7,7 +7,7 @@ let default = () =>
   <h1>{s(`Success Stories`)}</h1>
     <h2>{s(`Jane Street`)}</h2>
       <LINK href="http://janestreet.com/technology/">
-        <img src="/static/jane-street.jpeg" alt="Jane Street logo"/>
+        <img src="/static/jane-street.jpeg" alt="Jane Street technology website"/>
       </LINK>
       <p>
       {s(`Jane Street is a proprietary trading firm that uses OCaml as its primary development platform. 
@@ -32,7 +32,7 @@ let default = () =>
       </p>
     <h2>{s(`The Unison File Synchronizer`)}</h2>
       <LINK href="/static/unison.png">
-        <img src="/static/unison-thumb.jpeg" alt="Unison user interface thumbnail"/>
+        <img src="/static/unison-thumb.jpeg" alt="Unison user interface screenshot"/>
       </LINK>
       <p>
       <LINK href="http://www.cis.upenn.edu/%7Ebcpierce/unison/">{s(`Unison File Synchronizer`)}</LINK>
@@ -61,7 +61,7 @@ let default = () =>
       </p>
     <h2>{s(`The MLdonkey peer-to-peer client`)}</h2>
       <LINK href="/static/mldonkey.jpg">
-        <img src="/static/mldonkey-thumb.jpg" alt="MLDonkey screenshot thumbnail"/>
+        <img src="/static/mldonkey-thumb.jpg" alt="MLDonkey screenshot"/>
       </LINK>
       <p>
       <LINK href="http://mldonkey.sourceforge.net/Main_Page">{s(`MLdonkey is a multi-platform multi-networks peer-to-peer client`)}</LINK>
@@ -83,7 +83,7 @@ let default = () =>
       </p>
     <h2>{s(`LexiFi's Modeling Language for Finance`)}</h2>
       <LINK href="/static/lexifi.jpg">
-        <img src="/static/lexifi-thumb.jpg" alt="Thumbnail of report produced by LexiFi"/>
+        <img src="/static/lexifi-thumb.jpg" alt="Report produced by LexiFi"/>
       </LINK>
       <p>
       <LINK href="http://www.lexifi.com/">{s(`LexiFi is the company that developed the Modeling Language for Finance (MLFi)`)}</LINK>
@@ -117,12 +117,12 @@ let default = () =>
       </p>
     <h2>{s(`The Coq Proof Assistant`)}</h2>
       <LINK href="/static/coq.jpg">
-        <img src="/static/coq-thumb.jpg" alt="Coq thumbnail"/>
+        <img src="/static/coq-thumb.jpg" alt="Coq screenshot"/>
       </LINK>
       <p>
       <em>
-        <LINK href="https://www.lri.fr/~filliatr/">{s(`Jean-Christophe Filliâtre, a Coq developer at CNRS`)}</LINK>
-        {s(`, says:`)}
+        <LINK href="https://www.lri.fr/~filliatr/">{s(`Jean-Christophe Filliâtre, a Coq developer`)}</LINK>
+        {s(` at CNRS, says:`)}
       </em>
       {s(` "`)}
       <LINK href="http://coq.inria.fr/">{s(`The Coq tool is a system for manipulating formal mathematical proofs`)}</LINK>
@@ -141,12 +141,12 @@ let default = () =>
       </p>
     <h2>{s(`The ASTRÉE Static Analyzer`)}</h2>
       <LINK href="http://www.airbus.com/">
-        <img src="/static/astree.gif" alt="A340"/>
+        <img src="/static/astree.gif" alt="Airbus website, user's of ASTRÉE"/>
       </LINK>
       <p>
       <em>
-        <LINK href="http://www-verimag.imag.fr/~monniaux/">{s(`David Monniaux, member of the ASTRÉE project at CNRS`)}</LINK>
-        {s(`, says:`)}
+        <LINK href="http://www-verimag.imag.fr/~monniaux/">{s(`David Monniaux, member of the ASTRÉE project`)}</LINK>
+        {s(` at CNRS, says:`)}
       </em>
       {s(` "`)}
       <LINK href="http://www.astree.ens.fr/">
@@ -185,10 +185,10 @@ let default = () =>
     <h2>{s(`SLAM`)}</h2>
       <p>
       <LINK href="http://research.microsoft.com/en-us/projects/slam/">
-        {s(`The SLAM project's goal was to automatically check that a C program correctly uses the interface 
-        to an external library`)}
+        {s(`The SLAM project's`)}
       </LINK>
-      {s(`. It originated in Microsoft Research in early 2000. The project used and extended ideas from symbolic model checking, 
+      {s(` goal was to automatically check that a C program correctly uses the interface to an external library. It 
+      originated in Microsoft Research in early 2000. The project used and extended ideas from symbolic model checking, 
       program analysis and theorem proving in novel ways to address this problem. The SLAM analysis engine forms the 
       core of a new tool called Static Driver Verifier (SDV) that systematically analyzes the source code of Windows 
       device drivers against a set of rules that define what it means for a device driver to properly interact with 

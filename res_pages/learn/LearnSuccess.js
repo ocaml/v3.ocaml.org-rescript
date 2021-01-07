@@ -7,7 +7,7 @@ function $$default(param) {
   return React.createElement(React.Fragment, undefined, React.createElement("h1", undefined, "Success Stories"), React.createElement("h2", undefined, "Jane Street"), React.createElement(Markdown$Ocamlorg.LINK.make, {
                   href: "http://janestreet.com/technology/",
                   children: React.createElement("img", {
-                        alt: "Jane Street logo",
+                        alt: "Jane Street technology website",
                         src: "/static/jane-street.jpeg"
                       })
                 }), React.createElement("p", undefined, "Jane Street is a proprietary trading firm that uses OCaml as its primary development platform. \n      Our operation runs at a large scale, generating billions of dollars of transactions every day from \n      our offices in Hong Kong, London and New York, with strategies that span many asset classes, \n      time-zones and regulatory regimes."), React.createElement("p", undefined, "Almost all of of our software is written in OCaml, from statistical research code to \n      systems-administration tools to our real-time trading infrastructure. OCaml’s type system acts \n      as a rich and well-integrated set of static analysis tools that help improve the quality \n      of our code, catching bugs at the earliest possible stage. Billions of dollars of transactions \n      flow through our systems every day, so getting it right matters. At the same time, OCaml is \n      highly productive, helping us quickly adapt to changing market conditions."), React.createElement("p", undefined, "Jane Street has been contributing open-source libraries back to the wider community for many years, \n      including Core, our alternative standard library, Async, a cooperative concurrency library, and several \n      syntax extensions like binprot and sexplib. All of these can be found at ", React.createElement(Markdown$Ocamlorg.LINK.make, {
@@ -16,7 +16,7 @@ function $$default(param) {
                     }), ". All in, we\'ve open-sourced more than 200k lines of code."), React.createElement("h2", undefined, "The Unison File Synchronizer"), React.createElement(Markdown$Ocamlorg.LINK.make, {
                   href: "/static/unison.png",
                   children: React.createElement("img", {
-                        alt: "Unison user interface thumbnail",
+                        alt: "Unison user interface screenshot",
                         src: "/static/unison-thumb.jpeg"
                       })
                 }), React.createElement("p", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
@@ -28,7 +28,7 @@ function $$default(param) {
                         }), " at University of Pennsylvania, says:"), " \"I think Unison is a very clear success for OCaml – in particular, for the extreme portability \n      and overall excellent engineering of the compiler and runtime system. OCaml\'s strong static typing, \n      in combination with its powerful module system, helped us organize a large and intricate codebase \n      with a high degree of encapsulation. This has allowed us to maintain a high level of robustness \n      through years of work by many different programmers. In fact, Unison may be unique among large OCaml \n      projects in having been ", "translated", " from Java to OCaml midway through its development. Moving to OCaml was like a breath of fresh air.\""), React.createElement("h2", undefined, "The MLdonkey peer-to-peer client"), React.createElement(Markdown$Ocamlorg.LINK.make, {
                   href: "/static/mldonkey.jpg",
                   children: React.createElement("img", {
-                        alt: "MLDonkey screenshot thumbnail",
+                        alt: "MLDonkey screenshot",
                         src: "/static/mldonkey-thumb.jpg"
                       })
                 }), React.createElement("p", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
@@ -40,7 +40,7 @@ function $$default(param) {
                     }), ", with about 10,000 daily users. Moreover, MLdonkey is the only client able \n      to connect to several peer-to-peer networks, to download and share files. It works as a daemon, running \n      unattended on the computer, and can be controlled remotely using a choice of three different kinds of \n      interfaces: GTK, web and telnet.\""), React.createElement("h2", undefined, "LexiFi\'s Modeling Language for Finance"), React.createElement(Markdown$Ocamlorg.LINK.make, {
                   href: "/static/lexifi.jpg",
                   children: React.createElement("img", {
-                        alt: "Thumbnail of report produced by LexiFi",
+                        alt: "Report produced by LexiFi",
                         src: "/static/lexifi-thumb.jpg"
                       })
                 }), React.createElement("p", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
@@ -49,25 +49,25 @@ function $$default(param) {
                     }), ". MLFi is the first formal language that accurately describes the \n      most sophisticated capital market, credit, and investment products. MLFi is implemented as an extension of OCaml."), React.createElement("p", undefined, "MLFi users derive two important benefits from a functional programming approach. First, the declarative formalism \n      of functional programming languages is well suited for ", React.createElement("em", undefined, "specifying"), " complex data structures and algorithms. Second, functional programming languages have strong ", React.createElement("em", undefined, "list processing"), " capabilities. Lists play a central role in finance where they are used extensively to define contract \n      event and payment schedules."), React.createElement("p", undefined, "In addition, MLFi provides crucial business integration capabilities inherited from OCaml and related tools \n      and libraries. This enables users, for example, to interoperate with C and Java programs, manipulate XML schemas \n      and documents, and interface with SQL databases."), React.createElement("p", undefined, "Data models and object models aiming to encapsulate the definitions and behavior of financial instruments were \n      developed by the banking industry over the past two decades, but face inherent limitations that OCaml helped overcome."), React.createElement("p", undefined, "LexiFi\'s approach to modeling complex financial contracts received an academic award in 2000, and the \n      MLFi implementation was elected \"Software Product of the Year 2001\" by the magazine ", React.createElement("em", undefined, "Risk"), ", the leading financial trading and risk management publication. MLFi-based solutions are gaining growing \n      acceptance throughout Europe and are contributing to spread the use of OCaml in the financial services industry."), React.createElement("h2", undefined, "The Coq Proof Assistant"), React.createElement(Markdown$Ocamlorg.LINK.make, {
                   href: "/static/coq.jpg",
                   children: React.createElement("img", {
-                        alt: "Coq thumbnail",
+                        alt: "Coq screenshot",
                         src: "/static/coq-thumb.jpg"
                       })
                 }), React.createElement("p", undefined, React.createElement("em", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
                           href: "https://www.lri.fr/~filliatr/",
-                          children: "Jean-Christophe Filliâtre, a Coq developer at CNRS"
-                        }), ", says:"), " \"", React.createElement(Markdown$Ocamlorg.LINK.make, {
+                          children: "Jean-Christophe Filliâtre, a Coq developer"
+                        }), " at CNRS, says:"), " \"", React.createElement(Markdown$Ocamlorg.LINK.make, {
                       href: "http://coq.inria.fr/",
                       children: "The Coq tool is a system for manipulating formal mathematical proofs"
                     }), "; a proof carried out in Coq is mechanically \n      verified by the machine. In addition to its applications in mathematics, Coq also allows certifying the \n      correctness of computer programs.\""), React.createElement("p", undefined, "\"From the Coq standpoint, OCaml is attractive on multiple grounds. First, the OCaml language is perfectly \n      suited for symbolic manipulations, which are of paramount importance in a proof assistant. Furthermore, \n      OCaml\'s type system, and particularly its notion of abstract type, allow securely encapsulating Coq\'s critical \n      code base, which guarantees the logical consistency of the whole system. Last, OCaml\'s strong type system ", React.createElement("em", undefined, "de facto"), " grants Coq\'s code a high level of quality: errors such as \"segmentation faults\" cannot occur during execution, \n      which is indispensable for a tool whose primary goal is precisely rigor.\""), React.createElement("h2", undefined, "The ASTRÉE Static Analyzer"), React.createElement(Markdown$Ocamlorg.LINK.make, {
                   href: "http://www.airbus.com/",
                   children: React.createElement("img", {
-                        alt: "A340",
+                        alt: "Airbus website, user's of ASTR\xc3\x89E",
                         src: "/static/astree.gif"
                       })
                 }), React.createElement("p", undefined, React.createElement("em", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
                           href: "http://www-verimag.imag.fr/~monniaux/",
-                          children: "David Monniaux, member of the ASTRÉE project at CNRS"
-                        }), ", says:"), " \"", React.createElement(Markdown$Ocamlorg.LINK.make, {
+                          children: "David Monniaux, member of the ASTRÉE project"
+                        }), " at CNRS, says:"), " \"", React.createElement(Markdown$Ocamlorg.LINK.make, {
                       href: "http://www.astree.ens.fr/",
                       children: null
                     }, "ASTRÉE is a ", React.createElement("em", undefined, "static analyzer")), " based on the ", React.createElement("em", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
@@ -78,8 +78,8 @@ function $$default(param) {
                       children: "Airbus A340 family"
                     }), ". This would be impossible by ", React.createElement("em", undefined, "software testing"), ", for testing only considers a limited ", React.createElement("em", undefined, "subset"), " of the test cases, while abstract interpretation considers a ", React.createElement("em", undefined, "superset"), " of all possible outcomes of the system.\""), React.createElement("p", undefined, "\"ASTRÉE is written in OCaml and is about 44000 lines long (plus external libraries). We needed a language with good \n      performance (speed and memory usage) on reasonable equipment, easy support for advanced data structures, and type \n      memory safety. OCaml also allows for modular, clear and compact source code and makes it easy to work with \n      recursive structures such as syntax trees.\""), React.createElement("h2", undefined, "SLAM"), React.createElement("p", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
                       href: "http://research.microsoft.com/en-us/projects/slam/",
-                      children: "The SLAM project\'s goal was to automatically check that a C program correctly uses the interface \n        to an external library"
-                    }), ". It originated in Microsoft Research in early 2000. The project used and extended ideas from symbolic model checking, \n      program analysis and theorem proving in novel ways to address this problem. The SLAM analysis engine forms the \n      core of a new tool called Static Driver Verifier (SDV) that systematically analyzes the source code of Windows \n      device drivers against a set of rules that define what it means for a device driver to properly interact with \n      the Windows operating system kernel."), React.createElement("p", undefined, React.createElement("em", undefined, "In a ", React.createElement(Markdown$Ocamlorg.LINK.make, {
+                      children: "The SLAM project\'s"
+                    }), " goal was to automatically check that a C program correctly uses the interface to an external library. It \n      originated in Microsoft Research in early 2000. The project used and extended ideas from symbolic model checking, \n      program analysis and theorem proving in novel ways to address this problem. The SLAM analysis engine forms the \n      core of a new tool called Static Driver Verifier (SDV) that systematically analyzes the source code of Windows \n      device drivers against a set of rules that define what it means for a device driver to properly interact with \n      the Windows operating system kernel."), React.createElement("p", undefined, React.createElement("em", undefined, "In a ", React.createElement(Markdown$Ocamlorg.LINK.make, {
                           href: "http://research.microsoft.com/apps/pubs/default.aspx?id=70038",
                           children: "technical report about the SLAM project"
                         }), ", T.Ball, B.Cook, V.Levin and S.K.Rajamani, the SLAM developers, write:"), " \"The Right Tools for the Job: We developed SLAM using Inria\'s OCaml functional programming language. The \n      expressiveness of this language and robustness of its implementation provided a great productivity boost.\""), React.createElement("h2", undefined, "FFTW"), React.createElement("p", undefined, React.createElement(Markdown$Ocamlorg.LINK.make, {
