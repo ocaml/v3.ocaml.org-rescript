@@ -5,6 +5,7 @@ let make = (~editpath) => {
     let editUrl = "https://github.com/ocaml/ocaml.org/edit/master/" ++ editpath;
     <nav
       role="navigation"
+      ariaLabel="Main"
       className="p-2 h-12 flex border-b border-gray-200 items-center text-sm">
 
       <Link href="/">

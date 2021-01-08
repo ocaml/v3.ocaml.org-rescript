@@ -7,6 +7,7 @@ function HeaderNavigation(Props) {
   var editpath = Props.editpath;
   var editUrl = "https://github.com/ocaml/ocaml.org/edit/master/" + editpath;
   return React.createElement("nav", {
+              "aria-label": "Main",
               className: "p-2 h-12 flex border-b border-gray-200 items-center text-sm",
               role: "navigation"
             }, React.createElement(Link, {

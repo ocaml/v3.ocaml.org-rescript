@@ -38,7 +38,10 @@ function LearnSuccess$LeftNav(Props) {
 }
 
 function $$default(param) {
-  return React.createElement(React.Fragment, undefined, React.createElement("div", undefined, React.createElement("div", undefined, React.createElement(LearnSuccess$LeftNav, {})), React.createElement("div", undefined, React.createElement("h1", undefined, "Success Stories"), React.createElement("h2", {
+  return React.createElement(React.Fragment, undefined, React.createElement("div", undefined, React.createElement("nav", {
+                      "aria-label": "Table of Contents",
+                      role: "navigation"
+                    }, React.createElement(LearnSuccess$LeftNav, {})), React.createElement("div", undefined, React.createElement("h1", undefined, "Success Stories"), React.createElement("h2", {
                           id: "jane-street"
                         }, "Jane Street"), React.createElement(Markdown$Ocamlorg.LINK.make, {
                           href: "http://janestreet.com/technology/",

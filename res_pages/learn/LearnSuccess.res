@@ -6,9 +6,7 @@ module LeftNav = {
   @react.component
   let make = () => {
     <>
-    <h2>
-      {s("Contents")}
-    </h2>
+    <h2>{s("Contents")}</h2>
     <ul>
       <li><LINK href="#jane-street">{s(`Jane Street`)}</LINK></li>
       <li><LINK href="#the-union-file-synchronizer">{s(`The Union File Synchronizer`)}</LINK></li>
@@ -28,7 +26,7 @@ module LeftNav = {
 let default = () =>
   <>
   <div>
-    <div> <LeftNav /> </div>
+    <nav role="navigation" ariaLabel="Table of Contents"> <LeftNav /> </nav>
     <div>
       <h1>{s(`Success Stories`)}</h1>
         <h2 id="jane-street">{s(`Jane Street`)}</h2>
