@@ -25,17 +25,35 @@ let default = () =>
       {s(`.`)}
     </p>
     <p>{s(`Here is one example:`)}</p>
-    <pre>
-    </pre>
+      <pre>
+        <code>
+        {s(
+`<a href="http://ocaml.org">
+  <img src="http://ocaml.org/logo/Colour/PNG/colour-logo.png"
+       alt="OCaml"
+       style="border: none; width: 150px;" />
+</a>`)}
+        </code>
+      </pre>
     <p>{s(`Here is another example:`)}</p>
-    <pre>
-    </pre>
+      <pre>
+        <code>
+    {s(
+`<a href="http://ocaml.org">
+  <img src="http://ocaml.org/logo/Colour/SVG/colour-logo.svg"
+       alt="OCaml"
+       style="border: none; width: 150px;" />
+</a>`)}
+        </code>
+      </pre>
     <h2>{s(`Stickers`)}</h2>
-    <img src="/static/OCaml_Sticker.svg" alt="OCaml logo for sticker"/>
+    <img style=(ReactDOM.Style.make(~width="150px", ())) 
+      src="/static/OCaml_Sticker.svg" 
+      alt="OCaml logo for sticker"/>
     <p>
       {s(`The following `)}
       {s(`OCaml sticker SVG file`)}
-      {s(`is suitable to make stickers, as seen in this`)}
+      {s(` is suitable to make stickers, as seen in this`)}
       {s(`tweet announcing stickers made`)}
       {s(`. Similar to the logo, the `)}
       {s(`OCaml sticker file is released under a liberal license`)}
