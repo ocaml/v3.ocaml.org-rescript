@@ -1,4 +1,4 @@
-// module LINK = Markdown.LINK
+module LINK = Markdown.LINK
 
 let s = React.string
 
@@ -10,18 +10,18 @@ let default = () =>
       incorporate the OCaml logo somewhere in their page to indicate their support 
       for OCaml development. The logo should be linked to the OCaml website, ocaml.org. 
       The `)}
-      {s(`logo is available in several formats`)}
+      <LINK href="https://github.com/ocaml/ocaml-logo/tree/master/Colour">{s(`logo is available in several formats`)}</LINK>
       {s(`. Also, the `)}
-      {s(`logo is available in several colors`)}
+      <LINK href="https://github.com/ocaml/ocaml-logo">{s(`logo is available in several colors`)}</LINK>
       {s(`. Two versions are displayed below. To include one of them on your web page,
       just copy and paste the associated HTML code and tweak it (e.g. adapt the `)}
-      {s(`width`)}
+      <code>{s(`width`)}</code>
       {s(` or change the part after `)}
-      {s(`logo/`)}
+      <code>{s(`logo/`)}</code>
       {s(` to match the path of the file you want to use in the `)}
-      {s(`logo repository`)}
+      <LINK href="https://github.com/ocaml/ocaml-logo">{s(`logo repository`)}</LINK>
       {s(`). The `)}
-      {s(`OCaml logo is released under a liberal license`)}
+      <LINK href="https://github.com/ocaml/ocaml.org/blob/master/LICENSE.md">{s(`OCaml logo is released under a liberal license`)}</LINK>
       {s(`.`)}
     </p>
     <p>{s(`Here is one example:`)}</p>
@@ -52,19 +52,19 @@ let default = () =>
       alt="OCaml logo for sticker"/>
     <p>
       {s(`The following `)}
-      {s(`OCaml sticker SVG file`)}
-      {s(` is suitable to make stickers, as seen in this`)}
-      {s(`tweet announcing stickers made`)}
+      <LINK href="https://ocaml.org/img/OCaml_Sticker.svg">{s(`OCaml sticker SVG file`)}</LINK>
+      {s(` is suitable to make stickers, as seen in this `)}
+      <LINK href="https://twitter.com/ocamllabs/status/761191421680422912">{s(`tweet announcing stickers made`)}</LINK>
       {s(`. Similar to the logo, the `)}
-      {s(`OCaml sticker file is released under a liberal license`)}
+      <LINK href="https://github.com/ocaml/ocaml.org/blob/master/LICENSE.md">{s(`OCaml sticker file is released under a liberal license`)}</LINK>
       {s(`, so do no hesitate to print your own stickers to promote OCaml!`)}
     </p>
     <p>
       {s(`Before printing some stickers, it would be great if you tweeted it with 
-      tags `)}
-      {s(`#OCaml stickers`)}
-      {s(`, similar to these `)}
-      {s(`OCaml stickers tweets`)}
+      tag `)}
+      <code>{s(`#OCaml`)}</code>
+      {s(` and mentioning "stickers", similar to these `)}
+      <LINK href="https://twitter.com/search?q=%23OCaml%20stickers&src=typd">{s(`OCaml stickers tweets`)}</LINK>
       {s(`, so that other interested people in your area can get in touch with you!`)}
     </p>
   </>
