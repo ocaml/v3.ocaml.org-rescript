@@ -51,7 +51,7 @@ let default = () =>
       src="/static/OCaml_Sticker.svg" 
       alt="OCaml logo for sticker"/>
     <p>
-      {s(`The following `)}
+      {s(`The `)}
       <LINK href="https://ocaml.org/img/OCaml_Sticker.svg">{s(`OCaml sticker SVG file`)}</LINK>
       {s(` is suitable to make stickers, as seen in this `)}
       <LINK href="https://twitter.com/ocamllabs/status/761191421680422912">{s(`tweet announcing stickers made`)}</LINK>

@@ -22,7 +22,7 @@ function $$default(param) {
                   },
                   alt: "OCaml logo for sticker",
                   src: "/static/OCaml_Sticker.svg"
-                }), React.createElement("p", undefined, "The following ", React.createElement(Markdown$Ocamlorg.LINK.make, {
+                }), React.createElement("p", undefined, "The ", React.createElement(Markdown$Ocamlorg.LINK.make, {
                       href: "https://ocaml.org/img/OCaml_Sticker.svg",
                       children: "OCaml sticker SVG file"
                     }), " is suitable to make stickers, as seen in this ", React.createElement(Markdown$Ocamlorg.LINK.make, {
