@@ -1,6 +1,5 @@
 # ocaml.org
 
-
 ## Issue workflow
 
 ### Contributor
