@@ -1,5 +1,3 @@
-// module LINK = Markdown.LINK
-
 let s = React.string
 
 let default = () =>
