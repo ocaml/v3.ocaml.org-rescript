@@ -176,22 +176,26 @@ of this license document, but changing it is not allowed.`)}
       {s(`2. You may modify your copy or copies of the Library or any portion of it, thus forming a 
       work based on the Library, and copy and distribute such modifications or work under the terms of 
       Section 1 above, provided that you also meet all of these conditions:`)}
-      <ol>
+      <ul>
         <li>{s(`a) The modified work must itself be a software library.`)}</li>
         <li>{s(`b) You must cause the files modified to carry prominent notices stating that 
         you changed the files and the date of any change.`)}</li>
         <li>{s(`c) You must cause the whole of the work to be licensed at no charge to all 
         third parties under the terms of this License.`)}</li>
-        <li>{s(`d) If a facility in the modified Library refers to a function or a table of data 
-        to be supplied by an application program that uses the facility, other than as an argument 
-        passed when the facility is invoked, then you must make a good faith effort to ensure that, 
-        in the event an application does not supply such function or table, the facility still 
-        operates, and performs whatever part of its purpose remains meaningful.`)}</li>
-      </ol>
-      {s(`(For example, a function in a library to compute square roots has a purpose that is entirely 
-      well-defined independent of the application. Therefore, Subsection 2d requires that any 
-      application-supplied function or table used by this function must be optional: if the 
-      application does not supply it, the square root function must still compute square roots.)`)}
+        <li>
+          {s(`d) If a facility in the modified Library refers to a function or a table of data 
+          to be supplied by an application program that uses the facility, other than as an argument 
+          passed when the facility is invoked, then you must make a good faith effort to ensure that, 
+          in the event an application does not supply such function or table, the facility still 
+          operates, and performs whatever part of its purpose remains meaningful.`)}
+          <br />
+          {s(`(For example, a function in a library to compute square roots has a purpose that is 
+          entirely well-defined independent of the application. Therefore, Subsection 2d requires 
+          that any application-supplied function or table used by this function must be optional: 
+          if the application does not supply it, the square root function must still compute square 
+          roots.)`)}
+        </li>
+      </ul>
     </p>
     <p>
       {s(`These requirements apply to the modified work as a whole. If identifiable sections of that 
@@ -261,10 +265,248 @@ of this license document, but changing it is not allowed.`)}
       or if the work is itself a library. The threshold for this to be true is not precisely defined by 
       law.`)}
     </p>
-    
-
     <p>
-      {s(``)}
+      {s(`If such an object file uses only numerical parameters, data structure layouts and accessors, 
+      and small macros and small inline functions (ten lines or less in length), then the use of the 
+      object file is unrestricted, regardless of whether it is legally a derivative work. (Executables 
+      containing this object code plus portions of the Library will still fall under Section 6.)`)}
+    </p>
+    <p>
+      {s(`Otherwise, if the work is a derivative of the Library, you may distribute the object code 
+      for the work under the terms of Section 6. Any executables containing that work also fall 
+      under Section 6, whether or not they are linked directly with the Library itself.`)}
+    </p>
+    <p>
+      {s(`6. As an exception to the Sections above, you may also combine or link a "work that uses 
+      the Library" with the Library to produce a work containing portions of the Library, and 
+      distribute that work under terms of your choice, provided that the terms permit modification 
+      of the work for the customer's own use and reverse engineering for debugging such modifications.`)}
+    </p>
+    <p>
+      {s(`You must give prominent notice with each copy of the work that the Library is used in it 
+      and that the Library and its use are covered by this License. You must supply a copy of this 
+      License. If the work during execution displays copyright notices, you must include the copyright 
+      notice for the Library among them, as well as a reference directing the user to the copy of 
+      this License. Also, you must do one of these things:`)}
+      <ul>
+        <li>
+          {s(`a) Accompany the work with the complete corresponding machine-readable source code 
+          for the Library including whatever changes were used in the work (which must be distributed 
+          under Sections 1 and 2 above); and, if the work is an executable linked with the Library, 
+          with the complete machine-readable "work that uses the Library", as object code and/or 
+          source code, so that the user can modify the Library and then relink to produce a modified 
+          executable containing the modified Library. (It is understood that the user who changes the 
+          contents of definitions files in the Library will not necessarily be able to recompile the 
+          application to use the modified definitions.)`)}
+        </li>
+        <li>
+          {s(`b) Use a suitable shared library mechanism for linking with the Library. A suitable mechanism 
+          is one that (1) uses at run time a copy of the library already present on the user's computer 
+          system, rather than copying library functions into the executable, and (2) will operate properly 
+          with a modified version of the library, if the user installs one, as long as the modified version 
+          is interface-compatible with the version that the work was made with.`)}
+        </li>
+        <li>
+          {s(`c) Accompany the work with a written offer, valid for at least three years, to give the same 
+          user the materials specified in Subsection 6a, above, for a charge no more than the cost of 
+          performing this distribution.`)}
+        </li>
+        <li>
+          {s(`d) If distribution of the work is made by offering access to copy from a designated place, offer 
+          equivalent access to copy the above specified materials from the same place.`)}
+        </li>
+        <li>
+          {s(`e) Verify that the user has already received a copy of these materials or that you have already 
+          sent this user a copy.`)}
+        </li>
+      </ul>
+    </p>
+    <p>
+      {s(`For an executable, the required form of the "work that uses the Library" must include any data 
+      and utility programs needed for reproducing the executable from it. However, as a special exception, 
+      the materials to be distributed need not include anything that is normally distributed (in either 
+      source or binary form) with the major components (compiler, kernel, and so on) of the operating 
+      system on which the executable runs, unless that component itself accompanies the executable.`)}
+    </p>
+    <p>
+      {s(`It may happen that this requirement contradicts the license restrictions of other proprietary 
+      libraries that do not normally accompany the operating system. Such a contradiction means you 
+      cannot use both them and the Library together in an executable that you distribute.`)}
+    </p>
+    <p>
+      {s(`7. You may place library facilities that are a work based on the Library side-by-side 
+      in a single library together with other library facilities not covered by this License, 
+      and distribute such a combined library, provided that the separate distribution of the work 
+      based on the Library and of the other library facilities is otherwise permitted, and 
+      provided that you do these two things:`)}
+      <ul>
+        <li>
+          {s(`a) Accompany the combined library with a copy of the same work based on the Library, 
+          uncombined with any other library facilities. This must be distributed under the terms of 
+          the Sections above.`)}
+        </li>
+        <li>
+          {s(`b) Give prominent notice with the combined library of the fact that part of it is a work 
+          based on the Library, and explaining where to find the accompanying uncombined form of the 
+          same work.`)}
+        </li>
+      </ul>
+    </p>
+    <p>
+      {s(`8. You may not copy, modify, sublicense, link with, or distribute the Library except as 
+      expressly provided under this License. Any attempt otherwise to copy, modify, sublicense, 
+      link with, or distribute the Library is void, and will automatically terminate your rights 
+      under this License. However, parties who have received copies, or rights, from you under this 
+      License will not have their licenses terminated so long as such parties remain in full compliance.`)}
+    </p>
+    <p>
+      {s(`9. You are not required to accept this License, since you have not signed it. However, 
+      nothing else grants you permission to modify or distribute the Library or its derivative works. 
+      These actions are prohibited by law if you do not accept this License. Therefore, by modifying 
+      or distributing the Library (or any work based on the Library), you indicate your acceptance of 
+      this License to do so, and all its terms and conditions for copying, distributing or modifying 
+      the Library or works based on it.`)}
+    </p>
+    <p>
+      {s(`10. Each time you redistribute the Library (or any work based on the Library), the recipient 
+      automatically receives a license from the original licensor to copy, distribute, link with or 
+      modify the Library subject to these terms and conditions. You may not impose any further 
+      restrictions on the recipients' exercise of the rights granted herein. You are not responsible 
+      for enforcing compliance by third parties with this License.`)}
+    </p>
+    <p>
+      {s(`11. If, as a consequence of a court judgment or allegation of patent infringement or for any 
+      other reason (not limited to patent issues), conditions are imposed on you (whether by court 
+      order, agreement or otherwise) that contradict the conditions of this License, they do not 
+      excuse you from the conditions of this License. If you cannot distribute so as to satisfy 
+      simultaneously your obligations under this License and any other pertinent obligations, then 
+      as a consequence you may not distribute the Library at all. For example, if a patent license 
+      would not permit royalty-free redistribution of the Library by all those who receive copies 
+      directly or indirectly through you, then the only way you could satisfy both it and this 
+      License would be to refrain entirely from distribution of the Library.`)}
+    </p>
+    <p>
+      {s(`If any portion of this section is held invalid or unenforceable under any particular 
+      circumstance, the balance of the section is intended to apply, and the section as a whole 
+      is intended to apply in other circumstances.`)}
+    </p>
+    <p>
+      {s(`It is not the purpose of this section to induce you to infringe any patents or other 
+      property right claims or to contest validity of any such claims; this section has the 
+      sole purpose of protecting the integrity of the free software distribution system which 
+      is implemented by public license practices. Many people have made generous contributions 
+      to the wide range of software distributed through that system in reliance on consistent 
+      application of that system; it is up to the author/donor to decide if he or she is 
+      willing to distribute software through any other system and a licensee cannot impose that 
+      choice.`)}
+    </p>
+    <p>
+      {s(`This section is intended to make thoroughly clear what is believed to be a consequence 
+      of the rest of this License.`)}
+    </p>
+    <p>
+      {s(`12. If the distribution and/or use of the Library is restricted in certain countries 
+      either by patents or by copyrighted interfaces, the original copyright holder who places 
+      the Library under this License may add an explicit geographical distribution limitation 
+      excluding those countries, so that distribution is permitted only in or among countries 
+      not thus excluded. In such case, this License incorporates the limitation as if written 
+      in the body of this License.`)}
+    </p>
+    <p>
+      {s(`13. The Free Software Foundation may publish revised and/or new versions of the Lesser 
+      General Public License from time to time. Such new versions will be similar in spirit to 
+      the present version, but may differ in detail to address new problems or concerns.`)}
+    </p>
+    <p>
+      {s(`Each version is given a distinguishing version number. If the Library specifies a 
+      version number of this License which applies to it and "any later version", you have 
+      the option of following the terms and conditions either of that version or of any later 
+      version published by the Free Software Foundation. If the Library does not specify a 
+      license version number, you may choose any version ever published by the Free Software 
+      Foundation.`)}
+    </p>
+    <p>
+      {s(`14. If you wish to incorporate parts of the Library into other free programs whose 
+      distribution conditions are incompatible with these, write to the author to ask for 
+      permission. For software which is copyrighted by the Free Software Foundation, write 
+      to the Free Software Foundation; we sometimes make exceptions for this. Our decision will 
+      be guided by the two goals of preserving the free status of all derivatives of our 
+      free software and of promoting the sharing and reuse of software generally.`)}
+    </p>
+    <p>
+      {s(`NO WARRANTY`)}
+    </p>
+    <p>
+      {s(`15. BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR THE 
+      LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN 
+      WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE LIBRARY "AS IS" 
+      WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT 
+      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+      PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE LIBRARY IS WITH 
+      YOU. SHOULD THE LIBRARY PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, 
+      REPAIR OR CORRECTION.`)}
+    </p>
+    <p>
+      {s(`16. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL 
+      ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE THE LIBRARY 
+      AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL 
+      OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE LIBRARY (INCLUDING 
+      BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU 
+      OR THIRD PARTIES OR A FAILURE OF THE LIBRARY TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF SUCH 
+      HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.`)}
+    </p>
+    <h3>{s(`END OF TERMS AND CONDITIONS`)}</h3>
+    <h3>{s(`How to Apply These Terms to Your New Libraries`)}</h3>
+    <p>
+      {s(`If you develop a new library, and you want it to be of the greatest possible use to the 
+      public, we recommend making it free software that everyone can redistribute and change. You 
+      can do so by permitting redistribution under these terms (or, alternatively, under the terms 
+      of the ordinary General Public License).`)}
+    </p>
+    <p>
+      {s(`To apply these terms, attach the following notices to the library. It is safest to attach 
+      them to the start of each source file to most effectively convey the exclusion of warranty; 
+      and each file should have at least the "copyright" line and a pointer to where the full notice 
+      is found.`)}
+    </p>
+    <p>
+      <var>{s(`one line to give the library's name and an idea of what it does.`)}</var><br />
+      {s(`Copyright (C) `)}<var>{s(`year`)}</var>{s(` `)}<var>{s(`name of author`)}</var>
+    </p>
+    <p>
+      {s(`This library is free software; you can redistribute it and/or modify it under the terms of 
+      the GNU Lesser General Public License as published by the Free Software Foundation; either 
+      version 2.1 of the License, or (at your option) any later version.`)}
+    </p>
+    <p>
+      {s(`This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+      without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+      See the GNU Lesser General Public License for more details.`)}
+    </p>
+    <p>
+      {s(`You should have received a copy of the GNU Lesser General Public License along with this 
+      library; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+      Boston, MA  02110-1301  USA`)}
+    </p>
+    <p>
+      {s(`Also add information on how to contact you by electronic and paper mail.`)}
+    </p>
+    <p>
+      {s(`You should also get your employer (if you work as a programmer) or your school, if any, to 
+      sign a "copyright disclaimer" for the library, if necessary. Here is a sample; alter the names:`)}
+    </p>
+    <p>
+      {s(`Yoyodyne, Inc., hereby disclaims all copyright interest in the library 'Frob' (a library 
+      for tweaking knobs) written by James Random Hacker.`)}
+    </p>
+    <p>
+      <var>{s(`signature of Ty Coon`)}</var>{s(`, 1 April 1990`)}
+    </p>
+    <p>
+      {s(`Ty Coon, President of Vice`)}
+    </p>
+    <p>
+      {s(`That's all there is to it!`)}
     </p>
   </div>
   </>
