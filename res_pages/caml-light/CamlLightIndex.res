@@ -1,3 +1,5 @@
+module LINK = Markdown.LINK
+
 let s = React.string
 
 let default = () =>
@@ -19,19 +21,33 @@ let default = () =>
     enough to recompile the whole system.`)}
   </p>
   <p>
-    {s(`Debugging is possible by tracing function calls in the same way as in OCaml. In the 
-    example therein, one should write 
-    trace "fib";;
-     instead of 
-    #trace fib;;
-     and 
-    untrace "fib";; 
-    instead of 
-    #untrace fib;;
-    . There also exists a debugger, as a user contribution.`)}
+    <LINK href="https://ocaml.org/learn/tutorials/debug.html">{s(`Debugging is possible by tracing function calls`)}</LINK>
+    {s(` in the same way as in OCaml. In the example therein, one should write `)}
+    <code>{s(`trace "fib";;`)}</code>
+    {s(` instead of `)}
+    <code>{s(`#trace fib;;`)}</code>
+    {s(` and `)}
+    <code>{s(`untrace "fib";;`)}</code> 
+    {s(` instead of `)} 
+    <code>{s(`#untrace fib;;`)}</code>
+    {s(`. There also exists a debugger, as a user contribution.`)}
+  </p>
+  <p>
+    {s(`Some common questions are answered in the `)}
+    <LINK href="/caml-light/faq">{s(`Frequently Asked Questions`)}</LINK>
+    {s(`.`)}
   </p>
   <h2>{s(`Availability`)}</h2>
   <p>
-
+    {s(`The Caml Light system is open source software. Please read the `)}
+    <LINK href="/caml-light/license">{s(`Caml Light license`)}</LINK>
+    {s(` for more details. The `)}
+    <LINK href="/caml-light/releases">{s(`latest release`)}</LINK>
+    {s(` can be freely downloaded on this site, together with its `)}
+    <LINK href="http://caml.inria.fr/pub/docs/manual-caml-light/">{s(`user's manual`)}</LINK>
+    {s(`. See also `)}
+    <LINK href="http://caml.inria.fr/pub/docs/fpcl/index.html">{s(`"Functional programming using Caml Light" guide`)}</LINK>
+    {s(` for an introduction to functional programming 
+    in general and the Caml Light language in particular.`)}
   </p>
   </>
