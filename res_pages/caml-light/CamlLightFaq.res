@@ -9,16 +9,16 @@ let default = () =>
         <ul>
           <li>
             {s(`under Unix: define the `)}
-            {s(`LANG`)}
+            <code>{s(`LANG`)}</code>
             {s(` environment variable, or call the Caml Light system with option `)}
-            {s(`-lang`)}
+            <code>{s(`-lang`)}</code>
             {s(`.`)}
           </li>
           <li>
             {s(`under Windows use the `)}
-            {s(`-lang`)}
+            <code>{s(`-lang`)}</code>
             {s(` option on the command line, or in the `)}
-            {s(`CAMLWIN.INI`)}
+            <code>{s(`CAMLWIN.INI`)}</code>
             {s(` file.`)}
           </li>
           <li>
