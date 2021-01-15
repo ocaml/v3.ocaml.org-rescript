@@ -34,6 +34,9 @@
     "rescript:clean": "bsb -clean-world",
     "rescript:start": "bsb -make-world -w"
   },
+  "scriptsDescription": {
+    "next:start": "prefer invoking next:start with the output of next:export"
+  },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "gentype": "^3.39.0",
