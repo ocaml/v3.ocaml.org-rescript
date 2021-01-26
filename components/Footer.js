@@ -7,42 +7,6 @@ function s(prim) {
   return prim;
 }
 
-var footer = "Footer";
-
-var ocamlSummary = "Innovation. Community. Security.";
-
-var industry = "Industry";
-
-var whatIsOcaml = "What is OCaml";
-
-var industrialUsers = "Industrial Users";
-
-var successStories = "Success Stories";
-
-var resources = "Resources";
-
-var documentation = "Documentation";
-
-var learn = "Learn";
-
-var community = "Community";
-
-var opportunities = "Opportunities";
-
-var news = "News";
-
-var aroundTheWeb = "Around the Web";
-
-var legal = "Legal";
-
-var privacy = "Privacy";
-
-var terms = "Terms";
-
-var claims = "Claims";
-
-var cookies = "Cookies";
-
 function Footer$H3(Props) {
   var children = Props.children;
   return React.createElement("h3", {
@@ -86,13 +50,14 @@ var SocialLink = {
 };
 
 function Footer(Props) {
+  var content = Props.content;
   return React.createElement("footer", {
               "aria-labelledby": "footerHeading",
               className: "bg-white"
             }, React.createElement("h2", {
                   className: "sr-only",
                   id: "footerHeading"
-                }, footer), React.createElement("div", {
+                }, content.footer), React.createElement("div", {
                   className: "max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
                 }, React.createElement("div", {
                       className: "xl:grid xl:grid-cols-3 xl:gap-8"
@@ -104,7 +69,7 @@ function Footer(Props) {
                               src: "/static/ocaml-logo.jpeg"
                             }), React.createElement("p", {
                               className: "text-gray-500 text-base"
-                            }, ocamlSummary), React.createElement("div", {
+                            }, content.ocamlSummary), React.createElement("div", {
                               className: "flex space-x-6"
                             }, React.createElement(Footer$SocialLink, {
                                   children: React.createElement("svg", {
@@ -148,62 +113,62 @@ function Footer(Props) {
                         }, React.createElement("div", {
                               className: "md:grid md:grid-cols-2 md:gap-8"
                             }, React.createElement("div", undefined, React.createElement(Footer$H3, {
-                                      children: industry
+                                      children: content.industry
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: whatIsOcaml,
+                                              children: content.whatIsOcaml,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: industrialUsers,
+                                              children: content.industrialUsers,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: successStories,
+                                              children: content.successStories,
                                               href: "/learn/success"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement(Footer$H3, {
-                                      children: resources
+                                      children: content.resources
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: documentation,
+                                              children: content.documentation,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: learn,
+                                              children: content.learn,
                                               href: "/learn"
                                             }))))), React.createElement("div", {
                               className: "md:grid md:grid-cols-2 md:gap-8"
                             }, React.createElement("div", undefined, React.createElement(Footer$H3, {
-                                      children: community
+                                      children: content.community
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: opportunities,
+                                              children: content.opportunities,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: news,
+                                              children: content.news,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: aroundTheWeb,
+                                              children: content.aroundTheWeb,
                                               href: "#"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement(Footer$H3, {
-                                      children: legal
+                                      children: content.legal
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: privacy,
+                                              children: content.privacy,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: terms,
+                                              children: content.terms,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: claims,
+                                              children: content.claims,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: cookies,
+                                              children: content.cookies,
                                               href: "#"
                                             })))))))));
 }
@@ -215,24 +180,6 @@ var make = Footer;
 export {
   Link$1 as Link,
   s ,
-  footer ,
-  ocamlSummary ,
-  industry ,
-  whatIsOcaml ,
-  industrialUsers ,
-  successStories ,
-  resources ,
-  documentation ,
-  learn ,
-  community ,
-  opportunities ,
-  news ,
-  aroundTheWeb ,
-  legal ,
-  privacy ,
-  terms ,
-  claims ,
-  cookies ,
   H3 ,
   A ,
   SocialLink ,

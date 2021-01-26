@@ -2,24 +2,26 @@ module Link = Next.Link;
 
 let s = React.string
 
-let footer = s(`Footer`)
-let ocamlSummary = s(`Innovation. Community. Security.`)
-let industry = s(`Industry`)
-let whatIsOcaml = s(`What is OCaml`)
-let industrialUsers = s(`Industrial Users`)
-let successStories = s(`Success Stories`)
-let resources = s(`Resources`)
-let documentation = s(`Documentation`)
-let learn = s(`Learn`)
-let community = s(`Community`)
-let opportunities = s(`Opportunities`)
-let news = s(`News`)
-let aroundTheWeb = s(`Around the Web`)
-let legal = s(`Legal`)
-let privacy = s(`Privacy`)
-let terms = s(`Terms`)
-let claims = s(`Claims`)
-let cookies = s(`Cookies`)
+type footerContent = {
+    footer: string,
+    ocamlSummary: string,
+    industry: string,
+    whatIsOcaml: string,
+    industrialUsers: string,
+    successStories: string,
+    resources: string,
+    documentation: string,
+    learn: string,
+    community: string,
+    opportunities: string,
+    news: string,
+    aroundTheWeb: string,
+    legal: string,
+    privacy: string,
+    terms: string,
+    claims: string,
+    cookies: string
+}
 
 module H3 = {
   @react.component
@@ -44,16 +46,15 @@ module SocialLink = {
     </a>
 }
 
-
 @react.component
-let make = () => {
+let make = (~content: footerContent) => {
     <footer className="bg-white" ariaLabelledby="footerHeading">
-        <h2 id="footerHeading" className="sr-only"> footer </h2>
+        <h2 id="footerHeading" className="sr-only"> {s(content.footer)} </h2>
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                 <div className="space-y-8 xl:col-span-1">
                     <img className="h-10" src="/static/ocaml-logo.jpeg" alt="OCaml" />
-                    <p className="text-gray-500 text-base"> ocamlSummary </p>
+                    <p className="text-gray-500 text-base"> {s(content.ocamlSummary)} </p>
                     <div className="flex space-x-6">
                         <SocialLink href="#" label=`Facebook`>
                             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" ariaHidden=true>
@@ -75,37 +76,37 @@ let make = () => {
                 <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
                     <div className="md:grid md:grid-cols-2 md:gap-8">
                         <div>
-                            <H3>industry</H3>
+                            <H3>{s(content.industry)}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">whatIsOcaml</A></li>
-                                <li><A href="#">industrialUsers</A></li>
-                                <li><A href="/learn/success">successStories</A></li>
+                                <li><A href="#">{s(content.whatIsOcaml)}</A></li>
+                                <li><A href="#">{s(content.industrialUsers)}</A></li>
+                                <li><A href="/learn/success">{s(content.successStories)}</A></li>
                             </ul>
                         </div>
                         <div className="mt-12 md:mt-0">
-                            <H3>resources</H3>
+                            <H3>{s(content.resources)}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">documentation</A></li>
-                                <li><A href="/learn">learn</A></li>
+                                <li><A href="#">{s(content.documentation)}</A></li>
+                                <li><A href="/learn">{s(content.learn)}</A></li>
                             </ul>
                         </div>
                     </div>
                     <div className="md:grid md:grid-cols-2 md:gap-8">
                         <div>
-                            <H3>community</H3>
+                            <H3>{s(content.community)}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">opportunities</A></li>
-                                <li><A href="#">news</A></li>
-                                <li><A href="#">aroundTheWeb</A></li>
+                                <li><A href="#">{s(content.opportunities)}</A></li>
+                                <li><A href="#">{s(content.news)}</A></li>
+                                <li><A href="#">{s(content.aroundTheWeb)}</A></li>
                             </ul>
                         </div>
                         <div className="mt-12 md:mt-0">
-                            <H3>legal</H3>
+                            <H3>{s(content.legal)}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">privacy</A></li>
-                                <li><A href="#">terms</A></li>
-                                <li><A href="#">claims</A></li>
-                                <li><A href="#">cookies</A></li>
+                                <li><A href="#">{s(content.privacy)}</A></li>
+                                <li><A href="#">{s(content.terms)}</A></li>
+                                <li><A href="#">{s(content.claims)}</A></li>
+                                <li><A href="#">{s(content.cookies)}</A></li>
                             </ul>
                         </div>
                     </div>
