@@ -47,7 +47,7 @@ module SocialLink = {
 }
 
 @react.component
-let make = (~content: footerContent) => {
+let make = (~content) => {
     <footer className="bg-white" ariaLabelledby="footerHeading">
         <h2 id="footerHeading" className="sr-only"> {s(content.footer)} </h2>
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
