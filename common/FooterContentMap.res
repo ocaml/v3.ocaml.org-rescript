@@ -1,0 +1,20 @@
+let footerContentEn: Footer.footerContent = {
+    footer: `Footer`,
+    ocamlSummary: `Innovation. Community. Security.`,
+    industry: `Industry`,
+    whatIsOcaml: `What is OCaml`,
+    industrialUsers: `Industrial Users`,
+    successStories: `Success Stories`,
+    resources: `Resources`,
+    documentation: `Documentation`,
+    learn: `Learn`,
+    community: `Community`,
+    opportunities: `Opportunities`,
+    news: `News`,
+    aroundTheWeb: `Around the Web`,
+    legal: `Legal`,
+    privacy: `Privacy`,
+    terms: `Terms`,
+    claims: `Claims`,
+    cookies: `Cookies`
+}

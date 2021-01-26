@@ -1,25 +1,3 @@
-
-let footerContentEn: Footer.footerContent = {
-    footer: `Footer`,
-    ocamlSummary: `Innovation. Community. Security.`,
-    industry: `Industry`,
-    whatIsOcaml: `What is OCaml`,
-    industrialUsers: `Industrial Users`,
-    successStories: `Success Stories`,
-    resources: `Resources`,
-    documentation: `Documentation`,
-    learn: `Learn`,
-    community: `Community`,
-    opportunities: `Opportunities`,
-    news: `News`,
-    aroundTheWeb: `Around the Web`,
-    legal: `Legal`,
-    privacy: `Privacy`,
-    terms: `Terms`,
-    claims: `Claims`,
-    cookies: `Cookies`
-}
-
 @react.component
 let make = (~children, ~editpath) => {
   let navMainStyle = ReactDOMRe.Style.make(
@@ -46,7 +24,7 @@ let make = (~children, ~editpath) => {
     <div className="flex-shrink-0 flex lg:justify-center">
 
       <div className="max-w-5xl w-full lg:w-3/4">
-        <Footer content=footerContentEn/>
+        <Footer content=FooterContentMap.footerContentEn/>
       </div>
 
     </div>

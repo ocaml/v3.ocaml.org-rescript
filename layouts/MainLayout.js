@@ -2,28 +2,8 @@
 
 import * as React from "react";
 import * as Footer$Ocamlorg from "../components/Footer.js";
+import * as FooterContentMap$Ocamlorg from "../common/FooterContentMap.js";
 import * as HeaderNavigation$Ocamlorg from "../components/HeaderNavigation.js";
-
-var footerContentEn = {
-  footer: "Footer",
-  ocamlSummary: "Innovation. Community. Security.",
-  industry: "Industry",
-  whatIsOcaml: "What is OCaml",
-  industrialUsers: "Industrial Users",
-  successStories: "Success Stories",
-  resources: "Resources",
-  documentation: "Documentation",
-  learn: "Learn",
-  community: "Community",
-  opportunities: "Opportunities",
-  news: "News",
-  aroundTheWeb: "Around the Web",
-  legal: "Legal",
-  privacy: "Privacy",
-  terms: "Terms",
-  claims: "Claims",
-  cookies: "Cookies"
-};
 
 function MainLayout(Props) {
   var children = Props.children;
@@ -49,14 +29,13 @@ function MainLayout(Props) {
                     }, React.createElement("div", {
                           className: "max-w-5xl w-full lg:w-3/4"
                         }, React.createElement(Footer$Ocamlorg.make, {
-                              content: footerContentEn
+                              content: FooterContentMap$Ocamlorg.footerContentEn
                             })))));
 }
 
 var make = MainLayout;
 
 export {
-  footerContentEn ,
   make ,
   
 }
