@@ -120,8 +120,8 @@ let default = (props) => {
   </div>
 }
 
-let indexContentEn = {
-  welcomeHeader: `Welcome to a World of OCaml`,
+let indexContentEn1 = {
+  welcomeHeader: `NOT USED`,
   welcomeBody: `OCaml is a general purpose industrial-strength programming language with 
     an emphasis on expressiveness and safety. Its reputation for combining security 
     with speed makes it popular with many industrial users, as well as the growing 
@@ -137,7 +137,26 @@ let indexContentEn = {
     flow through our systems every day, so getting it right matters.`
 }
 
+@bs.module("js-yaml") external yamlParse: (string, ~options: 'a=?, unit) => Js.Json.t = "load"
+
 let getStaticProps = _ctx => {
+  let contentFilePath = "res_pages/IndexContent.yaml"
+  let source = Fs.readFileSync(contentFilePath)
+  let jsonRes = yamlParse(source, ~options=None, ())
+  let jsonObj = Js.Option.getExn(Js.Json.decodeObject(jsonRes))
+  let welcomeObj = Js.Dict.unsafeGet(jsonObj, "welcomeHeader")
+  let welcomeVal = Js.Option.getExn(Js.Json.decodeString(welcomeObj))
+  let indexContentEn = {
+    welcomeHeader: welcomeVal,
+    welcomeBody: indexContentEn1.welcomeBody,
+    installOcaml: indexContentEn1.installOcaml,
+    learnMore: indexContentEn1.learnMore,
+    ocamlInNumbers: indexContentEn1.ocamlInNumbers,
+    activeMembers: indexContentEn1.activeMembers,
+    industrySatisfaction: indexContentEn1.industrySatisfaction,
+    averagePrs: indexContentEn1.averagePrs,
+    quoteBody: indexContentEn1.quoteBody
+  }
   let props = {
     content: indexContentEn,
   }
