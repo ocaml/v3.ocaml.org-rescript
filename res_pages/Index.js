@@ -38,7 +38,7 @@ function $$default(param) {
                         }, React.createElement("img", {
                               className: "absolute inset-0 w-full h-full object-cover",
                               alt: "",
-                              src: "https://kanishka.codeberg.page/oc-sq.jpg"
+                              src: "/static/oc-sq.jpeg"
                             }))), React.createElement("div", {
                       className: "pt-12 sm:pt-16"
                     }, React.createElement("div", {
@@ -110,16 +110,16 @@ function $$default(param) {
                             }, React.createElement("img", {
                                   className: "mx-auto h-24",
                                   alt: "Jane Street",
-                                  src: "https://kanishka.codeberg.page/js.svg"
+                                  src: "/static/js.svg"
                                 }), React.createElement("blockquote", {
                                   className: "mt-10"
                                 }, React.createElement("div", {
                                       className: "max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900"
                                     }, React.createElement("p", undefined, React.createElement("span", {
                                               className: "text-orangedark"
-                                            }, "&ldquo;"), "OCaml helps us to quickly adopt to changing market conditions, and go from \n    prototypes to production systems with less effort ... Billions of dollars of transactions \n    flow through our systems every day, so getting it right matters.", React.createElement("span", {
+                                            }, "“"), "OCaml helps us to quickly adopt to changing market conditions, and go from \n    prototypes to production systems with less effort ... Billions of dollars of transactions \n    flow through our systems every day, so getting it right matters.", React.createElement("span", {
                                               className: "text-orangedark"
-                                            }, "&rdquo;"))), React.createElement("footer", {
+                                            }, "”"))), React.createElement("footer", {
                                       className: "mt-0"
                                     }, React.createElement("div", {
                                           className: "md:flex md:items-center md:justify-center"

@@ -29,6 +29,8 @@ let content = {
     flow through our systems every day, so getting it right matters.`
 }
 
+// fix left/right quote elem
+// use get static props to read content from file; parse file from yaml to record
 let default = () =>
   <div className="relative bg-graylight">
     <div className="relative bg-white shadow">
@@ -57,7 +59,7 @@ let default = () =>
           </div>
         </div>    
         <div className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
-          <img className="absolute inset-0 w-full h-full object-cover" src="https://kanishka.codeberg.page/oc-sq.jpg" alt="" />
+          <img className="absolute inset-0 w-full h-full object-cover" src="/static/oc-sq.jpeg" alt="" />
         </div>
       </div>
 
@@ -102,10 +104,10 @@ let default = () =>
           </svg>
 
           <div className="relative">
-            <img className="mx-auto h-24" src="https://kanishka.codeberg.page/js.svg" alt="Jane Street" />
+            <img className="mx-auto h-24" src="/static/js.svg" alt="Jane Street" />
             <blockquote className="mt-10">
               <div className="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900">
-                <p><span className="text-orangedark">{s(`&ldquo;`)}</span>{s(content.quoteBody)}<span className="text-orangedark">{s(`&rdquo;`)}</span></p>
+                <p><span className="text-orangedark">{s(`“`)}</span>{s(content.quoteBody)}<span className="text-orangedark">{s(`”`)}</span></p>
               </div>
               <footer className="mt-0">
                 <div className="md:flex md:items-center md:justify-center">
