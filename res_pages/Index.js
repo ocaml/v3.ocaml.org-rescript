@@ -6,7 +6,8 @@ function s(prim) {
   return prim;
 }
 
-function $$default(param) {
+function $$default(props) {
+  var content = props.content;
   return React.createElement("div", {
               className: "relative bg-graylight"
             }, React.createElement("div", {
@@ -19,21 +20,21 @@ function $$default(param) {
                               className: "px-4 lg:w-1/2 sm:px-8 xl:pr-16"
                             }, React.createElement("h1", {
                                   className: "text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
-                                }, "Welcome to a World of OCaml"), React.createElement("p", {
+                                }, content.welcomeHeader), React.createElement("p", {
                                   className: "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
-                                }, "OCaml is a general purpose industrial-strength programming language with \n    an emphasis on expressiveness and safety. Its reputation for combining security \n    with speed makes it popular with many industrial users, as well as the growing \n    group of developers that make up its community."), React.createElement("div", {
+                                }, content.welcomeBody), React.createElement("div", {
                                   className: "mt-10 sm:flex sm:justify-center lg:justify-start"
                                 }, React.createElement("div", {
                                       className: "rounded-md shadow"
                                     }, React.createElement("a", {
                                           className: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker md:py-4 md:text-lg md:px-10",
                                           href: "#"
-                                        }, "Install OCaml")), React.createElement("div", {
+                                        }, content.installOcaml)), React.createElement("div", {
                                       className: "mt-3 rounded-md shadow sm:mt-0 sm:ml-3"
                                     }, React.createElement("a", {
                                           className: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orangedark bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10",
                                           href: "#"
-                                        }, "Learn More"))))), React.createElement("div", {
+                                        }, content.learnMore))))), React.createElement("div", {
                           className: "relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full"
                         }, React.createElement("img", {
                               className: "absolute inset-0 w-full h-full object-cover",
@@ -47,7 +48,7 @@ function $$default(param) {
                               className: "max-w-4xl mx-auto text-center"
                             }, React.createElement("h2", {
                                   className: "text-3xl font-extrabold text-gray-900 sm:text-4xl"
-                                }, "OCaml in Numbers"))), React.createElement("div", {
+                                }, content.ocamlInNumbers))), React.createElement("div", {
                           className: "mt-10 pb-12 sm:pb-16"
                         }, React.createElement("div", {
                               className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -59,19 +60,19 @@ function $$default(param) {
                                           className: "flex flex-col border-b border-gray-100 py-16 text-center sm:border-0 sm:border-r"
                                         }, React.createElement("dt", {
                                               className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
-                                            }, "Active Members"), React.createElement("dd", {
+                                            }, content.activeMembers), React.createElement("dd", {
                                               className: "order-1 text-5xl font-extrabold text-orangedark"
                                             }, "2000+")), React.createElement("div", {
                                           className: "flex flex-col border-t border-b border-gray-100 py-16 text-center sm:border-0 sm:border-l sm:border-r"
                                         }, React.createElement("dt", {
                                               className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
-                                            }, "Industry Satisfaction"), React.createElement("dd", {
+                                            }, content.industrySatisfaction), React.createElement("dd", {
                                               className: "order-1 text-5xl font-extrabold text-orangedark"
                                             }, "97%")), React.createElement("div", {
                                           className: "flex flex-col border-t border-gray-100 py-16 text-center sm:border-0 sm:border-l"
                                         }, React.createElement("dt", {
                                               className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
-                                            }, "Average PRs per Week"), React.createElement("dd", {
+                                            }, content.averagePrs), React.createElement("dd", {
                                               className: "order-1 text-5xl font-extrabold text-orangedark"
                                             }, "450"))))))), React.createElement("section", {
                       className: "pt-5 pb-20 overflow-hidden md:pt-6 mb:pb-24 lg:pt-10 lg:pb-40"
@@ -117,7 +118,7 @@ function $$default(param) {
                                       className: "max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900"
                                     }, React.createElement("p", undefined, React.createElement("span", {
                                               className: "text-orangedark"
-                                            }, "“"), "OCaml helps us to quickly adopt to changing market conditions, and go from \n    prototypes to production systems with less effort ... Billions of dollars of transactions \n    flow through our systems every day, so getting it right matters.", React.createElement("span", {
+                                            }, "“"), content.quoteBody, React.createElement("span", {
                                               className: "text-orangedark"
                                             }, "”"))), React.createElement("footer", {
                                       className: "mt-0"
@@ -138,7 +139,7 @@ function $$default(param) {
                                                 }, "Jane Street"))))))))));
 }
 
-var content = {
+var indexContentEn = {
   welcomeHeader: "Welcome to a World of OCaml",
   welcomeBody: "OCaml is a general purpose industrial-strength programming language with \n    an emphasis on expressiveness and safety. Its reputation for combining security \n    with speed makes it popular with many industrial users, as well as the growing \n    group of developers that make up its community.",
   installOcaml: "Install OCaml",
@@ -150,11 +151,21 @@ var content = {
   quoteBody: "OCaml helps us to quickly adopt to changing market conditions, and go from \n    prototypes to production systems with less effort ... Billions of dollars of transactions \n    flow through our systems every day, so getting it right matters."
 };
 
+function getStaticProps(_ctx) {
+  var props = {
+    content: indexContentEn
+  };
+  return Promise.resolve({
+              props: props
+            });
+}
+
 export {
   s ,
-  content ,
   $$default ,
   $$default as default,
+  indexContentEn ,
+  getStaticProps ,
   
 }
 /* react Not a pure module */

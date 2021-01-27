@@ -12,26 +12,13 @@ type indexContent = {
   quoteBody: string  
 }
 
-let content = {
-  welcomeHeader: `Welcome to a World of OCaml`,
-  welcomeBody: `OCaml is a general purpose industrial-strength programming language with 
-    an emphasis on expressiveness and safety. Its reputation for combining security 
-    with speed makes it popular with many industrial users, as well as the growing 
-    group of developers that make up its community.`,
-  installOcaml: `Install OCaml`,
-  learnMore: `Learn More`,
-  ocamlInNumbers: `OCaml in Numbers`,
-  activeMembers: `Active Members`,
-  industrySatisfaction: `Industry Satisfaction`,
-  averagePrs: `Average PRs per Week`,
-  quoteBody: `OCaml helps us to quickly adopt to changing market conditions, and go from 
-    prototypes to production systems with less effort ... Billions of dollars of transactions 
-    flow through our systems every day, so getting it right matters.`
+type props = {
+  content: indexContent,
 }
 
-// fix left/right quote elem
 // use get static props to read content from file; parse file from yaml to record
-let default = () =>
+let default = (props) => {
+  let content = props.content
   <div className="relative bg-graylight">
     <div className="relative bg-white shadow">
     </div>
@@ -93,7 +80,9 @@ let default = () =>
 
       <section className="pt-5 pb-20 overflow-hidden md:pt-6 mb:pb-24 lg:pt-10 lg:pb-40">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <svg className="absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" role="img" ariaLabelledby="svg-janestreet">
+          <svg 
+            className="absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2" 
+            width="404" height="404" fill="none" viewBox="0 0 404 404" role="img" ariaLabelledby="svg-janestreet">
             <title id="svg-janestreet">{s(`Jane Street`)}</title>
             <defs>
               <pattern id="ad119f34-7694-4c31-947f-5c9d249b21f3" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -129,3 +118,28 @@ let default = () =>
 
     </main>
   </div>
+}
+
+let indexContentEn = {
+  welcomeHeader: `Welcome to a World of OCaml`,
+  welcomeBody: `OCaml is a general purpose industrial-strength programming language with 
+    an emphasis on expressiveness and safety. Its reputation for combining security 
+    with speed makes it popular with many industrial users, as well as the growing 
+    group of developers that make up its community.`,
+  installOcaml: `Install OCaml`,
+  learnMore: `Learn More`,
+  ocamlInNumbers: `OCaml in Numbers`,
+  activeMembers: `Active Members`,
+  industrySatisfaction: `Industry Satisfaction`,
+  averagePrs: `Average PRs per Week`,
+  quoteBody: `OCaml helps us to quickly adopt to changing market conditions, and go from 
+    prototypes to production systems with less effort ... Billions of dollars of transactions 
+    flow through our systems every day, so getting it right matters.`
+}
+
+let getStaticProps = _ctx => {
+  let props = {
+    content: indexContentEn,
+  }
+  Js.Promise.resolve({"props": props})
+}
