@@ -27,6 +27,8 @@ let make = (props: props): React.element => {
   switch (router.route) {
   | "/design/industry" =>
     content
+  | "/" =>
+    content
   | "/releases" =>
     <MainLayout editpath="site/index.md">
       <h1 className="font-bold"> {React.string("Releases Section")} </h1>

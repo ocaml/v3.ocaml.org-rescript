@@ -19,6 +19,9 @@ module.exports = {
     extend: {
       colors: {
         'ocamlorange': '#c15540',
+        'graylight': '#f5f5f5',
+        'orangedark': '#ed7109',
+        'orangedarker': '#dd6705',
       },
     },
     /* Most of the time we customize the font-sizes,

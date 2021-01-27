@@ -12,6 +12,7 @@ function make(props) {
   console.log(router.route);
   var match = router.route;
   switch (match) {
+    case "/" :
     case "/design/industry" :
         return content;
     case "/releases" :
