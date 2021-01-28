@@ -5,6 +5,7 @@ import * as React from "react";
 import * as Js_json from "bs-platform/lib/es6/js_json.js";
 import * as JsYaml from "js-yaml";
 import * as Js_option from "bs-platform/lib/es6/js_option.js";
+import * as IndexStatsDataValue$Ocamlorg from "../common/IndexStatsDataValue.js";
 
 function s(prim) {
   return prim;
@@ -49,6 +50,7 @@ var SplitHero = {
 
 function Index$Stats(Props) {
   var content = Props.content;
+  var data = Props.data;
   return React.createElement("div", {
               className: "pt-12 sm:pt-16"
             }, React.createElement("div", {
@@ -71,19 +73,19 @@ function Index$Stats(Props) {
                                       className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
                                     }, content.activeMembers), React.createElement("dd", {
                                       className: "order-1 text-5xl font-extrabold text-orangedark"
-                                    }, "2000+")), React.createElement("div", {
+                                    }, data.numberActiveMembers.toString() + "+")), React.createElement("div", {
                                   className: "flex flex-col border-t border-b border-gray-100 py-16 text-center sm:border-0 sm:border-l sm:border-r"
                                 }, React.createElement("dt", {
                                       className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
                                     }, content.industrySatisfaction), React.createElement("dd", {
                                       className: "order-1 text-5xl font-extrabold text-orangedark"
-                                    }, "97%")), React.createElement("div", {
+                                    }, data.industrySatisfactionPercent.toString() + "%")), React.createElement("div", {
                                   className: "flex flex-col border-t border-gray-100 py-16 text-center sm:border-0 sm:border-l"
                                 }, React.createElement("dt", {
                                       className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
                                     }, content.averagePrs), React.createElement("dd", {
                                       className: "order-1 text-5xl font-extrabold text-orangedark"
-                                    }, "450")))))));
+                                    }, data.averagePrsPerWeek.toString())))))));
 }
 
 var Stats = {
@@ -162,17 +164,17 @@ var Testimonial = {
 };
 
 function $$default(props) {
-  var content = props.content;
   return React.createElement("div", {
               className: "relative bg-graylight"
             }, React.createElement("div", {
                   className: "relative bg-white shadow"
                 }), React.createElement("main", undefined, React.createElement(Index$SplitHero, {
-                      content: content.splitHeroContent
+                      content: props.content.splitHeroContent
                     }), React.createElement(Index$Stats, {
-                      content: content.statsContent
+                      content: props.content.statsContent,
+                      data: props.indexStatsData
                     }), React.createElement(Index$Testimonial, {
-                      quoteBody: content.quoteBody
+                      quoteBody: props.content.quoteBody
                     })));
 }
 
@@ -212,7 +214,8 @@ function getStaticProps(_ctx) {
     quoteBody: indexContentEn_quoteBody
   };
   var props = {
-    content: indexContentEn
+    content: indexContentEn,
+    indexStatsData: IndexStatsDataValue$Ocamlorg.data
   };
   return Promise.resolve({
               props: props

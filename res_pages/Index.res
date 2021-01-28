@@ -46,7 +46,7 @@ type statsContent = {
 
 module Stats = {
   @react.component
-  let make = (~content) =>
+  let make = (~content, ~data: IndexStatsData.t) =>
     <div className="pt-12 sm:pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
@@ -59,15 +59,21 @@ module Stats = {
             <dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
               <div className="flex flex-col border-b border-gray-100 py-16 text-center sm:border-0 sm:border-r">
                 <dt className="order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70">{(s(content.activeMembers))}</dt>
-                <dd className="order-1 text-5xl font-extrabold text-orangedark">{s(`2000+`)}</dd>
+                <dd className="order-1 text-5xl font-extrabold text-orangedark">
+                  {s(Js.Int.toString(data.numberActiveMembers) ++ `+`)}
+                </dd>
               </div>
               <div className="flex flex-col border-t border-b border-gray-100 py-16 text-center sm:border-0 sm:border-l sm:border-r">
                 <dt className="order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70">{s(content.industrySatisfaction)}</dt>
-                <dd className="order-1 text-5xl font-extrabold text-orangedark">{s(`97%`)}</dd>
+                <dd className="order-1 text-5xl font-extrabold text-orangedark">
+                  {s(Js.Int.toString(data.industrySatisfactionPercent) ++ `%`)}
+                </dd>
               </div>
               <div className="flex flex-col border-t border-gray-100 py-16 text-center sm:border-0 sm:border-l">
                 <dt className="order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70">{s(content.averagePrs)}</dt>
-                <dd className="order-1 text-5xl font-extrabold text-orangedark">{s(`450`)}</dd>
+                <dd className="order-1 text-5xl font-extrabold text-orangedark">
+                  {s(Js.Int.toString(data.averagePrsPerWeek))}
+                </dd>
               </div>
             </dl>
           </div>
@@ -128,20 +134,20 @@ type indexContent = {
 
 type props = {
   content: indexContent,
+  indexStatsData: IndexStatsData.t
 }
 
 let default = (props) => {
-  let content = props.content
   <div className="relative bg-graylight">
     <div className="relative bg-white shadow">
     </div>
 
     <main>
-      <SplitHero content=content.splitHeroContent />
+      <SplitHero content=props.content.splitHeroContent />
 
-      <Stats content=content.statsContent />
+      <Stats content=props.content.statsContent data=props.indexStatsData />
 
-      <Testimonial quoteBody=content.quoteBody />
+      <Testimonial quoteBody=props.content.quoteBody />
     </main>
   </div>
 }
@@ -188,6 +194,7 @@ let getStaticProps = _ctx => {
   }
   let props = {
     content: indexContentEn,
+    indexStatsData: IndexStatsDataValue.data
   }
   Js.Promise.resolve({"props": props})
 }
