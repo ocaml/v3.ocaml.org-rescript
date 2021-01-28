@@ -30,6 +30,7 @@ const config = {
         destination: '/releases/4.11.1',
         permanent: false,
       }
+      
     ]
   }
 };
