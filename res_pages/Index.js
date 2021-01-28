@@ -93,13 +93,13 @@ var Stats = {
 };
 
 function Index$Testimonial(Props) {
-  var quoteBody = Props.quoteBody;
+  var data = Props.data;
   return React.createElement("section", {
               className: "pt-5 pb-20 overflow-hidden md:pt-6 mb:pb-24 lg:pt-10 lg:pb-40"
             }, React.createElement("div", {
                   className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
                 }, React.createElement("svg", {
-                      "aria-labelledby": "svg-janestreet",
+                      "aria-labelledby": "svg-testimonial-org",
                       className: "absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2",
                       role: "img",
                       height: "404",
@@ -107,8 +107,8 @@ function Index$Testimonial(Props) {
                       fill: "none",
                       viewBox: "0 0 404 404"
                     }, React.createElement("title", {
-                          id: "svg-janestreet"
-                        }, "Jane Street"), React.createElement("defs", undefined, React.createElement("pattern", {
+                          id: "svg-testimonial-org"
+                        }, data.organizationName), React.createElement("defs", undefined, React.createElement("pattern", {
                               id: "ad119f34-7694-4c31-947f-5c9d249b21f3",
                               height: "20",
                               width: "20",
@@ -130,15 +130,15 @@ function Index$Testimonial(Props) {
                       className: "relative"
                     }, React.createElement("img", {
                           className: "mx-auto h-24",
-                          alt: "Jane Street",
-                          src: "/static/js.svg"
+                          alt: data.organizationName,
+                          src: data.organizationLogo
                         }), React.createElement("blockquote", {
                           className: "mt-10"
                         }, React.createElement("div", {
                               className: "max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900"
                             }, React.createElement("p", undefined, React.createElement("span", {
                                       className: "text-orangedark"
-                                    }, "“"), quoteBody, React.createElement("span", {
+                                    }, "“"), data.quote, React.createElement("span", {
                                       className: "text-orangedark"
                                     }, "”"))), React.createElement("footer", {
                               className: "mt-0"
@@ -148,7 +148,7 @@ function Index$Testimonial(Props) {
                                       className: "mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center"
                                     }, React.createElement("div", {
                                           className: "text-base font-medium text-gray-900"
-                                        }, "Yaron Minsky"), React.createElement("svg", {
+                                        }, data.speaker), React.createElement("svg", {
                                           className: "hidden md:block mx-1 h-5 w-5 text-orangedark",
                                           fill: "currentColor",
                                           viewBox: "0 0 20 20"
@@ -156,7 +156,7 @@ function Index$Testimonial(Props) {
                                               d: "M11 0h3L9 20H6l5-20z"
                                             })), React.createElement("div", {
                                           className: "text-base font-medium text-gray-500"
-                                        }, "Jane Street"))))))));
+                                        }, data.organizationName))))))));
 }
 
 var Testimonial = {
@@ -174,7 +174,7 @@ function $$default(props) {
                       content: props.content.statsContent,
                       data: props.indexStatsData
                     }), React.createElement(Index$Testimonial, {
-                      quoteBody: props.content.quoteBody
+                      data: props.testimonialData
                     })));
 }
 
@@ -185,8 +185,7 @@ var indexContentEn1 = {
   ocamlInNumbers: "OCaml in Numbers",
   activeMembers: "Active Members",
   industrySatisfaction: "Industry Satisfaction",
-  averagePrs: "Average PRs per Week",
-  quoteBody: "OCaml helps us to quickly adopt to changing market conditions, and go from \n    prototypes to production systems with less effort ... Billions of dollars of transactions \n    flow through our systems every day, so getting it right matters."
+  averagePrs: "Average PRs per Week"
 };
 
 function getStaticProps(_ctx) {
@@ -207,15 +206,20 @@ function getStaticProps(_ctx) {
     industrySatisfaction: indexContentEn1.industrySatisfaction,
     averagePrs: indexContentEn1.averagePrs
   };
-  var indexContentEn_quoteBody = indexContentEn1.quoteBody;
   var indexContentEn = {
     splitHeroContent: indexContentEn_splitHeroContent,
-    statsContent: indexContentEn_statsContent,
-    quoteBody: indexContentEn_quoteBody
+    statsContent: indexContentEn_statsContent
+  };
+  var props_testimonialData = {
+    quote: "OCaml helps us to quickly adopt to changing market conditions, and go from \n      prototypes to production systems with less effort ... Billions of dollars of transactions \n      flow through our systems every day, so getting it right matters.",
+    organizationName: "Jane Street",
+    speaker: "Yaron Minksy",
+    organizationLogo: "/static/js.svg"
   };
   var props = {
     content: indexContentEn,
-    indexStatsData: IndexStatsDataValue$Ocamlorg.data
+    indexStatsData: IndexStatsDataValue$Ocamlorg.data,
+    testimonialData: props_testimonialData
   };
   return Promise.resolve({
               props: props

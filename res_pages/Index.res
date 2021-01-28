@@ -82,17 +82,22 @@ module Stats = {
     </div>
 }
 
-
+type testimonialData = {
+  quote: string,
+  organizationName: string,
+  speaker: string,
+  organizationLogo: string
+}
 
 module Testimonial = {
   @react.component
-  let make = (~quoteBody) =>
+  let make = (~data) =>
     <section className="pt-5 pb-20 overflow-hidden md:pt-6 mb:pb-24 lg:pt-10 lg:pb-40">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <svg 
           className="absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2" 
-          width="404" height="404" fill="none" viewBox="0 0 404 404" role="img" ariaLabelledby="svg-janestreet">
-          <title id="svg-janestreet">{s(`Jane Street`)}</title>
+          width="404" height="404" fill="none" viewBox="0 0 404 404" role="img" ariaLabelledby="svg-testimonial-org">
+          <title id="svg-testimonial-org">{s(data.organizationName)}</title>
           <defs>
             <pattern id="ad119f34-7694-4c31-947f-5c9d249b21f3" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
               <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
@@ -102,21 +107,21 @@ module Testimonial = {
         </svg>
 
         <div className="relative">
-          <img className="mx-auto h-24" src="/static/js.svg" alt="Jane Street" />
+          <img className="mx-auto h-24" src=data.organizationLogo alt=data.organizationName />
           <blockquote className="mt-10">
             <div className="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900">
-              <p><span className="text-orangedark">{s(`“`)}</span>{s(quoteBody)}<span className="text-orangedark">{s(`”`)}</span></p>
+              <p><span className="text-orangedark">{s(`“`)}</span>{s(data.quote)}<span className="text-orangedark">{s(`”`)}</span></p>
             </div>
             <footer className="mt-0">
               <div className="md:flex md:items-center md:justify-center">
                 <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-                  <div className="text-base font-medium text-gray-900">{s(`Yaron Minsky`)}</div>
+                  <div className="text-base font-medium text-gray-900">{s(data.speaker)}</div>
 
                   <svg className="hidden md:block mx-1 h-5 w-5 text-orangedark" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M11 0h3L9 20H6l5-20z" />
                   </svg>
 
-                  <div className="text-base font-medium text-gray-500">{s(`Jane Street`)}</div>
+                  <div className="text-base font-medium text-gray-500">{s(data.organizationName)}</div>
                 </div>
               </div>
             </footer>
@@ -128,13 +133,13 @@ module Testimonial = {
 
 type indexContent = {
   splitHeroContent: splitHeroContent,
-  statsContent: statsContent,
-  quoteBody: string 
+  statsContent: statsContent
 }
 
 type props = {
   content: indexContent,
-  indexStatsData: IndexStatsData.t
+  indexStatsData: IndexStatsData.t,
+  testimonialData: testimonialData
 }
 
 let default = (props) => {
@@ -147,7 +152,7 @@ let default = (props) => {
 
       <Stats content=props.content.statsContent data=props.indexStatsData />
 
-      <Testimonial quoteBody=props.content.quoteBody />
+      <Testimonial data=props.testimonialData />
     </main>
   </div>
 }
@@ -162,10 +167,7 @@ let indexContentEn1 = {
   "ocamlInNumbers": `OCaml in Numbers`,
   "activeMembers": `Active Members`,
   "industrySatisfaction": `Industry Satisfaction`,
-  "averagePrs": `Average PRs per Week`,
-  "quoteBody": `OCaml helps us to quickly adopt to changing market conditions, and go from 
-    prototypes to production systems with less effort ... Billions of dollars of transactions 
-    flow through our systems every day, so getting it right matters.`
+  "averagePrs": `Average PRs per Week`
 }
 
 @bs.module("js-yaml") external yamlParse: (string, ~options: 'a=?, unit) => Js.Json.t = "load"
@@ -189,12 +191,20 @@ let getStaticProps = _ctx => {
       activeMembers: indexContentEn1["activeMembers"],
       industrySatisfaction: indexContentEn1["industrySatisfaction"],
       averagePrs: indexContentEn1["averagePrs"]
-    },
-    quoteBody: indexContentEn1["quoteBody"]
+    }
+  }
+  let testimonialData = {
+    organizationName: `Jane Street`,
+    organizationLogo: `/static/js.svg`,
+    quote: `OCaml helps us to quickly adopt to changing market conditions, and go from 
+      prototypes to production systems with less effort ... Billions of dollars of transactions 
+      flow through our systems every day, so getting it right matters.`,
+    speaker: `Yaron Minksy`
   }
   let props = {
     content: indexContentEn,
-    indexStatsData: IndexStatsDataValue.data
+    indexStatsData: IndexStatsDataValue.data,
+    testimonialData: testimonialData
   }
   Js.Promise.resolve({"props": props})
 }
