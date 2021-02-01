@@ -2,12 +2,13 @@
 
 import * as React from "react";
 import Link from "next/link";
+import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 
 function s(prim) {
   return prim;
 }
 
-var footerText = {
+var textEn = {
   footer: "Footer",
   ocamlSummary: "Innovation. Community. Security.",
   industry: "Industry",
@@ -45,13 +46,15 @@ var A = {
 };
 
 function Footer(Props) {
+  var textOpt = Props.text;
+  var text = textOpt !== undefined ? Caml_option.valFromOption(textOpt) : textEn;
   return React.createElement("footer", {
               "aria-labelledby": "footerHeading",
               className: "bg-white"
             }, React.createElement("h2", {
                   className: "sr-only",
                   id: "footerHeading"
-                }, footerText.footer), React.createElement("div", {
+                }, text.footer), React.createElement("div", {
                   className: "max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
                 }, React.createElement("div", {
                       className: "xl:grid xl:grid-cols-3 xl:gap-8"
@@ -63,11 +66,11 @@ function Footer(Props) {
                               src: "/static/ocaml-logo.jpeg"
                             }), React.createElement("p", {
                               className: "text-gray-500 text-base"
-                            }, footerText.ocamlSummary), React.createElement("div", {
+                            }, text.ocamlSummary), React.createElement("div", {
                               className: "flex space-x-6"
                             }, React.createElement("a", {
                                   className: "text-gray-400 hover:text-gray-500",
-                                  href: "#"
+                                  href: "https://www.facebook.com/OCamlLang"
                                 }, React.createElement("span", {
                                       className: "sr-only"
                                     }, "Facebook"), React.createElement("svg", {
@@ -81,7 +84,7 @@ function Footer(Props) {
                                           fillRule: "evenodd"
                                         }))), React.createElement("a", {
                                   className: "text-gray-400 hover:text-gray-500",
-                                  href: "#"
+                                  href: "https://twitter.com/OCamlLang"
                                 }, React.createElement("span", {
                                       className: "sr-only"
                                     }, "Twitter"), React.createElement("svg", {
@@ -93,7 +96,7 @@ function Footer(Props) {
                                           d: "M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
                                         }))), React.createElement("a", {
                                   className: "text-gray-400 hover:text-gray-500",
-                                  href: "#"
+                                  href: "https://github.com/ocaml"
                                 }, React.createElement("span", {
                                       className: "sr-only"
                                     }, "GitHub"), React.createElement("svg", {
@@ -111,73 +114,73 @@ function Footer(Props) {
                               className: "md:grid md:grid-cols-2 md:gap-8"
                             }, React.createElement("div", undefined, React.createElement("h3", {
                                       className: "text-sm font-semibold text-gray-400 tracking-wider uppercase"
-                                    }, footerText.industry), React.createElement("ul", {
+                                    }, text.industry), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.whatIsOcaml,
-                                              href: "#",
+                                              children: text.whatIsOcaml,
+                                              href: "/play/industry/description",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.industrialUsers,
-                                              href: "#",
+                                              children: text.industrialUsers,
+                                              href: "/play/industry/users",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.successStories,
-                                              href: "/learn/success",
+                                              children: text.successStories,
+                                              href: "/play/industry/success",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement("h3", {
                                       className: "text-sm font-semibold text-gray-400 tracking-wider uppercase"
-                                    }, footerText.resources), React.createElement("ul", {
+                                    }, text.resources), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.documentation,
-                                              href: "#",
+                                              children: text.documentation,
+                                              href: "/play/resource/docs",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.learn,
-                                              href: "/learn",
+                                              children: text.learn,
+                                              href: "/play/resource/learn",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             }))))), React.createElement("div", {
                               className: "md:grid md:grid-cols-2 md:gap-8"
                             }, React.createElement("div", undefined, React.createElement("h3", {
                                       className: "text-sm font-semibold text-gray-400 tracking-wider uppercase"
-                                    }, footerText.community), React.createElement("ul", {
+                                    }, text.community), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.opportunities,
-                                              href: "#",
+                                              children: text.opportunities,
+                                              href: "/play/community/opportunities",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.news,
-                                              href: "#",
+                                              children: text.news,
+                                              href: "/play/community/news",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.aroundTheWeb,
-                                              href: "/play",
+                                              children: text.aroundTheWeb,
+                                              href: "/play/community/aroundweb",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement("h3", {
                                       className: "text-sm font-semibold text-gray-400 tracking-wider uppercase"
-                                    }, footerText.legal), React.createElement("ul", {
+                                    }, text.legal), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.privacy,
-                                              href: "#",
+                                              children: text.privacy,
+                                              href: "/play/privacypolicy",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.terms,
-                                              href: "#",
+                                              children: text.terms,
+                                              href: "/play/termsconditions",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.claims,
-                                              href: "#",
+                                              children: text.claims,
+                                              href: "/play/legal",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: footerText.cookies,
-                                              href: "#",
+                                              children: text.cookies,
+                                              href: "/play/cookiepolicy",
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             })))))))));
 }
@@ -189,7 +192,7 @@ var make = Footer;
 export {
   Link$1 as Link,
   s ,
-  footerText ,
+  textEn ,
   A ,
   make ,
   
