@@ -31,10 +31,11 @@ var footerText = {
 function Footer$A(Props) {
   var children = Props.children;
   var href = Props.href;
+  var className = Props.className;
   return React.createElement(Link, {
               href: href,
               children: React.createElement("a", {
-                    className: "text-base text-gray-500 hover:text-gray-900"
+                    className: className
                   }, children)
             });
 }
@@ -114,13 +115,16 @@ function Footer(Props) {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.whatIsOcaml,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.industrialUsers,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.successStories,
-                                              href: "/learn/success"
+                                              href: "/learn/success",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement("h3", {
@@ -129,10 +133,12 @@ function Footer(Props) {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.documentation,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.learn,
-                                              href: "/learn"
+                                              href: "/learn",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             }))))), React.createElement("div", {
                               className: "md:grid md:grid-cols-2 md:gap-8"
                             }, React.createElement("div", undefined, React.createElement("h3", {
@@ -141,13 +147,16 @@ function Footer(Props) {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.opportunities,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.news,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.aroundTheWeb,
-                                              href: "/play"
+                                              href: "/play",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement("h3", {
@@ -156,16 +165,20 @@ function Footer(Props) {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.privacy,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.terms,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.claims,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
                                               children: footerText.cookies,
-                                              href: "#"
+                                              href: "#",
+                                              className: "text-base text-gray-500 hover:text-gray-900"
                                             })))))))));
 }
 

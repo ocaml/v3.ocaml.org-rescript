@@ -25,9 +25,9 @@ let footerText = {
 
 module A = {
   @react.component
-  let make = (~children, ~href) =>
+  let make = (~children, ~href, ~className) =>
     <Link href>
-        <a className="text-base text-gray-500 hover:text-gray-900"> children </a>
+        <a className> children </a>
     </Link>
 }
 
@@ -67,16 +67,16 @@ let make = () => {
                         <div>
                             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">{s(text["industry"])}</h3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(text["whatIsOcaml"])}</A></li>
-                                <li><A href="#">{s(text["industrialUsers"])}</A></li>
-                                <li><A href="/learn/success">{s(text["successStories"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["whatIsOcaml"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["industrialUsers"])}</A></li>
+                                <li><A href="/learn/success" className="text-base text-gray-500 hover:text-gray-900">{s(text["successStories"])}</A></li>
                             </ul>
                         </div>
                         <div className="mt-12 md:mt-0">
                             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">{s(text["resources"])}</h3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(text["documentation"])}</A></li>
-                                <li><A href="/learn">{s(text["learn"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["documentation"])}</A></li>
+                                <li><A href="/learn" className="text-base text-gray-500 hover:text-gray-900">{s(text["learn"])}</A></li>
                             </ul>
                         </div>
                     </div>
@@ -84,18 +84,18 @@ let make = () => {
                         <div>
                             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">{s(text["community"])}</h3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(text["opportunities"])}</A></li>
-                                <li><A href="#">{s(text["news"])}</A></li>
-                                <li><A href="/play">{s(text["aroundTheWeb"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["opportunities"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["news"])}</A></li>
+                                <li><A href="/play" className="text-base text-gray-500 hover:text-gray-900">{s(text["aroundTheWeb"])}</A></li>
                             </ul>
                         </div>
                         <div className="mt-12 md:mt-0">
                             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">{s(text["legal"])}</h3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(text["privacy"])}</A></li>
-                                <li><A href="#">{s(text["terms"])}</A></li>
-                                <li><A href="#">{s(text["claims"])}</A></li>
-                                <li><A href="#">{s(text["cookies"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["privacy"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["terms"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["claims"])}</A></li>
+                                <li><A href="#" className="text-base text-gray-500 hover:text-gray-900">{s(text["cookies"])}</A></li>
                             </ul>
                         </div>
                     </div>
