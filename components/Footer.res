@@ -2,31 +2,31 @@ module Link = Next.Link;
 
 let s = React.string
 
-type footerContent = {
-    footer: string,
-    ocamlSummary: string,
-    industry: string,
-    whatIsOcaml: string,
-    industrialUsers: string,
-    successStories: string,
-    resources: string,
-    documentation: string,
-    learn: string,
-    community: string,
-    opportunities: string,
-    news: string,
-    aroundTheWeb: string,
-    legal: string,
-    privacy: string,
-    terms: string,
-    claims: string,
-    cookies: string
+let footerText = {
+    "footer": `Footer`,
+    "ocamlSummary": `Innovation. Community. Security.`,
+    "industry": `Industry`,
+    "whatIsOcaml": `What is OCaml`,
+    "industrialUsers": `Industrial Users`,
+    "successStories": `Success Stories`,
+    "resources": `Resources`,
+    "documentation": `Documentation`,
+    "learn": `Learn`,
+    "community": `Community`,
+    "opportunities": `Opportunities`,
+    "news": `News`,
+    "aroundTheWeb": `Around the Web`,
+    "legal": `Legal`,
+    "privacy": `Privacy`,
+    "terms": `Terms`,
+    "claims": `Claims`,
+    "cookies": `Cookies`
 }
 
 module H3 = {
   @react.component
   let make = (~children) =>
-    <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">children</h3>
+    <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase"> children </h3>
 }
 
 module A = {
@@ -47,14 +47,15 @@ module SocialLink = {
 }
 
 @react.component
-let make = (~content) => {
+let make = () => {
+    let text = footerText
     <footer className="bg-white" ariaLabelledby="footerHeading">
-        <h2 id="footerHeading" className="sr-only"> {s(content.footer)} </h2>
+        <h2 id="footerHeading" className="sr-only"> {s(text["footer"])} </h2>
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                 <div className="space-y-8 xl:col-span-1">
                     <img className="h-10" src="/static/ocaml-logo.jpeg" alt="OCaml" />
-                    <p className="text-gray-500 text-base"> {s(content.ocamlSummary)} </p>
+                    <p className="text-gray-500 text-base"> {s(text["ocamlSummary"])} </p>
                     <div className="flex space-x-6">
                         <SocialLink href="#" label=`Facebook`>
                             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" ariaHidden=true>
@@ -76,37 +77,37 @@ let make = (~content) => {
                 <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
                     <div className="md:grid md:grid-cols-2 md:gap-8">
                         <div>
-                            <H3>{s(content.industry)}</H3>
+                            <H3>{s(text["industry"])}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(content.whatIsOcaml)}</A></li>
-                                <li><A href="#">{s(content.industrialUsers)}</A></li>
-                                <li><A href="/learn/success">{s(content.successStories)}</A></li>
+                                <li><A href="#">{s(text["whatIsOcaml"])}</A></li>
+                                <li><A href="#">{s(text["industrialUsers"])}</A></li>
+                                <li><A href="/learn/success">{s(text["successStories"])}</A></li>
                             </ul>
                         </div>
                         <div className="mt-12 md:mt-0">
-                            <H3>{s(content.resources)}</H3>
+                            <H3>{s(text["resources"])}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(content.documentation)}</A></li>
-                                <li><A href="/learn">{s(content.learn)}</A></li>
+                                <li><A href="#">{s(text["documentation"])}</A></li>
+                                <li><A href="/learn">{s(text["learn"])}</A></li>
                             </ul>
                         </div>
                     </div>
                     <div className="md:grid md:grid-cols-2 md:gap-8">
                         <div>
-                            <H3>{s(content.community)}</H3>
+                            <H3>{s(text["community"])}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(content.opportunities)}</A></li>
-                                <li><A href="#">{s(content.news)}</A></li>
-                                <li><A href="#">{s(content.aroundTheWeb)}</A></li>
+                                <li><A href="#">{s(text["opportunities"])}</A></li>
+                                <li><A href="#">{s(text["news"])}</A></li>
+                                <li><A href="/play">{s(text["aroundTheWeb"])}</A></li>
                             </ul>
                         </div>
                         <div className="mt-12 md:mt-0">
-                            <H3>{s(content.legal)}</H3>
+                            <H3>{s(text["legal"])}</H3>
                             <ul className="mt-4 space-y-4">
-                                <li><A href="#">{s(content.privacy)}</A></li>
-                                <li><A href="#">{s(content.terms)}</A></li>
-                                <li><A href="#">{s(content.claims)}</A></li>
-                                <li><A href="#">{s(content.cookies)}</A></li>
+                                <li><A href="#">{s(text["privacy"])}</A></li>
+                                <li><A href="#">{s(text["terms"])}</A></li>
+                                <li><A href="#">{s(text["claims"])}</A></li>
+                                <li><A href="#">{s(text["cookies"])}</A></li>
                             </ul>
                         </div>
                     </div>

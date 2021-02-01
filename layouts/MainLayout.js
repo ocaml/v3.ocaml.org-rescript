@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import * as Footer$Ocamlorg from "../components/Footer.js";
-import * as FooterContentMap$Ocamlorg from "../common/FooterContentMap.js";
 import * as HeaderNavigation$Ocamlorg from "../components/HeaderNavigation.js";
 
 function MainLayout(Props) {
@@ -28,9 +27,7 @@ function MainLayout(Props) {
                       className: "flex-shrink-0 flex lg:justify-center"
                     }, React.createElement("div", {
                           className: "max-w-5xl w-full lg:w-3/4"
-                        }, React.createElement(Footer$Ocamlorg.make, {
-                              content: FooterContentMap$Ocamlorg.footerContentEn
-                            })))));
+                        }, React.createElement(Footer$Ocamlorg.make, {})))));
 }
 
 var make = MainLayout;

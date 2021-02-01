@@ -7,6 +7,27 @@ function s(prim) {
   return prim;
 }
 
+var footerText = {
+  footer: "Footer",
+  ocamlSummary: "Innovation. Community. Security.",
+  industry: "Industry",
+  whatIsOcaml: "What is OCaml",
+  industrialUsers: "Industrial Users",
+  successStories: "Success Stories",
+  resources: "Resources",
+  documentation: "Documentation",
+  learn: "Learn",
+  community: "Community",
+  opportunities: "Opportunities",
+  news: "News",
+  aroundTheWeb: "Around the Web",
+  legal: "Legal",
+  privacy: "Privacy",
+  terms: "Terms",
+  claims: "Claims",
+  cookies: "Cookies"
+};
+
 function Footer$H3(Props) {
   var children = Props.children;
   return React.createElement("h3", {
@@ -50,14 +71,13 @@ var SocialLink = {
 };
 
 function Footer(Props) {
-  var content = Props.content;
   return React.createElement("footer", {
               "aria-labelledby": "footerHeading",
               className: "bg-white"
             }, React.createElement("h2", {
                   className: "sr-only",
                   id: "footerHeading"
-                }, content.footer), React.createElement("div", {
+                }, footerText.footer), React.createElement("div", {
                   className: "max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
                 }, React.createElement("div", {
                       className: "xl:grid xl:grid-cols-3 xl:gap-8"
@@ -69,7 +89,7 @@ function Footer(Props) {
                               src: "/static/ocaml-logo.jpeg"
                             }), React.createElement("p", {
                               className: "text-gray-500 text-base"
-                            }, content.ocamlSummary), React.createElement("div", {
+                            }, footerText.ocamlSummary), React.createElement("div", {
                               className: "flex space-x-6"
                             }, React.createElement(Footer$SocialLink, {
                                   children: React.createElement("svg", {
@@ -113,62 +133,62 @@ function Footer(Props) {
                         }, React.createElement("div", {
                               className: "md:grid md:grid-cols-2 md:gap-8"
                             }, React.createElement("div", undefined, React.createElement(Footer$H3, {
-                                      children: content.industry
+                                      children: footerText.industry
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.whatIsOcaml,
+                                              children: footerText.whatIsOcaml,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.industrialUsers,
+                                              children: footerText.industrialUsers,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.successStories,
+                                              children: footerText.successStories,
                                               href: "/learn/success"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement(Footer$H3, {
-                                      children: content.resources
+                                      children: footerText.resources
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.documentation,
+                                              children: footerText.documentation,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.learn,
+                                              children: footerText.learn,
                                               href: "/learn"
                                             }))))), React.createElement("div", {
                               className: "md:grid md:grid-cols-2 md:gap-8"
                             }, React.createElement("div", undefined, React.createElement(Footer$H3, {
-                                      children: content.community
+                                      children: footerText.community
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.opportunities,
+                                              children: footerText.opportunities,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.news,
+                                              children: footerText.news,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.aroundTheWeb,
-                                              href: "#"
+                                              children: footerText.aroundTheWeb,
+                                              href: "/play"
                                             })))), React.createElement("div", {
                                   className: "mt-12 md:mt-0"
                                 }, React.createElement(Footer$H3, {
-                                      children: content.legal
+                                      children: footerText.legal
                                     }), React.createElement("ul", {
                                       className: "mt-4 space-y-4"
                                     }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.privacy,
+                                              children: footerText.privacy,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.terms,
+                                              children: footerText.terms,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.claims,
+                                              children: footerText.claims,
                                               href: "#"
                                             })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                              children: content.cookies,
+                                              children: footerText.cookies,
                                               href: "#"
                                             })))))))));
 }
@@ -180,6 +200,7 @@ var make = Footer;
 export {
   Link$1 as Link,
   s ,
+  footerText ,
   H3 ,
   A ,
   SocialLink ,

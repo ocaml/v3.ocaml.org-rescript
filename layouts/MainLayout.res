@@ -24,7 +24,7 @@ let make = (~children, ~editpath) => {
     <div className="flex-shrink-0 flex lg:justify-center">
 
       <div className="max-w-5xl w-full lg:w-3/4">
-        <Footer content=FooterContentMap.footerContentEn/>
+        <Footer/>
       </div>
 
     </div>
