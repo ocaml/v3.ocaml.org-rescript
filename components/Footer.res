@@ -33,7 +33,7 @@ module A = {
 
 @react.component
 let make = (~text=textEn) =>
-    <footer className="bg-white" ariaLabelledby="footerHeading">
+    <footer ariaLabelledby="footerHeading">
         <h2 id="footerHeading" className="sr-only"> {s(text["footer"])} </h2>
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <div className="xl:grid xl:grid-cols-3 xl:gap-8">

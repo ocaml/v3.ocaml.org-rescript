@@ -49,8 +49,7 @@ function Footer(Props) {
   var textOpt = Props.text;
   var text = textOpt !== undefined ? Caml_option.valFromOption(textOpt) : textEn;
   return React.createElement("footer", {
-              "aria-labelledby": "footerHeading",
-              className: "bg-white"
+              "aria-labelledby": "footerHeading"
             }, React.createElement("h2", {
                   className: "sr-only",
                   id: "footerHeading"
