@@ -7,7 +7,7 @@ function s(prim) {
   return prim;
 }
 
-var textEn = {
+var contentEn = {
   heroHeader: "Welcome to a World of OCaml",
   heroBody: "OCaml is a general purpose industrial-strength programming language with an emphasis on expressiveness and \n    safety. Its reputation for combining security with speed makes it popular with many industrial users, as well as the \n    growing group of developers that make up its community.",
   installOcaml: "Install OCaml",
@@ -15,24 +15,19 @@ var textEn = {
   statsTitle: "OCaml in Numbers",
   activeMembers: "Active Members",
   industrySatisfaction: "Industry Satisfaction",
-  averagePRsPerWeek: "Average PRs per Week"
-};
-
-var data = {
-  activeMembers: "2000+",
+  averagePRsPerWeek: "Average PRs per Week",
+  activeMembersValue: "2000+",
   industrySatisfactionPercent: "97%",
-  averagePRsPerWeek: "450",
+  averagePRsPerWeekValue: "450",
   quote: "OCaml helps us to quickly adopt to changing market conditions, and go from prototypes to production \n    systems with less effort ... Billions of dollars of transactions flow through our systems every day, so getting \n    it right matters.",
   organizationName: "Jane Street",
   speaker: "Yaron Minsky",
-  organizationLogo: "https://kanishka.codeberg.page/js.svg"
+  organizationLogo: "/static/js.svg"
 };
 
 function Index(Props) {
-  var textOpt = Props.text;
-  var dataOpt = Props.data;
-  var text = textOpt !== undefined ? Caml_option.valFromOption(textOpt) : textEn;
-  var data$1 = dataOpt !== undefined ? Caml_option.valFromOption(dataOpt) : data;
+  var contentOpt = Props.content;
+  var content = contentOpt !== undefined ? Caml_option.valFromOption(contentOpt) : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement("div", {
                   className: "lg:relative"
                 }, React.createElement("div", {
@@ -41,26 +36,26 @@ function Index(Props) {
                           className: "px-4 lg:w-1/2 sm:px-8 xl:pr-16"
                         }, React.createElement("h1", {
                               className: "text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
-                            }, textEn.heroHeader), React.createElement("p", {
+                            }, content.heroHeader), React.createElement("p", {
                               className: "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
-                            }, textEn.heroBody), React.createElement("div", {
+                            }, content.heroBody), React.createElement("div", {
                               className: "mt-10 sm:flex sm:justify-center lg:justify-start"
                             }, React.createElement("div", {
                                   className: "rounded-md shadow"
                                 }, React.createElement("a", {
                                       className: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker md:py-4 md:text-lg md:px-10",
                                       href: "#"
-                                    }, textEn.installOcaml)), React.createElement("div", {
+                                    }, content.installOcaml)), React.createElement("div", {
                                   className: "mt-3 rounded-md shadow sm:mt-0 sm:ml-3"
                                 }, React.createElement("a", {
                                       className: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orangedark bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10",
                                       href: "#"
-                                    }, textEn.learnMore))))), React.createElement("div", {
+                                    }, content.learnMore))))), React.createElement("div", {
                       className: "relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full"
                     }, React.createElement("img", {
                           className: "absolute inset-0 w-full h-full object-cover",
                           alt: "",
-                          src: "https://kanishka.codeberg.page/oc-sq.jpg"
+                          src: "/static/oc-sq.jpeg"
                         }))), React.createElement("div", {
                   className: "pt-12 sm:pt-16"
                 }, React.createElement("div", {
@@ -69,7 +64,7 @@ function Index(Props) {
                           className: "max-w-4xl mx-auto text-center"
                         }, React.createElement("h2", {
                               className: "text-3xl font-extrabold text-gray-900 sm:text-4xl"
-                            }, text.statsTitle))), React.createElement("div", {
+                            }, content.statsTitle))), React.createElement("div", {
                       className: "mt-10 pb-12 sm:pb-16"
                     }, React.createElement("div", {
                           className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -81,21 +76,21 @@ function Index(Props) {
                                       className: "flex flex-col border-b border-gray-100 py-16 text-center sm:border-0 sm:border-r"
                                     }, React.createElement("dt", {
                                           className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
-                                        }, text.activeMembers), React.createElement("dd", {
+                                        }, content.activeMembers), React.createElement("dd", {
                                           className: "order-1 text-5xl font-extrabold text-orangedark"
-                                        }, data$1.activeMembers)), React.createElement("div", {
+                                        }, content.activeMembersValue)), React.createElement("div", {
                                       className: "flex flex-col border-t border-b border-gray-100 py-16 text-center sm:border-0 sm:border-l sm:border-r"
                                     }, React.createElement("dt", {
                                           className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
-                                        }, text.industrySatisfaction), React.createElement("dd", {
+                                        }, content.industrySatisfaction), React.createElement("dd", {
                                           className: "order-1 text-5xl font-extrabold text-orangedark"
-                                        }, data$1.industrySatisfactionPercent)), React.createElement("div", {
+                                        }, content.industrySatisfactionPercent)), React.createElement("div", {
                                       className: "flex flex-col border-t border-gray-100 py-16 text-center sm:border-0 sm:border-l"
                                     }, React.createElement("dt", {
                                           className: "order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70"
-                                        }, text.averagePRsPerWeek), React.createElement("dd", {
+                                        }, content.averagePRsPerWeek), React.createElement("dd", {
                                           className: "order-1 text-5xl font-extrabold text-orangedark"
-                                        }, data$1.averagePRsPerWeek))))))), React.createElement("section", {
+                                        }, content.averagePRsPerWeekValue))))))), React.createElement("section", {
                   className: "pt-5 pb-20 overflow-hidden md:pt-6 mb:pb-24 lg:pt-10 lg:pb-40"
                 }, React.createElement("div", {
                       className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -109,7 +104,7 @@ function Index(Props) {
                           viewBox: "0 0 404 404"
                         }, React.createElement("title", {
                               id: "svg-testimonial-org"
-                            }, data$1.organizationName), React.createElement("defs", undefined, React.createElement("pattern", {
+                            }, content.organizationName), React.createElement("defs", undefined, React.createElement("pattern", {
                                   id: "ad119f34-7694-4c31-947f-5c9d249b21f3",
                                   height: "20",
                                   width: "20",
@@ -131,15 +126,15 @@ function Index(Props) {
                           className: "relative"
                         }, React.createElement("img", {
                               className: "mx-auto h-24",
-                              alt: data$1.organizationName,
-                              src: data$1.organizationLogo
+                              alt: content.organizationName,
+                              src: content.organizationLogo
                             }), React.createElement("blockquote", {
                               className: "mt-10"
                             }, React.createElement("div", {
                                   className: "max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900"
                                 }, React.createElement("p", undefined, React.createElement("span", {
                                           className: "text-orangedark"
-                                        }, "”"), data$1.quote, React.createElement("span", {
+                                        }, "”"), content.quote, React.createElement("span", {
                                           className: "text-orangedark"
                                         }, "”"))), React.createElement("footer", {
                                   className: "mt-0"
@@ -149,7 +144,7 @@ function Index(Props) {
                                           className: "mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center"
                                         }, React.createElement("div", {
                                               className: "text-base font-medium text-gray-900"
-                                            }, data$1.speaker), React.createElement("svg", {
+                                            }, content.speaker), React.createElement("svg", {
                                               className: "hidden md:block mx-1 h-5 w-5 text-orangedark",
                                               fill: "currentColor",
                                               viewBox: "0 0 20 20"
@@ -157,7 +152,7 @@ function Index(Props) {
                                                   d: "M11 0h3L9 20H6l5-20z"
                                                 })), React.createElement("div", {
                                               className: "text-base font-medium text-gray-500"
-                                            }, data$1.organizationName)))))))));
+                                            }, content.organizationName)))))))));
 }
 
 var make = Index;
@@ -166,8 +161,7 @@ var $$default = Index;
 
 export {
   s ,
-  textEn ,
-  data ,
+  contentEn ,
   make ,
   $$default ,
   $$default as default,
