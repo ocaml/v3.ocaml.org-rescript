@@ -4,6 +4,7 @@ module P = {
 };
 
 let default = () =>
+
   <div>
     <h1 className="text-3xl font-semibold">
       {React.string("OCaml is an industrial-strength programming language 
