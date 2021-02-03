@@ -17,7 +17,7 @@ let make = (~content=contentEn) =>
     <div className="flex justify-between items-center md:justify-start py-6 md:space-x-10 ">
       <div className="flex justify-start  ">
         <a href="/" className="bg-blue-100">
-          <img className="h-8 w-auto sm:h-10" src="https://kanishka.codeberg.page/logo1.jpeg" alt="" />
+          <img className="h-8 w-auto sm:h-10" src="/static/logo1.jpeg" alt="" />
         </a>
       </div>
       <nav className="hidden md:flex space-x-10 ">

@@ -30,7 +30,7 @@ function HeaderNavigation(Props) {
                         }, React.createElement("img", {
                               className: "h-8 w-auto sm:h-10",
                               alt: "",
-                              src: "https://kanishka.codeberg.page/logo1.jpeg"
+                              src: "/static/logo1.jpeg"
                             }))), React.createElement("nav", {
                       className: "hidden md:flex space-x-10 "
                     }, React.createElement("a", {
