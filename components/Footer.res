@@ -45,7 +45,7 @@ let make = (~text=textEn) =>
                     <div className="flex space-x-6">
                         <a href="https://discuss.ocaml.org" className="text-gray-400 hover:text-gray-500">
                             <span className="sr-only">{s(`Discourse`)}</span> 
-                            <img className="h-6 w-6" src="/static/discourselogo.svg" alt="" ariaHidden=true />
+                            <img className="h-6 w-6" src="/static/discourselogo.png" alt="" ariaHidden=true />
                         </a>
                         <a href="https://github.com/ocaml" className="text-gray-400 hover:text-gray-500">
                             <span className="sr-only">{s(`GitHub`)}</span> 
