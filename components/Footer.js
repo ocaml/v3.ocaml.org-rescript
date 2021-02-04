@@ -70,7 +70,7 @@ function Footer(Props) {
                                           fillRule: "evenodd"
                                         }))), React.createElement("a", {
                                   className: "text-gray-400 hover:text-gray-500",
-                                  href: "https://nitter.nixnet.services/search?f=tweets&q=%23ocaml"
+                                  href: "https://fosstodon.org/tags/ocaml"
                                 }, React.createElement("span", {
                                       className: "sr-only"
                                     }, "Twitter"), React.createElement("svg", {
