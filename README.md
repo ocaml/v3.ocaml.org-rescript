@@ -40,6 +40,7 @@ If you don't already have `nvm` installed, install it using the instructions
 provided by `nvm` https://github.com/nvm-sh/nvm#installing-and-updating . Restart
 or reload your terminal to pickup the changes.
 
+
 ```
 # 1. Ensure you have the correct node version by installing it, if it's not present already
 # 2. Using installed node version, install yarn and install dependencies
