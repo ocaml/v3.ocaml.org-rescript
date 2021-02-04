@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "bs-platform": "8.4.2",
-    "next": "^10.0.5",
-    "next-mdx-remote": "^2.1.2",
+    "next": "^10.0.6",
+    "next-mdx-remote": "^2.1.3",
     "next-transpile-modules": "^4.1.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -35,16 +35,15 @@
     "rescript:start": "bsb -make-world -w"
   },
   "scriptsDescription": {
-    "next:start": "prefer invoking next:start with the output of next:export"
+    "next:start": "prefer using express or another server with the output of next:export instead of next:start"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.3",
+    "autoprefixer": "^10.2.4",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.2",
     "yarn": "1.22"
   },
   "devDependenciesDescription": {
-    "gentype": "Can be used to create converters between JS and rescript types for values used in static props",
     "postcss-cli": "Only used when manually debugging CSS generation. True postcss version is determined by next version",
     "yarn": "yarn is installed manually initially to perform install, after that, this version is referenced"
   },
