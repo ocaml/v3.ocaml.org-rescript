@@ -56,6 +56,7 @@ const config = {
         destination: 'https://play.tailwindcss.com/n8u5qc7Ax7?layout=preview',
         permanent: false,
       },
+      
       /* awaiting next version
       {
         source: '/play/home',
