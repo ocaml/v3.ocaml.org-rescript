@@ -25,6 +25,7 @@ ci-install-deps:
 	# npm install -g esy@0.6.7 # for eventually dune install
 	npx yarn@1.22 install
 	cd node_modules/bs-platform && touch index.js && sed -i 's/^{/{ "main": "index.js",/' package.json
+	cd node_modules/reason-react && touch index.js && sed -i 's/^{/{ "main": "index.js",/' package.json
 
 .PHONY: ci-build
 ci-build:
