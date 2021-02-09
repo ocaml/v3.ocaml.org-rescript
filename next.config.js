@@ -58,7 +58,7 @@ const config = {
       },
       {
         source: '/play/community/ocamlworkshoparchive',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/OdONb93XWX?layout=preview',
         permanent: false,
       },
       {
@@ -73,7 +73,7 @@ const config = {
       },
       {
         source: '/play/community/newsarchive',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/DAVx1bUei3?layout=preview',
         permanent: false,
       },
       {
