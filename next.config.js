@@ -98,22 +98,22 @@ const config = {
       },
       {
         source: '/play/resource/tutorials',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/TZiQsbetpO?layout=preview',
         permanent: false,
       },
       {
         source: '/play/resource/books',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/Hc4zbzifKK?layout=preview',
         permanent: false,
       },
       {
         source: '/play/resource/archive',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/Y1ABhSzyna?layout=preview',
         permanent: false,
       },
       {
         source: '/play/resource/cheatsheets',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/siVq8NWGwA?layout=preview',
         permanent: false,
       },
       {
@@ -123,7 +123,7 @@ const config = {
       },
       {
         source: '/play/resource/releases',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/8wOb8r1ICV?layout=preview',
         permanent: false,
       },
       {
@@ -138,39 +138,40 @@ const config = {
       },
       {
         source: '/play/resource/applications',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/b4yHGsAz3s?layout=preview',
         permanent: false,
       },
       {
         source: '/play/resource/installocaml',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/biyW1UfhQT?layout=preview',
         permanent: false,
       },
       {
         source: '/play/privacypolicy',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/QJdesMclar?layout=preview',
         permanent: false,
       },
       {
         source: '/play/about',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/FIney8bfu3?layout=preview',
         permanent: false,
       },
       {
         source: '/play/governance',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/3zJkikgEgR?layout=preview',
         permanent: false,
       },
       {
         source: '/play/compiler/license',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/eFSxVyoq4r?layout=preview',
         permanent: false,
       },
       {
         source: '/play/consortium',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/oiGQaNMMKP?layout=preview',
         permanent: false,
       },
+      /* page sub-components */
       {
         source: '/play/header',
         destination: 'https://play.tailwindcss.com/n8u5qc7Ax7?layout=preview',
