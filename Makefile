@@ -24,6 +24,7 @@ ci-install-deps:
 	# installing (or using) esy encounters permission error
 	# npm install -g esy@0.6.7 # for eventually dune install
 	npx yarn@1.22 install
+	cd node_modules/bs-platform && touch index.js && sed 's/^{$/{ "main": "index.js",/' package.json
 
 .PHONY: ci-build
 ci-build:
