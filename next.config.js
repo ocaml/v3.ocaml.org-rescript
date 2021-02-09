@@ -53,7 +53,7 @@ const config = {
       },
       {
         source: '/play/community/ocamlworkshop',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/QWDWzrqLCw?layout=preview',
         permanent: false,
       },
       {
@@ -63,12 +63,12 @@ const config = {
       },
       {
         source: '/play/community/opportunities',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/66ITkwvaJN?layout=preview',
         permanent: false,
       },
       {
         source: '/play/community/news',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'https://play.tailwindcss.com/86WOUMz2SR?layout=preview',
         permanent: false,
       },
       {
