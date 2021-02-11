@@ -118,6 +118,7 @@ let make = (~content) =>
                 </div>
                 <div className="mt-10 space-y-8 xl:col-span-1">
                     <p className="text-gray-500 text-base"> {s(content.thankSponsor)} </p>
+
                 </div>
             </div>
         </div>
