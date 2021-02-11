@@ -4,6 +4,7 @@ type navContent = {
   community: NavEntry.t
 }
 
+
 let navContentEn = {
   industry: {label: `Industry`, url: `#`},
   resources: {label: `Resources`, url: `#`},
