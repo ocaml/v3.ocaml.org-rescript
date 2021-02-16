@@ -36,7 +36,7 @@ const config = {
 
       {
         source: '/play/community/aroundweb',
-        destination: 'https://play.tailwindcss.com/QOF6xgqcuY?layout=preview',
+        destination: 'https://play.tailwindcss.com/jUYpyl33nV?layout=preview',
         permanent: false,
       },
       {
@@ -150,7 +150,7 @@ const config = {
       },
       {
         source: '/play/resource/installocaml',
-        destination: 'https://play.tailwindcss.com/Lh6y69JyIN?layout=preview',
+        destination: 'https://play.tailwindcss.com/RY5ZJl13Vw?layout=preview',
         permanent: false,
       },
 
