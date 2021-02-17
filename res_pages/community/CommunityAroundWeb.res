@@ -3,7 +3,23 @@ let s = React.string
 @react.component
 let make = () =>
   <>
-  <a href="/play/community/aroundweb" className="block underline">{s(`View Tailwind Playground`)}</a>
+  
+  <div className="relative bg-indigo-600">
+    <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+      <div className="pr-16 sm:text-center sm:px-16">
+        <p className="font-medium text-white">
+          <span className="">
+            {s(`Under construction`)}
+          </span>
+          <span className="block sm:ml-2 sm:inline-block">
+            <a href="/play/community/aroundweb" className="text-white font-bold underline"> {s(`View Playground >>`)} </a>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
   <div className="bg-graylight">
     <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
       <div className="text-center">

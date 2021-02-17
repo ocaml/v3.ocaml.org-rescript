@@ -7,10 +7,22 @@ function s(prim) {
 }
 
 function CommunityAroundWeb(Props) {
-  return React.createElement(React.Fragment, undefined, React.createElement("a", {
-                  className: "block underline",
-                  href: "/play/community/aroundweb"
-                }, "View Tailwind Playground"), React.createElement("div", {
+  return React.createElement(React.Fragment, undefined, React.createElement("div", {
+                  className: "relative bg-indigo-600"
+                }, React.createElement("div", {
+                      className: "max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8"
+                    }, React.createElement("div", {
+                          className: "pr-16 sm:text-center sm:px-16"
+                        }, React.createElement("p", {
+                              className: "font-medium text-white"
+                            }, React.createElement("span", {
+                                  className: ""
+                                }, "Under construction"), React.createElement("span", {
+                                  className: "block sm:ml-2 sm:inline-block"
+                                }, React.createElement("a", {
+                                      className: "text-white font-bold underline",
+                                      href: "/play/community/aroundweb"
+                                    }, "View Playground >>")))))), React.createElement("div", {
                   className: "bg-graylight"
                 }, React.createElement("div", {
                       className: "max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
