@@ -119,13 +119,9 @@ function CommunityAroundWeb(Props) {
                           href: "https://discuss.ocaml.org",
                           target: "_blank"
                         }, content.engageButtonText))), React.createElement("div", {
-                  className: "relative pt-16 pb-3 px-4 sm:px-6 lg:pt-24 lg:pb-8 lg:px-8"
+                  className: "pt-16 pb-3 px-4 sm:px-6 lg:pt-24 lg:pb-8 lg:px-8"
                 }, React.createElement("div", {
-                      className: "absolute inset-0"
-                    }, React.createElement("div", {
-                          className: "h-1/3 sm:h-2/3"
-                        })), React.createElement("div", {
-                      className: "relative max-w-7xl mx-auto"
+                      className: "max-w-7xl mx-auto"
                     }, React.createElement("div", {
                           className: "text-center"
                         }, React.createElement("h2", {
