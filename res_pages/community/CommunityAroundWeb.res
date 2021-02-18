@@ -4,6 +4,7 @@ type blogEntry = {
   title: string,
   excerpt: string,
   author: string,
+  dateValue: string,
   date: string,
   readingTime: string
 }
@@ -38,6 +39,7 @@ let contentEn = {
         excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
           ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
         author: `Roel Aufderehar`,
+        dateValue: `2020-03-16`,
         date: `Mar 16, 2020`,
         readingTime: `6`
       },
@@ -46,6 +48,7 @@ let contentEn = {
         excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
           ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
         author: `Roel Aufderehar`,
+        dateValue: `2020-03-16`,
         date: `Mar 16, 2020`,
         readingTime: `6`
       },
@@ -54,6 +57,7 @@ let contentEn = {
         excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
           ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
         author: `Daniela Metz`,
+        dateValue: `2020-02-12`,
         date: `Feb 12, 2020`,
         readingTime: `11`
       }
@@ -66,7 +70,6 @@ let contentEn = {
 @react.component
 let make = (~content=contentEn) =>
   <>
-  
   <div className="relative bg-indigo-600">
     <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
       <div className="pr-16 sm:text-center sm:px-16">
@@ -82,33 +85,28 @@ let make = (~content=contentEn) =>
     </div>
   </div>
 
-
-  <div className="bg-graylight">
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-      <div className="text-center">
-        <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">{s(content.title)}</p>
-        <p className="max-w-4xl mt-5 mx-auto text-xl text-gray-500">{s(content.pageDescription)}</p>
-      </div>
+  <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <div className="text-center">
+      <h1 className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">{s(content.title)}</h1>
+      <p className="max-w-4xl mt-5 mx-auto text-xl text-gray-500">{s(content.pageDescription)}</p>
     </div>
   </div>
 
-  <div className="bg-graylight pb-16"> {/* change to mb */ React.null}
-    <div className="bg-orangedark">
-      <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-          <span className="block">{s(content.engageHeader)}</span>
-        </h2>
-        <p className="mt-4 text-lg leading-6 text-white">{s(content.engageBody)}</p>
-        <a className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md bg-white hover:bg-orangelight sm:w-auto" href="https://discuss.ocaml.org" target="_blank">
-          {s(content.engageButtonText)}
-        </a>
-      </div>
+  <div className="bg-orangedark mb-16">
+    <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+      <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+        <span className="block">{s(content.engageHeader)}</span>
+      </h2>
+      <p className="mt-4 text-lg leading-6 text-white">{s(content.engageBody)}</p>
+      <a className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md bg-white hover:bg-orangelight sm:w-auto" href="https://discuss.ocaml.org" target="_blank">
+        {s(content.engageButtonText)}
+      </a>
     </div>
   </div>
 
-  <div className="relative bg-graylight pt-16 pb-3 px-4 sm:px-6 lg:pt-24 lg:pb-8 lg:px-8">
+  <div className="relative pt-16 pb-3 px-4 sm:px-6 lg:pt-24 lg:pb-8 lg:px-8">
     <div className="absolute inset-0">
-      <div className="bg-graylight h-1/3 sm:h-2/3"></div>
+      <div className="h-1/3 sm:h-2/3"></div>
     </div>
     <div className="relative max-w-7xl mx-auto">
       <div className="text-center">
@@ -126,23 +124,17 @@ let make = (~content=contentEn) =>
                 <a href="#" className="hover:underline"> {s(content.blog)} </a>
               </p>
               <a href="#" className="block mt-2">
-                <p className="text-xl font-semibold text-gray-900">{s(content.blogEntries[0].title)}</p>
+                <h3 className="text-xl font-semibold text-gray-900">{s(content.blogEntries[0].title)}</h3>
                 <p className="mt-3 text-base text-gray-500">{s(content.blogEntries[0].excerpt)}</p>
               </a>
             </div>
             <div className="mt-6 flex items-center">
-              <div className="flex-shrink-0">
-                <a href="#">
-                  <span className="sr-only">{s(content.blogEntries[0].author)}</span>
-                  <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                </a>
-              </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">
                   <a href="#" className="hover:underline">{s(content.blogEntries[0].author)}</a>
                 </p>
                 <div className="flex space-x-1 text-sm text-gray-500">
-                  <time dateTime="2020-03-16"> {s(content.blogEntries[0].date)} </time>
+                  <time dateTime=content.blogEntries[0].dateValue> {s(content.blogEntries[0].date)} </time>
                   <span ariaHidden=true> {s(`·`)} </span>
                   <span> {s(content.blogEntries[0].readingTime ++ ` min read`)} </span>
                 </div>
@@ -161,23 +153,17 @@ let make = (~content=contentEn) =>
                 <a href="#" className="hover:underline"> {s(content.blog)} </a>
               </p>
               <a href="#" className="block mt-2">
-                <p className="text-xl font-semibold text-gray-900"> {s(content.blogEntries[1].title)} </p>
+                <h3 className="text-xl font-semibold text-gray-900"> {s(content.blogEntries[1].title)} </h3>
                 <p className="mt-3 text-base text-gray-500"> {s(content.blogEntries[1].excerpt)} </p>
               </a>
             </div>
             <div className="mt-6 flex items-center">
-              <div className="flex-shrink-0">
-                <a href="#">
-                  <span className="sr-only">{s(content.blogEntries[1].author)}</span>
-                  <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                </a>
-              </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">
                   <a href="#" className="hover:underline"> {s(content.blogEntries[1].author)} </a>
                 </p>
                 <div className="flex space-x-1 text-sm text-gray-500">
-                  <time dateTime="2020-03-10"> {s(content.blogEntries[1].date)} </time>
+                  <time dateTime=content.blogEntries[1].dateValue> {s(content.blogEntries[1].date)} </time>
                   <span ariaHidden=true> {s(`·`)} </span>
                   <span> {s(content.blogEntries[1].readingTime ++ ` min read`)} </span>
                 </div>
@@ -196,54 +182,43 @@ let make = (~content=contentEn) =>
                 <a href="#" className="hover:underline"> {s(content.blog)} </a>
               </p>
               <a href="#" className="block mt-2">
-                <p className="text-xl font-semibold text-gray-900"> {s(content.blogEntries[2].title)}</p>
-                <p className="mt-3 text-base text-gray-500"> {s(content.blogEntries[2].excerpt)}</p>
+                <h3 className="text-xl font-semibold text-gray-900"> {s(content.blogEntries[2].title)} </h3>
+                <p className="mt-3 text-base text-gray-500"> {s(content.blogEntries[2].excerpt)} </p>
               </a>
             </div>
             <div className="mt-6 flex items-center">
-              <div className="flex-shrink-0">
-                <a href="#">
-                  <span className="sr-only">{s(content.blogEntries[2].author)}</span>
-                  <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                </a>
-              </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">
                   <a href="#" className="hover:underline"> {s(content.blogEntries[2].author)} </a>
                 </p>
                 <div className="flex space-x-1 text-sm text-gray-500">
-                  <time dateTime="2020-02-12"> {s(content.blogEntries[2].date)} </time>
+                  <time dateTime=content.blogEntries[2].date> {s(content.blogEntries[2].date)} </time>
                   <span ariaHidden=true> {s(`·`)} </span>
                   <span> {s(content.blogEntries[2].readingTime ++ ` min read`)} </span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>        
       </div>
-    </div>
-    <p className="mt-5 text-right">
-      <a className="font-semibold text-orangedark" href="#">{s(content.blogArchiveText ++ ` >`)}</a>
-    </p>
-  </div>
-
-  <div className="bg-graylight">
-    <div className="max-w-7xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
-      <div className="text-center">
-        <p className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">{s(content.spacesSectionHeader)}</p>
-      </div>
+      <p className="mt-5 text-right">
+        <a className="font-semibold text-orangedark" href="#"> {s(content.blogArchiveText ++ ` >`)} </a>
+      </p>
     </div>
   </div>
 
-  <div className="bg-graylight">
-    <div className="mx-auto max-w-4xl flex pb-14 space-x-24 justify-center">
+  <div className="max-w-7xl mx-auto pb-14">
+    <h2 className="text-center text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
+      {s(content.spacesSectionHeader)}
+    </h2>
+    <div className="mx-auto max-w-4xl px-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-        <div className="text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">{s(content.spaces[0])}</div>
-        <div className="text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">{s(content.spaces[1])}</div>
-        <div className="text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">{s(content.spaces[2])}</div>
-        <div className="text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">{s(content.spaces[3])}</div>
-        <div className="text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">{s(content.spaces[4])}</div>
-        <div className="text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">{s(content.spaces[5])}</div>
+        <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"> {s(content.spaces[0])} </a>
+        <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"> {s(content.spaces[1])} </a>
+        <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"> {s(content.spaces[2])} </a>
+        <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"> {s(content.spaces[3])} </a>
+        <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"> {s(content.spaces[4])} </a>
+        <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"> {s(content.spaces[5])} </a>
       </div>
     </div>
   </div>

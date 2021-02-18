@@ -28,6 +28,7 @@ var contentEn_blogEntries = [
     title: "What I learned Coding from Home",
     excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, \n          ut atque fuga culpa, similique sequi cum eos quis dolorum.",
     author: "Roel Aufderehar",
+    dateValue: "2020-03-16",
     date: "Mar 16, 2020",
     readingTime: "6"
   },
@@ -35,6 +36,7 @@ var contentEn_blogEntries = [
     title: "Programming for a Better World",
     excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, \n          ut atque fuga culpa, similique sequi cum eos quis dolorum.",
     author: "Roel Aufderehar",
+    dateValue: "2020-03-16",
     date: "Mar 16, 2020",
     readingTime: "6"
   },
@@ -42,6 +44,7 @@ var contentEn_blogEntries = [
     title: "Methods for Irmin V2",
     excerpt: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, \n          ut atque fuga culpa, similique sequi cum eos quis dolorum.",
     author: "Daniela Metz",
+    dateValue: "2020-02-12",
     date: "Feb 12, 2020",
     readingTime: "11"
   }
@@ -94,37 +97,33 @@ function CommunityAroundWeb(Props) {
                                       className: "text-white font-bold underline",
                                       href: "/play/community/aroundweb"
                                     }, "View Playground >>")))))), React.createElement("div", {
-                  className: "bg-graylight"
+                  className: "max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
                 }, React.createElement("div", {
-                      className: "max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
-                    }, React.createElement("div", {
-                          className: "text-center"
-                        }, React.createElement("p", {
-                              className: "mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
-                            }, content.title), React.createElement("p", {
-                              className: "max-w-4xl mt-5 mx-auto text-xl text-gray-500"
-                            }, content.pageDescription)))), React.createElement("div", {
-                  className: "bg-graylight pb-16"
-                }, null, React.createElement("div", {
-                      className: "bg-orangedark"
-                    }, React.createElement("div", {
-                          className: "max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8"
-                        }, React.createElement("h2", {
-                              className: "text-3xl font-extrabold text-white sm:text-4xl"
-                            }, React.createElement("span", {
-                                  className: "block"
-                                }, content.engageHeader)), React.createElement("p", {
-                              className: "mt-4 text-lg leading-6 text-white"
-                            }, content.engageBody), React.createElement("a", {
-                              className: "mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md bg-white hover:bg-orangelight sm:w-auto",
-                              href: "https://discuss.ocaml.org",
-                              target: "_blank"
-                            }, content.engageButtonText)))), React.createElement("div", {
-                  className: "relative bg-graylight pt-16 pb-3 px-4 sm:px-6 lg:pt-24 lg:pb-8 lg:px-8"
+                      className: "text-center"
+                    }, React.createElement("h1", {
+                          className: "mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
+                        }, content.title), React.createElement("p", {
+                          className: "max-w-4xl mt-5 mx-auto text-xl text-gray-500"
+                        }, content.pageDescription))), React.createElement("div", {
+                  className: "bg-orangedark mb-16"
+                }, React.createElement("div", {
+                      className: "max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8"
+                    }, React.createElement("h2", {
+                          className: "text-3xl font-extrabold text-white sm:text-4xl"
+                        }, React.createElement("span", {
+                              className: "block"
+                            }, content.engageHeader)), React.createElement("p", {
+                          className: "mt-4 text-lg leading-6 text-white"
+                        }, content.engageBody), React.createElement("a", {
+                          className: "mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md bg-white hover:bg-orangelight sm:w-auto",
+                          href: "https://discuss.ocaml.org",
+                          target: "_blank"
+                        }, content.engageButtonText))), React.createElement("div", {
+                  className: "relative pt-16 pb-3 px-4 sm:px-6 lg:pt-24 lg:pb-8 lg:px-8"
                 }, React.createElement("div", {
                       className: "absolute inset-0"
                     }, React.createElement("div", {
-                          className: "bg-graylight h-1/3 sm:h-2/3"
+                          className: "h-1/3 sm:h-2/3"
                         })), React.createElement("div", {
                       className: "relative max-w-7xl mx-auto"
                     }, React.createElement("div", {
@@ -155,23 +154,13 @@ function CommunityAroundWeb(Props) {
                                             }, content.blog)), React.createElement("a", {
                                           className: "block mt-2",
                                           href: "#"
-                                        }, React.createElement("p", {
+                                        }, React.createElement("h3", {
                                               className: "text-xl font-semibold text-gray-900"
                                             }, Caml_array.get(content.blogEntries, 0).title), React.createElement("p", {
                                               className: "mt-3 text-base text-gray-500"
                                             }, Caml_array.get(content.blogEntries, 0).excerpt))), React.createElement("div", {
                                       className: "mt-6 flex items-center"
                                     }, React.createElement("div", {
-                                          className: "flex-shrink-0"
-                                        }, React.createElement("a", {
-                                              href: "#"
-                                            }, React.createElement("span", {
-                                                  className: "sr-only"
-                                                }, Caml_array.get(content.blogEntries, 0).author), React.createElement("img", {
-                                                  className: "h-10 w-10 rounded-full",
-                                                  alt: "",
-                                                  src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                }))), React.createElement("div", {
                                           className: "ml-3"
                                         }, React.createElement("p", {
                                               className: "text-sm font-medium text-gray-900"
@@ -181,7 +170,7 @@ function CommunityAroundWeb(Props) {
                                                 }, Caml_array.get(content.blogEntries, 0).author)), React.createElement("div", {
                                               className: "flex space-x-1 text-sm text-gray-500"
                                             }, React.createElement("time", {
-                                                  dateTime: "2020-03-16"
+                                                  dateTime: Caml_array.get(content.blogEntries, 0).dateValue
                                                 }, Caml_array.get(content.blogEntries, 0).date), React.createElement("span", {
                                                   "aria-hidden": true
                                                 }, "·"), React.createElement("span", undefined, Caml_array.get(content.blogEntries, 0).readingTime + " min read")))))), React.createElement("div", {
@@ -204,23 +193,13 @@ function CommunityAroundWeb(Props) {
                                             }, content.blog)), React.createElement("a", {
                                           className: "block mt-2",
                                           href: "#"
-                                        }, React.createElement("p", {
+                                        }, React.createElement("h3", {
                                               className: "text-xl font-semibold text-gray-900"
                                             }, Caml_array.get(content.blogEntries, 1).title), React.createElement("p", {
                                               className: "mt-3 text-base text-gray-500"
                                             }, Caml_array.get(content.blogEntries, 1).excerpt))), React.createElement("div", {
                                       className: "mt-6 flex items-center"
                                     }, React.createElement("div", {
-                                          className: "flex-shrink-0"
-                                        }, React.createElement("a", {
-                                              href: "#"
-                                            }, React.createElement("span", {
-                                                  className: "sr-only"
-                                                }, Caml_array.get(content.blogEntries, 1).author), React.createElement("img", {
-                                                  className: "h-10 w-10 rounded-full",
-                                                  alt: "",
-                                                  src: "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                }))), React.createElement("div", {
                                           className: "ml-3"
                                         }, React.createElement("p", {
                                               className: "text-sm font-medium text-gray-900"
@@ -230,7 +209,7 @@ function CommunityAroundWeb(Props) {
                                                 }, Caml_array.get(content.blogEntries, 1).author)), React.createElement("div", {
                                               className: "flex space-x-1 text-sm text-gray-500"
                                             }, React.createElement("time", {
-                                                  dateTime: "2020-03-10"
+                                                  dateTime: Caml_array.get(content.blogEntries, 1).dateValue
                                                 }, Caml_array.get(content.blogEntries, 1).date), React.createElement("span", {
                                                   "aria-hidden": true
                                                 }, "·"), React.createElement("span", undefined, Caml_array.get(content.blogEntries, 1).readingTime + " min read")))))), React.createElement("div", {
@@ -253,23 +232,13 @@ function CommunityAroundWeb(Props) {
                                             }, content.blog)), React.createElement("a", {
                                           className: "block mt-2",
                                           href: "#"
-                                        }, React.createElement("p", {
+                                        }, React.createElement("h3", {
                                               className: "text-xl font-semibold text-gray-900"
                                             }, Caml_array.get(content.blogEntries, 2).title), React.createElement("p", {
                                               className: "mt-3 text-base text-gray-500"
                                             }, Caml_array.get(content.blogEntries, 2).excerpt))), React.createElement("div", {
                                       className: "mt-6 flex items-center"
                                     }, React.createElement("div", {
-                                          className: "flex-shrink-0"
-                                        }, React.createElement("a", {
-                                              href: "#"
-                                            }, React.createElement("span", {
-                                                  className: "sr-only"
-                                                }, Caml_array.get(content.blogEntries, 2).author), React.createElement("img", {
-                                                  className: "h-10 w-10 rounded-full",
-                                                  alt: "",
-                                                  src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                }))), React.createElement("div", {
                                           className: "ml-3"
                                         }, React.createElement("p", {
                                               className: "text-sm font-medium text-gray-900"
@@ -279,40 +248,34 @@ function CommunityAroundWeb(Props) {
                                                 }, Caml_array.get(content.blogEntries, 2).author)), React.createElement("div", {
                                               className: "flex space-x-1 text-sm text-gray-500"
                                             }, React.createElement("time", {
-                                                  dateTime: "2020-02-12"
+                                                  dateTime: Caml_array.get(content.blogEntries, 2).date
                                                 }, Caml_array.get(content.blogEntries, 2).date), React.createElement("span", {
                                                   "aria-hidden": true
-                                                }, "·"), React.createElement("span", undefined, Caml_array.get(content.blogEntries, 2).readingTime + " min read")))))))), React.createElement("p", {
-                      className: "mt-5 text-right"
-                    }, React.createElement("a", {
-                          className: "font-semibold text-orangedark",
-                          href: "#"
-                        }, content.blogArchiveText + " >"))), React.createElement("div", {
-                  className: "bg-graylight"
-                }, React.createElement("div", {
-                      className: "max-w-7xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:px-8"
-                    }, React.createElement("div", {
-                          className: "text-center"
-                        }, React.createElement("p", {
-                              className: "text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl"
-                            }, content.spacesSectionHeader)))), React.createElement("div", {
-                  className: "bg-graylight"
-                }, React.createElement("div", {
-                      className: "mx-auto max-w-4xl flex pb-14 space-x-24 justify-center"
+                                                }, "·"), React.createElement("span", undefined, Caml_array.get(content.blogEntries, 2).readingTime + " min read"))))))), React.createElement("p", {
+                          className: "mt-5 text-right"
+                        }, React.createElement("a", {
+                              className: "font-semibold text-orangedark",
+                              href: "#"
+                            }, content.blogArchiveText + " >")))), React.createElement("div", {
+                  className: "max-w-7xl mx-auto pb-14"
+                }, React.createElement("h2", {
+                      className: "text-center text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-6 px-4 sm:py-12 sm:px-6 lg:px-8"
+                    }, content.spacesSectionHeader), React.createElement("div", {
+                      className: "mx-auto max-w-4xl px-12"
                     }, React.createElement("div", {
                           className: "grid grid-cols-1 lg:grid-cols-2 gap-3"
-                        }, React.createElement("div", {
-                              className: "text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
-                            }, Caml_array.get(content.spaces, 0)), React.createElement("div", {
-                              className: "text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
-                            }, Caml_array.get(content.spaces, 1)), React.createElement("div", {
-                              className: "text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
-                            }, Caml_array.get(content.spaces, 2)), React.createElement("div", {
-                              className: "text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
-                            }, Caml_array.get(content.spaces, 3)), React.createElement("div", {
-                              className: "text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
-                            }, Caml_array.get(content.spaces, 4)), React.createElement("div", {
-                              className: "text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
+                        }, React.createElement("a", {
+                              className: "block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
+                            }, Caml_array.get(content.spaces, 0)), React.createElement("a", {
+                              className: "block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
+                            }, Caml_array.get(content.spaces, 1)), React.createElement("a", {
+                              className: "block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
+                            }, Caml_array.get(content.spaces, 2)), React.createElement("a", {
+                              className: "block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
+                            }, Caml_array.get(content.spaces, 3)), React.createElement("a", {
+                              className: "block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
+                            }, Caml_array.get(content.spaces, 4)), React.createElement("a", {
+                              className: "block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4"
                             }, Caml_array.get(content.spaces, 5))))));
 }
 
