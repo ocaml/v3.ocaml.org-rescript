@@ -119,6 +119,7 @@ let make = (~content) =>
             </div>
             <div className="mt-10 space-y-8 xl:col-span-1">
                 <p className="text-gray-500 text-base"> {s(content.thankSponsor)} </p>
+
                 <div className="grid grid-cols-2 gap-8 justify-items-center lg:grid-cols-3">
                     <div>
                         <img className="h-8 lg:h-12" src="/static/equinoxmetal.png" alt="Equinix Metal" />
