@@ -20,34 +20,40 @@ let headerContentEn: HeaderNavigation.content = {
 
 let footerContentEn: Footer.content = {
     footer: `Footer`,
-    ocamlSummary: `Innovation. Community. Security.`,
-    industrySection: {
-      header: navContentEn.industry,
-      whatIsOcaml: {label: `What is OCaml`, url: `/play/industry/whatisocaml`},
-      industrialUsers: {label: `Industrial Users`, url: `/play/industry/users`},
-      successStories: {label: `Success Stories`, url: `/play/industry/successstories`}
+    logoContent: {
+      ocamlSummary: `Innovation. Community. Security.`
     },
-    resourcesSection: {
-      header: navContentEn.resources,
-      releases: {label: `Releases`, url: `/play/resource/releases`},
-      applications: {label: `Applications`, url: `/play/resource/applications`},
-      language: {label: `Language`, url: `#`},
-      archive: {label: `Archive`, url: `/play/resource/archive`}
+    mainLinksContent : {
+      industrySection: {
+        header: navContentEn.industry,
+        whatIsOcaml: {label: `What is OCaml`, url: `/play/industry/whatisocaml`},
+        industrialUsers: {label: `Industrial Users`, url: `/play/industry/users`},
+        successStories: {label: `Success Stories`, url: `/play/industry/successstories`}
+      },
+      resourcesSection: {
+        header: navContentEn.resources,
+        releases: {label: `Releases`, url: `/play/resource/releases`},
+        applications: {label: `Applications`, url: `/play/resource/applications`},
+        language: {label: `Language`, url: `#`},
+        archive: {label: `Archive`, url: `/play/resource/archive`}
+      },
+      communitySection: {
+        header: navContentEn.community,
+        opportunities: {label: `Opportunities`, url: `/play/community/opportunities`},
+        news: {label: `News`, url: `/play/community/news`},
+        aroundTheWeb: {label: `Around the Web`, url: `/community/aroundweb`}
+      },
+      legalSection: {
+        header: `Legal`,
+        privacy: {label: `Privacy`, url: `/play/privacypolicy`},
+        terms: {label: `Terms`, url: `#`},
+        carbonFootprint: {label: `Carbon Footprint`, url: `#`},
+      }
     },
-    communitySection: {
-      header: navContentEn.community,
-      opportunities: {label: `Opportunities`, url: `/play/community/opportunities`},
-      news: {label: `News`, url: `/play/community/news`},
-      aroundTheWeb: {label: `Around the Web`, url: `/community/aroundweb`}
-    },
-    legalSection: {
-      header: `Legal`,
-      privacy: {label: `Privacy`, url: `/play/privacypolicy`},
-      terms: {label: `Terms`, url: `#`},
-      carbonFootprint: {label: `Carbon Footprint`, url: `#`},
-    },
-    thankSponsorPrefix: `Thank you to our`,
-    hostingProviders: `Hosting Providers`
+    sponsorContent: {
+      thankSponsorPrefix: `Thank you to our`,
+      hostingProviders: `Hosting Providers`
+    }
 }
 
 @react.component
