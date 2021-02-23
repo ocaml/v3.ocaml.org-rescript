@@ -69,6 +69,7 @@ let contentEn = {
 
 @react.component
 let make = (~content=contentEn) =>
+
   <>
   <div className="relative bg-indigo-600">
     <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
