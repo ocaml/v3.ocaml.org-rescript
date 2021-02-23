@@ -7,6 +7,7 @@ let contentEn = {
   "installOcaml": `Install OCaml`,
   "aboutOcaml": `About OCaml`,
   "statsTitle": `OCaml in Numbers`,
+  
   "activeMembers": `Active Members`, 
   "industrySatisfaction": `Industry Satisfaction`,
   "averagePRsPerWeek": `Average PRs per Week`,
