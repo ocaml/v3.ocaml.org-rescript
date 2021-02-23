@@ -18,7 +18,7 @@ let headerContentEn: HeaderNavigation.content = {
   openMenu: `Open menu`
 }
 
-let footerContentEn: Footer.content = {
+let footerContentEn: Footer.t = {
     footer: `Footer`,
     logoContent: {
       ocamlSummary: `Innovation. Community. Security.`

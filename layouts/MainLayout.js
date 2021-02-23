@@ -24,6 +24,10 @@ var headerContentEn = {
 
 var footerContentEn_footer = "Footer";
 
+var footerContentEn_logoContent = {
+  ocamlSummary: "Innovation. Community. Security."
+};
+
 var footerContentEn_mainLinksContent = {
   industrySection: {
     header: "Industry",
@@ -91,10 +95,6 @@ var footerContentEn_mainLinksContent = {
   }
 };
 
-var footerContentEn_logoContent = {
-  ocamlSummary: "Innovation. Community. Security."
-};
-
 var footerContentEn_sponsorContent = {
   thankSponsorPrefix: "Thank you to our",
   hostingProviders: "Hosting Providers"
@@ -102,8 +102,8 @@ var footerContentEn_sponsorContent = {
 
 var footerContentEn = {
   footer: footerContentEn_footer,
-  mainLinksContent: footerContentEn_mainLinksContent,
   logoContent: footerContentEn_logoContent,
+  mainLinksContent: footerContentEn_mainLinksContent,
   sponsorContent: footerContentEn_sponsorContent
 };
 
