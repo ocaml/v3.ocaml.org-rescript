@@ -159,7 +159,7 @@ function Footer(Props) {
                                               href: content.legalSection.carbonFootprint.url,
                                               className: "text-base text-gray-500 hover:text-gray-900"
                                             }))))))), React.createElement("div", {
-                      className: "mt-10 space-y-8 xl:col-span-1"
+                      className: "mt-10 xl:col-span-1"
                     }, React.createElement("p", {
                           className: "text-gray-500 text-base"
                         }, content.thankSponsorPrefix + " ", React.createElement("a", {

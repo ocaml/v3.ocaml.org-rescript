@@ -118,7 +118,7 @@ let make = (~content) =>
                     </div>
                 </div>
             </div>
-            <div className="mt-10 space-y-8 xl:col-span-1">
+            <div className="mt-10 xl:col-span-1">
                 <p className="text-gray-500 text-base"> 
                     {s(content.thankSponsorPrefix ++ ` `)} 
                     <a href="#" className="text-orangedark underline"> {s(content.hostingProviders)} </a>
