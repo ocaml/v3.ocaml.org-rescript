@@ -116,8 +116,9 @@ var OpamSection = {
 
 function Index$TestimonialSection(Props) {
   var content = Props.content;
+  var margins = Props.margins;
   return React.createElement("section", {
-              className: "pt-5 pb-20 overflow-hidden md:pt-6 md:pb-24 lg:pt-10 lg:pb-40"
+              className: margins + " py-12 overflow-hidden md:py-20 lg:py-24 "
             }, React.createElement("div", {
                   className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
                 }, React.createElement("svg", {
@@ -223,9 +224,10 @@ function Index(Props) {
                   content: content.statsContent
                 }), React.createElement(Index$OpamSection, {
                   content: content.opamContent,
-                  margins: "mt-12 sm:mt-16 mb-14"
+                  margins: "mt-12 sm:mt-16"
                 }), React.createElement(Index$TestimonialSection, {
-                  content: content.testimonialContent
+                  content: content.testimonialContent,
+                  margins: "mb-8 md:mb-4 lg:mb-16"
                 }), React.createElement("div", undefined));
 }
 

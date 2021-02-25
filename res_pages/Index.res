@@ -103,10 +103,9 @@ module TestimonialSection = {
     organizationLogo: string
   }
 
-  // TODO: restore original paddings, and add margins
   @react.component
-  let make = (~content) =>
-    <section className="pt-5 pb-20 overflow-hidden md:pt-6 md:pb-24 lg:pt-10 lg:pb-40">
+  let make = (~content, ~margins) =>
+    <section className={margins ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <svg className="absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" role="img" ariaLabelledby="svg-testimonial-org">
           <title id="svg-testimonial-org">{s(content.organizationName)}</title>
@@ -189,8 +188,8 @@ let make = (~content=contentEn) =>
   <>
   <HeroSection content=content.heroContent />
   <StatsSection content=content.statsContent />
-  <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16 mb-14` />
-  <TestimonialSection content=content.testimonialContent />
+  <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16` />
+  <TestimonialSection content=content.testimonialContent margins=`mb-8 md:mb-4 lg:mb-16` />
   <div></div>
   </>
 
