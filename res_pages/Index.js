@@ -88,8 +88,9 @@ var StatsSection = {
 
 function Index$OpamSection(Props) {
   var content = Props.content;
+  var margins = Props.margins;
   return React.createElement("div", {
-              className: "pt-12 sm:pt-16 pb-14 sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8"
+              className: margins + " sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8"
             }, React.createElement("div", {
                   className: "mb-4 flex-shrink-0 sm:mb-0 sm:mr-4"
                 }, React.createElement("img", {
@@ -116,7 +117,7 @@ var OpamSection = {
 function Index$TestimonialSection(Props) {
   var content = Props.content;
   return React.createElement("section", {
-              className: "pt-5 pb-20 overflow-hidden md:pt-6 mb:pb-24 lg:pt-10 lg:pb-40"
+              className: "pt-5 pb-20 overflow-hidden md:pt-6 md:pb-24 lg:pt-10 lg:pb-40"
             }, React.createElement("div", {
                   className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
                 }, React.createElement("svg", {
@@ -221,10 +222,11 @@ function Index(Props) {
                 }), React.createElement(Index$StatsSection, {
                   content: content.statsContent
                 }), React.createElement(Index$OpamSection, {
-                  content: content.opamContent
+                  content: content.opamContent,
+                  margins: "mt-12 sm:mt-16 mb-14"
                 }), React.createElement(Index$TestimonialSection, {
                   content: content.testimonialContent
-                }));
+                }), React.createElement("div", undefined));
 }
 
 var make = Index;

@@ -82,8 +82,8 @@ module OpamSection = {
   }
 
   @react.component
-  let make = (~content) =>
-    <div className="pt-12 sm:pt-16 pb-14 sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8">
+  let make = (~content, ~margins) =>
+    <div className={margins ++ ` sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
       <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
         <img className="h-36" src="/static/opam.png" ariaHidden=true />
       </div>
@@ -103,9 +103,10 @@ module TestimonialSection = {
     organizationLogo: string
   }
 
+  // TODO: restore original paddings, and add margins
   @react.component
   let make = (~content) =>
-    <section className="pt-5 pb-20 overflow-hidden md:pt-6 mb:pb-24 lg:pt-10 lg:pb-40">
+    <section className="pt-5 pb-20 overflow-hidden md:pt-6 md:pb-24 lg:pt-10 lg:pb-40">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <svg className="absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" role="img" ariaLabelledby="svg-testimonial-org">
           <title id="svg-testimonial-org">{s(content.organizationName)}</title>
@@ -178,7 +179,7 @@ let contentEn = {
       it right matters.`,
     organizationName: `Jane Street`,
     speaker: `Yaron Minsky`,
-    organizationLogo: `/static/js.svg`   
+    organizationLogo: `/static/js.svg`
   }
 }
 
@@ -188,8 +189,9 @@ let make = (~content=contentEn) =>
   <>
   <HeroSection content=content.heroContent />
   <StatsSection content=content.statsContent />
-  <OpamSection content=content.opamContent />
+  <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16 mb-14` />
   <TestimonialSection content=content.testimonialContent />
+  <div></div>
   </>
 
 let default = make
