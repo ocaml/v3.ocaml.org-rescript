@@ -97,7 +97,10 @@ var footerContentEn_mainLinksContent = {
 
 var footerContentEn_sponsorContent = {
   thankSponsorPrefix: "Thank you to our",
-  hostingProviders: "Hosting Providers"
+  hostingProviders: {
+    label: "Hosting Providers",
+    url: "#"
+  }
 };
 
 var footerContentEn = {

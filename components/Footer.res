@@ -5,7 +5,7 @@ let s = React.string
 module IconLink = {
   @react.component
   let make = (~href, ~label, ~children) =>
-    <a href className="text-gray-400 hover:text-gray-500">
+    <a href className="text-gray-400 hover:text-gray-500" target="_blank">
       <span className="sr-only">{s(label)}</span>
       children
     </a>
@@ -27,6 +27,18 @@ module TwitterIcon = {
     </svg>
 }
 
+module OcamlLogo = {
+  @react.component
+  let make = (~sizing) =>
+    <img className=sizing src="/static/ocaml-logo.jpeg" alt="OCaml" />
+}
+
+module Mission = {
+  @react.component
+  let make = (~ocamlSummary) =>
+    <p className="text-gray-500 text-base"> {s(ocamlSummary)} </p>
+}
+
 module LogoSection = {
   type t = {
     ocamlSummary: string
@@ -35,23 +47,25 @@ module LogoSection = {
   @react.component
   let make = (~content, ~colspan) =>
     <div className={"space-y-8 " ++ colspan}>
-        <img className="h-10" src="/static/ocaml-logo.jpeg" alt="OCaml" />
-        <p className="text-gray-500 text-base"> {s(content.ocamlSummary)} </p>
-        <div className="flex space-x-6">
-            <IconLink href=`https://discuss.ocaml.org` label=`Discourse`> 
-                <img className="h-6 w-6" src="/static/discourselogo.png" alt="" ariaHidden=true />
-            </IconLink>
-            <IconLink 
-                href=`https://sourcegraph.com/search?q=repo:ocaml/ocaml%24+or+repo:janestreet/base+or+repo:gitlab.com/tezos/tezos%24+or+repo:c-cube/ocaml-containers+or+repo:ocaml-batteries-team/batteries-included+or+repo:mirage/mirage%24+or+repo:ocsigen/lwt+or+repo:janestreet/async%24&patternType=literal`
-                label=`GitHub`>
-                <GithubIcon sizing=`h-6 w-6` />
-            </IconLink>
-            <IconLink
-                href=`https://fosstodon.org/tags/ocaml`
-                label=`Twitter`>
-                <TwitterIcon sizing=`h-6 w-6` />
-            </IconLink>
-        </div>
+      <OcamlLogo sizing="h-10" />
+      <Mission ocamlSummary=content.ocamlSummary />
+      <div className="flex space-x-6">
+        <IconLink
+          href=`https://discuss.ocaml.org`
+          label=`Discourse`> 
+          <img className="h-6 w-6" src="/static/discourselogo.png" alt="" ariaHidden=true />
+        </IconLink>
+        <IconLink 
+          href=`https://sourcegraph.com/search?q=repo:ocaml/ocaml%24+or+repo:janestreet/base+or+repo:gitlab.com/tezos/tezos%24+or+repo:c-cube/ocaml-containers+or+repo:ocaml-batteries-team/batteries-included+or+repo:mirage/mirage%24+or+repo:ocsigen/lwt+or+repo:janestreet/async%24&patternType=literal`
+          label=`GitHub`>
+          <GithubIcon sizing=`h-6 w-6` />
+        </IconLink>
+        <IconLink
+          href=`https://fosstodon.org/tags/ocaml`
+          label=`Twitter`>
+          <TwitterIcon sizing=`h-6 w-6` />
+        </IconLink>
+      </div>
     </div>
 }
 
@@ -59,14 +73,29 @@ module A = {
   @react.component
   let make = (~children, ~href) =>
     <Link href>
-        <a className="text-base text-gray-500 hover:text-gray-900"> children </a>
+      <a className="text-base text-gray-500 hover:text-gray-900"> children </a>
     </Link>
 }
 
 module H3 = {
   @react.component
   let make = (~children) =>
-    <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase"> children </h3>    
+    <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase"> children </h3>
+}
+
+module SectionLinks = {
+  @react.component
+  let make = (~name, ~keyPages: Js.Array.t<NavEntry.t>, ~margins) =>
+    <div className=margins>
+      <H3>{s(name)}</H3>
+      <ul className="mt-4 space-y-4">
+        {
+          keyPages
+          |> Js.Array.map(p => <li><A href=p.url>{s(p.NavEntry.label)}</A></li>)
+          |> React.array
+        }
+      </ul>
+    </div>
 }
 
 module MainLinksSection = {
@@ -110,41 +139,24 @@ module MainLinksSection = {
   let make = (~content, ~margins, ~colspan) =>
     <div className={"grid grid-cols-2 gap-8 " ++ margins ++ ` ` ++ colspan}>
         <div className="md:grid md:grid-cols-2 md:gap-8">
-            <div>
-                <H3>{s(content.industrySection.header)}</H3>
-                <ul className="mt-4 space-y-4">
-                    <li><A href=content.industrySection.whatIsOcaml.url>{s(content.industrySection.whatIsOcaml.label)}</A></li>
-                    <li><A href=content.industrySection.industrialUsers.url>{s(content.industrySection.industrialUsers.label)}</A></li>
-                    <li><A href=content.industrySection.successStories.url>{s(content.industrySection.successStories.label)}</A></li>
-                </ul>
-            </div>
-            <div className="mt-12 md:mt-0">
-                <H3>{s(content.resourcesSection.header)}</H3>
-                <ul className="mt-4 space-y-4">
-                    <li><A href=content.resourcesSection.releases.url>{s(content.resourcesSection.releases.label)}</A></li>
-                    <li><A href=content.resourcesSection.applications.url>{s(content.resourcesSection.applications.label)}</A></li>
-                    <li><A href=content.resourcesSection.language.url>{s(content.resourcesSection.language.label)}</A></li>
-                    <li><A href=content.resourcesSection.archive.url>{s(content.resourcesSection.archive.label)}</A></li>
-                </ul>
-            </div>
+            <SectionLinks 
+              name=content.industrySection.header 
+              keyPages=[content.industrySection.whatIsOcaml, content.industrySection.industrialUsers, content.industrySection.successStories]
+              margins=``/>
+            <SectionLinks 
+              name=content.resourcesSection.header 
+              keyPages=[content.resourcesSection.releases, content.resourcesSection.applications, content.resourcesSection.language, content.resourcesSection.archive]
+              margins=`mt-12 md:mt-0`/>
         </div>
         <div className="md:grid md:grid-cols-2 md:gap-8">
-            <div>
-                <H3>{s(content.communitySection.header)}</H3>
-                <ul className="mt-4 space-y-4">
-                    <li><A href=content.communitySection.opportunities.url>{s(content.communitySection.opportunities.label)}</A></li>
-                    <li><A href=content.communitySection.news.url>{s(content.communitySection.news.label)}</A></li>
-                    <li><A href=content.communitySection.aroundTheWeb.url>{s(content.communitySection.aroundTheWeb.label)}</A></li>
-                </ul>
-            </div>
-            <div className="mt-12 md:mt-0">
-                <H3>{s(content.legalSection.header)}</H3>
-                <ul className="mt-4 space-y-4">
-                    <li><A href=content.legalSection.privacy.url>{s(content.legalSection.privacy.label)}</A></li>
-                    <li><A href=content.legalSection.terms.url>{s(content.legalSection.terms.label)}</A></li>
-                    <li><A href=content.legalSection.carbonFootprint.url>{s(content.legalSection.carbonFootprint.label)}</A></li>
-                </ul>
-            </div>
+            <SectionLinks 
+              name=content.communitySection.header 
+              keyPages=[content.communitySection.opportunities, content.communitySection.news, content.communitySection.aroundTheWeb]
+              margins=``/>
+            <SectionLinks 
+              name=content.legalSection.header 
+              keyPages=[content.legalSection.privacy, content.legalSection.terms, content.legalSection.carbonFootprint]
+              margins=`mt-12 md:mt-0`/>
         </div>
     </div>
 }
@@ -152,16 +164,16 @@ module MainLinksSection = {
 module SponsorsSection = {
   type t = {
     thankSponsorPrefix: string,
-    hostingProviders: string
+    hostingProviders: NavEntry.t
   }
 
   @react.component
-  let make = (~content) =>
-    <p className="text-gray-500 text-base"> 
-        {s(content.thankSponsorPrefix ++ ` `)} 
-        <Link href="#">
-            <a className="text-orangedark underline"> {s(content.hostingProviders)} </a>
-        </Link>
+  let make = (~content, ~margins) =>
+    <p className={"text-gray-500 text-base " ++ margins}> 
+      {s(content.thankSponsorPrefix ++ ` `)} 
+      <Link href=content.hostingProviders.url>
+        <a className="text-orangedark underline"> {s(content.hostingProviders.label)} </a>
+      </Link>
     </p>
 }
 
@@ -174,15 +186,13 @@ type t = {
 
 @react.component
 let make = (~content) =>
-    <footer ariaLabelledby="footerHeading">
-        <h2 id="footerHeading" className="sr-only"> {s(content.footer)} </h2>
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-            <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-                <LogoSection content=content.logoContent colspan="xl:col-span-1" />
-                <MainLinksSection content=content.mainLinksContent margins="mt-12 xl:mt-0" colspan="xl:col-span-2" />
-            </div>
-            <div className="mt-10">
-                <SponsorsSection content=content.sponsorContent />
-            </div>
-        </div>
-    </footer>
+  <footer ariaLabelledby="footerHeading">
+    <h2 id="footerHeading" className="sr-only"> {s(content.footer)} </h2>
+    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+        <LogoSection content=content.logoContent colspan="xl:col-span-1" />
+        <MainLinksSection content=content.mainLinksContent margins="mt-12 xl:mt-0" colspan="xl:col-span-2" />
+      </div>
+      <SponsorsSection content=content.sponsorContent margins=`mt-10`/>
+    </div>
+  </footer>

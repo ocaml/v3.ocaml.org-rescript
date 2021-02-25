@@ -13,7 +13,8 @@ function Footer$IconLink(Props) {
   var children = Props.children;
   return React.createElement("a", {
               className: "text-gray-400 hover:text-gray-500",
-              href: href
+              href: href,
+              target: "_blank"
             }, React.createElement("span", {
                   className: "sr-only"
                 }, label), children);
@@ -57,18 +58,40 @@ var TwitterIcon = {
   make: Footer$TwitterIcon
 };
 
+function Footer$OcamlLogo(Props) {
+  var sizing = Props.sizing;
+  return React.createElement("img", {
+              className: sizing,
+              alt: "OCaml",
+              src: "/static/ocaml-logo.jpeg"
+            });
+}
+
+var OcamlLogo = {
+  make: Footer$OcamlLogo
+};
+
+function Footer$Mission(Props) {
+  var ocamlSummary = Props.ocamlSummary;
+  return React.createElement("p", {
+              className: "text-gray-500 text-base"
+            }, ocamlSummary);
+}
+
+var Mission = {
+  make: Footer$Mission
+};
+
 function Footer$LogoSection(Props) {
   var content = Props.content;
   var colspan = Props.colspan;
   return React.createElement("div", {
               className: "space-y-8 " + colspan
-            }, React.createElement("img", {
-                  className: "h-10",
-                  alt: "OCaml",
-                  src: "/static/ocaml-logo.jpeg"
-                }), React.createElement("p", {
-                  className: "text-gray-500 text-base"
-                }, content.ocamlSummary), React.createElement("div", {
+            }, React.createElement(Footer$OcamlLogo, {
+                  sizing: "h-10"
+                }), React.createElement(Footer$Mission, {
+                  ocamlSummary: content.ocamlSummary
+                }), React.createElement("div", {
                   className: "flex space-x-6"
                 }, React.createElement(Footer$IconLink, {
                       href: "https://discuss.ocaml.org",
@@ -124,6 +147,28 @@ var H3 = {
   make: Footer$H3
 };
 
+function Footer$SectionLinks(Props) {
+  var name = Props.name;
+  var keyPages = Props.keyPages;
+  var margins = Props.margins;
+  return React.createElement("div", {
+              className: margins
+            }, React.createElement(Footer$H3, {
+                  children: name
+                }), React.createElement("ul", {
+                  className: "mt-4 space-y-4"
+                }, keyPages.map(function (p) {
+                      return React.createElement("li", undefined, React.createElement(Footer$A, {
+                                      children: p.label,
+                                      href: p.url
+                                    }));
+                    })));
+}
+
+var SectionLinks = {
+  make: Footer$SectionLinks
+};
+
 function Footer$MainLinksSection(Props) {
   var content = Props.content;
   var margins = Props.margins;
@@ -132,68 +177,42 @@ function Footer$MainLinksSection(Props) {
               className: "grid grid-cols-2 gap-8 " + margins + " " + colspan
             }, React.createElement("div", {
                   className: "md:grid md:grid-cols-2 md:gap-8"
-                }, React.createElement("div", undefined, React.createElement(Footer$H3, {
-                          children: content.industrySection.header
-                        }), React.createElement("ul", {
-                          className: "mt-4 space-y-4"
-                        }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.industrySection.whatIsOcaml.label,
-                                  href: content.industrySection.whatIsOcaml.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.industrySection.industrialUsers.label,
-                                  href: content.industrySection.industrialUsers.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.industrySection.successStories.label,
-                                  href: content.industrySection.successStories.url
-                                })))), React.createElement("div", {
-                      className: "mt-12 md:mt-0"
-                    }, React.createElement(Footer$H3, {
-                          children: content.resourcesSection.header
-                        }), React.createElement("ul", {
-                          className: "mt-4 space-y-4"
-                        }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.resourcesSection.releases.label,
-                                  href: content.resourcesSection.releases.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.resourcesSection.applications.label,
-                                  href: content.resourcesSection.applications.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.resourcesSection.language.label,
-                                  href: content.resourcesSection.language.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.resourcesSection.archive.label,
-                                  href: content.resourcesSection.archive.url
-                                }))))), React.createElement("div", {
+                }, React.createElement(Footer$SectionLinks, {
+                      name: content.industrySection.header,
+                      keyPages: [
+                        content.industrySection.whatIsOcaml,
+                        content.industrySection.industrialUsers,
+                        content.industrySection.successStories
+                      ],
+                      margins: ""
+                    }), React.createElement(Footer$SectionLinks, {
+                      name: content.resourcesSection.header,
+                      keyPages: [
+                        content.resourcesSection.releases,
+                        content.resourcesSection.applications,
+                        content.resourcesSection.language,
+                        content.resourcesSection.archive
+                      ],
+                      margins: "mt-12 md:mt-0"
+                    })), React.createElement("div", {
                   className: "md:grid md:grid-cols-2 md:gap-8"
-                }, React.createElement("div", undefined, React.createElement(Footer$H3, {
-                          children: content.communitySection.header
-                        }), React.createElement("ul", {
-                          className: "mt-4 space-y-4"
-                        }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.communitySection.opportunities.label,
-                                  href: content.communitySection.opportunities.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.communitySection.news.label,
-                                  href: content.communitySection.news.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.communitySection.aroundTheWeb.label,
-                                  href: content.communitySection.aroundTheWeb.url
-                                })))), React.createElement("div", {
-                      className: "mt-12 md:mt-0"
-                    }, React.createElement(Footer$H3, {
-                          children: content.legalSection.header
-                        }), React.createElement("ul", {
-                          className: "mt-4 space-y-4"
-                        }, React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.legalSection.privacy.label,
-                                  href: content.legalSection.privacy.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.legalSection.terms.label,
-                                  href: content.legalSection.terms.url
-                                })), React.createElement("li", undefined, React.createElement(Footer$A, {
-                                  children: content.legalSection.carbonFootprint.label,
-                                  href: content.legalSection.carbonFootprint.url
-                                }))))));
+                }, React.createElement(Footer$SectionLinks, {
+                      name: content.communitySection.header,
+                      keyPages: [
+                        content.communitySection.opportunities,
+                        content.communitySection.news,
+                        content.communitySection.aroundTheWeb
+                      ],
+                      margins: ""
+                    }), React.createElement(Footer$SectionLinks, {
+                      name: content.legalSection.header,
+                      keyPages: [
+                        content.legalSection.privacy,
+                        content.legalSection.terms,
+                        content.legalSection.carbonFootprint
+                      ],
+                      margins: "mt-12 md:mt-0"
+                    })));
 }
 
 var MainLinksSection = {
@@ -202,13 +221,14 @@ var MainLinksSection = {
 
 function Footer$SponsorsSection(Props) {
   var content = Props.content;
+  var margins = Props.margins;
   return React.createElement("p", {
-              className: "text-gray-500 text-base"
+              className: "text-gray-500 text-base " + margins
             }, content.thankSponsorPrefix + " ", React.createElement(Link, {
-                  href: "#",
+                  href: content.hostingProviders.url,
                   children: React.createElement("a", {
                         className: "text-orangedark underline"
-                      }, content.hostingProviders)
+                      }, content.hostingProviders.label)
                 }));
 }
 
@@ -234,11 +254,10 @@ function Footer(Props) {
                           content: content.mainLinksContent,
                           margins: "mt-12 xl:mt-0",
                           colspan: "xl:col-span-2"
-                        })), React.createElement("div", {
-                      className: "mt-10"
-                    }, React.createElement(Footer$SponsorsSection, {
-                          content: content.sponsorContent
-                        }))));
+                        })), React.createElement(Footer$SponsorsSection, {
+                      content: content.sponsorContent,
+                      margins: "mt-10"
+                    })));
 }
 
 var Link$1;
@@ -251,9 +270,12 @@ export {
   IconLink ,
   GithubIcon ,
   TwitterIcon ,
+  OcamlLogo ,
+  Mission ,
   LogoSection ,
   A ,
   H3 ,
+  SectionLinks ,
   MainLinksSection ,
   SponsorsSection ,
   make ,
