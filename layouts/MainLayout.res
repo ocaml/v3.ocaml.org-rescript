@@ -57,7 +57,7 @@ let footerContentEn: Footer.t = {
 }
 
 @react.component
-let make = (~children /*, ~editpath */ ) =>
+let make = (~children) =>
   <div className="bg-white"> { /* TODO: change element to body, move to document.res */  React.null }
     <div className="relative shadow">
       <HeaderNavigation content=headerContentEn />
