@@ -7,29 +7,29 @@ function s(prim) {
   return prim;
 }
 
-function Footer$IconLink(Props) {
+function Footer$SocialIconLink(Props) {
   var href = Props.href;
   var label = Props.label;
   var children = Props.children;
   return React.createElement("a", {
+              "aria-label": label,
               className: "text-gray-400 hover:text-gray-500",
               href: href,
               target: "_blank"
-            }, React.createElement("span", {
-                  className: "sr-only"
-                }, label), children);
+            }, children);
 }
 
-var IconLink = {
-  make: Footer$IconLink
+var SocialIconLink = {
+  make: Footer$SocialIconLink
 };
 
 function Footer$GithubIcon(Props) {
   var sizing = Props.sizing;
+  var fill = Props.fill;
   return React.createElement("svg", {
               "aria-hidden": true,
               className: sizing,
-              fill: "currentColor",
+              fill: fill,
               viewBox: "0 0 24 24"
             }, React.createElement("path", {
                   clipRule: "evenodd",
@@ -44,10 +44,11 @@ var GithubIcon = {
 
 function Footer$TwitterIcon(Props) {
   var sizing = Props.sizing;
+  var fill = Props.fill;
   return React.createElement("svg", {
               "aria-hidden": true,
               className: sizing,
-              fill: "currentColor",
+              fill: fill,
               viewBox: "0 0 24 24"
             }, React.createElement("path", {
                   d: "M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
@@ -58,28 +59,16 @@ var TwitterIcon = {
   make: Footer$TwitterIcon
 };
 
-function Footer$OcamlLogo(Props) {
-  var sizing = Props.sizing;
-  return React.createElement("img", {
-              className: sizing,
-              alt: "OCaml",
-              src: "/static/ocaml-logo.jpeg"
-            });
-}
-
-var OcamlLogo = {
-  make: Footer$OcamlLogo
-};
-
-function Footer$Mission(Props) {
-  var ocamlSummary = Props.ocamlSummary;
+function Footer$P(Props) {
+  var margins = Props.margins;
+  var children = Props.children;
   return React.createElement("p", {
-              className: "text-gray-500 text-base"
-            }, ocamlSummary);
+              className: "text-gray-500 text-base " + margins
+            }, children);
 }
 
-var Mission = {
-  make: Footer$Mission
+var P = {
+  make: Footer$P
 };
 
 function Footer$LogoSection(Props) {
@@ -87,32 +76,37 @@ function Footer$LogoSection(Props) {
   var colspan = Props.colspan;
   return React.createElement("div", {
               className: "space-y-8 " + colspan
-            }, React.createElement(Footer$OcamlLogo, {
-                  sizing: "h-10"
-                }), React.createElement(Footer$Mission, {
-                  ocamlSummary: content.ocamlSummary
+            }, React.createElement("img", {
+                  className: "h-10",
+                  alt: "OCaml",
+                  src: "/static/ocaml-logo.jpeg"
+                }), React.createElement(Footer$P, {
+                  margins: "",
+                  children: content.ocamlSummary
                 }), React.createElement("div", {
                   className: "flex space-x-6"
-                }, React.createElement(Footer$IconLink, {
+                }, React.createElement(Footer$SocialIconLink, {
                       href: "https://discuss.ocaml.org",
                       label: "Discourse",
-                      children: React.createElement("img", {
-                            "aria-hidden": true,
-                            className: "h-6 w-6",
-                            alt: "",
-                            src: "/static/discourselogo.png"
-                          })
-                    }), React.createElement(Footer$IconLink, {
+                      children: null
+                    }, null, React.createElement("img", {
+                          "aria-hidden": true,
+                          className: "h-6 w-6",
+                          alt: "",
+                          src: "/static/discourselogo.png"
+                        })), React.createElement(Footer$SocialIconLink, {
                       href: "https://sourcegraph.com/search?q=repo:ocaml/ocaml%24+or+repo:janestreet/base+or+repo:gitlab.com/tezos/tezos%24+or+repo:c-cube/ocaml-containers+or+repo:ocaml-batteries-team/batteries-included+or+repo:mirage/mirage%24+or+repo:ocsigen/lwt+or+repo:janestreet/async%24&patternType=literal",
                       label: "GitHub",
                       children: React.createElement(Footer$GithubIcon, {
-                            sizing: "h-6 w-6"
+                            sizing: "h-6 w-6",
+                            fill: "currentColor"
                           })
-                    }), React.createElement(Footer$IconLink, {
+                    }), React.createElement(Footer$SocialIconLink, {
                       href: "https://fosstodon.org/tags/ocaml",
                       label: "Twitter",
                       children: React.createElement(Footer$TwitterIcon, {
-                            sizing: "h-6 w-6"
+                            sizing: "h-6 w-6",
+                            fill: "currentColor"
                           })
                     })));
 }
@@ -219,16 +213,30 @@ var MainLinksSection = {
   make: Footer$MainLinksSection
 };
 
+function Footer$BasicLink(Props) {
+  var href = Props.href;
+  var text = Props.text;
+  return React.createElement(Link, {
+              href: href,
+              children: React.createElement("a", {
+                    className: "text-orangedark underline"
+                  }, text)
+            });
+}
+
+var BasicLink = {
+  make: Footer$BasicLink
+};
+
 function Footer$SponsorsSection(Props) {
   var content = Props.content;
   var margins = Props.margins;
-  return React.createElement("p", {
-              className: "text-gray-500 text-base " + margins
-            }, content.thankSponsorPrefix + " ", React.createElement(Link, {
+  return React.createElement(Footer$P, {
+              margins: margins,
+              children: null
+            }, content.thankSponsorPrefix + " ", React.createElement(Footer$BasicLink, {
                   href: content.hostingProviders.url,
-                  children: React.createElement("a", {
-                        className: "text-orangedark underline"
-                      }, content.hostingProviders.label)
+                  text: content.hostingProviders.label
                 }));
 }
 
@@ -279,16 +287,16 @@ var make = Footer;
 export {
   Link$1 as Link,
   s ,
-  IconLink ,
+  SocialIconLink ,
   GithubIcon ,
   TwitterIcon ,
-  OcamlLogo ,
-  Mission ,
+  P ,
   LogoSection ,
   A ,
   H3 ,
   SectionLinks ,
   MainLinksSection ,
+  BasicLink ,
   SponsorsSection ,
   FooterContainer ,
   make ,
