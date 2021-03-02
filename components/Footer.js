@@ -117,19 +117,19 @@ var LogoSection = {
   make: Footer$LogoSection
 };
 
-function Footer$A(Props) {
-  var children = Props.children;
+function Footer$MutedLink(Props) {
   var href = Props.href;
+  var text = Props.text;
   return React.createElement(Link, {
               href: href,
               children: React.createElement("a", {
                     className: "text-base text-gray-500 hover:text-gray-900"
-                  }, children)
+                  }, text)
             });
 }
 
-var A = {
-  make: Footer$A
+var MutedLink = {
+  make: Footer$MutedLink
 };
 
 function Footer$H3(Props) {
@@ -154,9 +154,9 @@ function Footer$SectionLinks(Props) {
                 }), React.createElement("ul", {
                   className: "mt-4 space-y-4"
                 }, keyPages.map(function (p) {
-                      return React.createElement("li", undefined, React.createElement(Footer$A, {
-                                      children: p.label,
-                                      href: p.url
+                      return React.createElement("li", undefined, React.createElement(Footer$MutedLink, {
+                                      href: p.url,
+                                      text: p.label
                                     }));
                     })));
 }
@@ -169,43 +169,47 @@ function Footer$MainLinksSection(Props) {
   var content = Props.content;
   var margins = Props.margins;
   var colspan = Props.colspan;
+  var section = content.industrySection;
+  var section$1 = content.resourcesSection;
+  var section$2 = content.communitySection;
+  var section$3 = content.legalSection;
   return React.createElement("div", {
               className: "grid grid-cols-2 gap-8 " + margins + " " + colspan
             }, React.createElement("div", {
                   className: "md:grid md:grid-cols-2 md:gap-8"
                 }, React.createElement(Footer$SectionLinks, {
-                      name: content.industrySection.header,
+                      name: section.header,
                       keyPages: [
-                        content.industrySection.whatIsOcaml,
-                        content.industrySection.industrialUsers,
-                        content.industrySection.successStories
+                        section.whatIsOcaml,
+                        section.industrialUsers,
+                        section.successStories
                       ],
                       margins: ""
                     }), React.createElement(Footer$SectionLinks, {
-                      name: content.resourcesSection.header,
+                      name: section$1.header,
                       keyPages: [
-                        content.resourcesSection.releases,
-                        content.resourcesSection.applications,
-                        content.resourcesSection.language,
-                        content.resourcesSection.archive
+                        section$1.releases,
+                        section$1.applications,
+                        section$1.language,
+                        section$1.archive
                       ],
                       margins: "mt-12 md:mt-0"
                     })), React.createElement("div", {
                   className: "md:grid md:grid-cols-2 md:gap-8"
                 }, React.createElement(Footer$SectionLinks, {
-                      name: content.communitySection.header,
+                      name: section$2.header,
                       keyPages: [
-                        content.communitySection.opportunities,
-                        content.communitySection.news,
-                        content.communitySection.aroundTheWeb
+                        section$2.opportunities,
+                        section$2.news,
+                        section$2.aroundTheWeb
                       ],
                       margins: ""
                     }), React.createElement(Footer$SectionLinks, {
-                      name: content.legalSection.header,
+                      name: section$3.header,
                       keyPages: [
-                        content.legalSection.privacy,
-                        content.legalSection.terms,
-                        content.legalSection.carbonFootprint
+                        section$3.privacy,
+                        section$3.terms,
+                        section$3.carbonFootprint
                       ],
                       margins: "mt-12 md:mt-0"
                     })));
@@ -294,7 +298,7 @@ export {
   TwitterIcon ,
   P ,
   LogoSection ,
-  A ,
+  MutedLink ,
   H3 ,
   SectionLinks ,
   MainLinksSection ,
