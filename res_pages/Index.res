@@ -235,8 +235,7 @@ let make = (~content=contentEn) =>
   <HeroSection content=content.heroContent />
   <StatsSection content=content.statsContent />
   <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16` />
-  <TestimonialSection content=content.testimonialContent margins=`mb-8 md:mb-4 lg:mb-16` />
-  <div></div>
+  <TestimonialSection content=content.testimonialContent margins=`mb-6 md:mb-4 lg:mb-6` />
   </>
 
 let default = make

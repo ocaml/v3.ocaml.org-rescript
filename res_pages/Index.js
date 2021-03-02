@@ -325,8 +325,8 @@ function Index(Props) {
                   margins: "mt-12 sm:mt-16"
                 }), React.createElement(Index$TestimonialSection, {
                   content: content.testimonialContent,
-                  margins: "mb-8 md:mb-4 lg:mb-16"
-                }), React.createElement("div", undefined));
+                  margins: "mb-6 md:mb-4 lg:mb-6"
+                }));
 }
 
 var Link$1;

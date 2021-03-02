@@ -119,8 +119,8 @@ function MainLayout(Props) {
                 }, React.createElement(HeaderNavigation$Ocamlorg.make, {
                       content: headerContentEn
                     })), React.createElement("main", {
-                  className: "relative bg-graylight"
-                }, children), React.createElement("div", {
+                  className: "relative bg-graylight pb-1"
+                }, null, children), React.createElement("div", {
                   className: "relative"
                 }, React.createElement(Footer$Ocamlorg.make, {
                       content: footerContentEn
