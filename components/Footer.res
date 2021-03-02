@@ -177,22 +177,28 @@ module SponsorsSection = {
     </p>
 }
 
+module FooterContainer = {
+  @react.component
+  let make = (~children, ~footerLabel) =>
+    <footer className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8" ariaLabelledby="footerHeading"> 
+      <h2 id="footerHeading" className="sr-only"> {s(footerLabel)} </h2>
+      children 
+    </footer>
+}
+
 type t = {
-    footer: string,
-    logoContent: LogoSection.t,
-    mainLinksContent: MainLinksSection.t,
-    sponsorContent: SponsorsSection.t
+  footer: string,
+  logoContent: LogoSection.t,
+  mainLinksContent: MainLinksSection.t,
+  sponsorContent: SponsorsSection.t
 }
 
 @react.component
 let make = (~content) =>
-  <footer ariaLabelledby="footerHeading">
-    <h2 id="footerHeading" className="sr-only"> {s(content.footer)} </h2>
-    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-      <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-        <LogoSection content=content.logoContent colspan="xl:col-span-1" />
-        <MainLinksSection content=content.mainLinksContent margins="mt-12 xl:mt-0" colspan="xl:col-span-2" />
-      </div>
-      <SponsorsSection content=content.sponsorContent margins=`mt-10`/>
+  <FooterContainer footerLabel=content.footer>
+    <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+      <LogoSection content=content.logoContent colspan="xl:col-span-1" />
+      <MainLinksSection content=content.mainLinksContent margins="mt-12 xl:mt-0" colspan="xl:col-span-2" />
     </div>
-  </footer>
+    <SponsorsSection content=content.sponsorContent margins=`mt-10`/>
+  </FooterContainer>

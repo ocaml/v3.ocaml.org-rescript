@@ -236,28 +236,40 @@ var SponsorsSection = {
   make: Footer$SponsorsSection
 };
 
-function Footer(Props) {
-  var content = Props.content;
+function Footer$FooterContainer(Props) {
+  var children = Props.children;
+  var footerLabel = Props.footerLabel;
   return React.createElement("footer", {
-              "aria-labelledby": "footerHeading"
+              "aria-labelledby": "footerHeading",
+              className: "max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
             }, React.createElement("h2", {
                   className: "sr-only",
                   id: "footerHeading"
-                }, content.footer), React.createElement("div", {
-                  className: "max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
-                }, React.createElement("div", {
-                      className: "xl:grid xl:grid-cols-3 xl:gap-8"
-                    }, React.createElement(Footer$LogoSection, {
-                          content: content.logoContent,
-                          colspan: "xl:col-span-1"
-                        }), React.createElement(Footer$MainLinksSection, {
-                          content: content.mainLinksContent,
-                          margins: "mt-12 xl:mt-0",
-                          colspan: "xl:col-span-2"
-                        })), React.createElement(Footer$SponsorsSection, {
-                      content: content.sponsorContent,
-                      margins: "mt-10"
-                    })));
+                }, footerLabel), children);
+}
+
+var FooterContainer = {
+  make: Footer$FooterContainer
+};
+
+function Footer(Props) {
+  var content = Props.content;
+  return React.createElement(Footer$FooterContainer, {
+              children: null,
+              footerLabel: content.footer
+            }, React.createElement("div", {
+                  className: "xl:grid xl:grid-cols-3 xl:gap-8"
+                }, React.createElement(Footer$LogoSection, {
+                      content: content.logoContent,
+                      colspan: "xl:col-span-1"
+                    }), React.createElement(Footer$MainLinksSection, {
+                      content: content.mainLinksContent,
+                      margins: "mt-12 xl:mt-0",
+                      colspan: "xl:col-span-2"
+                    })), React.createElement(Footer$SponsorsSection, {
+                  content: content.sponsorContent,
+                  margins: "mt-10"
+                }));
 }
 
 var Link$1;
@@ -278,6 +290,7 @@ export {
   SectionLinks ,
   MainLinksSection ,
   SponsorsSection ,
+  FooterContainer ,
   make ,
   
 }
