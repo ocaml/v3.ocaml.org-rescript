@@ -42,24 +42,27 @@ module LogoSection = {
     <div className={"space-y-8 " ++ colspan}>
       <img className="h-10" src="/static/ocaml-logo.jpeg" alt="OCaml" />
       <P margins=""> {s(content.ocamlSummary)} </P>
+      {let sizing=`h-6 w-6`
+       let fill=`currentColor`
       <div className="flex space-x-6">
         <SocialIconLink
           href=`https://discuss.ocaml.org`
           label=`Discourse`> 
           { /* TODO: replace with svg */ React.null }
-          <img className="h-6 w-6" src="/static/discourselogo.png" alt="" ariaHidden=true />
+          <img className=sizing src="/static/discourselogo.png" alt="" ariaHidden=true />
         </SocialIconLink>
         <SocialIconLink 
           href=`https://sourcegraph.com/search?q=repo:ocaml/ocaml%24+or+repo:janestreet/base+or+repo:gitlab.com/tezos/tezos%24+or+repo:c-cube/ocaml-containers+or+repo:ocaml-batteries-team/batteries-included+or+repo:mirage/mirage%24+or+repo:ocsigen/lwt+or+repo:janestreet/async%24&patternType=literal`
           label=`GitHub`>
-          <GithubIcon sizing=`h-6 w-6` fill=`currentColor`/>
+          <GithubIcon sizing fill />
         </SocialIconLink>
         <SocialIconLink
           href=`https://fosstodon.org/tags/ocaml`
           label=`Twitter`>
-          <TwitterIcon sizing=`h-6 w-6` fill=`currentColor`/>
+          <TwitterIcon sizing fill />
         </SocialIconLink>
       </div>
+      }
     </div>
 }
 

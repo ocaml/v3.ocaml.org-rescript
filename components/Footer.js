@@ -74,6 +74,8 @@ var P = {
 function Footer$LogoSection(Props) {
   var content = Props.content;
   var colspan = Props.colspan;
+  var sizing = "h-6 w-6";
+  var fill = "currentColor";
   return React.createElement("div", {
               className: "space-y-8 " + colspan
             }, React.createElement("img", {
@@ -91,22 +93,22 @@ function Footer$LogoSection(Props) {
                       children: null
                     }, null, React.createElement("img", {
                           "aria-hidden": true,
-                          className: "h-6 w-6",
+                          className: sizing,
                           alt: "",
                           src: "/static/discourselogo.png"
                         })), React.createElement(Footer$SocialIconLink, {
                       href: "https://sourcegraph.com/search?q=repo:ocaml/ocaml%24+or+repo:janestreet/base+or+repo:gitlab.com/tezos/tezos%24+or+repo:c-cube/ocaml-containers+or+repo:ocaml-batteries-team/batteries-included+or+repo:mirage/mirage%24+or+repo:ocsigen/lwt+or+repo:janestreet/async%24&patternType=literal",
                       label: "GitHub",
                       children: React.createElement(Footer$GithubIcon, {
-                            sizing: "h-6 w-6",
-                            fill: "currentColor"
+                            sizing: sizing,
+                            fill: fill
                           })
                     }), React.createElement(Footer$SocialIconLink, {
                       href: "https://fosstodon.org/tags/ocaml",
                       label: "Twitter",
                       children: React.createElement(Footer$TwitterIcon, {
-                            sizing: "h-6 w-6",
-                            fill: "currentColor"
+                            sizing: sizing,
+                            fill: fill
                           })
                     })));
 }
