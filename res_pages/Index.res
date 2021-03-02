@@ -118,13 +118,26 @@ module OpamSection = {
     </div>
 }
 
-
 module FillIcon = {
   @react.component
   let make = (~id) =>
     <pattern id x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
       <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
     </pattern>
+}
+
+module FillPattern = {
+  @react.component
+  let make = (~organizationName, ~position, ~placement, ~transform) =>
+    <svg className={position ++ ` ` ++ placement ++ ` ` ++ transform} 
+      width="404" height="404" fill="none" viewBox="0 0 404 404" 
+      role="img" ariaLabelledby="svg-testimonial-org">
+      <title id="svg-testimonial-org">{s(organizationName)}</title>
+      <defs>
+        <FillIcon id=`ad119f34-7694-4c31-947f-5c9d249b21f3`/>
+      </defs>
+      <rect width="404" height="404" fill="url(#ad119f34-7694-4c31-947f-5c9d249b21f3)" />
+    </svg>
 }
 
 module QuoteText = {
@@ -137,8 +150,8 @@ module QuoteText = {
 
 module SlashIcon = {
   @react.component
-  let make = () =>
-    <svg className="hidden md:block mx-1 h-5 w-5 text-orangedark" fill="currentColor" viewBox="0 0 20 20">
+  let make = (~margins) =>
+    <svg className={"hidden md:block h-5 w-5 text-orangedark " ++ margins}  fill="currentColor" viewBox="0 0 20 20">
       <path d="M11 0h3L9 20H6l5-20z" />
     </svg>
 }
@@ -150,11 +163,21 @@ module QuoteAttribution = {
       <div className="md:flex md:items-center md:justify-center">
         <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
           <div className="text-base font-medium text-gray-900">{s(speaker)}</div>
-          <SlashIcon />
+          <SlashIcon margins=`mx-1` />
           <div className="text-base font-medium text-gray-500">{s(organizationName)}</div>
         </div>
       </div>
     </footer>
+}
+
+module TestimonialContainer = {
+  @react.component
+  let make = (~margins, ~children) =>
+    <section className={margins ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        children
+      </div>
+    </section>
 }
 
 module TestimonialSection = {
@@ -167,25 +190,21 @@ module TestimonialSection = {
 
   @react.component
   let make = (~content, ~margins) =>
-    <section className={margins ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <svg className="absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2" width="404" height="404" fill="none" viewBox="0 0 404 404" role="img" ariaLabelledby="svg-testimonial-org">
-          <title id="svg-testimonial-org">{s(content.organizationName)}</title>
-          <defs>
-            <FillIcon id=`ad119f34-7694-4c31-947f-5c9d249b21f3`/>
-          </defs>
-          <rect width="404" height="404" fill="url(#ad119f34-7694-4c31-947f-5c9d249b21f3)" />
-        </svg>
+    <TestimonialContainer margins>
+      <FillPattern 
+        organizationName=content.organizationName
+        position=`absolute` 
+        placement=`top-full right-full` 
+        transform=`transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2` />
 
-        <div className="relative">
-          <img className="mx-auto h-24" src=content.organizationLogo alt=content.organizationName />
-          <blockquote className="mt-10">
-            <QuoteText quote=content.quote />
-            <QuoteAttribution speaker=content.speaker organizationName=content.organizationName />
-          </blockquote>
-        </div>
+      <div className="relative">
+        <img className="mx-auto h-24" src=content.organizationLogo alt=content.organizationName />
+        <blockquote className="mt-10">
+          <QuoteText quote=content.quote />
+          <QuoteAttribution speaker=content.speaker organizationName=content.organizationName />
+        </blockquote>
       </div>
-    </section>
+    </TestimonialContainer>
 }
 
 type t = {

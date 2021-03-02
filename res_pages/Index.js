@@ -192,6 +192,34 @@ var FillIcon = {
   make: Index$FillIcon
 };
 
+function Index$FillPattern(Props) {
+  var organizationName = Props.organizationName;
+  var position = Props.position;
+  var placement = Props.placement;
+  var transform = Props.transform;
+  return React.createElement("svg", {
+              "aria-labelledby": "svg-testimonial-org",
+              className: position + " " + placement + " " + transform,
+              role: "img",
+              height: "404",
+              width: "404",
+              fill: "none",
+              viewBox: "0 0 404 404"
+            }, React.createElement("title", {
+                  id: "svg-testimonial-org"
+                }, organizationName), React.createElement("defs", undefined, React.createElement(Index$FillIcon, {
+                      id: "ad119f34-7694-4c31-947f-5c9d249b21f3"
+                    })), React.createElement("rect", {
+                  height: "404",
+                  width: "404",
+                  fill: "url(#ad119f34-7694-4c31-947f-5c9d249b21f3)"
+                }));
+}
+
+var FillPattern = {
+  make: Index$FillPattern
+};
+
 function Index$QuoteText(Props) {
   var quote = Props.quote;
   return React.createElement("div", {
@@ -208,8 +236,9 @@ var QuoteText = {
 };
 
 function Index$SlashIcon(Props) {
+  var margins = Props.margins;
   return React.createElement("svg", {
-              className: "hidden md:block mx-1 h-5 w-5 text-orangedark",
+              className: "hidden md:block h-5 w-5 text-orangedark " + margins,
               fill: "currentColor",
               viewBox: "0 0 20 20"
             }, React.createElement("path", {
@@ -232,7 +261,9 @@ function Index$QuoteAttribution(Props) {
                       className: "mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center"
                     }, React.createElement("div", {
                           className: "text-base font-medium text-gray-900"
-                        }, speaker), React.createElement(Index$SlashIcon, {}), React.createElement("div", {
+                        }, speaker), React.createElement(Index$SlashIcon, {
+                          margins: "mx-1"
+                        }), React.createElement("div", {
                           className: "text-base font-medium text-gray-500"
                         }, organizationName))));
 }
@@ -241,43 +272,45 @@ var QuoteAttribution = {
   make: Index$QuoteAttribution
 };
 
-function Index$TestimonialSection(Props) {
-  var content = Props.content;
+function Index$TestimonialContainer(Props) {
   var margins = Props.margins;
+  var children = Props.children;
   return React.createElement("section", {
               className: margins + " py-12 overflow-hidden md:py-20 lg:py-24 "
             }, React.createElement("div", {
                   className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-                }, React.createElement("svg", {
-                      "aria-labelledby": "svg-testimonial-org",
-                      className: "absolute top-full right-full transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2",
-                      role: "img",
-                      height: "404",
-                      width: "404",
-                      fill: "none",
-                      viewBox: "0 0 404 404"
-                    }, React.createElement("title", {
-                          id: "svg-testimonial-org"
-                        }, content.organizationName), React.createElement("defs", undefined, React.createElement(Index$FillIcon, {
-                              id: "ad119f34-7694-4c31-947f-5c9d249b21f3"
-                            })), React.createElement("rect", {
-                          height: "404",
-                          width: "404",
-                          fill: "url(#ad119f34-7694-4c31-947f-5c9d249b21f3)"
-                        })), React.createElement("div", {
-                      className: "relative"
-                    }, React.createElement("img", {
-                          className: "mx-auto h-24",
-                          alt: content.organizationName,
-                          src: content.organizationLogo
-                        }), React.createElement("blockquote", {
-                          className: "mt-10"
-                        }, React.createElement(Index$QuoteText, {
-                              quote: content.quote
-                            }), React.createElement(Index$QuoteAttribution, {
-                              speaker: content.speaker,
-                              organizationName: content.organizationName
-                            })))));
+                }, children));
+}
+
+var TestimonialContainer = {
+  make: Index$TestimonialContainer
+};
+
+function Index$TestimonialSection(Props) {
+  var content = Props.content;
+  var margins = Props.margins;
+  return React.createElement(Index$TestimonialContainer, {
+              margins: margins,
+              children: null
+            }, React.createElement(Index$FillPattern, {
+                  organizationName: content.organizationName,
+                  position: "absolute",
+                  placement: "top-full right-full",
+                  transform: "transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2"
+                }), React.createElement("div", {
+                  className: "relative"
+                }, React.createElement("img", {
+                      className: "mx-auto h-24",
+                      alt: content.organizationName,
+                      src: content.organizationLogo
+                    }), React.createElement("blockquote", {
+                      className: "mt-10"
+                    }, React.createElement(Index$QuoteText, {
+                          quote: content.quote
+                        }), React.createElement(Index$QuoteAttribution, {
+                          speaker: content.speaker,
+                          organizationName: content.organizationName
+                        }))));
 }
 
 var TestimonialSection = {
@@ -346,9 +379,11 @@ export {
   StatsSection ,
   OpamSection ,
   FillIcon ,
+  FillPattern ,
   QuoteText ,
   SlashIcon ,
   QuoteAttribution ,
+  TestimonialContainer ,
   TestimonialSection ,
   contentEn ,
   make ,
