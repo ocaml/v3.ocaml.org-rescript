@@ -53,7 +53,7 @@ function Index$P(Props) {
   var margins = Props.margins;
   var children = Props.children;
   return React.createElement("p", {
-              className: margins + " max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
+              className: margins + " max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:max-w-3xl"
             }, children);
 }
 
@@ -72,7 +72,7 @@ function Index$HeroSection(Props) {
                       }, React.createElement(Index$H1, {
                             children: content.heroHeader
                           }), React.createElement(Index$P, {
-                            margins: "mt-3",
+                            margins: "mt-3 md:mt-5",
                             children: content.heroBody
                           }), React.createElement("div", {
                             className: "mt-10 sm:flex sm:justify-center lg:justify-start"

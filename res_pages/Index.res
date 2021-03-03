@@ -31,7 +31,7 @@ module H1 = {
 module P = {
   @react.component
   let make = (~margins, ~children) =>
-    <p className={margins ++ " max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"}>
+    <p className={margins ++ " max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:max-w-3xl"}>
       children
     </p>
 }
@@ -50,7 +50,7 @@ module HeroSection = {
       <HeroTextContainer textAlign=`text-center lg:text-left`>
         <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
           <H1> {s(content.heroHeader)} </H1>
-          <P margins="mt-3"> {s(content.heroBody)} </P>
+          <P margins="mt-3 md:mt-5"> {s(content.heroBody)} </P>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
             <Button colors=`text-white bg-orangedark hover:bg-orangedarker` href=`/play/resource/installocaml` text=content.installOcaml margins=``/>
             <Button colors=`text-orangedark bg-white hover:bg-gray-50` href=`#` text=content.aboutOcaml margins=`mt-3 sm:mt-0 sm:ml-3`/>
