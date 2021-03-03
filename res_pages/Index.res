@@ -140,14 +140,6 @@ module FillPattern = {
     </svg>
 }
 
-module QuoteText = {
-  @react.component
-  let make = (~quote) =>
-    <div className="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900">
-      <p><span className="text-orangedark">{s(`”`)}</span>{s(quote)}<span className="text-orangedark">{s(`”`)}</span></p>
-    </div>
-}
-
 module SlashIcon = {
   @react.component
   let make = (~margins) =>
@@ -156,18 +148,23 @@ module SlashIcon = {
     </svg>
 }
 
-module QuoteAttribution = {
+module Quote = {
   @react.component
-  let make = (~speaker, ~organizationName) =>
-    <footer className="mt-0">
-      <div className="md:flex md:items-center md:justify-center">
-        <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-          <div className="text-base font-medium text-gray-900">{s(speaker)}</div>
-          <SlashIcon margins=`mx-1` />
-          <div className="text-base font-medium text-gray-500">{s(organizationName)}</div>
-        </div>
+  let make = (~margins, ~quote, ~speaker, ~organizationName) =>
+    <blockquote className=margins>
+      <div className="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900">
+        <p><span className="text-orangedark">{s(`”`)}</span>{s(quote)}<span className="text-orangedark">{s(`”`)}</span></p>
       </div>
-    </footer>
+      <footer className="mt-0">
+        <div className="md:flex md:items-center md:justify-center">
+          <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
+            <div className="text-base font-medium text-gray-900">{s(speaker)}</div>
+            <SlashIcon margins=`mx-1` />
+            <div className="text-base font-medium text-gray-500">{s(organizationName)}</div>
+          </div>
+        </div>
+      </footer>
+    </blockquote>
 }
 
 module TestimonialContainer = {
@@ -196,13 +193,9 @@ module TestimonialSection = {
         position=`absolute` 
         placement=`top-full right-full` 
         transform=`transform translate-x-1/3 -translate-y-1/4 lg:translate-x-1/2 xl:-translate-y-1/2` />
-
       <div className="relative">
         <img className="mx-auto h-24" src=content.organizationLogo alt=content.organizationName />
-        <blockquote className="mt-10">
-          <QuoteText quote=content.quote />
-          <QuoteAttribution speaker=content.speaker organizationName=content.organizationName />
-        </blockquote>
+        <Quote margins=`mt-10` quote=content.quote speaker=content.speaker organizationName=content.organizationName /> 
       </div>
     </TestimonialContainer>
 }

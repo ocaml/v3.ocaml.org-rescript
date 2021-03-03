@@ -220,21 +220,6 @@ var FillPattern = {
   make: Index$FillPattern
 };
 
-function Index$QuoteText(Props) {
-  var quote = Props.quote;
-  return React.createElement("div", {
-              className: "max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900"
-            }, React.createElement("p", undefined, React.createElement("span", {
-                      className: "text-orangedark"
-                    }, "”"), quote, React.createElement("span", {
-                      className: "text-orangedark"
-                    }, "”")));
-}
-
-var QuoteText = {
-  make: Index$QuoteText
-};
-
 function Index$SlashIcon(Props) {
   var margins = Props.margins;
   return React.createElement("svg", {
@@ -250,26 +235,36 @@ var SlashIcon = {
   make: Index$SlashIcon
 };
 
-function Index$QuoteAttribution(Props) {
+function Index$Quote(Props) {
+  var margins = Props.margins;
+  var quote = Props.quote;
   var speaker = Props.speaker;
   var organizationName = Props.organizationName;
-  return React.createElement("footer", {
-              className: "mt-0"
+  return React.createElement("blockquote", {
+              className: margins
             }, React.createElement("div", {
-                  className: "md:flex md:items-center md:justify-center"
+                  className: "max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900"
+                }, React.createElement("p", undefined, React.createElement("span", {
+                          className: "text-orangedark"
+                        }, "”"), quote, React.createElement("span", {
+                          className: "text-orangedark"
+                        }, "”"))), React.createElement("footer", {
+                  className: "mt-0"
                 }, React.createElement("div", {
-                      className: "mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center"
+                      className: "md:flex md:items-center md:justify-center"
                     }, React.createElement("div", {
-                          className: "text-base font-medium text-gray-900"
-                        }, speaker), React.createElement(Index$SlashIcon, {
-                          margins: "mx-1"
-                        }), React.createElement("div", {
-                          className: "text-base font-medium text-gray-500"
-                        }, organizationName))));
+                          className: "mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center"
+                        }, React.createElement("div", {
+                              className: "text-base font-medium text-gray-900"
+                            }, speaker), React.createElement(Index$SlashIcon, {
+                              margins: "mx-1"
+                            }), React.createElement("div", {
+                              className: "text-base font-medium text-gray-500"
+                            }, organizationName)))));
 }
 
-var QuoteAttribution = {
-  make: Index$QuoteAttribution
+var Quote = {
+  make: Index$Quote
 };
 
 function Index$TestimonialContainer(Props) {
@@ -303,14 +298,12 @@ function Index$TestimonialSection(Props) {
                       className: "mx-auto h-24",
                       alt: content.organizationName,
                       src: content.organizationLogo
-                    }), React.createElement("blockquote", {
-                      className: "mt-10"
-                    }, React.createElement(Index$QuoteText, {
-                          quote: content.quote
-                        }), React.createElement(Index$QuoteAttribution, {
-                          speaker: content.speaker,
-                          organizationName: content.organizationName
-                        }))));
+                    }), React.createElement(Index$Quote, {
+                      margins: "mt-10",
+                      quote: content.quote,
+                      speaker: content.speaker,
+                      organizationName: content.organizationName
+                    })));
 }
 
 var TestimonialSection = {
@@ -380,9 +373,8 @@ export {
   OpamSection ,
   FillIcon ,
   FillPattern ,
-  QuoteText ,
   SlashIcon ,
-  QuoteAttribution ,
+  Quote ,
   TestimonialContainer ,
   TestimonialSection ,
   contentEn ,
