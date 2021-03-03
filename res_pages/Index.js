@@ -7,39 +7,23 @@ function s(prim) {
   return prim;
 }
 
-function Index$PrimaryButton(Props) {
+function Index$Button(Props) {
   var href = Props.href;
   var text = Props.text;
-  return React.createElement("div", {
-              className: "rounded-md shadow"
-            }, React.createElement(Link, {
-                  href: href,
-                  children: React.createElement("a", {
-                        className: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker md:py-4 md:text-lg md:px-10"
-                      }, text)
-                }));
-}
-
-var PrimaryButton = {
-  make: Index$PrimaryButton
-};
-
-function Index$SecondaryButton(Props) {
-  var href = Props.href;
-  var text = Props.text;
+  var colors = Props.colors;
   var margins = Props.margins;
   return React.createElement("div", {
               className: margins + " rounded-md shadow "
             }, React.createElement(Link, {
                   href: href,
                   children: React.createElement("a", {
-                        className: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orangedark bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                        className: colors + " w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10"
                       }, text)
                 }));
 }
 
-var SecondaryButton = {
-  make: Index$SecondaryButton
+var Button = {
+  make: Index$Button
 };
 
 function Index$HeroSection(Props) {
@@ -56,12 +40,15 @@ function Index$HeroSection(Props) {
                           className: "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
                         }, content.heroBody), React.createElement("div", {
                           className: "mt-10 sm:flex sm:justify-center lg:justify-start"
-                        }, React.createElement(Index$PrimaryButton, {
+                        }, React.createElement(Index$Button, {
                               href: "/play/resource/installocaml",
-                              text: content.installOcaml
-                            }), React.createElement(Index$SecondaryButton, {
+                              text: content.installOcaml,
+                              colors: "text-white bg-orangedark hover:bg-orangedarker",
+                              margins: ""
+                            }), React.createElement(Index$Button, {
                               href: "#",
                               text: content.aboutOcaml,
+                              colors: "text-orangedark bg-white hover:bg-gray-50",
                               margins: "mt-3 sm:mt-0 sm:ml-3"
                             })))), React.createElement("div", {
                   className: "relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full"
@@ -415,8 +402,7 @@ var $$default = Index;
 export {
   Link$1 as Link,
   s ,
-  PrimaryButton ,
-  SecondaryButton ,
+  Button ,
   HeroSection ,
   H2 ,
   StatBox ,

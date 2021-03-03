@@ -2,22 +2,12 @@ module Link = Next.Link
 
 let s = React.string
 
-module PrimaryButton = {
+module Button = {
   @react.component
-  let make = (~href, ~text) =>
-    <div className="rounded-md shadow">
-      <Link href>
-        <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker md:py-4 md:text-lg md:px-10"> {s(text)} </a>
-      </Link>
-    </div>
-}
-
-module SecondaryButton = {
-  @react.component
-  let make = (~href, ~text, ~margins) =>
+  let make = (~href, ~text, ~colors, ~margins) =>
     <div className={margins ++ " rounded-md shadow "}>
       <Link href>
-        <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orangedark bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"> {s(text)} </a>
+        <a className={colors ++ " w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10"}> {s(text)} </a>
       </Link>
     </div>
 }
@@ -38,8 +28,8 @@ module HeroSection = {
           <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">{s(content.heroHeader)}</h1>
           <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">{s(content.heroBody)}</p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <PrimaryButton href=`/play/resource/installocaml` text=content.installOcaml />
-            <SecondaryButton href=`#` text=content.aboutOcaml margins=`mt-3 sm:mt-0 sm:ml-3`/>
+            <Button colors=`text-white bg-orangedark hover:bg-orangedarker` href=`/play/resource/installocaml` text=content.installOcaml margins=``/>
+            <Button colors=`text-orangedark bg-white hover:bg-gray-50` href=`#` text=content.aboutOcaml margins=`mt-3 sm:mt-0 sm:ml-3`/>
           </div>
         </div>
       </div>
