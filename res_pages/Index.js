@@ -26,31 +26,68 @@ var Button = {
   make: Index$Button
 };
 
+function Index$HeroTextContainer(Props) {
+  var textAlign = Props.textAlign;
+  var children = Props.children;
+  return React.createElement("div", {
+              className: "mx-auto max-w-7xl w-full pt-16 pb-20 lg:py-48 " + textAlign
+            }, children);
+}
+
+var HeroTextContainer = {
+  make: Index$HeroTextContainer
+};
+
+function Index$H1(Props) {
+  var children = Props.children;
+  return React.createElement("h1", {
+              className: "text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
+            }, children);
+}
+
+var H1 = {
+  make: Index$H1
+};
+
+function Index$P(Props) {
+  var margins = Props.margins;
+  var children = Props.children;
+  return React.createElement("p", {
+              className: margins + " max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
+            }, children);
+}
+
+var P = {
+  make: Index$P
+};
+
 function Index$HeroSection(Props) {
   var content = Props.content;
   return React.createElement("div", {
               className: "lg:relative"
-            }, React.createElement("div", {
-                  className: "mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left"
-                }, React.createElement("div", {
-                      className: "px-4 lg:w-1/2 sm:px-8 xl:pr-16"
-                    }, React.createElement("h1", {
-                          className: "text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
-                        }, content.heroHeader), React.createElement("p", {
-                          className: "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
-                        }, content.heroBody), React.createElement("div", {
-                          className: "mt-10 sm:flex sm:justify-center lg:justify-start"
-                        }, React.createElement(Index$Button, {
-                              href: "/play/resource/installocaml",
-                              text: content.installOcaml,
-                              colors: "text-white bg-orangedark hover:bg-orangedarker",
-                              margins: ""
-                            }), React.createElement(Index$Button, {
-                              href: "#",
-                              text: content.aboutOcaml,
-                              colors: "text-orangedark bg-white hover:bg-gray-50",
-                              margins: "mt-3 sm:mt-0 sm:ml-3"
-                            })))), React.createElement("div", {
+            }, React.createElement(Index$HeroTextContainer, {
+                  textAlign: "text-center lg:text-left",
+                  children: React.createElement("div", {
+                        className: "px-4 lg:w-1/2 sm:px-8 xl:pr-16"
+                      }, React.createElement(Index$H1, {
+                            children: content.heroHeader
+                          }), React.createElement(Index$P, {
+                            margins: "mt-3",
+                            children: content.heroBody
+                          }), React.createElement("div", {
+                            className: "mt-10 sm:flex sm:justify-center lg:justify-start"
+                          }, React.createElement(Index$Button, {
+                                href: "/play/resource/installocaml",
+                                text: content.installOcaml,
+                                colors: "text-white bg-orangedark hover:bg-orangedarker",
+                                margins: ""
+                              }), React.createElement(Index$Button, {
+                                href: "#",
+                                text: content.aboutOcaml,
+                                colors: "text-orangedark bg-white hover:bg-gray-50",
+                                margins: "mt-3 sm:mt-0 sm:ml-3"
+                              })))
+                }), React.createElement("div", {
                   className: "relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full"
                 }, React.createElement("img", {
                       className: "absolute inset-0 w-full h-full object-cover",
@@ -403,6 +440,9 @@ export {
   Link$1 as Link,
   s ,
   Button ,
+  HeroTextContainer ,
+  H1 ,
+  P ,
   HeroSection ,
   H2 ,
   StatBox ,
