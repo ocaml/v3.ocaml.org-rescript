@@ -109,6 +109,14 @@ module A = {
     <a className="text-orangedark" href target="_blank">{s(text)}</a>
 }
 
+module OpamContainer = {
+  @react.component
+  let make = (~margins, ~display, ~children) =>
+    <div className={margins ++ ` ` ++ display ++ ` sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
+      children
+    </div>
+}
+
 module OpamSection = {
   type t = {
     opamHeader: string,
@@ -118,8 +126,8 @@ module OpamSection = {
 
   @react.component
   let make = (~content, ~margins) =>
-    <div className={margins ++ ` sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
-      <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
+    <OpamContainer margins display=`sm:flex`>
+      <div className="mb-4 sm:flex-shrink-0 sm:mb-0 sm:mr-4">
         <img className="h-36" src="/static/opam.png" ariaHidden=true />
       </div>
       <div>
@@ -127,7 +135,7 @@ module OpamSection = {
         <p className="mt-1">{s(content.opamBody)}</p>
         <p className="text-right pr-5"><A href="https://opam.ocaml.org" text={content.opamLinkText ++ ` >`} /></p>
       </div>
-    </div>
+    </OpamContainer>
 }
 
 module FillIcon = {

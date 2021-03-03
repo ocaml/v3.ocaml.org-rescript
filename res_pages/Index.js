@@ -166,13 +166,28 @@ var A = {
   make: Index$A
 };
 
+function Index$OpamContainer(Props) {
+  var margins = Props.margins;
+  var display = Props.display;
+  var children = Props.children;
+  return React.createElement("div", {
+              className: margins + " " + display + " sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8"
+            }, children);
+}
+
+var OpamContainer = {
+  make: Index$OpamContainer
+};
+
 function Index$OpamSection(Props) {
   var content = Props.content;
   var margins = Props.margins;
-  return React.createElement("div", {
-              className: margins + " sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8"
+  return React.createElement(Index$OpamContainer, {
+              margins: margins,
+              display: "sm:flex",
+              children: null
             }, React.createElement("div", {
-                  className: "mb-4 flex-shrink-0 sm:mb-0 sm:mr-4"
+                  className: "mb-4 sm:flex-shrink-0 sm:mb-0 sm:mr-4"
                 }, React.createElement("img", {
                       "aria-hidden": true,
                       className: "h-36",
@@ -396,6 +411,7 @@ export {
   StatsSection ,
   H2Small ,
   A ,
+  OpamContainer ,
   OpamSection ,
   FillIcon ,
   FillPattern ,
