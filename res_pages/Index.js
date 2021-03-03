@@ -141,6 +141,31 @@ var StatsSection = {
   make: Index$StatsSection
 };
 
+function Index$H2Small(Props) {
+  var children = Props.children;
+  return React.createElement("h2", {
+              className: "text-2xl font-bold"
+            }, children);
+}
+
+var H2Small = {
+  make: Index$H2Small
+};
+
+function Index$A(Props) {
+  var href = Props.href;
+  var text = Props.text;
+  return React.createElement("a", {
+              className: "text-orangedark",
+              href: href,
+              target: "_blank"
+            }, text);
+}
+
+var A = {
+  make: Index$A
+};
+
 function Index$OpamSection(Props) {
   var content = Props.content;
   var margins = Props.margins;
@@ -152,17 +177,16 @@ function Index$OpamSection(Props) {
                       "aria-hidden": true,
                       className: "h-36",
                       src: "/static/opam.png"
-                    })), React.createElement("div", undefined, React.createElement("h2", {
-                      className: "text-2xl font-bold"
-                    }, content.opamHeader), React.createElement("p", {
+                    })), React.createElement("div", undefined, React.createElement(Index$H2Small, {
+                      children: content.opamHeader
+                    }), React.createElement("p", {
                       className: "mt-1"
                     }, content.opamBody), React.createElement("p", {
                       className: "text-right pr-5"
-                    }, React.createElement("a", {
-                          className: " text-yellow-600",
+                    }, React.createElement(Index$A, {
                           href: "https://opam.ocaml.org",
-                          target: "_blank"
-                        }, content.opamLinkText + " >"))));
+                          text: content.opamLinkText + " >"
+                        }))));
 }
 
 var OpamSection = {
@@ -370,6 +394,8 @@ export {
   H2 ,
   StatBox ,
   StatsSection ,
+  H2Small ,
+  A ,
   OpamSection ,
   FillIcon ,
   FillPattern ,

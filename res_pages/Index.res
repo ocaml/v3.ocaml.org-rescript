@@ -97,6 +97,18 @@ module StatsSection = {
     </div>
 }
 
+module H2Small = {
+  @react.component
+  let make = (~children) =>
+    <h2 className="text-2xl font-bold"> children </h2>
+}
+
+module A = {
+  @react.component
+  let make = (~href, ~text) =>
+    <a className="text-orangedark" href target="_blank">{s(text)}</a>
+}
+
 module OpamSection = {
   type t = {
     opamHeader: string,
@@ -111,9 +123,9 @@ module OpamSection = {
         <img className="h-36" src="/static/opam.png" ariaHidden=true />
       </div>
       <div>
-        <h2 className="text-2xl font-bold">{s(content.opamHeader)}</h2>
+        <H2Small>{s(content.opamHeader)}</H2Small>
         <p className="mt-1">{s(content.opamBody)}</p>
-        <p className="text-right pr-5"><a className=" text-yellow-600" href="https://opam.ocaml.org" target="_blank">{s(content.opamLinkText ++ ` >`)}</a></p>
+        <p className="text-right pr-5"><A href="https://opam.ocaml.org" text={content.opamLinkText ++ ` >`} /></p>
       </div>
     </div>
 }
