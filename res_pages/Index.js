@@ -104,37 +104,49 @@ var StatBox = {
   make: Index$StatBox
 };
 
+function Index$StatsRowContainer(Props) {
+  var textAlign = Props.textAlign;
+  var children = Props.children;
+  return React.createElement("div", {
+              className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+            }, React.createElement("div", {
+                  className: "max-w-4xl mx-auto " + textAlign
+                }, children));
+}
+
+var StatsRowContainer = {
+  make: Index$StatsRowContainer
+};
+
 function Index$StatsSection(Props) {
   var content = Props.content;
   return React.createElement("div", {
               className: "pt-12 sm:pt-16"
-            }, React.createElement("div", {
-                  className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-                }, React.createElement("div", {
-                      className: "max-w-4xl mx-auto text-center"
-                    }, React.createElement(Index$H2, {
-                          text: content.statsTitle
-                        }))), React.createElement("div", {
+            }, React.createElement(Index$StatsRowContainer, {
+                  textAlign: "text-center",
+                  children: React.createElement(Index$H2, {
+                        text: content.statsTitle
+                      })
+                }), React.createElement("div", {
                   className: "mt-10 pb-12 sm:pb-16"
-                }, React.createElement("div", {
-                      className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-                    }, React.createElement("div", {
-                          className: "max-w-4xl mx-auto"
-                        }, React.createElement("dl", {
-                              className: "rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3"
-                            }, React.createElement(Index$StatBox, {
-                                  label: content.userSatisfaction,
-                                  statValue: content.userSatisfactionPercent,
-                                  borderSizes: "border-b sm:border-0 sm:border-r"
-                                }), React.createElement(Index$StatBox, {
-                                  label: content.workplaceUse,
-                                  statValue: content.workplaceUsePercent,
-                                  borderSizes: "border-t border-b sm:border-0 sm:border-l sm:border-r"
-                                }), React.createElement(Index$StatBox, {
-                                  label: content.easyMaintain,
-                                  statValue: content.easyMaintainPercent,
-                                  borderSizes: "border-t sm:border-0 sm:border-l"
-                                }))))));
+                }, React.createElement(Index$StatsRowContainer, {
+                      textAlign: "",
+                      children: React.createElement("dl", {
+                            className: "rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3"
+                          }, React.createElement(Index$StatBox, {
+                                label: content.userSatisfaction,
+                                statValue: content.userSatisfactionPercent,
+                                borderSizes: "border-b sm:border-0 sm:border-r"
+                              }), React.createElement(Index$StatBox, {
+                                label: content.workplaceUse,
+                                statValue: content.workplaceUsePercent,
+                                borderSizes: "border-t border-b sm:border-0 sm:border-l sm:border-r"
+                              }), React.createElement(Index$StatBox, {
+                                label: content.easyMaintain,
+                                statValue: content.easyMaintainPercent,
+                                borderSizes: "border-t sm:border-0 sm:border-l"
+                              }))
+                    })));
 }
 
 var StatsSection = {
@@ -408,6 +420,7 @@ export {
   HeroSection ,
   H2 ,
   StatBox ,
+  StatsRowContainer ,
   StatsSection ,
   H2Small ,
   A ,

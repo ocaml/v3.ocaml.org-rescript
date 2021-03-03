@@ -64,6 +64,16 @@ module StatBox = {
     </div>
 }
 
+module StatsRowContainer = {
+  @react.component
+  let make = (~textAlign, ~children) =>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={"max-w-4xl mx-auto " ++ textAlign}>
+        children
+      </div>
+    </div>
+}
+
 module StatsSection = {
   type t = {
     statsTitle: string,
@@ -78,21 +88,17 @@ module StatsSection = {
   @react.component
   let make = (~content) =>
     <div className="pt-12 sm:pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <H2 text=content.statsTitle />
-        </div>
-      </div>
+      <StatsRowContainer textAlign=`text-center`>
+        <H2 text=content.statsTitle />
+      </StatsRowContainer>
       <div className="mt-10 pb-12 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
-              <StatBox label=content.userSatisfaction statValue=content.userSatisfactionPercent borderSizes=`border-b sm:border-0 sm:border-r`/>
-              <StatBox label=content.workplaceUse statValue=content.workplaceUsePercent borderSizes=`border-t border-b sm:border-0 sm:border-l sm:border-r`/>
-              <StatBox label=content.easyMaintain statValue=content.easyMaintainPercent borderSizes=`border-t sm:border-0 sm:border-l`/>
-            </dl>
-          </div>
-        </div>
+        <StatsRowContainer textAlign=``>
+          <dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
+            <StatBox label=content.userSatisfaction statValue=content.userSatisfactionPercent borderSizes=`border-b sm:border-0 sm:border-r`/>
+            <StatBox label=content.workplaceUse statValue=content.workplaceUsePercent borderSizes=`border-t border-b sm:border-0 sm:border-l sm:border-r`/>
+            <StatBox label=content.easyMaintain statValue=content.easyMaintainPercent borderSizes=`border-t sm:border-0 sm:border-l`/>
+          </dl>
+        </StatsRowContainer>
       </div>
     </div>
 }
