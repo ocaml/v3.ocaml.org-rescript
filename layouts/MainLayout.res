@@ -1,3 +1,4 @@
+
 type navContent = {
   industry: string,
   resources: string,
