@@ -59,6 +59,16 @@ let footerContentEn: Footer.t = {
 
 let s = React.string
 
+let leftNavHtml = `
+  <nav class="w-48">
+    <ul>
+      <li>Chapter 1</li>
+      <li>Chapter 2</li>
+      <li>Chapter 3</li>
+    </ul>
+  </nav>
+`
+
 @react.component
 let make = (~children) =>
   <div className="bg-white"> // TODO: change element to body, move to document.res 
@@ -66,12 +76,7 @@ let make = (~children) =>
       <HeaderNavigation content=headerContentEn />
     </div>
     <main className="relative bg-graylight flex pb-1"> // pb-1 is used to prevent margin-bottom from collapsing on last child
-      <nav className="w-48">
-        <ul>
-          <li>{s(`Chapter 1: `)}</li>
-          <li>{s(`Chapter 2: `)}</li>
-        </ul>
-      </nav>
+      <div dangerouslySetInnerHTML={{"__html": leftNavHtml}} />
       children
     </main>
     <div className="relative">

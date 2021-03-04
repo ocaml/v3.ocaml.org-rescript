@@ -114,6 +114,8 @@ function s(prim) {
   return prim;
 }
 
+var leftNavHtml = "\n  <nav class=\"w-48\">\n    <ul>\n      <li>Chapter 1</li>\n      <li>Chapter 2</li>\n      <li>Chapter 3</li>\n    </ul>\n  </nav>\n";
+
 function ManualLayout(Props) {
   var children = Props.children;
   return React.createElement("div", {
@@ -124,9 +126,11 @@ function ManualLayout(Props) {
                       content: headerContentEn
                     })), React.createElement("main", {
                   className: "relative bg-graylight flex pb-1"
-                }, React.createElement("nav", {
-                      className: "w-48"
-                    }, React.createElement("ul", undefined, React.createElement("li", undefined, "Chapter 1: "), React.createElement("li", undefined, "Chapter 2: "))), children), React.createElement("div", {
+                }, React.createElement("div", {
+                      dangerouslySetInnerHTML: {
+                        __html: leftNavHtml
+                      }
+                    }), children), React.createElement("div", {
                   className: "relative"
                 }, React.createElement(Footer$Ocamlorg.make, {
                       content: footerContentEn
@@ -146,6 +150,7 @@ export {
   headerContentEn ,
   footerContentEn ,
   s ,
+  leftNavHtml ,
   make ,
   
 }

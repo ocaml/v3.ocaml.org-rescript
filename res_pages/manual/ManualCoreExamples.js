@@ -6,22 +6,39 @@ function s(prim) {
   return prim;
 }
 
+var mainHtml = "\n  <h1 class=\"text-4xl\">Chapter 1  The core language</h1>\n";
+
+var pageTocHeadings = [
+  "1.1 Basics",
+  "1.2 Data types"
+];
+
+function ManualCoreExamples$PageTOC(Props) {
+  return React.createElement(React.Fragment, undefined, React.createElement("h2", {
+                  className: ""
+                }, "Contents"), pageTocHeadings.map(function (hd) {
+                  return React.createElement("h3", {
+                              className: ""
+                            }, hd);
+                }));
+}
+
+var PageTOC = {
+  make: ManualCoreExamples$PageTOC
+};
+
 function ManualCoreExamples(Props) {
   return React.createElement("div", {
               className: "flex space-x-4 w-full"
             }, React.createElement("div", {
                   className: "w-3/4"
-                }, React.createElement("h1", {
-                      className: "text-4xl"
-                    }, "Chapter 1  The core language")), React.createElement("div", {
+                }, React.createElement("div", {
+                      dangerouslySetInnerHTML: {
+                        __html: mainHtml
+                      }
+                    })), React.createElement("div", {
                   className: ""
-                }, React.createElement("h2", {
-                      className: ""
-                    }, "Contents"), React.createElement("h3", {
-                      className: ""
-                    }, "1.1 Basics"), React.createElement("h3", {
-                      className: ""
-                    }, "1.2 Data types")));
+                }, React.createElement(ManualCoreExamples$PageTOC, {})));
 }
 
 var make = ManualCoreExamples;
@@ -30,6 +47,9 @@ var $$default = ManualCoreExamples;
 
 export {
   s ,
+  mainHtml ,
+  pageTocHeadings ,
+  PageTOC ,
   make ,
   $$default ,
   $$default as default,
