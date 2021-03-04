@@ -27,6 +27,8 @@ let make = (props: props): React.element => {
   switch (router.route) {
   | "/design/industry" =>
     content
+  | "/manual/coreexamples" =>
+    <ManualLayout> content </ManualLayout>
   | _ => <MainLayout> content </MainLayout>
   };
 };

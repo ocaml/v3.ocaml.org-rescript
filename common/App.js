@@ -3,6 +3,7 @@
 import * as React from "react";
 import * as Router from "next/router";
 import * as MainLayout$Ocamlorg from "../layouts/MainLayout.js";
+import * as ManualLayout$Ocamlorg from "../layouts/ManualLayout.js";
 
 function make(props) {
   var component = props.Component;
@@ -11,12 +12,17 @@ function make(props) {
   var content = React.createElement(component, pageProps);
   console.log(router.route);
   var match = router.route;
-  if (match === "/design/industry") {
-    return content;
-  } else {
-    return React.createElement(MainLayout$Ocamlorg.make, {
-                children: content
-              });
+  switch (match) {
+    case "/design/industry" :
+        return content;
+    case "/manual/coreexamples" :
+        return React.createElement(ManualLayout$Ocamlorg.make, {
+                    children: content
+                  });
+    default:
+      return React.createElement(MainLayout$Ocamlorg.make, {
+                  children: content
+                });
   }
 }
 
