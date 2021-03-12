@@ -60,7 +60,7 @@ var footerContentEn_mainLinksContent = {
     },
     archive: {
       label: "Archive",
-      url: "/play/resources/archive"
+      url: "/resources/archive"
     }
   },
   communitySection: {

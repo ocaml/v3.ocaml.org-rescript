@@ -52,11 +52,6 @@ const config = {
         destination: 'https://play.tailwindcss.com/wu15fDmzPY?layout=preview',
         permanent: false,
       },
-      {
-        source: '/play/community/newsarchive',
-        destination: 'https://play.tailwindcss.com/DAVx1bUei3?layout=preview',
-        permanent: false,
-      },
 
 
       {
@@ -68,16 +63,6 @@ const config = {
       {
         source: '/play/resources/mediaarchive',
         destination: 'https://play.tailwindcss.com/SaRPEIdpPS?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/resources/tutorials',
-        destination: 'https://play.tailwindcss.com/TZiQsbetpO?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/resources/books',
-        destination: 'https://play.tailwindcss.com/tSiJwFvjEn?layout=preview',
         permanent: false,
       },
       {
