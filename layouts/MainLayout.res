@@ -33,8 +33,8 @@ let footerContentEn: Footer.t = {
       resourcesSection: {
         header: navContentEn.resources,
         releases: {label: `Releases`, url: `/resources/releases`},
-        applications: {label: `Applications`, url: `/play/resources/applications`},
-        language: {label: `Language`, url: `/play/resources/language`},
+        applications: {label: `Applications`, url: `/resources/applications`},
+        language: {label: `Language`, url: `/resources/language`},
         archive: {label: `Archive`, url: `/play/resources/archive`}
       },
       communitySection: {

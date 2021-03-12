@@ -52,11 +52,11 @@ var footerContentEn_mainLinksContent = {
     },
     applications: {
       label: "Applications",
-      url: "/play/resources/applications"
+      url: "/resources/applications"
     },
     language: {
       label: "Language",
-      url: "/play/resources/language"
+      url: "/resources/language"
     },
     archive: {
       label: "Archive",

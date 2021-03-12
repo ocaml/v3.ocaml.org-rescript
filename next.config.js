@@ -81,11 +81,6 @@ const config = {
         permanent: false,
       },
       {
-        source: '/play/resources/archive',
-        destination: 'https://play.tailwindcss.com/Y1ABhSzyna?layout=preview',
-        permanent: false,
-      },
-      {
         source: '/play/resources/paperarchive',
         destination: 'https://play.tailwindcss.com/wngTIsLJL2?layout=preview',
         permanent: false,
