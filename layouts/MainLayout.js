@@ -71,7 +71,7 @@ var footerContentEn_mainLinksContent = {
     },
     news: {
       label: "News",
-      url: "/play/community/news"
+      url: "/community/news"
     },
     aroundTheWeb: {
       label: "Around the Web",

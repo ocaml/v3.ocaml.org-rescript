@@ -40,7 +40,7 @@ let footerContentEn: Footer.t = {
       communitySection: {
         header: navContentEn.community,
         opportunities: {label: `Opportunities`, url: `/community/opportunities`},
-        news: {label: `News`, url: `/play/community/news`},
+        news: {label: `News`, url: `/community/news`},
         aroundTheWeb: {label: `Around the Web`, url: `/community/aroundweb`}
       },
       legalSection: {
