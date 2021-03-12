@@ -28,7 +28,7 @@ let footerContentEn: Footer.t = {
         header: navContentEn.industry,
         whatIsOcaml: {label: `What is OCaml`, url: `/industry/whatisocaml`},
         industrialUsers: {label: `Industrial Users`, url: `/industry/users`},
-        successStories: {label: `Success Stories`, url: `/play/industry/successstories`}
+        successStories: {label: `Success Stories`, url: `/industry/successstories`}
       },
       resourcesSection: {
         header: navContentEn.resources,

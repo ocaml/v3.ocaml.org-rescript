@@ -41,7 +41,7 @@ var footerContentEn_mainLinksContent = {
     },
     successStories: {
       label: "Success Stories",
-      url: "/play/industry/successstories"
+      url: "/industry/successstories"
     }
   },
   resourcesSection: {

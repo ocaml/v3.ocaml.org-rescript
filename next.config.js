@@ -33,6 +33,13 @@ const config = {
         destination: 'https://play.tailwindcss.com/LGDZzOzegQ?layout=preview',
         permanent: false,
       },
+      /* sub-components */
+      {
+        source: '/play/header',
+        destination: 'https://play.tailwindcss.com/n8u5qc7Ax7?layout=preview',
+        permanent: false,
+      },
+
 
 
       {
@@ -89,12 +96,12 @@ const config = {
       },
       {
         source: '/play/industry/whatisocaml',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'notstarted',
         permanent: false,
       },
       {
         source: '/play/industry/successstories',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        destination: 'notstarted',
         permanent: false,
       },
 
@@ -186,23 +193,6 @@ const config = {
         destination: 'https://play.tailwindcss.com/oiGQaNMMKP?layout=preview',
         permanent: false,
       },
-
-
-      /* page sub-components */
-      {
-        source: '/play/header',
-        destination: 'https://play.tailwindcss.com/n8u5qc7Ax7?layout=preview',
-        permanent: false,
-      },
-
-      /* awaiting next version
-      {
-        source: '/play/footer',
-        destination: 'https://play.tailwindcss.com/sDvt5fPLI1?layout=preview',
-        permanent: false,
-      }, 
-      */
-
 
 
       // Permanent redirects
