@@ -48,31 +48,6 @@ const config = {
         permanent: false,
       },
       {
-        source: '/play/community/blogarchive',
-        destination: 'https://play.tailwindcss.com/NIX2Uw9VXX?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/community/mailinglists',
-        destination: 'https://play.tailwindcss.com/LUUSP3fDwB?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/community/meetings',
-        destination: 'https://play.tailwindcss.com/ERceV8Ryxv?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/community/ocamlworkshop',
-        destination: 'https://play.tailwindcss.com/QWDWzrqLCw?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/community/ocamlworkshoparchive',
-        destination: 'https://play.tailwindcss.com/OdONb93XWX?layout=preview',
-        permanent: false,
-      },
-      {
         source: '/play/community/opportunities',
         destination: 'notstarted',
         permanent: false,
@@ -127,27 +102,12 @@ const config = {
         permanent: false,
       },
       {
-        source: '/play/resources/cheatsheets',
-        destination: 'https://play.tailwindcss.com/CjMUTbKXO7?layout=preview',
-        permanent: false,
-      },
-      {
         source: '/play/resources/paperarchive',
         destination: 'https://play.tailwindcss.com/wngTIsLJL2?layout=preview',
         permanent: false,
       },
       {
         source: '/play/resources/releases',
-        destination: 'notstarted',
-        permanent: false,
-      },
-      {
-        source: '/play/resources/releases/4.11.1',
-        destination: 'notstarted',
-        permanent: false,
-      },
-      {
-        source: '/play/resources/releases/4.11.0',
         destination: 'notstarted',
         permanent: false,
       },
@@ -172,35 +132,17 @@ const config = {
         source: '/play/legal/privacy',
         destination: 'notstarted',
         permanent: false,
-      },
-      {
-        source: '/play/about',
-        destination: 'https://play.tailwindcss.com/FIney8bfu3?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/governance',
-        destination: 'https://play.tailwindcss.com/3zJkikgEgR?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/compiler/license',
-        destination: 'https://play.tailwindcss.com/eFSxVyoq4r?layout=preview',
-        permanent: false,
-      },
-      {
-        source: '/play/consortium',
-        destination: 'https://play.tailwindcss.com/oiGQaNMMKP?layout=preview',
-        permanent: false,
-      },
+      }
 
 
       // Permanent redirects
+      /*
       {
         source: '/releases/latest',
         destination: '/releases/4.11.1',
         permanent: false,
       }
+      */
     ]
   }
 };
