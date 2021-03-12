@@ -67,7 +67,7 @@ var footerContentEn_mainLinksContent = {
     header: "Community",
     opportunities: {
       label: "Opportunities",
-      url: "/play/community/opportunities"
+      url: "/community/opportunities"
     },
     news: {
       label: "News",
@@ -90,7 +90,7 @@ var footerContentEn_mainLinksContent = {
     },
     carbonFootprint: {
       label: "Carbon Footprint",
-      url: "#"
+      url: "/legal/carbonfootprint"
     }
   }
 };

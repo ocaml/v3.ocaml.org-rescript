@@ -39,7 +39,7 @@ let footerContentEn: Footer.t = {
       },
       communitySection: {
         header: navContentEn.community,
-        opportunities: {label: `Opportunities`, url: `/play/community/opportunities`},
+        opportunities: {label: `Opportunities`, url: `/community/opportunities`},
         news: {label: `News`, url: `/play/community/news`},
         aroundTheWeb: {label: `Around the Web`, url: `/community/aroundweb`}
       },
@@ -47,7 +47,7 @@ let footerContentEn: Footer.t = {
         header: `Legal`,
         privacy: {label: `Privacy`, url: `/legal/privacy`},
         terms: {label: `Terms`, url: `/legal/terms`},
-        carbonFootprint: {label: `Carbon Footprint`, url: `#`},
+        carbonFootprint: {label: `Carbon Footprint`, url: `/legal/carbonfootprint`},
       }
     },
     sponsorContent: {

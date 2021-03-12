@@ -74,7 +74,7 @@ const config = {
       },
       {
         source: '/play/community/opportunities',
-        destination: 'https://play.tailwindcss.com/66ITkwvaJN?layout=preview',
+        destination: 'notstarted',
         permanent: false,
       },
       {
