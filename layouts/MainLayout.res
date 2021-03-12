@@ -45,8 +45,8 @@ let footerContentEn: Footer.t = {
       },
       legalSection: {
         header: `Legal`,
-        privacy: {label: `Privacy`, url: `/play/privacypolicy`},
-        terms: {label: `Terms`, url: `#`},
+        privacy: {label: `Privacy`, url: `/legal/privacy`},
+        terms: {label: `Terms`, url: `/legal/terms`},
         carbonFootprint: {label: `Carbon Footprint`, url: `#`},
       }
     },

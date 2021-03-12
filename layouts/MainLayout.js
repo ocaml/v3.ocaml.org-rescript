@@ -82,11 +82,11 @@ var footerContentEn_mainLinksContent = {
     header: "Legal",
     privacy: {
       label: "Privacy",
-      url: "/play/privacypolicy"
+      url: "/legal/privacy"
     },
     terms: {
       label: "Terms",
-      url: "#"
+      url: "/legal/terms"
     },
     carbonFootprint: {
       label: "Carbon Footprint",
