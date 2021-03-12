@@ -48,19 +48,19 @@ var footerContentEn_mainLinksContent = {
     header: "Resources",
     releases: {
       label: "Releases",
-      url: "/play/resource/releases"
+      url: "/resources/releases"
     },
     applications: {
       label: "Applications",
-      url: "/play/resource/applications"
+      url: "/play/resources/applications"
     },
     language: {
       label: "Language",
-      url: "/play/resource/language"
+      url: "/play/resources/language"
     },
     archive: {
       label: "Archive",
-      url: "/play/resource/archive"
+      url: "/play/resources/archive"
     }
   },
   communitySection: {

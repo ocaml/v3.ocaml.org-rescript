@@ -107,62 +107,62 @@ const config = {
 
 
       {
-        source: '/play/resource/mediaarchive',
+        source: '/play/resources/mediaarchive',
         destination: 'https://play.tailwindcss.com/SaRPEIdpPS?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/tutorials',
+        source: '/play/resources/tutorials',
         destination: 'https://play.tailwindcss.com/TZiQsbetpO?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/books',
+        source: '/play/resources/books',
         destination: 'https://play.tailwindcss.com/tSiJwFvjEn?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/archive',
+        source: '/play/resources/archive',
         destination: 'https://play.tailwindcss.com/Y1ABhSzyna?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/cheatsheets',
+        source: '/play/resources/cheatsheets',
         destination: 'https://play.tailwindcss.com/CjMUTbKXO7?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/paperarchive',
+        source: '/play/resources/paperarchive',
         destination: 'https://play.tailwindcss.com/wngTIsLJL2?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/releases',
-        destination: 'https://play.tailwindcss.com/8wOb8r1ICV?layout=preview',
+        source: '/play/resources/releases',
+        destination: 'notstarted',
         permanent: false,
       },
       {
-        source: '/play/resource/releases/4.11.1',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        source: '/play/resources/releases/4.11.1',
+        destination: 'notstarted',
         permanent: false,
       },
       {
-        source: '/play/resource/releases/4.11.0',
-        destination: 'https://play.tailwindcss.com/X?layout=preview',
+        source: '/play/resources/releases/4.11.0',
+        destination: 'notstarted',
         permanent: false,
       },
       {
-        source: '/play/resource/language',
+        source: '/play/resources/language',
         destination: 'https://play.tailwindcss.com/3nuPDOZsGN?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/applications',
+        source: '/play/resources/applications',
         destination: 'https://play.tailwindcss.com/FJtzT7lSkW?layout=preview',
         permanent: false,
       },
       {
-        source: '/play/resource/installocaml',
+        source: '/play/resources/installocaml',
         destination: 'https://play.tailwindcss.com/m88PnynAmq?layout=preview',
         permanent: false,
       },
