@@ -52,7 +52,7 @@ let footerContentEn: Footer.t = {
     },
     sponsorContent: {
       thankSponsorPrefix: `Thank you to our`,
-      hostingProviders: {label: `Hosting Providers`, url: `#`}
+      hostingProviders: {label: `Hosting Providers`, url: `/legal/carbonfootprint#hostingproviders`}
     }
 }
 

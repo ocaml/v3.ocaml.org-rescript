@@ -99,7 +99,7 @@ var footerContentEn_sponsorContent = {
   thankSponsorPrefix: "Thank you to our",
   hostingProviders: {
     label: "Hosting Providers",
-    url: "#"
+    url: "/legal/carbonfootprint#hostingproviders"
   }
 };
 
