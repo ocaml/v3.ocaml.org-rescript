@@ -26,8 +26,8 @@ let footerContentEn: Footer.t = {
     mainLinksContent : {
       industrySection: {
         header: navContentEn.industry,
-        whatIsOcaml: {label: `What is OCaml`, url: `/play/industry/whatisocaml`},
-        industrialUsers: {label: `Industrial Users`, url: `/play/industry/users`},
+        whatIsOcaml: {label: `What is OCaml`, url: `/industry/whatisocaml`},
+        industrialUsers: {label: `Industrial Users`, url: `/industry/users`},
         successStories: {label: `Success Stories`, url: `/play/industry/successstories`}
       },
       resourcesSection: {

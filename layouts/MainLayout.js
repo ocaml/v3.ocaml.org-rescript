@@ -33,11 +33,11 @@ var footerContentEn_mainLinksContent = {
     header: "Industry",
     whatIsOcaml: {
       label: "What is OCaml",
-      url: "/play/industry/whatisocaml"
+      url: "/industry/whatisocaml"
     },
     industrialUsers: {
       label: "Industrial Users",
-      url: "/play/industry/users"
+      url: "/industry/users"
     },
     successStories: {
       label: "Success Stories",
@@ -56,7 +56,7 @@ var footerContentEn_mainLinksContent = {
     },
     language: {
       label: "Language",
-      url: "#"
+      url: "/play/resource/language"
     },
     archive: {
       label: "Archive",
