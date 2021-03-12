@@ -169,8 +169,8 @@ const config = {
 
 
       {
-        source: '/play/privacypolicy',
-        destination: 'https://play.tailwindcss.com/QJdesMclar?layout=preview',
+        source: '/play/legal/privacy',
+        destination: 'notstarted',
         permanent: false,
       },
       {
