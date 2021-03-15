@@ -4,7 +4,6 @@
 
 ### Contributor
 
-
 Feel free to use any approach that you prefer. The dev team
 suggests the following:
 * If you are unsure if your change will be accepted or if want to discuss the
