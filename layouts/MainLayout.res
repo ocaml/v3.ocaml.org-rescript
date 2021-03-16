@@ -11,9 +11,26 @@ let navContentEn = {
 }
 
 let headerContentEn: HeaderNavigation.content = {
-  industry: navContentEn.industry,
-  resources: navContentEn.resources,
-  community: navContentEn.community,
+  industrySection: {
+    header: navContentEn.industry,
+    // TODO: move to nav content
+    whatIsOcaml: {label: `What is OCaml`, url: `/industry/whatisocaml`},
+    industrialUsers: {label: `Industrial Users`, url: `/industry/users`},
+    successStories: {label: `Success Stories`, url: `/industry/successstories`},
+  },
+  resourcesSection: {
+    header: navContentEn.resources,
+    releases: {label: `Releases`, url: `/resources/releases`},
+    applications: {label: `Applications`, url: `/resources/applications`},
+    language: {label: `Language`, url: `/resources/language`},
+    archive: {label: `Archive`, url: `/resources/archive`},
+  },
+  communitySection: {
+    header: navContentEn.community,
+    opportunities: {label: `Opportunities`, url: `/community/opportunities`},
+    news: {label: `News`, url: `/community/news`},
+    aroundTheWeb: {label: `Around the Web`, url: `/community/aroundweb`},
+  },
   search: `Search`,
   openMenu: `Open menu`,
 }
