@@ -10,6 +10,7 @@ type content = {
   openMenu: string,
 }
 
+
 @react.component
 let make = (~content) =>
   <div className="max-w-7xl mx-auto px-4 sm:px-6">
