@@ -24,7 +24,7 @@ let make = (~content) => {
 
   let hideMenu = (_evt) => { setActivated(_ => None) }
 
-  let showMenu = (entry) => (_evt) => {
+  let showMenu = (entry, _evt) => {
     setActivated(_ => Some(entry))
   }
   
