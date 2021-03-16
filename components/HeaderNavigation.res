@@ -20,12 +20,12 @@ type activatedEntry =
 
 @react.component
 let make = (~content) => {
-  let (activated, setActivated) = React.useState(_ => None)
+  let (activated, setActiveMenu) = React.useState(_ => None)
 
-  let hideMenu = (_evt) => { setActivated(_ => None) }
+  let hideMenu = (_evt) => { setActiveMenu(_ => None) }
 
   let showMenu = (entry, _evt) => {
-    setActivated(_ => Some(entry))
+    setActiveMenu(_ => Some(entry))
   }
   
   <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -75,11 +75,94 @@ let make = (~content) => {
               </div>
             </div>
           </div>
-
         </div>
-
-        <span className="text-base font-medium text-gray-500"> {s(content.resources)} </span>
-        <span className="text-base font-medium text-gray-500"> {s(content.community)} </span>
+        <div className="relative">
+          <button onClick={showMenu(Resources)} type_="button" className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark" ariaExpanded=false>
+            <span>{s(content.resources)}</span>
+            <svg className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" ariaHidden=true>
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+          <div className={"absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0 " ++
+            switch activated {
+              | Some(Resources) => " opacity-100 translate-y-0 "
+              | _ => " opacity-0 translate-y-1 "
+              }
+            }>
+            <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+              <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                <Link href="/resources/releases">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                    <p className="text-base font-medium text-gray-900">
+                      {s(`Releases`)}
+                    </p>
+                  </a>
+                </Link>
+                <Link href="/resources/applications">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                    <p className="text-base font-medium text-gray-900">
+                      {s(`Applications`)}
+                    </p>
+                  </a>
+                </Link>
+                <Link href="/resources/language">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                    <p className="text-base font-medium text-gray-900">
+                      {s(`Language`)}
+                    </p>
+                  </a>
+                </Link>
+                <Link href="/resources/archive">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                    <p className="text-base font-medium text-gray-900">
+                      {s(`Archive`)}
+                    </p>
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="relative">
+          <button onClick={showMenu(Community)} type_="button" className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark" ariaExpanded=false>
+            <span>{s(content.community)}</span>
+            <svg className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" ariaHidden=true>
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+          <div className={"absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0 " ++
+            switch activated {
+              | Some(Community) => " opacity-100 translate-y-0 "
+              | _ => " opacity-0 translate-y-1 "
+              }
+            }>
+            <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+              <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                <Link href="/community/opportunities">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                    <p className="text-base font-medium text-gray-900">
+                      {s(`Opportunities`)}
+                    </p>
+                  </a>
+                </Link>
+                <Link href="/community/news">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                    <p className="text-base font-medium text-gray-900">
+                      {s(`News`)}
+                    </p>
+                  </a>
+                </Link>
+                <Link href="/community/aroundweb">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                    <p className="text-base font-medium text-gray-900">
+                      {s(`Around the Web`)}
+                    </p>
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
       <div className="flex-1 flex items-center justify-center px-2 md:justify-end ">
         <div className="max-w-lg w-full md:max-w-xs">
