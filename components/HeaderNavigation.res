@@ -10,15 +10,24 @@ type content = {
   openMenu: string,
 }
 
+type activatedEntry =
+  | Industry
+  | Resources
+  | Community
+
+// Improvements:
+//  - provide labels and urls as content
+
 @react.component
 let make = (~content) => {
-  // TODO: single state variable for all buttons
-  let (activated, setActivated) = React.useState(_ => false)
+  let (activated, setActivated) = React.useState(_ => None)
 
-  let onClickIndustry = (_evt) => {
-    setActivated(prev => !prev)
+  let hideMenu = (_evt) => { setActivated(_ => None) }
+
+  let showMenu = (entry) => (_evt) => {
+    setActivated(_ => Some(entry))
   }
-
+  
   <div className="max-w-7xl mx-auto px-4 sm:px-6">
     <div className="flex justify-between items-center md:justify-start py-6 md:space-x-10 ">
       <div className="flex justify-start  ">
@@ -28,45 +37,36 @@ let make = (~content) => {
       </div>
       <nav className="hidden md:flex space-x-10 ">
         <div className="relative">
-          // Item active: "text-gray-600", Item inactive: "text-gray-400"
-          <button onClick=onClickIndustry type_="button" className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark" ariaExpanded=false>
+          <button onClick={showMenu(Industry)} type_="button" className="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark" ariaExpanded=false>
             <span>{s(content.industry)}</span>
-            // Item active: "text-gray-600", Item inactive: "text-gray-400"
             <svg className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" ariaHidden=true>
               <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </button>
-          //  'Industry' flyout menu, show/hide based on flyout menu state.
-          //  Entering: "transition ease-out duration-200"
-          //    From: "opacity-0 translate-y-1"
-          //    To: "opacity-100 translate-y-0"
-          //  Leaving: "transition ease-in duration-150"
-          //    From: "opacity-100 translate-y-0"
-          //    To: "opacity-0 translate-y-1"
           <div className={"absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0 " ++
             switch activated {
-              | true => " opacity-100 translate-y-0 "
+              | Some(Industry) => " opacity-100 translate-y-0 "
               | _ => " opacity-0 translate-y-1 "
               }
             }>
             <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
               <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                 <Link href="/industry/whatisocaml">
-                  <a onClick=onClickIndustry className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
                     <p className="text-base font-medium text-gray-900">
                       {s(`What is OCaml`)}
                     </p>
                   </a>
                 </Link>
                 <Link href="/industry/users">
-                  <a onClick=onClickIndustry className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
                     <p className="text-base font-medium text-gray-900">
                       {s(`Industrial Users`)}
                     </p>
                   </a>
                 </Link>
                 <Link href="/industry/successstories">
-                  <a onClick=onClickIndustry className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                  <a onClick=hideMenu className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
                     <p className="text-base font-medium text-gray-900">
                       {s(`Success Stories`)}
                     </p>
