@@ -27,6 +27,6 @@ out
 /res_pages/**/*.js
 
 # VSCode
-.vscode/
-!.vscode/extensions.json
+.vscode/*
 !.vscode/settings.json
+!.vscode/extensions.json
