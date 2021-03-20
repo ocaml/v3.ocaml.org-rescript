@@ -26,6 +26,3 @@ out
 /layouts/*.js
 /res_pages/**/*.js
 
-# VSCode - we do not ignore .vscode intentionally despite some templates suggesting to 
-# seletively include only parts of .vscode folder. This is intentional. We want all developers
-# to share the same settings and raise an issue if their settings drift.
