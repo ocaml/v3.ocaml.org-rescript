@@ -1,3 +1,4 @@
+# This file aims to stay close to its upstream version: https://github.com/github/gitignore/blob/master/Node.gitignore
 # Yarn
 yarn-error.log
 
@@ -24,3 +25,4 @@ out
 /components/*.js
 /layouts/*.js
 /res_pages/**/*.js
+
