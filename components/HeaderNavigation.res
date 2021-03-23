@@ -350,76 +350,96 @@ let make = (~content) => {
           </div>
           <div className="mt-6">
             <nav className="grid gap-y-8">
-              <a
-                href=content.industrySection.whatIsOcaml.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.industrySection.whatIsOcaml.label)}
-                </span>
-              </a>
-              <a
-                href=content.industrySection.industrialUsers.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.industrySection.industrialUsers.label)}
-                </span>
-              </a>
-              <a
-                href=content.industrySection.successStories.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.industrySection.successStories.label)}
-                </span>
-              </a>
-              <a
-                href=content.resourcesSection.releases.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.resourcesSection.releases.label)}
-                </span>
-              </a>
-              <a
-                href=content.resourcesSection.applications.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.resourcesSection.applications.label)}
-                </span>
-              </a>
-              <a
-                href=content.resourcesSection.language.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.resourcesSection.language.label)}
-                </span>
-              </a>
-              <a
-                href=content.resourcesSection.archive.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.resourcesSection.archive.label)}
-                </span>
-              </a>
-              <a
-                href=content.communitySection.opportunities.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.communitySection.opportunities.label)}
-                </span>
-              </a>
-              <a
-                href=content.communitySection.news.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.communitySection.news.label)}
-                </span>
-              </a>
-              <a
-                href=content.communitySection.aroundTheWeb.url
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(content.communitySection.aroundTheWeb.label)}
-                </span>
-              </a>
+              <Link href=content.industrySection.whatIsOcaml.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.industrySection.whatIsOcaml.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.industrySection.industrialUsers.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.industrySection.industrialUsers.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.industrySection.successStories.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.industrySection.successStories.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.resourcesSection.releases.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.resourcesSection.releases.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.resourcesSection.applications.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.resourcesSection.applications.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.resourcesSection.language.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.resourcesSection.language.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.resourcesSection.archive.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.resourcesSection.archive.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.communitySection.opportunities.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.communitySection.opportunities.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.communitySection.news.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.communitySection.news.label)}
+                  </span>
+                </a>
+              </Link>
+              <Link href=content.communitySection.aroundTheWeb.url>
+                <a
+                  onClick=hideMobileMenu
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                  <span className="ml-3 text-base font-medium text-gray-900">
+                    {s(content.communitySection.aroundTheWeb.label)}
+                  </span>
+                </a>
+              </Link>
             </nav>
           </div>
         </div>
