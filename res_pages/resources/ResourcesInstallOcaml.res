@@ -35,9 +35,7 @@ let make = (~content=contentEn) => <>
     playgroundLink=`/play/resources/installocaml`
   />
   <div className="grid grid-cols-9">
-    <div
-      className="hidden lg:sticky lg:self-start lg:top-2 lg:flex lg:flex-col lg:col-span-2 border-r border-gray-200 pt-5 pb-4 bg-white overflow-y-auto"
-    />
+    <div className="hidden lg:flex lg:col-span-2  " />
     <MarkdownPageTitleHeading
       title=content.title
       pageDescription=content.pageDescription
