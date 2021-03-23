@@ -351,69 +351,73 @@ let make = (~content) => {
           <div className="mt-6">
             <nav className="grid gap-y-8">
               <a
-                href="/industry/whatisocaml"
+                href=content.industrySection.whatIsOcaml.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` What is OCaml `)}
+                  {s(content.industrySection.whatIsOcaml.label)}
                 </span>
               </a>
               <a
-                href="/industry/users"
+                href=content.industrySection.industrialUsers.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` Industrial Users `)}
+                  {s(content.industrySection.industrialUsers.label)}
                 </span>
               </a>
               <a
-                href="/industry/successstories"
+                href=content.industrySection.successStories.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` Success Stories `)}
+                  {s(content.industrySection.successStories.label)}
                 </span>
               </a>
               <a
-                href="/resources/releases"
+                href=content.resourcesSection.releases.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` Releases `)}
+                  {s(content.resourcesSection.releases.label)}
                 </span>
               </a>
               <a
-                href="/resources/applications"
+                href=content.resourcesSection.applications.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` Applications `)}
+                  {s(content.resourcesSection.applications.label)}
                 </span>
               </a>
               <a
-                href="/resources/language"
+                href=content.resourcesSection.language.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` Language `)}
+                  {s(content.resourcesSection.language.label)}
                 </span>
               </a>
               <a
-                href="/resources/archive"
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900"> {s(` Archive `)} </span>
-              </a>
-              <a
-                href="/community/opportunities"
+                href=content.resourcesSection.archive.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` Opportunities `)}
+                  {s(content.resourcesSection.archive.label)}
                 </span>
               </a>
               <a
-                href="/community/news"
-                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                <span className="ml-3 text-base font-medium text-gray-900"> {s(` News `)} </span>
-              </a>
-              <a
-                href="/community/aroundweb"
+                href=content.communitySection.opportunities.url
                 className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                 <span className="ml-3 text-base font-medium text-gray-900">
-                  {s(` Around the Web `)}
+                  {s(content.communitySection.opportunities.label)}
+                </span>
+              </a>
+              <a
+                href=content.communitySection.news.url
+                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                <span className="ml-3 text-base font-medium text-gray-900">
+                  {s(content.communitySection.news.label)}
+                </span>
+              </a>
+              <a
+                href=content.communitySection.aroundTheWeb.url
+                className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                <span className="ml-3 text-base font-medium text-gray-900">
+                  {s(content.communitySection.aroundTheWeb.label)}
                 </span>
               </a>
             </nav>
