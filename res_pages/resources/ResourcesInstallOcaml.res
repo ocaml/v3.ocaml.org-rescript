@@ -13,16 +13,14 @@ let contentEn = {
 module MarkdownPageTitleHeading = {
   @react.component
   let make = (~title, ~pageDescription) =>
-    <div className="relative px-4 sm:px-6 lg:px-8">
-      <div className="text-lg max-w-prose mx-auto">
-        <h1>
-          <span
-            className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {s(title)}
-          </span>
-        </h1>
-        <p className="mt-8 text-xl text-gray-500 leading-8"> {s(pageDescription)} </p>
-      </div>
+    <div className="text-lg max-w-prose mx-auto">
+      <h1>
+        <span
+          className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          {s(title)}
+        </span>
+      </h1>
+      <p className="mt-8 text-xl text-gray-500 leading-8"> {s(pageDescription)} </p>
     </div>
 }
 
@@ -33,9 +31,11 @@ let make = (~content=contentEn) => <>
     playgroundLink=`/play/resources/installocaml`
   />
   <div className="grid grid-cols-9">
-    <div className="hidden lg:flex lg:col-span-2  " />
+    <div className="hidden lg:flex lg:col-span-2 " />
     <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
-      <MarkdownPageTitleHeading title=content.title pageDescription=content.pageDescription />
+      <div className="relative px-4 sm:px-6 lg:px-8">
+        <MarkdownPageTitleHeading title=content.title pageDescription=content.pageDescription />
+      </div>
     </div>
   </div>
 </>
