@@ -123,3 +123,45 @@ $ ls
 _build    dune    helloworld.ml
 ```
 
+The `helloworld.exe` executable is stored inside the `_build` structure, so it's easier to run with `dune exec`. To ship the executable, we can just copy it from inside `_build` to somewhere else.
+
+Here is the contents of the automatically-generated `dune` file. When we want to add components to your project, such as third-party libraries, we edit this file.
+
+```
+(executable
+  (name helloworld))
+```
+
+### Editor support for OCaml
+
+For Visual Studio Code, and other editors support the Language Server Protocol, the OCaml language server can be installed with opam:
+
+```
+$ opam install ocaml-lsp-server
+```
+
+Now, we install the OCaml Platform Visual Studio Code extension from the Visual Studio Marketplace.
+
+Upon first loading an OCaml source file, you may be prompted to select the toolchain in use: pick OCaml the version of OCaml you are using, e.g. 4.11.1 from the list. Now, help is available by hovering over symbols in our program:
+
+![using symbol help in visual studio code](/static/vscodeSymbolHelp.png)
+
+On Windows, we must launch Visual Studio Code from within the Cygwin window, rather than by clicking on its icon (otherwise, the language server will not be found):
+
+```
+$ /cygdrive/c/Users/Frank\ Smith/AppData/Local/Programs/Microsoft\ VS\ Code/Code.exe
+```
+
+For Vim and Emacs, install the Merlin system using opam:
+
+```
+$ opam install merlin
+```
+
+The installation procedure will print instructions on how to link Merlin with your editor.
+
+On Windows, when using Vim, the default cygwin Vim will not work with Merlin. You will need install Vim separately. In addition to the usual instructions printed when installing Merlin, you may need to set the PATH to Vim:
+
+```
+let $PATH .= ";".substitute(system('opam config var bin'),'\n$','','')
+```
