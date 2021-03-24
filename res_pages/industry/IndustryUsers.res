@@ -1,3 +1,5 @@
+module Link = Next.Link
+
 let s = React.string
 
 type t = {
@@ -8,6 +10,11 @@ type t = {
 let contentEn = {
   title: `Industrial Users of OCaml`,
   pageDescription: `OCaml is a popular choice for companies who make use of its features in key aspects of their technologies. Some companies that use OCaml code are listed below:`,
+}
+
+type callToAction = {
+  label: string,
+  url: string,
 }
 
 // TODO: as part of generalizing, consolidate this with installocaml version
@@ -31,13 +38,14 @@ module MarkdownPageTitleHeading2 = {
         {s(pageDescription)}
       </p>
       {switch callToAction {
-      | Some(label) =>
+      | Some(callToAction) =>
         <div className="text-center mt-7">
-          <button
-            type_="button"
-            className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            {s(label)}
-          </button>
+          <Link href=callToAction.url>
+            <a
+              className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              {s(callToAction.label)}
+            </a>
+          </Link>
         </div>
       | None => <> </>
       }}
@@ -56,7 +64,7 @@ let make = (~content=contentEn) => <>
         title=content.title
         pageDescription=content.pageDescription
         descriptionCentered=true
-        callToAction="Success Stories"
+        callToAction={label: "Success Stories", url: "/industry/successstories"}
       />
     </div>
   </div>
