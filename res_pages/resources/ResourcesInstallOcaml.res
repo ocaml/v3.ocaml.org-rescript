@@ -29,29 +29,6 @@ module MarkdownPageBody = {
   let make = (~margins, ~children) =>
     <div className={margins ++ ` prose prose-yellow prose-lg text-gray-500 mx-auto`}>
       children
-      //       <h2> {s(`Installing OCaml`)} </h2>
-      //       <p> {s(`There are two procedures: one for Unix-like systems, and one for Windows.`)} </p>
-      //       <h3> {s(`For Linux and macOS`)} </h3>
-      //       <p>
-      //         {s(`We will install OCaml using opam, the OCaml package manager. We will also use opam when we wish to install third-party OCaml libraries.`)}
-      //       </p>
-      //       <h3> {s(`For macOS`)} </h3>
-      //       <pre>
-      //         <code>
-      //           {s(`# Homebrew
-      // brew install opam
-
-      // # MacPort
-      // port install opam`)}
-      //         </code>
-      //       </pre>
-      //       <p>
-      //         <strong> {s(`For Linux`)} </strong>
-      //         {s(` the preferred way is to use your system's package manager on Linux (e.g. `)}
-      //         <code> {s(`apt-get install opam`)} </code>
-      //         {s(`). `)}
-      //         <a href="/resources/installocamldetail"> {s(`Details of all installation methods.`)} </a>
-      //       </p>
     </div>
 }
 
