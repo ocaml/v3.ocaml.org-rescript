@@ -26,55 +26,81 @@ module MarkdownPageTitleHeading = {
 
 module MarkdownPageBody = {
   @react.component
-  let make = (~margins) =>
+  let make = (~margins, ~children) =>
     <div className={margins ++ ` prose prose-yellow prose-lg text-gray-500 mx-auto`}>
-      <h2> {s(`Installing OCaml`)} </h2>
-      <p> {s(`There are two procedures: one for Unix-like systems, and one for Windows.`)} </p>
-      <h3> {s(`For Linux and macOS`)} </h3>
-      <p>
-        {s(`We will install OCaml using opam, the OCaml package manager. We will also use opam when we wish to install third-party OCaml libraries.`)}
-      </p>
-      <h3> {s(`For macOS`)} </h3>
-      <pre>
-        <code>
-          {s(`# Homebrew
-brew install opam
+      children
+      //       <h2> {s(`Installing OCaml`)} </h2>
+      //       <p> {s(`There are two procedures: one for Unix-like systems, and one for Windows.`)} </p>
+      //       <h3> {s(`For Linux and macOS`)} </h3>
+      //       <p>
+      //         {s(`We will install OCaml using opam, the OCaml package manager. We will also use opam when we wish to install third-party OCaml libraries.`)}
+      //       </p>
+      //       <h3> {s(`For macOS`)} </h3>
+      //       <pre>
+      //         <code>
+      //           {s(`# Homebrew
+      // brew install opam
 
-# MacPort
-port install opam`)}
-        </code>
-      </pre>
-      <p>
-        <strong> {s(`For Linux`)} </strong>
-        {s(` the preferred way is to use your system's package manager on Linux (e.g. `)}
-        <code> {s(`apt-get install opam`)} </code>
-        {s(`). `)}
-        <a href="#"> {s(`Details of all installation methods.`)} </a>
-      </p>
+      // # MacPort
+      // port install opam`)}
+      //         </code>
+      //       </pre>
+      //       <p>
+      //         <strong> {s(`For Linux`)} </strong>
+      //         {s(` the preferred way is to use your system's package manager on Linux (e.g. `)}
+      //         <code> {s(`apt-get install opam`)} </code>
+      //         {s(`). `)}
+      //         <a href="/resources/installocamldetail"> {s(`Details of all installation methods.`)} </a>
+      //       </p>
     </div>
 }
 
-@react.component
-let make = (~content=contentEn) => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
-    playgroundLink=`/play/resources/installocaml`
-  />
-  <div className="grid grid-cols-9">
-    <div className="hidden lg:flex lg:col-span-2 " />
-    <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
-      <div className="relative px-4 sm:px-6 lg:px-8">
-        <MarkdownPageTitleHeading title=content.title pageDescription=content.pageDescription />
-        <MarkdownPageBody margins=`mt-6` />
+type props = {
+  source: NextMdxRemote.renderToStringResult,
+  title: string,
+  pageDescription: string,
+}
+
+// @react.component
+let default = props => {
+  // let content = contentEn
+  let body = NextMdxRemote.hydrate(
+    props.source,
+    NextMdxRemote.hydrateParams(~components=Markdown.default, ()),
+  )
+  // Js.log(props) // WHY EMPTY OBJECT???
+  <>
+    <ConstructionBanner
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
+      playgroundLink=`/play/resources/installocaml`
+    />
+    <div className="grid grid-cols-9">
+      <div className="hidden lg:flex lg:col-span-2 " />
+      <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
+        <div className="relative px-4 sm:px-6 lg:px-8">
+          <MarkdownPageTitleHeading title=props.title pageDescription=props.pageDescription />
+          <MarkdownPageBody margins=`mt-6`> body </MarkdownPageBody>
+        </div>
       </div>
     </div>
-  </div>
-</>
+  </>
+}
 
-// get static props
-//    read markdown file
-//    run render
-//    add output to props
-//    return props
+let getStaticProps = _ctx => {
+  let contentFilePath = "res_pages/resources/installocaml.md"
+  let source = Fs.readFileSync(contentFilePath)
+  let mdSourcePromise = NextMdxRemote.renderToString(
+    source,
+    NextMdxRemote.renderToStringParams(~components=Markdown.default, ()),
+  )
+  mdSourcePromise->Js.Promise.then_(mdSource => {
+    let props = {
+      source: mdSource,
+      title: contentEn.title,
+      pageDescription: contentEn.pageDescription,
+    }
+    Js.Promise.resolve({"props": props})
+  }, _)
+}
 
-let default = make
+// let default = make
