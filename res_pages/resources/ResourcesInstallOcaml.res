@@ -40,12 +40,10 @@ type props = {
 
 // @react.component
 let default = props => {
-  // let content = contentEn
   let body = NextMdxRemote.hydrate(
     props.source,
     NextMdxRemote.hydrateParams(~components=Markdown.default, ()),
   )
-  // Js.log(props) // WHY EMPTY OBJECT???
   <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
