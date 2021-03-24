@@ -24,6 +24,29 @@ module MarkdownPageTitleHeading = {
     </div>
 }
 
+module MarkdownPageBody = {
+  @react.component
+  let make = (~margins) =>
+    <div className={margins ++ ` prose prose-yellow prose-lg text-gray-500 mx-auto`}>
+      <h2> {s(`Installing OCaml`)} </h2>
+      <p> {s(`There are two procedures: one for Unix-like systems, and one for Windows.`)} </p>
+      <h3> {s(`For Linux and macOS`)} </h3>
+      <p>
+        {s(`We will install OCaml using opam, the OCaml package manager. We will also use opam when we wish to install third-party OCaml libraries.`)}
+      </p>
+      <h3> {s(`For macOS`)} </h3>
+      <pre>
+        <code>
+          {s(`# Homebrew
+brew install opam
+
+# MacPort
+port install opam`)}
+        </code>
+      </pre>
+    </div>
+}
+
 @react.component
 let make = (~content=contentEn) => <>
   <ConstructionBanner
@@ -35,6 +58,7 @@ let make = (~content=contentEn) => <>
     <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
       <div className="relative px-4 sm:px-6 lg:px-8">
         <MarkdownPageTitleHeading title=content.title pageDescription=content.pageDescription />
+        <MarkdownPageBody margins=`mt-6` />
       </div>
     </div>
   </div>
