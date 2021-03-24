@@ -38,12 +38,9 @@ type props = {
   pageDescription: string,
 }
 
-// @react.component
-let default = props => {
-  let body = NextMdxRemote.hydrate(
-    props.source,
-    NextMdxRemote.hydrateParams(~components=Markdown.default, ()),
-  )
+@react.component
+let make = (~source, ~title, ~pageDescription) => {
+  let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
   <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
@@ -53,7 +50,7 @@ let default = props => {
       <div className="hidden lg:flex lg:col-span-2 " />
       <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
         <div className="relative px-4 sm:px-6 lg:px-8">
-          <MarkdownPageTitleHeading title=props.title pageDescription=props.pageDescription />
+          <MarkdownPageTitleHeading title pageDescription />
           <MarkdownPageBody margins=`mt-6`> body </MarkdownPageBody>
         </div>
       </div>
@@ -64,10 +61,7 @@ let default = props => {
 let getStaticProps = _ctx => {
   let contentFilePath = "res_pages/resources/installocaml.md"
   let source = Fs.readFileSync(contentFilePath)
-  let mdSourcePromise = NextMdxRemote.renderToString(
-    source,
-    NextMdxRemote.renderToStringParams(~components=Markdown.default, ()),
-  )
+  let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
   mdSourcePromise->Js.Promise.then_(mdSource => {
     let props = {
       source: mdSource,
@@ -78,4 +72,4 @@ let getStaticProps = _ctx => {
   }, _)
 }
 
-// let default = make
+let default = make
