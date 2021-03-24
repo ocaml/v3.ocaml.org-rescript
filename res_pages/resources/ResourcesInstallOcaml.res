@@ -44,6 +44,13 @@ brew install opam
 port install opam`)}
         </code>
       </pre>
+      <p>
+        <strong> {s(`For Linux`)} </strong>
+        {s(` the preferred way is to use your system's package manager on Linux (e.g. `)}
+        <code> {s(`apt-get install opam`)} </code>
+        {s(`). `)}
+        <a href="#"> {s(`Details of all installation methods.`)} </a>
+      </p>
     </div>
 }
 
@@ -63,5 +70,11 @@ let make = (~content=contentEn) => <>
     </div>
   </div>
 </>
+
+// get static props
+//    read markdown file
+//    run render
+//    add output to props
+//    return props
 
 let default = make
