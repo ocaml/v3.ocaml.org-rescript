@@ -5,10 +5,10 @@
   "author": "The OCaml.org team",
   "license": "ISC",
   "engines": {
-    "node": ">=14.x"
+    "node": "=14.x"
   },
   "enginesDescription": {
-    "node": "vercel uses this value to select which node version to use"
+    "node": "vercel uses this value to select which node version to use. must use = to silence vercel warning."
   },
   "dependencies": {
     "bs-platform": "9.0.0",
