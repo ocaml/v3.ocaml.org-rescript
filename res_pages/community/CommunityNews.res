@@ -23,7 +23,7 @@ let contentEn = {
     highlightedStory: `Highlighted Story`,
     clickToRead: `Click to Read`,
     highlightedStorySummary: {
-      preview: `Isabelle Leandersson interviewed speakers at the 2020 OCaml workshopat ICFP. Click through to read about what they had to say.`,
+      preview: `Isabelle Leandersson interviewed speakers at the 2020 OCaml workshop at ICFP. Click through to read about what they had to say.`,
       url: `/community/isabelle-leandersson-interviewed-speakers`,
     },
   },
@@ -37,12 +37,12 @@ module HighlightedStory = {
       margins}>
       <div className="bg-white overflow-hidden shadow rounded-lg mb-2 lg:mb-7 mt-56 mx-5 max-w-4xl">
         <div className="px-4 py-5 sm:p-6">
-          <h2 className="font-bold text-yellow-600 text-3xl lg:text-4xl text-center mb-2">
+          <h2 className="font-bold text-orangedark text-3xl lg:text-4xl text-center mb-2">
             {s(content.highlightedStory)}
           </h2>
           <p className="text-xl"> {s(content.highlightedStorySummary.preview)} </p>
           <p className="text-xl text-center lg:text-right">
-            <a href=content.highlightedStorySummary.url className="underline text-yellow-600">
+            <a href=content.highlightedStorySummary.url className="underline text-orangedark">
               {s(content.clickToRead ++ ` >`)}
             </a>
           </p>
