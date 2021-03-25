@@ -42,6 +42,7 @@ module HighlightedStory = {
           </h2>
           <p className="text-xl"> {s(content.highlightedStorySummary.preview)} </p>
           <p className="text-xl text-center lg:text-right">
+            // TODO: more descriptive link text (or use aria attribute) for accessibility
             <a href=content.highlightedStorySummary.url className="underline text-orangedark">
               {s(content.clickToRead ++ ` >`)}
             </a>
