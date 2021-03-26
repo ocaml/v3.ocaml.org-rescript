@@ -1,5 +1,3 @@
-let s = React.string
-
 type t = {
   title: string,
   pageDescription: string,
@@ -15,9 +13,11 @@ module StatBox = {
   let make = (~label, ~statValue, ~borderSizes) =>
     <div className={`flex flex-col border-gray-100 py-16 px-4 text-center ` ++ borderSizes}>
       <dt className="order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70">
-        {s(label)}
+        {React.string(label)}
       </dt>
-      <dd className="order-1 text-5xl font-extrabold text-orangedark"> {s(statValue)} </dd>
+      <dd className="order-1 text-5xl font-extrabold text-orangedark">
+        {React.string(statValue)}
+      </dd>
     </div>
 }
 
