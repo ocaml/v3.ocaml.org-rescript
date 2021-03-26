@@ -2,14 +2,69 @@ module Link = Next.Link
 
 let s = React.string
 
+type company = {
+  logo: string,
+  name: string,
+  customWidth: option<string>,
+  needsRounding: bool,
+  website: string,
+}
+
+let companies = [
+  {
+    logo: `oclabs.png`,
+    name: `OCaml Labs`,
+    customWidth: None,
+    needsRounding: false,
+    website: `https://ocamllabs.io`,
+  },
+  {
+    logo: `trd.png`,
+    name: `Tarides`,
+    customWidth: Some(`w-40`),
+    needsRounding: false,
+    website: `https://tarides.com`,
+  },
+  {
+    logo: `slv2.png`,
+    name: `Solvuu`,
+    customWidth: None,
+    needsRounding: true,
+    website: `https://solvuu.com`,
+  },
+  {
+    logo: `js2.jpeg`,
+    name: `Jane Street`,
+    customWidth: None,
+    needsRounding: true,
+    website: `https://janestreet.com`,
+  },
+  {
+    logo: `lxf.png`,
+    name: `LexiFi`,
+    customWidth: None,
+    needsRounding: false,
+    website: `https://lexifi.com`,
+  },
+  {
+    logo: `tz.png`,
+    name: `Tezos`,
+    customWidth: Some(`w-24`),
+    needsRounding: false,
+    website: `https://tezos.com`,
+  },
+]
+
 type t = {
   title: string,
   pageDescription: string,
+  companies: array<company>,
 }
 
 let contentEn = {
   title: `Industrial Users of OCaml`,
   pageDescription: `OCaml is a popular choice for companies who make use of its features in key aspects of their technologies. Some companies that use OCaml code are listed below:`,
+  companies: companies,
 }
 
 type callToAction = {
@@ -50,59 +105,6 @@ module MarkdownPageTitleHeading2 = {
     </div>
 }
 
-type company = {
-  logo: string,
-  name: string,
-  customWidth: option<string>,
-  needsRounding: bool,
-  website: string,
-}
-
-let companies = [
-  {
-    logo: `/static/oclabs.png`,
-    name: `OCaml Labs`,
-    customWidth: None,
-    needsRounding: false,
-    website: `https://ocamllabs.io`,
-  },
-  {
-    logo: `/static/trd.png`,
-    name: `Tarides`,
-    customWidth: Some(`w-40`),
-    needsRounding: false,
-    website: `https://tarides.com`,
-  },
-  {
-    logo: `/static/slv2.png`,
-    name: `Solvuu`,
-    customWidth: None,
-    needsRounding: true,
-    website: `https://solvuu.com`,
-  },
-  {
-    logo: `/static/js2.jpeg`,
-    name: `Jane Street`,
-    customWidth: None,
-    needsRounding: true,
-    website: `https://janestreet.com`,
-  },
-  {
-    logo: `/static/lxf.png`,
-    name: `LexiFi`,
-    customWidth: None,
-    needsRounding: false,
-    website: `https://lexifi.com`,
-  },
-  {
-    logo: `/static/tz.png`,
-    name: `Tezos`,
-    customWidth: Some(`w-24`),
-    needsRounding: false,
-    website: `https://tezos.com`,
-  },
-]
-
 module LogoSection = {
   @react.component
   let make = (~margins, ~companies) =>
@@ -122,7 +124,7 @@ module LogoSection = {
               | true => ` rounded-full `
               | false => ``
               } ++ " mb-9"}
-              src=c.logo
+              src={`/static/` ++ c.logo}
               alt=""
             />
             <p className="text-4xl underline font-bold">
@@ -154,7 +156,7 @@ let make = (~content=contentEn) => <>
           url: "/industry/successstories",
         }
       />
-      <LogoSection margins=`mt-6` companies />
+      <LogoSection margins=`mt-6` companies=content.companies />
     </div>
   </div>
 </>
