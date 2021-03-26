@@ -123,7 +123,7 @@ module LogoSection = {
               switch c.needsRounding {
               | true => ` rounded-full `
               | false => ``
-              } ++ " mb-9"}
+              } ++ " mb-9 "}
               src={`/static/` ++ c.logo}
               alt=""
             />
