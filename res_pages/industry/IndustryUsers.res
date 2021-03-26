@@ -12,20 +12,19 @@ let contentEn = {
   pageDescription: `OCaml is a popular choice for companies who make use of its features in key aspects of their technologies. Some companies that use OCaml code are listed below:`,
 }
 
-type callToAction = {
-  label: string,
-  url: string,
-}
-
 // TODO: as part of generalizing, consolidate this with installocaml version
 module MarkdownPageTitleHeading2 = {
+  type callToAction = {
+    label: string,
+    url: string,
+  }
+
   @react.component
-  let make = (~title, ~pageDescription, ~descriptionCentered=false, ~callToAction=?) =>
+  let make = (~title, ~pageDescription, ~margins, ~descriptionCentered=false, ~callToAction=?) =>
     <div className="text-lg max-w-prose mx-auto">
       <h1>
-        // TODO: pass in mt-2 as a paramater
         <span
-          className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          className={margins ++ " block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"}>
           {s(title)}
         </span>
       </h1>
@@ -147,6 +146,7 @@ let make = (~content=contentEn) => <>
       <MarkdownPageTitleHeading2
         title=content.title
         pageDescription=content.pageDescription
+        margins=`mt-2`
         descriptionCentered=true
         callToAction={label: "Success Stories", url: "/industry/successstories"}
       />
