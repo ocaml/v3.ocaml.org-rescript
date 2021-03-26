@@ -55,7 +55,7 @@ type company = {
   name: string,
   customWidth: option<string>,
   needsRounding: bool,
-  companyWebsite: string,
+  website: string,
 }
 
 let companies = [
@@ -64,42 +64,42 @@ let companies = [
     name: `OCaml Labs`,
     customWidth: None,
     needsRounding: false,
-    companyWebsite: `https://ocamllabs.io`,
+    website: `https://ocamllabs.io`,
   },
   {
     logo: `/static/trd.png`,
     name: `Tarides`,
     customWidth: Some(`w-40`),
     needsRounding: false,
-    companyWebsite: `https://tarides.com`,
+    website: `https://tarides.com`,
   },
   {
     logo: `/static/slv2.png`,
     name: `Solvuu`,
     customWidth: None,
     needsRounding: true,
-    companyWebsite: `https://solvuu.com/`,
+    website: `https://solvuu.com`,
   },
   {
     logo: `/static/js2.jpeg`,
     name: `Jane Street`,
     customWidth: None,
     needsRounding: true,
-    companyWebsite: `https://janestreet.com`,
+    website: `https://janestreet.com`,
   },
   {
     logo: `/static/lxf.png`,
     name: `LexiFi`,
     customWidth: None,
     needsRounding: false,
-    companyWebsite: `https://lexifi.com`,
+    website: `https://lexifi.com`,
   },
   {
     logo: `/static/tz.png`,
     name: `Tezos`,
     customWidth: Some(`w-24`),
     needsRounding: false,
-    companyWebsite: `https://tezos.com`,
+    website: `https://tezos.com`,
   },
 ]
 
@@ -107,10 +107,12 @@ module LogoSection = {
   @react.component
   let make = (~margins, ~companies) =>
     <div className={margins ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
+      // TODO: try switching to a grid
       <div className="flex flex-wrap justify-center lg:justify-between ">
         {companies
         |> Js.Array.mapi((c, idx) =>
           <div key={Js.Int.toString(idx)} className="p-12 flex flex-col items-center">
+            // TODO: considering accessibility, how many elements should the link span?
             <img
               className={switch c.customWidth {
               | Some(width) => width
@@ -125,7 +127,7 @@ module LogoSection = {
             />
             <p className="text-4xl underline font-bold">
               // TODO: accessibility - warn opening a new tab
-              <a href=c.companyWebsite target="_blank"> {s(c.name)} </a>
+              <a href=c.website target="_blank"> {s(c.name)} </a>
             </p>
           </div>
         )
