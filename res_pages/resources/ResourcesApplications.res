@@ -1,18 +1,9 @@
 let s = React.string
 
-type t = {
-  title: string,
-  pageDescription: string,
-}
-
-let contentEn = {
-  title: `Applications`,
-  pageDescription: `This is where you can find resources for working with the language itself. Whether you're building applications or maintaining libraries, this page has useful information for you.`,
-}
-
 module ApiDocumentation = {
   @react.component
   let make = (~margins) =>
+    // TODO: factor out and define content type
     <div className={"sm:flex px-32 items-center mx-auto max-w-5xl " ++ margins}>
       <div className="mb-4 sm:mb-0 sm:mr-4">
         <h4 className="text-4xl font-bold mb-8"> {s(`API Documentation`)} </h4>
@@ -29,6 +20,58 @@ module ApiDocumentation = {
     </div>
 }
 
+module UsingOcaml = {
+  @react.component
+  let make = (~margins) =>
+    // TODO: factor out and define content type
+    <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
+      <div className="px-4 py-5 sm:py-8 sm:px-24">
+        <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
+          {s(`Using OCaml`)}
+        </h2>
+        <p className="text-center mb-6">
+          {s(`Besides developing in the language and making your own applications, there are many useful tools that already exist in OCaml for you to use.`)}
+        </p>
+        <div className="grid grid-cols-3 gap-x-16 mb-6">
+          <div className="flex justify-center items-center mb-6">
+            <img className="border-1 h-10" src="/static/unison2.png" />
+          </div>
+          <div className="flex justify-center items-center mb-6">
+            <img className="border-1 h-24" src="/static/coq.png" />
+          </div>
+          <div className="flex justify-center items-center mb-6">
+            <img className="border-1 h-20" src="/static/liq.png" />
+          </div>
+          <div>
+            <p className="font-bold text-center mb-2"> {s(`Unison`)} </p>
+            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+          </div>
+          <div>
+            <p className="font-bold text-center mb-2"> {s(`Coq`)} </p>
+            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+          </div>
+          <div>
+            <p className="font-bold text-center mb-2"> {s(`Liquidsoap`)} </p>
+            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+          </div>
+        </div>
+        <p className="text-right font-bold">
+          <a className="text-orangedark underline"> {s(`See more >`)} </a>
+        </p>
+      </div>
+    </div>
+}
+
+type t = {
+  title: string,
+  pageDescription: string,
+}
+
+let contentEn = {
+  title: `Applications`,
+  pageDescription: `This is where you can find resources for working with the language itself. Whether you're building applications or maintaining libraries, this page has useful information for you.`,
+}
+
 @react.component
 let make = (~content=contentEn) => <>
   <ConstructionBanner
@@ -42,6 +85,9 @@ let make = (~content=contentEn) => <>
     marginBottom=`mb-24`
   />
   <ApiDocumentation margins=`mb-24` />
+  // <DeveloperGuides margins=`mb-2` />
+  // <PlatformTools />
+  <UsingOcaml margins=`mb-16` />
 </>
 
 let default = make
