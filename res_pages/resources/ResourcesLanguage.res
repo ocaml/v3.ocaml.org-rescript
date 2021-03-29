@@ -80,6 +80,135 @@ module Books = {
     </div>
 }
 
+module Manual = {
+  @react.component
+  let make = (~margins) =>
+    // TODO: define content type; factor out content
+    <div className={"bg-orangedark pt-8 pb-14 mx-auto max-w-5xl " ++ margins}>
+      <h2 className="text-center text-white text-7xl font-bold mb-8"> {s(`The OCaml Manual`)} </h2>
+      <div className="mx-24 grid grid-cols-3 px-28 mx-auto max-w-4xl">
+        <div className="border-r-4 border-b-4">
+          <div
+            className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
+            <p className="text-center">
+              <a href="https://ocaml.org/manual/index.html#sec6"> {s(`Introduction Tutorials`)} </a>
+            </p>
+          </div>
+        </div>
+        <div className="border-r-4 border-b-4">
+          <div
+            className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
+            <p className="text-center">
+              <a href="https://ocaml.org/manual/stdlib.html"> {s(`StdLib`)} </a>
+            </p>
+          </div>
+        </div>
+        <div className="border-b-4">
+          <div
+            className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
+            <p className="text-center">
+              <a href="https://ocaml.org/api/index.html"> {s(`API Docs`)} </a>
+            </p>
+          </div>
+        </div>
+        <div className="border-r-4">
+          <div
+            className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
+            <p className="text-center">
+              <a href="https://ocaml.org/manual/index.html#sec72"> {s(`Lang`)} </a>
+            </p>
+          </div>
+        </div>
+        <div className="border-r-4">
+          <div
+            className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
+            <p className="text-center">
+              <a href="https://ocaml.org/manual/extn.html#sec238"> {s(`Ext`)} </a>
+            </p>
+          </div>
+        </div>
+        <div>
+          <div
+            className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
+            <p className="text-center">
+              <a href="https://ocaml.org/manual"> {s(`Something Else`)} </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+}
+
+module Applications = {
+  @react.component
+  let make = (~margins) =>
+    <div className={margins ++ " mx-auto max-w-3xl"}>
+      <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`Applications`)} </h2>
+      <div className="sm:flex items-center space-x-32 mb-20">
+        <div className="mb-4 sm:mb-0 sm:mr-4">
+          <p className="mt-1 mb-4 text-lg">
+            {s(`Looking to learn more about the ways in which OCaml is used in real-world applications? Visit our Applications page to find out about different ways of using OCaml.`)}
+          </p>
+          <p className="text-right">
+            <a href="/resources/applications" className="text-orangedark underline">
+              {s(`Go to Applications >`)}
+            </a>
+          </p>
+        </div>
+        <div className="flex-shrink-0"> <img className="h-48" src="/static/app-image2.png" /> </div>
+      </div>
+    </div>
+}
+
+module Papers = {
+  @react.component
+  let make = (~margins) =>
+    // TODO: define content type and factor out content
+    <div
+      className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++ margins}>
+      <div className="px-4 py-5 sm:p-6">
+        <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`PAPERS`)} </h2>
+        <div className="grid grid-cols-3 mb-14 px-9 space-x-6 px-14">
+          <div className="">
+            <p className="text-orangedark text-7xl font-bold"> {s(`1.`)} </p>
+            // TODO: visual indicator that link will open new tab
+            <p className="font-bold">
+              <a href="https://arxiv.org/abs/1905.06543" target="_blank">
+                {s(`Extending OCaml's Open`)}
+              </a>
+            </p>
+            <p> {s(`by Runhang Li, Jeremey Yallop`)} </p>
+          </div>
+          <div className="">
+            <p className="text-orangedark text-7xl font-bold"> {s(`2.`)} </p>
+            <p className="font-bold">
+              <a href="https://kcsrk.info/papers/memory_model_ocaml17.pdf" target="_blank">
+                {s(`A Memory Model for Multicore OCaml`)}
+              </a>
+            </p>
+            <p> {s(`by Stephen Dolan, KC Sivaramakrishnan`)} </p>
+          </div>
+          <div className="">
+            <p className="text-orangedark text-7xl font-bold"> {s(`3.`)} </p>
+            <p className="font-bold">
+              <a href="https://arxiv.org/abs/1812.11664" target="_blank">
+                {s(`Eff Directly in OCaml`)}
+              </a>
+            </p>
+            <p> {s(`by Oleg Kiselyov, KC Sivaramakrishnan`)} </p>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <a
+            href="/resources/papers"
+            className="font-bold inline-flex items-center px-10 py-3 border border-transparent text-base leading-4 font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker">
+            {s(`Go to Papers`)}
+          </a>
+        </div>
+      </div>
+    </div>
+}
+
 type t = {
   title: string,
   pageDescription: string,
@@ -131,9 +260,11 @@ let make = (~content=contentEn) => <>
   <UserLevelIntroduction content=content.growing margins=`mb-20` />
   <Books margins=`mb-16` />
   <UserLevelIntroduction content=content.expanding margins=`mb-20` />
-  // <Manual margins=`` />
+  <Manual margins=`mb-20` />
   <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
+  <Applications margins=`mb-36` />
   <UserLevelIntroduction content=content.researching margins=`mb-20` />
+  <Papers margins=`mb-16` />
 </>
 
 let default = make
