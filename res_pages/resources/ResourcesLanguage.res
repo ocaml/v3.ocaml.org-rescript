@@ -41,13 +41,28 @@ module Books = {
             </svg>
           </div>
           <div className="flex justify-center">
-            <img className="h-36 w-28" src="/static/real-world-ocaml.jpg" />
+            // TODO: visual indicator that link opens new tab
+            <a href="https://dev.realworldocaml.org/" target="_blank">
+              <img
+                className="h-36 w-28" src="/static/real-world-ocaml.jpg" alt="Real World OCaml book"
+              />
+            </a>
           </div>
           <div className="flex justify-center">
-            <img className="h-36 w-28" src="/static/oc-beg.png" />
+            <a href="https://ocaml-book.com/" target="_blank">
+              <img
+                className="h-36 w-28"
+                src="/static/oc-beg.png"
+                alt="OCaml from the very beginning book"
+              />
+            </a>
           </div>
           <div className="flex justify-center">
-            <img className="h-36 w-28" src="/static/more-oc.png" />
+            <a
+              href="http://ocaml-book.com/more-ocaml-algorithms-methods-diversions/"
+              target="_blank">
+              <img className="h-36 w-28" src="/static/more-oc.png" />
+            </a>
           </div>
           <div className="flex justify-center">
             <svg
@@ -116,6 +131,7 @@ let make = (~content=contentEn) => <>
   <UserLevelIntroduction content=content.growing margins=`mb-20` />
   <Books margins=`mb-16` />
   <UserLevelIntroduction content=content.expanding margins=`mb-20` />
+  // <Manual margins=`` />
   <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
   <UserLevelIntroduction content=content.researching margins=`mb-20` />
 </>
