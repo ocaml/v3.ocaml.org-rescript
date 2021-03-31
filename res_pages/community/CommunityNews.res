@@ -429,10 +429,9 @@ let make = (~content=contentEn) => <>
   />
   <div className="relative pt-16 pb-6 lg:pb-9 overflow-hidden">
     <div className="relative px-4 sm:px-6 lg:px-8">
-      // TODO: use this component from shared area, as noted in generalize header issue
-      <IndustryUsers.MarkdownPageTitleHeading2
-        title=content.title pageDescription=content.pageDescription descriptionCentered=true
-      />
+      // TODO: since this no longer uses markdown heading, is container above
+      // necessary?
+      <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
     </div>
   </div>
   <HighlightedStory margins=`mb-6` content=content.highlightedContent />

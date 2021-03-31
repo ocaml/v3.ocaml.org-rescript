@@ -1,5 +1,5 @@
 let s = React.string
-
+/*
 module MarkdownPageTitleHeading = {
   @react.component
   let make = (~title, ~pageDescription) =>
@@ -13,6 +13,7 @@ module MarkdownPageTitleHeading = {
       <p className="mt-8 text-xl text-gray-500 leading-8"> {s(pageDescription)} </p>
     </div>
 }
+*/
 
 module MarkdownPageBody = {
   @react.component
@@ -143,7 +144,7 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
       <TableOfContents content=tableOfContents />
       <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
         <div className="relative px-4 sm:px-6 lg:px-8">
-          <MarkdownPageTitleHeading title pageDescription />
+          <TitleHeading.MarkdownMedium title pageDescription />
           <MarkdownPageBody margins=`mt-6`> body </MarkdownPageBody>
         </div>
       </div>

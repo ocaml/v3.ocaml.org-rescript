@@ -67,6 +67,7 @@ let contentEn = {
   companies: companies,
 }
 
+/*
 type callToAction = {
   label: string,
   url: string,
@@ -104,6 +105,7 @@ module MarkdownPageTitleHeading2 = {
       }}
     </div>
 }
+*/
 
 module LogoSection = {
   @react.component
@@ -146,13 +148,12 @@ let make = (~content=contentEn) => <>
   />
   <div className="relative py-16 overflow-hidden">
     <div className="relative px-4 sm:px-6 lg:px-8">
-      <MarkdownPageTitleHeading2
+      <TitleHeading.Large
         title=content.title
         pageDescription=content.pageDescription
-        margins=`mt-2`
-        descriptionCentered=true
+        marginTop=`mt-2`
         callToAction={
-          label: "Success Stories",
+          TitleHeading.Large.label: "Success Stories",
           url: "/industry/successstories",
         }
       />
