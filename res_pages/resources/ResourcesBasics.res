@@ -97,9 +97,13 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
   </>
 }
 
+// change this page into a generic url page
 let getStaticProps = _ctx => {
   let contentFilePath = "res_pages/resources/basics.md"
   let source = Fs.readFileSync(contentFilePath)
+  // break off front matter
+  // parse front matter
+  // add table of contents to front matter and parse
   let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
   mdSourcePromise->Js.Promise.then_(mdSource => {
     let props = {

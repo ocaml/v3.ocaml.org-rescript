@@ -18,7 +18,7 @@ manager. It has the same basic interface but is much more convenient to use
 Use `;;` to indicate that you've finished entering each expression and prompt OCaml to evaluate it. Here is what running `ocaml` looks like:
 ```console
 $ ocaml
-        OCaml version {{! get LATEST_OCAML_VERSION !}}
+        OCaml version OCaml version 4.12.0
 
 # 1 + 1;;
 - : int = 2
