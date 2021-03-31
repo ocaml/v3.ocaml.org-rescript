@@ -122,15 +122,6 @@ f 5 (g "hello") 3    (* f has three arguments, g has one argument *)
 f (g 3 4)            (* f has one argument, g has two arguments *)
 ```
 
-<div media:type="text/omd" style="display: none">
-
-```ocamltop
-let repeated (s : string) (i : int) =
-  failwith "implementation not given"
-```
-
-</div>
-
 ```ocamltop
 repeated ("hello", 3)     (* OCaml will spot the mistake *)
 ```
