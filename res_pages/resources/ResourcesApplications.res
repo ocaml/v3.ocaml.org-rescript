@@ -31,7 +31,15 @@ module DeveloperGuides = {
         </h2>
         <div className="flex mb-11">
           <div>
-            <h4 className="text-base font-bold mb-3"> {s(`Mirage OS`)} </h4>
+            <h4 className="text-base font-bold mb-3">
+              // TODO: visual indicator that link is opening new tab
+              <a
+                className="hover:underline"
+                href="https://docs.mirage.io/mirage/index.html"
+                target="_blank">
+                {s(`Mirage OS`)}
+              </a>
+            </h4>
             <p className="mt-1">
               {s(`Mirage OS Unikernels lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at tristique odio. Etiam sodales porta lectus ac malesuada. Proin in odio ultricies, faucibus ligula ut`)}
             </p>
