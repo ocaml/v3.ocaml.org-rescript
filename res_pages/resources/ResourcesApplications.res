@@ -87,7 +87,7 @@ module PlatformTools = {
       <div className="flex justify-center">
         <Link href="/resources/platform">
           <a
-            className="mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-white text-base font-medium rounded-md bg-orangedark hover:bg-yellow-800 sm:w-auto">
+            className="mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-white text-base font-medium rounded-md bg-orangedark hover:bg-orangedarker sm:w-auto">
             {s(`Visit Platform Tools`)}
           </a>
         </Link>
