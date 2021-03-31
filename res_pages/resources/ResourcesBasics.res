@@ -1,10 +1,6 @@
 let s = React.string
 
-type t = {
-  title: string,
-  pageDescription: string,
-  tableOfContents: ResourcesInstallOcaml.TableOfContents.t,
-}
+type t = {tableOfContents: ResourcesInstallOcaml.TableOfContents.t}
 
 type props = {
   source: NextMdxRemote.renderToStringResult,
@@ -33,36 +29,9 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
 }
 
 let contentEn = {
-  title: `The Basics`,
-  pageDescription: ``,
   tableOfContents: {
-    contents: `Contents`,
+    contents: `Contents`, // take this from a generic markdown generic content yaml file, hardcode for now
     headings: [
-      {
-        name: "Running OCaml code",
-        headingId: "running-ocaml-code",
-        subHeadings: [],
-      },
-      {
-        name: "Comments",
-        headingId: "comments",
-        subHeadings: [],
-      },
-      {
-        name: "Calling functions",
-        headingId: "calling-functions",
-        subHeadings: [],
-      },
-      {
-        name: "Defining a function",
-        headingId: "defining-a-function",
-        subHeadings: [],
-      },
-      {
-        name: "Basic types",
-        headingId: "basic-types",
-        subHeadings: [],
-      },
       {
         name: "Implicit vs. explicit casts",
         headingId: "implicit-vs-explicit-casts",
@@ -72,26 +41,6 @@ let contentEn = {
             subHeadingId: "is-implicit-or-explicit-casting-better",
           },
         ],
-      },
-      {
-        name: "Ordinary functions and recursive functions",
-        headingId: "ordinary-functions-and-recursive-functions",
-        subHeadings: [],
-      },
-      {
-        name: "Types of functions",
-        headingId: "types-of-functions",
-        subHeadings: [
-          {
-            subName: "Polymorphic functions",
-            subHeadingId: "polymorphic-functions",
-          },
-        ],
-      },
-      {
-        name: "Type inference",
-        headingId: "type-inference",
-        subHeadings: [],
       },
     ],
   },
@@ -113,13 +62,13 @@ let getStaticProps = _ctx => {
   let contentJson = Js.Dict.unsafeGet(dict, "content")
   let source = Js.Option.getExn(Js.Json.decodeString(contentJson))
 
-  // TODO: add table of contents to front matter and parse
+  // TODO: parse table of contents from front matter
   let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
   mdSourcePromise->Js.Promise.then_(mdSource => {
     let props = {
       source: mdSource,
       title: title,
-      pageDescription: contentEn.pageDescription,
+      pageDescription: "",
       tableOfContents: contentEn.tableOfContents,
     }
     Js.Promise.resolve({"props": props})
