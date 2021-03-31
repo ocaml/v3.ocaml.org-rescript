@@ -1,3 +1,6 @@
+---
+title: Basics
+---
 ## Running OCaml code
 
 The easiest way to get started is to run an interactive session in

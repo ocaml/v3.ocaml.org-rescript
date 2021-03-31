@@ -97,18 +97,28 @@ let contentEn = {
   },
 }
 
+@module("gray-matter") external matter: string => Js.Json.t = "default"
+
 // change this page into a generic url page
 let getStaticProps = _ctx => {
   let contentFilePath = "res_pages/resources/basics.md"
-  let source = Fs.readFileSync(contentFilePath)
-  // break off front matter
-  // parse front matter
-  // add table of contents to front matter and parse
+  let fileContents = Fs.readFileSync(contentFilePath)
+  let parsed = matter(fileContents)
+  let dict = Js.Option.getExn(Js.Json.decodeObject(parsed))
+  let dataJson = Js.Dict.unsafeGet(dict, "data")
+  let dataDict = Js.Option.getExn(Js.Json.decodeObject(dataJson))
+  let titleJson = Js.Dict.unsafeGet(dataDict, "title")
+  let title = Js.Option.getExn(Js.Json.decodeString(titleJson))
+
+  let contentJson = Js.Dict.unsafeGet(dict, "content")
+  let source = Js.Option.getExn(Js.Json.decodeString(contentJson))
+
+  // TODO: add table of contents to front matter and parse
   let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
   mdSourcePromise->Js.Promise.then_(mdSource => {
     let props = {
       source: mdSource,
-      title: contentEn.title,
+      title: title,
       pageDescription: contentEn.pageDescription,
       tableOfContents: contentEn.tableOfContents,
     }
