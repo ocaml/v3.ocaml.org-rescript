@@ -1,3 +1,11 @@
+module Section = {
+  @react.component
+  let make = (~children) => {
+    <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
+      <div className="relative px-4 sm:px-6 lg:px-8"> children </div>
+    </div>
+  }
+}
 module Timeline = {
   module Item = {
     type t = {date: string, description: string}
@@ -6,17 +14,34 @@ module Timeline = {
   type t = array<Item.t>
   @react.component
   let make = (~content: t) => {
-    <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
-      <div className="relative px-4 sm:px-6 lg:px-8">
-        <div className="mt-6 prose prose-yellow prose-lg text-gray-500 mx-auto">
-          {content
-          |> Array.map(({Item.date: date, description}) => <>
-            <h2> {React.string(date)} </h2> <p> {React.string(description)} </p>
-          </>)
-          |> React.array}
+    let item = ({Item.date: date, description}) => {
+      let color = "bg-yellow-500"
+
+      let verticalBar =
+        <span className={`absolute top-5 left-5 ml-0.5 h-full w-0.5 ${color}`} ariaHidden=true />
+
+      let circle = <div className={`h-11 w-11 ${color} rounded-full flex`} />
+
+      let date = <div className="text-3xl font-bold text-gray-900 mb-4"> {React.string(date)} </div>
+
+      let description =
+        <div className="mt-2 text-base text-gray-700"> <p> {React.string(description)} </p> </div>
+
+      <li>
+        <div className="relative pb-8">
+          verticalBar
+          <div className="relative flex items-start space-x-3">
+            circle <div className="min-w-0 flex-1"> date description </div>
+          </div>
         </div>
+      </li>
+    }
+
+    <Section>
+      <div className="flow-root">
+        <ul className="-mb-8"> {content |> Array.map(item) |> React.array} </ul>
       </div>
-    </div>
+    </Section>
   }
 }
 
