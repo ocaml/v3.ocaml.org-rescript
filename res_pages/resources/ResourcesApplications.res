@@ -53,7 +53,14 @@ module DeveloperGuides = {
             <img className="h-24" src="/static/jvs.png" />
           </div>
           <div>
-            <h4 className="text-base font-bold mb-3"> {s(`JS_of_OCaml`)} </h4>
+            <h4 className="text-base font-bold mb-3">
+              <a
+                className="hover:underline"
+                href="https://b0-system.github.io/odig/doc/js_of_ocaml/Js_of_ocaml/index.html"
+                target="_blank">
+                {s(`JS_of_OCaml`)}
+              </a>
+            </h4>
             <p className="mt-1">
               {s(`Browser programming dolor sit amet, consectetur adipiscing elit. Integer at tristique odio. Etiam sodales porta lectus ac maleuada. Proin in odio ultricies, faucibus ligula ut`)}
             </p>
