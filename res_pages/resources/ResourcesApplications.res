@@ -109,13 +109,22 @@ module UsingOcaml = {
         </p>
         <div className="grid grid-cols-3 gap-x-16 mb-6">
           <div className="flex justify-center items-center mb-6">
-            <img className="border-1 h-10" src="/static/unison2.png" />
+            // TODO: visual indicator that link opens new tab
+            <a href="https://github.com/bcpierce00/unison/wiki/Downloading-Unison" target="_blank">
+              <img className="border-1 h-10" src="/static/unison2.png" alt="Unison Install Guide" />
+            </a>
           </div>
           <div className="flex justify-center items-center mb-6">
-            <img className="border-1 h-24" src="/static/coq.png" />
+            <a href="https://coq.inria.fr/download" target="_blank">
+              <img className="border-1 h-24" src="/static/coq.png" alt="Coq Intall Guide" />
+            </a>
           </div>
           <div className="flex justify-center items-center mb-6">
-            <img className="border-1 h-20" src="/static/liq.png" />
+            <a href="https://www.liquidsoap.info/doc-1.4.4/install.html" target="_blank">
+              <img
+                className="border-1 h-20" src="/static/liq.png" alt="Liquid Soap Install Guide"
+              />
+            </a>
           </div>
           <div>
             <p className="font-bold text-center mb-2"> {s(`Unison`)} </p>
