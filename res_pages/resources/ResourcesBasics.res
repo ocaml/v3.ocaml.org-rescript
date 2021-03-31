@@ -6,6 +6,32 @@ type t = {
   tableOfContents: ResourcesInstallOcaml.TableOfContents.t,
 }
 
+type props = {
+  source: NextMdxRemote.renderToStringResult,
+  title: string,
+  pageDescription: string,
+  tableOfContents: ResourcesInstallOcaml.TableOfContents.t,
+}
+
+@react.component
+let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
+  let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
+  <>
+    <ConstructionBanner />
+    <div className="grid grid-cols-9 bg-white">
+      <ResourcesInstallOcaml.TableOfContents content=tableOfContents />
+      <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
+        <div className="relative px-4 sm:px-6 lg:px-8">
+          <TitleHeading.MarkdownMedium title pageDescription />
+          <ResourcesInstallOcaml.MarkdownPageBody margins=`mt-6`>
+            body
+          </ResourcesInstallOcaml.MarkdownPageBody>
+        </div>
+      </div>
+    </div>
+  </>
+}
+
 let contentEn = {
   title: `The Basics`,
   pageDescription: ``,
@@ -69,32 +95,6 @@ let contentEn = {
       },
     ],
   },
-}
-
-type props = {
-  source: NextMdxRemote.renderToStringResult,
-  title: string,
-  pageDescription: string,
-  tableOfContents: ResourcesInstallOcaml.TableOfContents.t,
-}
-
-@react.component
-let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
-  let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
-  <>
-    <ConstructionBanner />
-    <div className="grid grid-cols-9 bg-white">
-      <ResourcesInstallOcaml.TableOfContents content=tableOfContents />
-      <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
-        <div className="relative px-4 sm:px-6 lg:px-8">
-          <TitleHeading.MarkdownMedium title pageDescription />
-          <ResourcesInstallOcaml.MarkdownPageBody margins=`mt-6`>
-            body
-          </ResourcesInstallOcaml.MarkdownPageBody>
-        </div>
-      </div>
-    </div>
-  </>
 }
 
 // change this page into a generic url page
