@@ -48,7 +48,7 @@ let contentEn = {
 
 @module("gray-matter") external matter: string => Js.Json.t = "default"
 
-// change this page into a generic url page
+// change this page into a generic url page <<<
 let getStaticProps = _ctx => {
   let contentFilePath = "res_pages/resources/basics.md"
   let fileContents = Fs.readFileSync(contentFilePath)
