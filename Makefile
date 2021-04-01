@@ -6,7 +6,7 @@ install-deps:
 	# install node version, if not already present
 	$(NVM) install
 	# install js library dependencies and build tools
-	$(NVM) use && npx yarn@1.22 install
+	$(NVM) use && npx yarn@1.22 install && npx esy
 
 .PHONY: rescript-watch
 rescript-watch:
