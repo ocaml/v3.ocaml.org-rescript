@@ -16,7 +16,9 @@ feature the major following improvements when completed:
   (e.g.) fetching external newsfeeds with the HTML generation, whereas this v3
   site keeps a structured store of data, which is then parsed to generate the
   website.  We use ReScript/OCaml to generate the site content, and Ocurrent to
-  automate the data pipelines.
+  automate the data pipelines.  This separation enables us to deploy NetlifyCMS
+  to provide a web-based mechanism to submit content updates without requiring
+  a GitHub workflow (thus simplifying the life of language translators).
 
 - Integrated documentation and package management. The v3 site will combine the
   package management (currently opam.ocaml.org) with a new central
@@ -26,6 +28,8 @@ feature the major following improvements when completed:
   last few decades of conference talks. The v2 site only syndicated from
   external sources, but now we can publish editorial content from around the
   community directly on ocaml.org.
+
+  
 
 Since this site is a work-in-progress, not all of the above features are yet
 materialised in this repository. As the team shows the site to more
