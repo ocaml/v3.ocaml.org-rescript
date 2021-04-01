@@ -42,6 +42,12 @@ The immediate team working on the v3 site consists of:
 - Isabella Leandersson (OCaml Labs)
 - Anil Madhavapeddy (University of Cambridge)
 
+The documentation generation portion is courtesy of the odoc
+development team, with the site generation done by:
+- Jon Ludlam (OCaml Labs)
+- Jules Aguillon (Tarides)
+- Lucas Pluvinage (Tarides)
+
 Major decisions will be taken by an ocaml.org steering committee:
 (TBD, but a set to propose is below along with role positions)
 - Ashish Agarwal
