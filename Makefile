@@ -25,7 +25,8 @@ ci-install-deps:
 	whoami
 	env
 	npm config set user root
-	npm install -g esy@0.6.8 # for eventually dune install
+	npx install -g esy@0.6.8 # for eventually dune install
+	npx esy --help
 	npx yarn@1.22 install
 
 .PHONY: ci-build
