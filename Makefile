@@ -24,7 +24,8 @@ ci-install-deps:
 	# installing (or using) esy encounters permission error
 	whoami
 	env
-	# npm install esy@0.6.8 # for eventually dune install
+	npm config set user root
+	npm install -g esy@0.6.8 # for eventually dune install
 	npx yarn@1.22 install
 
 .PHONY: ci-build
