@@ -14,7 +14,7 @@ module Timeline = {
   type t = array<Item.t>
   @react.component
   let make = (~content: t) => {
-    let item = ({Item.date: date, description}) => {
+    let item = ({Item.date: date, description}, idx) => {
       let color = "bg-yellow-500"
 
       let verticalBar =
@@ -27,7 +27,7 @@ module Timeline = {
       let description =
         <div className="mt-2 text-base text-gray-700"> <p> {React.string(description)} </p> </div>
 
-      <li>
+      <li key={string_of_int(idx)}>
         <div className="relative pb-8">
           verticalBar
           <div className="relative flex items-start space-x-3">
@@ -39,7 +39,7 @@ module Timeline = {
 
     <Section>
       <div className="flow-root">
-        <ul className="-mb-8"> {content |> Array.map(item) |> React.array} </ul>
+        <ul className="-mb-8"> {content->Js.Array2.mapi(item)->React.array} </ul>
       </div>
     </Section>
   }
