@@ -1,5 +1,9 @@
 let s = React.string
 
+module Params = {
+  type t = {slug: string}
+}
+
 type t = {tableOfContents: ResourcesInstallOcaml.TableOfContents.t}
 
 type props = {
@@ -13,7 +17,10 @@ type props = {
 let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
   let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
   <>
-    <ConstructionBanner />
+    <ConstructionBanner
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
+      playgroundLink=`/play/resources/installocaml`
+    />
     <div className="grid grid-cols-9 bg-white">
       <ResourcesInstallOcaml.TableOfContents content=tableOfContents />
       <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
@@ -48,9 +55,10 @@ let contentEn = {
 
 @module("gray-matter") external matter: string => Js.Json.t = "default"
 
-// change this page into a generic url page <<<
-let getStaticProps = _ctx => {
-  let contentFilePath = "res_pages/resources/basics.md"
+let getStaticProps = ctx => {
+  let params = ctx.Next.GetStaticProps.params
+  Js.log(ctx)
+  let contentFilePath = "res_pages/resources/" ++ params.Params.slug ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)
   let parsed = matter(fileContents)
   let dict = Js.Option.getExn(Js.Json.decodeObject(parsed))
@@ -58,6 +66,8 @@ let getStaticProps = _ctx => {
   let dataDict = Js.Option.getExn(Js.Json.decodeObject(dataJson))
   let titleJson = Js.Dict.unsafeGet(dataDict, "title")
   let title = Js.Option.getExn(Js.Json.decodeString(titleJson))
+  let pageDescriptionJson = Js.Dict.unsafeGet(dataDict, "pageDescription")
+  let pageDescription = Js.Option.getExn(Js.Json.decodeString(pageDescriptionJson))
 
   let contentJson = Js.Dict.unsafeGet(dict, "content")
   let source = Js.Option.getExn(Js.Json.decodeString(contentJson))
@@ -68,11 +78,22 @@ let getStaticProps = _ctx => {
     let props = {
       source: mdSource,
       title: title,
-      pageDescription: "",
+      pageDescription: pageDescription,
       tableOfContents: contentEn.tableOfContents,
     }
     Js.Promise.resolve({"props": props})
   }, _)
+}
+
+let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
+  let ret = {
+    Next.GetStaticPaths.paths: [
+      {params: {Params.slug: "basics"}},
+      {params: {Params.slug: "installocaml"}},
+    ],
+    fallback: false,
+  }
+  Js.Promise.resolve(ret)
 }
 
 let default = make

@@ -1,5 +1,6 @@
 ---
 title: Basics
+pageDescription: ''
 tableOfContnts:
   - name: "Running OCaml code"
     headingId: "running-ocaml-code"
@@ -28,7 +29,7 @@ tableOfContnts:
     headingId: "types-of-functions"
     subHeadings:
       - subName: "Polymorphic functions"
-      - subHeadingId: "polymorphic-functions"
+        subHeadingId: "polymorphic-functions"
   - name: "Type inference"
     headingId: "type-inference"
     subHeadings: []
