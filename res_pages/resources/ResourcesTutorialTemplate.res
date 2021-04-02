@@ -57,7 +57,6 @@ let contentEn = {
 
 let getStaticProps = ctx => {
   let params = ctx.Next.GetStaticProps.params
-  Js.log(ctx)
   let contentFilePath = "res_pages/resources/" ++ params.Params.slug ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)
   let parsed = matter(fileContents)
@@ -86,6 +85,7 @@ let getStaticProps = ctx => {
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
+  // TODO: create a function that provides a list of markdown files for a directory
   let ret = {
     Next.GetStaticPaths.paths: [
       {params: {Params.slug: "basics"}},
@@ -95,5 +95,7 @@ let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
   }
   Js.Promise.resolve(ret)
 }
+
+// TODO: do we need to define exportPathsMap for next export to function?
 
 let default = make
