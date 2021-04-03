@@ -51,23 +51,18 @@ let contentEn = {
   },
 }
 
-@module("gray-matter") external matter: string => Js.Json.t = "default"
-
 let getStaticProps = ctx => {
   let params = ctx.Next.GetStaticProps.params
   let contentFilePath = "res_pages/resources/" ++ params.Params.slug ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)
-  let parsed = matter(fileContents)
-  let dict = Js.Option.getExn(Js.Json.decodeObject(parsed))
-  let dataJson = Js.Dict.unsafeGet(dict, "data")
-  let dataDict = Js.Option.getExn(Js.Json.decodeObject(dataJson))
+  let parsed = GrayMatter.matter(fileContents)
+  let dataDict = Js.Option.getExn(Js.Json.decodeObject(parsed.data))
   let titleJson = Js.Dict.unsafeGet(dataDict, "title")
   let title = Js.Option.getExn(Js.Json.decodeString(titleJson))
   let pageDescriptionJson = Js.Dict.unsafeGet(dataDict, "pageDescription")
   let pageDescription = Js.Option.getExn(Js.Json.decodeString(pageDescriptionJson))
 
-  let contentJson = Js.Dict.unsafeGet(dict, "content")
-  let source = Js.Option.getExn(Js.Json.decodeString(contentJson))
+  let source = parsed.content
 
   // TODO: parse table of contents from front matter
   let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
