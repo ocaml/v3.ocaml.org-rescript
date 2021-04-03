@@ -85,13 +85,15 @@ let getStaticProps = ctx => {
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
-  // TODO: create a function that provides a list of markdown files for a directory
+  let markdownFiles = Js.Array.filter(// todo: case insensitive
+  s => Js.String.endsWith("md", s), Fs.readdirSync("res_pages/resources/"))
+
   let ret = {
-    Next.GetStaticPaths.paths: [
-      {params: {Params.slug: "basics"}},
-      {params: {Params.slug: "installocaml"}},
-    ],
-    fallback: false,
+    Next.GetStaticPaths.paths: Array.map(
+      f => {Next.GetStaticPaths.params: {Params.slug: Js.String.split(".", f)[0]}}, // TODO: better error
+      markdownFiles,
+    ),
+    fallback: false, //TODO: is this value correct?
   }
   Js.Promise.resolve(ret)
 }
