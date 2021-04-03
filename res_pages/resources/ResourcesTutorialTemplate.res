@@ -1,7 +1,7 @@
 let s = React.string
 
 module Params = {
-  type t = {slug: string}
+  type t = {tutorial: string}
 }
 
 type t = {tableOfContents: MarkdownPage.TableOfContents.t}
@@ -53,7 +53,7 @@ let contentEn = {
 
 let getStaticProps = ctx => {
   let params = ctx.Next.GetStaticProps.params
-  let contentFilePath = "res_pages/resources/" ++ params.Params.slug ++ ".md"
+  let contentFilePath = "res_pages/resources/" ++ params.Params.tutorial ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)
   let parsed = GrayMatter.matter(fileContents)
   let dataDict = Js.Option.getExn(Js.Json.decodeObject(parsed.data))
@@ -83,7 +83,7 @@ let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
 
   let ret = {
     Next.GetStaticPaths.paths: Array.map(
-      f => {Next.GetStaticPaths.params: {Params.slug: Js.String.split(".", f)[0]}}, // TODO: better error
+      f => {Next.GetStaticPaths.params: {Params.tutorial: Js.String.split(".", f)[0]}}, // TODO: better error
       markdownFiles,
     ),
     fallback: false, //TODO: is this value correct?
