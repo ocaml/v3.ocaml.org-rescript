@@ -4,13 +4,13 @@ module Params = {
   type t = {slug: string}
 }
 
-type t = {tableOfContents: ResourcesInstallOcaml.TableOfContents.t}
+type t = {tableOfContents: MarkdownPage.TableOfContents.t}
 
 type props = {
   source: NextMdxRemote.renderToStringResult,
   title: string,
   pageDescription: string,
-  tableOfContents: ResourcesInstallOcaml.TableOfContents.t,
+  tableOfContents: MarkdownPage.TableOfContents.t,
 }
 
 @react.component
@@ -22,13 +22,11 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
       playgroundLink=`/play/resources/installocaml`
     />
     <div className="grid grid-cols-9 bg-white">
-      <ResourcesInstallOcaml.TableOfContents content=tableOfContents />
+      <MarkdownPage.TableOfContents content=tableOfContents />
       <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
         <div className="relative px-4 sm:px-6 lg:px-8">
           <TitleHeading.MarkdownMedium title pageDescription />
-          <ResourcesInstallOcaml.MarkdownPageBody margins=`mt-6`>
-            body
-          </ResourcesInstallOcaml.MarkdownPageBody>
+          <MarkdownPage.MarkdownPageBody margins=`mt-6`> body </MarkdownPage.MarkdownPageBody>
         </div>
       </div>
     </div>
@@ -97,7 +95,5 @@ let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
   }
   Js.Promise.resolve(ret)
 }
-
-// TODO: do we need to define exportPathsMap for next export to function?
 
 let default = make
