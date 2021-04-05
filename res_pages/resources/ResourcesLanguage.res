@@ -16,26 +16,25 @@ module UserLevelIntroduction = {
     </div>
 }
 
-module Book = {
-  type t = {
-    id: int,
-    name: string,
-    link: string,
-    image: string,
-  }
-}
-
 module Books = {
+  type t = {
+    booksLabel: string,
+    books: array<Book.t>,
+  }
+
   @react.component
-  let make = (~margins, ~books) =>
+  let make = (~margins, ~content) =>
     // TODO: define content type; extract content
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-10 mx-auto max-w-5xl " ++ margins}>
       <div className="px-4 py-5 sm:px-6 sm:py-9">
-        <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`BOOKS`)} </h2>
+        <h2 className="text-center text-orangedark text-7xl font-bold mb-8">
+          {s(content.booksLabel)}
+        </h2>
         <div className="grid grid-cols-5 items-center mb-8 px-6">
+          // TODO: define state to track location within books list, activate navigation
           <div className="flex justify-center">
-            // TODO: define state to track location within books list, activate navigation
+            // TODO: make navigation arrows accesssible
             <svg
               className="h-24 center"
               viewBox="0 0 90 159"
@@ -49,7 +48,7 @@ module Books = {
               />
             </svg>
           </div>
-          {books
+          {content.books
           |> Js.Array.mapi((b: Book.t, idx) =>
             <div className="flex justify-center" key={Js.Int.toString(idx)}>
               // TODO: visual indicator that link opens new tab
@@ -59,32 +58,6 @@ module Books = {
             </div>
           )
           |> React.array}
-          /*
-          <div className="flex justify-center">
-            // TODO: visual indicator that link opens new tab
-            <a href="https://dev.realworldocaml.org/" target="_blank">
-              <img
-                className="h-36 w-28" src="/static/real-world-ocaml.jpg" alt="Real World OCaml book"
-              />
-            </a>
-          </div>
-          <div className="flex justify-center">
-            <a href="https://ocaml-book.com/" target="_blank">
-              <img
-                className="h-36 w-28"
-                src="/static/oc-beg.png"
-                alt="OCaml from the very beginning book"
-              />
-            </a>
-          </div>
-          <div className="flex justify-center">
-            <a
-              href="http://ocaml-book.com/more-ocaml-algorithms-methods-diversions/"
-              target="_blank">
-              <img className="h-36 w-28" src="/static/more-oc.png" />
-            </a>
-          </div>
- */
           <div className="flex justify-center">
             <svg
               className="h-24" viewBox="0 0 90 159" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -235,59 +208,16 @@ type t = {
   pageDescription: string,
   beginning: UserLevelIntroduction.t,
   growing: UserLevelIntroduction.t,
-  books: array<Book.t>,
+  booksContent: Books.t,
   expanding: UserLevelIntroduction.t,
   diversifying: UserLevelIntroduction.t,
   researching: UserLevelIntroduction.t,
 }
 
-let contentEn = {
-  title: `Language`,
-  pageDescription: `This is the home of learning and tutorials. Whether you're a beginner, a teacher, or a seasoned researcher, this is where you can find the resources you need to accomplish your goals in OCaml.`,
-  beginning: {
-    level: `Beginning`,
-    introduction: `Are you a beginner? Or just someone who wants to brush up on the fundamentals? In either case, the OFronds tutorial system has you covered!`,
-  },
-  growing: {
-    level: `Growing`,
-    introduction: `Familiar with the basics and looking to get a more robust understanding of OCaml? Or just curious? Check out the books available on OCaml:`,
-  },
-  books: [
-    {
-      id: 1,
-      name: `Real World OCaml`,
-      link: `https://dev.realworldocaml.org/`,
-      image: `real-world-ocaml.jpg`,
-    },
-    {
-      id: 2,
-      name: `OCaml from the very beginning`,
-      link: `https://ocaml-book.com/`,
-      image: `oc-beg.png`,
-    },
-    {
-      id: 3,
-      name: `More OCaml: Algorithms, Methods, and Diversions`,
-      link: `https://ocaml-book.com/more-ocaml-algorithms-methods-diversions/`,
-      image: `more-oc.png`,
-    },
-  ],
-  expanding: {
-    level: `Expanding`,
-    introduction: `Have a strong foundation in OCaml? Time to get involved! Prepare by getting familiar with the OCaml Manual:`,
-  },
-  diversifying: {
-    level: `Diversifying`,
-    introduction: `Now that you're familiar with the building blocks of OCaml, you may want to diversify your portfolio and have a look at the many applications that operate using OCaml.`,
-  },
-  researching: {
-    level: `Researching`,
-    introduction: `Aspiring towards greater understanding of the language? Want to push the limits and discover brand new things? Check out papers written by leading OCaml researchers:`,
-  },
-}
+type props = {content: t}
 
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1085%3A121`
     playgroundLink=`/play/resources/language`
@@ -301,7 +231,7 @@ let make = (~content=contentEn) => <>
   />
   <UserLevelIntroduction content=content.beginning margins=`mb-20` />
   <UserLevelIntroduction content=content.growing margins=`mb-20` />
-  <Books margins=`mb-16` books=content.books />
+  <Books margins=`mb-16` content=content.booksContent />
   <UserLevelIntroduction content=content.expanding margins=`mb-20` />
   <Manual margins=`mb-20` />
   <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
@@ -310,8 +240,40 @@ let make = (~content=contentEn) => <>
   <Papers margins=`mb-16` />
 </>
 
-// add get static props
-// read books from books.yaml
-// hardcoded books sort order and filtering
+let getStaticProps = _ctx => {
+  let books = Book.readAll()
+  // TODO: read book sorting and filtering information and adjust array
+  let props = {
+    content: {
+      title: `Language`,
+      pageDescription: `This is the home of learning and tutorials. Whether you're a beginner, a teacher, or a seasoned researcher, this is where you can find the resources you need to accomplish your goals in OCaml.`,
+      beginning: {
+        level: `Beginning`,
+        introduction: `Are you a beginner? Or just someone who wants to brush up on the fundamentals? In either case, the OFronds tutorial system has you covered!`,
+      },
+      growing: {
+        level: `Growing`,
+        introduction: `Familiar with the basics and looking to get a more robust understanding of OCaml? Or just curious? Check out the books available on OCaml:`,
+      },
+      booksContent: {
+        booksLabel: "Books",
+        books: books,
+      },
+      expanding: {
+        level: `Expanding`,
+        introduction: `Have a strong foundation in OCaml? Time to get involved! Prepare by getting familiar with the OCaml Manual:`,
+      },
+      diversifying: {
+        level: `Diversifying`,
+        introduction: `Now that you're familiar with the building blocks of OCaml, you may want to diversify your portfolio and have a look at the many applications that operate using OCaml.`,
+      },
+      researching: {
+        level: `Researching`,
+        introduction: `Aspiring towards greater understanding of the language? Want to push the limits and discover brand new things? Check out papers written by leading OCaml researchers:`,
+      },
+    },
+  }
+  {"props": props}
+}
 
 let default = make
