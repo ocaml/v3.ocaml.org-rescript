@@ -16,9 +16,18 @@ module UserLevelIntroduction = {
     </div>
 }
 
+module Book = {
+  type t = {
+    id: int,
+    name: string,
+    link: string,
+    image: string,
+  }
+}
+
 module Books = {
   @react.component
-  let make = (~margins) =>
+  let make = (~margins, ~books) =>
     // TODO: define content type; extract content
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-10 mx-auto max-w-5xl " ++ margins}>
@@ -40,6 +49,17 @@ module Books = {
               />
             </svg>
           </div>
+          {books
+          |> Js.Array.mapi((b: Book.t, idx) =>
+            <div className="flex justify-center" key={Js.Int.toString(idx)}>
+              // TODO: visual indicator that link opens new tab
+              <a href=b.link target="_blank">
+                <img className="h-36 w-28" src={"/static/" ++ b.image} alt={b.name ++ " book"} />
+              </a>
+            </div>
+          )
+          |> React.array}
+          /*
           <div className="flex justify-center">
             // TODO: visual indicator that link opens new tab
             <a href="https://dev.realworldocaml.org/" target="_blank">
@@ -64,6 +84,7 @@ module Books = {
               <img className="h-36 w-28" src="/static/more-oc.png" />
             </a>
           </div>
+ */
           <div className="flex justify-center">
             <svg
               className="h-24" viewBox="0 0 90 159" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -214,6 +235,7 @@ type t = {
   pageDescription: string,
   beginning: UserLevelIntroduction.t,
   growing: UserLevelIntroduction.t,
+  books: array<Book.t>,
   expanding: UserLevelIntroduction.t,
   diversifying: UserLevelIntroduction.t,
   researching: UserLevelIntroduction.t,
@@ -230,6 +252,26 @@ let contentEn = {
     level: `Growing`,
     introduction: `Familiar with the basics and looking to get a more robust understanding of OCaml? Or just curious? Check out the books available on OCaml:`,
   },
+  books: [
+    {
+      id: 1,
+      name: `Real World OCaml`,
+      link: `https://dev.realworldocaml.org/`,
+      image: `real-world-ocaml.jpg`,
+    },
+    {
+      id: 2,
+      name: `OCaml from the very beginning`,
+      link: `https://ocaml-book.com/`,
+      image: `oc-beg.png`,
+    },
+    {
+      id: 3,
+      name: `More OCaml: Algorithms, Methods, and Diversions`,
+      link: `https://ocaml-book.com/more-ocaml-algorithms-methods-diversions/`,
+      image: `more-oc.png`,
+    },
+  ],
   expanding: {
     level: `Expanding`,
     introduction: `Have a strong foundation in OCaml? Time to get involved! Prepare by getting familiar with the OCaml Manual:`,
@@ -259,7 +301,7 @@ let make = (~content=contentEn) => <>
   />
   <UserLevelIntroduction content=content.beginning margins=`mb-20` />
   <UserLevelIntroduction content=content.growing margins=`mb-20` />
-  <Books margins=`mb-16` />
+  <Books margins=`mb-16` books=content.books />
   <UserLevelIntroduction content=content.expanding margins=`mb-20` />
   <Manual margins=`mb-20` />
   <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
@@ -267,5 +309,9 @@ let make = (~content=contentEn) => <>
   <UserLevelIntroduction content=content.researching margins=`mb-20` />
   <Papers margins=`mb-16` />
 </>
+
+// add get static props
+// read books from books.yaml
+// hardcoded books sort order and filtering
 
 let default = make
