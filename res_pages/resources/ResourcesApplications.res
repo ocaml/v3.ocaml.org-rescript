@@ -98,17 +98,17 @@ module PlatformTools = {
 }
 
 module UsingOcaml = {
+  type t = {usingOcamlLabel: string, introduction: string, seeMore: string}
+
   @react.component
-  let make = (~margins) =>
+  let make = (~margins, ~content) =>
     // TODO: factor out and define content type
     <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
       <div className="px-4 py-5 sm:py-8 sm:px-24">
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
-          {s(`Using OCaml`)}
+          {s(content.usingOcamlLabel)}
         </h2>
-        <p className="text-center mb-6">
-          {s(`Besides developing in the language and making your own applications, there are many useful tools that already exist in OCaml for you to use.`)}
-        </p>
+        <p className="text-center mb-6"> {s(content.introduction)} </p>
         <div className="grid grid-cols-3 gap-x-16 mb-6">
           <div className="flex justify-center items-center mb-6">
             // TODO: visual indicator that link opens new tab
@@ -143,7 +143,8 @@ module UsingOcaml = {
         </div>
         <p className="text-right font-bold">
           <Link href="/resources/usingocaml">
-            <a className="text-orangedark underline"> {s(`See more >`)} </a>
+            // TODO: descriptive link text
+            <a className="text-orangedark underline"> {s(content.seeMore ++ ` >`)} </a>
           </Link>
         </p>
       </div>
@@ -154,22 +155,11 @@ type prop = {
   title: string,
   pageDescription: string,
   developerGuidesContent: DeveloperGuides.t,
+  usingOcamlContent: UsingOcaml.t,
 }
-
-/*
-let contentEn = {
-  title: `Applications`,
-  pageDescription: `This is where you can find resources for working with the language itself. Whether you're building applications or maintaining libraries, this page has useful information for you.`,
-  developerGuidesContent: {
-    developerGuidesLabel: "Developer Guides",
-    topDeveloperGuide: {id: 1},
-    bottomDeveloperGuide: {id: 2},
-  },
-}
-*/
 
 @react.component
-let make = (~title, ~pageDescription, ~developerGuidesContent) => <>
+let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlContent) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=745%3A1`
     playgroundLink=`/play/resources/applications`
@@ -180,11 +170,12 @@ let make = (~title, ~pageDescription, ~developerGuidesContent) => <>
   <ApiDocumentation margins=`mb-24` />
   <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
   <PlatformTools />
-  <UsingOcaml margins=`mb-16` />
+  <UsingOcaml margins=`mb-16` content=usingOcamlContent />
 </>
 
 let getStaticProps = _ctx => {
   let developerGuides = DeveloperGuide.readAll()
+  let ocamlPoweredSoftare = OcamlPoweredSoftware.readAll()
   // TODO: store ids of highlighted developer guides explicitly
   let title = `Applications`
   let pageDescription = `This is where you can find resources for working with the language itself. Whether you're building applications or maintaining libraries, this page has useful information for you.`
@@ -193,11 +184,18 @@ let getStaticProps = _ctx => {
     topDeveloperGuide: developerGuides[0],
     bottomDeveloperGuide: developerGuides[1],
   }
+  // TODO: store ids of highlighted ocaml powered software explicitly
+
   {
     "props": {
       title: title,
       pageDescription: pageDescription,
       developerGuidesContent: developerGuidesContent,
+      usingOcamlContent: {
+        usingOcamlLabel: `Using OCaml`,
+        introduction: `Besides developing in the language and making your own applications, there are many useful tools that already exist in OCaml for you to use.`,
+        seeMore: `See more`,
+      },
     },
   }
 }
