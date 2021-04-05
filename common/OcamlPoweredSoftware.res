@@ -9,7 +9,7 @@ type t = {
 }
 
 let readAll = () => {
-  let databasePath = "data/developer_guides.yaml"
+  let databasePath = "data/ocaml_powered_software.yaml"
   let fileContents = Fs.readFileSync(databasePath)
   let jsonRes = JsYaml.load(fileContents, ())
   let jsonArr = Js.Option.getExn(Js.Json.decodeArray(jsonRes))
@@ -23,6 +23,7 @@ let readAll = () => {
     let linkDescription = Js.Option.getExn(
       Js.Json.decodeString(Js.Dict.unsafeGet(dict, "linkDescription")),
     )
+
     let image = Js.Option.getExn(Js.Json.decodeString(Js.Dict.unsafeGet(dict, "image")))
     let imageHeight = Js.Option.getExn(Js.Json.decodeString(Js.Dict.unsafeGet(dict, "imageHeight")))
     let description = Js.Option.getExn(Js.Json.decodeString(Js.Dict.unsafeGet(dict, "description")))

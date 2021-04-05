@@ -98,7 +98,14 @@ module PlatformTools = {
 }
 
 module UsingOcaml = {
-  type t = {usingOcamlLabel: string, introduction: string, seeMore: string}
+  type t = {
+    usingOcamlLabel: string,
+    introduction: string,
+    seeMore: string,
+    softwareLeft: OcamlPoweredSoftware.t,
+    softwareMiddle: OcamlPoweredSoftware.t,
+    softwareRight: OcamlPoweredSoftware.t,
+  }
 
   @react.component
   let make = (~margins, ~content) =>
@@ -112,33 +119,43 @@ module UsingOcaml = {
         <div className="grid grid-cols-3 gap-x-16 mb-6">
           <div className="flex justify-center items-center mb-6">
             // TODO: visual indicator that link opens new tab
-            <a href="https://github.com/bcpierce00/unison/wiki/Downloading-Unison" target="_blank">
-              <img className="border-1 h-10" src="/static/unison2.png" alt="Unison Install Guide" />
-            </a>
-          </div>
-          <div className="flex justify-center items-center mb-6">
-            <a href="https://coq.inria.fr/download" target="_blank">
-              <img className="border-1 h-24" src="/static/coq.png" alt="Coq Intall Guide" />
-            </a>
-          </div>
-          <div className="flex justify-center items-center mb-6">
-            <a href="https://www.liquidsoap.info/doc-1.4.4/install.html" target="_blank">
+            <a href=content.softwareLeft.link target="_blank">
               <img
-                className="border-1 h-20" src="/static/liq.png" alt="Liquid Soap Install Guide"
+                className={"border-1 " ++ content.softwareLeft.imageHeight}
+                src={"/static/" ++ content.softwareLeft.image}
+                alt=content.softwareLeft.linkDescription
+              />
+            </a>
+          </div>
+          <div className="flex justify-center items-center mb-6">
+            <a href=content.softwareMiddle.link target="_blank">
+              <img
+                className={"border-1 " ++ content.softwareMiddle.imageHeight}
+                src={"/static/" ++ content.softwareMiddle.image}
+                alt=content.softwareMiddle.linkDescription
+              />
+            </a>
+          </div>
+          <div className="flex justify-center items-center mb-6">
+            <a href=content.softwareRight.link target="_blank">
+              <img
+                className={"border-1 " ++ content.softwareRight.imageHeight}
+                src={"/static/" ++ content.softwareRight.image}
+                alt=content.softwareRight.linkDescription
               />
             </a>
           </div>
           <div>
-            <p className="font-bold text-center mb-2"> {s(`Unison`)} </p>
-            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+            <p className="font-bold text-center mb-2"> {s(content.softwareLeft.name)} </p>
+            <p> {s(content.softwareLeft.description)} </p>
           </div>
           <div>
-            <p className="font-bold text-center mb-2"> {s(`Coq`)} </p>
-            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+            <p className="font-bold text-center mb-2"> {s(content.softwareMiddle.name)} </p>
+            <p> {s(content.softwareMiddle.description)} </p>
           </div>
           <div>
-            <p className="font-bold text-center mb-2"> {s(`Liquidsoap`)} </p>
-            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+            <p className="font-bold text-center mb-2"> {s(content.softwareRight.name)} </p>
+            <p> {s(content.softwareRight.description)} </p>
           </div>
         </div>
         <p className="text-right font-bold">
@@ -184,8 +201,6 @@ let getStaticProps = _ctx => {
     topDeveloperGuide: developerGuides[0],
     bottomDeveloperGuide: developerGuides[1],
   }
-  // TODO: store ids of highlighted ocaml powered software explicitly
-
   {
     "props": {
       title: title,
@@ -195,6 +210,10 @@ let getStaticProps = _ctx => {
         usingOcamlLabel: `Using OCaml`,
         introduction: `Besides developing in the language and making your own applications, there are many useful tools that already exist in OCaml for you to use.`,
         seeMore: `See more`,
+        // TODO: store ids of highlighted ocaml powered software explicitly
+        softwareLeft: ocamlPoweredSoftare[0],
+        softwareMiddle: ocamlPoweredSoftare[1],
+        softwareRight: ocamlPoweredSoftare[2],
       },
     },
   }
