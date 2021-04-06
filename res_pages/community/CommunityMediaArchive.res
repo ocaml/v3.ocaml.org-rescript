@@ -45,24 +45,19 @@ module MediaSection = {
     </div>
 }
 
-type t = {
+type prop = {
   title: string,
   pageDescription: string,
 }
 
-let contentEn = {
-  title: `Media Archive`,
-  pageDescription: `This is where you can find archived videos, slides from talks, and other media produced by people in the OCaml Community.`,
-}
-
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~title, ~pageDescription) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
     playgroundLink=`/play/resources/mediaarchive`
   />
   <div className="max-w-3xl mx-auto">
-    <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
+    <TitleHeading.Large title pageDescription />
     <MediaSection
       content={
         MediaSection.title: `Videos`,
@@ -83,5 +78,11 @@ let make = (~content=contentEn) => <>
     />
   </div>
 </>
+
+let getStaticProps = _ctx => {
+  let title = `Media Archive`
+  let pageDescription = `This is where you can find archived videos, slides from talks, and other media produced by people in the OCaml Community.`
+  {"props": {title: title, pageDescription: pageDescription}}
+}
 
 let default = make
