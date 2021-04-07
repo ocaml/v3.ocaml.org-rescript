@@ -90,7 +90,7 @@ let default = make
 
 let getStaticProps = _ctxt => {
   let x =
-    "res_pages/Milestones.yaml"
+    "data/milestones.yaml"
     ->Fs.readFileSync
     ->yamlParse(~options=None, ())
     ->Js.Json.decodeObject
