@@ -44,17 +44,12 @@ approach before diving in, please create an issue and pose questions.
 out the branch that you created.
 * Continue developing, feel free to ask questions in
 the PR, if you run into obstacles or uncertainty as you make changes
-* Once you feel your branch is ready, check the PR preview to ensure the changes
-match your local view and appear correct
 * Review your implementation according to the checks noted in the PR template
-* Perform the following manual smoke test: ...
-* Change PR status to "ready to review"
-* Update the PR description to indicate relative paths that have changed
+* Once you feel your branch is ready, change PR status to "ready to review"
 
 ### Reviewer
 
-* Observe the relative paths changed in latest PR Preview
-* ... MORE CONTENT HERE ...
+* Consult the tasks noted in the PR template
 * When merging, consider cleaning up the commit body
 * Close any issues that were addressed by this PR
 
