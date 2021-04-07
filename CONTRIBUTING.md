@@ -1,6 +1,26 @@
 # Contributing to next.ocaml.org
 
-## Issue workflow
+## Code of Conduct
+
+Before participating in the project, please review our [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Ways to get involved
+
+* fix or suggest content - start by filing an issue
+* implement pages - search through existing issues to find out what pages are planned for upcoming implementation
+* contribute to site build process - search through existing issues or file an issue suggesting improvements
+
+## Content workflow
+
+...
+
+### Design and Information Architecture
+
+[Sitemap and information architecture on flowmap](https://app.flowmapp.com/share/6e5eeb4573f9e110ac779691fee85422/sitemap/)
+
+Design - Uses Figma, currently managed by designer. Discussion of both design and content is managed with Figma commenting system.
+
+## Implementation Issue workflow
 
 ### Contributor
 
@@ -38,34 +58,6 @@ match your local view and appear correct
 * Use "squash and merge", summarizing commit messages
 * Close any issues that were addressed by this PR
 
-## Setup and Development
-
-If you don't already have `nvm` installed, [install it using the instructions
-provided by `nvm`](https://github.com/nvm-sh/nvm#installing-and-updating). Restart
-or reload your terminal to pickup the changes.
-
-Install node and javascript libraries and tools:
-
-```
-make install-deps
-```
-
-Run ReScript compiler in watch mode:
-
-```
-make rescript-watch
-```
-
-In another tab, run the Next dev server:
-
-```
-make next-dev
-```
-
-The output from the next dev server is rarely interesting, so you might save some
-real estate by running the command in the background. This frees up the second terminal for performing `git` commands.
-
-Go to `http://localhost:3000`
 
 ## Tips
 
@@ -104,34 +96,36 @@ TODO: change this to use `export` and `start` with output dir, instead of `start
 nvm install && npx yarn@1.22 install && npx yarn@1.22 build && PORT=3001 npx yarn@1.22 next:start
 ```
 
-## Reference
+## Setup and Development
 
-This is a NextJS project using the following:
+If you don't already have `nvm` installed, [install it using the instructions
+provided by `nvm`](https://github.com/nvm-sh/nvm#installing-and-updating). Restart
+or reload your terminal to pickup the changes.
 
-- [ReScript](https://rescript-lang.org) + React (reason-react)
-- Full Tailwind config & basic css scaffold
-- Mdxjs (via next-mdx-remote)
+Install node and javascript libraries and tools:
 
-The initial structure was defined by imitating a combination of choices in the following projects, with
-rescriptlang.org taking precedence when there was conflicting advice:
+```
+make install-deps
+```
 
-- [rescript-nextjs starter](https://github.com/ryyppy/rescript-nextjs-template)
-- [rescript-lang.org website](https://github.com/reason-association/rescript-lang.org)
-- [nextjs tailwind example](https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss)
-- [nextjs mdxjs example using mdx-remote](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote)
-- (add more links: ...)
+Run ReScript compiler in watch mode:
 
-Some other useful reference articles:
-- [Markdown rendering approaches in nextjs](https://nextjs.org/blog/markdown)
-- [Utility-first CSS advocacy](https://www.swyx.io/why-tailwind/)
-- [2020 State of CSS - framework results](https://2020.stateofcss.com/en-US/technologies/css-frameworks/)
-- (add more links: ... React-static and 11ty's assessment of static site tools, 
-nextjs vs gatsby starter discussion, other static site comparisons, markdown vs jsx, 
-Yaml/front matter/git based headless cms, accessibility intros, Vercel vs Netlify notes, 
-Mdxjs vs markdown, rehype vs mdxjs)
+```
+make rescript-watch
+```
 
-## Design and Information Architecture
+In another tab, run the Next dev server:
 
-[Sitemap and information architecture on flowmap](https://app.flowmapp.com/share/6e5eeb4573f9e110ac779691fee85422/sitemap/)
+```
+make next-dev
+```
 
-Design - Uses Figma, currently managed by designer. Discussion of both design and content is managed with Figma commenting system.
+The output from the next dev server is rarely interesting, so you might save some
+real estate by running the command in the background. This frees up the second terminal for performing `git` commands.
+
+Go to `http://localhost:3000`
+
+## Architecture
+
+We have prepared some diagrams and explanations to orient new developers. The site expands upon the default build process in NextJS to accomodate more sophisticated markdown transformations.
+
