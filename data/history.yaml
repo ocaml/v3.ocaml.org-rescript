@@ -15,5 +15,5 @@ timeline:
     description: "The website is actively developed by Christophe Troestler, Ashish Agarwal, Esther Baruk, and 10 other volunteers. Anil Madhavapeddy sets up hosting infrastructure. Virtually all pages on caml.inria.fr are ported. Also, over 30 tutorials in 7 languages from two other sites, ocaml-tutorial.org and cocan.org, are ported. Many thanks to Richard Jones for building that valuable content over many years and approving their move to ocaml.org. Also thanks to Sylvain Le Gall for providing archived copies of this content."
   - date: "Apr 15, 2011"
     description: "Ashish Agarwal proposes a new website for the OCaml community at a presentation in Paris. The next day, Christophe Troestler begins the implementation. Ashish also asks that we unify on the name of the language. Everyone unanimously agrees that the name should be “OCaml” with a capital O and capital C."
-  - date: "1998? - Dec 2012"
+  - date: "2000 - Dec 2012"
     description: "The domain ocaml.org redirects to caml.inria.fr."
