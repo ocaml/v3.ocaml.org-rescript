@@ -1,3 +1,5 @@
+module Link = Next.Link
+
 let s = React.string
 
 module ApiDocumentation = {
@@ -10,9 +12,11 @@ module ApiDocumentation = {
         <p className="mt-1 mb-8">
           {s(`Visit our page for API Documentation in OCaml for a concise reference manual with all the information you need to work with the OCaml API.`)}
         </p>
+        //TODO: add visual indicator that link is opening new tab
         <a
-          href="#"
-          className="inline-flex items-center px-14 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-yellow-800">
+          href="https://docs.mirage.io/"
+          target="_blank"
+          className="inline-flex items-center px-14 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker">
           {s(`Visit Docs.ocaml.org`)}
         </a>
       </div>
@@ -21,34 +25,52 @@ module ApiDocumentation = {
 }
 
 module DeveloperGuides = {
+  type t = {
+    developerGuidesLabel: string,
+    topDeveloperGuide: DeveloperGuide.t,
+    bottomDeveloperGuide: DeveloperGuide.t,
+  }
+
   @react.component
-  let make = (~margins) =>
+  let make = (~margins, ~content) =>
     <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
       <div className="px-4 py-5 sm:p-6">
         // TODO: factor out and define content type
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
-          {s(`Developer Guides`)}
+          {s(content.developerGuidesLabel)}
         </h2>
         <div className="flex mb-11">
           <div>
-            <h4 className="text-base font-bold mb-3"> {s(`Mirage OS`)} </h4>
-            <p className="mt-1">
-              {s(`Mirage OS Unikernels lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at tristique odio. Etiam sodales porta lectus ac malesuada. Proin in odio ultricies, faucibus ligula ut`)}
-            </p>
+            <h4 className="text-base font-bold mb-3">
+              // TODO: visual indicator that link is opening new tab
+              <a className="hover:underline" href=content.topDeveloperGuide.link target="_blank">
+                {s(content.topDeveloperGuide.name)}
+              </a>
+            </h4>
+            <p className="mt-1"> {s(content.topDeveloperGuide.description)} </p>
           </div>
-          <div className="ml-7 flex-shrink-0">
-            <img className="h-32" src="/static/app-image.png" />
+          <div className="ml-10 flex-shrink-0">
+            <img
+              className=content.topDeveloperGuide.imageHeight
+              src={"/static/" ++ content.topDeveloperGuide.image}
+            />
           </div>
         </div>
         <div className="flex mb-11">
           <div className="mr-10 flex-shrink-0">
-            <img className="h-24" src="/static/jvs.png" />
+            <img
+              className=content.bottomDeveloperGuide.imageHeight
+              src={"/static/" ++ content.bottomDeveloperGuide.image}
+            />
           </div>
           <div>
-            <h4 className="text-base font-bold mb-3"> {s(`JS_of_OCaml`)} </h4>
-            <p className="mt-1">
-              {s(`Browser programming dolor sit amet, consectetur adipiscing elit. Integer at tristique odio. Etiam sodales porta lectus ac maleuada. Proin in odio ultricies, faucibus ligula ut`)}
-            </p>
+            <h4 className="text-base font-bold mb-3">
+              // TODO: visual indicator that link is opening new tab
+              <a className="hover:underline" href=content.bottomDeveloperGuide.link target="_blank">
+                {s(content.bottomDeveloperGuide.name)}
+              </a>
+            </h4>
+            <p className="mt-1"> {s(content.bottomDeveloperGuide.description)} </p>
           </div>
         </div>
       </div>
@@ -65,83 +87,136 @@ module PlatformTools = {
         {s(`The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`)}
       </p>
       <div className="flex justify-center">
-        <a
-          href="#"
-          className="mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-white text-base font-medium rounded-md bg-orangedark hover:bg-yellow-800 sm:w-auto">
-          {s(`Visit Docs.ocaml.org`)}
-        </a>
+        <Link href="/resources/platform">
+          <a
+            className="mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-white text-base font-medium rounded-md bg-orangedark hover:bg-orangedarker sm:w-auto">
+            {s(`Visit Platform Tools`)}
+          </a>
+        </Link>
       </div>
     </div>
 }
 
 module UsingOcaml = {
+  type t = {
+    usingOcamlLabel: string,
+    introduction: string,
+    seeMore: string,
+    softwareLeft: OcamlPoweredSoftware.t,
+    softwareMiddle: OcamlPoweredSoftware.t,
+    softwareRight: OcamlPoweredSoftware.t,
+  }
+
   @react.component
-  let make = (~margins) =>
+  let make = (~margins, ~content) =>
     // TODO: factor out and define content type
     <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
       <div className="px-4 py-5 sm:py-8 sm:px-24">
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
-          {s(`Using OCaml`)}
+          {s(content.usingOcamlLabel)}
         </h2>
-        <p className="text-center mb-6">
-          {s(`Besides developing in the language and making your own applications, there are many useful tools that already exist in OCaml for you to use.`)}
-        </p>
+        <p className="text-center mb-6"> {s(content.introduction)} </p>
         <div className="grid grid-cols-3 gap-x-16 mb-6">
           <div className="flex justify-center items-center mb-6">
-            <img className="border-1 h-10" src="/static/unison2.png" />
+            // TODO: visual indicator that link opens new tab
+            <a href=content.softwareLeft.link target="_blank">
+              <img
+                className={"border-1 " ++ content.softwareLeft.imageHeight}
+                src={"/static/" ++ content.softwareLeft.image}
+                alt=content.softwareLeft.linkDescription
+              />
+            </a>
           </div>
           <div className="flex justify-center items-center mb-6">
-            <img className="border-1 h-24" src="/static/coq.png" />
+            <a href=content.softwareMiddle.link target="_blank">
+              <img
+                className={"border-1 " ++ content.softwareMiddle.imageHeight}
+                src={"/static/" ++ content.softwareMiddle.image}
+                alt=content.softwareMiddle.linkDescription
+              />
+            </a>
           </div>
           <div className="flex justify-center items-center mb-6">
-            <img className="border-1 h-20" src="/static/liq.png" />
+            <a href=content.softwareRight.link target="_blank">
+              <img
+                className={"border-1 " ++ content.softwareRight.imageHeight}
+                src={"/static/" ++ content.softwareRight.image}
+                alt=content.softwareRight.linkDescription
+              />
+            </a>
           </div>
           <div>
-            <p className="font-bold text-center mb-2"> {s(`Unison`)} </p>
-            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+            <p className="font-bold text-center mb-2"> {s(content.softwareLeft.name)} </p>
+            <p> {s(content.softwareLeft.description)} </p>
           </div>
           <div>
-            <p className="font-bold text-center mb-2"> {s(`Coq`)} </p>
-            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+            <p className="font-bold text-center mb-2"> {s(content.softwareMiddle.name)} </p>
+            <p> {s(content.softwareMiddle.description)} </p>
           </div>
           <div>
-            <p className="font-bold text-center mb-2"> {s(`Liquidsoap`)} </p>
-            <p> {s(`Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.`)} </p>
+            <p className="font-bold text-center mb-2"> {s(content.softwareRight.name)} </p>
+            <p> {s(content.softwareRight.description)} </p>
           </div>
         </div>
         <p className="text-right font-bold">
-          <a className="text-orangedark underline"> {s(`See more >`)} </a>
+          <Link href="/resources/usingocaml">
+            // TODO: descriptive link text
+            <a className="text-orangedark underline"> {s(content.seeMore ++ ` >`)} </a>
+          </Link>
         </p>
       </div>
     </div>
 }
 
-type t = {
+type prop = {
   title: string,
   pageDescription: string,
-}
-
-let contentEn = {
-  title: `Applications`,
-  pageDescription: `This is where you can find resources for working with the language itself. Whether you're building applications or maintaining libraries, this page has useful information for you.`,
+  developerGuidesContent: DeveloperGuides.t,
+  usingOcamlContent: UsingOcaml.t,
 }
 
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlContent) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=745%3A1`
     playgroundLink=`/play/resources/applications`
   />
-  <TitleHeading.LandingTitleHeading
-    title=content.title
-    pageDescription=content.pageDescription
-    marginTop=`mt-1`
-    marginBottom=`mb-24`
+  <TitleHeading.Large
+    title pageDescription marginTop=`mt-1` marginBottom=`mb-24` addBottomBar=true
   />
   <ApiDocumentation margins=`mb-24` />
-  <DeveloperGuides margins=`mb-2` />
+  <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
   <PlatformTools />
-  <UsingOcaml margins=`mb-16` />
+  <UsingOcaml margins=`mb-16` content=usingOcamlContent />
 </>
+
+let getStaticProps = _ctx => {
+  let developerGuides = DeveloperGuide.readAll()
+  let ocamlPoweredSoftare = OcamlPoweredSoftware.readAll()
+  // TODO: store ids of highlighted developer guides explicitly
+  let title = `Applications`
+  let pageDescription = `This is where you can find resources for working with the language itself. Whether you're building applications or maintaining libraries, this page has useful information for you.`
+  let developerGuidesContent = {
+    DeveloperGuides.developerGuidesLabel: "Developer Guides",
+    topDeveloperGuide: developerGuides[0],
+    bottomDeveloperGuide: developerGuides[1],
+  }
+  {
+    "props": {
+      title: title,
+      pageDescription: pageDescription,
+      developerGuidesContent: developerGuidesContent,
+      usingOcamlContent: {
+        usingOcamlLabel: `Using OCaml`,
+        introduction: `Besides developing in the language and making your own applications, there are many useful tools that already exist in OCaml for you to use.`,
+        seeMore: `See more`,
+        // TODO: store ids of highlighted ocaml powered software explicitly
+        softwareLeft: ocamlPoweredSoftare[0],
+        softwareMiddle: ocamlPoweredSoftare[1],
+        softwareRight: ocamlPoweredSoftare[2],
+      },
+    },
+  }
+}
 
 let default = make
