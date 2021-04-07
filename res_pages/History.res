@@ -53,7 +53,6 @@ type props = {
 }
 
 let make = props => <>
-  <Milestones />
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/Vha4bcBvNVrjyLmAEDgZ1x/History-Timeline?node-id=14%3A5`
   />
