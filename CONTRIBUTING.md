@@ -36,9 +36,9 @@ approach before diving in, please create an issue and pose questions.
       * Make a small change in the edit window
       * Select "Commit directly ..." and click "Commit changes"
   * Create a pull request using one of the following links, using the template which matches the type of change you are making. In the URL, replace "BRANCH" with your branch name.
-       * Create or update the implementation of a webpage: https://github.com/solvuu-inc/ocamlorg2/compare/BRANCH?expand=1&template=webpage_implement.md 
-       * Create a mockup page for a new design pull request template: https://github.com/solvuu-inc/ocamlorg2/compare/BRANCH?expand=1&template=mockup_webpage.md
-       * Perform an ecosystem upgrade pull request template: https://github.com/solvuu-inc/ocamlorg2/compare/BRANCH?expand=1&template=ecosystem_upgrade.md
+       * Create or update the implementation of a webpage: https://github.com/solvuu-inc/next.ocaml.org/compare/BRANCH?expand=1&template=webpage_implement.md 
+       * Create a mockup page for a new design pull request template: https://github.com/solvuu-inc/next.ocaml.org/compare/BRANCH?expand=1&template=mockup_webpage.md
+       * Perform an ecosystem upgrade pull request template: https://github.com/solvuu-inc/next.ocaml.org/compare/BRANCH?expand=1&template=ecosystem_upgrade.md
   * Change the action to "Create draft pull request" and press the button
 * Clone the repo locally (or continue editing directly in github if the change is small). Checkout
 out the branch that you created.
@@ -46,8 +46,8 @@ out the branch that you created.
 the PR, if you run into obstacles or uncertainty as you make changes
 * Once you feel your branch is ready, check the PR preview to ensure the changes
 match your local view and appear correct
-* Review your implementation according to the checks notes in the PR template
-* Perform the following manual smoke test: 
+* Review your implementation according to the checks noted in the PR template
+* Perform the following manual smoke test: ...
 * Change PR status to "ready to review"
 * Update the PR description to indicate relative paths that have changed
 
@@ -55,9 +55,8 @@ match your local view and appear correct
 
 * Observe the relative paths changed in latest PR Preview
 * ... MORE CONTENT HERE ...
-* Use "squash and merge", summarizing commit messages
+* When merging, consider cleaning up the commit body
 * Close any issues that were addressed by this PR
-
 
 ## Tips
 
