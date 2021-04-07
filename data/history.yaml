@@ -1,5 +1,5 @@
-title: Milestones
-pageDescription: "This page has a timeline."
+title: History
+pageDescription: "A history of ocaml.org."
 timeline:
   - date: "Nov 2020"
     description: "A team of programmers, designers, and content writers begins working full-time on a new implementation."
