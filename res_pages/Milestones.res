@@ -6,6 +6,7 @@ module Section = {
     </div>
   }
 }
+
 module Timeline = {
   module Item = {
     type t = {date: string, description: string}
@@ -15,7 +16,7 @@ module Timeline = {
   @react.component
   let make = (~content: t) => {
     let item = ({Item.date: date, description}, idx) => {
-      let color = "bg-yellow-500"
+      let color = "bg-yellowdark"
 
       let verticalBar =
         <span className={`absolute top-5 left-5 ml-0.5 h-full w-0.5 ${color}`} ariaHidden=true />
@@ -45,50 +46,41 @@ module Timeline = {
   }
 }
 
+module Progress = {
+  let percent_complete = "30%"
+
+  @react.component
+  let make = () => {
+    <div className="flex flex-col md:flex-row items-center text-center bg-yellowdark text-white">
+      <div className="w-full md:w-3/12 font-bold text-2xl">
+        {React.string("The next OCaml.org")}
+      </div>
+      <div className="w-full md:w-8/12">
+        <div className="h-4 relative rounded-full overflow-hidden ring-8 ring-white m-8">
+          <div className="w-full h-full bg-white absolute" />
+          <div
+            className="h-full rounded-full bg-yellowdark absolute"
+            style={ReactDOM.Style.make(~width="30%", ())}
+          />
+        </div>
+      </div>
+      <div className="w-full md:w-1/12 font-bold text-2xl"> {React.string("30%")} </div>
+    </div>
+  }
+}
+
 type props = {
   title: string,
   pageDescription: string,
   timeline: Timeline.t,
 }
 
-module StatBox = {
-  @react.component
-  let make = (~label, ~statValue, ~borderSizes) =>
-    <div className={`flex flex-col border-gray-100 py-16 px-4 text-center ` ++ borderSizes}>
-      <dt className="order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70">
-        {React.string(label)}
-      </dt>
-      <dd className="order-1 text-5xl font-extrabold text-orangedark">
-        {React.string(statValue)}
-      </dd>
-    </div>
-}
-
-module ProgressBar = {
-  @react.component
-  let make = () => {
-    <div className="mt-10 pb-12 sm:pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={"max-w-4xl mx-auto"}>
-          <dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
-            <StatBox
-              label="percent complete"
-              statValue="30%"
-              borderSizes=`border-b sm:border-0 sm:border-r`
-            />
-          </dl>
-        </div>
-      </div>
-    </div>
-  }
-}
-
 let make = props => <>
+  <Progress />
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/Vha4bcBvNVrjyLmAEDgZ1x/History-Timeline?node-id=14%3A5`
   />
   <TitleHeading title=props.title pageDescription=props.pageDescription />
-  <ProgressBar />
   <Timeline content=props.timeline />
 </>
 
