@@ -1,12 +1,3 @@
-module Section = {
-  @react.component
-  let make = (~children) => {
-    <div className="col-span-9 lg:col-span-7 relative py-16 bg-graylight overflow-hidden">
-      <div className="relative px-4 sm:px-6 lg:px-8"> children </div>
-    </div>
-  }
-}
-
 module Timeline = {
   module Item = {
     type t = {date: string, description: string}

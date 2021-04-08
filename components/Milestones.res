@@ -3,10 +3,8 @@ let percent_complete = "30%"
 module Progress = {
   @react.component
   let make = () =>
-    <div className="flex flex-col md:flex-row items-center text-center bg-yellowdark text-white">
-      <div className="w-full md:w-3/12 font-bold text-2xl">
-        {React.string("The next OCaml.org")}
-      </div>
+    <div className="flex flex-col md:flex-row items-center text-center text-white">
+      <div className="w-full md:w-3/12 font-bold text-2xl"> {React.string("OCaml.org v3")} </div>
       <div className="w-full md:w-8/12">
         <div className="h-4 relative rounded-full overflow-hidden ring-8 ring-white m-8">
           <div className="w-full h-full bg-white absolute" />
@@ -130,12 +128,32 @@ let props: props = {
 
 @react.component
 let make = () => {
-  <>
+  let (hidden, setHidden) = React.useState(_ => true)
+
+  let pt = 0
+  let pb = switch hidden {
+  | true => 0
+  | false => 8
+  }
+
+  <Section bgColor="yellowdark" pt pb>
     <Progress />
-    <div className="col-span-9 lg:col-span-7 relative py-2 pb-6 pb bg-yellowdark overflow-hidden">
-      <div className="relative px-4 sm:px-6 lg:px-8"> <Table items=props.items /> </div>
+    <div className="flex flex-col items-center">
+      <button
+        type_="button"
+        className="inline-flex items-center py-0 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-yellowdark"
+        onClick={_ => setHidden(x => !x)}>
+        {React.string("See more v")}
+      </button>
     </div>
-  </>
+    <div
+      className={switch hidden {
+      | true => "hidden"
+      | false => ""
+      }}>
+      <Table items=props.items />
+    </div>
+  </Section>
 }
 
 let default = make
