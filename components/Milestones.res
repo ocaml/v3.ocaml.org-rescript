@@ -141,7 +141,7 @@ let make = () => {
     <div className="flex flex-col items-center">
       <button
         type_="button"
-        className="inline-flex items-center py-0 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-yellowdark"
+        className="inline-flex items-center pt-0 pb-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-yellowdark focus:outline-none"
         onClick={_ => setHidden(x => !x)}>
         {React.string("See more v")}
       </button>
