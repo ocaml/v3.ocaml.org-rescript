@@ -24,7 +24,7 @@ ci-install-deps:
 	# nvm install
 	# nvm use
 	npm config set user root
-	npm install -g esy@0.6.7
+	npm install -g esy@0.6.10
 	npx yarn@1.22 install
 	esy install && esy build true
 
