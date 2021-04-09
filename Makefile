@@ -5,8 +5,9 @@ NVM=source $$NVM_DIR/nvm.sh && nvm
 install-deps:
 	# install node version, if not already present
 	$(NVM) install
+	$(NVM) use && npm install -g esy@0.6.8
 	# install js library dependencies and build tools for ocaml
-	$(NVM) use && npx yarn@1.22 install && npx esy@0.6.8
+	$(NVM) use && npx yarn@1.22 install && esy install && esy build true
 
 .PHONY: rescript-watch
 rescript-watch:
@@ -22,9 +23,10 @@ ci-install-deps:
 	# need to setup NVM_DIR and source nvm.sh here
 	# nvm install
 	# nvm use
-	# installing (or using) esy encounters permission error
-	# npm install -g esy@0.6.7 # for eventually dune install
+	npm config set user root
+	npm install -g esy@0.6.7
 	npx yarn@1.22 install
+	esy install && esy build true
 
 .PHONY: ci-build
 ci-build:
