@@ -2,7 +2,7 @@
 
 ## Code of Conduct
 
-Before participating in the project, please review our [Code of Conduct](CODE_OF_CONDUCT.md).
+Coming soon...
 
 ## Ways to get involved
 
