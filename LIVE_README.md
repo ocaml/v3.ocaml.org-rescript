@@ -6,20 +6,24 @@
 
 This project implements the ocaml.org website, which serves a hub of marketing information, as well as curated community information and documentation resources.
 
-## Reporting issues
-
-If you come across a bug or a mistake in content, please create an issue. If you want to get involved in suggesting content or contributing to the site implementation, please start with the [Contributing](#contributing) section below.
-
-## Contributing
-
-Please see the [contribution guide](CONTRIBUTING.md) for information on how to
-build and contribute content.
-
 ## Related Projects
 
 If you are looking for the OCaml implementation, you can find it at ...
 
 If you are looking for the opam website implementation, you can find it at ...
+
+## Reporting Issues
+
+If you come across a bug or a mistake in content, please create an issue. If you want to get involved in suggesting content or contributing to the site implementation, please start with the [Contributing](#contributing) section below.
+
+## Roadmap
+
+...
+
+## Contributing
+
+Please see the [contribution guide](CONTRIBUTING.md) for information on how to
+build and contribute content.
 
 ## Deployment Status
 
