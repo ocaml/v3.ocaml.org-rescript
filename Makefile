@@ -25,6 +25,7 @@ ci-install-deps:
 	# nvm use
 	npm config set user root
 	npm install -g esy@0.6.8
+	yum install glibc-devel
 	npx yarn@1.22 install
 	esy install && esy build true
 
