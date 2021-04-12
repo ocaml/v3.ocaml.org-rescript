@@ -55,7 +55,12 @@ type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
+@module("child_process") external execFileSync: string => string = "execFileSync"
+
 let getStaticProps = ctx => {
+  let out = execFileSync("pwd")
+  Js.log(out)
+
   let params = ctx.Next.GetStaticProps.params
   let contentFilePath = "res_pages/resources/" ++ params.Params.tutorial ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)

@@ -13,10 +13,12 @@ const config = {
   webpack: (config, options) => {
     const { isServer } = options;
     if (!isServer) {
-      // We shim fs for things like the blog slugs component
-      // where we need fs access in the server-side part
       config.node = {
-        fs: 'empty'
+        // We shim fs for things like the blog slugs component
+        // where we need fs access in the server-side part
+        fs: 'empty',
+
+        child_process: 'empty'
       }
     }
     return config
