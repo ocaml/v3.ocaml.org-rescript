@@ -324,14 +324,6 @@ let getStaticProps = _ctx => {
 
   let contentPath = "res_pages/community/aroundweb.yaml"
   let fileContents = Fs.readFileSync(contentPath)
-  /*
-  let jsonRes = JsYaml.load(fileContents, ())
-  let dict = Js.Option.getExn(Js.Json.decodeObject(jsonRes))
-  let jsonArr = Js.Option.getExn(Js.Json.decodeArray(Js.Dict.unsafeGet(dict, "spaces")))
-  let spaces = Js.Array.map(o => {
-    Js.Option.getExn(Js.Json.decodeString(o))
-  }, jsonArr)
- */
   let pageContent = load(fileContents, ())
   forceInvalidException(pageContent)
 
