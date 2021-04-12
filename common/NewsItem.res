@@ -6,7 +6,7 @@ type t = {
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => array<t> = "load"
 
-let forceInvalidException = n => {
+let forceInvalidException: JsYaml.forceInvalidException<t> = n => {
   let _ = (Js.Int.toString(n.id), Js.String.length(n.link), Js.String.length(n.title))
 }
 

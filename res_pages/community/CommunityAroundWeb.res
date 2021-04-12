@@ -315,7 +315,7 @@ type pageContent = {spaces: array<string>}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
-let forceInvalidException = c => {
+let forceInvalidException: JsYaml.forceInvalidException<pageContent> = c => {
   let _ = Js.Array.map(Js.String.length, c.spaces)
 }
 
