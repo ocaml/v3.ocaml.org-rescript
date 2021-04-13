@@ -55,16 +55,20 @@ type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
-type buffer
-@module("buffer") external toString: buffer => string = "toString"
+// type buffer
+// @module("buffer") external toString: (buffer, string) => string = "toString"
 
-@module("child_process") external execFileSync: string => buffer = "execFileSync"
+type execOptions = {encoding: string}
+
+@module("child_process")
+external execFileSync: (string, array<string>, execOptions) => string = "execFileSync"
 
 let getStaticProps = ctx => {
-  let out = execFileSync("pwd")
+  // NOTE: providing encoding parameter to force a string to be returned because I
+  //  didn't want to dig further into why Buffer.toString wasn't working as expected
+  let out = execFileSync("pwd", [], {encoding: `utf8`})
   // Js.log(out) // TODO: bind to buffer and read result
-  let outStr = toString(out)
-  Js.log(outStr)
+  Js.log(out)
 
   let params = ctx.Next.GetStaticProps.params
   let contentFilePath = "res_pages/resources/" ++ params.Params.tutorial ++ ".md"
