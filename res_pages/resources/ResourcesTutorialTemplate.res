@@ -66,7 +66,11 @@ external execFileSync: (string, array<string>, execOptions) => string = "execFil
 let getStaticProps = ctx => {
   // NOTE: providing encoding parameter to force a string to be returned because I
   //  didn't want to dig further into why Buffer.toString wasn't working as expected
-  let out = execFileSync("pwd", [], {encoding: `utf8`})
+  let out = execFileSync(
+    "esy",
+    ["x", "ocaml-mdx", "test", "-o", "-", "test-mdx.md"],
+    {encoding: `utf8`},
+  )
   Js.log(out)
 
   let params = ctx.Next.GetStaticProps.params
