@@ -13,13 +13,8 @@
     "buildEnv": {},
     "buildsInSource": "_build"
   },
-  "scripts": {
-    "runtest-unit": "esy dune runtest"
-  },
-  "dependencies": {
-    "mdx": "^0.3.1",
-    "ocaml": "*"
-  },
+  "scripts": { "runtest-unit": "esy dune runtest" },
+  "dependencies": { "@opam/mdx": "1.8.1", "ocaml": "*" },
   "devDependencies": {},
   "devdf": {
     "ocaml": "4.12.0",
