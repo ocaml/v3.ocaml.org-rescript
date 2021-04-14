@@ -6,15 +6,20 @@
   "license": "ISC",
   "description": "Solvuu root",
   "esy": {
-    "build": "echo hi",
-    "buildDev": "echo hello",
+    "build": "true",
+    "buildDev": "true",
     "buildx": "dune build --root #{self.root} --profile=release @install",
     "buildDevx": "dune build --root #{self.root} --profile=dev @all",
     "buildEnv": {},
     "buildsInSource": "_build"
   },
-  "scripts": { "runtest-unit": "esy dune runtest" },
-  "dependencies": { "@opam/mdx": "1.8.1", "ocaml": "*" },
+  "scripts": {
+    "runtest-unit": "esy dune runtest"
+  },
+  "dependencies": {
+    "@opam/mdx": "1.8.1",
+    "ocaml": "*"
+  },
   "devDependencies": {},
   "devdf": {
     "ocaml": "4.12.0",
