@@ -8,8 +8,6 @@
   "esy": {
     "build": "true",
     "buildDev": "true",
-    "buildx": "dune build --root #{self.root} --profile=release @install",
-    "buildDevx": "dune build --root #{self.root} --profile=dev @all",
     "buildEnv": {},
     "buildsInSource": "_build"
   },
