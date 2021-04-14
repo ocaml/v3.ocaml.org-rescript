@@ -68,7 +68,7 @@ let getStaticProps = ctx => {
   //  didn't want to dig further into why Buffer.toString wasn't working as expected
   let out = execFileSync(
     "esy",
-    ["x", "ocaml-mdx", "test", "-o", "-", "test-mdx.md"],
+    ["x", "ocaml-mdx", "test", "-o", "-", "test-mdx-large.md"],
     {encoding: `utf8`},
   )
   Js.log(out)
