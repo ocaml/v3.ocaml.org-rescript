@@ -11,10 +11,11 @@ let contentEn = {
 }
 
 @react.component
-let make = (~content=contentEn) =>
-  <MainContainer.None>
-    <ConstructionBanner />
+let make = (~content=contentEn) => <>
+  <ConstructionBanner />
+  <MainContainer.Centered>
     <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
-  </MainContainer.None>
+  </MainContainer.Centered>
+</>
 
 let default = make

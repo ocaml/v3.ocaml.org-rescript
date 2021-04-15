@@ -57,19 +57,18 @@ type prop = {
 }
 
 @react.component
-let make = (~title, ~pageDescription, ~videosContent, ~talksContent, ~papersContent) =>
-  <MainContainer.None>
-    <ConstructionBanner
-      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
-      playgroundLink=`/play/resources/mediaarchive`
-    />
-    <div className="max-w-3xl mx-auto">
-      <TitleHeading.Large title pageDescription />
-      <MediaSection content=videosContent />
-      <MediaSection content=talksContent />
-      <MediaSection content=papersContent />
-    </div>
-  </MainContainer.None>
+let make = (~title, ~pageDescription, ~videosContent, ~talksContent, ~papersContent) => <>
+  <ConstructionBanner
+    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
+    playgroundLink=`/play/resources/mediaarchive`
+  />
+  <MainContainer.NarrowCentered>
+    <TitleHeading.Large title pageDescription />
+    <MediaSection content=videosContent />
+    <MediaSection content=talksContent />
+    <MediaSection content=papersContent />
+  </MainContainer.NarrowCentered>
+</>
 
 let getStaticProps = _ctx => {
   // TODO: define and read highlight items for each list

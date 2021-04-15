@@ -217,12 +217,12 @@ type t = {
 type props = {content: t}
 
 @react.component
-let make = (~content) =>
+let make = (~content) => <>
+  <ConstructionBanner
+    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1085%3A121`
+    playgroundLink=`/play/resources/language`
+  />
   <MainContainer.None>
-    <ConstructionBanner
-      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1085%3A121`
-      playgroundLink=`/play/resources/language`
-    />
     <TitleHeading.Large
       title=content.title
       pageDescription=content.pageDescription
@@ -240,6 +240,7 @@ let make = (~content) =>
     <UserLevelIntroduction content=content.researching margins=`mb-20` />
     <Papers margins=`mb-16` />
   </MainContainer.None>
+</>
 
 let getStaticProps = _ctx => {
   let books = Book.readAll()

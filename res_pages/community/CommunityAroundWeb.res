@@ -97,12 +97,12 @@ type t = {
 type props = {content: t}
 
 @react.component
-let make = (~content) =>
+let make = (~content) => <>
+  <ConstructionBanner
+    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1040%3A104`
+    playgroundLink=`/play/community/aroundweb`
+  />
   <MainContainer.None>
-    <ConstructionBanner
-      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1040%3A104`
-      playgroundLink=`/play/community/aroundweb`
-    />
     <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
     <div className="bg-orangedark mb-16">
       <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
@@ -311,6 +311,7 @@ let make = (~content) =>
       </div>
     </div>
   </MainContainer.None>
+</>
 
 type pageContent = {spaces: array<string>}
 

@@ -14,12 +14,17 @@ module Large = {
     ~pageDescription,
     ~marginTop="",
     ~marginBottom="",
+    ~addMaxWidth=false,
     ~addBottomBar=false,
     ~callToAction=?,
     (),
   ) => <>
     // TODO: make addBottomBar and callToAction mutually exclusive
-    <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <div
+      className={switch addMaxWidth {
+      | true => "max-w-7xl"
+      | false => ""
+      } ++ " mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8"}>
       <div className="text-center">
         <h1
           className={marginTop ++ " text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"}>
