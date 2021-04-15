@@ -1,5 +1,5 @@
-// TODO: remove "heading" from the name below
-module ContentHeavyHeading = {
+// TODO: better name, do not refer to heading use case specifically
+module MediumCentered2 = {
   @react.component
   let make = (~children) => <div className="text-lg max-w-prose mx-auto"> children </div>
 }
@@ -56,7 +56,7 @@ module SmallCentered = {
 
 module VerySmallCentered = {
   @react.component
-  let make = (~children, ~margins, ~paddingY="", ~paddingX="") =>
+  let make = (~children, ~margins="", ~paddingY="", ~paddingX="") =>
     <div className={"mx-auto max-w-3xl " ++ margins ++ " " ++ paddingY ++ " " ++ paddingX}>
       children
     </div>

@@ -56,7 +56,7 @@ module Large = {
 module MarkdownMedium = {
   @react.component
   let make = (~title, ~pageDescription) =>
-    <SectionContainer.ContentHeavyHeading>
+    <SectionContainer.MediumCentered2>
       <h1>
         <span
           className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -64,5 +64,5 @@ module MarkdownMedium = {
         </span>
       </h1>
       <p className="mt-8 text-xl text-gray-500 leading-8"> {s(pageDescription)} </p>
-    </SectionContainer.ContentHeavyHeading>
+    </SectionContainer.MediumCentered2>
 }

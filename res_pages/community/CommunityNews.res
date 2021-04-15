@@ -408,7 +408,7 @@ let contentEn = {
       header: `Events`,
       seeAllNewsInCategory: `See all News in Events`,
       stories: [
-        `Tarides Sponsors the Oxbrid/ge Women in ...`,
+        `Tarides Sponsors the Oxbridge Women in ...`,
         `Every Proof Assistant: Introducing homotypy.io`,
         `Every Proof Assistant: Introducing homotopy.io`,
       ],
