@@ -20,8 +20,7 @@ If you come across a bug or a mistake in content, please create an issue. If you
 
 ## Contributing
 
-Please see the [contribution guide](CONTRIBUTING.md) for information on how to
-build and contribute content.
+Please see the [contribution guide](CONTRIBUTING.md) for information on how to build and contribute content.
 
 ## Deployment Status
 
