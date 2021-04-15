@@ -70,7 +70,7 @@ let contentEn = {
 module LogoSection = {
   @react.component
   let make = (~margins, ~companies) =>
-    <div className={margins ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
+    <SectionContainer.ResponsiveCentered margins>
       // TODO: try switching to a grid
       <div className="flex flex-wrap justify-center lg:justify-between ">
         {companies
@@ -97,7 +97,7 @@ module LogoSection = {
         )
         |> React.array}
       </div>
-    </div>
+    </SectionContainer.ResponsiveCentered>
 }
 
 @react.component
