@@ -8,12 +8,12 @@ module UserLevelIntroduction = {
 
   @react.component
   let make = (~content, ~margins) =>
-    <div className={"flex mx-auto max-w-4xl items-center space-x-20 " ++ margins}>
+    <SectionContainer.SmallCentered margins otherLayout="flex items-center space-x-20">
       <div className="text-5xl font-bold text-orangedark flex-shrink-0">
         {s(content.level ++ ` -`)}
       </div>
       <div className="font-bold text-xl"> {s(content.introduction)} </div>
-    </div>
+    </SectionContainer.SmallCentered>
 }
 
 module Books = {
@@ -25,6 +25,7 @@ module Books = {
   @react.component
   let make = (~margins, ~content) =>
     // TODO: define content type; extract content
+    // TODO: use generic container
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-10 mx-auto max-w-5xl " ++ margins}>
       <div className="px-4 py-5 sm:px-6 sm:py-9">
@@ -78,7 +79,7 @@ module Manual = {
   @react.component
   let make = (~margins) =>
     // TODO: define content type; factor out content
-    <div className={"bg-orangedark pt-8 pb-14 mx-auto max-w-5xl " ++ margins}>
+    <SectionContainer.MediumCentered margins paddingY="pt-8 pb-14" filled=true>
       <h2 className="text-center text-white text-7xl font-bold mb-8"> {s(`The OCaml Manual`)} </h2>
       <div className="mx-24 grid grid-cols-3 px-28 mx-auto max-w-4xl">
         <div className="border-r-4 border-b-4">
@@ -130,13 +131,13 @@ module Manual = {
           </div>
         </div>
       </div>
-    </div>
+    </SectionContainer.MediumCentered>
 }
 
 module Applications = {
   @react.component
   let make = (~margins) =>
-    <div className={margins ++ " mx-auto max-w-3xl"}>
+    <SectionContainer.VerySmallCentered margins>
       <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`Applications`)} </h2>
       <div className="sm:flex items-center space-x-32 mb-20">
         <div className="mb-4 sm:mb-0 sm:mr-4">
@@ -151,13 +152,14 @@ module Applications = {
         </div>
         <div className="flex-shrink-0"> <img className="h-48" src="/static/app-image2.png" /> </div>
       </div>
-    </div>
+    </SectionContainer.VerySmallCentered>
 }
 
 module Papers = {
   @react.component
   let make = (~margins) =>
     // TODO: define content type and factor out content
+    // TODO: use generic container
     <div
       className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++ margins}>
       <div className="px-4 py-5 sm:p-6">
