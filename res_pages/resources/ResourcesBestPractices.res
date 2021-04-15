@@ -13,7 +13,6 @@ let contentEn = {
 @react.component
 let make = (~content=contentEn) => <>
   <ConstructionBanner />
-  // TODO: use the same container as language and applications
   <MainContainer.None>
     <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
   </MainContainer.None>
