@@ -12,9 +12,9 @@ let contentEn = {
 
 @react.component
 let make = (~content=contentEn) =>
-  <MainContainer.None>
+  <MainContainer.Centered>
     <ConstructionBanner />
     <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
-  </MainContainer.None>
+  </MainContainer.Centered>
 
 let default = make

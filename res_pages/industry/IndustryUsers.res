@@ -101,12 +101,12 @@ module LogoSection = {
 }
 
 @react.component
-let make = (~content=contentEn) =>
-  <MainContainer.None>
-    <ConstructionBanner
-      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
-      playgroundLink=`/play/industry/users`
-    />
+let make = (~content=contentEn) => <>
+  <ConstructionBanner
+    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
+    playgroundLink=`/play/industry/users`
+  />
+  <MainContainer.Centered>
     <TitleHeading.Large
       title=content.title
       pageDescription=content.pageDescription
@@ -117,6 +117,7 @@ let make = (~content=contentEn) =>
       }
     />
     <LogoSection margins=`mt-6` companies=content.companies />
-  </MainContainer.None>
+  </MainContainer.Centered>
+</>
 
 let default = make
