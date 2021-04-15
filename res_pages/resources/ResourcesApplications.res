@@ -176,19 +176,20 @@ type prop = {
 }
 
 @react.component
-let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlContent) => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=745%3A1`
-    playgroundLink=`/play/resources/applications`
-  />
-  <TitleHeading.Large
-    title pageDescription marginTop=`mt-1` marginBottom=`mb-24` addBottomBar=true
-  />
-  <ApiDocumentation margins=`mb-24` />
-  <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
-  <PlatformTools />
-  <UsingOcaml margins=`mb-16` content=usingOcamlContent />
-</>
+let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlContent) =>
+  <MainContainer.None>
+    <ConstructionBanner
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=745%3A1`
+      playgroundLink=`/play/resources/applications`
+    />
+    <TitleHeading.Large
+      title pageDescription marginTop=`mt-1` marginBottom=`mb-24` addBottomBar=true
+    />
+    <ApiDocumentation margins=`mb-24` />
+    <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
+    <PlatformTools />
+    <UsingOcaml margins=`mb-16` content=usingOcamlContent />
+  </MainContainer.None>
 
 let getStaticProps = _ctx => {
   let developerGuides = DeveloperGuide.readAll()

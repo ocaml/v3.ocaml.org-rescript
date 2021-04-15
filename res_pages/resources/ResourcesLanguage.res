@@ -217,28 +217,29 @@ type t = {
 type props = {content: t}
 
 @react.component
-let make = (~content) => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1085%3A121`
-    playgroundLink=`/play/resources/language`
-  />
-  <TitleHeading.Large
-    title=content.title
-    pageDescription=content.pageDescription
-    marginTop=`mt-1`
-    marginBottom=`mb-24`
-    addBottomBar=true
-  />
-  <UserLevelIntroduction content=content.beginning margins=`mb-20` />
-  <UserLevelIntroduction content=content.growing margins=`mb-20` />
-  <Books margins=`mb-16` content=content.booksContent />
-  <UserLevelIntroduction content=content.expanding margins=`mb-20` />
-  <Manual margins=`mb-20` />
-  <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
-  <Applications margins=`mb-36` />
-  <UserLevelIntroduction content=content.researching margins=`mb-20` />
-  <Papers margins=`mb-16` />
-</>
+let make = (~content) =>
+  <MainContainer.None>
+    <ConstructionBanner
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1085%3A121`
+      playgroundLink=`/play/resources/language`
+    />
+    <TitleHeading.Large
+      title=content.title
+      pageDescription=content.pageDescription
+      marginTop=`mt-1`
+      marginBottom=`mb-24`
+      addBottomBar=true
+    />
+    <UserLevelIntroduction content=content.beginning margins=`mb-20` />
+    <UserLevelIntroduction content=content.growing margins=`mb-20` />
+    <Books margins=`mb-16` content=content.booksContent />
+    <UserLevelIntroduction content=content.expanding margins=`mb-20` />
+    <Manual margins=`mb-20` />
+    <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
+    <Applications margins=`mb-36` />
+    <UserLevelIntroduction content=content.researching margins=`mb-20` />
+    <Papers margins=`mb-16` />
+  </MainContainer.None>
 
 let getStaticProps = _ctx => {
   let books = Book.readAll()

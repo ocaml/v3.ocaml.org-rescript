@@ -11,11 +11,12 @@ let contentEn = {
 }
 
 @react.component
-let make = (~content=contentEn) => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1176%3A0`
-  />
-  <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
-</>
+let make = (~content=contentEn) =>
+  <MainContainer.None>
+    <ConstructionBanner
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1176%3A0`
+    />
+    <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
+  </MainContainer.None>
 
 let default = make

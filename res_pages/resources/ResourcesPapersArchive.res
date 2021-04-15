@@ -11,9 +11,10 @@ let contentEn = {
 }
 
 @react.component
-let make = (~content=contentEn) => <>
-  <ConstructionBanner playgroundLink=`/play/resources/paperarchive` />
-  <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
-</>
+let make = (~content=contentEn) =>
+  <MainContainer.None>
+    <ConstructionBanner playgroundLink=`/play/resources/paperarchive` />
+    <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
+  </MainContainer.None>
 
 let default = make

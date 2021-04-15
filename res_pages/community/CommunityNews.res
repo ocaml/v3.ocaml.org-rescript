@@ -408,7 +408,7 @@ let contentEn = {
       header: `Events`,
       seeAllNewsInCategory: `See all News in Events`,
       stories: [
-        `Tarides Sponsors the Oxbridge Women in ...`,
+        `Tarides Sponsors the Oxbrid/ge Women in ...`,
         `Every Proof Assistant: Introducing homotypy.io`,
         `Every Proof Assistant: Introducing homotopy.io`,
       ],
@@ -422,15 +422,16 @@ let contentEn = {
 }
 
 @react.component
-let make = (~content=contentEn) => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=952%3A422`
-    playgroundLink=`/play/community/news`
-  />
-  <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
-  <HighlightedStory margins=`mb-6` content=content.highlightedContent />
-  <CategorizedNews margins=`mb-10 lg:mb-32` content=content.categorizedNews />
-  <WeeklyNews margins=`mb-4` content=content.weeklyNews />
-</>
+let make = (~content=contentEn) =>
+  <MainContainer.None>
+    <ConstructionBanner
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=952%3A422`
+      playgroundLink=`/play/community/news`
+    />
+    <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
+    <HighlightedStory margins=`mb-6` content=content.highlightedContent />
+    <CategorizedNews margins=`mb-10 lg:mb-32` content=content.categorizedNews />
+    <WeeklyNews margins=`mb-4` content=content.weeklyNews />
+  </MainContainer.None>
 
 let default = make

@@ -16,7 +16,7 @@ type props = {
 @react.component
 let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
   let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
-  <>
+  <MainContainer.None>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
       playgroundLink=`/play/resources/installocaml`
@@ -30,7 +30,7 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
         </div>
       </div>
     </div>
-  </>
+  </MainContainer.None>
 }
 
 let contentEn = {
