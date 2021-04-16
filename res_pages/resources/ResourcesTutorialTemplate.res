@@ -58,6 +58,16 @@ type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
+let run = %raw(`
+  function () {
+    var remark = require('remark')
+    remark()
+      .process("# l1 title", function (err, file) {
+        console.log(String(file))
+      })
+  }
+`)
+
 let getStaticProps = ctx => {
   let params = ctx.Next.GetStaticProps.params
   let contentFilePath = "res_pages/resources/" ++ params.Params.tutorial ++ ".md"
@@ -67,7 +77,8 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
-  // const result = await remark().use(..).process(string)
+  run()
+  // const result = await remark().process(parsed.content)
   // print result.toString()
 
   // need to compute headings first?
