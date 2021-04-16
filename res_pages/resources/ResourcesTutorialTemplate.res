@@ -67,6 +67,14 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
+  // const result = await remark().use(..).process(string)
+  // print result.toString()
+
+  // need to compute headings first?
+  // parse string into md-ast
+  // pass ast to toc gen
+  // simplify toc tree
+
   // TODO: parse table of contents from front matter
   let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
   mdSourcePromise->Js.Promise.then_(mdSource => {
