@@ -74,16 +74,24 @@ type processor
 @module("remark") external remark: unit => processor = "default"
 
 type rec node = {
-  value: string,
   \"type": string,
-  depth: int,
+  value: option<string>,
+  depth: option<int>,
   children: option<array<node>>,
 }
 
+type rootnode = {children: array<node>}
+
 type vfile = {mutable toc: string}
-type transformer = (node, vfile) => unit
+type transformer = (rootnode, vfile) => unit
 
 type attacher = unit => transformer
+
+type rec toc = {
+  value: string,
+  // id: string,
+  // children: array<toc>,
+}
 
 @send external use: (processor, attacher) => processor = "use"
 
@@ -91,14 +99,34 @@ type attacher = unit => transformer
 
 @module("mdast-util-to-string") external toString: node => string = "default"
 
-let rec search = node => {
-  Js.log(node.\"type")
-
-  let _ = Js.Option.map((. cs) => Js.Array.forEach(ch => search(ch), cs), node.children)
-}
-
-let transformer = (node, file) => {
-  let _headings = search(node)
+let transformer = (rootnode, file) => {
+  let headings: array<toc> = []
+  let lastHeadingDepth: ref<Js.Option.t<int>> = ref(None)
+  let rec search = nodes => {
+    switch nodes {
+    | list{} => ()
+    | list{head, ...tail} =>
+      if head.\"type" == "heading" && (head.depth == Some(2) || head.depth == Some(3)) {
+        let entry = {value: toString(head)} // add node.data.id and children = []
+        let nodeDepth = Js.Option.getExn(head.depth)
+        if (
+          lastHeadingDepth.contents == None ||
+            nodeDepth <= Js.Option.getExn(lastHeadingDepth.contents)
+        ) {
+          let _ = Js.Array.push(entry, headings)
+          lastHeadingDepth := head.depth
+          search(tail)
+        } else {
+          // add to children of last array entry
+          search(tail)
+        }
+      } else {
+        search(tail)
+      }
+    }
+  }
+  search(Array.to_list(Js.Array.filter(ch => ch.\"type" == "heading", rootnode.children)))
+  Js.log(headings)
   file.toc = "abc"
 }
 
