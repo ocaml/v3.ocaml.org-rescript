@@ -58,6 +58,7 @@ type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
+/*
 let run = %raw(`
   function () {
     var remark = require('remark')
@@ -67,6 +68,29 @@ let run = %raw(`
       })
   }
 `)
+*/
+
+type processor
+@module("remark") external remark: unit => processor = "default"
+
+type node
+
+type vfile = {mutable toc: string}
+type transformer = (node, vfile) => unit
+
+type attacher = unit => transformer
+
+@send external use: (processor, attacher) => processor = "use"
+
+@send external process: (processor, string) => Js.Promise.t<vfile> = "process"
+
+let transformer = (node, file) => {
+  file.toc = "abc"
+}
+
+let plugin = () => {
+  transformer
+}
 
 let getStaticProps = ctx => {
   let params = ctx.Next.GetStaticProps.params
@@ -77,14 +101,13 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
-  run()
-  // const result = await remark().process(parsed.content)
-  // print result.toString()
+  let _ = Js.Promise.then_(res => {
+    Js.log(res)
+    Js.Promise.resolve()
+  }, process(use(remark(), plugin), "# first heading\n ## second heading"))
 
   // need to compute headings first?
   // parse string into md-ast
-  // pass ast to toc gen
-  // simplify toc tree
 
   // TODO: parse table of contents from front matter
   let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
