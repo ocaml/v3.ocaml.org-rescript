@@ -73,7 +73,12 @@ let run = %raw(`
 type processor
 @module("remark") external remark: unit => processor = "default"
 
-type node
+type rec node = {
+  value: string,
+  \"type": string,
+  depth: int,
+  children: option<array<node>>,
+}
 
 type vfile = {mutable toc: string}
 type transformer = (node, vfile) => unit
@@ -84,7 +89,16 @@ type attacher = unit => transformer
 
 @send external process: (processor, string) => Js.Promise.t<vfile> = "process"
 
+@module("mdast-util-to-string") external toString: node => string = "default"
+
+let rec search = node => {
+  Js.log(node.\"type")
+
+  let _ = Js.Option.map((. cs) => Js.Array.forEach(ch => search(ch), cs), node.children)
+}
+
 let transformer = (node, file) => {
+  let _headings = search(node)
   file.toc = "abc"
 }
 
