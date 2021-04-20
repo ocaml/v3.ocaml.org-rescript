@@ -100,33 +100,31 @@ type rec toc = {
 @module("mdast-util-to-string") external toString: node => string = "default"
 
 let transformer = (rootnode, file) => {
-  let headings: array<toc> = []
-  let lastHeadingDepth: ref<Js.Option.t<int>> = ref(None)
-  let rec search = nodes => {
+  let rec search = (nodes, lastHeadingDepth, headings) => {
     switch nodes {
-    | list{} => ()
+    | list{} => Js.List.rev(headings)
     | list{head, ...tail} =>
-      if head.\"type" == "heading" && (head.depth == Some(2) || head.depth == Some(3)) {
+      if head.depth == Some(2) || head.depth == Some(3) {
         let entry = {value: toString(head)} // add node.data.id and children = []
         let nodeDepth = Js.Option.getExn(head.depth)
-        if (
-          lastHeadingDepth.contents == None ||
-            nodeDepth <= Js.Option.getExn(lastHeadingDepth.contents)
-        ) {
-          let _ = Js.Array.push(entry, headings)
-          lastHeadingDepth := head.depth
-          search(tail)
+        if lastHeadingDepth == None || nodeDepth <= Js.Option.getExn(lastHeadingDepth) {
+          let headings = Js.List.cons(entry, headings)
+          search(tail, head.depth, headings)
         } else {
           // add to children of last array entry
-          search(tail)
+          search(tail, head.depth, headings)
         }
       } else {
-        search(tail)
+        search(tail, lastHeadingDepth, headings)
       }
     }
   }
-  search(Array.to_list(Js.Array.filter(ch => ch.\"type" == "heading", rootnode.children)))
-  Js.log(headings)
+  let headings = search(
+    Array.to_list(Js.Array.filter(ch => ch.\"type" == "heading", rootnode.children)),
+    None,
+    list{},
+  )
+  Js.log(Js.List.toVector(headings))
   file.toc = "abc"
 }
 
@@ -143,10 +141,11 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
-  let _ = Js.Promise.then_(res => {
-    Js.log(res)
+  let _ = Js.Promise.then_(_res => {
+    // Js.log(res)
     Js.Promise.resolve()
-  }, process(use(remark(), plugin), "# first heading\n ## second heading"))
+  }, process(use(remark(), plugin), source))
+  // "# first heading\n ## second heading"
 
   // need to compute headings first?
   // parse string into md-ast
