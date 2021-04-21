@@ -81,7 +81,6 @@ type attacher = unit => transformer
 // and use it below
 
 let transformer = (rootnode: rootnode, file) => {
-  Js.log(rootnode)
   let rec collect = (nodes, inProgress) => {
     switch nodes {
     | list{} =>
