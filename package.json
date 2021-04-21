@@ -16,7 +16,10 @@
     "next-mdx-remote": "^2.1.3",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "reason-react": "^0.9.1"
+    "reason-react": "^0.9.1",
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.1.0"
   },
   "dependenciesDescription": {
     "bs-platform": "This a regular dependency because the included standard libraries are used during runtime",

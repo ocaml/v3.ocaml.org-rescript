@@ -7,7 +7,7 @@ module Params = {
 type t = {contents: string}
 
 type props = {
-  source: NextMdxRemote.renderToStringResult,
+  source: string, //NextMdxRemote.renderToStringResult,
   title: string,
   pageDescription: string,
   tableOfContents: MarkdownPage.TableOfContents.t,
@@ -15,7 +15,7 @@ type props = {
 
 @react.component
 let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
-  let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
+  // let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
   <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
@@ -28,7 +28,9 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
         <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
           <div className="relative px-4 sm:px-6 lg:px-8">
             <TitleHeading.MarkdownMedium title pageDescription />
-            <MarkdownPage.MarkdownPageBody margins=`mt-6`> body </MarkdownPage.MarkdownPageBody>
+            <MarkdownPage.MarkdownPageBody margins=`mt-6`>
+              <div dangerouslySetInnerHTML={{"__html": source}} />
+            </MarkdownPage.MarkdownPageBody>
           </div>
         </div>
       </div>
@@ -47,6 +49,8 @@ type pageContent = {title: string, pageDescription: string}
 type processor
 
 @module("remark") external remark: unit => processor = "default"
+
+@module("unified") external unified: unit => processor = "default"
 
 type node = {\"type": string, depth: option<int>}
 
@@ -75,10 +79,19 @@ type attacher = unit => transformer
 
 @module("remark-slug") external remarkSlug2: NextMdxRemote.plugin = "default"
 
+@module("remark-parse") external remarkParse: attacher = "default"
+
+@module("remark-rehype") external remark2rehype: attacher = "default"
+
+@module("rehype-stringify") external rehypeStringify: attacher = "default"
+
 @module("mdast-util-to-string") external toString: headingnode => string = "default"
 
 // TODO: define scanleft (https://github.com/reazen/relude/blob/e733128d0df8022448398a44c80cba6f28443b94/src/list/Relude_List_Base.re#L487)
 // and use it below
+
+// TODO: factor out the core algorithm from other concerns, and
+//  write unit tests for the core algorithm.
 
 let transformer = (rootnode: rootnode, file) => {
   let rec collect = (nodes, inProgress) => {
@@ -143,6 +156,31 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
+  // todo: remove remark; add remark-parse only
+
+  let resPromise = process(
+    use(
+      use(use(use(use(unified(), remarkParse), remarkSlug), plugin), remark2rehype),
+      rehypeStringify,
+    ),
+    source,
+  )
+
+  Js.Promise.then_(res => {
+    // Js.log(res.contents)
+    let props = {
+      source: res.contents,
+      title: parsed.data.title,
+      pageDescription: parsed.data.pageDescription,
+      tableOfContents: {
+        contents: "Contents",
+        toc: res.toc,
+      },
+    }
+    Js.Promise.resolve({"props": props})
+  }, resPromise)
+
+  /*
   Js.Promise.then_(res => {
     // Js.log(res.contents)
     let mdSourcePromise = NextMdxRemote.renderToString(
@@ -167,7 +205,7 @@ let getStaticProps = ctx => {
       _,
     )
   }, process(use(use(remark(), remarkSlug), plugin), source))
-  // "# first heading\n ## second heading"
+ */
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
