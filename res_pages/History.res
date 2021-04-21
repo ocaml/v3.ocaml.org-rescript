@@ -47,8 +47,10 @@ let make = props => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/Vha4bcBvNVrjyLmAEDgZ1x/History-Timeline?node-id=14%3A5`
   />
-  <TitleHeading.Large title=props.title pageDescription=props.pageDescription />
-  <Timeline content=props.timeline />
+  <MainContainer.None>
+    <TitleHeading.Large title=props.title pageDescription=props.pageDescription />
+    <Timeline content=props.timeline />
+  </MainContainer.None>
 </>
 
 let default = make
