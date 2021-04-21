@@ -1,7 +1,16 @@
+type transformer
+
+type plugin = unit => transformer
+
+// TODO: share everything above with general remark bindings
+
+type mdxOptions = {remarkPlugins: array<plugin>}
+
 @deriving(abstract)
 type renderToStringParams = {
   @optional components: Mdx.Components.t,
   // TODO: optional mdxOptions and optional scope
+  @optional mdxOptions: mdxOptions,
 }
 
 type renderToStringResult = {

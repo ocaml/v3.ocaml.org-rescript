@@ -73,7 +73,12 @@ type attacher = unit => transformer
 
 @module("remark-slug") external remarkSlug: attacher = "default"
 
+@module("remark-slug") external remarkSlug2: NextMdxRemote.plugin = "default"
+
 @module("mdast-util-to-string") external toString: headingnode => string = "default"
+
+// TODO: define scanleft (https://github.com/reazen/relude/blob/e733128d0df8022448398a44c80cba6f28443b94/src/list/Relude_List_Base.re#L487)
+// and use it below
 
 let transformer = (rootnode: rootnode, file) => {
   Js.log(rootnode)
@@ -143,7 +148,7 @@ let getStaticProps = ctx => {
     // Js.log(res.contents)
     let mdSourcePromise = NextMdxRemote.renderToString(
       res.contents,
-      NextMdxRemote.renderToStringParams(),
+      NextMdxRemote.renderToStringParams(~mdxOptions={remarkPlugins: [remarkSlug2]}, ()),
     )
     mdSourcePromise->Js.Promise.then_(
       mdSource => {
