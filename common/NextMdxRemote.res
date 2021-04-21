@@ -1,3 +1,4 @@
+/*
 type transformer
 
 type plugin = unit => transformer
@@ -28,3 +29,4 @@ type hydrateParams = {@optional components: Mdx.Components.t}
 
 @module("next-mdx-remote/hydrate")
 external hydrate: (renderToStringResult, hydrateParams) => ReasonReact.reactElement = "default"
+*/

@@ -1,3 +1,4 @@
+/*
 type transformer
 
 type plugin = unit => transformer
@@ -21,3 +22,4 @@ let renderToString: ('source, renderToStringParams) => Js.Promise.t<renderToStri
 type hydrateParams = {@optional components: Mdx.Components.t}
 
 let hydrate: (renderToStringResult, hydrateParams) => ReasonReact.reactElement
+*/

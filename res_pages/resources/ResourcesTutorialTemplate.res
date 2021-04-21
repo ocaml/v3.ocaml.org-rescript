@@ -77,7 +77,7 @@ type attacher = unit => transformer
 
 @module("remark-slug") external remarkSlug: attacher = "default"
 
-@module("remark-slug") external remarkSlug2: NextMdxRemote.plugin = "default"
+// @module("remark-slug") external remarkSlug2: NextMdxRemote.plugin = "default"
 
 @module("remark-parse") external remarkParse: attacher = "default"
 
