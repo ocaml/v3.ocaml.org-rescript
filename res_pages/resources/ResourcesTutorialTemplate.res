@@ -61,7 +61,7 @@ external asHeadingNode: node => headingnode = "%identity"
 
 type rootnode = {children: array<node>}
 
-type vfile = {mutable toc: list<MarkdownPage.TableOfContents.toc>}
+type vfile = {mutable toc: list<MarkdownPage.TableOfContents.toc>, contents: string}
 
 type transformer = (rootnode, vfile) => unit
 
@@ -139,10 +139,12 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
-  // need to compute headings first?
   Js.Promise.then_(res => {
-    // Js.log(res.toc)
-    let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
+    // Js.log(res.contents)
+    let mdSourcePromise = NextMdxRemote.renderToString(
+      res.contents,
+      NextMdxRemote.renderToStringParams(),
+    )
     mdSourcePromise->Js.Promise.then_(
       mdSource => {
         let props = {
