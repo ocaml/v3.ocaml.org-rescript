@@ -46,66 +46,6 @@ type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
-// TODO: define scanleft (https://github.com/reazen/relude/blob/e733128d0df8022448398a44c80cba6f28443b94/src/list/Relude_List_Base.re#L487)
-// and use it below
-
-// TODO: factor out the core algorithm from other concerns, and
-//  write unit tests for the core algorithm.
-
-let transformer = (rootnode: Unified.rootnode, file: Unified.vfile) => {
-  let rec collect = (nodes, inProgress) => {
-    switch nodes {
-    | list{} =>
-      switch inProgress {
-      | None => list{}
-      | Some(_, entry) => list{entry}
-      }
-    | list{h: Unified.headingnode, ...tail} =>
-      let d = h.depth
-      if d >= 2 || d <= 3 {
-        let entry = {
-          Unified.MarkdownTableOfContents.label: Unified.MdastUtilToString.toString(h),
-          id: h.data.id,
-          children: list{},
-        } // add node.data.id and children = []
-        switch inProgress {
-        | None => collect(tail, Some(d, entry))
-        | Some(lastRootDepth, inProgress) if d <= lastRootDepth => list{
-            inProgress,
-            ...collect(tail, Some(d, entry)),
-          }
-        | Some(lastRootDepth, inProgress) =>
-          let inProgress = {
-            ...inProgress,
-            children: Belt.List.concat(inProgress.children, list{entry}),
-          }
-          collect(tail, Some(lastRootDepth, inProgress))
-        }
-      } else {
-        // TODO: guard against unusual jumps in depth?
-        collect(tail, inProgress)
-      }
-    }
-  }
-  let headings = collect(
-    Array.to_list(
-      Belt.Array.keepMap(rootnode.children, ch =>
-        switch ch {
-        | {\"type": "heading", depth: Some(_)} => Some(Unified.asHeadingNode(ch))
-        | _ => None
-        }
-      ),
-    ),
-    None,
-  )
-
-  file.toc = headings
-}
-
-let plugin = () => {
-  transformer
-}
-
 let getStaticProps = ctx => {
   let params = ctx.Next.GetStaticProps.params
   let contentFilePath = "res_pages/resources/" ++ params.Params.tutorial ++ ".md"
@@ -120,7 +60,7 @@ let getStaticProps = ctx => {
       Unified.use(
         Unified.use(
           Unified.use(Unified.use(Unified.unified(), Unified.remarkParse), Unified.remarkSlug),
-          plugin,
+          MdastToc.plugin,
         ),
         Unified.remark2rehype,
       ),
@@ -144,6 +84,8 @@ let getStaticProps = ctx => {
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
+  // TODO: change this to read all subdirectories of "resources" and
+  //  then read "<subdir>/tutorial.md" in getStaticProps
   let markdownFiles = Js.Array.filter(// todo: case insensitive
   s => Js.String.endsWith("md", s), Fs.readdirSync("res_pages/resources/"))
 
