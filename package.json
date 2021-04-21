@@ -54,8 +54,14 @@
   "devDependenciesDescription": {
     "js-yaml": "only used during site build, not in the browser",
     "gray-matter": "only used during site build, not in the browser",
+    "mdast-util-to-string": "only used during site build, not in the browser",
+    "rehype-stringify": "only used during site build, not in the browser",
+    "remark-parse": "only used during site build, not in the browser",
+    "remark-rehype": "only used during site build, not in the browser",
+    "remark-slug": "only used during site build, not in the browser",
     "next-transpile-modules": "only used during site build, not in the browser",
-    "postcss": "explicity set to > 8.0 temporarily until all transitive dependencies do not obstruct using >= 8.0, remove this soon"
+    "postcss": "explicity set to > 8.0 temporarily until all transitive dependencies do not obstruct using >= 8.0, remove this soon",
+    "unifed": "only used during site build, not in the browser"
   },
   "postcss": {
     "plugins": {
