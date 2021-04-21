@@ -6,6 +6,12 @@ module Params = {
 
 type t = {tableOfContents: MarkdownPage.TableOfContents.t}
 
+type rec toc = {
+  label: string,
+  // id: string,
+  children: list<toc>,
+}
+
 type props = {
   source: NextMdxRemote.renderToStringResult,
   title: string,
@@ -73,59 +79,72 @@ let run = %raw(`
 type processor
 @module("remark") external remark: unit => processor = "default"
 
-type rec node = {
-  \"type": string,
-  value: option<string>,
-  depth: option<int>,
-  children: option<array<node>>,
+type node = {\"type": string, depth: option<int>}
+
+type headingnode = {
+  depth: int,
+  // data
 }
+
+external asHeadingNode: node => headingnode = "%identity"
 
 type rootnode = {children: array<node>}
 
-type vfile = {mutable toc: string}
+type vfile = {mutable toc: list<toc>}
 type transformer = (rootnode, vfile) => unit
 
 type attacher = unit => transformer
-
-type rec toc = {
-  value: string,
-  // id: string,
-  // children: array<toc>,
-}
 
 @send external use: (processor, attacher) => processor = "use"
 
 @send external process: (processor, string) => Js.Promise.t<vfile> = "process"
 
-@module("mdast-util-to-string") external toString: node => string = "default"
+@module("mdast-util-to-string") external toString: headingnode => string = "default"
 
-let transformer = (rootnode, file) => {
-  let rec search = (nodes, lastHeadingDepth, headings) => {
+let transformer = (rootnode: rootnode, file) => {
+  let rec collect = (nodes, inProgress, headings) => {
     switch nodes {
-    | list{} => Js.List.rev(headings)
-    | list{head, ...tail} =>
-      if head.depth == Some(2) || head.depth == Some(3) {
-        let entry = {value: toString(head)} // add node.data.id and children = []
-        let nodeDepth = Js.Option.getExn(head.depth)
-        if lastHeadingDepth == None || nodeDepth <= Js.Option.getExn(lastHeadingDepth) {
-          let headings = Js.List.cons(entry, headings)
-          search(tail, head.depth, headings)
-        } else {
-          // add to children of last array entry
-          search(tail, head.depth, headings)
+    | list{} =>
+      Js.List.rev(
+        switch inProgress {
+        | None => headings
+        | Some(_, entry) => list{entry, ...headings}
+        },
+      )
+    | list{h: headingnode, ...tail} =>
+      let d = h.depth
+      if d >= 2 || d <= 3 {
+        let entry = {label: toString(h), children: list{}} // add node.data.id and children = []
+        switch inProgress {
+        | None => collect(tail, Some(d, entry), headings)
+        | Some(lastCollectedDepth, inProgress) if d < lastCollectedDepth =>
+          collect(tail, Some(d, entry), list{inProgress, ...headings})
+        | Some(_, inProgress) =>
+          let inProgress = {
+            ...inProgress,
+            children: Belt.List.concat(inProgress.children, list{entry}),
+          }
+          collect(tail, Some(d, inProgress), headings)
         }
       } else {
-        search(tail, lastHeadingDepth, headings)
+        collect(tail, inProgress, headings)
       }
     }
   }
-  let headings = search(
-    Array.to_list(Js.Array.filter(ch => ch.\"type" == "heading", rootnode.children)),
+  let headings = collect(
+    Array.to_list(
+      Belt.Array.keepMap(rootnode.children, ch =>
+        switch ch {
+        | {\"type": "heading", depth: Some(_)} => Some(asHeadingNode(ch))
+        | _ => None
+        }
+      ),
+    ),
     None,
     list{},
   )
-  Js.log(Js.List.toVector(headings))
-  file.toc = "abc"
+
+  file.toc = headings
 }
 
 let plugin = () => {
@@ -141,8 +160,8 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
-  let _ = Js.Promise.then_(_res => {
-    // Js.log(res)
+  let _ = Js.Promise.then_(res => {
+    Js.log(res.toc)
     Js.Promise.resolve()
   }, process(use(remark(), plugin), source))
   // "# first heading\n ## second heading"
