@@ -104,18 +104,19 @@ let transformer = (rootnode: rootnode, file) => {
         let entry = {MarkdownPage.TableOfContents.label: toString(h), children: list{}} // add node.data.id and children = []
         switch inProgress {
         | None => collect(tail, Some(d, entry))
-        | Some(lastCollectedDepth, inProgress) if d < lastCollectedDepth => list{
+        | Some(lastRootDepth, inProgress) if d <= lastRootDepth => list{
             inProgress,
             ...collect(tail, Some(d, entry)),
           }
-        | Some(_, inProgress) =>
+        | Some(lastRootDepth, inProgress) =>
           let inProgress = {
             ...inProgress,
             children: Belt.List.concat(inProgress.children, list{entry}),
           }
-          collect(tail, Some(d, inProgress))
+          collect(tail, Some(lastRootDepth, inProgress))
         }
       } else {
+        // TODO: guard against unusual jumps in depth?
         collect(tail, inProgress)
       }
     }
