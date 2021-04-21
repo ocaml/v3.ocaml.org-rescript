@@ -24,7 +24,7 @@ module TableOfContents: {
 
   type rec toc = {
     label: string,
-    // id: string,
+    id: string,
     children: list<toc>,
   }
 

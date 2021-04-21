@@ -47,6 +47,7 @@
     "mdast-util-to-string": "^2.0.0",
     "next-transpile-modules": "4.1.0",
     "postcss": "^8.2.5",
+    "remark-slug": "^6.0.0",
     "tailwindcss": "^2.0.3",
     "unist-util-visit": "^3.0.0"
   },

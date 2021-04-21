@@ -29,7 +29,7 @@ module TableOfContents = {
 
   type rec toc = {
     label: string,
-    // id: string,
+    id: string,
     children: list<toc>,
   }
 
@@ -50,16 +50,14 @@ module TableOfContents = {
             <div key={Js.Int.toString(idx)} className="space-y-1">
               // Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300"
               <a
-              // TODO: use id below
-                href={"#" ++ ""}
+                href={"#" ++ hdg.id}
                 className="block text-gray-600 hover:text-gray-900 pr-2 py-2 text-sm font-medium">
                 {s(hdg.label)}
               </a>
               {hdg.children
               ->Belt.List.mapWithIndex((idx, sub) =>
                 <a
-                // TODO: use id below
-                  href={"#" ++ ""}
+                  href={"#" ++ sub.id}
                   className="block pl-6 pr-2 py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
                   key={Js.Int.toString(idx)}>
                   {s(sub.label)}

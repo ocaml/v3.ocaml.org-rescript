@@ -40,25 +40,6 @@ let contentEn = {
   contents: `Contents`,
 }
 
-/* {
-  tableOfContents: {
-    contents: `Contents`, // take this from a generic markdown generic content yaml file, hardcode for now
-    headings: [
-      {
-        name: "Implicit vs. explicit casts",
-        headingId: "implicit-vs-explicit-casts",
-        subHeadings: [
-          {
-            subName: "Is implicit or explicit casting better?",
-            subHeadingId: "is-implicit-or-explicit-casting-better",
-          },
-        ],
-      },
-    ],
-  },
-}
-*/
-
 type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
@@ -69,9 +50,11 @@ type processor
 
 type node = {\"type": string, depth: option<int>}
 
+type data = {id: string}
+
 type headingnode = {
   depth: int,
-  // data
+  data: data,
 }
 
 external asHeadingNode: node => headingnode = "%identity"
@@ -88,9 +71,12 @@ type attacher = unit => transformer
 
 @send external process: (processor, string) => Js.Promise.t<vfile> = "process"
 
+@module("remark-slug") external remarkSlug: attacher = "default"
+
 @module("mdast-util-to-string") external toString: headingnode => string = "default"
 
 let transformer = (rootnode: rootnode, file) => {
+  Js.log(rootnode)
   let rec collect = (nodes, inProgress) => {
     switch nodes {
     | list{} =>
@@ -101,7 +87,11 @@ let transformer = (rootnode: rootnode, file) => {
     | list{h: headingnode, ...tail} =>
       let d = h.depth
       if d >= 2 || d <= 3 {
-        let entry = {MarkdownPage.TableOfContents.label: toString(h), children: list{}} // add node.data.id and children = []
+        let entry = {
+          MarkdownPage.TableOfContents.label: toString(h),
+          id: h.data.id,
+          children: list{},
+        } // add node.data.id and children = []
         switch inProgress {
         | None => collect(tail, Some(d, entry))
         | Some(lastRootDepth, inProgress) if d <= lastRootDepth => list{
@@ -170,7 +160,7 @@ let getStaticProps = ctx => {
 
       _,
     )
-  }, process(use(remark(), plugin), source))
+  }, process(use(use(remark(), remarkSlug), plugin), source))
   // "# first heading\n ## second heading"
 }
 
