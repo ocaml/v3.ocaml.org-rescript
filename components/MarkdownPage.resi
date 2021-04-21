@@ -4,24 +4,6 @@ module MarkdownPageBody: {
 }
 
 module TableOfContents: {
-  /*
-  type subHeading = {
-    subName: string,
-    subHeadingId: string,
-  }
-
-  type heading = {
-    name: string,
-    headingId: string,
-    subHeadings: array<subHeading>,
-  }
-
-  type t = {
-    contents: string,
-    headings: array<heading>,
-  }
- */
-
   type rec toc = {
     label: string,
     id: string,

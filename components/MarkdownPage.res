@@ -9,24 +9,6 @@ module MarkdownPageBody = {
 }
 
 module TableOfContents = {
-  // TODO: define general heading tree type and recursively traverse when rendering
-  /*
-  type subHeading = {
-    subName: string,
-    subHeadingId: string,
-  }
-
-  type heading = {
-    name: string,
-    headingId: string,
-    subHeadings: array<subHeading>,
-  }
-  type t = {
-    contents: string,
-    headings: array<heading>,
-  }
- */
-
   type rec toc = {
     label: string,
     id: string,
@@ -44,6 +26,7 @@ module TableOfContents = {
       className="hidden lg:sticky lg:self-start lg:top-2 lg:flex lg:flex-col lg:col-span-2 border-r border-gray-200 pt-5 pb-4 overflow-y-auto">
       <div className="px-4"> <span className="text-lg"> {s(content.contents)} </span> </div>
       <div className="mt-5 ">
+        // TODO: implement a completely general recursive traversal a toc forest
         <nav className="px-2 space-y-1" ariaLabel="Sidebar">
           {content.toc
           ->Belt.List.mapWithIndex((idx, hdg) =>
