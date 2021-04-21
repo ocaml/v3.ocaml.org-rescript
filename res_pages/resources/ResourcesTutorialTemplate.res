@@ -7,7 +7,7 @@ module Params = {
 type t = {contents: string}
 
 type props = {
-  source: string, //NextMdxRemote.renderToStringResult,
+  source: string,
   title: string,
   pageDescription: string,
   tableOfContents: MarkdownPage.TableOfContents.t,
@@ -15,7 +15,6 @@ type props = {
 
 @react.component
 let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
-  // let body = NextMdxRemote.hydrate(source, NextMdxRemote.hydrateParams())
   <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A21054`
@@ -29,6 +28,7 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
           <div className="relative px-4 sm:px-6 lg:px-8">
             <TitleHeading.MarkdownMedium title pageDescription />
             <MarkdownPage.MarkdownPageBody margins=`mt-6`>
+              // todo: pass source into pagebody
               <div dangerouslySetInnerHTML={{"__html": source}} />
             </MarkdownPage.MarkdownPageBody>
           </div>
@@ -46,54 +46,13 @@ type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
-type processor
-
-@module("remark") external remark: unit => processor = "default"
-
-@module("unified") external unified: unit => processor = "default"
-
-type node = {\"type": string, depth: option<int>}
-
-type data = {id: string}
-
-type headingnode = {
-  depth: int,
-  data: data,
-}
-
-external asHeadingNode: node => headingnode = "%identity"
-
-type rootnode = {children: array<node>}
-
-type vfile = {mutable toc: list<MarkdownPage.TableOfContents.toc>, contents: string}
-
-type transformer = (rootnode, vfile) => unit
-
-type attacher = unit => transformer
-
-@send external use: (processor, attacher) => processor = "use"
-
-@send external process: (processor, string) => Js.Promise.t<vfile> = "process"
-
-@module("remark-slug") external remarkSlug: attacher = "default"
-
-// @module("remark-slug") external remarkSlug2: NextMdxRemote.plugin = "default"
-
-@module("remark-parse") external remarkParse: attacher = "default"
-
-@module("remark-rehype") external remark2rehype: attacher = "default"
-
-@module("rehype-stringify") external rehypeStringify: attacher = "default"
-
-@module("mdast-util-to-string") external toString: headingnode => string = "default"
-
 // TODO: define scanleft (https://github.com/reazen/relude/blob/e733128d0df8022448398a44c80cba6f28443b94/src/list/Relude_List_Base.re#L487)
 // and use it below
 
 // TODO: factor out the core algorithm from other concerns, and
 //  write unit tests for the core algorithm.
 
-let transformer = (rootnode: rootnode, file) => {
+let transformer = (rootnode: Unified.rootnode, file: Unified.vfile) => {
   let rec collect = (nodes, inProgress) => {
     switch nodes {
     | list{} =>
@@ -101,11 +60,11 @@ let transformer = (rootnode: rootnode, file) => {
       | None => list{}
       | Some(_, entry) => list{entry}
       }
-    | list{h: headingnode, ...tail} =>
+    | list{h: Unified.headingnode, ...tail} =>
       let d = h.depth
       if d >= 2 || d <= 3 {
         let entry = {
-          MarkdownPage.TableOfContents.label: toString(h),
+          Unified.MarkdownTableOfContents.label: Unified.MdastUtilToString.toString(h),
           id: h.data.id,
           children: list{},
         } // add node.data.id and children = []
@@ -132,7 +91,7 @@ let transformer = (rootnode: rootnode, file) => {
     Array.to_list(
       Belt.Array.keepMap(rootnode.children, ch =>
         switch ch {
-        | {\"type": "heading", depth: Some(_)} => Some(asHeadingNode(ch))
+        | {\"type": "heading", depth: Some(_)} => Some(Unified.asHeadingNode(ch))
         | _ => None
         }
       ),
@@ -156,18 +115,21 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
-  // todo: remove remark; add remark-parse only
-
-  let resPromise = process(
-    use(
-      use(use(use(use(unified(), remarkParse), remarkSlug), plugin), remark2rehype),
-      rehypeStringify,
+  let resPromise = Unified.process(
+    Unified.use(
+      Unified.use(
+        Unified.use(
+          Unified.use(Unified.use(Unified.unified(), Unified.remarkParse), Unified.remarkSlug),
+          plugin,
+        ),
+        Unified.remark2rehype,
+      ),
+      Unified.rehypeStringify,
     ),
     source,
   )
 
-  Js.Promise.then_(res => {
-    // Js.log(res.contents)
+  Js.Promise.then_((res: Unified.vfile) => {
     let props = {
       source: res.contents,
       title: parsed.data.title,
@@ -179,33 +141,6 @@ let getStaticProps = ctx => {
     }
     Js.Promise.resolve({"props": props})
   }, resPromise)
-
-  /*
-  Js.Promise.then_(res => {
-    // Js.log(res.contents)
-    let mdSourcePromise = NextMdxRemote.renderToString(
-      res.contents,
-      NextMdxRemote.renderToStringParams(~mdxOptions={remarkPlugins: [remarkSlug2]}, ()),
-    )
-    mdSourcePromise->Js.Promise.then_(
-      mdSource => {
-        let props = {
-          source: mdSource,
-          title: parsed.data.title,
-          pageDescription: parsed.data.pageDescription,
-          tableOfContents: {
-            contents: "Contents",
-            toc: res.toc,
-          },
-        }
-        Js.Promise.resolve({"props": props})
-      },
-      // contentEn.tableOfContents,
-
-      _,
-    )
-  }, process(use(use(remark(), remarkSlug), plugin), source))
- */
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
