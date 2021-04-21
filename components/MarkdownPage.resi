@@ -4,6 +4,7 @@ module MarkdownPageBody: {
 }
 
 module TableOfContents: {
+  /*
   type subHeading = {
     subName: string,
     subHeadingId: string,
@@ -18,6 +19,18 @@ module TableOfContents: {
   type t = {
     contents: string,
     headings: array<heading>,
+  }
+ */
+
+  type rec toc = {
+    label: string,
+    // id: string,
+    children: list<toc>,
+  }
+
+  type t = {
+    contents: string,
+    toc: list<toc>,
   }
 
   @react.component

@@ -4,13 +4,7 @@ module Params = {
   type t = {tutorial: string}
 }
 
-type t = {tableOfContents: MarkdownPage.TableOfContents.t}
-
-type rec toc = {
-  label: string,
-  // id: string,
-  children: list<toc>,
-}
+type t = {contents: string}
 
 type props = {
   source: NextMdxRemote.renderToStringResult,
@@ -43,6 +37,10 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
 }
 
 let contentEn = {
+  contents: `Contents`,
+}
+
+/* {
   tableOfContents: {
     contents: `Contents`, // take this from a generic markdown generic content yaml file, hardcode for now
     headings: [
@@ -59,24 +57,14 @@ let contentEn = {
     ],
   },
 }
+*/
 
 type pageContent = {title: string, pageDescription: string}
 
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
-/*
-let run = %raw(`
-  function () {
-    var remark = require('remark')
-    remark()
-      .process("# l1 title", function (err, file) {
-        console.log(String(file))
-      })
-  }
-`)
-*/
-
 type processor
+
 @module("remark") external remark: unit => processor = "default"
 
 type node = {\"type": string, depth: option<int>}
@@ -90,7 +78,8 @@ external asHeadingNode: node => headingnode = "%identity"
 
 type rootnode = {children: array<node>}
 
-type vfile = {mutable toc: list<toc>}
+type vfile = {mutable toc: list<MarkdownPage.TableOfContents.toc>}
+
 type transformer = (rootnode, vfile) => unit
 
 type attacher = unit => transformer
@@ -102,32 +91,32 @@ type attacher = unit => transformer
 @module("mdast-util-to-string") external toString: headingnode => string = "default"
 
 let transformer = (rootnode: rootnode, file) => {
-  let rec collect = (nodes, inProgress, headings) => {
+  let rec collect = (nodes, inProgress) => {
     switch nodes {
     | list{} =>
-      Js.List.rev(
-        switch inProgress {
-        | None => headings
-        | Some(_, entry) => list{entry, ...headings}
-        },
-      )
+      switch inProgress {
+      | None => list{}
+      | Some(_, entry) => list{entry}
+      }
     | list{h: headingnode, ...tail} =>
       let d = h.depth
       if d >= 2 || d <= 3 {
-        let entry = {label: toString(h), children: list{}} // add node.data.id and children = []
+        let entry = {MarkdownPage.TableOfContents.label: toString(h), children: list{}} // add node.data.id and children = []
         switch inProgress {
-        | None => collect(tail, Some(d, entry), headings)
-        | Some(lastCollectedDepth, inProgress) if d < lastCollectedDepth =>
-          collect(tail, Some(d, entry), list{inProgress, ...headings})
+        | None => collect(tail, Some(d, entry))
+        | Some(lastCollectedDepth, inProgress) if d < lastCollectedDepth => list{
+            inProgress,
+            ...collect(tail, Some(d, entry)),
+          }
         | Some(_, inProgress) =>
           let inProgress = {
             ...inProgress,
             children: Belt.List.concat(inProgress.children, list{entry}),
           }
-          collect(tail, Some(d, inProgress), headings)
+          collect(tail, Some(d, inProgress))
         }
       } else {
-        collect(tail, inProgress, headings)
+        collect(tail, inProgress)
       }
     }
   }
@@ -141,7 +130,6 @@ let transformer = (rootnode: rootnode, file) => {
       ),
     ),
     None,
-    list{},
   )
 
   file.toc = headings
@@ -160,26 +148,29 @@ let getStaticProps = ctx => {
   GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
-  let _ = Js.Promise.then_(res => {
-    Js.log(res.toc)
-    Js.Promise.resolve()
+  // need to compute headings first?
+  Js.Promise.then_(res => {
+    // Js.log(res.toc)
+    let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
+    mdSourcePromise->Js.Promise.then_(
+      mdSource => {
+        let props = {
+          source: mdSource,
+          title: parsed.data.title,
+          pageDescription: parsed.data.pageDescription,
+          tableOfContents: {
+            contents: "Contents",
+            toc: res.toc,
+          },
+        }
+        Js.Promise.resolve({"props": props})
+      },
+      // contentEn.tableOfContents,
+
+      _,
+    )
   }, process(use(remark(), plugin), source))
   // "# first heading\n ## second heading"
-
-  // need to compute headings first?
-  // parse string into md-ast
-
-  // TODO: parse table of contents from front matter
-  let mdSourcePromise = NextMdxRemote.renderToString(source, NextMdxRemote.renderToStringParams())
-  mdSourcePromise->Js.Promise.then_(mdSource => {
-    let props = {
-      source: mdSource,
-      title: parsed.data.title,
-      pageDescription: parsed.data.pageDescription,
-      tableOfContents: contentEn.tableOfContents,
-    }
-    Js.Promise.resolve({"props": props})
-  }, _)
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {

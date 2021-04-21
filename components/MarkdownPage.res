@@ -10,6 +10,7 @@ module MarkdownPageBody = {
 
 module TableOfContents = {
   // TODO: define general heading tree type and recursively traverse when rendering
+  /*
   type subHeading = {
     subName: string,
     subHeadingId: string,
@@ -20,10 +21,21 @@ module TableOfContents = {
     headingId: string,
     subHeadings: array<subHeading>,
   }
-
   type t = {
     contents: string,
     headings: array<heading>,
+  }
+ */
+
+  type rec toc = {
+    label: string,
+    // id: string,
+    children: list<toc>,
+  }
+
+  type t = {
+    contents: string,
+    toc: list<toc>,
   }
 
   @react.component
@@ -33,28 +45,30 @@ module TableOfContents = {
       <div className="px-4"> <span className="text-lg"> {s(content.contents)} </span> </div>
       <div className="mt-5 ">
         <nav className="px-2 space-y-1" ariaLabel="Sidebar">
-          {content.headings
-          |> Js.Array.mapi((hdg, idx) =>
+          {content.toc
+          ->Belt.List.mapWithIndex((idx, hdg) =>
             <div key={Js.Int.toString(idx)} className="space-y-1">
               // Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300"
               <a
-                href={"#" ++ hdg.headingId}
+              // TODO: use id below
+                href={"#" ++ ""}
                 className="block text-gray-600 hover:text-gray-900 pr-2 py-2 text-sm font-medium">
-                {s(hdg.name)}
+                {s(hdg.label)}
               </a>
-              {hdg.subHeadings
-              |> Js.Array.mapi((sub, idx) =>
+              {hdg.children
+              ->Belt.List.mapWithIndex((idx, sub) =>
                 <a
-                  href={"#" ++ sub.subHeadingId}
+                // TODO: use id below
+                  href={"#" ++ ""}
                   className="block pl-6 pr-2 py-2 text-sm font-medium text-gray-600 hover:text-gray-900"
                   key={Js.Int.toString(idx)}>
-                  {s(sub.subName)}
+                  {s(sub.label)}
                 </a>
               )
-              |> React.array}
+              ->Belt.List.toArray |> React.array}
             </div>
           )
-          |> React.array}
+          ->Belt.List.toArray |> React.array}
         </nav>
       </div>
     </div>
