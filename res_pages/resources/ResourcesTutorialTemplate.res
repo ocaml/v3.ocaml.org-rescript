@@ -27,10 +27,7 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
         <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
           <div className="relative px-4 sm:px-6 lg:px-8">
             <TitleHeading.MarkdownMedium title pageDescription />
-            <MarkdownPage.MarkdownPageBody margins=`mt-6`>
-              // todo: pass source into pagebody
-              <div dangerouslySetInnerHTML={{"__html": source}} />
-            </MarkdownPage.MarkdownPageBody>
+            <MarkdownPage.MarkdownPageBody margins=`mt-6` renderedMarkdown=source />
           </div>
         </div>
       </div>

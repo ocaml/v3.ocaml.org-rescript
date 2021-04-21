@@ -19,7 +19,7 @@ let transformer = (rootnode: Unified.rootnode, file: Unified.vfile) => {
           Unified.MarkdownTableOfContents.label: Unified.MdastUtilToString.toString(h),
           id: h.data.id,
           children: list{},
-        } // add node.data.id and children = []
+        }
         switch inProgress {
         | None => collect(tail, Some(d, entry))
         | Some(lastRootDepth, inProgress) if d <= lastRootDepth => list{
@@ -34,7 +34,10 @@ let transformer = (rootnode: Unified.rootnode, file: Unified.vfile) => {
           collect(tail, Some(lastRootDepth, inProgress))
         }
       } else {
-        // TODO: guard against unusual jumps in depth?
+        // TODO: Should we guard against unusual jumps in depth here?
+        //  No, instead validate the list of headings
+        //  in an earlier pass and produce new type with
+        //  stronger guarantees about heading sequences.
         collect(tail, inProgress)
       }
     }

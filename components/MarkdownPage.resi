@@ -1,6 +1,6 @@
 module MarkdownPageBody: {
   @react.component
-  let make: (~margins: string, ~children: React.element) => React.element
+  let make: (~margins: string, ~renderedMarkdown: string) => React.element
 }
 
 module TableOfContents: {
