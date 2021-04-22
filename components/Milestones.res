@@ -21,7 +21,7 @@ module Progress = {
 module Table = {
   module Item = {
     type t = {
-      version: string,
+      version: option<string>,
       description: string,
       period: string,
       completion: string,
@@ -45,7 +45,12 @@ module Table = {
       Array.map(({Item.version: version, description, period, completion, results}) => {
         <tr>
           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            {React.string(version)}
+            {React.string(
+              switch version {
+              | None => ""
+              | Some(x) => x
+              },
+            )}
           </td>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             {React.string(description)}
@@ -67,7 +72,7 @@ module Table = {
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
+            <table className="table-auto min-w-full divide-y divide-gray-200">
               header <tbody className="bg-white divide-y divide-gray-200"> rows </tbody>
             </table>
           </div>
@@ -82,46 +87,67 @@ type props = {items: array<Table.Item.t>}
 let props: props = {
   items: [
     {
-      version: "v3.1",
+      version: Some("v3.1"),
       description: "Select technologies",
       period: "Nov - Jan 2020",
       completion: "100%",
-      results: "Done.",
+      results: "Selected NextJS as static site generator, ReScript as implementation language, FlowMapp as sitemap tool, Figma for design, Tailwind for CSS.",
     },
     {
-      version: "v3.1",
-      description: "Select technologies",
-      period: "Nov - Jan 2020",
-      completion: "100%",
-      results: "Done.",
+      version: None,
+      description: "Implement design system",
+      period: "Jan - Mar 2021",
+      completion: "30%",
+      results: "Half of the 40 pages needing a distinct design have been designed.",
     },
     {
-      version: "v3.1",
-      description: "Select technologies",
-      period: "Nov - Jan 2020",
+      version: Some("v3.2"),
+      description: "Implement most important pages",
+      period: "Feb - Apr 2021",
       completion: "100%",
-      results: "Done.",
+      results: "The 10 most important pages have been designed and implemented.",
     },
     {
-      version: "v3.1",
-      description: "Select technologies",
-      period: "Nov - Jan 2020",
-      completion: "100%",
-      results: "Done.",
+      version: None,
+      description: "Design information architecture",
+      period: "?? - Jun 2021",
+      completion: "60%",
+      results: " Sitemap is complete. 4 (?) User personas and X journeys have been defined.",
     },
     {
-      version: "v3.1",
-      description: "Select technologies",
-      period: "Nov - Jan 2020",
-      completion: "100%",
-      results: "Done.",
+      version: Some("v3.3"),
+      description: "Implement all 40 distinct pages",
+      period: "Jun 30, 2021",
+      completion: "25%",
+      results: "A quarter of the 40 distinct pages have been implemented.",
     },
     {
-      version: "v3.1",
-      description: "Select technologies",
-      period: "Nov - Jan 2020",
-      completion: "100%",
-      results: "Done.",
+      version: Some("v3.4"),
+      description: "Implement OCaml Manual",
+      period: "Jul - Aug 2021",
+      completion: "0%",
+      results: "Not started.",
+    },
+    {
+      version: Some("v3.5"),
+      description: "Integrate docs.ocaml.org",
+      period: "Jul 2021",
+      completion: "0%",
+      results: "Pending completiong of the separate docs.ocaml.org project.",
+    },
+    {
+      version: None,
+      description: "Write all content",
+      period: "Aug 2021",
+      completion: "10%",
+      results: "Some work started.",
+    },
+    {
+      version: Some("v3.6"),
+      description: "Go live on ocaml.org, replacing old site",
+      period: "Aug 1, 2021",
+      completion: "30%",
+      results: "One-third of the work has been done.",
     },
   ],
 }
@@ -157,33 +183,3 @@ let make = () => {
 }
 
 let default = make
-
-// @module("js-yaml") external yamlParse: (string, ~options: 'a=?, unit) => Js.Json.t = "load"
-
-// let getStaticProps = _ctxt => {
-//   let items =
-//     "data/milestones.yaml"
-//     ->Fs.readFileSync
-//     ->yamlParse(~options=None, ())
-//     ->Js.Json.decodeArray
-//     ->Js.Option.getExn
-
-//   let items: array<Item.t> = {
-//     Array.map(x => {
-//       let o = x->Js.Json.decodeObject->Js.Option.getExn
-//       let version = o->Js.Dict.unsafeGet("version")->Js.Json.decodeString->Js.Option.getExn
-//       let description = o->Js.Dict.unsafeGet("description")->Js.Json.decodeString->Js.Option.getExn
-//       let period = o->Js.Dict.unsafeGet("period")->Js.Json.decodeString->Js.Option.getExn
-//       let completion = o->Js.Dict.unsafeGet("completion")->Js.Json.decodeString->Js.Option.getExn
-//       let results = o->Js.Dict.unsafeGet("results")->Js.Json.decodeString->Js.Option.getExn
-//       {
-//         Item.version: version,
-//         description: description,
-//         period: period,
-//         completion: completion,
-//         results: results,
-//       }
-//     }, items)
-//   }
-//   {"props": {items: items}}
-// }
