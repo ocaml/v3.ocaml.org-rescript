@@ -43,27 +43,10 @@ type props = {
   timeline: Timeline.t,
 }
 
-let make = props => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/Vha4bcBvNVrjyLmAEDgZ1x/History-Timeline?node-id=14%3A5`
-  />
-  <MainContainer.None>
-    <TitleHeading.Large title=props.title pageDescription=props.pageDescription />
-    <Timeline content=props.timeline />
-  </MainContainer.None>
-</>
-
-let default = make
-
 @module("js-yaml") external yamlParse: (string, ~options: 'a=?, unit) => Js.Json.t = "load"
 
-let getStaticProps = _ctxt => {
-  let x =
-    "data/history.yaml"
-    ->Fs.readFileSync
-    ->yamlParse(~options=None, ())
-    ->Js.Json.decodeObject
-    ->Js.Option.getExn
+let ofYaml = (x: string): props => {
+  let x = x->yamlParse(~options=None, ())->Js.Json.decodeObject->Js.Option.getExn
 
   let title: string = x->Js.Dict.unsafeGet("title")->Js.Json.decodeString->Js.Option.getExn
   let pageDescription: string =
@@ -78,5 +61,23 @@ let getStaticProps = _ctxt => {
       {Timeline.Item.date: date, description: description}
     }, y)
   }
-  {"props": {title: title, pageDescription: pageDescription, timeline: timeline}}
+  {title: title, pageDescription: pageDescription, timeline: timeline}
+}
+
+let make = props => <>
+  <ConstructionBanner
+    figmaLink=`https://www.figma.com/file/Vha4bcBvNVrjyLmAEDgZ1x/History-Timeline?node-id=14%3A5`
+  />
+  <MainContainer.None>
+    <TitleHeading.Large title=props.title pageDescription=props.pageDescription />
+    <Timeline content=props.timeline />
+  </MainContainer.None>
+</>
+
+let default = make
+
+let getStaticProps = _ctxt => {
+  let props = "data/history.yaml"->Fs.readFileSync->ofYaml
+
+  {"props": props}
 }
