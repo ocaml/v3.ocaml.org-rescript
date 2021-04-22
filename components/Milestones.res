@@ -94,15 +94,8 @@ let props: props = {
       results: "Selected NextJS as static site generator, ReScript as implementation language, FlowMapp as sitemap tool, Figma for design, Tailwind for CSS.",
     },
     {
-      version: None,
-      description: "Implement design system",
-      period: "Jan - Mar 2021",
-      completion: "30%",
-      results: "Half of the 40 pages needing a distinct design have been designed.",
-    },
-    {
       version: Some("v3.2"),
-      description: "Implement most important pages",
+      description: "Implement most important layouts",
       period: "Feb - Apr 2021",
       completion: "100%",
       results: "The 10 most important pages have been designed and implemented.",
@@ -110,16 +103,23 @@ let props: props = {
     {
       version: None,
       description: "Design information architecture",
-      period: "?? - Jun 2021",
+      period: "Aug 2020 - Jun 2021",
       completion: "60%",
-      results: " Sitemap is complete. 4 (?) User personas and X journeys have been defined.",
+      results: " Sitemap is complete, 8 user personas and some journeys have been defined.",
     },
     {
       version: Some("v3.3"),
-      description: "Implement all 40 distinct pages",
+      description: "Implement all 40 distinct layouts",
       period: "Jun 30, 2021",
       completion: "25%",
       results: "A quarter of the 40 distinct pages have been implemented.",
+    },
+    {
+      version: None,
+      description: "Port 40 most important pages",
+      period: "Aug 2021",
+      completion: "10%",
+      results: "Some work started.",
     },
     {
       version: Some("v3.4"),
@@ -137,10 +137,17 @@ let props: props = {
     },
     {
       version: None,
-      description: "Write all content",
+      description: "Implement multilingual site framework",
       period: "Aug 2021",
       completion: "10%",
       results: "Some work started.",
+    },
+    {
+      version: None,
+      description: "Finalize site design",
+      period: "Jan - Aug 2021",
+      completion: "50%",
+      results: "Half of the 40 pages needing a distinct design have been designed.",
     },
     {
       version: Some("v3.6"),
