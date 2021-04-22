@@ -24,7 +24,7 @@
   "scripts": {
     "next:debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "bsb -clean-world -make-world && next build && next export",
-    "next:start": "next start -p $PORT",
+    "start-test-server": "http-server out",
     "rescript:build": "bsb -make-world",
     "rescript:clean": "bsb -clean-world",
     "rescript:format": "find . -type f \\( -name '*.res' -o -name '*.resi' \\) -exec sh -c 'bsc -format {} | sponge {}'  \\;"
@@ -39,6 +39,7 @@
     "@tailwindcss/typography": "^0.4.0",
     "autoprefixer": "^10.2.4",
     "gray-matter": "^4.0.2",
+    "http-server": "^0.12.3",
     "js-yaml": "^4.0.0",
     "mdast-util-to-string": "^2.0.0",
     "next-transpile-modules": "4.1.0",
