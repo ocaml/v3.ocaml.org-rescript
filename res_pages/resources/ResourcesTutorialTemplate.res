@@ -45,8 +45,8 @@ type pageContent = {title: string, pageDescription: string}
 
 let getStaticProps = ctx => {
   let {Params.tutorial: tutorial} = ctx.Next.GetStaticProps.params
-  // TODO: find the location of the tutorial
   let baseDirectory = "data/tutorials/"
+  // TODO: find the location of the tutorial
   let contentFilePath = baseDirectory ++ tutorial ++ "/" ++ tutorial ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)
   let parsed = GrayMatter.matter(fileContents)
