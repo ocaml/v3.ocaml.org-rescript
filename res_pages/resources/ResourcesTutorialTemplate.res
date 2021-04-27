@@ -45,7 +45,8 @@ type pageContent = {title: string, pageDescription: string}
 
 let getStaticProps = ctx => {
   let params = ctx.Next.GetStaticProps.params
-  let contentFilePath = "res_pages/resources/" ++ params.Params.tutorial ++ ".md"
+  let baseDirectory = "data/tutorials/basics/" // TODO: retrieve this value from ctx
+  let contentFilePath = baseDirectory ++ params.Params.tutorial ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)
   let parsed = GrayMatter.matter(fileContents)
   // TODO: move this into GrayMatter or another module
@@ -82,10 +83,13 @@ let getStaticProps = ctx => {
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
   // TODO: change this to read all subdirectories of "resources" and
-  //  then read "<subdir>/tutorial.md" in getStaticProps
-  let markdownFiles = Js.Array.filter(// todo: case insensitive
-  s => Js.String.endsWith("md", s), Fs.readdirSync("res_pages/resources/"))
+  //  then read "<subdir>/<filename>.md" in getStaticProps
+  // TODO: THROW AN EXCEPTION IF THERE ARE ANY DUPLICATE FILE NAMES
+  // let markdownFiles = Js.Array.filter(// todo: case insensitive
+  // s => Js.String.endsWith("md", s), Fs.readdirSync("res_pages/resources/"))
+  let markdownFiles = ["basics.md"]
 
+  // TODO: pass enclosing dir to getStaticProps, as an additional attribute
   let ret = {
     Next.GetStaticPaths.paths: Array.map(
       f => {Next.GetStaticPaths.params: {Params.tutorial: Js.String.split(".", f)[0]}}, // TODO: better error

@@ -8,6 +8,7 @@ Here is some text....
 
 ```ocaml
 # 4 + 5;
+- : int = 9
 ```
 
 More text after snippet!!!?!!!
