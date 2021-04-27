@@ -51,7 +51,7 @@ let getStaticProps = ctx => {
   let fileContents = Fs.readFileSync(contentFilePath)
   let parsed = GrayMatter.matter(fileContents)
   // TODO: move this into GrayMatter or another module
-  GrayMatter.forceInvalidException(parsed.data) // ,
+  GrayMatter.forceInvalidException(parsed.data)
   let source = parsed.content
 
   let resPromise = Unified.process(
