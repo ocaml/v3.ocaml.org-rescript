@@ -85,10 +85,8 @@ let getStaticProps = ctx => {
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
   // TODO: move this logic into a module dedicated to fetching tutorials
   // TODO: throw exception if any tutorials have the same filename or add a more parts to the tutorials path
-  let markdownFiles = Js.Array.filter(
-    (s: Fs.dirent) => Fs.isDirectory(s),
-    Fs.readdirSyncEntries("data/tutorials/"),
-  )
+  // TODO: throw exception if any entry is not a directory
+  let markdownFiles = Fs.readdirSyncEntries("data/tutorials/")
 
   let ret = {
     Next.GetStaticPaths.paths: Array.map((f: Fs.dirent) => {
@@ -97,6 +95,7 @@ let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
         Params.tutorial: Js.String.split(".", f.name)[0],
       },
     }, markdownFiles),
+    // TODO: update bindings to always use "false"
     fallback: false,
   }
   Js.Promise.resolve(ret)
