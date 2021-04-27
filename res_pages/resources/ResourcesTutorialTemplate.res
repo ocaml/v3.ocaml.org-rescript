@@ -44,13 +44,14 @@ type pageContent = {title: string, pageDescription: string}
 @module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
 let getStaticProps = ctx => {
-  let params = ctx.Next.GetStaticProps.params
-  let baseDirectory = "data/tutorials/basics/" // TODO: retrieve this value from ctx
-  let contentFilePath = baseDirectory ++ params.Params.tutorial ++ ".md"
+  let {Params.tutorial: tutorial} = ctx.Next.GetStaticProps.params
+  // TODO: find the location of the tutorial
+  let baseDirectory = "data/tutorials/"
+  let contentFilePath = baseDirectory ++ tutorial ++ "/" ++ tutorial ++ ".md"
   let fileContents = Fs.readFileSync(contentFilePath)
   let parsed = GrayMatter.matter(fileContents)
   // TODO: move this into GrayMatter or another module
-  GrayMatter.forceInvalidException(parsed.data)
+  GrayMatter.forceInvalidException(parsed.data) // ,
   let source = parsed.content
 
   let resPromise = Unified.process(
@@ -82,20 +83,21 @@ let getStaticProps = ctx => {
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
-  // TODO: change this to read all subdirectories of "resources" and
-  //  then read "<subdir>/<filename>.md" in getStaticProps
-  // TODO: THROW AN EXCEPTION IF THERE ARE ANY DUPLICATE FILE NAMES
-  // let markdownFiles = Js.Array.filter(// todo: case insensitive
-  // s => Js.String.endsWith("md", s), Fs.readdirSync("res_pages/resources/"))
-  let markdownFiles = ["basics.md"]
+  // TODO: move this logic into a module dedicated to fetching tutorials
+  // TODO: throw exception if any tutorials have the same filename or add a more parts to the tutorials path
+  let markdownFiles = Js.Array.filter(
+    (s: Fs.dirent) => Fs.isDirectory(s),
+    Fs.readdirSyncEntries("data/tutorials/"),
+  )
 
-  // TODO: pass enclosing dir to getStaticProps, as an additional attribute
   let ret = {
-    Next.GetStaticPaths.paths: Array.map(
-      f => {Next.GetStaticPaths.params: {Params.tutorial: Js.String.split(".", f)[0]}}, // TODO: better error
-      markdownFiles,
-    ),
-    fallback: false, //TODO: is this value correct?
+    Next.GetStaticPaths.paths: Array.map((f: Fs.dirent) => {
+      Next.GetStaticPaths.params: {
+        // TODO: better error
+        Params.tutorial: Js.String.split(".", f.name)[0],
+      },
+    }, markdownFiles),
+    fallback: false,
   }
   Js.Promise.resolve(ret)
 }
