@@ -114,7 +114,7 @@ let footerContentEn: Footer.t = {
 let make = (~children) =>
   // TODO: change element to body, move to document.res
   <div className="bg-white">
-    <Milestones />
+    <Milestones content=GlobalData.milestonesContentEn />
     <div className="relative shadow"> <HeaderNavigation content=headerContentEn /> </div>
     <main className="relative bg-graylight pb-1">
       // pb-1 is used to prevent margin-bottom from collapsing on last child
