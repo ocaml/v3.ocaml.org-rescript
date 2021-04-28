@@ -29,11 +29,11 @@ module Timeline = {
       </li>
     }
 
-    <Section>
+    <SectionContainer.LargeCentered paddingY="py-12" paddingX="px-4">
       <div className="flow-root">
         <ul className="-mb-8"> {content->Js.Array2.mapi(item)->React.array} </ul>
       </div>
-    </Section>
+    </SectionContainer.LargeCentered>
   }
 }
 

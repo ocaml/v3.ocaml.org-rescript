@@ -88,13 +88,12 @@ type t = {items: array<Table.Item.t>}
 let make = (~content) => {
   let (hidden, setHidden) = React.useState(_ => true)
 
-  let pt = 0
   let pb = switch hidden {
   | true => 0
   | false => 8
   }
 
-  <Section bgColor="yellowdark" pt pb>
+  <SectionContainer.LargeCentered paddingY={`pb-${Js.Int.toString(pb)}`} bgColor="bg-yellowdark">
     <Progress />
     <div className="flex flex-col items-center">
       <button
@@ -118,5 +117,5 @@ let make = (~content) => {
       }}>
       <Table items=content.items />
     </div>
-  </Section>
+  </SectionContainer.LargeCentered>
 }
