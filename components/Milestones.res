@@ -61,7 +61,7 @@ module Table = {
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             {React.string(completion)}
           </td>
-          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+          <td className="px-6 py-4 whitespace-normal text-sm text-gray-500">
             {React.string(results)}
           </td>
         </tr>
@@ -176,7 +176,14 @@ let make = () => {
         type_="button"
         className="inline-flex items-center pt-0 pb-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-yellowdark focus:outline-none"
         onClick={_ => setHidden(x => !x)}>
-        {React.string("See more v")}
+        {React.string(
+          "See more " ++
+          // TODO: use icons instead of ascii art (: !
+          switch hidden {
+          | true => "v"
+          | false => "^"
+          },
+        )}
       </button>
     </div>
     <div
