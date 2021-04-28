@@ -4,9 +4,10 @@ module Timeline = {
   }
 
   type t = array<Item.t>
+
   @react.component
   let make = (~content: t) => {
-    let item = ({Item.date: date, description}, idx) => {
+    let item = ({date, description}: Item.t, idx) => {
       let color = "bg-yellowdark"
 
       let verticalBar =
@@ -37,47 +38,41 @@ module Timeline = {
   }
 }
 
-type props = {
+type pageContent = {
   title: string,
   pageDescription: string,
-  timeline: Timeline.t,
+  timeline: array<Timeline.Item.t>,
 }
 
-@module("js-yaml") external yamlParse: (string, ~options: 'a=?, unit) => Js.Json.t = "load"
+@module("js-yaml") external load: (string, ~options: 'a=?, unit) => pageContent = "load"
 
-let ofYaml = (x: string): props => {
-  let x = x->yamlParse(~options=None, ())->Js.Json.decodeObject->Js.Option.getExn
-
-  let title: string = x->Js.Dict.unsafeGet("title")->Js.Json.decodeString->Js.Option.getExn
-  let pageDescription: string =
-    x->Js.Dict.unsafeGet("pageDescription")->Js.Json.decodeString->Js.Option.getExn
-  let timeline: Timeline.t = {
-    let y: array<Js.Json.t> =
-      x->Js.Dict.unsafeGet("timeline")->Js.Json.decodeArray->Js.Option.getExn
-    Array.map(x => {
-      let o = x->Js.Json.decodeObject->Js.Option.getExn
-      let date = o->Js.Dict.unsafeGet("date")->Js.Json.decodeString->Js.Option.getExn
-      let description = o->Js.Dict.unsafeGet("description")->Js.Json.decodeString->Js.Option.getExn
-      {Timeline.Item.date: date, description: description}
-    }, y)
-  }
-  {title: title, pageDescription: pageDescription, timeline: timeline}
+let forceInvalidException: JsYaml.forceInvalidException<pageContent> = c => {
+  let _ = Js.String.length(c.title)
+  let _ = Js.String.length(c.pageDescription)
+  let _ = Js.Array.map((tl: Timeline.Item.t) => {
+    (Js.String.length(tl.date), Js.String.length(tl.description))
+  }, c.timeline)
 }
 
-let make = props => <>
+type props = {content: pageContent}
+
+@react.component
+let make = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/Vha4bcBvNVrjyLmAEDgZ1x/History-Timeline?node-id=14%3A5`
   />
   <MainContainer.None>
-    <TitleHeading.Large title=props.title pageDescription=props.pageDescription />
-    <Timeline content=props.timeline />
+    <TitleHeading.Large title=content.title pageDescription=content.pageDescription />
+    <Timeline content=content.timeline />
   </MainContainer.None>
 </>
 
 let default = make
 
-let getStaticProps = _ctxt => {
-  let props = "data/history.yaml"->Fs.readFileSync->ofYaml
-
-  {"props": props}
+let getStaticProps: Next.GetStaticProps.t<props, unit, unit> = _ctxt => {
+  let contentPath = "data/history.yaml"
+  let fileContents = Fs.readFileSync(contentPath)
+  let pageContent = load(fileContents, ())
+  forceInvalidException(pageContent)
+  Js.Promise.resolve({"props": {content: pageContent}})
 }
