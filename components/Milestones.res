@@ -10,11 +10,11 @@ module Progress = {
           <div className="w-full h-full bg-white absolute" />
           <div
             className="h-full rounded-full bg-yellowdark absolute"
-            style={ReactDOM.Style.make(~width="30%", ())}
+            style={ReactDOM.Style.make(~width=percent_complete, ())}
           />
         </div>
       </div>
-      <div className="w-full md:w-1/12 font-bold text-2xl"> {React.string("30%")} </div>
+      <div className="w-full md:w-1/12 font-bold text-2xl"> {React.string(percent_complete)} </div>
     </div>
 }
 
@@ -33,8 +33,9 @@ module Table = {
 
   @react.component
   let make = (~items: array<Item.t>) => {
-    let header = <thead className="bg-gray-50"> <tr> {Array.map(x => {
+    let header = <thead className="bg-gray-50"> <tr> {Js.Array.mapi((x, idx) => {
             <th
+              key={Js.Int.toString(idx)}
               scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               {React.string(x)}
@@ -42,8 +43,8 @@ module Table = {
           }, headers)->React.array} </tr> </thead>
 
     let rows = {
-      Array.map(({Item.version: version, description, period, completion, results}) => {
-        <tr>
+      Js.Array.mapi(({Item.version: version, description, period, completion, results}, idx) => {
+        <tr key={Js.Int.toString(idx)}>
           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
             {React.string(
               switch version {

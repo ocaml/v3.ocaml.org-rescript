@@ -29,10 +29,10 @@ module Timeline = {
     type t = {date: string, description: string}
 
     @react.component
-    let make = (~item, ~idx) => {
+    let make = (~item) => {
       let bgColor = "bg-yellowdark"
 
-      <li key={string_of_int(idx)}>
+      <li>
         <div className="relative pb-8">
           <VerticalBar bgColor />
           <div className="relative flex items-start space-x-3">
@@ -53,7 +53,9 @@ module Timeline = {
     <SectionContainer.LargeCentered paddingY="py-12" paddingX="px-4">
       <div className="flow-root">
         <ul className="-mb-8">
-          {content |> Js.Array.mapi((item, idx) => <Item item idx />) |> React.array}
+          {content
+          |> Js.Array.mapi((item, idx) => <Item item key={Js.Int.toString(idx)} />)
+          |> React.array}
         </ul>
       </div>
     </SectionContainer.LargeCentered>
@@ -91,7 +93,7 @@ let make = (~content) => <>
 
 let default = make
 
-let getStaticProps: Next.GetStaticProps.t<props, unit, unit> = _ctxt => {
+let getStaticProps = _ctxt => {
   let contentPath = "data/history.yaml"
   let fileContents = Fs.readFileSync(contentPath)
   let pageContent = load(fileContents, ())
