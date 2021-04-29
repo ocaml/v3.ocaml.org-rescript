@@ -14,7 +14,7 @@ var contentEn = {
   pageDescription: ""
 };
 
-function LegalTerms(Props) {
+function Terms(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
@@ -25,9 +25,9 @@ function LegalTerms(Props) {
                 }));
 }
 
-var make = LegalTerms;
+var make = Terms;
 
-var $$default = LegalTerms;
+var $$default = Terms;
 
 export {
   s ,

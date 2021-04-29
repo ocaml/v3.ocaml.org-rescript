@@ -14,7 +14,7 @@ var contentEn = {
   pageDescription: ""
 };
 
-function LegalPrivacy(Props) {
+function Privacy(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
@@ -25,9 +25,9 @@ function LegalPrivacy(Props) {
                 }));
 }
 
-var make = LegalPrivacy;
+var make = Privacy;
 
-var $$default = LegalPrivacy;
+var $$default = Privacy;
 
 export {
   s ,
