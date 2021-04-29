@@ -15,12 +15,14 @@ type props = {
 
 @react.component
 let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
+  let entries = [{Breadcrumbs.name: "Tutorials", url: "/resources/language"}]
   <>
     // TODO: should this have a constrained width? what does tailwind do?
     <MainContainer.None>
+      <Breadcrumbs entries />
       <div className="grid grid-cols-9 bg-white">
         <MarkdownPage.TableOfContents content=tableOfContents />
-        <div className="col-span-9 lg:col-span-7 bg-graylight relative py-16 overflow-hidden">
+        <div className="col-span-9 lg:col-span-7 bg-graylight py-8 relative overflow-hidden">
           <div className="relative px-4 sm:px-6 lg:px-8">
             <TitleHeading.MarkdownMedium title pageDescription />
             <MarkdownPage.MarkdownPageBody margins=`mt-6` renderedMarkdown=source />
