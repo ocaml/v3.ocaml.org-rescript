@@ -14,7 +14,8 @@ This tutorial presents two techniques for debugging OCaml programs:
 The simplest way to debug programs in the toplevel is to follow the function
 calls, by “tracing” the faulty function:
 
-```ocamltop
+<!--- this should use ocaml-mdx top level syntax  --->
+```ocaml
 let rec fib x = if x <= 1 then 1 else fib (x - 1) + fib (x - 2);;
 #trace fib;;
 fib 3;;
@@ -27,7 +28,8 @@ A difficulty with polymorphic functions is that the output of the trace system
 is not very informative in case of polymorphic arguments and/or results.
 Consider a sorting algorithm (say bubble sort):
 
-```ocamltop
+<!--- this should use ocaml-mdx top level syntax  --->
+```ocaml
 let exchange i j v =
   let aux = v.(i) in
     v.(i) <- v.(j);
@@ -64,7 +66,8 @@ For our sorting routine, a single type constraint on the argument of the
 `exchange` function warranties a monomorphic typing, that allows a proper trace
 of function calls:
 
-```ocamltop
+<!--- this should use ocaml-mdx top level syntax  --->
+```ocaml
 let exchange i j (v : int array) =    (* notice the type constraint *)
   let aux = v.(i) in
     v.(i) <- v.(j);
