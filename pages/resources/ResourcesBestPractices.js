@@ -10,14 +10,14 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
-  pageDescription: ""
+  title: "Best Practices",
+  pageDescription: "Some guides to commonly used tools in OCaml development workflows."
 };
 
-function Successstories(Props) {
+function ResourcesBestPractices(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
-  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
+  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.None.make, {
                   children: React.createElement(TitleHeading$Ocamlorg.Large.make, {
                         title: content.title,
                         pageDescription: content.pageDescription
@@ -25,9 +25,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = ResourcesBestPractices;
 
-var $$default = Successstories;
+var $$default = ResourcesBestPractices;
 
 export {
   s ,

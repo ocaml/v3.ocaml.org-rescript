@@ -10,14 +10,16 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
-  pageDescription: ""
+  title: "Opportunities",
+  pageDescription: "This is a space where groups, companies, and organisations can advertise their projects directly to the OCaml community."
 };
 
-function Successstories(Props) {
+function CommunityOpportunities(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
-  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
+  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {
+                  figmaLink: "https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=927%3A5"
+                }), React.createElement(MainContainer$Ocamlorg.Centered.make, {
                   children: React.createElement(TitleHeading$Ocamlorg.Large.make, {
                         title: content.title,
                         pageDescription: content.pageDescription
@@ -25,9 +27,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = CommunityOpportunities;
 
-var $$default = Successstories;
+var $$default = CommunityOpportunities;
 
 export {
   s ,

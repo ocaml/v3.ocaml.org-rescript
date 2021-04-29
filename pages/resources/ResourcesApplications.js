@@ -14,7 +14,7 @@ function s(prim) {
   return prim;
 }
 
-function Applications$ApiDocumentation(Props) {
+function ResourcesApplications$ApiDocumentation(Props) {
   var margins = Props.margins;
   return React.createElement(SectionContainer$Ocamlorg.MediumCentered.make, {
               children: null,
@@ -40,10 +40,10 @@ function Applications$ApiDocumentation(Props) {
 }
 
 var ApiDocumentation = {
-  make: Applications$ApiDocumentation
+  make: ResourcesApplications$ApiDocumentation
 };
 
-function Applications$DeveloperGuides(Props) {
+function ResourcesApplications$DeveloperGuides(Props) {
   var margins = Props.margins;
   var content = Props.content;
   return React.createElement("div", {
@@ -86,10 +86,10 @@ function Applications$DeveloperGuides(Props) {
 }
 
 var DeveloperGuides = {
-  make: Applications$DeveloperGuides
+  make: ResourcesApplications$DeveloperGuides
 };
 
-function Applications$PlatformTools(Props) {
+function ResourcesApplications$PlatformTools(Props) {
   return React.createElement(SectionContainer$Ocamlorg.VerySmallCentered.make, {
               children: null,
               paddingY: "py-16 sm:py-20",
@@ -109,10 +109,10 @@ function Applications$PlatformTools(Props) {
 }
 
 var PlatformTools = {
-  make: Applications$PlatformTools
+  make: ResourcesApplications$PlatformTools
 };
 
-function Applications$UsingOcaml(Props) {
+function ResourcesApplications$UsingOcaml(Props) {
   var margins = Props.margins;
   var content = Props.content;
   return React.createElement("div", {
@@ -169,10 +169,10 @@ function Applications$UsingOcaml(Props) {
 }
 
 var UsingOcaml = {
-  make: Applications$UsingOcaml
+  make: ResourcesApplications$UsingOcaml
 };
 
-function Applications(Props) {
+function ResourcesApplications(Props) {
   var title = Props.title;
   var pageDescription = Props.pageDescription;
   var developerGuidesContent = Props.developerGuidesContent;
@@ -188,12 +188,12 @@ function Applications(Props) {
                       marginTop: "mt-1",
                       marginBottom: "mb-24",
                       addBottomBar: true
-                    }), React.createElement(Applications$ApiDocumentation, {
+                    }), React.createElement(ResourcesApplications$ApiDocumentation, {
                       margins: "mb-24"
-                    }), React.createElement(Applications$DeveloperGuides, {
+                    }), React.createElement(ResourcesApplications$DeveloperGuides, {
                       margins: "mb-2",
                       content: developerGuidesContent
-                    }), React.createElement(Applications$PlatformTools, {}), React.createElement(Applications$UsingOcaml, {
+                    }), React.createElement(ResourcesApplications$PlatformTools, {}), React.createElement(ResourcesApplications$UsingOcaml, {
                       margins: "mb-16",
                       content: usingOcamlContent
                     })));
@@ -228,9 +228,9 @@ function getStaticProps(_ctx) {
 
 var Link;
 
-var make = Applications;
+var make = ResourcesApplications;
 
-var $$default = Applications;
+var $$default = ResourcesApplications;
 
 export {
   Link ,

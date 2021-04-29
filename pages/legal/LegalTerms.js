@@ -10,11 +10,11 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
+  title: "Terms and Conditions",
   pageDescription: ""
 };
 
-function Successstories(Props) {
+function LegalTerms(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
@@ -25,9 +25,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = LegalTerms;
 
-var $$default = Successstories;
+var $$default = LegalTerms;
 
 export {
   s ,

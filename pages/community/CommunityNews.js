@@ -10,7 +10,7 @@ function s(prim) {
   return prim;
 }
 
-function News$HighlightedStory(Props) {
+function CommunityNews$HighlightedStory(Props) {
   var margins = Props.margins;
   var content = Props.content;
   return React.createElement("div", {
@@ -32,14 +32,14 @@ function News$HighlightedStory(Props) {
 }
 
 var HighlightedStory = {
-  make: News$HighlightedStory
+  make: CommunityNews$HighlightedStory
 };
 
 var Story = {};
 
 var NewsCategory = {};
 
-function News$CategorizedNews(Props) {
+function CommunityNews$CategorizedNews(Props) {
   var margins = Props.margins;
   var content = Props.content;
   return React.createElement(SectionContainer$Ocamlorg.MediumCentered.make, {
@@ -205,10 +205,10 @@ function News$CategorizedNews(Props) {
 }
 
 var CategorizedNews = {
-  make: News$CategorizedNews
+  make: CommunityNews$CategorizedNews
 };
 
-function News$WeeklyNews(Props) {
+function CommunityNews$WeeklyNews(Props) {
   var content = Props.content;
   var margins = Props.margins;
   return React.createElement(SectionContainer$Ocamlorg.MediumCentered.make, {
@@ -242,7 +242,7 @@ function News$WeeklyNews(Props) {
 }
 
 var WeeklyNews = {
-  make: News$WeeklyNews
+  make: CommunityNews$WeeklyNews
 };
 
 var contentEn_title = "OCaml News";
@@ -312,7 +312,7 @@ var contentEn = {
   weeklyNews: contentEn_weeklyNews
 };
 
-function News(Props) {
+function CommunityNews(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {
@@ -323,21 +323,21 @@ function News(Props) {
                 }, React.createElement(TitleHeading$Ocamlorg.Large.make, {
                       title: content.title,
                       pageDescription: content.pageDescription
-                    }), React.createElement(News$HighlightedStory, {
+                    }), React.createElement(CommunityNews$HighlightedStory, {
                       margins: "mb-6",
                       content: content.highlightedContent
-                    }), React.createElement(News$CategorizedNews, {
+                    }), React.createElement(CommunityNews$CategorizedNews, {
                       margins: "mb-10 lg:mb-32",
                       content: content.categorizedNews
-                    }), React.createElement(News$WeeklyNews, {
+                    }), React.createElement(CommunityNews$WeeklyNews, {
                       content: content.weeklyNews,
                       margins: "mb-4"
                     })));
 }
 
-var make = News;
+var make = CommunityNews;
 
-var $$default = News;
+var $$default = CommunityNews;
 
 export {
   s ,

@@ -10,14 +10,16 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
-  pageDescription: ""
+  title: "Papers Archive",
+  pageDescription: "A selection of OCaml papers through the ages. Filter by the tags or do a search over all of the text."
 };
 
-function Successstories(Props) {
+function ResourcesPapersArchive(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
-  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
+  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {
+                  playgroundLink: "/play/resources/paperarchive"
+                }), React.createElement(MainContainer$Ocamlorg.Centered.make, {
                   children: React.createElement(TitleHeading$Ocamlorg.Large.make, {
                         title: content.title,
                         pageDescription: content.pageDescription
@@ -25,9 +27,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = ResourcesPapersArchive;
 
-var $$default = Successstories;
+var $$default = ResourcesPapersArchive;
 
 export {
   s ,

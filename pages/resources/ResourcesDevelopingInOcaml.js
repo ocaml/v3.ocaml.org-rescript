@@ -10,11 +10,11 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
-  pageDescription: ""
+  title: "Developing in OCaml",
+  pageDescription: "Workflows for application developers and library authors."
 };
 
-function Successstories(Props) {
+function ResourcesDevelopingInOcaml(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
@@ -25,9 +25,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = ResourcesDevelopingInOcaml;
 
-var $$default = Successstories;
+var $$default = ResourcesDevelopingInOcaml;
 
 export {
   s ,

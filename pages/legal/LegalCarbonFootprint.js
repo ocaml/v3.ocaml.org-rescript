@@ -10,14 +10,16 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
-  pageDescription: ""
+  title: "Carbon Footprint",
+  pageDescription: "Over the years, the OCaml community has become more and more proactive when it comes to reducing its environmental impact. As part of this journey we have documented our efforts towards becoming Carbon Zero."
 };
 
-function Successstories(Props) {
+function LegalCarbonFootprint(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
-  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
+  return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {
+                  figmaLink: "https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=931%3A6483"
+                }), React.createElement(MainContainer$Ocamlorg.Centered.make, {
                   children: React.createElement(TitleHeading$Ocamlorg.Large.make, {
                         title: content.title,
                         pageDescription: content.pageDescription
@@ -25,9 +27,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = LegalCarbonFootprint;
 
-var $$default = Successstories;
+var $$default = LegalCarbonFootprint;
 
 export {
   s ,

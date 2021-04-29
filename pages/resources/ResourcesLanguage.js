@@ -11,7 +11,7 @@ function s(prim) {
   return prim;
 }
 
-function Language$UserLevelIntroduction(Props) {
+function ResourcesLanguage$UserLevelIntroduction(Props) {
   var content = Props.content;
   var margins = Props.margins;
   return React.createElement(SectionContainer$Ocamlorg.SmallCentered.make, {
@@ -26,10 +26,10 @@ function Language$UserLevelIntroduction(Props) {
 }
 
 var UserLevelIntroduction = {
-  make: Language$UserLevelIntroduction
+  make: ResourcesLanguage$UserLevelIntroduction
 };
 
-function Language$Books(Props) {
+function ResourcesLanguage$Books(Props) {
   var margins = Props.margins;
   var content = Props.content;
   return React.createElement("div", {
@@ -80,10 +80,10 @@ function Language$Books(Props) {
 }
 
 var Books = {
-  make: Language$Books
+  make: ResourcesLanguage$Books
 };
 
-function Language$Manual(Props) {
+function ResourcesLanguage$Manual(Props) {
   var margins = Props.margins;
   return React.createElement(SectionContainer$Ocamlorg.MediumCentered.make, {
               children: null,
@@ -144,10 +144,10 @@ function Language$Manual(Props) {
 }
 
 var Manual = {
-  make: Language$Manual
+  make: ResourcesLanguage$Manual
 };
 
-function Language$Applications(Props) {
+function ResourcesLanguage$Applications(Props) {
   var margins = Props.margins;
   return React.createElement(SectionContainer$Ocamlorg.VerySmallCentered.make, {
               children: null,
@@ -174,10 +174,10 @@ function Language$Applications(Props) {
 }
 
 var Applications = {
-  make: Language$Applications
+  make: ResourcesLanguage$Applications
 };
 
-function Language$Papers(Props) {
+function ResourcesLanguage$Papers(Props) {
   var margins = Props.margins;
   return React.createElement("div", {
               className: "bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " + margins
@@ -223,10 +223,10 @@ function Language$Papers(Props) {
 }
 
 var Papers = {
-  make: Language$Papers
+  make: ResourcesLanguage$Papers
 };
 
-function Language(Props) {
+function ResourcesLanguage(Props) {
   var content = Props.content;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {
                   figmaLink: "https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1085%3A121",
@@ -239,29 +239,29 @@ function Language(Props) {
                       marginTop: "mt-1",
                       marginBottom: "mb-24",
                       addBottomBar: true
-                    }), React.createElement(Language$UserLevelIntroduction, {
+                    }), React.createElement(ResourcesLanguage$UserLevelIntroduction, {
                       content: content.beginning,
                       margins: "mb-20"
-                    }), React.createElement(Language$UserLevelIntroduction, {
+                    }), React.createElement(ResourcesLanguage$UserLevelIntroduction, {
                       content: content.growing,
                       margins: "mb-20"
-                    }), React.createElement(Language$Books, {
+                    }), React.createElement(ResourcesLanguage$Books, {
                       margins: "mb-16",
                       content: content.booksContent
-                    }), React.createElement(Language$UserLevelIntroduction, {
+                    }), React.createElement(ResourcesLanguage$UserLevelIntroduction, {
                       content: content.expanding,
                       margins: "mb-20"
-                    }), React.createElement(Language$Manual, {
+                    }), React.createElement(ResourcesLanguage$Manual, {
                       margins: "mb-20"
-                    }), React.createElement(Language$UserLevelIntroduction, {
+                    }), React.createElement(ResourcesLanguage$UserLevelIntroduction, {
                       content: content.diversifying,
                       margins: "mb-20"
-                    }), React.createElement(Language$Applications, {
+                    }), React.createElement(ResourcesLanguage$Applications, {
                       margins: "mb-36"
-                    }), React.createElement(Language$UserLevelIntroduction, {
+                    }), React.createElement(ResourcesLanguage$UserLevelIntroduction, {
                       content: content.researching,
                       margins: "mb-20"
-                    }), React.createElement(Language$Papers, {
+                    }), React.createElement(ResourcesLanguage$Papers, {
                       margins: "mb-16"
                     })));
 }
@@ -302,9 +302,9 @@ function getStaticProps(_ctx) {
         };
 }
 
-var make = Language;
+var make = ResourcesLanguage;
 
-var $$default = Language;
+var $$default = ResourcesLanguage;
 
 export {
   s ,

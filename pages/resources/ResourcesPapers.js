@@ -10,11 +10,11 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
-  pageDescription: ""
+  title: "Papers",
+  pageDescription: "A selection of papers grouped by popular categories."
 };
 
-function Successstories(Props) {
+function ResourcesPapers(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
@@ -25,9 +25,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = ResourcesPapers;
 
-var $$default = Successstories;
+var $$default = ResourcesPapers;
 
 export {
   s ,

@@ -65,7 +65,7 @@ var contentEn = {
   companies: companies
 };
 
-function Users$LogoSection(Props) {
+function IndustryUsers$LogoSection(Props) {
   var margins = Props.margins;
   var companies = Props.companies;
   return React.createElement(SectionContainer$Ocamlorg.ResponsiveCentered.make, {
@@ -96,10 +96,10 @@ function Users$LogoSection(Props) {
 }
 
 var LogoSection = {
-  make: Users$LogoSection
+  make: IndustryUsers$LogoSection
 };
 
-function Users(Props) {
+function IndustryUsers(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {
@@ -115,7 +115,7 @@ function Users(Props) {
                         label: "Success Stories",
                         url: "/industry/successstories"
                       }
-                    }), React.createElement(Users$LogoSection, {
+                    }), React.createElement(IndustryUsers$LogoSection, {
                       margins: "mt-6",
                       companies: content.companies
                     })));
@@ -123,9 +123,9 @@ function Users(Props) {
 
 var Link;
 
-var make = Users;
+var make = IndustryUsers;
 
-var $$default = Users;
+var $$default = IndustryUsers;
 
 export {
   Link ,

@@ -17,7 +17,7 @@ function s(prim) {
 
 var Params = {};
 
-function $lbracktutorial$rbrack(Props) {
+function ResourcesTutorialTemplate(Props) {
   var source = Props.source;
   var title = Props.title;
   var pageDescription = Props.pageDescription;
@@ -85,13 +85,13 @@ function getStaticPaths(param) {
             });
 }
 
-var make = $lbracktutorial$rbrack;
+var make = ResourcesTutorialTemplate;
 
 var contentEn = {
   contents: "Contents"
 };
 
-var $$default = $lbracktutorial$rbrack;
+var $$default = ResourcesTutorialTemplate;
 
 export {
   s ,

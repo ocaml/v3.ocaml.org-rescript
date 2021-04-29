@@ -14,7 +14,7 @@ function s(prim) {
 
 var Item = {};
 
-function Mediaarchive$MediaSection(Props) {
+function CommunityMediaArchive$MediaSection(Props) {
   var content = Props.content;
   return React.createElement(SectionContainer$Ocamlorg.FullyResponsiveCentered.make, {
               children: null,
@@ -49,10 +49,10 @@ function Mediaarchive$MediaSection(Props) {
 
 var MediaSection = {
   Item: Item,
-  make: Mediaarchive$MediaSection
+  make: CommunityMediaArchive$MediaSection
 };
 
-function Mediaarchive(Props) {
+function CommunityMediaArchive(Props) {
   var title = Props.title;
   var pageDescription = Props.pageDescription;
   var videosContent = Props.videosContent;
@@ -66,11 +66,11 @@ function Mediaarchive(Props) {
                 }, React.createElement(TitleHeading$Ocamlorg.Large.make, {
                       title: title,
                       pageDescription: pageDescription
-                    }), React.createElement(Mediaarchive$MediaSection, {
+                    }), React.createElement(CommunityMediaArchive$MediaSection, {
                       content: videosContent
-                    }), React.createElement(Mediaarchive$MediaSection, {
+                    }), React.createElement(CommunityMediaArchive$MediaSection, {
                       content: talksContent
-                    }), React.createElement(Mediaarchive$MediaSection, {
+                    }), React.createElement(CommunityMediaArchive$MediaSection, {
                       content: papersContent
                     })));
 }
@@ -136,9 +136,9 @@ function getStaticProps(_ctx) {
         };
 }
 
-var make = Mediaarchive;
+var make = CommunityMediaArchive;
 
-var $$default = Mediaarchive;
+var $$default = CommunityMediaArchive;
 
 export {
   s ,

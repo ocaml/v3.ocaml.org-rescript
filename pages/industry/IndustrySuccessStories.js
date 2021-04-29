@@ -14,7 +14,7 @@ var contentEn = {
   pageDescription: ""
 };
 
-function Successstories(Props) {
+function IndustrySuccessStories(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
@@ -25,9 +25,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = IndustrySuccessStories;
 
-var $$default = Successstories;
+var $$default = IndustrySuccessStories;
 
 export {
   s ,

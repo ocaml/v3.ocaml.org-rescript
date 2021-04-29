@@ -15,7 +15,7 @@ function s(prim) {
   return prim;
 }
 
-function Aroundweb$LatestNews(Props) {
+function CommunityAroundWeb$LatestNews(Props) {
   var content = Props.content;
   return React.createElement(React.Fragment, undefined, React.createElement("h2", {
                   className: "mb-8 text-3xl text-center tracking-tight font-extrabold text-gray-900 sm:text-4xl"
@@ -68,10 +68,10 @@ function Aroundweb$LatestNews(Props) {
 }
 
 var LatestNews = {
-  make: Aroundweb$LatestNews
+  make: CommunityAroundWeb$LatestNews
 };
 
-function Aroundweb(Props) {
+function CommunityAroundWeb(Props) {
   var content = Props.content;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {
                   figmaLink: "https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1040%3A104",
@@ -96,7 +96,7 @@ function Aroundweb(Props) {
                                 target: "_blank"
                               }, content.engageButtonText)),
                       margins: "mb-16"
-                    }), React.createElement(Aroundweb$LatestNews, {
+                    }), React.createElement(CommunityAroundWeb$LatestNews, {
                       content: content.latestNewsContent
                     }), React.createElement(SectionContainer$Ocamlorg.LargeCentered.make, {
                       children: null,
@@ -295,7 +295,7 @@ function forceInvalidException(c) {
 
 function getStaticProps(_ctx) {
   var news = NewsItem$Ocamlorg.readAll(undefined);
-  var fileContents = Fs$Ocamlorg.readFileSync("pages/community/aroundweb.yaml");
+  var fileContents = Fs$Ocamlorg.readFileSync("res_pages/community/aroundweb.yaml");
   var pageContent = JsYaml.load(fileContents, undefined);
   forceInvalidException(pageContent);
   var contentEn_title = "OCaml Around the Web";
@@ -360,9 +360,9 @@ function getStaticProps(_ctx) {
         };
 }
 
-var make = Aroundweb;
+var make = CommunityAroundWeb;
 
-var $$default = Aroundweb;
+var $$default = CommunityAroundWeb;
 
 export {
   s ,

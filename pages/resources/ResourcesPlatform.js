@@ -10,11 +10,11 @@ function s(prim) {
 }
 
 var contentEn = {
-  title: "Success Stories",
-  pageDescription: ""
+  title: "Platform",
+  pageDescription: "The OCaml Platform represents the best way for developers, both new and old, to write software in OCaml."
 };
 
-function Successstories(Props) {
+function ResourcesPlatform(Props) {
   var contentOpt = Props.content;
   var content = contentOpt !== undefined ? contentOpt : contentEn;
   return React.createElement(React.Fragment, undefined, React.createElement(ConstructionBanner$Ocamlorg.make, {}), React.createElement(MainContainer$Ocamlorg.Centered.make, {
@@ -25,9 +25,9 @@ function Successstories(Props) {
                 }));
 }
 
-var make = Successstories;
+var make = ResourcesPlatform;
 
-var $$default = Successstories;
+var $$default = ResourcesPlatform;
 
 export {
   s ,
