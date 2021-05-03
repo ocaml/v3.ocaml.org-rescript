@@ -1,21 +1,20 @@
 // Page:
 
-//  a variant with
+//  a variant
 
-//     Basic
+//     TopHero (left/right?)
+//     TitleWithSectionList (big? divider?) <<< - start w/industrial users
 
-//     TopHighlight (with large screenshot)
-//     SplitWithImage
-//     AlternatingSideBySideWithImages
+//     TopImage (imitate "with large screenshot"; overlay text?)
+//     HighlightedItem
 
-//     SectionList
-//     HeroWithSectionList
-
-//     Markdown
+//     Markdown (optional TOC)
 
 // need to implement render for the variant
 
 // Section:
 
-//
+//  an interface
+
+//     All the sections used currently
 
