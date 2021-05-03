@@ -106,6 +106,7 @@ let make = (~content=contentEn) => <>
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
     playgroundLink=`/play/industry/users`
   />
+  {/*
   <MainContainer.Centered>
     <TitleHeading.Large
       title=content.title
@@ -118,6 +119,8 @@ let make = (~content=contentEn) => <>
     />
     <LogoSection margins=`mt-6` companies=content.companies />
   </MainContainer.Centered>
+ */
+  Page.render(Basic)}
 </>
 
 let default = make
