@@ -2,29 +2,6 @@ module Link = Next.Link
 
 let s = React.string
 
-/*
-type industrySection = {
-  header: string,
-  whatIsOcaml: NavEntry.t,
-  industrialUsers: NavEntry.t,
-  successStories: NavEntry.t,
-}
-
-type resourcesSection = {
-  header: string,
-  releases: NavEntry.t,
-  applications: NavEntry.t,
-  language: NavEntry.t,
-  archive: NavEntry.t,
-}
-
-type communitySection = {
-  header: string,
-  opportunities: NavEntry.t,
-  news: NavEntry.t,
-  aroundTheWeb: NavEntry.t,
-} */
-
 // TODO: change NavEntry.t to HeaderNavEntry.t, which has additional info like icon
 type section = {
   header: string,
@@ -298,100 +275,26 @@ let make = (~content) => {
               </button>
             </div>
           </div>
-          <div className="mt-6"> <nav className="grid gap-y-8" /> </div>
+          <div className="mt-6">
+            <nav className="grid gap-y-8">
+              {Js.Array.concatMany(
+                [content.resourcesSection.entries, content.communitySection.entries],
+                content.industrySection.entries,
+              )
+              |> Js.Array.mapi((e: NavEntry.t, idx) =>
+                <Link href=e.url key={Js.Int.toString(idx)}>
+                  <a
+                    onClick=hideMobileMenu
+                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                    <span className="ml-3 text-base font-medium text-gray-900"> {s(e.label)} </span>
+                  </a>
+                </Link>
+              )
+              |> React.array}
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
 }
-
-// <Link href=content.industrySection.whatIsOcaml.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.industrySection.whatIsOcaml.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.industrySection.industrialUsers.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.industrySection.industrialUsers.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.industrySection.successStories.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.industrySection.successStories.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.resourcesSection.releases.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.resourcesSection.releases.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.resourcesSection.applications.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.resourcesSection.applications.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.resourcesSection.language.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.resourcesSection.language.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.resourcesSection.archive.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.resourcesSection.archive.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.communitySection.opportunities.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.communitySection.opportunities.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.communitySection.news.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.communitySection.news.label)}
-//     </span>
-//   </a>
-// </Link>
-// <Link href=content.communitySection.aroundTheWeb.url>
-//   <a
-//     onClick=hideMobileMenu
-//     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-//     <span className="ml-3 text-base font-medium text-gray-900">
-//       {s(content.communitySection.aroundTheWeb.label)}
-//     </span>
-//   </a>
-// </Link>
