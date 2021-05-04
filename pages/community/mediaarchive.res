@@ -62,7 +62,7 @@ let make = (~title, ~pageDescription, ~videosContent, ~talksContent, ~papersCont
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
     playgroundLink=`/play/resources/mediaarchive`
   />
-  <Page.Basic title pageDescription addContainer=Some(Page.Basic.Narrow)>
+  <Page.Basic title pageDescription addContainer=Page.Basic.Narrow>
     <MediaSection content=videosContent />
     <MediaSection content=talksContent />
     <MediaSection content=papersContent />

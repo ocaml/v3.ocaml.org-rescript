@@ -1,10 +1,25 @@
 //  TODO: combine the components below into one variant type
 
-//     Markdown (optional TOC)
-
 // TODO: implement module interface
 
 let s = React.string
+
+module MainContainer = {
+  module None = {
+    @react.component
+    let make = (~children) => children
+  }
+
+  module Centered = {
+    @react.component
+    let make = (~children) => <div className="max-w-7xl mx-auto"> children </div>
+  }
+
+  module NarrowCentered = {
+    @react.component
+    let make = (~children) => <div className="max-w-3xl mx-auto"> children </div>
+  }
+}
 
 module Unstructured = {
   @react.component
@@ -14,14 +29,14 @@ module Unstructured = {
 }
 
 module Basic = {
-  type container = Regular | Narrow
+  type container = NoContainer | Regular | Narrow
 
   @react.component
   let make = (
     ~children,
     ~title,
     ~pageDescription,
-    ~addContainer=Some(Regular),
+    ~addContainer=Regular,
     ~marginTop=?,
     ~headingMarginBottom=?,
     ~callToAction=?,
@@ -44,10 +59,9 @@ module Basic = {
       }
     }
     switch addContainer {
-    | Some(Regular) => <MainContainer.Centered> heading children </MainContainer.Centered>
-    | Some(Narrow) =>
-      <MainContainer.NarrowCentered> heading children </MainContainer.NarrowCentered>
-    | None => <MainContainer.None> heading children </MainContainer.None>
+    | Regular => <MainContainer.Centered> heading children </MainContainer.Centered>
+    | Narrow => <MainContainer.NarrowCentered> heading children </MainContainer.NarrowCentered>
+    | NoContainer => <MainContainer.None> heading children </MainContainer.None>
     }
   }
 }

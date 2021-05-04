@@ -185,7 +185,7 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     marginTop=`mt-1`
     headingMarginBottom=`mb-24`
     addBottomBar=true
-    addContainer=None
+    addContainer=Page.Basic.NoContainer
     title
     pageDescription>
     <ApiDocumentation margins=`mb-24` />
