@@ -9,6 +9,8 @@
 
 //     Markdown (optional TOC)
 
+// TODO: implement module interface
+
 // need to implement render for the variant
 
 module Basic = {
