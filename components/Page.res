@@ -2,7 +2,6 @@
 
 //  TODO: combine the components below into one variant type
 
-//     Basic (big? divider?) <<< - start w/industrial users
 //     Hero (left/right?)
 
 //     TopImage (imitate "with large screenshot"; overlay text?)
@@ -18,7 +17,7 @@ module Basic = {
     ~children,
     ~title,
     ~pageDescription,
-    ~addContainer=false,
+    ~addContainer=true,
     ~marginTop=?,
     ~headingMarginBottom=?,
     ~callToAction=?,

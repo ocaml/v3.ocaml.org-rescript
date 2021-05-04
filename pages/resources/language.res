@@ -229,6 +229,7 @@ let make = (~content) => <>
     marginTop=`mt-1`
     headingMarginBottom=`mb-24`
     addBottomBar=true
+    addContainer=false
     title=content.title
     pageDescription=content.pageDescription>
     <UserLevelIntroduction content=content.beginning margins=`mb-20` />
