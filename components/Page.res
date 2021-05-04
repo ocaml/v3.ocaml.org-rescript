@@ -14,12 +14,14 @@ module Unstructured = {
 }
 
 module Basic = {
+  type container = Regular | Narrow
+
   @react.component
   let make = (
     ~children,
     ~title,
     ~pageDescription,
-    ~addContainer=true,
+    ~addContainer=Some(Regular),
     ~marginTop=?,
     ~headingMarginBottom=?,
     ~callToAction=?,
@@ -42,8 +44,10 @@ module Basic = {
       }
     }
     switch addContainer {
-    | true => <MainContainer.Centered> heading children </MainContainer.Centered>
-    | false => <MainContainer.None> heading children </MainContainer.None>
+    | Some(Regular) => <MainContainer.Centered> heading children </MainContainer.Centered>
+    | Some(Narrow) =>
+      <MainContainer.NarrowCentered> heading children </MainContainer.NarrowCentered>
+    | None => <MainContainer.None> heading children </MainContainer.None>
     }
   }
 }
