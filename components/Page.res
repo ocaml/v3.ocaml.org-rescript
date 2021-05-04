@@ -1,18 +1,17 @@
-// Page:
-
 //  TODO: combine the components below into one variant type
-
-//     Hero (left/right?)
-
-//     TopImage (imitate "with large screenshot"; overlay text?)
-//     HighlightedItem
 
 //     Markdown (optional TOC)
 
 // TODO: implement module interface
 
-// need to implement render for the variant
 let s = React.string
+
+module Unstructured = {
+  @react.component
+  let make = (~children) => {
+    <MainContainer.None> children </MainContainer.None>
+  }
+}
 
 module Basic = {
   @react.component
@@ -49,6 +48,7 @@ module Basic = {
   }
 }
 
+// TODO: imitate "with large screenshot" tailwind ui component
 module TopImage = {
   @react.component
   let make = (~children, ~title, ~pageDescription) => {
@@ -104,9 +104,3 @@ module HighlightItem = {
     </MainContainer.None>
   }
 }
-
-// Section:
-
-//  an interface
-
-//     All the sections used currently
