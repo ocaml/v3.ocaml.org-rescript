@@ -1,6 +1,6 @@
 // Page:
 
-//  a variant
+//  TODO: combine the components below into one variant type
 
 //     Basic (big? divider?) <<< - start w/industrial users
 //     Hero (left/right?)
@@ -12,24 +12,40 @@
 
 // need to implement render for the variant
 
-type page = Basic // take children. should they be functions or fully rendered?
-
-let render = page =>
-  switch page {
-  | Basic =>
-    <MainContainer.Centered>
-      <TitleHeading.Large
-        title=`A Title`
-        pageDescription=`A description here.`
-        marginTop=`mt-2`
-        callToAction={
-          TitleHeading.Large.label: "Success Stories",
-          url: "/industry/successstories",
-        }
-      />
-      <div> {React.string(`Hello.`)} </div>
-    </MainContainer.Centered>
+module Basic = {
+  @react.component
+  let make = (
+    ~children,
+    ~title,
+    ~pageDescription,
+    ~addContainer=false,
+    ~marginTop=?,
+    ~headingMarginBottom=?,
+    ~callToAction=?,
+    ~addBottomBar=?,
+    (),
+  ) => {
+    let heading = {
+      let marginTop = Js.Option.getWithDefault(``, marginTop)
+      let headingMarginBottom = Js.Option.getWithDefault(``, headingMarginBottom)
+      let addBottomBar = Js.Option.getWithDefault(false, addBottomBar)
+      switch callToAction {
+      | Some(callToAction) =>
+        <TitleHeading.Large
+          marginTop marginBottom=headingMarginBottom addBottomBar title pageDescription callToAction
+        />
+      | None =>
+        <TitleHeading.Large
+          marginTop marginBottom=headingMarginBottom addBottomBar title pageDescription
+        />
+      }
+    }
+    switch addContainer {
+    | true => <MainContainer.Centered> heading children </MainContainer.Centered>
+    | false => <MainContainer.None> heading children </MainContainer.None>
+    }
   }
+}
 
 // Section:
 
