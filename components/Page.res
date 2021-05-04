@@ -48,6 +48,15 @@ module Basic = {
   }
 }
 
+module TopImage = {
+  @react.component
+  let make = (~children, ~title, ~pageDescription) => {
+    <MainContainer.Centered>
+      <TitleHeading.Large title pageDescription /> children
+    </MainContainer.Centered>
+  }
+}
+
 // Section:
 
 //  an interface
