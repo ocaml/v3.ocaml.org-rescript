@@ -45,24 +45,18 @@ let getStaticProps = ctx => {
   // TODO: find the location of the tutorial
   let contentFilePath = baseDirectory ++ tutorial ++ "/" ++ tutorial ++ ".md"
   let parsed = Fs.readFileSync(contentFilePath)->GrayMatter.ofMarkdown
-  let source = parsed.content
 
-  let resPromise = Unified.process(
-    Unified.use(
-      Unified.use(
-        Unified.use(
-          Unified.use(
-            Unified.use(Unified.use(Unified.unified(), Unified.remarkParse), Unified.remarkSlug),
-            MdastToc.plugin,
-          ),
-          Unified.remark2rehype,
-        ),
-        Unified.rehypeHighlight,
-      ),
-      Unified.rehypeStringify,
-    ),
-    source,
-  )
+  let resPromise =
+    parsed.content->Unified.process(
+      Unified.unified()
+      ->Unified.use(Unified.remarkParse)
+      ->Unified.use(Unified.remarkSlug)
+      ->Unified.use(MdastToc.plugin)
+      ->Unified.use(Unified.remark2rehype)
+      ->Unified.use(Unified.rehypeHighlight)
+      ->Unified.use(Unified.rehypeStringify),
+      _,
+    )
 
   Js.Promise.then_((res: Unified.vfile) => {
     let props = {
