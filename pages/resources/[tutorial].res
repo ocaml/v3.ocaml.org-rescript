@@ -44,10 +44,7 @@ let getStaticProps = ctx => {
   let baseDirectory = "data/tutorials/"
   // TODO: find the location of the tutorial
   let contentFilePath = baseDirectory ++ tutorial ++ "/" ++ tutorial ++ ".md"
-  let fileContents = Fs.readFileSync(contentFilePath)
-  let parsed = GrayMatter.matter(fileContents)
-  // TODO: move this into GrayMatter or another module
-  GrayMatter.forceInvalidException(parsed.data)
+  let parsed = Fs.readFileSync(contentFilePath)->GrayMatter.ofMarkdown
   let source = parsed.content
 
   let resPromise = Unified.process(
@@ -86,7 +83,7 @@ let getStaticProps = ctx => {
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
   // TODO: move this logic into a module dedicated to fetching tutorials
-  // TODO: throw exception if any tutorials have the same filename or add a more parts to the tutorials path
+  // TODO: throw exception if any tutorials have the same filename or add more parts to the tutorials path
   // TODO: throw exception if any entry is not a directory
   let markdownFiles = Fs.readdirSyncEntries("data/tutorials/")
 
