@@ -7,10 +7,7 @@ module ApiDocumentation = {
   let make = (~margins) =>
     // TODO: factor out and define content type
     <SectionContainer.MediumCentered margins paddingX="px-4 sm:px-32">
-      // otherLayout="sm:flex sm:items-center"
       <MediaObject imageHeight="h-56" image="api-img.jpeg" imageSide=MediaObject.Right>
-        // <div className="sm:flex">
-        //  <div className="mb-10 sm:mb-0 sm:mr-10">
         <h4 className="text-4xl font-bold mb-8"> {s(`API Documentation`)} </h4>
         <p className="mt-1 mb-8">
           {s(`Visit our page for API Documentation in OCaml for a concise reference manual with all the information you need to work with the OCaml API.`)}
@@ -22,9 +19,6 @@ module ApiDocumentation = {
           className="inline-flex items-center px-14 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker">
           {s(`Visit Docs.ocaml.org`)}
         </a>
-        // </div>
-        //  <div className="flex-shrink-0"> <img className="h-56" src="/static/api-img.jpeg" /> </div>
-        //</div>
       </MediaObject>
     </SectionContainer.MediumCentered>
 }
