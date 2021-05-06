@@ -1,13 +1,13 @@
 @react.component
 let make: (
-  ~source: string,
+  ~source: React.element,
   ~title: string,
   ~pageDescription: Js.Nullable.t<string>,
   ~tableOfContents: MarkdownPage.TableOfContents.t,
 ) => React.element
 
 type props = {
-  source: string,
+  source: React.element,
   title: string,
   pageDescription: Js.Nullable.t<string>,
   tableOfContents: MarkdownPage.TableOfContents.t,
@@ -22,7 +22,7 @@ let getStaticProps: Next.GetStaticProps.t<props, Params.t, unit>
 let getStaticPaths: Next.GetStaticPaths.t<Params.t>
 
 let default: {
-  "source": string,
+  "source": React.element,
   "title": string,
   "pageDescription": Js.Nullable.t<string>,
   "tableOfContents": MarkdownPage.TableOfContents.t,

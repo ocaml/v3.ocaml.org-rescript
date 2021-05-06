@@ -5,7 +5,7 @@ module Params = {
 type t = {contents: string}
 
 type props = {
-  source: string,
+  source: React.element,
   title: string,
   pageDescription: Js.Nullable.t<string>,
   tableOfContents: MarkdownPage.TableOfContents.t,
@@ -23,7 +23,7 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
             <TitleHeading.MarkdownMedium
               title pageDescription={Js.Nullable.toOption(pageDescription)}
             />
-            <MarkdownPage.MarkdownPageBody margins=`mt-6` renderedMarkdown=source />
+            <MarkdownPage.MarkdownPageBody margins=`mt-6`> source </MarkdownPage.MarkdownPageBody>
           </div>
         </div>
       </div>
@@ -50,13 +50,13 @@ let getStaticProps = ctx => {
       ->Unified.use(MdastToc.plugin)
       ->Unified.use(Unified.remark2rehype)
       ->Unified.use(Unified.rehypeHighlight)
-      ->Unified.use(Unified.rehypeStringify),
+      ->Unified.use(Unified.rehype2react),
       _,
     )
 
   Js.Promise.then_((res: Unified.vfile) => {
     let props = {
-      source: res.contents,
+      source: res.result,
       title: parsed.data.title,
       pageDescription: switch parsed.data.pageDescription {
       | None => Js.Nullable.null

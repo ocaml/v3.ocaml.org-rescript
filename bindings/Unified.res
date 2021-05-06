@@ -25,7 +25,11 @@ external asHeadingNode: node => headingnode = "%identity"
 
 type rootnode = {children: array<node>}
 
-type vfile = {mutable toc: MarkdownTableOfContents.t, contents: string}
+type vfile = {
+  mutable toc: MarkdownTableOfContents.t,
+  // , contents: string
+  result: React.element,
+}
 
 type transformer = (rootnode, vfile) => unit
 
@@ -41,7 +45,10 @@ type attacher = unit => transformer
 
 @module("remark-rehype") external remark2rehype: attacher = "default"
 
-@module("rehype-stringify") external rehypeStringify: attacher = "default"
+// TODO: need to bind to rehype2react options and make use of it below
+
+// @module("rehype-stringify") external rehypeStringify: attacher = "default"
+@module("rehype-react") external rehype2react: attacher = "default"
 
 @module("rehype-highlight") external rehypeHighlight: attacher = "default"
 

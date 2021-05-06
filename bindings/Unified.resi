@@ -25,7 +25,7 @@ let asHeadingNode: node => headingnode
 
 type rootnode = {children: array<node>}
 
-type vfile = {mutable toc: MarkdownTableOfContents.t, contents: string}
+type vfile = {mutable toc: MarkdownTableOfContents.t, result: React.element}
 
 type transformer = (rootnode, vfile) => unit
 
@@ -41,7 +41,8 @@ let remarkParse: attacher
 
 let remark2rehype: attacher
 
-let rehypeStringify: attacher
+// let rehypeStringify: attacher
+let rehype2react: attacher
 
 // TODO: parameterize options and make it an optional parameter
 // type highlightAttacher = (unit, highlightOptions)
