@@ -11,10 +11,9 @@ module LatestNews = {
         className="mb-8 text-3xl text-center tracking-tight font-extrabold text-gray-900 sm:text-4xl">
         {s(`What's the Latest?`)}
       </h2>
-      // TODO: add imageWidth and isRounded
       <MediaObject
-        imageHeight="h-56"
-        imageWidth="w-56"
+        imageHeight="h-28 sm:h-64"
+        imageWidth="w-28 sm:w-64"
         isRounded=true
         image="typewriter.jpeg"
         imageSide=MediaObject.Left>
