@@ -1,5 +1,3 @@
-// TODO: implement interface
-
 type imageSide = Left | Right
 
 @react.component
