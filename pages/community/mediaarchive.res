@@ -69,37 +69,7 @@ let make = (~title, ~pageDescription, ~videosContent, ~talksContent, ~papersCont
   </Page.Basic>
 </>
 
-type point = {
-  x: int,
-  y: int,
-}
-
-type line = {
-  start: point,
-  end_: point,
-  thickness: option<int>,
-}
-
-module Decode = {
-  let point = json => {
-    x: json |> Json.Decode.field("x", Json.Decode.int),
-    y: json |> Json.Decode.field("y", Json.Decode.int),
-  }
-  let line = json => {
-    start: json |> Json.Decode.field("start", point),
-    end_: json |> Json.Decode.field("end", point),
-    thickness: json |> Json.Decode.optional(Json.Decode.field("thickness", Json.Decode.int)),
-  }
-}
-
 let getStaticProps = _ctx => {
-  let data = ` {
-    "start": {"x": 1, "y": -4 },
-    "end": {"x": 5, "y": 8 }
-    }`
-  let line = data |> Json.parseOrRaise |> Decode.line
-  Js.log(line)
-
   // TODO: define and read highlight items for each list
   let talks = Array.map(t => {
     MediaSection.Item.name: t.Talk.name,
