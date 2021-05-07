@@ -7,16 +7,16 @@ type t = {
 }
 
 let decode = json => {
-  id: json |> Json.Decode.field("id", Json.Decode.int),
-  name: json |> Json.Decode.field("name", Json.Decode.string),
-  author: json |> Json.Decode.field("author", Json.Decode.string),
-  creationDate: json |> Json.Decode.field("creationDate", Json.Decode.string),
-  link: json |> Json.Decode.field("link", Json.Decode.string),
+  open Json.Decode
+  {
+    id: json |> field("id", int),
+    name: json |> field("name", string),
+    author: json |> field("author", string),
+    creationDate: json |> field("creationDate", string),
+    link: json |> field("link", string),
+  }
 }
 
 let readAll = () => {
-  let databasePath = "data/talks.yaml"
-  let fileContents = Fs.readFileSync(databasePath)
-  let talksJson = JsYaml.load(fileContents, ())
-  talksJson |> Json.Decode.array(decode)
+  "data/talks.yaml"->Fs.readFileSync->JsYaml.load()->Json.Decode.array(decode)(_)
 }
