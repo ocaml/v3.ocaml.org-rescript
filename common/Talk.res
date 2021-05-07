@@ -6,9 +6,6 @@ type t = {
   link: string,
 }
 
-// @module("js-yaml") external load: (string, ~options: 'a=?, unit) => array<t> = "load"
-@module("js-yaml") external load: (string, ~options: 'a=?, unit) => Js.Json.t = "load"
-
 let decode = json => {
   id: json |> Json.Decode.field("id", Json.Decode.int),
   name: json |> Json.Decode.field("name", Json.Decode.string),
@@ -20,7 +17,6 @@ let decode = json => {
 let readAll = () => {
   let databasePath = "data/talks.yaml"
   let fileContents = Fs.readFileSync(databasePath)
-  let talksJson = load(fileContents, ())
+  let talksJson = JsYaml.load(fileContents, ())
   talksJson |> Json.Decode.array(decode)
-  // TODO: return a validation type and force client to raise exception
 }
