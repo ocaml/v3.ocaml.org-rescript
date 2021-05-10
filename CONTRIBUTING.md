@@ -59,7 +59,7 @@ the PR, if you run into obstacles or uncertainty as you make changes
 
 ReScript can only handle one module of a given name, e.g. "Index". This clashes with nextjs
 page-based routing, which expects the filepath starting from `/pages/` to match
-the route exposed. We use the nextjs dynamic page routing to workaround this issue. Whenever two pages need to use the same name, the two pages can use `[pagename1].res` and `[pagename2].res` for the page module names. Within each page, define a `getStaticPaths` function with returns a single path `pagename`.
+the route exposed. We use the nextjs dynamic page routing to workaround this issue. Whenever two pages need to use the same name, the two pages can use `[pagename1].res` and `[pagename2].res` for the page module names. Within each page, define a `getStaticPaths` function which returns a single path `pagename`.
 
 ### Do not use nextjs server side features, such as getServerSideProps
 
@@ -119,7 +119,7 @@ The site makes use of `esy`. We currently use version 0.6.8. Please consult the 
 
 ### Dependencies
 
-The website dependencies on a library of types as well as a collection of 
+The website depends on a library of types as well as a collection of 
 content files, which reside in the `ood` repository. Clone the `ood` repository into a subdirectory named `ood`.
 
 Note: Remember that **each terminal** needs to have `nvm use` invoked to activate the proper node version, if you are using `nvm`.

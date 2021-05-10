@@ -9,7 +9,7 @@ let decode = json => {
     abstract: json |> field("abstract", string),
     tags: json |> field("tags", list(string)),
     year: json |> field("year", int),
-    // TODO: why are we allowing a list of links, instead of having a single link
+    // TODO: why is this a list of links instead of a single link?
     links: json |> field("links", list(string)),
   }
 }
