@@ -30,3 +30,6 @@ out
 # OCaml
 /_build
 /_esy
+
+# Project Specific
+/ood
