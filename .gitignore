@@ -20,7 +20,7 @@ out
 .bsb.lock
 .merlin
 /lib/bs/
-/lib/*.js
+/src/*.js
 /pages/**/*.js
 !/pages/_app.js
 

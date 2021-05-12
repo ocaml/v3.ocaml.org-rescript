@@ -13,7 +13,7 @@
   "ppx-flags": [],
   "sources": [
     {
-      "dir": "lib"
+      "dir": "src"
     },
     {
       "dir": "pages",

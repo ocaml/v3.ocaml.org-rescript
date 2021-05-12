@@ -7,7 +7,7 @@ module.exports = {
     // Specify the paths to all of the template files in your project
     content: [
       './pages/**/*.res',
-      './lib/*.res',
+      './src/*.res',
       // need to include data files since they reference tailwind classes
       './data/*.yaml',
     ],
