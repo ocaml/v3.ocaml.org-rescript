@@ -1,5 +1,18 @@
 SHELL=/bin/bash
 
+.PHONY: install-vendored-deps
+install-vendored-deps:
+	mkdir -p node_modules/ood
+	rsync \
+	  --verbose \
+	  --archive \
+	  --delete \
+	  --exclude '*.js' \
+	  --exclude 'lib/**/*' \
+	  --exclude .merlin \
+	  vendor/ood/lib/ \
+	  node_modules/ood
+
 .PHONY: ci-install-deps
 ci-install-deps:
 	# installing (or using) esy encounters permission error

@@ -8,5 +8,5 @@ let decode = json => {
 }
 
 let readAll = () => {
-  "ood/data/papers.yml"->Fs.readFileSync->JsYaml.load()->decode
+  "vendor/ood/data/papers.yml"->Fs.readFileSync->JsYaml.load()->decode
 }
