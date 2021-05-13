@@ -1,62 +1,28 @@
 SHELL=/bin/bash
 NVM=source $$NVM_DIR/nvm.sh && nvm
 YARN=$(NVM) use && npx yarn@1.22
-ESY=$(NVM) use && npx esy@0.6.10
-
-# NOTE: currently, yarn@VERSION is used throughout because
-# the first invocation of npx yarn installs yarn itself.
-# since we can't control which order users run the commands
-# below, we guard all usages of yarn with a version.
+ESY=$(NVM) use && npx esy@0.6.8
+BSB=$(NVM) use && npx bsb
 
 .PHONY: install-deps
 install-deps:
 	$(NVM) install
-	# TODO: ensure esy has already been installed
-	# trigger installation of yarn, if missing
-	$(YARN) --version
 	$(YARN) install
+	make vendor/ood && $(YARN) link ood
 	$(ESY)
 
-.PHONY: install-vendored-deps
-install-vendored-deps:
-	mkdir -p node_modules/ood
-	rsync \
-	  --verbose \
-	  --archive \
-	  --delete \
-	  --exclude '*.js' \
-	  --exclude 'lib/**/*' \
-	  --exclude .merlin \
-	  vendor/ood/lib/ \
-	  node_modules/ood
+vendor/ood:
+	mkdir -p vendor && cd vendor && \
+	git clone https://github.com/ocaml/ood.git && cd ood && git checkout rnd1/npmify && \
+	$(YARN) link
 
-.PHONY: ci-install-deps
-ci-install-deps:
-	mkdir vendor
-	cd vendor && git clone https://github.com/ocaml/ood.git
-	make install-vendored-deps
-	# installing esy encounters permission errors
-	# npm install -g esy@0.6.8
-	npx yarn@1.22 --version
+.PHONY: ci
+ci:
+	# NOTE: No NVM in CI
+	# NOTE: No vendor/ood in CI, use dependency as specified in package.json
 	npx yarn@1.22 install
-	# npx esy@0.6.8
-
-.PHONY: watch
-watch:
-	$(YARN) watch
-
-.PHONY: build
-build:
-	$(YARN) build
-
-.PHONY: ci-build
-ci-build:
-	npx yarn@1.22 build
-
-.PHONY: serve
-serve:
-	$(YARN) start-test-server
+	npx yarn@1.22 run build
 
 .PHONY: clean
 clean:
-	$(NVM) use && npx bsb -clean
+	$(BSB) -clean
