@@ -17,8 +17,24 @@ install-deps:
 	$(YARN) install
 	$(ESY)
 
+.PHONY: install-vendored-deps
+install-vendored-deps:
+	mkdir -p node_modules/ood
+	rsync \
+	  --verbose \
+	  --archive \
+	  --delete \
+	  --exclude '*.js' \
+	  --exclude 'lib/**/*' \
+	  --exclude .merlin \
+	  vendor/ood/lib/ \
+	  node_modules/ood
+
 .PHONY: ci-install-deps
 ci-install-deps:
+	mkdir vendor
+	cd vendor && git clone https://github.com/ocaml/ood.git
+	make install-vendored-deps
 	# installing esy encounters permission errors
 	# npm install -g esy@0.6.8
 	npx yarn@1.22 --version

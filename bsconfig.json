@@ -8,25 +8,18 @@
   "refmt": 3,
   "bs-dependencies": [
     "reason-react",
-    "@glennsl/bs-json"
+    "@glennsl/bs-json",
+    "ood"
   ],
   "ppx-flags": [],
   "sources": [
     {
-      "dir": "common"
-    },
-    {
-      "dir": "bindings"
+      "dir": "src"
     },
     {
       "dir": "pages",
       "subdirs": true
-    },
-    {
-      "dir": "components",
-      "subdirs": true
-    },
-    "layouts"
+    }
   ],
   "package-specs": {
     "module": "es6",

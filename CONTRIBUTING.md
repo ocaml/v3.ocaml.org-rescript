@@ -6,13 +6,13 @@ Coming soon...
 
 ## Ways to get involved
 
-* fix or suggest content - start by filing an issue
-* implement pages - search through existing issues to find out what pages are planned for upcoming implementation
-* contribute to site build process - search through existing issues or file an issue suggesting improvements
+- fix or suggest content - start by filing an issue in `ocaml/ood` repository
+- implement pages - search through existing issues to find out what pages are planned for upcoming implementation
+- contribute to site build process - search through existing issues or file an issue suggesting improvements
 
 ## Content workflow
 
-...
+See `ocaml/ood` README.
 
 ### Design and Information Architecture
 
@@ -26,32 +26,33 @@ Design - Uses Figma, currently managed by designer. Discussion of both design an
 
 Feel free to use any approach that you prefer. The dev team
 suggests the following:
-* If you are unsure if your change will be accepted or if want to discuss the
-approach before diving in, please create an issue and pose questions.
-* Create a draft pull request with a small initial commit. One way to do this quickly is the following:
-  * Click the "branch" drop down menu and type the name of your new branch, using the convention INITIALS/TOPIC, such as "kw1/update-homepage", and click "Create branch: ..."
-  * In order to be able to create a pull request, make a small commit:
-      * Traverse to a source file of interest
-      * Click the "pencil" edit icon in the top right, which puts the file in edit mode
-      * Make a small change in the edit window
-      * Select "Commit directly ..." and click "Commit changes"
-  * Create a pull request using one of the following links, using the template which matches the type of change you are making. In the URL, replace "BRANCH" with your branch name.
-       * Create or update the implementation of a webpage: https://github.com/ocaml/v3.ocaml.org/compare/BRANCH?expand=1&template=webpage_implement.md 
-       * Create a mockup page for a new design pull: https://github.com/ocaml/v3.ocaml.org/compare/BRANCH?expand=1&template=mockup_webpage.md
-       * Perform an ecosystem upgrade: https://github.com/ocaml/v3.ocaml.org/compare/BRANCH?expand=1&template=ecosystem_upgrade.md
-  * Change the action to "Create draft pull request" and press the button
-* Clone the repo locally (or continue editing directly in github if the change is small). Checkout
-out the branch that you created.
-* Continue developing, feel free to ask questions in
-the PR, if you run into obstacles or uncertainty as you make changes
-* Review your implementation according to the checks noted in the PR template
-* Once you feel your branch is ready, change the PR status to "ready to review"
+
+- If you are unsure if your change will be accepted or if want to discuss the
+  approach before diving in, please create an issue and pose questions.
+- Create a draft pull request with a small initial commit. One way to do this quickly is the following:
+  - Click the "branch" drop down menu and type the name of your new branch, using the convention INITIALS/TOPIC, such as "kw1/update-homepage", and click "Create branch: ..."
+  - In order to be able to create a pull request, make a small commit:
+    - Traverse to a source file of interest
+    - Click the "pencil" edit icon in the top right, which puts the file in edit mode
+    - Make a small change in the edit window
+    - Select "Commit directly ..." and click "Commit changes"
+  - Create a pull request using one of the following links, using the template which matches the type of change you are making. In the URL, replace "BRANCH" with your branch name.
+    - Create or update the implementation of a webpage: https://github.com/ocaml/v3.ocaml.org/compare/BRANCH?expand=1&template=webpage_implement.md
+    - Create a mockup page for a new design pull: https://github.com/ocaml/v3.ocaml.org/compare/BRANCH?expand=1&template=mockup_webpage.md
+    - Perform an ecosystem upgrade: https://github.com/ocaml/v3.ocaml.org/compare/BRANCH?expand=1&template=ecosystem_upgrade.md
+  - Change the action to "Create draft pull request" and press the button
+- Clone the repo locally (or continue editing directly in github if the change is small). Checkout
+  out the branch that you created.
+- Continue developing, feel free to ask questions in
+  the PR, if you run into obstacles or uncertainty as you make changes
+- Review your implementation according to the checks noted in the PR template
+- Once you feel your branch is ready, change the PR status to "ready to review"
 
 ### Reviewer
 
-* Consult the tasks noted in the PR template
-* When merging, consider cleaning up the commit body
-* Close any issues that were addressed by this PR
+- Consult the tasks noted in the PR template
+- When merging, consider cleaning up the commit body
+- Close any issues that were addressed by this PR
 
 ## Setup and Development
 
@@ -71,7 +72,7 @@ Run the following command to install various dependencies:
 make install-deps
 ```
 
-The command installs the appropriate versions of node and yarn. It also installs 
+The command installs the appropriate versions of node and yarn. It also installs
 
 ### Development
 
@@ -92,7 +93,7 @@ page-based routing, which expects the filepath starting from `/pages/` to match
 the route exposed. So, in order to completely avoid any problems from this issue,
 we always create pages in `res_pages/` and rewrap the module in the desired location
 in `pages/`. If your module uses `getStaticPaths` or `getStaticProps`, those will also
-need to be re-exposed. Also, note that we choose to repeat the folder name (e.g. "releases") 
+need to be re-exposed. Also, note that we choose to repeat the folder name (e.g. "releases")
 in the module name (e.g. "ReleasesIndex.js").
 
 ### Do not use nextjs server side features, such as getServerSideProps
