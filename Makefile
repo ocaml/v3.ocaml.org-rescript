@@ -13,7 +13,7 @@ install-deps:
 
 vendor/ood:
 	mkdir -p vendor && cd vendor && \
-	git clone https://github.com/ocaml/ood.git && cd ood && git checkout rnd1/npmify && \
+	git clone https://github.com/ocaml/ood.git && cd ood && \
 	$(YARN) link
 
 .PHONY: ci
