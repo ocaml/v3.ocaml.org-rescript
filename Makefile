@@ -23,6 +23,18 @@ ci:
 	npx yarn@1.22 install
 	npx yarn@1.22 run build
 
+.PHONY: watch
+watch:
+	$(YARN) watch
+
+.PHONY: build
+build:
+	$(YARN) build
+
+.PHONY: serve
+serve:
+	$(YARN) start-test-server
+
 .PHONY: clean
 clean:
 	$(BSB) -clean
