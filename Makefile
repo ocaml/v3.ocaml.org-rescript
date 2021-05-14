@@ -32,7 +32,7 @@ build:
 	$(YARN) build
 
 .PHONY: serve
-serve:
+serve: build
 	$(YARN) start-test-server
 
 .PHONY: clean
