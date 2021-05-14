@@ -25,7 +25,8 @@
   },
   "scripts": {
     "next:debug": "NODE_OPTIONS='--inspect' next dev",
-    "watch": "concurrently \"bsb -make-world -w\" \"next dev\" ",
+    "watch": "concurrently --raw \"bsb -make-world -w\" \"next dev\" ",
+    "watch-and-serve": "concurrently --raw \"bsb -make-world -w\" \"next dev\" \"http-server out\"",
     "build": "bsb -clean-world -make-world && next build && next export",
     "start-test-server": "http-server out"
   },

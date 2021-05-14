@@ -4,6 +4,9 @@ YARN=$(NVM) use && npx yarn@1.22
 ESY=$(NVM) use && npx esy@0.6.8
 BSB=$(NVM) use && npx bsb
 
+.PHONY: dev
+dev: install-deps watch-and-serve
+
 .PHONY: install-deps
 install-deps:
 	$(NVM) install
@@ -26,6 +29,10 @@ ci:
 .PHONY: watch
 watch:
 	$(YARN) watch
+
+.PHONY: watch-and-serve
+watch-and-serve:
+	$(YARN) watch-and-serve
 
 .PHONY: build
 build:
