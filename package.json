@@ -49,7 +49,7 @@
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.1.0",
     "remark-slug": "^6.0.0",
-    "tailwindcss": "^2.0.3",
+    "tailwindcss": "^2.1.2",
     "unified": "^9.2.1"
   },
   "devDependenciesDescription": {
