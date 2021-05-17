@@ -51,7 +51,7 @@ clean:
 	-rm -rf out
 
 .PHONY: distclean
-distclean: clean clean-cache
+distclean: clean
 	-($(YARN) unlink ood && cd vendor/ood && $(YARN) unlink)
 	-rm -rf vendor
 	-rm -rf node_modules
