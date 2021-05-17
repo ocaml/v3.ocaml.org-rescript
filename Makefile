@@ -50,9 +50,6 @@ clean:
 	-rm -rf .next
 	-rm -rf out
 
-.PHONY: clean-cache
-clean-cache:
-
 .PHONY: distclean
 distclean: clean clean-cache
 	-($(YARN) unlink ood && cd vendor/ood && $(YARN) unlink)
