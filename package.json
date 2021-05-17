@@ -16,9 +16,9 @@
     "@rescript/react": "^0.10.3",
     "bs-platform": "9.0.2",
     "next": "10.2.0",
-    "ood": "*",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "ood": "file:./vendor/ood/lib",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "dependenciesDescription": {
     "bs-platform": "This a regular dependency because the included standard libraries are used during runtime"
@@ -43,7 +43,7 @@
     "http-server": "^0.12.3",
     "js-yaml": "4.1.0",
     "mdast-util-to-string": "^2.0.0",
-    "next-transpile-modules": "4.1.0",
+    "next-transpile-modules": "^7.0.0",
     "postcss": "8.2.15",
     "rehype-highlight": "^4.1.0",
     "rehype-stringify": "^8.0.0",

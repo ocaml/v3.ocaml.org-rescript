@@ -1,7 +1,22 @@
 const bsconfig = require('./bsconfig.json');
+const fs = require("fs");
 
 const transpileModules = ["bs-platform"].concat(bsconfig["bs-dependencies"]);
 const withTM = require("next-transpile-modules")(transpileModules);
+
+
+function patchResDeps() {
+  ["bs-platform"].concat(bsconfig["bs-dependencies"]).forEach((bsDep) => {
+    fs.writeFileSync(`./node_modules/${bsDep}/index.js`, "");
+    const json = require(`./node_modules/${bsDep}/package.json`);
+    json.main = "index.js";
+    fs.writeFileSync(
+      `./node_modules/${bsDep}/package.json`,
+      JSON.stringify(json, null, 2)
+    );
+  });
+}
+patchResDeps(); // update package.json and create empty `index.js` before transpiling
 
 const config = {
   target: "serverless",
@@ -16,9 +31,21 @@ const config = {
       // We shim fs for things like the blog slugs component
       // where we need fs access in the server-side part
       config.node = {
-        fs: 'empty'
+        fs: false
       }
     }
+
+    // We need this additional rule to make sure that mjs files are
+    // correctly detected within our src/ folder
+    config.module.rules.push({
+      test: /\.m?js$/,
+      use: options.defaultLoaders.babel,
+      exclude: /node_modules/,
+      type: "javascript/auto",
+      resolve: {
+        fullySpecified: false,
+      }
+    });
     return config
   },
   // Might need to move this to nginx or other config,
@@ -96,6 +123,9 @@ const config = {
       }
       */
     ]
+  },
+  future: {
+    webpack5: true
   }
 };
 
