@@ -44,4 +44,19 @@ serve: build
 
 .PHONY: clean
 clean:
-	$(BSB) -clean
+	-$(BSB) -clean
+	-$(ESY) dune clean
+	-rm -f .merlin
+	-rm -rf .next
+	-rm -rf out
+
+.PHONY: clean-cache
+clean-cache:
+
+.PHONY: distclean
+distclean: clean clean-cache
+	-($(YARN) unlink ood && cd vendor/ood && $(YARN) unlink)
+	-rm -rf vendor
+	-rm -rf node_modules
+	-rm -rf _esy
+	-rm -f yarn-error.log
