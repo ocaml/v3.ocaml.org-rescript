@@ -112,7 +112,7 @@ npx postcss@8.3.1 styles/main.css -o /tmp/test.css
 ## Test production setup
 
 ```
-make build && make serve
+make serve
 ```
 
 Note: Some deployment systems use `next start` to start a hybrid static site instead of using `next export` with an external http server.
