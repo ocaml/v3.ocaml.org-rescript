@@ -4,7 +4,7 @@ const transpileModules = ["bs-platform"].concat(bsconfig["bs-dependencies"]);
 const withTM = require("next-transpile-modules")(transpileModules);
 
 const config = {
-  pageExtentions: ["mjs"],
+  pageExtensions: ["mjs"],
   webpack: (config, options) => {
     const { isServer } = options;
     if (!isServer) {
