@@ -15,7 +15,7 @@ const config = {
       // We shim fs for things like the blog slugs component
       // where we need fs access in the server-side part
       config.resolve.fallback = {
-        fs: 'empty'
+        fs: false
       }
     }
     return config
