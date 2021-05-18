@@ -6,7 +6,7 @@ const withTM = require("next-transpile-modules")(transpileModules);
 const config = {
   target: "serverless",
   pageExtensions: ["jsx", "js"],
-  transpileModules: ["bs-platform"].concat(bsconfig["bs-dependencies"]),
+  // transpileModules: ["bs-platform"].concat(bsconfig["bs-dependencies"]),
   env: {
     ENV: process.env.NODE_ENV,
   },
@@ -15,7 +15,7 @@ const config = {
     if (!isServer) {
       // We shim fs for things like the blog slugs component
       // where we need fs access in the server-side part
-      config.node = {
+      config.resolve.fallback = {
         fs: 'empty'
       }
     }
@@ -96,6 +96,9 @@ const config = {
       }
       */
     ]
+  },
+  future: {
+    webpack5: true
   }
 };
 
