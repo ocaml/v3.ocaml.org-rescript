@@ -4,9 +4,6 @@ const transpileModules = ["bs-platform"].concat(bsconfig["bs-dependencies"]);
 const withTM = require("next-transpile-modules")(transpileModules);
 
 const config = {
-  env: {
-    ENV: process.env.NODE_ENV,
-  },
   webpack: (config, options) => {
     const { isServer } = options;
     if (!isServer) {
