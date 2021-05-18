@@ -43,7 +43,6 @@
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^2.0.0",
     "next-transpile-modules": "^7.1.0",
-    "postcss": "^8.2.15",
     "rehype-highlight": "^4.1.0",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^9.0.0",
