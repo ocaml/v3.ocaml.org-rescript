@@ -4,7 +4,6 @@ const transpileModules = ["bs-platform"].concat(bsconfig["bs-dependencies"]);
 const withTM = require("next-transpile-modules")(transpileModules);
 
 const config = {
-  target: "serverless",
   env: {
     ENV: process.env.NODE_ENV,
   },
