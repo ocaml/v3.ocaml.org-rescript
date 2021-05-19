@@ -1,10 +1,25 @@
 SHELL=/bin/bash
-NVM=source $$NVM_DIR/nvm.sh && nvm
-# Yarn version specified here because it can't
-# bootstrap itself as a devDependency.
-YARN=$(NVM) use && npx yarn@1.22
-ESY=$(NVM) use && npx esy
-BSB=$(NVM) use && npx bsb
+
+ifeq ($(CI), 1)
+
+	YARN=yarn
+	ESY=npx esy
+	BSB=npx bsb
+
+.PHONY: install-deps
+install-deps:
+	npm config set user root
+	make really-install-deps
+
+else
+
+	# Yarn version specified here because it can't
+	# bootstrap itself as a devDependency.
+
+	NVM=source $$NVM_DIR/nvm.sh && nvm
+	YARN=$(NVM) use && npx yarn@1.22
+	ESY=$(NVM) use && npx esy
+	BSB=$(NVM) use && npx bsb
 
 .PHONY: dev
 dev: install-deps watch-and-serve
@@ -12,6 +27,12 @@ dev: install-deps watch-and-serve
 .PHONY: install-deps
 install-deps:
 	$(NVM) install
+	make really-install-deps
+
+endif
+
+.PHONY: really-install-deps
+really-install-deps:
 	$(YARN) install
 	make vendor/ood && $(YARN) link ood
 	$(ESY)
@@ -20,13 +41,6 @@ vendor/ood:
 	mkdir -p vendor && cd vendor && \
 	git clone https://github.com/ocaml/ood.git && cd ood && \
 	$(YARN) link
-
-.PHONY: ci
-ci:
-	# NOTE: No NVM in CI
-	# NOTE: No vendor/ood in CI, use dependency as specified in package.json
-	npx yarn@1.22 install
-	npx yarn@1.22 run build
 
 .PHONY: watch
 watch:
