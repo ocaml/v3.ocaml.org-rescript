@@ -9,6 +9,7 @@ ifeq ($(CI), 1)
 .PHONY: install-deps
 install-deps:
 	npm config set user root
+	yum install perl-Digest-SHA
 	make really-install-deps
 
 else
