@@ -1,36 +1,28 @@
 SHELL=/bin/bash
-
 ifeq ($(CI), 1)
-
 	YARN=yarn
 	ESY=npx esy
 	BSB=npx bsb
-
-.PHONY: install-deps
-install-deps:
-	npm config set user root
-	yum install perl-Digest-SHA
-	make really-install-deps
-
 else
-
 	# Yarn version specified here because it can't
 	# bootstrap itself as a devDependency.
-
-	NVM=source $$NVM_DIR/nvm.sh && nvm
 	YARN=$(NVM) use && npx yarn@1.22
 	ESY=$(NVM) use && npx esy
 	BSB=$(NVM) use && npx bsb
+endif
 
 .PHONY: dev
 dev: install-deps watch-and-serve
 
 .PHONY: install-deps
 install-deps:
-	$(NVM) install
-	make really-install-deps
-
+ifeq ($(CI), 1)
+	npm config set user root
+	yum install perl-Digest-SHA
+else
+	source $$NVM_DIR/nvm.sh && nvm install
 endif
+	make really-install-deps
 
 .PHONY: really-install-deps
 really-install-deps:
