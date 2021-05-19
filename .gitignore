@@ -20,9 +20,9 @@ out
 .bsb.lock
 .merlin
 /lib/bs/
-/src/*.mjs
-/pages/**/*.mjs
-!/pages/_app.mjs
+/src/*.js
+/pages/**/*.js
+!/pages/_app.js
 
 # OCaml
 /_build

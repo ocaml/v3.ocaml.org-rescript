@@ -25,7 +25,7 @@
     "module": "es6",
     "in-source": true
   },
-  "suffix": ".mjs",
+  "suffix": ".js",
   "warnings": {
     "error": "+101+8"
   },
