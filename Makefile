@@ -1,14 +1,14 @@
 SHELL=/bin/bash
 ifeq ($(VERCEL), 1)
 	YARN=yarn
-	ESY=npx esy
+	ESY=export ESY__PREFIX=$$PWD/node_modules/.esy && npx esy
 	BSB=npx bsb
 else
 	# Yarn version specified here because it can't
 	# bootstrap itself as a devDependency.
 	NVM=source $$NVM_DIR/nvm.sh && nvm
 	YARN=$(NVM) use && npx yarn@1.22
-	ESY=export ESY__PREFIX=$$PWD/node_modules/.esy && $(NVM) use && npx esy
+	ESY=$(NVM) use && npx esy
 	BSB=$(NVM) use && npx bsb
 endif
 
