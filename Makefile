@@ -6,6 +6,7 @@ ifeq ($(CI), 1)
 else
 	# Yarn version specified here because it can't
 	# bootstrap itself as a devDependency.
+	NVM=source $$NVM_DIR/nvm.sh && nvm
 	YARN=$(NVM) use && npx yarn@1.22
 	ESY=$(NVM) use && npx esy
 	BSB=$(NVM) use && npx bsb
@@ -20,12 +21,8 @@ ifeq ($(CI), 1)
 	npm config set user root
 	yum install perl-Digest-SHA
 else
-	source $$NVM_DIR/nvm.sh && nvm install
+	$(NVM) install
 endif
-	make really-install-deps
-
-.PHONY: really-install-deps
-really-install-deps:
 	$(YARN) install
 	make vendor/ood && $(YARN) link ood
 	$(ESY)
