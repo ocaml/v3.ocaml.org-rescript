@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-ifeq ($(CI), 1)
+ifeq ($(VERCEL), 1)
 	YARN=yarn
 	ESY=npx esy
 	BSB=npx bsb
@@ -17,16 +17,15 @@ dev: install-deps watch-and-serve
 
 .PHONY: install-deps
 install-deps:
-ifeq ($(CI), 1)
+ifeq ($(VERCEL), 1)
 	npm config set user root
-	rm -rf _esy
 	yum install perl-Digest-SHA
 else
 	$(NVM) install
 endif
 	$(YARN) install
 	make vendor/ood && $(YARN) link ood
-	$(ESY)
+	$(ESY) install
 
 vendor/ood:
 	mkdir -p vendor && cd vendor && \
@@ -43,6 +42,7 @@ watch-and-serve:
 
 .PHONY: build
 build:
+	$(ESY) build
 	$(YARN) build
 
 .PHONY: serve
