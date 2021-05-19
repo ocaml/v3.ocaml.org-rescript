@@ -8,7 +8,7 @@ else
 	# bootstrap itself as a devDependency.
 	NVM=source $$NVM_DIR/nvm.sh && nvm
 	YARN=$(NVM) use && npx yarn@1.22
-	ESY=$(NVM) use && npx esy
+	ESY=export ESY__PREFIX=$$PWD/node_modules/.esy && $(NVM) use && npx esy
 	BSB=$(NVM) use && npx bsb
 endif
 
@@ -19,6 +19,7 @@ dev: install-deps watch-and-serve
 install-deps:
 ifeq ($(CI), 1)
 	npm config set user root
+	rm -rf _esy
 	yum install perl-Digest-SHA
 else
 	$(NVM) install
