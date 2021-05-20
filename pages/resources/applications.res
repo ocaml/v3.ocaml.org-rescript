@@ -39,7 +39,7 @@ module DeveloperGuides = {
           {s(content.developerGuidesLabel)}
         </h2>
         <MediaObject
-          marginBottom="mb-11"
+          marginBottom=Tailwind.MarginBottom.Mb11
           imageHeight=content.topDeveloperGuide.imageHeight
           image=content.topDeveloperGuide.image
           imageSide=MediaObject.Right>
@@ -55,7 +55,7 @@ module DeveloperGuides = {
           </div>
         </MediaObject>
         <MediaObject
-          marginBottom="mb-11"
+          marginBottom=Tailwind.MarginBottom.Mb11
           imageHeight=content.bottomDeveloperGuide.imageHeight
           image=content.bottomDeveloperGuide.image
           imageSide=MediaObject.Left>
