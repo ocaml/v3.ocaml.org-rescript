@@ -42,6 +42,7 @@ watch-and-serve:
 
 .PHONY: build
 build:
+	rm -rf _esy
 	$(ESY) build
 	$(YARN) build
 
