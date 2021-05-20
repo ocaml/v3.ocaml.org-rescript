@@ -17,6 +17,7 @@ dev: install-deps watch-and-serve
 
 .PHONY: install-deps
 install-deps:
+	rm -rf _esy
 ifeq ($(VERCEL), 1)
 	npm config set user root
 	yum install perl-Digest-SHA
@@ -42,7 +43,6 @@ watch-and-serve:
 
 .PHONY: build
 build:
-	rm -rf _esy
 	$(ESY) build
 	$(YARN) build
 
