@@ -27,7 +27,7 @@ module FullyResponsiveCentered: {
 
 module NoneFilled: {
   @react.component
-  let make: (~children: React.element, ~margins: string) => React.element
+  let make: (~children: React.element, ~marginBottom: Tailwind.MarginBottom.t=?) => React.element
 }
 
 module LargeCentered: {
