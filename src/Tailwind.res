@@ -6,10 +6,15 @@ module UtilityClassGroup = {
 module MarginBottom = {
   include UtilityClassGroup
 
-  type t = Mb11
+  type t =
+    | Mb6
+    | Mb11
+    | Mb24
 
   let toClassName = mb =>
     switch mb {
+    | Mb6 => "mb-6"
     | Mb11 => "mb-11"
+    | Mb24 => "mb-24"
     }
 }

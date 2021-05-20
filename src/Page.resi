@@ -30,7 +30,7 @@ module Basic: {
     ~pageDescription: string,
     ~addContainer: container=?,
     ~marginTop: string=?,
-    ~headingMarginBottom: string=?,
+    ~headingMarginBottom: Tailwind.MarginBottom.t=?,
     ~callToAction: TitleHeading.Large.callToAction=?,
     ~addBottomBar: bool=?,
     unit,

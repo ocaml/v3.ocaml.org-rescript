@@ -10,7 +10,7 @@ module Large: {
     ~callToAction: callToAction=?,
     ~pageDescription: string=?,
     ~marginTop: string=?,
-    ~marginBottom: string=?,
+    ~marginBottom: Tailwind.MarginBottom.t=?,
     // ~addMaxWidth: bool=?,
     ~addBottomBar: bool=?,
     unit,

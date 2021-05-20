@@ -106,7 +106,7 @@ let make = (~content=contentEn) => <>
   />
   <Page.Basic
     marginTop=`mt-2`
-    headingMarginBottom=`mb-6`
+    headingMarginBottom=Tailwind.MarginBottom.Mb6
     title=content.title
     pageDescription=content.pageDescription
     callToAction={

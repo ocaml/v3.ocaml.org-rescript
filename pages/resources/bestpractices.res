@@ -13,7 +13,7 @@ let make = (~content=contentEn) => <>
   <ConstructionBanner />
   <Page.Basic
     marginTop=`mt-1`
-    headingMarginBottom=`mb-24`
+    headingMarginBottom=Tailwind.MarginBottom.Mb24
     addBottomBar=true
     addContainer=Page.Basic.NoContainer
     title=content.title

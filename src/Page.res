@@ -43,16 +43,20 @@ module Basic = {
   ) => {
     let heading = {
       let marginTop = Js.Option.getWithDefault(``, marginTop)
-      let headingMarginBottom = Js.Option.getWithDefault(``, headingMarginBottom)
       let addBottomBar = Js.Option.getWithDefault(false, addBottomBar)
       switch callToAction {
       | Some(callToAction) =>
         <TitleHeading.Large
-          marginTop marginBottom=headingMarginBottom addBottomBar title pageDescription callToAction
+          marginTop
+          marginBottom=?headingMarginBottom
+          addBottomBar
+          title
+          pageDescription
+          callToAction
         />
       | None =>
         <TitleHeading.Large
-          marginTop marginBottom=headingMarginBottom addBottomBar title pageDescription
+          marginTop marginBottom=?headingMarginBottom addBottomBar title pageDescription
         />
       }
     }
