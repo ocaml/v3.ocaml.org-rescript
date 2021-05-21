@@ -184,9 +184,7 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     addContainer=Page.Basic.NoContainer
     title
     pageDescription>
-    <ApiDocumentation
-      marginBottom={Tailwind.Breakpoint.base: Tailwind.MarginBottom.Mb24, sm: None, lg: None}
-    />
+    <ApiDocumentation marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb24, ())} />
     <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
     <PlatformTools />
     <UsingOcaml margins=`mb-16` content=usingOcamlContent />

@@ -35,7 +35,15 @@ module Breakpoint = {
   type t<'a> = {
     base: 'a,
     sm: option<'a>,
+    md: option<'a>,
     lg: option<'a>,
+  }
+
+  let make = (base, ~sm=?, ~md=?, ~lg=?, ()) => {
+    base: base,
+    sm: sm,
+    md: md,
+    lg: lg,
   }
 
   // TODO: abstract over type parameter
@@ -45,6 +53,8 @@ module Breakpoint = {
         MarginBottom.toClassName(mb.base),
         " ",
         mb.sm->Belt.Option.mapWithDefault("", m => "sm:" ++ MarginBottom.toClassName(m)),
+        " ",
+        mb.md->Belt.Option.mapWithDefault("", m => "md:" ++ MarginBottom.toClassName(m)),
         " ",
         mb.lg->Belt.Option.mapWithDefault("", m => "lg:" ++ MarginBottom.toClassName(m)),
       ],

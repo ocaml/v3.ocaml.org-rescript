@@ -236,9 +236,7 @@ let make = (~content) => <>
     <UserLevelIntroduction content=content.growing margins=`mb-20` />
     <Books margins=`mb-16` content=content.booksContent />
     <UserLevelIntroduction content=content.expanding margins=`mb-20` />
-    <Manual
-      marginBottom={Tailwind.Breakpoint.base: Tailwind.MarginBottom.Mb20, sm: None, lg: None}
-    />
+    <Manual marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb20, ())} />
     <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
     <Applications marginBottom=Tailwind.MarginBottom.Mb36 />
     <UserLevelIntroduction content=content.researching margins=`mb-20` />
