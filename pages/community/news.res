@@ -1,3 +1,5 @@
+open! Import
+
 let s = React.string
 
 module Story = {
@@ -401,17 +403,10 @@ let make = (~content=contentEn) => <>
     pageDescription=content.pageDescription
     highlightContent=content.highlightContent>
     <CategorizedNews
-      marginBottom={Tailwind.Breakpoint.make(
-        Tailwind.MarginBottom.Mb10,
-        ~lg=Tailwind.MarginBottom.Mb32,
-        (),
-      )}
+      marginBottom={Breakpoint.make(MarginBottom.Mb10, ~lg=MarginBottom.Mb32, ())}
       content=content.categorizedNews
     />
-    <WeeklyNews
-      marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb4, ())}
-      content=content.weeklyNews
-    />
+    <WeeklyNews marginBottom={Breakpoint.make(MarginBottom.Mb4, ())} content=content.weeklyNews />
   </Page.HighlightItem>
 </>
 
