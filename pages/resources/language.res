@@ -136,8 +136,8 @@ module Manual = {
 
 module Applications = {
   @react.component
-  let make = (~margins) =>
-    <SectionContainer.VerySmallCentered margins>
+  let make = (~marginBottom) =>
+    <SectionContainer.VerySmallCentered marginBottom>
       <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`Applications`)} </h2>
       <div className="sm:flex items-center space-x-32 mb-20">
         <div className="mb-4 sm:mb-0 sm:mr-4">
@@ -238,7 +238,7 @@ let make = (~content) => <>
     <UserLevelIntroduction content=content.expanding margins=`mb-20` />
     <Manual margins=`mb-20` />
     <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
-    <Applications margins=`mb-36` />
+    <Applications marginBottom=Tailwind.MarginBottom.Mb36 />
     <UserLevelIntroduction content=content.researching margins=`mb-20` />
     <Papers margins=`mb-16` />
   </Page.Basic>

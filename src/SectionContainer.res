@@ -61,8 +61,14 @@ module SmallCentered = {
 
 module VerySmallCentered = {
   @react.component
-  let make = (~children, ~margins="", ~paddingY="", ~paddingX="") =>
-    <div className={"mx-auto max-w-3xl " ++ margins ++ " " ++ paddingY ++ " " ++ paddingX}>
+  let make = (~children, ~marginBottom=?, ~paddingY="", ~paddingX="") =>
+    <div
+      className={"mx-auto max-w-3xl " ++
+      marginBottom->Belt.Option.mapWithDefault("", Tailwind.MarginBottom.toClassName) ++
+      " " ++
+      paddingY ++
+      " " ++
+      paddingX}>
       children
     </div>
 }

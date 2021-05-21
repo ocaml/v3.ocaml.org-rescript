@@ -11,6 +11,7 @@ module MarginBottom = {
     | Mb11
     | Mb16
     | Mb24
+    | Mb36
 
   let toClassName = mb =>
     switch mb {
@@ -18,6 +19,7 @@ module MarginBottom = {
     | Mb11 => "mb-11"
     | Mb16 => "mb-16"
     | Mb24 => "mb-24"
+    | Mb36 => "mb-36"
     }
 }
 

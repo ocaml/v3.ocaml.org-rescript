@@ -49,7 +49,7 @@ module VerySmallCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~margins: string=?,
+    ~marginBottom: Tailwind.MarginBottom.t=?,
     ~paddingY: string=?,
     ~paddingX: string=?,
   ) => React.element
