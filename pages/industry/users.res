@@ -1,3 +1,5 @@
+open! Import
+
 let s = React.string
 
 type company = {
@@ -106,7 +108,7 @@ let make = (~content=contentEn) => <>
   />
   <Page.Basic
     marginTop=`mt-2`
-    headingMarginBottom=Tailwind.MarginBottom.Mb6
+    headingMarginBottom=MarginBottom.Mb6
     title=content.title
     pageDescription=content.pageDescription
     callToAction={
