@@ -66,7 +66,7 @@ let navContentEn = {
     },
     packages: {
       label: `Packages`,
-      url: InternalUrls.resourcesReleases,
+      url: "http://ci5.ocamllabs.io:8082/" /* FIXME */,
       icon: Icons.packages,
       text: "Browse the many packages available in OCaml.",
     },
@@ -78,7 +78,7 @@ let navContentEn = {
     },
     bestPractices: {
       label: `Best Practices`,
-      url: InternalUrls.resourcesArchive,
+      url: InternalUrls.resourcesBestpractices,
       icon: Icons.bestPractices,
       text: "Some of the best known methods in OCaml are shared here, as well as the Platform Tools.",
     },
