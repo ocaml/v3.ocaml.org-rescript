@@ -1,3 +1,4 @@
+open! Import
 module Link = Next.Link
 
 let s = React.string
@@ -249,7 +250,7 @@ module TestimonialContainer = {
   @react.component
   let make = (~marginBottom, ~children) =>
     <section
-      className={marginBottom->Tailwind.Breakpoint.toClassNames ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
+      className={marginBottom->Breakpoint.toClassNames ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> children </div>
     </section>
 }
@@ -331,10 +332,10 @@ let make = (~content=contentEn) =>
     <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16` />
     <TestimonialSection
       content=content.testimonialContent
-      marginBottom={Tailwind.Breakpoint.make(
-        Tailwind.MarginBottom.Mb6,
-        ~md=Tailwind.MarginBottom.Mb4,
-        ~lg=Tailwind.MarginBottom.Mb6,
+      marginBottom={Breakpoint.make(
+        MarginBottom.Mb6,
+        ~md=MarginBottom.Mb4,
+        ~lg=MarginBottom.Mb6,
         (),
       )}
     />
