@@ -1,3 +1,5 @@
+open! Import
+
 let s = React.string
 
 module UserLevelIntroduction = {
@@ -227,7 +229,7 @@ let make = (~content) => <>
   // TODO: define a more narrow page type with preset params
   <Page.Basic
     marginTop=`mt-1`
-    headingMarginBottom=Tailwind.MarginBottom.Mb24
+    headingMarginBottom=MarginBottom.Mb24
     addBottomBar=true
     addContainer=Page.Basic.NoContainer
     title=content.title
@@ -236,9 +238,9 @@ let make = (~content) => <>
     <UserLevelIntroduction content=content.growing />
     <Books margins=`mb-16` content=content.booksContent />
     <UserLevelIntroduction content=content.expanding />
-    <Manual marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb20, ())} />
+    <Manual marginBottom={Breakpoint.make(MarginBottom.Mb20, ())} />
     <UserLevelIntroduction content=content.diversifying />
-    <Applications marginBottom=Tailwind.MarginBottom.Mb36 />
+    <Applications marginBottom=MarginBottom.Mb36 />
     <UserLevelIntroduction content=content.researching />
     <Papers margins=`mb-16` />
   </Page.Basic>

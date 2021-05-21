@@ -10,7 +10,7 @@ module ResponsiveCentered = {
     <div
       className={marginBottom->Belt.Option.mapWithDefault(
         "",
-        Tailwind.Breakpoint.toClassNames,
+        Breakpoint.toClassNames,
       ) ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
       children
     </div>
@@ -27,7 +27,7 @@ module MediumCentered = {
     ~filled=false,
   ) =>
     <div
-      className={Tailwind.Breakpoint.toClassNames(marginBottom) ++
+      className={Breakpoint.toClassNames(marginBottom) ++
       " max-w-5xl mx-auto " ++
       paddingX ++
       " " ++
@@ -53,7 +53,7 @@ module NoneFilled = {
   let make = (~children, ~marginBottom=?) =>
     <div
       className={"bg-orangedark " ++
-      marginBottom->Belt.Option.mapWithDefault("", Tailwind.MarginBottom.toClassName)}>
+      marginBottom->Belt.Option.mapWithDefault("", MarginBottom.toClassName)}>
       children
     </div>
 }
@@ -83,7 +83,7 @@ module VerySmallCentered = {
   let make = (~children, ~marginBottom=?, ~paddingY="", ~paddingX="") =>
     <div
       className={"mx-auto max-w-3xl " ++
-      marginBottom->Belt.Option.mapWithDefault("", Tailwind.MarginBottom.toClassName) ++
+      marginBottom->Belt.Option.mapWithDefault("", MarginBottom.toClassName) ++
       " " ++
       paddingY ++
       " " ++

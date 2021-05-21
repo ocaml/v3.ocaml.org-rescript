@@ -96,7 +96,7 @@ module HighlightSection = {
     <div
       className={content.bgImageClass ++
       " bg-auto bg-center bg-no-repeat flex align-bottom place-content-center " ++
-      marginBottom->Tailwind.Breakpoint.toClassNames}>
+      marginBottom->Breakpoint.toClassNames}>
       <div className="bg-white overflow-hidden shadow rounded-lg mb-2 lg:mb-7 mt-56 mx-5 max-w-4xl">
         <div className="px-4 py-5 sm:p-6">
           <h2 className="font-bold text-orangedark text-3xl lg:text-4xl text-center mb-2">
@@ -120,8 +120,7 @@ module HighlightItem = {
     <MainContainer.None>
       <TitleHeading.Large title pageDescription />
       <HighlightSection
-        marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb6, ())}
-        content=highlightContent
+        marginBottom={Breakpoint.make(MarginBottom.Mb6, ())} content=highlightContent
       />
       children
     </MainContainer.None>

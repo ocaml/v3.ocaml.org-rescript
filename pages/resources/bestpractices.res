@@ -1,3 +1,5 @@
+open! Import
+
 type t = {
   title: string,
   pageDescription: string,
@@ -13,7 +15,7 @@ let make = (~content=contentEn) => <>
   <ConstructionBanner />
   <Page.Basic
     marginTop=`mt-1`
-    headingMarginBottom=Tailwind.MarginBottom.Mb24
+    headingMarginBottom=MarginBottom.Mb24
     addBottomBar=true
     addContainer=Page.Basic.NoContainer
     title=content.title
