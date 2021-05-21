@@ -12,7 +12,7 @@ module MediumCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~margins: string,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>,
     ~paddingX: string=?,
     ~paddingY: string=?,
     ~otherLayout: string=?,

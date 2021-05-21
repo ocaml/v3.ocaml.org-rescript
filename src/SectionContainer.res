@@ -11,10 +11,29 @@ module ResponsiveCentered = {
 }
 
 module MediumCentered = {
+  let toClassNames = (mb: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>) =>
+    Js.String.concatMany(
+      [
+        Tailwind.MarginBottom.toClassName(mb.base),
+        " ",
+        mb.sm->Belt.Option.mapWithDefault("", m => "sm:" ++ Tailwind.MarginBottom.toClassName(m)),
+        " ",
+        mb.lg->Belt.Option.mapWithDefault("", m => "lg:" ++ Tailwind.MarginBottom.toClassName(m)),
+      ],
+      "",
+    )
+
   @react.component
-  let make = (~children, ~margins, ~paddingX="", ~paddingY="", ~otherLayout="", ~filled=false) =>
+  let make = (
+    ~children,
+    ~marginBottom,
+    ~paddingX="",
+    ~paddingY="",
+    ~otherLayout="",
+    ~filled=false,
+  ) =>
     <div
-      className={margins ++
+      className={toClassNames(marginBottom) ++
       " max-w-5xl mx-auto " ++
       paddingX ++
       " " ++

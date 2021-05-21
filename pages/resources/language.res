@@ -77,9 +77,9 @@ module Books = {
 
 module Manual = {
   @react.component
-  let make = (~margins) =>
+  let make = (~marginBottom) =>
     // TODO: define content type; factor out content
-    <SectionContainer.MediumCentered margins paddingY="pt-8 pb-14" filled=true>
+    <SectionContainer.MediumCentered marginBottom paddingY="pt-8 pb-14" filled=true>
       <h2 className="text-center text-white text-7xl font-bold mb-8"> {s(`The OCaml Manual`)} </h2>
       <div className="mx-24 grid grid-cols-3 px-28 mx-auto max-w-4xl">
         <div className="border-r-4 border-b-4">
@@ -236,7 +236,9 @@ let make = (~content) => <>
     <UserLevelIntroduction content=content.growing margins=`mb-20` />
     <Books margins=`mb-16` content=content.booksContent />
     <UserLevelIntroduction content=content.expanding margins=`mb-20` />
-    <Manual margins=`mb-20` />
+    <Manual
+      marginBottom={Tailwind.Breakpoint.base: Tailwind.MarginBottom.Mb20, sm: None, lg: None}
+    />
     <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
     <Applications marginBottom=Tailwind.MarginBottom.Mb36 />
     <UserLevelIntroduction content=content.researching margins=`mb-20` />

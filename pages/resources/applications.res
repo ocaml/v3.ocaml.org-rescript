@@ -4,9 +4,9 @@ let s = React.string
 
 module ApiDocumentation = {
   @react.component
-  let make = (~margins) =>
+  let make = (~marginBottom) =>
     // TODO: factor out and define content type
-    <SectionContainer.MediumCentered margins paddingX="px-4 sm:px-32">
+    <SectionContainer.MediumCentered marginBottom paddingX="px-4 sm:px-32">
       <MediaObject imageHeight="h-56" image="api-img.jpeg" imageSide=MediaObject.Right>
         <h4 className="text-4xl font-bold mb-8"> {s(`API Documentation`)} </h4>
         <p className="mt-1 mb-8">
@@ -184,7 +184,9 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     addContainer=Page.Basic.NoContainer
     title
     pageDescription>
-    <ApiDocumentation margins=`mb-24` />
+    <ApiDocumentation
+      marginBottom={Tailwind.Breakpoint.base: Tailwind.MarginBottom.Mb24, sm: None, lg: None}
+    />
     <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
     <PlatformTools />
     <UsingOcaml margins=`mb-16` content=usingOcamlContent />
