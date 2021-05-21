@@ -51,16 +51,20 @@ module Breakpoint = {
 
   // TODO: abstract over type parameter
   let toClassNames = (mb: t<MarginBottom.t>) =>
+    // TODO: use rescript-classnames library
     Js.String.concatMany(
       [
         MarginBottom.toClassName(mb.base),
         " ",
-        mb.sm->Belt.Option.mapWithDefault("", m => "sm:" ++ MarginBottom.toClassName(m)),
+        mb.sm->Util.Option.mapWithDefaultEmpty(m => "sm:" ++ MarginBottom.toClassName(m)),
         " ",
-        mb.md->Belt.Option.mapWithDefault("", m => "md:" ++ MarginBottom.toClassName(m)),
+        mb.md->Util.Option.mapWithDefaultEmpty(m => "md:" ++ MarginBottom.toClassName(m)),
         " ",
-        mb.lg->Belt.Option.mapWithDefault("", m => "lg:" ++ MarginBottom.toClassName(m)),
+        mb.lg->Util.Option.mapWithDefaultEmpty(m => "lg:" ++ MarginBottom.toClassName(m)),
       ],
       "",
     )
+
+  let toClassNamesOrEmpty = (mb: option<t<MarginBottom.t>>) =>
+    mb->Util.Option.mapWithDefaultEmpty(toClassNames)
 }
