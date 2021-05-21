@@ -31,8 +31,10 @@ module DeveloperGuides = {
   }
 
   @react.component
-  let make = (~margins, ~content) =>
-    <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
+  let make = (~marginBottom, ~content) =>
+    <div
+      className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
+      marginBottom->Tailwind.Breakpoint.toClassNames}>
       <div className="px-4 py-5 sm:p-6">
         // TODO: factor out and define content type
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
@@ -104,9 +106,11 @@ module UsingOcaml = {
   }
 
   @react.component
-  let make = (~margins, ~content) =>
+  let make = (~marginBottom, ~content) =>
     // TODO: factor out and define content type
-    <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
+    <div
+      className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
+      marginBottom->Tailwind.Breakpoint.toClassNames}>
       <div className="px-4 py-5 sm:py-8 sm:px-24">
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
           {s(content.usingOcamlLabel)}
@@ -185,9 +189,15 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     title
     pageDescription>
     <ApiDocumentation marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb24, ())} />
-    <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
+    <DeveloperGuides
+      marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb2, ())}
+      content=developerGuidesContent
+    />
     <PlatformTools />
-    <UsingOcaml margins=`mb-16` content=usingOcamlContent />
+    <UsingOcaml
+      marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb16, ())}
+      content=usingOcamlContent
+    />
   </Page.Basic>
 </>
 
