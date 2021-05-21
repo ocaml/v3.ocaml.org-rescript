@@ -7,8 +7,8 @@ module UserLevelIntroduction = {
   }
 
   @react.component
-  let make = (~content, ~margins) =>
-    <SectionContainer.SmallCentered margins otherLayout="flex items-center space-x-20">
+  let make = (~content, ~marginBottom=Tailwind.MarginBottom.Mb20, ()) =>
+    <SectionContainer.SmallCentered marginBottom otherLayout="flex items-center space-x-20">
       <div className="text-5xl font-bold text-orangedark flex-shrink-0">
         {s(content.level ++ ` -`)}
       </div>
@@ -232,14 +232,14 @@ let make = (~content) => <>
     addContainer=Page.Basic.NoContainer
     title=content.title
     pageDescription=content.pageDescription>
-    <UserLevelIntroduction content=content.beginning margins=`mb-20` />
-    <UserLevelIntroduction content=content.growing margins=`mb-20` />
+    <UserLevelIntroduction content=content.beginning />
+    <UserLevelIntroduction content=content.growing />
     <Books margins=`mb-16` content=content.booksContent />
-    <UserLevelIntroduction content=content.expanding margins=`mb-20` />
+    <UserLevelIntroduction content=content.expanding />
     <Manual marginBottom={Tailwind.Breakpoint.make(Tailwind.MarginBottom.Mb20, ())} />
-    <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
+    <UserLevelIntroduction content=content.diversifying />
     <Applications marginBottom=Tailwind.MarginBottom.Mb36 />
-    <UserLevelIntroduction content=content.researching margins=`mb-20` />
+    <UserLevelIntroduction content=content.researching />
     <Papers margins=`mb-16` />
   </Page.Basic>
 </>

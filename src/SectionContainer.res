@@ -62,8 +62,14 @@ module LargeCentered = {
 
 module SmallCentered = {
   @react.component
-  let make = (~children, ~margins, ~otherLayout="") =>
-    <div className={"mx-auto max-w-4xl " ++ otherLayout ++ " " ++ margins}> children </div>
+  let make = (~children, ~marginBottom, ~otherLayout="") =>
+    <div
+      className={"mx-auto max-w-4xl " ++
+      otherLayout ++
+      " " ++
+      marginBottom->Tailwind.MarginBottom.toClassName}>
+      children
+    </div>
 }
 
 module VerySmallCentered = {

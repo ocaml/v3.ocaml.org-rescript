@@ -42,7 +42,11 @@ module LargeCentered: {
 
 module SmallCentered: {
   @react.component
-  let make: (~children: React.element, ~margins: string, ~otherLayout: string=?) => React.element
+  let make: (
+    ~children: React.element,
+    ~marginBottom: Tailwind.MarginBottom.t,
+    ~otherLayout: string=?,
+  ) => React.element
 }
 
 module VerySmallCentered: {
