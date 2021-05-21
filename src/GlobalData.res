@@ -45,7 +45,7 @@ let navContentEn = {
     },
     academicExcellence: {
       label: `Academic Excellence`,
-      url: InternalUrls.industrySuccessstories,
+      url: InternalUrls.industrySuccessstories /* TODO - point to correct page once it's created */,
       icon: Icons.academic,
       text: "Learn about the universities and academics that use OCaml.",
     },
@@ -66,7 +66,7 @@ let navContentEn = {
     },
     packages: {
       label: `Packages`,
-      url: "http://ci5.ocamllabs.io:8082/" /* FIXME */,
+      url: "http://ci5.ocamllabs.io:8082/" /* TODO - point to correct page once it's created */,
       icon: Icons.packages,
       text: "Browse the many packages available in OCaml.",
     },
