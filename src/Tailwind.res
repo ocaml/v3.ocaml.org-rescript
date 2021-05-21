@@ -34,6 +34,10 @@ module MarginBottom = {
     }
 }
 
+// TODO: think further on when marginBottom should optional (always?)
+// TODO: narrow down parameters using named variants when margin values
+//  are tightly restricted
+
 module Breakpoint = {
   type t<'a> = {
     base: 'a,
@@ -68,5 +72,3 @@ module Breakpoint = {
   let toClassNamesOrEmpty = (mb: option<t<MarginBottom.t>>) =>
     mb->Util.Option.mapWithDefaultEmpty(toClassNames)
 }
-
-// TODO: introduce Import module
