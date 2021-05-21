@@ -37,4 +37,17 @@ module Breakpoint = {
     sm: option<'a>,
     lg: option<'a>,
   }
+
+  // TODO: abstract over type parameter
+  let toClassNames = (mb: t<MarginBottom.t>) =>
+    Js.String.concatMany(
+      [
+        MarginBottom.toClassName(mb.base),
+        " ",
+        mb.sm->Belt.Option.mapWithDefault("", m => "sm:" ++ MarginBottom.toClassName(m)),
+        " ",
+        mb.lg->Belt.Option.mapWithDefault("", m => "lg:" ++ MarginBottom.toClassName(m)),
+      ],
+      "",
+    )
 }
