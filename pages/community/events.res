@@ -25,9 +25,9 @@ let make = (~content) => <>
   />
   <Page.TopImage title=content.title pageDescription=content.pageDescription>
     <SectionContainer.MediumCentered margins="mb-16">
-      <Oud2020.SimpleTable
+      <Table.Simple
         content={{
-          Oud2020.SimpleTable.headers: ["Date", "Event Name", "Location", "Description"],
+          headers: ["Date", "Event Name", "Location", "Description"],
           data: Array.map((event: Event.t) => (
             event.title,
             [

@@ -17,3 +17,10 @@ let decode = json => {
 
 external fromJson: Js.Json.t => t = "%identity"
 external toJson: t => Js.Json.t = "%identity"
+
+let find_paper = (video: t, papers: list<Paper.t>) => {
+  switch video.paper {
+  | Some(paper) => List.find_opt((p: Paper.t) => String.equal(p.title, paper), papers)
+  | None => None
+  }
+}

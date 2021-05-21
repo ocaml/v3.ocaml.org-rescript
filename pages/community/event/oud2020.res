@@ -1,61 +1,5 @@
 let s = React.string
 
-// TODO: Move to a components library?
-module SimpleTable = {
-  type t = {
-    headers: array<string>,
-    // The string is a unique identifier for the row for the key prop
-    data: array<(string, array<React.element>)>,
-  }
-
-  @react.component
-  let make = (~content) =>
-    <div className="flex flex-col">
-      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-orangedark">
-                <tr>
-                  {content.headers
-                  |> Array.map(header =>
-                    <th
-                      key={header}
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      {s(header)}
-                    </th>
-                  )
-                  |> React.array}
-                </tr>
-              </thead>
-              <tbody>
-                {content.data
-                |> Array.mapi((idx, (ident, item)) => {
-                  let base_ident = ident ++ string_of_int(idx)
-                  <tr key={base_ident} className={mod(idx, 2) === 0 ? "bg-white" : "bg-gray-50"}>
-                    {item
-                    |> Array.mapi((jdx, cell) =>
-                      <td
-                        key={base_ident ++ string_of_int(jdx)}
-                        className="px-6 py-4 text-sm font-medium text-gray-900">
-                        cell
-                      </td>
-                    )
-                    |> React.array}
-                  </tr>
-                })
-                |> React.array}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  let default = make
-}
-
 type date = {
   date: string,
   text: string,
@@ -124,34 +68,37 @@ let make = (~content) => <>
       </SectionContainer.SmallCentered>
       <SectionContainer.LargeCentered paddingX="px-6" paddingY="mb-16">
         <h2 className="text-4xl font-bold mb-8"> {s("Presentations")} </h2>
-        <ul className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-          {content.presentations
-          |> Array.map((video: Video.t) =>
-            switch video.embed {
-            | Some(link) =>
-              <li
-                key={video.title}
-                className="col-span-1 flex flex-col text-center rounded-lg shadow divide-y divide-gray-200">
-                <iframe
-                  height="250"
-                  // loading="lazy" would be nice
-                  className="rounded-lg"
-                  sandbox="allow-same-origin allow-scripts allow-popups"
-                  src={link}
-                  allowFullScreen=true
-                />
-              </li>
-            | None => <> </>
-            }
-          )
-          |> React.array}
-        </ul>
+        <Table.Simple
+          content={{
+            headers: ["", "Presentation"],
+            data: Array.map((video: Video.t) => {
+              (
+                video.title,
+                [
+                  // TODO: Improve the embedding of videos from watch.ocaml.org
+                  // which requires things like support for lazily loading iframes
+                  // in Rescrip-react and potentially a different design for mobile
+                  // screens
+                  <iframe
+                    height="200"
+                    width="275"
+                    className="rounded-lg"
+                    sandbox="allow-same-origin allow-scripts allow-popups"
+                    src={Belt_Option.getExn(video.embed)}
+                    allowFullScreen=true
+                  />,
+                  <p className="font-bold"> {s(video.title)} </p>,
+                ],
+              )
+            }, content.presentations),
+          }}
+        />
       </SectionContainer.LargeCentered>
       <SectionContainer.SmallCentered margins="mb-16">
         <h2 className="text-4xl font-bold mb-8 px-6"> {s("Papers")} </h2>
-        <SimpleTable
+        <Table.Simple
           content={{
-            SimpleTable.headers: ["Title", "Author(s)", "Link"],
+            headers: ["Title", "Author(s)", "Link"],
             data: Array.map((paper: Paper.t) => {
               (
                 paper.title,
@@ -164,7 +111,7 @@ let make = (~content) => <>
                       rel="noopener noreferrer"
                       className="text-orangedark underline"
                       href={pdf_or_head(paper)}>
-                      {s("link")}
+                      {s("link")} //TODO: Download link icon
                     </a>
                   </p>,
                 ],
@@ -173,6 +120,7 @@ let make = (~content) => <>
           }}
         />
       </SectionContainer.SmallCentered>
+      // TODO: Add program and organising committee ?
     </>}
   </Page.Basic>
 </>
