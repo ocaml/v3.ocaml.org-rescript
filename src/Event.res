@@ -17,3 +17,9 @@ let decode = json => {
 
 external fromJson: Js.Json.t => t = "%identity"
 external toJson: t => Js.Json.t = "%identity"
+
+let compare_by_date = (a: t, b: t) => {
+  let a_date = Js.Date.fromString(a.date)->Js.Date.getUTCDate
+  let b_date = Js.Date.fromString(b.date)->Js.Date.getUTCDate
+  Pervasives.compare(a_date, b_date)
+}
