@@ -55,11 +55,6 @@ type highlightContent = {
   bgImageClass: string,
 }
 
-module HighlightSection: {
-  @react.component
-  let make: (~margins: string, ~content: highlightContent) => React.element
-}
-
 module HighlightItem: {
   @react.component
   let make: (
