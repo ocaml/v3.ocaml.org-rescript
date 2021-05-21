@@ -5,7 +5,10 @@ module MediumCentered2: {
 
 module ResponsiveCentered: {
   @react.component
-  let make: (~children: React.element, ~margins: string) => React.element
+  let make: (
+    ~children: React.element,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>=?,
+  ) => React.element
 }
 
 module MediumCentered: {

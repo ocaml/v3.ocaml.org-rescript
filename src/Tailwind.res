@@ -3,6 +3,7 @@ module UtilityClassGroup = {
   let toClassName: 'a => string = _ => ""
 }
 
+// TODO: don't use this directly
 module MarginBottom = {
   include UtilityClassGroup
 
