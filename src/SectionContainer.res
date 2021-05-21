@@ -1,3 +1,5 @@
+open! Import
+
 // TODO: better name, do not refer to heading use case specifically
 module MediumCentered2 = {
   @react.component

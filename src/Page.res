@@ -1,3 +1,5 @@
+open! Import
+
 //  TODO: combine the components below into one variant type
 
 let s = React.string
