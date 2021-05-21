@@ -315,7 +315,7 @@ let make = (~content) => {
                               onClick=hideMobileMenu
                               className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                               <span
-                                className="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-5 w-5 current-stroke current-fill stroke-2">
+                                className="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-5 w-5 stroke-current fill-current stroke-2">
                                 {e.icon}
                               </span>
                               <span className="font-bold"> {s(e.label)} </span>
