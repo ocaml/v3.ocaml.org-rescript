@@ -34,9 +34,6 @@ module MarginBottom = {
     }
 }
 
-// TODO: narrow down parameters using named variants when margin values
-//  are tightly restricted
-
 module Breakpoint = {
   type t<'a> = {
     base: 'a,

@@ -79,9 +79,9 @@ module Books = {
 
 module Manual = {
   @react.component
-  let make = (~marginBottom) =>
+  let make = (~marginBottom=?) =>
     // TODO: define content type; factor out content
-    <SectionContainer.MediumCentered marginBottom paddingY="pt-8 pb-14" filled=true>
+    <SectionContainer.MediumCentered ?marginBottom paddingY="pt-8 pb-14" filled=true>
       <h2 className="text-center text-white text-7xl font-bold mb-8"> {s(`The OCaml Manual`)} </h2>
       <div className="mx-24 grid grid-cols-3 px-28 mx-auto max-w-4xl">
         <div className="border-r-4 border-b-4">

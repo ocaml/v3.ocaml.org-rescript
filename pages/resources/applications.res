@@ -6,9 +6,9 @@ let s = React.string
 
 module ApiDocumentation = {
   @react.component
-  let make = (~marginBottom) =>
+  let make = (~marginBottom=?) =>
     // TODO: factor out and define content type
-    <SectionContainer.MediumCentered marginBottom paddingX="px-4 sm:px-32">
+    <SectionContainer.MediumCentered ?marginBottom paddingX="px-4 sm:px-32">
       <MediaObject imageHeight="h-56" image="api-img.jpeg" imageSide=MediaObject.Right>
         <h4 className="text-4xl font-bold mb-8"> {s(`API Documentation`)} </h4>
         <p className="mt-1 mb-8">
