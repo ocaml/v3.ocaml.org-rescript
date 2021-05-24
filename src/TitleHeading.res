@@ -1,3 +1,4 @@
+open! Import
 module Link = Next.Link
 
 let s = React.string
@@ -56,8 +57,7 @@ module Large = {
       //  or only allow marginBottom to be specified with addBottomBar
 
       {
-        let marginBottom =
-          marginBottom->Belt.Option.mapWithDefault("", Tailwind.MarginBottom.toClassName)
+        let marginBottom = marginBottom->Belt.Option.mapWithDefault("", Breakpoint.toClassNames)
         switch addBottomBar {
         | true => <hr className={"bg-orangedark h-3 " ++ marginBottom} />
         | false => React.null

@@ -30,8 +30,6 @@ module Basic: {
     ~pageDescription: string,
     ~addContainer: container=?,
     ~marginTop: string=?,
-    // Change this into a variant with names like None, Small, Medium
-    ~headingMarginBottom: Tailwind.MarginBottom.t=?,
     ~callToAction: TitleHeading.Large.callToAction=?,
     ~addBottomBar: bool=?,
     unit,

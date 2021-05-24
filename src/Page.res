@@ -38,7 +38,6 @@ module Basic = {
     ~pageDescription,
     ~addContainer=Regular,
     ~marginTop=?,
-    ~headingMarginBottom=?,
     ~callToAction=?,
     ~addBottomBar=?,
     (),
@@ -50,13 +49,17 @@ module Basic = {
       | Some(callToAction) =>
         <TitleHeading.Large
           marginTop
-          marginBottom=?headingMarginBottom
+          marginBottom={Breakpoint.make(MarginBottom.Mb6, ())}
           addBottomBar
           title
           pageDescription
           callToAction
         />
       | None =>
+        let headingMarginBottom = switch addBottomBar {
+        | true => Some(Breakpoint.make(MarginBottom.Mb24, ()))
+        | false => None
+        }
         <TitleHeading.Large
           marginTop marginBottom=?headingMarginBottom addBottomBar title pageDescription
         />

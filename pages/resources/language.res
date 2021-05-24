@@ -229,7 +229,6 @@ let make = (~content) => <>
   // TODO: define a more narrow page type with preset params
   <Page.Basic
     marginTop=`mt-1`
-    headingMarginBottom=MarginBottom.Mb24
     addBottomBar=true
     addContainer=Page.Basic.NoContainer
     title=content.title

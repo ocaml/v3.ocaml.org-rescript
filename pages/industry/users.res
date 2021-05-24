@@ -108,7 +108,6 @@ let make = (~content=contentEn) => <>
   />
   <Page.Basic
     marginTop=`mt-2`
-    headingMarginBottom=MarginBottom.Mb6
     title=content.title
     pageDescription=content.pageDescription
     callToAction={

@@ -184,12 +184,7 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     playgroundLink=`/play/resources/applications`
   />
   <Page.Basic
-    marginTop=`mt-1`
-    headingMarginBottom=MarginBottom.Mb24
-    addBottomBar=true
-    addContainer=Page.Basic.NoContainer
-    title
-    pageDescription>
+    marginTop=`mt-1` addBottomBar=true addContainer=Page.Basic.NoContainer title pageDescription>
     <ApiDocumentation marginBottom={Breakpoint.make(MarginBottom.Mb24, ())} />
     <DeveloperGuides
       marginBottom={Breakpoint.make(MarginBottom.Mb2, ())} content=developerGuidesContent
