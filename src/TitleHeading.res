@@ -57,7 +57,7 @@ module Large = {
       //  or only allow marginBottom to be specified with addBottomBar
 
       {
-        let marginBottom = marginBottom->Belt.Option.mapWithDefault("", Breakpoint.toClassNames)
+        let marginBottom = marginBottom->Breakpoint.toClassNamesOrEmpty
         switch addBottomBar {
         | true => <hr className={"bg-orangedark h-3 " ++ marginBottom} />
         | false => React.null

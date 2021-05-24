@@ -10,10 +10,7 @@ module ResponsiveCentered = {
   @react.component
   let make = (~children, ~marginBottom=?) =>
     <div
-      className={marginBottom->Belt.Option.mapWithDefault(
-        "",
-        Breakpoint.toClassNames,
-      ) ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
+      className={marginBottom->Breakpoint.toClassNamesOrEmpty ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
       children
     </div>
 }
@@ -22,14 +19,14 @@ module MediumCentered = {
   @react.component
   let make = (
     ~children,
-    ~marginBottom,
+    ~marginBottom=?,
     ~paddingX="",
     ~paddingY="",
     ~otherLayout="",
     ~filled=false,
   ) =>
     <div
-      className={Breakpoint.toClassNames(marginBottom) ++
+      className={marginBottom->Breakpoint.toClassNamesOrEmpty ++
       " max-w-5xl mx-auto " ++
       paddingX ++
       " " ++
@@ -53,9 +50,7 @@ module FullyResponsiveCentered = {
 module NoneFilled = {
   @react.component
   let make = (~children, ~marginBottom=?) =>
-    <div
-      className={"bg-orangedark " ++
-      marginBottom->Belt.Option.mapWithDefault("", MarginBottom.toClassName)}>
+    <div className={"bg-orangedark " ++ marginBottom->Breakpoint.toClassNamesOrEmpty}>
       children
     </div>
 }
@@ -70,12 +65,12 @@ module LargeCentered = {
 
 module SmallCentered = {
   @react.component
-  let make = (~children, ~marginBottom, ~otherLayout="") =>
+  let make = (~children, ~marginBottom=?, ~otherLayout="") =>
     <div
       className={"mx-auto max-w-4xl " ++
       otherLayout ++
       " " ++
-      marginBottom->Tailwind.MarginBottom.toClassName}>
+      marginBottom->Breakpoint.toClassNamesOrEmpty}>
       children
     </div>
 }
@@ -85,7 +80,7 @@ module VerySmallCentered = {
   let make = (~children, ~marginBottom=?, ~paddingY="", ~paddingX="") =>
     <div
       className={"mx-auto max-w-3xl " ++
-      marginBottom->Belt.Option.mapWithDefault("", MarginBottom.toClassName) ++
+      marginBottom->Breakpoint.toClassNamesOrEmpty ++
       " " ++
       paddingY ++
       " " ++

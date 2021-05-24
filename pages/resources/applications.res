@@ -33,17 +33,17 @@ module DeveloperGuides = {
   }
 
   @react.component
-  let make = (~marginBottom, ~content) =>
+  let make = (~marginBottom=?, ~content) =>
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-      marginBottom->Breakpoint.toClassNames}>
+      marginBottom->Breakpoint.toClassNamesOrEmpty}>
       <div className="px-4 py-5 sm:p-6">
         // TODO: factor out and define content type
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
           {s(content.developerGuidesLabel)}
         </h2>
         <MediaObject
-          marginBottom=MarginBottom.Mb11
+          marginBottom={Breakpoint.make(MarginBottom.Mb11, ())}
           imageHeight=content.topDeveloperGuide.imageHeight
           image=content.topDeveloperGuide.image
           imageSide=MediaObject.Right>
@@ -59,7 +59,7 @@ module DeveloperGuides = {
           </div>
         </MediaObject>
         <MediaObject
-          marginBottom=MarginBottom.Mb11
+          marginBottom={Breakpoint.make(MarginBottom.Mb11, ())}
           imageHeight=content.bottomDeveloperGuide.imageHeight
           image=content.bottomDeveloperGuide.image
           imageSide=MediaObject.Left>
@@ -108,11 +108,11 @@ module UsingOcaml = {
   }
 
   @react.component
-  let make = (~marginBottom, ~content) =>
+  let make = (~marginBottom=?, ~content) =>
     // TODO: factor out and define content type
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-      marginBottom->Breakpoint.toClassNames}>
+      marginBottom->Breakpoint.toClassNamesOrEmpty}>
       <div className="px-4 py-5 sm:py-8 sm:px-24">
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
           {s(content.usingOcamlLabel)}

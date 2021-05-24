@@ -15,7 +15,7 @@ module MediumCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>=?,
     ~paddingX: string=?,
     ~paddingY: string=?,
     ~otherLayout: string=?,
@@ -30,7 +30,10 @@ module FullyResponsiveCentered: {
 
 module NoneFilled: {
   @react.component
-  let make: (~children: React.element, ~marginBottom: Tailwind.MarginBottom.t=?) => React.element
+  let make: (
+    ~children: React.element,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>=?,
+  ) => React.element
 }
 
 module LargeCentered: {
@@ -47,7 +50,7 @@ module SmallCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.MarginBottom.t,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>=?,
     ~otherLayout: string=?,
   ) => React.element
 }
@@ -56,7 +59,7 @@ module VerySmallCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.MarginBottom.t=?,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.MarginBottom.t>=?,
     ~paddingY: string=?,
     ~paddingX: string=?,
   ) => React.element

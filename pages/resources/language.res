@@ -9,8 +9,8 @@ module UserLevelIntroduction = {
   }
 
   @react.component
-  let make = (~content, ~marginBottom=Tailwind.MarginBottom.Mb20, ()) =>
-    <SectionContainer.SmallCentered marginBottom otherLayout="flex items-center space-x-20">
+  let make = (~content, ~marginBottom=?, ()) =>
+    <SectionContainer.SmallCentered ?marginBottom otherLayout="flex items-center space-x-20">
       <div className="text-5xl font-bold text-orangedark flex-shrink-0">
         {s(content.level ++ ` -`)}
       </div>
@@ -138,8 +138,8 @@ module Manual = {
 
 module Applications = {
   @react.component
-  let make = (~marginBottom) =>
-    <SectionContainer.VerySmallCentered marginBottom>
+  let make = (~marginBottom=?) =>
+    <SectionContainer.VerySmallCentered ?marginBottom>
       <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`Applications`)} </h2>
       <div className="sm:flex items-center space-x-32 mb-20">
         <div className="mb-4 sm:mb-0 sm:mr-4">
@@ -227,22 +227,26 @@ let make = (~content) => <>
     playgroundLink=`/play/resources/language`
   />
   // TODO: define a more narrow page type with preset params
-  <Page.Basic
-    marginTop=`mt-1`
-    addBottomBar=true
-    addContainer=Page.Basic.NoContainer
-    title=content.title
-    pageDescription=content.pageDescription>
-    <UserLevelIntroduction content=content.beginning />
-    <UserLevelIntroduction content=content.growing />
-    <Books margins=`mb-16` content=content.booksContent />
-    <UserLevelIntroduction content=content.expanding />
-    <Manual marginBottom={Breakpoint.make(MarginBottom.Mb20, ())} />
-    <UserLevelIntroduction content=content.diversifying />
-    <Applications marginBottom=MarginBottom.Mb36 />
-    <UserLevelIntroduction content=content.researching />
-    <Papers margins=`mb-16` />
-  </Page.Basic>
+
+  {
+    let introMarginBottom = Breakpoint.make(MarginBottom.Mb20, ())
+    <Page.Basic
+      marginTop=`mt-1`
+      addBottomBar=true
+      addContainer=Page.Basic.NoContainer
+      title=content.title
+      pageDescription=content.pageDescription>
+      <UserLevelIntroduction content=content.beginning marginBottom=introMarginBottom />
+      <UserLevelIntroduction content=content.growing marginBottom=introMarginBottom />
+      <Books margins=`mb-16` content=content.booksContent />
+      <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
+      <Manual marginBottom={Breakpoint.make(MarginBottom.Mb20, ())} />
+      <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
+      <Applications marginBottom={Breakpoint.make(MarginBottom.Mb36, ())} />
+      <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
+      <Papers margins=`mb-16` />
+    </Page.Basic>
+  }
 </>
 
 let getStaticProps = _ctx => {

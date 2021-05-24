@@ -1,3 +1,5 @@
+open! Import
+
 type imageSide = Left | Right
 
 @react.component
@@ -11,7 +13,7 @@ let make = (
   ~children,
   (),
 ) => {
-  let marginBottom = marginBottom->Belt.Option.mapWithDefault("", Tailwind.MarginBottom.toClassName)
+  let marginBottom = marginBottom->Breakpoint.toClassNamesOrEmpty
   <div className={`flex flex-col items-center sm:flex-row sm:justify-evenly ${marginBottom}`}>
     {
       let rounded = switch isRounded {

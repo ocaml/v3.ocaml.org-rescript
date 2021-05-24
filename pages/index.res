@@ -248,9 +248,9 @@ module Quote = {
 // TODO: move this into general contaienrs?
 module TestimonialContainer = {
   @react.component
-  let make = (~marginBottom, ~children) =>
+  let make = (~marginBottom=?, ~children) =>
     <section
-      className={marginBottom->Breakpoint.toClassNames ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
+      className={marginBottom->Breakpoint.toClassNamesOrEmpty ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> children </div>
     </section>
 }
@@ -264,8 +264,8 @@ module TestimonialSection = {
   }
 
   @react.component
-  let make = (~content, ~marginBottom) =>
-    <TestimonialContainer marginBottom>
+  let make = (~content, ~marginBottom=?) =>
+    <TestimonialContainer ?marginBottom>
       <FillPattern
         organizationName=content.organizationName
         position=`absolute`
