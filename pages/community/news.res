@@ -26,8 +26,8 @@ module CategorizedNews = {
   }
 
   @react.component
-  let make = (~marginBottom, ~content) =>
-    <SectionContainer.MediumCentered marginBottom paddingX="px-12">
+  let make = (~marginBottom=?, ~content) =>
+    <SectionContainer.MediumCentered ?marginBottom paddingX="px-12">
       <h2 className="text-orangedark text-3xl mb-5 lg:text-4xl font-bold text-center">
         {s(content.otherNewsStories)}
       </h2>
@@ -239,8 +239,8 @@ module WeeklyNews = {
   }
 
   @react.component
-  let make = (~content, ~marginBottom) =>
-    <SectionContainer.MediumCentered marginBottom>
+  let make = (~content, ~marginBottom=?) =>
+    <SectionContainer.MediumCentered ?marginBottom>
       <div className="lg:grid lg:grid-cols-2 items-center">
         <div className="lg:order-2">
           <h2 className="text-orangedark text-2xl font-bold text-center lg:text-4xl mb-9">

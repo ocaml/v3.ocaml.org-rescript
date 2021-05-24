@@ -34,7 +34,6 @@ module MarginBottom = {
     }
 }
 
-// TODO: think further on when marginBottom should optional (always?)
 // TODO: narrow down parameters using named variants when margin values
 //  are tightly restricted
 
