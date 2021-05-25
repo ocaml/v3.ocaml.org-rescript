@@ -1,9 +1,13 @@
-type t = {
-  title: string,
-  pageDescription: string,
+module Content: {
+  type t = {
+    title: string,
+    pageDescription: string,
+  }
+
+  let make: Lang.t => t
 }
 
 @react.component
-let make: (~content: t=?) => React.element
+let make: (~content: Content.t=?) => React.element
 
-let default: {"content": option<t>} => React.element
+let default: {"content": option<Content.t>} => React.element
