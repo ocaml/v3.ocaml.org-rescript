@@ -25,11 +25,12 @@ module Books = {
   }
 
   @react.component
-  let make = (~margins, ~content) =>
+  let make = (~marginBottom=?, ~content) =>
     // TODO: define content type; extract content
     // TODO: use generic container
     <div
-      className={"bg-white overflow-hidden shadow rounded-lg mx-10 mx-auto max-w-5xl " ++ margins}>
+      className={"bg-white overflow-hidden shadow rounded-lg mx-10 mx-auto max-w-5xl " ++
+      MarginBottomUtilities.toClassNamesOrEmpty(marginBottom)}>
       <div className="px-4 py-5 sm:px-6 sm:py-9">
         <h2 className="text-center text-orangedark text-7xl font-bold mb-8 uppercase">
           {s(content.booksLabel)}
@@ -159,11 +160,12 @@ module Applications = {
 
 module Papers = {
   @react.component
-  let make = (~margins) =>
+  let make = (~marginBottom=?, ()) =>
     // TODO: define content type and factor out content
     // TODO: use generic container
     <div
-      className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++ margins}>
+      className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++
+      marginBottom->MarginBottomUtilities.toClassNamesOrEmpty}>
       <div className="px-4 py-5 sm:p-6">
         <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`PAPERS`)} </h2>
         <div className="grid grid-cols-3 mb-14 px-9 space-x-6 px-14">
@@ -238,13 +240,13 @@ let make = (~content) => <>
       pageDescription=content.pageDescription>
       <UserLevelIntroduction content=content.beginning marginBottom=introMarginBottom />
       <UserLevelIntroduction content=content.growing marginBottom=introMarginBottom />
-      <Books margins=`mb-16` content=content.booksContent />
+      <Books marginBottom={Breakpoint.make(#mb16, ())} content=content.booksContent />
       <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
       <Manual marginBottom={Breakpoint.make(#mb20, ())} />
       <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
       <Applications marginBottom={Breakpoint.make(#mb36, ())} />
       <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
-      <Papers margins=`mb-16` />
+      <Papers marginBottom={Breakpoint.make(#mb16, ())} />
     </Page.Basic>
   }
 </>
