@@ -33,8 +33,8 @@ module Breakpoint = {
     uc->Util.Option.mapWithDefaultEmpty(uc => toClassNames(uc, toClassName))
 }
 
-/*
 // TODO: correct? better construct to express this?
+/*
 module type UtilityClassGroup = {
   type t
 
@@ -70,7 +70,6 @@ module MarginBottom /* : UtilityClassGroup */ = {
     | #mb36 => "mb-36"
     }
 }
-
 /*
 // TODO: correct? better construct to express this?
 module type UtilityClassGroupUtilities = {
@@ -79,7 +78,6 @@ module type UtilityClassGroupUtilities = {
   let toClassNamesOrEmpty: option<Breakpoint.t<t>> => string
 }
 */
-
 // TODO: Is there a better way to pair MarginBottom and MarginBottomUtilities?
 module MarginBottomUtilities /* : UtilityClassGroupUtilities */ = {
   type t = MarginBottom.t
