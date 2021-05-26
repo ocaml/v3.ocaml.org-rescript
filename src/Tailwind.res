@@ -41,30 +41,31 @@ module UtilityClassGroup = {
 module MarginBottom = {
   include UtilityClassGroup
 
-  type t =
-    | Mb2
-    | Mb4
-    | Mb6
-    | Mb10
-    | Mb11
-    | Mb16
-    | Mb20
-    | Mb24
-    | Mb32
-    | Mb36
+  type t = [
+    | #mb2
+    | #mb4
+    | #mb6
+    | #mb10
+    | #mb11
+    | #mb16
+    | #mb20
+    | #mb24
+    | #mb32
+    | #mb36
+  ]
 
   let toClassName = mb =>
     switch mb {
-    | Mb2 => "mb-2"
-    | Mb4 => "mb-4"
-    | Mb6 => "mb-6"
-    | Mb10 => "mb-10"
-    | Mb11 => "mb-11"
-    | Mb16 => "mb-16"
-    | Mb20 => "mb-20"
-    | Mb24 => "mb-24"
-    | Mb32 => "mb-32"
-    | Mb36 => "mb-36"
+    | #mb2 => "mb-2"
+    | #mb4 => "mb-4"
+    | #mb6 => "mb-6"
+    | #mb10 => "mb-10"
+    | #mb11 => "mb-11"
+    | #mb16 => "mb-16"
+    | #mb20 => "mb-20"
+    | #mb24 => "mb-24"
+    | #mb32 => "mb-32"
+    | #mb36 => "mb-36"
     }
 }
 

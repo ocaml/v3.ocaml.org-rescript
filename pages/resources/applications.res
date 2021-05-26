@@ -43,7 +43,7 @@ module DeveloperGuides = {
           {s(content.developerGuidesLabel)}
         </h2>
         <MediaObject
-          marginBottom={Breakpoint.make(MarginBottom.Mb11, ())}
+          marginBottom={Breakpoint.make(#mb11, ())}
           imageHeight=content.topDeveloperGuide.imageHeight
           image=content.topDeveloperGuide.image
           imageSide=MediaObject.Right>
@@ -59,7 +59,7 @@ module DeveloperGuides = {
           </div>
         </MediaObject>
         <MediaObject
-          marginBottom={Breakpoint.make(MarginBottom.Mb11, ())}
+          marginBottom={Breakpoint.make(#mb11, ())}
           imageHeight=content.bottomDeveloperGuide.imageHeight
           image=content.bottomDeveloperGuide.image
           imageSide=MediaObject.Left>
@@ -185,12 +185,10 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
   />
   <Page.Basic
     marginTop=`mt-1` addBottomBar=true addContainer=Page.Basic.NoContainer title pageDescription>
-    <ApiDocumentation marginBottom={Breakpoint.make(MarginBottom.Mb24, ())} />
-    <DeveloperGuides
-      marginBottom={Breakpoint.make(MarginBottom.Mb2, ())} content=developerGuidesContent
-    />
+    <ApiDocumentation marginBottom={Breakpoint.make(#mb24, ())} />
+    <DeveloperGuides marginBottom={Breakpoint.make(#mb2, ())} content=developerGuidesContent />
     <PlatformTools />
-    <UsingOcaml marginBottom={Breakpoint.make(MarginBottom.Mb16, ())} content=usingOcamlContent />
+    <UsingOcaml marginBottom={Breakpoint.make(#mb16, ())} content=usingOcamlContent />
   </Page.Basic>
 </>
 

@@ -403,10 +403,9 @@ let make = (~content=contentEn) => <>
     pageDescription=content.pageDescription
     highlightContent=content.highlightContent>
     <CategorizedNews
-      marginBottom={Breakpoint.make(MarginBottom.Mb10, ~lg=MarginBottom.Mb32, ())}
-      content=content.categorizedNews
+      marginBottom={Breakpoint.make(#mb10, ~lg=#mb32, ())} content=content.categorizedNews
     />
-    <WeeklyNews marginBottom={Breakpoint.make(MarginBottom.Mb4, ())} content=content.weeklyNews />
+    <WeeklyNews marginBottom={Breakpoint.make(#mb4, ())} content=content.weeklyNews />
   </Page.HighlightItem>
 </>
 

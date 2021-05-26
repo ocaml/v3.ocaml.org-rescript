@@ -332,12 +332,7 @@ let make = (~content=contentEn) =>
     <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16` />
     <TestimonialSection
       content=content.testimonialContent
-      marginBottom={Breakpoint.make(
-        MarginBottom.Mb6,
-        ~md=MarginBottom.Mb4,
-        ~lg=MarginBottom.Mb6,
-        (),
-      )}
+      marginBottom={Breakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
     />
   </Page.Unstructured>
 

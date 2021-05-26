@@ -229,7 +229,7 @@ let make = (~content) => <>
   // TODO: define a more narrow page type with preset params
 
   {
-    let introMarginBottom = Breakpoint.make(MarginBottom.Mb20, ())
+    let introMarginBottom = Breakpoint.make(#mb20, ())
     <Page.Basic
       marginTop=`mt-1`
       addBottomBar=true
@@ -240,9 +240,9 @@ let make = (~content) => <>
       <UserLevelIntroduction content=content.growing marginBottom=introMarginBottom />
       <Books margins=`mb-16` content=content.booksContent />
       <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
-      <Manual marginBottom={Breakpoint.make(MarginBottom.Mb20, ())} />
+      <Manual marginBottom={Breakpoint.make(#mb20, ())} />
       <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
-      <Applications marginBottom={Breakpoint.make(MarginBottom.Mb36, ())} />
+      <Applications marginBottom={Breakpoint.make(#mb36, ())} />
       <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
       <Papers margins=`mb-16` />
     </Page.Basic>
