@@ -101,7 +101,7 @@ module HighlightSection = {
     <div
       className={content.bgImageClass ++
       " bg-auto bg-center bg-no-repeat flex align-bottom place-content-center " ++
-      marginBottom->Breakpoint.toClassNamesOrEmpty}>
+      marginBottom->MarginBottomUtilities.toClassNamesOrEmpty}>
       <div className="bg-white overflow-hidden shadow rounded-lg mb-2 lg:mb-7 mt-56 mx-5 max-w-4xl">
         <div className="px-4 py-5 sm:p-6">
           <h2 className="font-bold text-orangedark text-3xl lg:text-4xl text-center mb-2">

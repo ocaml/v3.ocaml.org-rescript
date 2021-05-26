@@ -250,7 +250,7 @@ module TestimonialContainer = {
   @react.component
   let make = (~marginBottom=?, ~children) =>
     <section
-      className={marginBottom->Breakpoint.toClassNamesOrEmpty ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
+      className={marginBottom->MarginBottomUtilities.toClassNamesOrEmpty ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> children </div>
     </section>
 }

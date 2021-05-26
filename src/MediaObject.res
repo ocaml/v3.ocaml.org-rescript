@@ -13,7 +13,7 @@ let make = (
   ~children,
   (),
 ) => {
-  let marginBottom = marginBottom->Breakpoint.toClassNamesOrEmpty
+  let marginBottom = marginBottom->MarginBottomUtilities.toClassNamesOrEmpty
   <div className={`flex flex-col items-center sm:flex-row sm:justify-evenly ${marginBottom}`}>
     {
       let rounded = switch isRounded {

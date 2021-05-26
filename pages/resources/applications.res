@@ -36,7 +36,7 @@ module DeveloperGuides = {
   let make = (~marginBottom=?, ~content) =>
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-      marginBottom->Breakpoint.toClassNamesOrEmpty}>
+      marginBottom->MarginBottomUtilities.toClassNamesOrEmpty}>
       <div className="px-4 py-5 sm:p-6">
         // TODO: factor out and define content type
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
@@ -112,7 +112,7 @@ module UsingOcaml = {
     // TODO: factor out and define content type
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-      marginBottom->Breakpoint.toClassNamesOrEmpty}>
+      marginBottom->MarginBottomUtilities.toClassNamesOrEmpty}>
       <div className="px-4 py-5 sm:py-8 sm:px-24">
         <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
           {s(content.usingOcamlLabel)}

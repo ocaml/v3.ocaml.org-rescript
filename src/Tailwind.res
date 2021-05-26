@@ -1,3 +1,38 @@
+module Breakpoint = {
+  type t<'a> = {
+    base: 'a,
+    sm: option<'a>,
+    md: option<'a>,
+    lg: option<'a>,
+  }
+
+  let make = (base, ~sm=?, ~md=?, ~lg=?, ()) => {
+    base: base,
+    sm: sm,
+    md: md,
+    lg: lg,
+  }
+
+  // TODO: what is the best method to abstract over the parameter to Breakpoint.t
+  let toClassNames = (mb, toClassName) =>
+    // TODO: use rescript-classnames library
+    Js.String.concatMany(
+      [
+        toClassName(mb.base),
+        " ",
+        mb.sm->Util.Option.mapWithDefaultEmpty(m => "sm:" ++ toClassName(m)),
+        " ",
+        mb.md->Util.Option.mapWithDefaultEmpty(m => "md:" ++ toClassName(m)),
+        " ",
+        mb.lg->Util.Option.mapWithDefaultEmpty(m => "lg:" ++ toClassName(m)),
+      ],
+      "",
+    )
+
+  let toClassNamesOrEmpty = (mb, toClassName) =>
+    mb->Util.Option.mapWithDefaultEmpty(uc => toClassNames(uc, toClassName))
+}
+
 // TODO: correct? better construct to express this?
 module UtilityClassGroup = {
   let toClassName: 'a => string = _ => ""
@@ -33,37 +68,14 @@ module MarginBottom = {
     }
 }
 
-module Breakpoint = {
-  type t<'a> = {
-    base: 'a,
-    sm: option<'a>,
-    md: option<'a>,
-    lg: option<'a>,
-  }
+// TODO: correct? better construct to express this?
+module UtilityClassGroupUtilities = {
+  let toClassNamesOrEmpty: 'a => string = _ => ""
+}
 
-  let make = (base, ~sm=?, ~md=?, ~lg=?, ()) => {
-    base: base,
-    sm: sm,
-    md: md,
-    lg: lg,
-  }
+// TODO: Is there a better way to pair MarginBottom and MarginBottomUtilities?
+module MarginBottomUtilities = {
+  include UtilityClassGroupUtilities
 
-  // TODO: abstract over type parameter
-  let toClassNames = (mb: t<MarginBottom.t>) =>
-    // TODO: use rescript-classnames library
-    Js.String.concatMany(
-      [
-        MarginBottom.toClassName(mb.base),
-        " ",
-        mb.sm->Util.Option.mapWithDefaultEmpty(m => "sm:" ++ MarginBottom.toClassName(m)),
-        " ",
-        mb.md->Util.Option.mapWithDefaultEmpty(m => "md:" ++ MarginBottom.toClassName(m)),
-        " ",
-        mb.lg->Util.Option.mapWithDefaultEmpty(m => "lg:" ++ MarginBottom.toClassName(m)),
-      ],
-      "",
-    )
-
-  let toClassNamesOrEmpty = (mb: option<t<MarginBottom.t>>) =>
-    mb->Util.Option.mapWithDefaultEmpty(toClassNames)
+  let toClassNamesOrEmpty = mb => Breakpoint.toClassNamesOrEmpty(mb, MarginBottom.toClassName)
 }
