@@ -1,16 +1,17 @@
-type industrySection = {
+type principlesSection = {
   header: string,
   whatIsOcaml: NavEntry.t,
   industrialUsers: NavEntry.t,
+  academicExcellence: NavEntry.t,
   successStories: NavEntry.t,
 }
 
 type resourcesSection = {
   header: string,
-  releases: NavEntry.t,
-  applications: NavEntry.t,
   language: NavEntry.t,
-  archive: NavEntry.t,
+  packages: NavEntry.t,
+  applications: NavEntry.t,
+  bestPractices: NavEntry.t,
 }
 
 type communitySection = {
@@ -18,10 +19,11 @@ type communitySection = {
   opportunities: NavEntry.t,
   news: NavEntry.t,
   aroundTheWeb: NavEntry.t,
+  archive: NavEntry.t,
 }
 
 type navContent = {
-  industrySection: industrySection,
+  principlesSection: principlesSection,
   resourcesSection: resourcesSection,
   communitySection: communitySection,
 }

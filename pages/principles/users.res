@@ -112,7 +112,7 @@ let make = (~content=contentEn) => <>
     pageDescription=content.pageDescription
     callToAction={
       TitleHeading.Large.label: "Success Stories",
-      url: InternalUrls.industrySuccessstories,
+      url: InternalUrls.principlesSuccesses,
     }>
     <LogoSection companies=content.companies />
   </Page.Basic>
