@@ -36,7 +36,7 @@ module Breakpoint = {
 // TODO: correct? better construct to express this?
 /*
 module type UtilityClassGroup = {
-  type t
+  type t // the approach does not work because t is abstract
 
   let toClassName: t => string
 }
