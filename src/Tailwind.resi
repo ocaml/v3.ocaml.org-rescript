@@ -8,13 +8,6 @@ module Breakpoint: {
   let toClassNamesOrEmpty: (option<t<'a>>, 'a => string) => string
 }
 
-/*
-module type UtilityClassGroup = {
-  type t
-  let toClassName: t => string
-}
-*/
-
 module MarginBottom: {
   type t = [
     | #mb2
@@ -31,15 +24,9 @@ module MarginBottom: {
 
   let toClassName: t => string
 }
-/*
-module type UtilityClassGroupUtilities = {
-  type t
 
-  let toClassNamesOrEmpty: option<Breakpoint.t<t>> => string
-}
-*/
 module MarginBottomUtilities: {
   type t = MarginBottom.t
 
-  let toClassNamesOrEmpty: option<Breakpoint.t<MarginBottom.t>> => string
+  let toClassNamesOrEmpty: option<Breakpoint.t<t>> => string
 }
