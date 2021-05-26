@@ -14,33 +14,35 @@ module Breakpoint = {
   }
 
   // TODO: what is the best method to abstract over the parameter to Breakpoint.t
-  let toClassNames = (mb, toClassName) =>
+  let toClassNames = (uc, toClassName) =>
     // TODO: use rescript-classnames library
     Js.String.concatMany(
       [
-        toClassName(mb.base),
+        toClassName(uc.base),
         " ",
-        mb.sm->Util.Option.mapWithDefaultEmpty(m => "sm:" ++ toClassName(m)),
+        uc.sm->Util.Option.mapWithDefaultEmpty(m => "sm:" ++ toClassName(m)),
         " ",
-        mb.md->Util.Option.mapWithDefaultEmpty(m => "md:" ++ toClassName(m)),
+        uc.md->Util.Option.mapWithDefaultEmpty(m => "md:" ++ toClassName(m)),
         " ",
-        mb.lg->Util.Option.mapWithDefaultEmpty(m => "lg:" ++ toClassName(m)),
+        uc.lg->Util.Option.mapWithDefaultEmpty(m => "lg:" ++ toClassName(m)),
       ],
       "",
     )
 
-  let toClassNamesOrEmpty = (mb, toClassName) =>
-    mb->Util.Option.mapWithDefaultEmpty(uc => toClassNames(uc, toClassName))
+  let toClassNamesOrEmpty = (uc, toClassName) =>
+    uc->Util.Option.mapWithDefaultEmpty(uc => toClassNames(uc, toClassName))
 }
 
+/*
 // TODO: correct? better construct to express this?
-module UtilityClassGroup = {
-  let toClassName: 'a => string = _ => ""
+module type UtilityClassGroup = {
+  type t
+
+  let toClassName: t => string
 }
+*/
 
-module MarginBottom = {
-  include UtilityClassGroup
-
+module MarginBottom /* : UtilityClassGroup */ = {
   type t = [
     | #mb2
     | #mb4
@@ -69,14 +71,18 @@ module MarginBottom = {
     }
 }
 
+/*
 // TODO: correct? better construct to express this?
-module UtilityClassGroupUtilities = {
-  let toClassNamesOrEmpty: 'a => string = _ => ""
+module type UtilityClassGroupUtilities = {
+  type t
+
+  let toClassNamesOrEmpty: option<Breakpoint.t<t>> => string
 }
+*/
 
 // TODO: Is there a better way to pair MarginBottom and MarginBottomUtilities?
-module MarginBottomUtilities = {
-  include UtilityClassGroupUtilities
+module MarginBottomUtilities /* : UtilityClassGroupUtilities */ = {
+  type t = MarginBottom.t
 
   let toClassNamesOrEmpty = mb => Breakpoint.toClassNamesOrEmpty(mb, MarginBottom.toClassName)
 }
