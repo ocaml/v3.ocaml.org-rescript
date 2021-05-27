@@ -9,9 +9,9 @@ type item = {
 let make = (~items: array<item>) =>
   <ul className="divide-y divide-gray-300">
     {items
-    |> Array.mapi((idx, item: item) =>
+    |> Array.map((item: item) =>
       // TODO: accessible link; indicate that link opens new tab
-      <li className="px-6 py-4" key={Js.Int.toString(idx)}>
+      <li className="px-6 py-4" key=item.title>
         <a href=item.link target="_blank">
           <div className="flex justify-between items-center space-x-6">
             <div>
