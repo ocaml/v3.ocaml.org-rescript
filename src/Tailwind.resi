@@ -1,8 +1,3 @@
-module type UtilityClassGroup = {
-  type t
-  let toClassName: t => string
-}
-
 module MarginBottom: {
   type t = [
     | #mb2
