@@ -1,10 +1,10 @@
 module type UtilityClassGroup = {
-  type t // the approach does not work because t is abstract
+  type t
 
   let toClassName: t => string
 }
 
-module MarginBottom /* : UtilityClassGroup */ = {
+module MarginBottom = {
   type t = [
     | #mb2
     | #mb4
@@ -33,13 +33,29 @@ module MarginBottom /* : UtilityClassGroup */ = {
     }
 }
 
-module Breakpoint = {
-  type t<'a> = {
-    base: 'a,
-    sm: option<'a>,
-    md: option<'a>,
-    lg: option<'a>,
+/*
+module type MakeByBreakpointType = {
+  type itemType
+  type t
+  // let empty: option<t>
+  let make: (itemType, ~sm: itemType=?, ~md: itemType=?, ~lg: itemType=?, unit) => t
+  // TODO: expose this later once we have a use case for using it.
+  // let toClassNames: t => string
+  let toClassNamesOrEmpty: option<t> => string
+}
+*/
+
+module MakeByBreakpoint = (Group: UtilityClassGroup) => {
+  type item = Group.t
+
+  type t = {
+    base: Group.t,
+    sm: option<Group.t>,
+    md: option<Group.t>,
+    lg: option<Group.t>,
   }
+
+  // let empty = None
 
   let make = (base, ~sm=?, ~md=?, ~lg=?, ()) => {
     base: base,
@@ -50,36 +66,22 @@ module Breakpoint = {
 
   let mapWithDefaultEmpty = (option, f) => option->Belt.Option.mapWithDefault("", f)
 
-  let toClassNames = (uc, toClassName) =>
+  let toClassNames = uc =>
     // TODO: use rescript-classnames library
     Js.String.concatMany(
       [
-        toClassName(uc.base),
+        Group.toClassName(uc.base),
         " ",
-        uc.sm->mapWithDefaultEmpty(m => `sm:${toClassName(m)}`),
+        uc.sm->mapWithDefaultEmpty(m => `sm:${Group.toClassName(m)}`),
         " ",
-        uc.md->mapWithDefaultEmpty(m => `md:${toClassName(m)}`),
+        uc.md->mapWithDefaultEmpty(m => `md:${Group.toClassName(m)}`),
         " ",
-        uc.lg->mapWithDefaultEmpty(m => `lg:${toClassName(m)}`),
+        uc.lg->mapWithDefaultEmpty(m => `lg:${Group.toClassName(m)}`),
       ],
       "",
     )
 
-  let toClassNamesOrEmpty = (uc, toClassName) =>
-    uc->mapWithDefaultEmpty(uc => toClassNames(uc, toClassName))
+  let toClassNamesOrEmpty = uc => uc->mapWithDefaultEmpty(toClassNames)
 }
 
-// TODO: correct? better construct to express this?
-/*
-module type UtilityClassGroupUtilities = {
-  type t
-
-  let toClassNamesOrEmpty: option<Breakpoint.t<t>> => string
-} */
-
-// TODO: Is there a better way to pair MarginBottom and MarginBottomUtilities?
-module MarginBottomUtilities /* : UtilityClassGroupUtilities */ = {
-  type t = MarginBottom.t
-
-  let toClassNamesOrEmpty = mb => Breakpoint.toClassNamesOrEmpty(mb, MarginBottom.toClassName)
-}
+module MarginBottomByBreakpoint = MakeByBreakpoint(MarginBottom)

@@ -28,7 +28,7 @@ module Books = {
     // TODO: use generic container
     <div
       className={"bg-white overflow-hidden shadow rounded-lg mx-10 mx-auto max-w-5xl " ++
-      Tailwind.MarginBottomUtilities.toClassNamesOrEmpty(marginBottom)}>
+      Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty(marginBottom)}>
       <div className="px-4 py-5 sm:px-6 sm:py-9">
         <h2 className="text-center text-orangedark text-7xl font-bold mb-8 uppercase">
           {s(content.booksLabel)}
@@ -163,7 +163,7 @@ module Papers = {
     // TODO: use generic container
     <div
       className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++
-      marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty}>
+      marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
       <div className="px-4 py-5 sm:p-6">
         <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`PAPERS`)} </h2>
         <div className="grid grid-cols-3 mb-14 px-9 space-x-6 px-14">
@@ -229,7 +229,7 @@ let make = (~content) => <>
   // TODO: define a more narrow page type with preset params
 
   {
-    let introMarginBottom = Tailwind.Breakpoint.make(#mb20, ())
+    let introMarginBottom = Tailwind.MarginBottomByBreakpoint.make(#mb20, ())
     <Page.Basic
       marginTop=`mt-1`
       addBottomBar=true
@@ -238,13 +238,16 @@ let make = (~content) => <>
       pageDescription=content.pageDescription>
       <UserLevelIntroduction content=content.beginning marginBottom=introMarginBottom />
       <UserLevelIntroduction content=content.growing marginBottom=introMarginBottom />
-      <Books marginBottom={Tailwind.Breakpoint.make(#mb16, ())} content=content.booksContent />
+      <Books
+        marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb16, ())}
+        content=content.booksContent
+      />
       <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
-      <Manual marginBottom={Tailwind.Breakpoint.make(#mb20, ())} />
+      <Manual marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb20, ())} />
       <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
-      <Applications marginBottom={Tailwind.Breakpoint.make(#mb36, ())} />
+      <Applications marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb36, ())} />
       <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
-      <Papers marginBottom={Tailwind.Breakpoint.make(#mb16, ())} />
+      <Papers marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb16, ())} />
     </Page.Basic>
   }
 </>
