@@ -1,13 +1,3 @@
-module Breakpoint: {
-  type t<'a>
-
-  let make: ('a, ~sm: 'a=?, ~md: 'a=?, ~lg: 'a=?, unit) => t<'a>
-
-  let toClassNames: (t<'a>, 'a => string) => string
-
-  let toClassNamesOrEmpty: (option<t<'a>>, 'a => string) => string
-}
-
 module MarginBottom: {
   type t = [
     | #mb2
@@ -23,6 +13,16 @@ module MarginBottom: {
   ]
 
   let toClassName: t => string
+}
+
+module Breakpoint: {
+  type t<'a>
+
+  let make: ('a, ~sm: 'a=?, ~md: 'a=?, ~lg: 'a=?, unit) => t<'a>
+
+  let toClassNames: (t<'a>, 'a => string) => string
+
+  let toClassNamesOrEmpty: (option<t<'a>>, 'a => string) => string
 }
 
 module MarginBottomUtilities: {
