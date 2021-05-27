@@ -14,12 +14,7 @@ module MarginBottom: {
 }
 
 module ByBreakpoint: {
-  type t<'a> = {
-    base: 'a,
-    sm: option<'a>,
-    md: option<'a>,
-    lg: option<'a>,
-  }
+  type t<'a>
 
   let make: ('a, ~sm: 'a=?, ~md: 'a=?, ~lg: 'a=?, unit) => t<'a>
 }
