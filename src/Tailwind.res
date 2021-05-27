@@ -37,7 +37,6 @@ module MarginBottom = {
 module type MakeByBreakpointType = {
   type itemType
   type t
-  // let empty: option<t>
   let make: (itemType, ~sm: itemType=?, ~md: itemType=?, ~lg: itemType=?, unit) => t
   // TODO: expose this later once we have a use case for using it.
   // let toClassNames: t => string
@@ -54,8 +53,6 @@ module MakeByBreakpoint = (Group: UtilityClassGroup) => {
     md: option<Group.t>,
     lg: option<Group.t>,
   }
-
-  // let empty = None
 
   let make = (base, ~sm=?, ~md=?, ~lg=?, ()) => {
     base: base,
