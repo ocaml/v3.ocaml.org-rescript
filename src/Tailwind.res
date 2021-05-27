@@ -13,6 +13,8 @@ module Breakpoint = {
     lg: lg,
   }
 
+  let mapWithDefaultEmpty = (option, f) => option->Belt.Option.mapWithDefault("", f)
+
   // TODO: what is the best method to abstract over the parameter to Breakpoint.t
   let toClassNames = (uc, toClassName) =>
     // TODO: use rescript-classnames library
@@ -20,17 +22,17 @@ module Breakpoint = {
       [
         toClassName(uc.base),
         " ",
-        uc.sm->Util.Option.mapWithDefaultEmpty(m => "sm:" ++ toClassName(m)),
+        uc.sm->mapWithDefaultEmpty(m => "sm:" ++ toClassName(m)),
         " ",
-        uc.md->Util.Option.mapWithDefaultEmpty(m => "md:" ++ toClassName(m)),
+        uc.md->mapWithDefaultEmpty(m => "md:" ++ toClassName(m)),
         " ",
-        uc.lg->Util.Option.mapWithDefaultEmpty(m => "lg:" ++ toClassName(m)),
+        uc.lg->mapWithDefaultEmpty(m => "lg:" ++ toClassName(m)),
       ],
       "",
     )
 
   let toClassNamesOrEmpty = (uc, toClassName) =>
-    uc->Util.Option.mapWithDefaultEmpty(uc => toClassNames(uc, toClassName))
+    uc->mapWithDefaultEmpty(uc => toClassNames(uc, toClassName))
 }
 
 // TODO: correct? better construct to express this?
