@@ -401,12 +401,10 @@ let make = (~content=contentEn) => <>
     pageDescription=content.pageDescription
     highlightContent=content.highlightContent>
     <CategorizedNews
-      marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb10, ~lg=#mb32, ())}
+      marginBottom={Tailwind.ByBreakpoint.make(#mb10, ~lg=#mb32, ())}
       content=content.categorizedNews
     />
-    <WeeklyNews
-      marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb4, ())} content=content.weeklyNews
-    />
+    <WeeklyNews marginBottom={Tailwind.ByBreakpoint.make(#mb4, ())} content=content.weeklyNews />
   </Page.HighlightItem>
 </>
 

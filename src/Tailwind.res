@@ -1,8 +1,3 @@
-module type UtilityClassGroup = {
-  type t
-  let toClassName: t => string
-}
-
 module MarginBottom = {
   type t = [
     | #mb2
@@ -32,21 +27,12 @@ module MarginBottom = {
     }
 }
 
-module type MakeByBreakpointType = (Group: UtilityClassGroup) =>
-{
-  type t
-  let make: (Group.t, ~sm: Group.t=?, ~md: Group.t=?, ~lg: Group.t=?, unit) => t
-  // TODO: expose this later once we have a use case for using it.
-  // let toClassNames: t => string
-  let toClassNamesOrEmpty: option<t> => string
-}
-
-module MakeByBreakpoint: MakeByBreakpointType = (Group: UtilityClassGroup) => {
-  type t = {
-    base: Group.t,
-    sm: option<Group.t>,
-    md: option<Group.t>,
-    lg: option<Group.t>,
+module ByBreakpoint = {
+  type t<'a> = {
+    base: 'a,
+    sm: option<'a>,
+    md: option<'a>,
+    lg: option<'a>,
   }
 
   let make = (base, ~sm=?, ~md=?, ~lg=?, ()) => {
@@ -58,22 +44,25 @@ module MakeByBreakpoint: MakeByBreakpointType = (Group: UtilityClassGroup) => {
 
   let mapWithDefaultEmpty = (option, f) => option->Belt.Option.mapWithDefault("", f)
 
-  let toClassNames = uc =>
+  let toClassNames = (brk, toClassName) =>
     // TODO: use rescript-classnames library
     Js.String.concatMany(
       [
-        Group.toClassName(uc.base),
+        toClassName(brk.base),
         " ",
-        uc.sm->mapWithDefaultEmpty(m => `sm:${Group.toClassName(m)}`),
+        brk.sm->mapWithDefaultEmpty(m => `sm:${toClassName(m)}`),
         " ",
-        uc.md->mapWithDefaultEmpty(m => `md:${Group.toClassName(m)}`),
+        brk.md->mapWithDefaultEmpty(m => `md:${toClassName(m)}`),
         " ",
-        uc.lg->mapWithDefaultEmpty(m => `lg:${Group.toClassName(m)}`),
+        brk.lg->mapWithDefaultEmpty(m => `lg:${toClassName(m)}`),
       ],
       "",
     )
 
-  let toClassNamesOrEmpty = uc => uc->mapWithDefaultEmpty(toClassNames)
+  let toClassNamesOrEmpty = (brk, toClassName) =>
+    brk->mapWithDefaultEmpty(brk => toClassNames(brk, toClassName))
 }
 
-module MarginBottomByBreakpoint = MakeByBreakpoint(MarginBottom)
+module MarginBottomByBreakpoint = {
+  let toClassNamesOrEmpty = brk => ByBreakpoint.toClassNamesOrEmpty(brk, MarginBottom.toClassName)
+}

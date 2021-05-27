@@ -47,7 +47,7 @@ module Basic = {
       | Some(callToAction) =>
         <TitleHeading.Large
           marginTop
-          marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb6, ())}
+          marginBottom={Tailwind.ByBreakpoint.make(#mb6, ())}
           addBottomBar
           title
           pageDescription
@@ -55,7 +55,7 @@ module Basic = {
         />
       | None =>
         let headingMarginBottom = switch addBottomBar {
-        | true => Some(Tailwind.MarginBottomByBreakpoint.make(#mb24, ()))
+        | true => Some(Tailwind.ByBreakpoint.make(#mb24, ()))
         | false => None
         }
         <TitleHeading.Large
@@ -123,7 +123,7 @@ module HighlightItem = {
     <MainContainer.None>
       <TitleHeading.Large title pageDescription />
       <HighlightSection
-        marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb6, ())} content=highlightContent
+        marginBottom={Tailwind.ByBreakpoint.make(#mb6, ())} content=highlightContent
       />
       children
     </MainContainer.None>

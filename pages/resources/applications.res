@@ -41,7 +41,7 @@ module DeveloperGuides = {
           {s(content.developerGuidesLabel)}
         </h2>
         <MediaObject
-          marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb11, ())}
+          marginBottom={Tailwind.ByBreakpoint.make(#mb11, ())}
           imageHeight=content.topDeveloperGuide.imageHeight
           image=content.topDeveloperGuide.image
           imageSide=MediaObject.Right>
@@ -57,7 +57,7 @@ module DeveloperGuides = {
           </div>
         </MediaObject>
         <MediaObject
-          marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb11, ())}
+          marginBottom={Tailwind.ByBreakpoint.make(#mb11, ())}
           imageHeight=content.bottomDeveloperGuide.imageHeight
           image=content.bottomDeveloperGuide.image
           imageSide=MediaObject.Left>
@@ -183,14 +183,12 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
   />
   <Page.Basic
     marginTop=`mt-1` addBottomBar=true addContainer=Page.Basic.NoContainer title pageDescription>
-    <ApiDocumentation marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb24, ())} />
+    <ApiDocumentation marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())} />
     <DeveloperGuides
-      marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb2, ())} content=developerGuidesContent
+      marginBottom={Tailwind.ByBreakpoint.make(#mb2, ())} content=developerGuidesContent
     />
     <PlatformTools />
-    <UsingOcaml
-      marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb16, ())} content=usingOcamlContent
-    />
+    <UsingOcaml marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} content=usingOcamlContent />
   </Page.Basic>
 </>
 

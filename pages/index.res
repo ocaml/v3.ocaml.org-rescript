@@ -331,7 +331,7 @@ let make = (~content=contentEn) =>
     <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16` />
     <TestimonialSection
       content=content.testimonialContent
-      marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
+      marginBottom={Tailwind.ByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
     />
   </Page.Unstructured>
 

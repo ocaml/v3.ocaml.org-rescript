@@ -229,7 +229,7 @@ let make = (~content) => <>
   // TODO: define a more narrow page type with preset params
 
   {
-    let introMarginBottom = Tailwind.MarginBottomByBreakpoint.make(#mb20, ())
+    let introMarginBottom = Tailwind.ByBreakpoint.make(#mb20, ())
     <Page.Basic
       marginTop=`mt-1`
       addBottomBar=true
@@ -238,16 +238,13 @@ let make = (~content) => <>
       pageDescription=content.pageDescription>
       <UserLevelIntroduction content=content.beginning marginBottom=introMarginBottom />
       <UserLevelIntroduction content=content.growing marginBottom=introMarginBottom />
-      <Books
-        marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb16, ())}
-        content=content.booksContent
-      />
+      <Books marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} content=content.booksContent />
       <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
-      <Manual marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb20, ())} />
+      <Manual marginBottom={Tailwind.ByBreakpoint.make(#mb20, ())} />
       <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
-      <Applications marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb36, ())} />
+      <Applications marginBottom={Tailwind.ByBreakpoint.make(#mb36, ())} />
       <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
-      <Papers marginBottom={Tailwind.MarginBottomByBreakpoint.make(#mb16, ())} />
+      <Papers marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} />
     </Page.Basic>
   }
 </>

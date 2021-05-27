@@ -13,14 +13,17 @@ module MarginBottom: {
   ]
 }
 
+module ByBreakpoint: {
+  type t<'a> = {
+    base: 'a,
+    sm: option<'a>,
+    md: option<'a>,
+    lg: option<'a>,
+  }
+
+  let make: ('a, ~sm: 'a=?, ~md: 'a=?, ~lg: 'a=?, unit) => t<'a>
+}
+
 module MarginBottomByBreakpoint: {
-  type t
-  let make: (
-    MarginBottom.t,
-    ~sm: MarginBottom.t=?,
-    ~md: MarginBottom.t=?,
-    ~lg: MarginBottom.t=?,
-    unit,
-  ) => t
-  let toClassNamesOrEmpty: option<t> => string
+  let toClassNamesOrEmpty: option<ByBreakpoint.t<MarginBottom.t>> => string
 }
