@@ -1,5 +1,3 @@
-open! Import
-
 // TODO: better name, do not refer to heading use case specifically
 module MediumCentered2 = {
   @react.component
@@ -10,7 +8,7 @@ module ResponsiveCentered = {
   @react.component
   let make = (~children, ~marginBottom=?) =>
     <div
-      className={marginBottom->MarginBottomUtilities.toClassNamesOrEmpty ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
+      className={marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
       children
     </div>
 }
@@ -26,7 +24,7 @@ module MediumCentered = {
     ~filled=false,
   ) =>
     <div
-      className={marginBottom->MarginBottomUtilities.toClassNamesOrEmpty ++
+      className={marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty ++
       " max-w-5xl mx-auto " ++
       paddingX ++
       " " ++
@@ -50,7 +48,9 @@ module FullyResponsiveCentered = {
 module NoneFilled = {
   @react.component
   let make = (~children, ~marginBottom=?) =>
-    <div className={"bg-orangedark " ++ marginBottom->MarginBottomUtilities.toClassNamesOrEmpty}>
+    <div
+      className={"bg-orangedark " ++
+      marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty}>
       children
     </div>
 }
@@ -70,7 +70,7 @@ module SmallCentered = {
       className={"mx-auto max-w-4xl " ++
       otherLayout ++
       " " ++
-      marginBottom->MarginBottomUtilities.toClassNamesOrEmpty}>
+      marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty}>
       children
     </div>
 }
@@ -80,7 +80,7 @@ module VerySmallCentered = {
   let make = (~children, ~marginBottom=?, ~paddingY="", ~paddingX="") =>
     <div
       className={"mx-auto max-w-3xl " ++
-      marginBottom->MarginBottomUtilities.toClassNamesOrEmpty ++
+      marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty ++
       " " ++
       paddingY ++
       " " ++

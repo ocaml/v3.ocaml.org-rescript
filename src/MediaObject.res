@@ -1,5 +1,3 @@
-open! Import
-
 type imageSide = Left | Right
 
 @react.component
@@ -13,7 +11,7 @@ let make = (
   ~children,
   (),
 ) => {
-  let marginBottom = marginBottom->MarginBottomUtilities.toClassNamesOrEmpty
+  let marginBottom = marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty
   <div className={`flex flex-col items-center sm:flex-row sm:justify-evenly ${marginBottom}`}>
     {
       let rounded = switch isRounded {

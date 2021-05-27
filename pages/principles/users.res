@@ -1,5 +1,3 @@
-open! Import
-
 let s = React.string
 
 type company = {

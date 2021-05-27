@@ -1,5 +1,3 @@
-open! Import
-
 //  TODO: combine the components below into one variant type
 
 let s = React.string
@@ -49,7 +47,7 @@ module Basic = {
       | Some(callToAction) =>
         <TitleHeading.Large
           marginTop
-          marginBottom={Breakpoint.make(#mb6, ())}
+          marginBottom={Tailwind.Breakpoint.make(#mb6, ())}
           addBottomBar
           title
           pageDescription
@@ -57,7 +55,7 @@ module Basic = {
         />
       | None =>
         let headingMarginBottom = switch addBottomBar {
-        | true => Some(Breakpoint.make(#mb24, ()))
+        | true => Some(Tailwind.Breakpoint.make(#mb24, ()))
         | false => None
         }
         <TitleHeading.Large
@@ -101,7 +99,7 @@ module HighlightSection = {
     <div
       className={content.bgImageClass ++
       " bg-auto bg-center bg-no-repeat flex align-bottom place-content-center " ++
-      marginBottom->MarginBottomUtilities.toClassNamesOrEmpty}>
+      marginBottom->Tailwind.MarginBottomUtilities.toClassNamesOrEmpty}>
       <div className="bg-white overflow-hidden shadow rounded-lg mb-2 lg:mb-7 mt-56 mx-5 max-w-4xl">
         <div className="px-4 py-5 sm:p-6">
           <h2 className="font-bold text-orangedark text-3xl lg:text-4xl text-center mb-2">
@@ -124,7 +122,9 @@ module HighlightItem = {
   let make = (~children, ~title, ~pageDescription, ~highlightContent) => {
     <MainContainer.None>
       <TitleHeading.Large title pageDescription />
-      <HighlightSection marginBottom={Breakpoint.make(#mb6, ())} content=highlightContent />
+      <HighlightSection
+        marginBottom={Tailwind.Breakpoint.make(#mb6, ())} content=highlightContent
+      />
       children
     </MainContainer.None>
   }
