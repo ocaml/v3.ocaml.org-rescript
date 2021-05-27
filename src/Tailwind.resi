@@ -24,8 +24,6 @@ module type MakeByBreakpointType = {
 module MarginBottomByBreakpoint: {
   type item = MarginBottom.t
   type t
-  // let empty: option<t>
   let make: (item, ~sm: item=?, ~md: item=?, ~lg: item=?, unit) => t
-  // let toClassNames: t => string
   let toClassNamesOrEmpty: option<t> => string
 }
