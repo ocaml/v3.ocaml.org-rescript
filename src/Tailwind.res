@@ -1,6 +1,5 @@
 module type UtilityClassGroup = {
   type t
-
   let toClassName: t => string
 }
 
@@ -33,20 +32,16 @@ module MarginBottom = {
     }
 }
 
-/*
-module type MakeByBreakpointType = {
-  type itemType
+module type MakeByBreakpointType = (Group: UtilityClassGroup) =>
+{
   type t
-  let make: (itemType, ~sm: itemType=?, ~md: itemType=?, ~lg: itemType=?, unit) => t
+  let make: (Group.t, ~sm: Group.t=?, ~md: Group.t=?, ~lg: Group.t=?, unit) => t
   // TODO: expose this later once we have a use case for using it.
   // let toClassNames: t => string
   let toClassNamesOrEmpty: option<t> => string
 }
-*/
 
-module MakeByBreakpoint = (Group: UtilityClassGroup) => {
-  type item = Group.t
-
+module MakeByBreakpoint: MakeByBreakpointType = (Group: UtilityClassGroup) => {
   type t = {
     base: Group.t,
     sm: option<Group.t>,

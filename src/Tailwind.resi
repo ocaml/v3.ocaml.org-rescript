@@ -1,3 +1,8 @@
+module type UtilityClassGroup = {
+  type t
+  let toClassName: t => string
+}
+
 module MarginBottom: {
   type t = [
     | #mb2
@@ -12,18 +17,15 @@ module MarginBottom: {
     | #mb36
   ]
 }
-/*
-module type MakeByBreakpointType = {
-  type itemType
-  type t
-  let make: (itemType, ~sm: itemType=?, ~md: itemType=?, ~lg: itemType=?, unit) => t
-  // let toClassNames: t => string
-  let toClassNamesOrEmpty: option<t> => string
-}
-*/
+
 module MarginBottomByBreakpoint: {
-  type item = MarginBottom.t
   type t
-  let make: (item, ~sm: item=?, ~md: item=?, ~lg: item=?, unit) => t
+  let make: (
+    MarginBottom.t,
+    ~sm: MarginBottom.t=?,
+    ~md: MarginBottom.t=?,
+    ~lg: MarginBottom.t=?,
+    unit,
+  ) => t
   let toClassNamesOrEmpty: option<t> => string
 }
