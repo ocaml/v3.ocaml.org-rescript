@@ -4,7 +4,7 @@ module LatestNews = {
   // TODO: finish out extracting strings into content
   type t = {news: array<NewsItem.t>}
 
-  let itemIcon =
+  let paperScrollIcon =
     <svg
       className="hidden lg:inline-block mr-3"
       width="52"
@@ -38,7 +38,7 @@ module LatestNews = {
                 StackedList.link: n.link,
                 title: n.title,
               })
-              <StackedList items itemIcon />
+              <StackedList items itemIcon=paperScrollIcon />
             }
           </ul>
         </div>
