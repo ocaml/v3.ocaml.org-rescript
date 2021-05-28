@@ -32,26 +32,6 @@ module MediaSection = {
         })
         <StackedList.BasicWithDate items />
       }
-      /*
-      <div className="rounded-lg shadow overflow-y-auto relative">
-        <ul>
-          {content.items
-          |> Array.mapi((idx, item: Item.t) =>
-            // TODO: ensure link is accessible; indicator that link opens tab
-            <a href=item.link target="_blank" key={Js.Int.toString(idx)}>
-              <li className="p-6 grid grid-cols-8 w-full cursor-pointer hover:bg-gray-100">
-                <p className="text-yellow-600 col-span-5 font-semibold">
-                  {s(item.name ++ ` by ` ++ item.author)}
-                </p>
-                <p className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.creationDate)} </p>
-                <p className="text-right"> {s(` -> `)} </p>
-              </li>
-            </a>
-          )
-          |> React.array}
-        </ul>
-      </div>
- */
       // TODO: enable link and create video archive page
       <p className="text-right py-6 cursor-pointer hover:underline font-semibold text-yellow-600">
         {s(`Browse More ` ++ content.title)}

@@ -52,7 +52,15 @@ module BasicWithDate = {
     date: string, // TODO: real data type
   }
 
-  // let rightArrow =
+  let rightArrow = {s(` -> `)}
+
+  let itemRow = item =>
+    // TODO: is it okay to make an "a" tag into a grid??
+    <a className="grid grid-cols-8 w-full " href=item.link target="_blank" key=item.title>
+      <div className="text-yellow-600 col-span-5 font-semibold"> {s(item.title)} </div>
+      <div className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.date)} </div>
+      <div className="text-right"> rightArrow </div>
+    </a>
 
   @react.component
   let make = (~items: array<item>) =>
@@ -64,13 +72,7 @@ module BasicWithDate = {
         {items
         |> Array.map(item =>
           // TODO: ensure link is accessible; indicator that link opens tab
-          <a href=item.link target="_blank" key=item.title>
-            <li className="p-6 grid grid-cols-8 w-full cursor-pointer hover:bg-gray-100">
-              <p className="text-yellow-600 col-span-5 font-semibold"> {s(item.title)} </p>
-              <p className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.date)} </p>
-              <p className="text-right"> {s(` -> `)} </p>
-            </li>
-          </a>
+          <li className="p-6  cursor-pointer hover:bg-gray-200"> {itemRow(item)} </li>
         )
         |> React.array}
       </ul>
