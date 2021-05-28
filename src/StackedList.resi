@@ -4,4 +4,7 @@ type item = {
 }
 
 @react.component
-let make: (~items: array<item>, ~itemIcon: React.element) => React.element
+let make: (
+  ~items: array<item>,
+  ~itemIcon: (~display: string, ~marginRight: string) => React.element,
+) => React.element

@@ -27,12 +27,17 @@ let itemRow = (item, itemIcon) =>
   </a>
 
 @react.component
-let make = (~items: array<item>, ~itemIcon: React.element) => {
+let make = (
+  ~items: array<item>,
+  ~itemIcon: (~display: string, ~marginRight: string) => React.element,
+) => {
   <ul className="divide-y divide-gray-300">
     {items
     |> Array.map(item =>
       // TODO: accessible link; indicate that link opens new tab
-      <li className="px-6 py-4" key=item.title> {itemRow(item, itemIcon)} </li>
+      <li className="px-6 py-4" key=item.title>
+        {itemRow(item, itemIcon(~display="hidden lg:inline-block", ~marginRight="mr-3"))}
+      </li>
     )
     |> React.array}
   </ul>

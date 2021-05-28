@@ -4,9 +4,9 @@ module LatestNews = {
   // TODO: finish out extracting strings into content
   type t = {news: array<NewsItem.t>}
 
-  let paperScrollIcon =
+  let paperScrollIcon = (~display, ~marginRight) =>
     <svg
-      className="hidden lg:inline-block mr-3"
+      className={`${display} ${marginRight}`}
       width="52"
       height="52"
       viewBox="0 0 52 52"
