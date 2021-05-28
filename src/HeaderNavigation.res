@@ -43,6 +43,12 @@ let make = (~content) => {
 
   let showMobileMenu = _evt => {setMobileDropdownVisible(_ => true)}
 
+  let idx = ref(0)
+  let get_idx = () => {
+    idx := idx.contents + 1
+    idx.contents
+  }
+
   <div className="relative font-roboto">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 ">
       <div className="flex justify-between items-center md:justify-start py-6 md:space-x-10 ">
@@ -82,8 +88,8 @@ let make = (~content) => {
                 className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-6 sm:p-8">
                   {content.principlesSection.entries
-                  |> Js.Array.mapi((e: NavEntry.t, idx) =>
-                    <Link href=e.url key={Js.Int.toString(idx)}>
+                  |> Js.Array.map((e: NavEntry.t) =>
+                    <Link href=e.url key={Js.Int.toString(get_idx())}>
                       <a
                         onClick=hideMenu
                         className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
@@ -135,8 +141,8 @@ let make = (~content) => {
                 className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-6 sm:p-8">
                   {content.resourcesSection.entries
-                  |> Js.Array.mapi((e: NavEntry.t, idx) =>
-                    <Link href=e.url key={Js.Int.toString(idx)}>
+                  |> Js.Array.map((e: NavEntry.t) =>
+                    <Link href=e.url key={Js.Int.toString(get_idx())}>
                       <a
                         onClick=hideMenu
                         className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
@@ -188,8 +194,8 @@ let make = (~content) => {
                 className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-6 sm:p-8">
                   {content.communitySection.entries
-                  |> Js.Array.mapi((e: NavEntry.t, idx) =>
-                    <Link href=e.url key={Js.Int.toString(idx)}>
+                  |> Js.Array.map((e: NavEntry.t) =>
+                    <Link href=e.url key={Js.Int.toString(get_idx())}>
                       <a
                         onClick=hideMenu
                         className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
@@ -308,9 +314,9 @@ let make = (~content) => {
                 Js.Array.map(
                   (section: section) =>
                     Js.Array.concat(
-                      Js.Array.mapi(
-                        (e: NavEntry.t, idx) =>
-                          <Link href=e.url key={Js.Int.toString(idx)}>
+                      Js.Array.map(
+                        (e: NavEntry.t) =>
+                          <Link href=e.url key={Js.Int.toString(get_idx())}>
                             <a
                               onClick=hideMobileMenu
                               className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
