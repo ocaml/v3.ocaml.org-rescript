@@ -1,10 +1,12 @@
-type item = {
-  link: string,
-  title: string,
-}
+module BasicWithIcon: {
+  type item = {
+    link: string,
+    title: string,
+  }
 
-@react.component
-let make: (
-  ~items: array<item>,
-  ~itemIcon: (~display: string, ~marginRight: string) => React.element,
-) => React.element
+  @react.component
+  let make: (
+    ~items: array<item>,
+    ~itemIcon: (~display: string, ~marginRight: string) => React.element,
+  ) => React.element
+}
