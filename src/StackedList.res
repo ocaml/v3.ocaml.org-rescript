@@ -5,7 +5,7 @@ type item = {
   title: string,
 }
 
-let rightArrow = () =>
+let rightArrow =
   <svg
     className="w-4"
     width="21"
@@ -22,7 +22,7 @@ let rightArrow = () =>
 let itemRow = (item, itemIcon) =>
   <a href=item.link target="_blank">
     <div className="flex justify-between items-center space-x-6">
-      <div> itemIcon {s(item.title)} </div> {rightArrow()}
+      <div> itemIcon {s(item.title)} </div> rightArrow
     </div>
   </a>
 
