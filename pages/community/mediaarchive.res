@@ -23,6 +23,16 @@ module MediaSection = {
       <div className="rounded-lg shadow overflow-y-auto relative"> <img src=content.image /> </div>
       <h2 className="font-semibold text-2xl py-9 sm:text-3xl"> {s(content.title)} </h2>
       // Generic Highlight Component
+
+      {
+        let items = content.items |> Array.map((i: Item.t) => {
+          StackedList.BasicWithDate.link: i.link,
+          title: `${i.name} by ${i.author}`,
+          date: i.creationDate,
+        })
+        <StackedList.BasicWithDate items />
+      }
+      /*
       <div className="rounded-lg shadow overflow-y-auto relative">
         <ul>
           {content.items
@@ -41,6 +51,7 @@ module MediaSection = {
           |> React.array}
         </ul>
       </div>
+ */
       // TODO: enable link and create video archive page
       <p className="text-right py-6 cursor-pointer hover:underline font-semibold text-yellow-600">
         {s(`Browse More ` ++ content.title)}

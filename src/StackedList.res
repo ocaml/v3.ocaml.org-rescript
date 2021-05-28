@@ -44,3 +44,35 @@ module BasicWithIcon = {
     </ul>
   }
 }
+
+module BasicWithDate = {
+  type item = {
+    link: string,
+    title: string, // TODO: better name than title
+    date: string, // TODO: real data type
+  }
+
+  // let rightArrow =
+
+  @react.component
+  let make = (~items: array<item>) =>
+    // TODO: remove relative?
+    // TODO: why aren't these attributes directly on the "ul" below?
+    // TODO: why is overflow-y-auto used?
+    <div className="rounded-lg shadow overflow-y-auto relative">
+      <ul>
+        {items
+        |> Array.map(item =>
+          // TODO: ensure link is accessible; indicator that link opens tab
+          <a href=item.link target="_blank" key=item.title>
+            <li className="p-6 grid grid-cols-8 w-full cursor-pointer hover:bg-gray-100">
+              <p className="text-yellow-600 col-span-5 font-semibold"> {s(item.title)} </p>
+              <p className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.date)} </p>
+              <p className="text-right"> {s(` -> `)} </p>
+            </li>
+          </a>
+        )
+        |> React.array}
+      </ul>
+    </div>
+}
