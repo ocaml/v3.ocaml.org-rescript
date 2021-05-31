@@ -17,8 +17,13 @@ type t = {
 
 let pdf_or_head = paper => {
   switch Paper.get_pdf(paper) {
-  | Some(link) => link
-  | None => List.hd(paper.links)
+  | Some(link) => Some(link)
+  | None =>
+    try {
+      Some(List.hd(paper.links))
+    } catch {
+    | Failure(_) => None
+    }
   }
 }
 
@@ -30,7 +35,7 @@ let make = (~content) => <>
   <Page.Basic title=content.title pageDescription=content.pageDescription>
     {<>
       <SectionContainer.SmallCentered otherLayout="px-6" margins="mb-16">
-        <h1> {s(content.introduction)} </h1>
+        <h2> {s(content.introduction)} </h2>
       </SectionContainer.SmallCentered>
       <SectionContainer.SmallCentered otherLayout="px-6" margins="mb-16">
         <h2 className="text-4xl font-bold mb-8"> {s("Important Dates")} </h2>
@@ -66,56 +71,55 @@ let make = (~content) => <>
           </ul>
         </div>
       </SectionContainer.SmallCentered>
-      <SectionContainer.LargeCentered paddingX="px-6" paddingY="mb-16">
+      <SectionContainer.SmallCentered margins="mb-16">
         <h2 className="text-4xl font-bold mb-8"> {s("Presentations")} </h2>
         <Table.Simple
           content={{
             headers: ["", "Presentation"],
             data: Array.map((video: Video.t) => {
-              (
-                video.title,
-                [
-                  // TODO: Improve the embedding of videos from watch.ocaml.org
-                  // which requires things like support for lazily loading iframes
-                  // in Rescrip-react and potentially a different design for mobile
-                  // screens
-                  <iframe
-                    height="200"
-                    width="275"
-                    className="rounded-lg"
-                    sandbox="allow-same-origin allow-scripts allow-popups"
-                    src={Belt_Option.getExn(video.embed)}
-                    allowFullScreen=true
-                  />,
-                  <p className="font-bold"> {s(video.title)} </p>,
-                ],
-              )
+              [
+                // TODO: Improve the embedding of videos from watch.ocaml.org
+                // which requires things like support for lazily loading iframes
+                // in Rescrip-react and potentially a different design for mobile
+                // screens
+                <iframe
+                  height="200"
+                  width="275"
+                  title={video.title}
+                  className="rounded-lg"
+                  sandbox="allow-same-origin allow-scripts allow-popups"
+                  src={Belt_Option.getExn(video.embed)}
+                  allowFullScreen=true
+                />,
+                <p className="font-bold"> {s(video.title)} </p>,
+              ]
             }, content.presentations),
           }}
         />
-      </SectionContainer.LargeCentered>
+      </SectionContainer.SmallCentered>
       <SectionContainer.SmallCentered margins="mb-16">
         <h2 className="text-4xl font-bold mb-8 px-6"> {s("Papers")} </h2>
         <Table.Simple
           content={{
             headers: ["Title", "Author(s)", "Link"],
             data: Array.map((paper: Paper.t) => {
-              (
-                paper.title,
-                [
-                  <p className="font-bold"> {s(paper.title)} </p>,
-                  <p> {s(String.concat(", ", paper.authors))} </p>,
+              [
+                <p className="font-bold"> {s(paper.title)} </p>,
+                <p> {s(String.concat(", ", paper.authors))} </p>,
+                switch pdf_or_head(paper) {
+                | Some(link) =>
                   <p>
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-orangedark underline"
-                      href={pdf_or_head(paper)}>
+                      href={link}>
                       {s("link")} //TODO: Download link icon
                     </a>
-                  </p>,
-                ],
-              )
+                  </p>
+                | None => <> {s("No link")} </>
+                },
+              ]
             }, content.papers),
           }}
         />

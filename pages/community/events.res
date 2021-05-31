@@ -28,36 +28,35 @@ let make = (~content) => <>
       <Table.Simple
         content={{
           headers: ["Date", "Event Name", "Location", "Description"],
-          data: Array.map((event: Event.t) => (
-            event.title,
-            [
-              <p> {s(event.date |> Js.Date.fromString |> Js.Date.toDateString)} </p>,
-              switch dedicated_page(event) {
-              | Some(page) =>
-                <a className="text-orangedark underline" href={page}> {s(event.title)} </a>
-              | None => <p> {s(event.title)} </p>
-              },
-              <p>
-                {s(
-                  switch event.textual_location {
-                  | Some(v) =>
-                    if event.online {
-                      v ++ " (virtual)"
-                    } else {
-                      v
-                    }
-                  | None =>
-                    if event.online {
-                      "Virtual"
-                    } else {
-                      "Unknown"
-                    }
-                  },
-                )}
-              </p>,
-              <p> {s(event.description)} </p>,
-            ],
-          ), content.events),
+          data: Array.map((event: Event.t) => [
+            <p> {s(event.date |> Js.Date.fromString |> Js.Date.toDateString)} </p>,
+            switch dedicated_page(event) {
+            | Some(page) =>
+              <Next.Link href={page}>
+                <a className="text-orangedark underline"> {s(event.title)} </a>
+              </Next.Link>
+            | None => <p> {s(event.title)} </p>
+            },
+            <p>
+              {s(
+                switch event.textual_location {
+                | Some(v) =>
+                  if event.online {
+                    v ++ " (virtual)"
+                  } else {
+                    v
+                  }
+                | None =>
+                  if event.online {
+                    "Virtual"
+                  } else {
+                    "Unknown"
+                  }
+                },
+              )}
+            </p>,
+            <p> {s(event.description)} </p>,
+          ], content.events),
         }}
       />
     </SectionContainer.MediumCentered>

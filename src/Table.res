@@ -3,7 +3,7 @@ let s = React.string
 module Simple = {
   type t = {
     headers: array<string>,
-    data: array<(string, array<React.element>)>,
+    data: array<array<React.element>>,
   }
 
   @react.component
@@ -29,13 +29,14 @@ module Simple = {
               </thead>
               <tbody>
                 {content.data
-                |> Array.mapi((idx, (ident, item)) => {
-                  let base_ident = ident ++ string_of_int(idx)
-                  <tr key={base_ident} className={mod(idx, 2) === 0 ? "bg-white" : "bg-gray-50"}>
+                |> Array.mapi((idx, item) => {
+                  <tr
+                    key={string_of_int(idx)}
+                    className={mod(idx, 2) === 0 ? "bg-white" : "bg-gray-50"}>
                     {item
                     |> Array.mapi((jdx, cell) =>
                       <td
-                        key={base_ident ++ string_of_int(jdx)}
+                        key={string_of_int(jdx)}
                         className="px-6 py-4 text-sm font-medium text-gray-900">
                         cell
                       </td>

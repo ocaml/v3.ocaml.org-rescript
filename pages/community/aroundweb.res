@@ -89,10 +89,10 @@ module Events = {
   let make = (~content) =>
     <SectionContainer.LargeCentered>
       <div className="relative bg-white">
-        <div className="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+        <div className="pt-12 h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
           <div className="mx-auto px-4 py-4 sm:px-6 lg:px-8 lg:py-16 h-full">
             // TODO: Implement the calendar approach
-           <div className="flex flex-col justify-center h-full">
+            <div className="flex flex-col justify-center h-full">
               {content.latestEvents
               |> Array.mapi((idx, event: Event.t) =>
                 <div key={event.title}>
@@ -112,7 +112,9 @@ module Events = {
                       <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
                         <div> <p className="text-sm text-gray-500"> {s(event.title)} </p> </div>
                         <div className="text-right text-sm whitespace-nowrap text-gray-500">
-                          <time dateTime={event.date}> {s(event.date |> Js.Date.fromString |> Js.Date.toDateString)} </time>
+                          <time dateTime={event.date}>
+                            {s(event.date |> Js.Date.fromString |> Js.Date.toDateString)}
+                          </time>
                         </div>
                       </div>
                     </div>
@@ -132,11 +134,12 @@ module Events = {
             <p className="mt-3 text-center text-lg text-gray-900"> {s(content.description)} </p>
             <div className="mt-8 text-center">
               <div className="inline-flex rounded-md shadow">
-                <a
-                  href=InternalUrls.communityEvents
-                  className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark">
-                  {s(content.callToAction)}
-                </a>
+                <Next.Link href=InternalUrls.communityEvents>
+                  <a
+                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark">
+                    {s(content.callToAction)}
+                  </a>
+                </Next.Link>
               </div>
             </div>
           </div>
@@ -394,9 +397,9 @@ let getStaticProps = _ctx => {
   let news = NewsItem.readAll()
 
   let pageContent = "pages/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
-  
+
   let events = EventsData.readAll().events->Array.of_list
-  let _ = Array.sort(Event.compare_by_date, events)
+  let _ = Array.sort((a, b) => Event.compare_by_date(b, a), events)
   let events = Belt.Array.sliceToEnd(events, -3)
   let events = Array.map(event => Event.toJson(event)->Next.stripUndefined->Event.fromJson, events)
 
