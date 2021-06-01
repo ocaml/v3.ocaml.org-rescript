@@ -60,9 +60,7 @@ suggests the following:
 
 The site build process makes use of `nvm`. Please consult the appropriate documentation for [installing `nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) for your operating system. Restart or reload your terminal to pickup the changes.
 
-#### esy
-
-The site makes use of `esy`. We currently use version 0.6.8. Please consult the `esy` documentation for installation instructions. We recommend installing `esy` globally to provide a smoother command line experience.
+NOTE: The `Makefile` assumes that `nvm` is installed and available through a `bash` shell. If you are using an alternative shell such as `zsh` or `fish`, you may need to change the `SHELL` and/or `.SHELLFLAGS` variables in order for the `Makefile` to get access to the `nvm` shell function.
 
 ### Dependencies
 
@@ -72,7 +70,7 @@ Run the following command to install various dependencies:
 make install-deps
 ```
 
-The command installs the appropriate versions of node and yarn. It also installs
+The command installs the appropriate versions of node, yarn, and esy. It also vendors in the `ood` library.
 
 ### Development
 
