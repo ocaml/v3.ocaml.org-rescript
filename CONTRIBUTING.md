@@ -58,9 +58,7 @@ suggests the following:
 
 ### Prerequisities
 
-The site build process makes use of `nvm`. Please consult the appropriate documentation for [installing `nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) for your operating system. Restart or reload your terminal to pickup the changes.
-
-NOTE: The `Makefile` assumes that `nvm` is installed and available through a `bash` shell. If you are using an alternative shell such as `zsh` or `fish`, you may need to change the `SHELL` and/or `.SHELLFLAGS` variables in order for the `Makefile` to get access to the `nvm` shell function.
+The site build process makes use of `nvm` installed into a `bash` shell. Please consult the appropriate documentation for [installing `nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) for your operating system. NOTE: It is *not* a requirement for *you* to use `bash` as your default shell, only that the following command returns successfully from *any* shell: `bash -ic 'nvm --version'`
 
 ### Dependencies
 
