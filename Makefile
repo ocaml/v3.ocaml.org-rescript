@@ -1,4 +1,6 @@
-SHELL=/bin/bash
+SHELL = /bin/bash
+.SHELLFLAGS = -ic
+
 ifeq ($(VERCEL), 1)
   # The yarn version is picked from .engines in package.json
   YARN=yarn
@@ -6,7 +8,7 @@ ifeq ($(VERCEL), 1)
   ESY=export ESY__PREFIX=$$PWD/node_modules/.esy && npx esy
   BSB=npx bsb
 else
-  NVM=source $$NVM_DIR/nvm.sh && nvm
+  NVM=nvm
   # Yarn version specified here because it can't bootstrap itself as a devDependency with npx.
   YARN=$(NVM) use && npx yarn@1.22
   ESY=$(NVM) use && npx esy
