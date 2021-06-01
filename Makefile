@@ -20,6 +20,8 @@ install-deps:
 ifeq ($(VERCEL), 1)
 	npm config set user root
 	yum install perl-Digest-SHA
+	# Vercel doesn't correctly handle caching of esy
+	rm -rf _esy node_modules/esy node_modules/.bin/esy ~/.esy
 else
 	$(NVM) install
 endif
