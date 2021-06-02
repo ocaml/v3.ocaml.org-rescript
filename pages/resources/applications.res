@@ -186,6 +186,14 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     pageDescription>
     <ApiDocumentation margins=`mb-24` />
     <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
+    /*
+    <CallToAction
+      content={
+        CallToAction.title: "Events",
+        body: `Several events take place in the OCaml community over the course of each year, in countr  qies all over the world. The calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
+        buttonText: `Show me Events`,
+      }
+    /> */
     <PlatformTools />
     <UsingOcaml margins=`mb-16` content=usingOcamlContent />
   </Page.Basic>
