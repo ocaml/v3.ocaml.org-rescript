@@ -8,11 +8,10 @@ ifeq ($(VERCEL), 1)
   ESY=export ESY__PREFIX=$$PWD/node_modules/.esy && npx esy
   BSB=npx bsb
 else
-  NVM=nvm
   # Yarn version specified here because it can't bootstrap itself as a devDependency with npx.
-  YARN=$(NVM) use && npx yarn@1.22
-  ESY=$(NVM) use && npx esy
-  BSB=$(NVM) use && npx bsb
+  YARN=nvm use && npx yarn@1.22
+  ESY=nvm use && npx esy
+  BSB=nvm use && npx bsb
 endif
 
 .PHONY: dev
@@ -24,7 +23,7 @@ ifeq ($(VERCEL), 1)
 	npm config set user root
 	yum install perl-Digest-SHA
 else
-	$(NVM) install
+	nvm install
 endif
 	$(YARN) install
 	make vendor/ood && $(YARN) link ood
