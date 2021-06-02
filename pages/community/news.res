@@ -1,19 +1,17 @@
 let s = React.string
 
-module Story = {
-  type t = string
-}
-
 module NewsCategory = {
   type t = {
     header: string,
     seeAllNewsInCategory: string,
-    stories: array<Story.t>,
+    seeAllLink: string,
+    stories: array<HighlightsInQuadrants.Story.t>,
   }
 
   let toHighlightsCategory = (category, icon) => {
     HighlightsInQuadrants.Category.header: category.header,
     seeAllInCategory: category.seeAllNewsInCategory,
+    seeAllLink: category.seeAllLink,
     stories: category.stories,
     icon: icon,
   }
@@ -255,33 +253,78 @@ let contentEn = {
     communityCategory: {
       header: `Community`,
       seeAllNewsInCategory: `See all News in Community`,
+      // TODO: Should we use query parameters in each of the "seeAllLink" url's?
+      seeAllLink: InternalUrls.communityNewsarchive,
       stories: [
-        `The road ahead for Mirage OS in 2021`,
-        `How we lost at the Delphi Oracle Challenge`,
-        `"Universal" Dune Tip: Rebuild Stuff, Sometimes`,
+        {
+          title: `The road ahead for Mirage OS in 2021`,
+          link: `https://hannes.robur.coop/Posts/NGI`,
+        },
+        {
+          title: `How we lost at the Delphi Oracle Challenge`,
+          link: `https://seb.mondet.org/b/0010-delphi-challenge-post-vivum.html`,
+        },
+        {
+          title: `"Universal" Dune Tip: Rebuild Stuff, Sometimes`,
+          link: `https://seb.mondet.org/b/0009-dune-universe-hack.html`,
+        },
       ],
     },
     releasesCategory: {
       header: `Releases`,
       seeAllNewsInCategory: `See all News in Releases`,
-      stories: [`Release of Alt-Ergo 2.4.0`, `Coq 8.13.0 is out`, `Coq 8.12.2 is out`],
+      seeAllLink: InternalUrls.communityNewsarchive,
+      stories: [
+        {
+          title: `Release of Alt-Ergo 2.4.0`,
+          link: `https://www.ocamlpro.com/2021/01/22/release-of-alt-ergo-2-4-0/`,
+        },
+        {
+          title: `Coq 8.13.0 is out`,
+          link: `https://coq.inria.fr/news/coq-8-13-0-is-out.html`,
+        },
+        {
+          title: `Coq 8.12.2 is out`,
+          link: `https://coq.inria.fr/news/coq-8-12-2-is-out.html`,
+        },
+      ],
     },
     industryCategory: {
       header: `Industry`,
       seeAllNewsInCategory: `See all News in Industry`,
+      seeAllLink: InternalUrls.communityNewsarchive,
       stories: [
-        `Recent and Upcoming Changes to Merlin`,
-        `Memthol: Exploring Program Profiling`,
-        `Growing the Hardcaml Toolset`,
+        {
+          title: `Recent and Upcoming Changes to Merlin`,
+          link: `https://tarides.com/blog/2021-01-26-recent-and-upcoming-changes-to-merlin`,
+        },
+        {
+          title: `Memthol: Exploring Program Profiling`,
+          link: `https://www.ocamlpro.com/2020/12/01/memthol-exploring-program-profiling/`,
+        },
+        {
+          title: `Growing the Hardcaml Toolset`,
+          link: `https://blog.janestreet.com/growing-the-hardcaml-toolset-index/`,
+        },
       ],
     },
     eventsCategory: {
       header: `Events`,
       seeAllNewsInCategory: `See all News in Events`,
+      seeAllLink: InternalUrls.communityNewsarchive,
       stories: [
-        `Tarides Sponsors the Oxbridge Women in ...`,
-        `Every Proof Assistant: Introducing homotypy.io`,
-        `Every Proof Assistant: Introducing homotopy.io`,
+        {
+          title: `Tarides Sponsors the Oxbridge Women in ...`,
+          link: `https://tarides.com/blog/2020-12-14-tarides-sponsors-the-oxbridge-women-in-computer-science-conference-2020/`,
+        },
+        {
+          title: `Every Proof Assistant: Introducing homotypy.io`,
+          link: `http://math.andrej.com/2020/11/24/homotopy-io/`,
+        },
+        {
+          title: `Every Proof Assistant: Introducing homotopy.io`,
+          link: `http://math.andrej.com/2020/11/24/homotopy-io/`,
+        },
       ],
     },
     goToNewsArchive: `Go to News Archive`,

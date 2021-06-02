@@ -1,10 +1,21 @@
+module Link = Next.Link
+
 let s = React.string
+
+// TODO: move this into its own top level module
+module Story = {
+  type t = {
+    title: string,
+    link: string,
+  }
+}
 
 module Category = {
   type t = {
     header: string,
     seeAllInCategory: string,
-    stories: array<string>,
+    seeAllLink: string,
+    stories: array<Story.t>,
     icon: (string, string, string) => React.element,
   }
 }
@@ -40,10 +51,9 @@ let make = (~margins, ~content) => {
 
   let archiveButton =
     <div className="text-center">
-      // TODO: use Next Link
-      <a href=content.archiveUrl className="bg-orangedark text-white px-10 py-3 rounded">
-        {s(content.goToArchive)}
-      </a>
+      <Link href=content.archiveUrl>
+        <a className="bg-orangedark text-white px-10 py-3 rounded"> {s(content.goToArchive)} </a>
+      </Link>
     </div>
 
   let categoryHighlights = (category: Category.t) => {
@@ -52,14 +62,18 @@ let make = (~margins, ~content) => {
         {category.icon("inline", "ml-2", "mr-4")} {s(category.header)}
       </h3>
 
-    let newsItemRow = (idx, story) =>
+    let newsItemRow = (idx, story: Story.t) =>
       // TODO: use overflow hidden to truncate story text
-      // TODO: receive and add links
-      <li className="font-bold" key={Js.Int.toString(idx)}> {s(story)} </li>
+      <li className="font-bold" key={Js.Int.toString(idx)}>
+        <a href=story.link target="_blank"> {s(story.title)} </a>
+      </li>
 
     let seeAll =
-      // TODO: receive and add link
-      <p className="text-center"> {seeAllArrowIcon("inline")} {s(category.seeAllInCategory)} </p>
+      <p className="text-center">
+        <Link href=category.seeAllLink>
+          <a> {seeAllArrowIcon("inline")} {s(category.seeAllInCategory)} </a>
+        </Link>
+      </p>
 
     <div>
       heading
