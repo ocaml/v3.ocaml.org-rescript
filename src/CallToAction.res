@@ -87,6 +87,35 @@ module General = {
   }
 }
 
+// TODO: remove this and incorporate its implementation as a variation of General
 module Embedded = {
+  type t = {
+    title: string,
+    body: string,
+    buttonLink: string,
+    buttonText: string,
+  }
 
+  @react.component
+  let make = (~content) => {
+    <div className="max-w-2xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <div className="md:ml-auto md:w-1/2 md:pl-10">
+        <p
+          className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
+          {s(content.title)}
+        </p>
+        <p className="mt-3 text-center text-lg text-gray-900"> {s(content.body)} </p>
+        <div className="mt-8 text-center">
+          <div className="inline-flex rounded-md shadow">
+            <Next.Link href=content.buttonLink>
+              <a
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark">
+                {s(content.buttonText)}
+              </a>
+            </Next.Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
 }
