@@ -103,20 +103,18 @@ let make = (~content) => <>
   />
   <Page.Basic
     title=content.title pageDescription=content.pageDescription addContainer=Page.Basic.NoContainer>
-    <SectionContainer.NoneFilled margins="mb-16">
-      <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-          <span className="block"> {s(content.engageHeader)} </span>
-        </h2>
-        <p className="mt-4 text-lg leading-6 text-white"> {s(content.engageBody)} </p>
-        <a
-          className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md bg-white hover:bg-orangelight sm:w-auto"
-          href="https://discuss.ocaml.org"
-          target="_blank">
-          {s(content.engageButtonText)}
-        </a>
-      </div>
-    </SectionContainer.NoneFilled>
+    <CallToAction.General
+      content={
+        CallToAction.General.title: content.engageHeader,
+        body: content.engageBody,
+        buttonLink: Route(InternalUrls.communityEvents),
+        buttonText: content.engageButtonText,
+      }
+      colorStyle=CallToAction.General.BackgroundFilled
+      width=CallToAction.General.Narrow
+      buttonStyle=CallToAction.General.Normal
+      marginBottom="mb-16"
+    />
     <LatestNews content=content.latestNewsContent />
     <SectionContainer.LargeCentered
       paddingY="pt-16 pb-3 lg:pt-24 lg:pb-8" paddingX="px-4 sm:px-6 lg:px-8">

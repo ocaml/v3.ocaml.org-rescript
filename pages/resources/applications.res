@@ -185,6 +185,7 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     pageDescription>
     <ApiDocumentation margins=`mb-24` />
     <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
+    /*
     <CallToAction.General
       content={
         CallToAction.General.title: "Events",
@@ -197,6 +198,7 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
       buttonStyle=CallToAction.General.Normal
       marginBottom="mb-20"
     />
+ */
     <PlatformTools />
     <UsingOcaml margins=`mb-16` content=usingOcamlContent />
   </Page.Basic>
