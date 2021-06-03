@@ -56,8 +56,21 @@ module SmallCentered = {
 
 module VerySmallCentered = {
   @react.component
-  let make = (~children, ~margins="", ~paddingY="", ~paddingX="") =>
-    <div className={"mx-auto max-w-3xl " ++ margins ++ " " ++ paddingY ++ " " ++ paddingX}>
+  let make = (~children, ~margins="", ~paddingY="", ~paddingX="", ~textCenter=false) => {
+    let textCenter = switch textCenter {
+    | true => "text-center"
+    | false => ""
+    }
+    <div
+      className={"mx-auto max-w-3xl " ++
+      margins ++
+      " " ++
+      paddingY ++
+      " " ++
+      paddingX ++
+      " " ++
+      textCenter}>
       children
     </div>
+  }
 }

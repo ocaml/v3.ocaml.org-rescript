@@ -52,5 +52,6 @@ module VerySmallCentered: {
     ~margins: string=?,
     ~paddingY: string=?,
     ~paddingX: string=?,
+    ~textCenter: bool=?,
   ) => React.element
 }
