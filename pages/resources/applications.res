@@ -77,16 +77,16 @@ module PlatformTools = {
   @react.component
   let make = () => <>
     // TODO: factor out and define content type
-    <CallToAction
+    <CallToAction.General
       content={
-        CallToAction.title: "Platform Tools",
+        CallToAction.General.title: "Platform Tools",
         body: `The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`,
         buttonLink: Route(InternalUrls.resourcesPlatform),
         buttonText: `Visit Platform Tools`,
       }
-      colorStyle=CallToAction.TransparentPlainHeader
-      width=CallToAction.Regular
-      buttonStyle=CallToAction.Short
+      colorStyle=CallToAction.General.TransparentPlainHeader
+      width=CallToAction.General.Regular
+      buttonStyle=CallToAction.General.Short
       marginBottom="mb-20"
     />
   </>
@@ -185,16 +185,16 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     pageDescription>
     <ApiDocumentation margins=`mb-24` />
     <DeveloperGuides margins=`mb-2` content=developerGuidesContent />
-    <CallToAction
+    <CallToAction.General
       content={
-        CallToAction.title: "Events",
+        CallToAction.General.title: "Events",
         body: `Several events take place in the OCaml community over the course of each year, in countr  qies all over the world. The calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
-        buttonLink: External(`https://duckduckgo.com`),
+        buttonLink: Route(InternalUrls.communityEvents),
         buttonText: `Show me Events`,
       }
-      colorStyle=CallToAction.BackgroundFilled
-      width=CallToAction.Regular
-      buttonStyle=CallToAction.Normal
+      colorStyle=CallToAction.General.Transparent
+      width=CallToAction.General.Narrow
+      buttonStyle=CallToAction.General.Normal
       marginBottom="mb-20"
     />
     <PlatformTools />
