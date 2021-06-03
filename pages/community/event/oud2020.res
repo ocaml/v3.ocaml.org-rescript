@@ -18,12 +18,7 @@ type t = {
 let pdf_or_head = paper => {
   switch Paper.get_pdf(paper) {
   | Some(link) => Some(link)
-  | None =>
-    try {
-      Some(List.hd(paper.links))
-    } catch {
-    | Failure(_) => None
-    }
+  | None => Belt.List.head(paper.links)
   }
 }
 
