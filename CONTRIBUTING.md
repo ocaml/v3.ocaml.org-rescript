@@ -65,7 +65,7 @@ Our recommendation is to use a node version manager such as [fnm](https://github
 ```bash
 echo 14 > .nvmrc
 fnm install # run this
-nvm install # or this, not both
+nvm install # or this
 ```
 
 Now check that `npx --version` works. Note that we have added `.nvmrc` to `.gitignore`, so you can leave that file in your directory.
@@ -89,7 +89,7 @@ Run the following command to install various dependencies:
 make install-deps
 ```
 
-The command installs the appropriate versions of node, yarn, and esy. It also vendors in the `ood` library.
+The command installs all dependencies, including compilers such as ReScript and OCaml, and package managers like esy. It also vendors in the `ood` library, to support its co-development. All depdencies are installed in a project local way, so there will be no affect on your system or other projects.
 
 ### Development
 
