@@ -1,5 +1,4 @@
 SHELL = /bin/bash
-.SHELLFLAGS = -ic
 
 ifeq ($(VERCEL), 1)
   # The yarn version is picked from .engines in package.json
@@ -9,9 +8,9 @@ ifeq ($(VERCEL), 1)
   BSB=npx bsb
 else
   # Yarn version specified here because it can't bootstrap itself as a devDependency with npx.
-  YARN=nvm use && npx yarn@1.22
-  ESY=nvm use && npx esy
-  BSB=nvm use && npx bsb
+  YARN=npx yarn@1.22
+  ESY=npx esy
+  BSB=npx bsb
 endif
 
 .PHONY: dev
@@ -22,8 +21,6 @@ install-deps:
 ifeq ($(VERCEL), 1)
 	npm config set user root
 	yum install perl-Digest-SHA
-else
-	nvm install
 endif
 	$(YARN) install
 	make vendor/ood && $(YARN) link ood

@@ -58,7 +58,22 @@ suggests the following:
 
 ### Prerequisities
 
-The site build process makes use of `nvm` installed into a `bash` shell. Please consult the appropriate documentation for [installing `nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) for your operating system. NOTE: It is *not* a requirement for *you* to use `bash` as your default shell, only that the following command returns successfully from *any* shell: `bash -ic 'nvm --version'`
+The site build process makes use of `node/npx`. We recommend the use of a node version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm) to install your node toolchain. Currently we depend on the Latest LTS of Node.js, which is 14.x.x.  Assuming you have either `fnm` or `nvm` installed, you can run the following in the root of the repo to setup your prerequisites:
+
+```bash
+echo 14 > .nvmrc
+fnm install # or if you're using nvm, then: nvm install
+```
+
+### Quickstart
+
+Once you have the node toolchain installed, the easiest way to get the project installed, built, and get the development servers started is to run:
+
+```bash
+make
+```
+
+Yes, it's that simple. However, if you'd like a little more fine-grained control over installing, building, and running the development servers, please see the sections below.
 
 ### Dependencies
 
@@ -75,7 +90,7 @@ The command installs the appropriate versions of node, yarn, and esy. It also ve
 Use the following command to run the ReScript compiler in watch mode as well as the NextJS dev server:
 
 ```
-make watch
+make watch-and-serve
 ```
 
 Go to `http://localhost:3000`
