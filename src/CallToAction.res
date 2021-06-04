@@ -96,10 +96,13 @@ module Embedded = {
     buttonText: string,
   }
 
+  // TODO: define .resi
   @react.component
-  let make = (~content) => {
-    <div className="max-w-2xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-      <div className="md:ml-auto md:w-1/2 md:pl-10">
+  let make = (~content, ~position, ~maxWidth, ~otherLayout) => {
+    // TODO: understand how the maxWidth works together with the position
+    <div className={`${position} ${maxWidth} mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16`}>
+      // TODO: understand why the otherLayout is attached below instead of the div above
+      <div className=otherLayout>
         <p
           className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
           {s(content.title)}

@@ -125,25 +125,17 @@ module Events = {
             </div>
           </div>
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-          <div className="md:ml-auto md:w-1/2 md:pl-10">
-            <p
-              className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-              {s(content.title)}
-            </p>
-            <p className="mt-3 text-center text-lg text-gray-900"> {s(content.description)} </p>
-            <div className="mt-8 text-center">
-              <div className="inline-flex rounded-md shadow">
-                <Next.Link href=InternalUrls.communityEvents>
-                  <a
-                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark">
-                    {s(content.callToAction)}
-                  </a>
-                </Next.Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CallToAction.Embedded
+          content={
+            CallToAction.Embedded.title: content.title,
+            body: content.description,
+            buttonLink: InternalUrls.communityEvents,
+            buttonText: content.callToAction,
+          }
+          position="relative"
+          maxWidth="max-w-7xl"
+          otherLayout="md:ml-auto md:w-1/2 md:pl-10"
+        />
       </div>
     </SectionContainer.LargeCentered>
 }
