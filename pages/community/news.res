@@ -17,7 +17,7 @@ module NewsCategory = {
   }
 }
 
-let communityIcon = (display, marginLeft, marginRight) =>
+let communityIcon = (~display, ~marginLeft, ~marginRight) =>
   <svg
     className={`${display} h-14 w-14 ${marginLeft} ${marginRight}`}
     viewBox="0 0 72 72"
@@ -29,7 +29,7 @@ let communityIcon = (display, marginLeft, marginRight) =>
     />
   </svg>
 
-let releasesIcon = (display, marginLeft, marginRight) =>
+let releasesIcon = (~display, ~marginLeft, ~marginRight) =>
   <svg
     className={`${display} h-14 w-14 ${marginLeft} ${marginRight}`}
     viewBox="0 0 72 72"
@@ -41,7 +41,7 @@ let releasesIcon = (display, marginLeft, marginRight) =>
     />
   </svg>
 
-let industryIcon = (display, marginLeft, marginRight) =>
+let industryIcon = (~display, ~marginLeft, ~marginRight) =>
   <svg
     className={`${display} h-14 w-14 ${marginLeft} ${marginRight}`}
     viewBox="0 0 72 72"
@@ -53,7 +53,7 @@ let industryIcon = (display, marginLeft, marginRight) =>
     />
   </svg>
 
-let eventsIcon = (display, marginLeft, marginRight) =>
+let eventsIcon = (~display, ~marginLeft, ~marginRight) =>
   <svg
     className={`${display} h-14 w-14 ${marginLeft} ${marginRight}`}
     viewBox="0 0 72 72"

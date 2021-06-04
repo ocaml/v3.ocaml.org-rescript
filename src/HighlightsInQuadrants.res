@@ -2,6 +2,8 @@ module Link = Next.Link
 
 let s = React.string
 
+// TODO: add .resi file
+
 // TODO: move this into its own top level module
 module Story = {
   type t = {
@@ -16,7 +18,7 @@ module Category = {
     seeAllInCategory: string,
     seeAllLink: string,
     stories: array<Story.t>,
-    icon: (string, string, string) => React.element,
+    icon: (~display: string, ~marginLeft: string, ~marginRight: string) => React.element,
   }
 }
 
@@ -59,7 +61,8 @@ let make = (~margins, ~content) => {
   let categoryHighlights = (category: Category.t) => {
     let heading =
       <h3 className="text-orangedark text-2xl font-bold mb-2">
-        {category.icon("inline", "ml-2", "mr-4")} {s(category.header)}
+        {category.icon(~display="inline", ~marginLeft="ml-2", ~marginRight="mr-4")}
+        {s(category.header)}
       </h3>
 
     let newsItemRow = (idx, story: Story.t) =>
