@@ -125,17 +125,20 @@ module Events = {
             </div>
           </div>
         </div>
-        <CallToAction.Embedded
-          content={
-            CallToAction.Embedded.title: content.title,
-            body: content.description,
-            buttonLink: InternalUrls.communityEvents,
-            buttonText: content.callToAction,
-          }
-          position="relative"
-          maxWidth="max-w-7xl"
-          otherLayout="md:ml-auto md:w-1/2 md:pl-10"
-        />
+        // TODO: understand how the maxWidth works together with relative
+        <div className="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          // TODO: understand how md:w-1/2 works together with relative
+          <div className="md:ml-auto md:w-1/2 md:pl-10">
+            <CallToAction.Embedded
+              content={
+                CallToAction.Embedded.title: content.title,
+                body: content.description,
+                buttonLink: InternalUrls.communityEvents,
+                buttonText: content.callToAction,
+              }
+            />
+          </div>
+        </div>
       </div>
     </SectionContainer.LargeCentered>
 }

@@ -87,7 +87,8 @@ module General = {
   }
 }
 
-// TODO: remove this and incorporate its implementation as a variation of General
+// TODO: trim this down to the contents from "<p>" to the button div
+// TODO: have General and Embedded share utility functions
 module Embedded = {
   type t = {
     title: string,
@@ -98,27 +99,21 @@ module Embedded = {
 
   // TODO: define .resi
   @react.component
-  let make = (~content, ~position, ~maxWidth, ~otherLayout) => {
-    // TODO: understand how the maxWidth works together with the position
-    <div className={`${position} ${maxWidth} mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16`}>
-      // TODO: understand why the otherLayout is attached below instead of the div above
-      <div className=otherLayout>
-        <p
-          className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-          {s(content.title)}
-        </p>
-        <p className="mt-3 text-center text-lg text-gray-900"> {s(content.body)} </p>
-        <div className="mt-8 text-center">
-          <div className="inline-flex rounded-md shadow">
-            <Next.Link href=content.buttonLink>
-              <a
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark">
-                {s(content.buttonText)}
-              </a>
-            </Next.Link>
-          </div>
-        </div>
+  let make = (~content) => <>
+    <p
+      className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
+      {s(content.title)}
+    </p>
+    <p className="mt-3 text-center text-lg text-gray-900"> {s(content.body)} </p>
+    <div className="mt-8 text-center">
+      <div className="inline-flex rounded-md shadow">
+        <Next.Link href=content.buttonLink>
+          <a
+            className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark">
+            {s(content.buttonText)}
+          </a>
+        </Next.Link>
       </div>
     </div>
-  }
+  </>
 }
