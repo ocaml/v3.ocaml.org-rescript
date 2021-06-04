@@ -87,8 +87,6 @@ module General = {
   }
 }
 
-// TODO: trim this down to the contents from "<p>" to the button div
-// TODO: have General and Embedded share utility functions
 module Embedded = {
   type t = {
     title: string,
@@ -99,13 +97,8 @@ module Embedded = {
 
   // TODO: define .resi
   @react.component
-  let make = (~content) => <>
-    <p
-      className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-      {s(content.title)}
-    </p>
-    <p className="mt-3 text-center text-lg text-gray-900"> {s(content.body)} </p>
-    <div className="mt-8 text-center">
+  let make = (~content) => {
+    let button =
       <div className="inline-flex rounded-md shadow">
         <Next.Link href=content.buttonLink>
           <a
@@ -114,6 +107,14 @@ module Embedded = {
           </a>
         </Next.Link>
       </div>
-    </div>
-  </>
+
+    <>
+      <p
+        className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
+        {s(content.title)}
+      </p>
+      <p className="mt-3 text-center text-lg text-gray-900"> {s(content.body)} </p>
+      <div className="mt-8 text-center"> button </div>
+    </>
+  }
 }
