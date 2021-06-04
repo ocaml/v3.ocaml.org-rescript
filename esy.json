@@ -17,10 +17,6 @@
     "ocaml": "4.12.0"
   },
   "devDependencies": {
-    "@opam/dune": "^2.8.5",
-    "@opam/merlin": "4.1-412",
-    "@opam/ocaml-lsp-server": "^1.5.0",
-    "@opam/ocamlformat": "^0.17.0",
-    "@opam/utop": "^2.7.0"
+    "@opam/dune": "^2.8.5"
   }
 }
