@@ -58,12 +58,18 @@ suggests the following:
 
 ### Prerequisities
 
-The site build process makes use of `node/npx`. We recommend the use of a node version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm) to install your node toolchain. Currently we depend on the Latest LTS of Node.js, which is 14.x.x.  Assuming you have either `fnm` or `nvm` installed, you can run the following in the root of the repo to setup your prerequisites:
+The site build process assume you have `npx` available. Run `npx --version` to test your installation. If you don't have `npx`, you will need to install `node`, the package that `npx` is part of. Please consult `node`'s documentation for instructions on installing it.
+
+Our recommendation is to use a node version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm). Thus, install one of these tools instead. Then you can run the following in the root of the repo:
 
 ```bash
 echo 14 > .nvmrc
-fnm install # or if you're using nvm, then: nvm install
+fnm install # run this
+nvm install # or this, not both
 ```
+
+Now check that `npx --version` works. Note that we have added `.nvmrc` to `.gitignore`, so you can leave that file in your directory.
+
 
 ### Quickstart
 
