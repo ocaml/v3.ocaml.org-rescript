@@ -71,13 +71,12 @@ type pageContent = {
 }
 
 let getStaticProps = _ctx => {
-  open Event
   let pageContentEn = {
     title: `Events`,
     pageDescription: `Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
   }
   let events = EventsData.readAll().events->Array.of_list
-  let events = Array.map(event => toJson(event)->Next.stripUndefined->fromJson, events)
+  let events = Array.map(event => Event.toJson(event)->Next.stripUndefined->Event.fromJson, events)
   Js.Promise.resolve({
     "props": {
       content: {
