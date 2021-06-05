@@ -1,15 +1,18 @@
 let s = React.string
 
 module LatestNews = {
-  // TODO: finish out extracting strings into content
-  type t = {news: array<NewsItem.t>}
+  type t = {
+    latest: string,
+    news: array<NewsItem.t>,
+    newsArchive: string,
+  }
 
   @react.component
   let make = (~content) =>
     <SectionContainer.LargeCentered paddingY="py-16">
       <h2
         className="mb-8 text-3xl text-center tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-        {s(`What's the Latest?`)}
+        {s(content.latest)}
       </h2>
       <MediaObject
         imageHeight="h-28 sm:h-64"
@@ -61,11 +64,27 @@ module LatestNews = {
         </div>
         <p className="text-xs text-right">
           <a className="text-orangedark hover:text-orangedark" href="/community/newsarchive">
-            {s(`Go to the news archive >`)}
+            {s(content.newsArchive)}
           </a>
         </p>
       </MediaObject>
     </SectionContainer.LargeCentered>
+}
+
+module ReadingTime: {
+  type t
+  let make: int => t
+  let toString: (t, ~lang: Lang.t) => string
+} = {
+  type t = int
+
+  let make = s => s
+
+  let toString = (t, ~lang) => {
+    switch lang {
+    | #en | #fr | #es => Belt.Int.toString(t) ++ " min read"
+    }
+  }
 }
 
 type blogEntry = {
@@ -244,7 +263,7 @@ let make = (~content) => <>
                     {s(content.blogEntries[0].date)}
                   </time>
                   <span ariaHidden=true> {s(`·`)} </span>
-                  <span> {s(content.blogEntries[0].readingTime ++ ` min read`)} </span>
+                  <span> {s(content.blogEntries[0].readingTime)} </span>
                 </div>
               </div>
             </div>
@@ -292,7 +311,7 @@ let make = (~content) => <>
                     {s(content.blogEntries[1].date)}
                   </time>
                   <span ariaHidden=true> {s(`·`)} </span>
-                  <span> {s(content.blogEntries[1].readingTime ++ ` min read`)} </span>
+                  <span> {s(content.blogEntries[1].readingTime)} </span>
                 </div>
               </div>
             </div>
@@ -340,7 +359,7 @@ let make = (~content) => <>
                     {s(content.blogEntries[2].date)}
                   </time>
                   <span ariaHidden=true> {s(`·`)} </span>
-                  <span> {s(content.blogEntries[2].readingTime ++ ` min read`)} </span>
+                  <span> {s(content.blogEntries[2].readingTime)} </span>
                 </div>
               </div>
             </div>
@@ -395,6 +414,7 @@ let decode = json => {
 
 let getStaticProps = _ctx => {
   let news = NewsItem.readAll()
+  let lang = #en
 
   let pageContent = "pages/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
 
@@ -403,14 +423,16 @@ let getStaticProps = _ctx => {
   let events = Belt.Array.sliceToEnd(events, -3)
   let events = Array.map(event => Event.toJson(event)->Next.stripUndefined->Event.fromJson, events)
 
-  let contentEn = {
+  let content = {
     title: `OCaml Around the Web`,
     pageDescription: `Looking to interact with people who are also interested in OCaml? Find out about upcoming events, read up on blogs from the community, sign up for OCaml mailing lists, and discover even more places to engage with people from the community!`,
     engageHeader: `Want to engage with the OCaml Community?`,
     engageBody: `Participate in discussions on everything OCaml over at discuss.ocaml.org, where members of the community post`,
     engageButtonText: `Take me to Discuss`,
     latestNewsContent: {
+      latest: `What's the Latest?`,
       news: news,
+      newsArchive: `Go to the news archive >`,
     },
     events: {
       Events.title: "Events",
@@ -429,7 +451,7 @@ let getStaticProps = _ctx => {
         author: `Roel Aufderehar`,
         dateValue: `2020-03-16`,
         date: `Mar 16, 2020`,
-        readingTime: `6`,
+        readingTime: ReadingTime.make(6)->ReadingTime.toString(~lang),
       },
       {
         title: `Programming for a Better World`,
@@ -438,7 +460,7 @@ let getStaticProps = _ctx => {
         author: `Roel Aufderehar`,
         dateValue: `2020-03-16`,
         date: `Mar 16, 2020`,
-        readingTime: `6`,
+        readingTime: ReadingTime.make(6)->ReadingTime.toString(~lang),
       },
       {
         title: `Methods for Irmin V2`,
@@ -447,7 +469,7 @@ let getStaticProps = _ctx => {
         author: `Daniela Metz`,
         dateValue: `2020-02-12`,
         date: `Feb 12, 2020`,
-        readingTime: `11`,
+        readingTime: ReadingTime.make(11)->ReadingTime.toString(~lang),
       },
     ],
     blogArchiveText: `Go to the blog archive`,
@@ -456,7 +478,7 @@ let getStaticProps = _ctx => {
   }
 
   Js.Promise.resolve({
-    "props": {content: contentEn},
+    "props": {content: content},
   })
 }
 

@@ -1,5 +1,9 @@
 module LatestNews: {
-  type t = {news: array<NewsItem.t>}
+  type t = {
+    latest: string,
+    news: array<NewsItem.t>,
+    newsArchive: string,
+  }
 }
 
 module Events: {
