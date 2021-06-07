@@ -4,7 +4,7 @@ type t = {
 }
 
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~content: t) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=927%3A5`
   />
