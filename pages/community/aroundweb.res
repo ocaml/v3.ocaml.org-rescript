@@ -186,8 +186,6 @@ type t = {
   spaces: array<string>,
 }
 
-type props = {content: t}
-
 @react.component
 let make = (~content) => <>
   <ConstructionBanner
@@ -414,74 +412,79 @@ let decode = json => {
   }
 }
 
-let getStaticProps = _ctx => {
-  let news = NewsItem.readAll()
-  let lang = #en
-
-  let pageContent = "pages/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
-
-  let events = EventsData.readAll().events->Array.of_list
-  let _ = Array.sort((a, b) => Event.compare_by_date(b, a), events)
-  let events = Belt.Array.sliceToEnd(events, -3)
-  let events = Array.map(event => Event.toJson(event)->Next.stripUndefined->Event.fromJson, events)
-
-  let content = {
-    title: `OCaml Around the Web`,
-    pageDescription: `Looking to interact with people who are also interested in OCaml? Find out about upcoming events, read up on blogs from the community, sign up for OCaml mailing lists, and discover even more places to engage with people from the community!`,
-    engageHeader: `Want to engage with the OCaml Community?`,
-    engageBody: `Participate in discussions on everything OCaml over at discuss.ocaml.org, where members of the community post`,
-    engageButtonText: `Take me to Discuss`,
-    latestNewsContent: {
-      latest: `What's the Latest?`,
-      news: news,
-      newsArchive: `Go to the news archive >`,
-    },
-    events: {
-      Events.title: "Events",
-      description: "Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere. ",
-      callToAction: "Show me Events",
-      latestEvents: events,
-    },
-    blogSectionHeader: `Recent Blog Posts`,
-    blogSectionDescription: `Be inspired by the work of OCaml programmers all over the world and stay up-to-date on the latest developments.`,
-    blog: `Blog`,
-    blogEntries: [
-      {
-        title: `What I learned Coding from Home`,
-        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
-          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
-        author: `Roel Aufderehar`,
-        dateValue: `2020-03-16`,
-        date: `Mar 16, 2020`,
-        readingTime: ReadingTime.make(6)->ReadingTime.toString(~lang),
+include Page2.Make({
+  type content = t
+  let getContent = (lang: Lang.t) => {
+    let news = NewsItem.readAll()
+    let pageContent = "pages/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
+    let events = EventsData.readAll().events->Array.of_list
+    let _ = Array.sort((a, b) => Event.compare_by_date(b, a), events)
+    let events = Belt.Array.sliceToEnd(events, -3)
+    let events = Array.map(
+      event => Event.toJson(event)->Next.stripUndefined->Event.fromJson,
+      events,
+    )
+    let en = Js.Promise.resolve({
+      title: `OCaml Around the Web`,
+      pageDescription: `Looking to interact with people who are also interested in OCaml? Find out about upcoming events, read up on blogs from the community, sign up for OCaml mailing lists, and discover even more places to engage with people from the community!`,
+      engageHeader: `Want to engage with the OCaml Community?`,
+      engageBody: `Participate in discussions on everything OCaml over at discuss.ocaml.org, where members of the community post`,
+      engageButtonText: `Take me to Discuss`,
+      latestNewsContent: {
+        latest: `What's the Latest?`,
+        news: news,
+        newsArchive: `Go to the news archive >`,
       },
-      {
-        title: `Programming for a Better World`,
-        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
-          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
-        author: `Roel Aufderehar`,
-        dateValue: `2020-03-16`,
-        date: `Mar 16, 2020`,
-        readingTime: ReadingTime.make(6)->ReadingTime.toString(~lang),
+      events: {
+        Events.title: "Events",
+        description: "Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere. ",
+        callToAction: "Show me Events",
+        latestEvents: events,
       },
-      {
-        title: `Methods for Irmin V2`,
-        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
+      blogSectionHeader: `Recent Blog Posts`,
+      blogSectionDescription: `Be inspired by the work of OCaml programmers all over the world and stay up-to-date on the latest developments.`,
+      blog: `Blog`,
+      blogEntries: [
+        {
+          title: `What I learned Coding from Home`,
+          excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
           ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
-        author: `Daniela Metz`,
-        dateValue: `2020-02-12`,
-        date: `Feb 12, 2020`,
-        readingTime: ReadingTime.make(11)->ReadingTime.toString(~lang),
-      },
-    ],
-    blogArchiveText: `Go to the blog archive`,
-    spacesSectionHeader: `Looking for More? Try these spaces:`,
-    spaces: pageContent.spaces,
+          author: `Roel Aufderehar`,
+          dateValue: `2020-03-16`,
+          date: `Mar 16, 2020`,
+          readingTime: ReadingTime.make(6)->ReadingTime.toString(~lang),
+        },
+        {
+          title: `Programming for a Better World`,
+          excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
+          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
+          author: `Roel Aufderehar`,
+          dateValue: `2020-03-16`,
+          date: `Mar 16, 2020`,
+          readingTime: ReadingTime.make(6)->ReadingTime.toString(~lang),
+        },
+        {
+          title: `Methods for Irmin V2`,
+          excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
+          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
+          author: `Daniela Metz`,
+          dateValue: `2020-02-12`,
+          date: `Feb 12, 2020`,
+          readingTime: ReadingTime.make(11)->ReadingTime.toString(~lang),
+        },
+      ],
+      blogArchiveText: `Go to the blog archive`,
+      spacesSectionHeader: `Looking for More? Try these spaces:`,
+      spaces: pageContent.spaces,
+    })
+    let lang = switch lang {
+    | #en => #en
+    | #fr | #es => Lang.default
+    }
+    switch lang {
+    | #en => en
+    }
   }
 
-  Js.Promise.resolve({
-    "props": {content: content},
-  })
-}
-
-let default = make
+  let component = (content: content) => make(makeProps(~content, ()))
+})
