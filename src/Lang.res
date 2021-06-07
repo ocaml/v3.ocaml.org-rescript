@@ -17,9 +17,19 @@ let name = (~lang=?, t) => {
   }
 }
 
+let ofString = t =>
+  switch t {
+  | "en" => #en
+  | "fr" => #fr
+  | "es" => #es
+  | _ => failwith(`BUG: Unsupported lang: ${t}`)
+  }
+
 let toString = t =>
   switch t {
   | #en => "en"
   | #fr => "fr"
   | #es => "es"
   }
+
+let default = #en

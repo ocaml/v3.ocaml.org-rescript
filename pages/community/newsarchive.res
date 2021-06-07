@@ -1,17 +1,41 @@
+open! Import
+
 type t = {
   title: string,
   pageDescription: string,
 }
 
-let contentEn = {
-  title: `News Archive`,
-  pageDescription: `Archive of news presented in the News page.`,
-}
-
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~content: t) => <>
   <ConstructionBanner />
   <Page.Basic title=content.title pageDescription=content.pageDescription> {<> </>} </Page.Basic>
 </>
 
-let default = make
+type props = {content: t}
+type params = {lang: string}
+
+let default = (props: props) => make(makeProps(~content=props.content, ()))
+
+let content = (lang: Lang.t) => {
+  let en = Js.Promise.resolve({
+    title: `News Archive`,
+    pageDescription: `Archive of news presented in the News page.`,
+  })
+  let lang = switch lang {
+  | #en => #en
+  | #fr | #es => Lang.default
+  }
+  switch lang {
+  | #en => en
+  }
+}
+
+let getStaticProps: Next.GetStaticProps.t<props, params, void> = _ctx => {
+  // let lang = Lang.ofString(ctx.Next.GetStaticProps.params.lang)
+  let lang = #en
+  content(lang) |> Js.Promise.then_(content =>
+    Js.Promise.resolve({
+      "props": {content: content},
+    })
+  )
+}

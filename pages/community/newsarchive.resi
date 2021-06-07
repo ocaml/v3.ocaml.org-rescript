@@ -1,9 +1,6 @@
-type t = {
-  title: string,
-  pageDescription: string,
-}
+open! Import
 
-@react.component
-let make: (~content: t=?) => React.element
-
-let default: {"content": option<t>} => React.element
+type params
+type props
+let default: props => React.element
+let getStaticProps: Next.GetStaticProps.t<props, params, void>
