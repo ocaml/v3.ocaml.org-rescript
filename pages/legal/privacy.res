@@ -3,15 +3,28 @@ type t = {
   pageDescription: string,
 }
 
-let contentEn = {
-  title: `Privacy Policy`,
-  pageDescription: ``,
-}
-
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~content: t) => <>
   <ConstructionBanner />
   <Page.Basic title=content.title pageDescription=content.pageDescription> {<> </>} </Page.Basic>
 </>
 
-let default = make
+include Page2.Make({
+  type content = t
+
+  let getContent = (lang: Lang.t) => {
+    let en = Js.Promise.resolve({
+      title: `Privacy Policy`,
+      pageDescription: ``,
+    })
+    let lang = switch lang {
+    | #en => #en
+    | #fr | #es => Lang.default
+    }
+    switch lang {
+    | #en => en
+    }
+  }
+
+  let component = (content: content) => make(makeProps(~content, ()))
+})
