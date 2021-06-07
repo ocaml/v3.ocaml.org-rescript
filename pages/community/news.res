@@ -336,62 +336,8 @@ type t = {
   weeklyNews: WeeklyNews.t,
 }
 
-let contentEn = {
-  title: `OCaml News`,
-  pageDescription: `This is where you'll find the latest stories from the OCaml Community! Periodically, we will also highlight individual stories that `,
-  highlightContent: {
-    highlightItem: `Highlighted Story`,
-    clickToRead: `Click to Read`,
-    highlightItemSummary: {
-      preview: `Isabella Leandersson interviewed speakers at the 2020 OCaml workshop at ICFP. Click through to read about what they had to say.`,
-      url: `/community/isabelle-leandersson-interviewed-speakers`,
-    },
-    bgImageClass: `bg-news-bg`,
-  },
-  categorizedNews: {
-    otherNewsStories: `Other News Stories`,
-    communityCategory: {
-      header: `Community`,
-      seeAllNewsInCategory: `See all News in Community`,
-      stories: [
-        `The road ahead for Mirage OS in 2021`,
-        `How we lost at the Delphi Oracle Challenge`,
-        `"Universal" Dune Tip: Rebuild Stuff, Sometimes`,
-      ],
-    },
-    releasesCategory: {
-      header: `Releases`,
-      seeAllNewsInCategory: `See all News in Releases`,
-      stories: [`Release of Alt-Ergo 2.4.0`, `Coq 8.13.0 is out`, `Coq 8.12.2 is out`],
-    },
-    industryCategory: {
-      header: `Industry`,
-      seeAllNewsInCategory: `See all News in Industry`,
-      stories: [
-        `Recent and Upcoming Changes to Merlin`,
-        `Memthol: Exploring Program Profiling`,
-        `Growing the Hardcaml Toolset`,
-      ],
-    },
-    eventsCategory: {
-      header: `Events`,
-      seeAllNewsInCategory: `See all News in Events`,
-      stories: [
-        `Tarides Sponsors the Oxbridge Women in ...`,
-        `Every Proof Assistant: Introducing homotypy.io`,
-        `Every Proof Assistant: Introducing homotopy.io`,
-      ],
-    },
-    goToNewsArchive: `Go to News Archive`,
-  },
-  weeklyNews: {
-    ocamlWeeklyNews: `OCaml Weekly News`,
-    overview: `For 20 years, Alan Schmitt has been collating messages sent to the OCaml Mailing List and summarising them into OCaml Weekly News. You can browse the archives of his work here and at `,
-  },
-}
-
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=952%3A422`
     playgroundLink=`/play/community/news`
@@ -405,4 +351,71 @@ let make = (~content=contentEn) => <>
   </Page.HighlightItem>
 </>
 
-let default = make
+include Page2.Make({
+  type content = t
+
+  let getContent = (lang: Lang.t) => {
+    let en = Js.Promise.resolve({
+      title: `OCaml News`,
+      pageDescription: `This is where you'll find the latest stories from the OCaml Community! Periodically, we will also highlight individual stories that `,
+      highlightContent: {
+        highlightItem: `Highlighted Story`,
+        clickToRead: `Click to Read`,
+        highlightItemSummary: {
+          preview: `Isabella Leandersson interviewed speakers at the 2020 OCaml workshop at ICFP. Click through to read about what they had to say.`,
+          url: `/community/isabelle-leandersson-interviewed-speakers`,
+        },
+        bgImageClass: `bg-news-bg`,
+      },
+      categorizedNews: {
+        otherNewsStories: `Other News Stories`,
+        communityCategory: {
+          header: `Community`,
+          seeAllNewsInCategory: `See all News in Community`,
+          stories: [
+            `The road ahead for Mirage OS in 2021`,
+            `How we lost at the Delphi Oracle Challenge`,
+            `"Universal" Dune Tip: Rebuild Stuff, Sometimes`,
+          ],
+        },
+        releasesCategory: {
+          header: `Releases`,
+          seeAllNewsInCategory: `See all News in Releases`,
+          stories: [`Release of Alt-Ergo 2.4.0`, `Coq 8.13.0 is out`, `Coq 8.12.2 is out`],
+        },
+        industryCategory: {
+          header: `Industry`,
+          seeAllNewsInCategory: `See all News in Industry`,
+          stories: [
+            `Recent and Upcoming Changes to Merlin`,
+            `Memthol: Exploring Program Profiling`,
+            `Growing the Hardcaml Toolset`,
+          ],
+        },
+        eventsCategory: {
+          header: `Events`,
+          seeAllNewsInCategory: `See all News in Events`,
+          stories: [
+            `Tarides Sponsors the Oxbridge Women in ...`,
+            `Every Proof Assistant: Introducing homotypy.io`,
+            `Every Proof Assistant: Introducing homotopy.io`,
+          ],
+        },
+        goToNewsArchive: `Go to News Archive`,
+      },
+      weeklyNews: {
+        ocamlWeeklyNews: `OCaml Weekly News`,
+        overview: `For 20 years, Alan Schmitt has been collating messages sent to the OCaml Mailing List and summarising them into OCaml Weekly News. You can browse the archives of his work here and at `,
+      },
+    })
+    let lang = switch lang {
+    | #en => #en
+    | #fr | #es => Lang.default
+    }
+    switch lang {
+    | #en => en
+    }
+  }
+
+  let component = (t: t) => make(makeProps(~content=t, ()))
+})
