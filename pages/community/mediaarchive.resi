@@ -1,3 +1,5 @@
+open! Import
+
 module MediaSection: {
   module Item: {
     type t = {
@@ -15,16 +17,7 @@ module MediaSection: {
   }
 }
 
-@react.component
-let make: (
-  ~title: string,
-  ~pageDescription: string,
-  ~videosContent: MediaSection.t,
-  ~talksContent: MediaSection.t,
-  ~papersContent: MediaSection.t,
-) => React.element
-
-type prop = {
+type t = {
   title: string,
   pageDescription: string,
   videosContent: MediaSection.t,
@@ -32,12 +25,4 @@ type prop = {
   papersContent: MediaSection.t,
 }
 
-let getStaticProps: Next.GetStaticProps.t<prop, unit, unit>
-
-let default: {
-  "title": string,
-  "pageDescription": string,
-  "videosContent": MediaSection.t,
-  "talksContent": MediaSection.t,
-  "papersContent": MediaSection.t,
-} => React.element
+include Page2.S with type t := t
