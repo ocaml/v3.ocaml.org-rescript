@@ -14,4 +14,4 @@ module type Arg = {
   let component: React.component<content>
 }
 
-module Make: Arg => S
+module Make: (Arg: Arg) => (S with type t := Arg.content)

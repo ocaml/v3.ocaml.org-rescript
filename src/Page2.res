@@ -14,7 +14,7 @@ module type Arg = {
   let component: React.component<content>
 }
 
-module Make = (Arg: Arg): S => {
+module Make = (Arg: Arg): (S with type t := Arg.content) => {
   type t = Arg.content
   type props<'a> = {content: 'a}
   type params = {lang: string}
