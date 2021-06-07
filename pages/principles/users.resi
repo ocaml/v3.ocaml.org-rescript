@@ -1,18 +1,17 @@
-type company = {
-  logo: string,
-  name: string,
-  customWidth: option<string>,
-  needsRounding: bool,
-  website: string,
+module Company: {
+  type t = {
+    logo: string,
+    name: string,
+    customWidth: option<string>,
+    needsRounding: bool,
+    website: string,
+  }
 }
 
 type t = {
   title: string,
   pageDescription: string,
-  companies: array<company>,
+  companies: array<Company.t>,
 }
 
-@react.component
-let make: (~content: t=?) => React.element
-
-let default: {"content": option<t>} => React.element
+include Page2.S with type t := t

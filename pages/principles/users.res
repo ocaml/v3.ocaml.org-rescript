@@ -1,16 +1,18 @@
 let s = React.string
 
-type company = {
-  logo: string,
-  name: string,
-  customWidth: option<string>,
-  needsRounding: bool,
-  website: string,
+module Company = {
+  type t = {
+    logo: string,
+    name: string,
+    customWidth: option<string>,
+    needsRounding: bool,
+    website: string,
+  }
 }
 
-let companies = [
+let companies = (_lang: Lang.t) => [
   {
-    logo: `oclabs.png`,
+    Company.logo: `oclabs.png`,
     name: `OCaml Labs`,
     customWidth: None,
     needsRounding: false,
@@ -56,13 +58,7 @@ let companies = [
 type t = {
   title: string,
   pageDescription: string,
-  companies: array<company>,
-}
-
-let contentEn = {
-  title: `Industrial Users of OCaml`,
-  pageDescription: `OCaml is a popular choice for companies who make use of its features in key aspects of their technologies. Some companies that use OCaml code are listed below:`,
-  companies: companies,
+  companies: array<Company.t>,
 }
 
 module LogoSection = {
@@ -72,7 +68,7 @@ module LogoSection = {
       // TODO: try switching to a grid
       <div className="flex flex-wrap justify-center lg:justify-between ">
         {companies
-        |> Js.Array.mapi((c, idx) =>
+        |> Js.Array.mapi((c: Company.t, idx) =>
           <div key={Js.Int.toString(idx)} className="p-12 flex flex-col items-center">
             // TODO: considering accessibility, how many elements should the link span?
             <img
@@ -99,7 +95,7 @@ module LogoSection = {
 }
 
 @react.component
-let make = (~content=contentEn) => <>
+let make = (~content: t) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
     playgroundLink=`/play/industry/users`
@@ -117,4 +113,27 @@ let make = (~content=contentEn) => <>
   </Page.Basic>
 </>
 
-let default = make
+include Page2.Make({
+  type content = t
+
+  let getContent = (lang: Lang.t) => {
+    let companies = companies(lang)
+
+    let en = Js.Promise.resolve({
+      title: `Industrial Users of OCaml`,
+      pageDescription: `OCaml is a popular choice for companies who make use of its features in key aspects of their technologies. Some companies that use OCaml code are listed below:`,
+      companies: companies,
+    })
+
+    let lang = switch lang {
+    | #en => #en
+    | #fr | #es => Lang.default
+    }
+
+    switch lang {
+    | #en => en
+    }
+  }
+
+  let component = (content: content) => make(makeProps(~content, ()))
+})
