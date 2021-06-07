@@ -2,6 +2,7 @@ type t = {
   title: string,
   pageDescription: string,
   events: array<Event.t>,
+  headers: array<string>,
 }
 
 let s = React.string
@@ -27,7 +28,7 @@ let make = (~content) => <>
     <SectionContainer.MediumCentered margins="mb-16">
       <Table.Simple
         content={{
-          headers: ["Date", "Event Name", "Location", "Description"],
+          headers: content.headers,
           data: Array.map((event: Event.t) => [
             <p> {s(event.date |> Js.Date.fromString |> Js.Date.toDateString)} </p>,
             switch dedicated_page(event) {
@@ -63,29 +64,32 @@ let make = (~content) => <>
   </Page.TopImage>
 </>
 
-type props = {content: t}
-
-type pageContent = {
-  title: string,
-  pageDescription: string,
-}
-
-let getStaticProps = _ctx => {
-  let pageContentEn = {
-    title: `Events`,
-    pageDescription: `Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
-  }
-  let events = EventsData.readAll().events->Array.of_list
-  let events = Array.map(event => Event.toJson(event)->Next.stripUndefined->Event.fromJson, events)
-  Js.Promise.resolve({
-    "props": {
-      content: {
-        title: pageContentEn.title,
-        pageDescription: pageContentEn.pageDescription,
+include Page2.Make({
+  type content = t
+  let getContent = (lang: Lang.t) => {
+    let en = {
+      let title = `Events`
+      let pageDescription = `Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere.`
+      let headers = [`Date`, `Event Name`, `Location`, `Description`]
+      let events = EventsData.readAll().events->Array.of_list
+      let events = Array.map(
+        event => Event.toJson(event)->Next.stripUndefined->Event.fromJson,
+        events,
+      )
+      Js.Promise.resolve({
+        title: title,
+        pageDescription: pageDescription,
         events: events,
-      },
-    },
-  })
-}
-
-let default = make
+        headers: headers,
+      })
+    }
+    let lang = switch lang {
+    | #en => #en
+    | #fr | #es => Lang.default
+    }
+    switch lang {
+    | #en => en
+    }
+  }
+  let component = (content: content) => make(makeProps(~content, ()))
+})
