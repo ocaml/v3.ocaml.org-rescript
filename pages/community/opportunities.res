@@ -3,11 +3,6 @@ type t = {
   pageDescription: string,
 }
 
-let contentEn = {
-  title: `Opportunities`,
-  pageDescription: `This is a space where groups, companies, and organisations can advertise their projects directly to the OCaml community.`,
-}
-
 @react.component
 let make = (~content=contentEn) => <>
   <ConstructionBanner
@@ -18,4 +13,20 @@ let make = (~content=contentEn) => <>
   </Page.TopImage>
 </>
 
-let default = make
+include Page2.Make({
+  type content = t
+  let getContent = (lang: Lang.t) => {
+    let en = Js.Promise.resolve({
+      title: `Opportunities`,
+      pageDescription: `This is a space where groups, companies, and organisations can advertise their projects directly to the OCaml community.`,
+    })
+    let lang = switch lang {
+    | #en => #en
+    | #fr | #es => Lang.default
+    }
+    switch lang {
+    | #en => en
+    }
+  }
+  let component = (content: content) => make(makeProps(~content, ()))
+})
