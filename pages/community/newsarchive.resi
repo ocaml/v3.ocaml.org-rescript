@@ -1,6 +1,8 @@
 open! Import
 
-type params
-type props
-let default: props => React.element
-let getStaticProps: Next.GetStaticProps.t<props, params, void>
+type t = {
+  title: string,
+  pageDescription: string,
+}
+
+include Page2.S with type t := t

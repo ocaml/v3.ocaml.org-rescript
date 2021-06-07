@@ -11,31 +11,20 @@ let make = (~content: t) => <>
   <Page.Basic title=content.title pageDescription=content.pageDescription> {<> </>} </Page.Basic>
 </>
 
-type props = {content: t}
-type params = {lang: string}
-
-let default = (props: props) => make(makeProps(~content=props.content, ()))
-
-let content = (lang: Lang.t) => {
-  let en = Js.Promise.resolve({
-    title: `News Archive`,
-    pageDescription: `Archive of news presented in the News page.`,
-  })
-  let lang = switch lang {
-  | #en => #en
-  | #fr | #es => Lang.default
-  }
-  switch lang {
-  | #en => en
-  }
-}
-
-let getStaticProps: Next.GetStaticProps.t<props, params, void> = _ctx => {
-  // let lang = Lang.ofString(ctx.Next.GetStaticProps.params.lang)
-  let lang = #en
-  content(lang) |> Js.Promise.then_(content =>
-    Js.Promise.resolve({
-      "props": {content: content},
+include Page2.Make({
+  type content = t
+  let getContent = (lang: Lang.t) => {
+    let en = Js.Promise.resolve({
+      title: `News Archive`,
+      pageDescription: `Archive of news presented in the News page.`,
     })
-  )
-}
+    let lang = switch lang {
+    | #en => #en
+    | #fr | #es => Lang.default
+    }
+    switch lang {
+    | #en => en
+    }
+  }
+  let component = (content: content) => make(makeProps(~content, ()))
+})
