@@ -42,27 +42,21 @@ module ByBreakpoint = {
     lg: lg,
   }
 
-  let mapWithDefaultEmpty = (option, f) => option->Belt.Option.mapWithDefault("", f)
+  let toClassNames = (t, toClassName) =>
+    [
+      toClassName(t.base)->Some,
+      t.sm->Belt.Option.map(c => `sm:${toClassName(c)}`),
+      t.md->Belt.Option.map(c => `md:${toClassName(c)}`),
+      t.lg->Belt.Option.map(c => `lg:${toClassName(c)}`),
+    ]
+    ->Js.Array2.filter(Js.Option.isSome)
+    ->ClassNames.make
 
-  let toClassNames = (brk, toClassName) =>
-    // TODO: use rescript-classnames library
-    Js.String.concatMany(
-      [
-        toClassName(brk.base),
-        " ",
-        brk.sm->mapWithDefaultEmpty(m => `sm:${toClassName(m)}`),
-        " ",
-        brk.md->mapWithDefaultEmpty(m => `md:${toClassName(m)}`),
-        " ",
-        brk.lg->mapWithDefaultEmpty(m => `lg:${toClassName(m)}`),
-      ],
-      "",
-    )
-
-  let toClassNamesOrEmpty = (brk, toClassName) =>
-    brk->mapWithDefaultEmpty(brk => toClassNames(brk, toClassName))
+  let toClassNamesOrEmpty = (byBreakpoint, toClassName) =>
+    byBreakpoint->Belt.Option.mapWithDefault("", t => toClassNames(t, toClassName))
 }
 
 module MarginBottomByBreakpoint = {
-  let toClassNamesOrEmpty = brk => ByBreakpoint.toClassNamesOrEmpty(brk, MarginBottom.toClassName)
+  let toClassNamesOrEmpty = byBreakpoint =>
+    ByBreakpoint.toClassNamesOrEmpty(byBreakpoint, MarginBottom.toClassName)
 }
