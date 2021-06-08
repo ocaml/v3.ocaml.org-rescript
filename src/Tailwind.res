@@ -49,7 +49,7 @@ module ByBreakpoint = {
       t.md->Belt.Option.map(c => `md:${toClassName(c)}`),
       t.lg->Belt.Option.map(c => `lg:${toClassName(c)}`),
     ]
-    ->Js.Array2.filter(Js.Option.isSome)
+    ->Belt.Array.keepMap(x => x)
     ->ClassNames.make
 
   let toClassNamesOrEmpty = (byBreakpoint, toClassName) =>
