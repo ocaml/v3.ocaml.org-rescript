@@ -92,7 +92,7 @@ module Dynamic: {
 
   let dynamic: (unit => Js.Promise.t<'a>, options) => 'a
 
-  let \"import": string => Js.Promise.t<'a>
+  // let \"import": string => Js.Promise.t<'a>
 }
 
 // Unforunately, NextJS cannot serialise `undefined` which is what `None` is converted too.

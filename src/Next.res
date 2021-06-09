@@ -101,7 +101,8 @@ module Dynamic = {
   @module("next/dynamic")
   external dynamic: (unit => Js.Promise.t<'a>, options) => 'a = "default"
 
-  @val external \"import": string => Js.Promise.t<'a> = "import"
+  // use raw with import instead of the binding below
+  // @val external \"import": string => Js.Promise.t<'a> = "import"
 }
 
 let stripUndefined = (json: Js.Json.t): Js.Json.t => {
