@@ -1,4 +1,4 @@
-@@warning("a") // suppress the warning about "import" in raw
+@@warning("-103") // suppress the warning about "import" in raw
 
 %%raw(`
 const MdastUtilToStringInternal = (await import('mdast-util-to-string')).toString
