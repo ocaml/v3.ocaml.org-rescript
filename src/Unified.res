@@ -1,5 +1,7 @@
-@@warning("-103") // suppress the warning about "import" in raw
+// The following code causes a warning.
 
+// This warning will hopefully be resolved by September of 2021, if
+// NextJS proceeds to lift its restriction on using ES6.
 %%raw(`
 const MdastUtilToStringInternal = (await import('mdast-util-to-string')).toString
 `)
