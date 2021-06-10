@@ -26,7 +26,7 @@ module MediaSection = {
 
       {
         let items = content.items |> Array.map((i: Item.t) => {
-          StackedList.BasicWithDate.link: i.link,
+          StackedList.BasicWithDate.Item.link: i.link,
           title: `${i.name} by ${i.author}`,
           date: i.creationDate,
         })

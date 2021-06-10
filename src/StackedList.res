@@ -1,9 +1,11 @@
 let s = React.string
 
 module BasicWithIcon = {
-  type item = {
-    link: string,
-    title: string,
+  module Item = {
+    type t = {
+      link: string,
+      title: string,
+    }
   }
 
   let rightArrow =
@@ -20,7 +22,7 @@ module BasicWithIcon = {
       />
     </svg>
 
-  let itemRow = (item, itemIcon) =>
+  let itemRow = (item: Item.t, itemIcon) =>
     <a href=item.link target="_blank">
       <div className="flex justify-between items-center space-x-6">
         <div> itemIcon {s(item.title)} </div> rightArrow
@@ -28,13 +30,10 @@ module BasicWithIcon = {
     </a>
 
   @react.component
-  let make = (
-    ~items: array<item>,
-    ~itemIcon: (~display: string, ~marginRight: string) => React.element,
-  ) => {
+  let make = (~items, ~itemIcon) => {
     <ul className="divide-y divide-gray-300">
       {items
-      |> Array.map(item =>
+      |> Array.map((item: Item.t) =>
         // TODO: accessible link; indicate that link opens new tab
         <li className="px-6 py-4" key=item.title>
           {itemRow(item, itemIcon(~display="hidden lg:inline-block", ~marginRight="mr-3"))}
@@ -46,15 +45,17 @@ module BasicWithIcon = {
 }
 
 module BasicWithDate = {
-  type item = {
-    link: string,
-    title: string, // TODO: better name than title
-    date: string, // TODO: real data type
+  module Item = {
+    type t = {
+      link: string,
+      title: string, // TODO: better name than title
+      date: string, // TODO: real data type
+    }
   }
 
   let rightArrow = {s(` -> `)}
 
-  let itemRow = item =>
+  let itemRow = (item: Item.t) =>
     // TODO: is it okay to make an "a" tag into a grid??
     <a className="grid grid-cols-8 w-full " href=item.link target="_blank" key=item.title>
       <div className="text-yellow-600 col-span-5 font-semibold"> {s(item.title)} </div>
@@ -63,7 +64,7 @@ module BasicWithDate = {
     </a>
 
   @react.component
-  let make = (~items: array<item>) =>
+  let make = (~items) =>
     // TODO: remove relative?
     // TODO: why aren't these attributes directly on the "ul" below?
     // TODO: why is overflow-y-auto used?
