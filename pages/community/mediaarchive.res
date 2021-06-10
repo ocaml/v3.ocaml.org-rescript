@@ -25,12 +25,12 @@ module MediaSection = {
       // Generic Highlight Component
 
       {
-        let items = content.items |> Array.map((i: Item.t) => {
+        let toItem = (i: Item.t) => {
           StackedList.BasicWithDate.Item.link: i.link,
           title: `${i.name} by ${i.author}`,
           date: i.creationDate,
-        })
-        <StackedList.BasicWithDate items />
+        }
+        <StackedList.BasicWithDate items={content.items |> Array.map(toItem)} />
       }
       // TODO: enable link and create video archive page
       <p className="text-right py-6 cursor-pointer hover:underline font-semibold text-yellow-600">
