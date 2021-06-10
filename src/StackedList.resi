@@ -6,11 +6,12 @@ module BasicWithIcon: {
     }
   }
 
+  module RowPrefixIcon: {
+    type t = PaperScroll
+  }
+
   @react.component
-  let make: (
-    ~items: array<Item.t>,
-    ~itemIcon: (~display: string, ~marginRight: string) => React.element,
-  ) => React.element
+  let make: (~items: array<Item.t>, ~rowPrefixIcon: RowPrefixIcon.t) => React.element
 }
 
 module BasicWithDate: {
