@@ -77,10 +77,17 @@ module BasicWithAuxiliaryAttribute = {
   let rightArrow = {s(` -> `)}
 
   let itemRow = (item: Item.t) =>
+    // TODO: should w-full be passed a parameter?
     // TODO: is it okay to make an "a" tag into a grid??
-    <a className="grid grid-cols-8 w-full " href=item.link target="_blank" key=item.title>
-      <div className="text-yellow-600 col-span-5 font-semibold"> {s(item.title)} </div>
-      <div className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.auxiliaryAttribute)} </div>
+    // TODO: these items should vertically align to the center of the row
+    // TODO: change from grid to flexbox
+    <a className="grid grid-cols-9 w-full " href=item.link target="_blank" key=item.title>
+      <div className="text-yellow-600 col-span-6 sm:col-span-5 font-semibold">
+        {s(item.title)}
+      </div>
+      <div className="text-gray-400 text-sm col-span-2 sm:col-span-3 ml-4">
+        {s(item.auxiliaryAttribute)}
+      </div>
       <div className="text-right"> rightArrow </div>
     </a>
 
@@ -92,9 +99,9 @@ module BasicWithAuxiliaryAttribute = {
     <div className="rounded-lg shadow overflow-y-auto relative">
       <ul>
         {items
-        |> Array.map(item =>
+        |> Array.map((item: Item.t) =>
           // TODO: ensure link is accessible; indicator that link opens tab
-          <li className="p-6 cursor-pointer hover:bg-gray-200"> {itemRow(item)} </li>
+          <li className="p-6 cursor-pointer hover:bg-gray-200" key=item.title> {itemRow(item)} </li>
         )
         |> React.array}
       </ul>
