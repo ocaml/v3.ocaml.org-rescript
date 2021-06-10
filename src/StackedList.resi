@@ -14,12 +14,12 @@ module BasicWithIcon: {
   let make: (~items: array<Item.t>, ~rowPrefixIcon: RowPrefixIcon.t) => React.element
 }
 
-module BasicWithDate: {
+module BasicWithAuxiliaryAttribute: {
   module Item: {
     type t = {
       link: string,
       title: string,
-      date: string,
+      auxiliaryAttribute: string,
     }
   }
 

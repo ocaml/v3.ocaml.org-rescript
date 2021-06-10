@@ -65,12 +65,12 @@ module BasicWithIcon = {
   }
 }
 
-module BasicWithDate = {
+module BasicWithAuxiliaryAttribute = {
   module Item = {
     type t = {
       link: string,
       title: string, // TODO: better name than title
-      date: string, // TODO: real data type
+      auxiliaryAttribute: string,
     }
   }
 
@@ -80,7 +80,7 @@ module BasicWithDate = {
     // TODO: is it okay to make an "a" tag into a grid??
     <a className="grid grid-cols-8 w-full " href=item.link target="_blank" key=item.title>
       <div className="text-yellow-600 col-span-5 font-semibold"> {s(item.title)} </div>
-      <div className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.date)} </div>
+      <div className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.auxiliaryAttribute)} </div>
       <div className="text-right"> rightArrow </div>
     </a>
 
@@ -94,7 +94,7 @@ module BasicWithDate = {
         {items
         |> Array.map(item =>
           // TODO: ensure link is accessible; indicator that link opens tab
-          <li className="p-6  cursor-pointer hover:bg-gray-200"> {itemRow(item)} </li>
+          <li className="p-6 cursor-pointer hover:bg-gray-200"> {itemRow(item)} </li>
         )
         |> React.array}
       </ul>

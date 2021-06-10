@@ -26,11 +26,11 @@ module MediaSection = {
 
       {
         let toItem = (i: Item.t) => {
-          StackedList.BasicWithDate.Item.link: i.link,
+          StackedList.BasicWithAuxiliaryAttribute.Item.link: i.link,
           title: `${i.name} by ${i.author}`,
-          date: i.creationDate,
+          auxiliaryAttribute: i.creationDate,
         }
-        <StackedList.BasicWithDate items={content.items |> Array.map(toItem)} />
+        <StackedList.BasicWithAuxiliaryAttribute items={content.items |> Array.map(toItem)} />
       }
       // TODO: enable link and create video archive page
       <p className="text-right py-6 cursor-pointer hover:underline font-semibold text-yellow-600">
