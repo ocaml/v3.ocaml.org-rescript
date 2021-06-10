@@ -34,11 +34,13 @@ module LatestNews = {
         <div className="bg-white border border-gray-300 overflow-hidden rounded-md mb-2">
           <ul className="divide-y divide-gray-300">
             {
-              let items = content.news |> Array.map((n: NewsItem.t) => {
+              let toItem = (n: NewsItem.t) => {
                 StackedList.BasicWithIcon.Item.link: n.link,
                 title: n.title,
-              })
-              <StackedList.BasicWithIcon items itemIcon=paperScrollIcon />
+              }
+              <StackedList.BasicWithIcon
+                items={content.news |> Array.map(toItem)} itemIcon=paperScrollIcon
+              />
             }
           </ul>
         </div>
