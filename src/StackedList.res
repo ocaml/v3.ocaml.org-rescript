@@ -1,6 +1,7 @@
 let s = React.string
 
 module BasicWithIcon = {
+  // generalize this type to: { link: string, attributes: 'a } and move it to top level module
   module Item = {
     type t = {
       link: string,
