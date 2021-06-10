@@ -62,10 +62,10 @@
   dependencies:
     purgecss "^3.1.3"
 
-"@glennsl/bs-json@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@glennsl/bs-json/-/bs-json-5.0.2.tgz#cfb85d94d370ec6dc17849e0ddb1a51eee08cfcc"
-  integrity sha512-vVlHJNrhmwvhyea14YiV4L5pDLjqw1edE3GzvMxlbPPQZVhzgO3sTWrUxCpQd2gV+CkMfk4FHBYunx9nWtBoDg==
+"@glennsl/bs-json@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@glennsl/bs-json/-/bs-json-5.0.3.tgz#c8e56315161e853479a9e37982e1b78ace86a678"
+  integrity sha512-rOm2j91+qo4pjjYBaVVnRPxBqjLbEzK8QVUu4F47Ss5DxXkLOdDXjHcX0VW0MaCTN6rCUjHpsilrgbP6vkMzIw==
 
 "@hapi/accept@5.0.1":
   version "5.0.1"
@@ -469,7 +469,7 @@ browserslist@^4.16.3:
     escalade "^3.1.1"
     node-releases "^1.1.71"
 
-bs-platform@9.0.2:
+bs-platform@9.0.2, bs-platform@^9.0.2:
   version "9.0.2"
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-9.0.2.tgz#a6eac70eb8924a322556dacaccbfbc9b2a0d3a37"
   integrity sha512-Ye9JqJ4Oa7mcjjoOVRYI8Uc2Cf8N7jQLWDcdUplY7996d/YErSR7WitmV7XnSwr4EvdrbwjEsg1NxNjUQv3ChA==
