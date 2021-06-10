@@ -41,11 +41,14 @@ module BasicWithIcon = {
     </svg>
 
   let itemRow = (item: Item.t, itemIcon) =>
-    <a href=item.link target="_blank">
-      <div className="flex justify-between items-center space-x-6">
-        <div> itemIcon {s(item.title)} </div> rightArrow
-      </div>
-    </a>
+    // TODO: accessible link; indicate that link opens new tab
+    <li className="px-6 py-4" key=item.title>
+      <a href=item.link target="_blank">
+        <div className="flex justify-between items-center space-x-6">
+          <div> itemIcon {s(item.title)} </div> rightArrow
+        </div>
+      </a>
+    </li>
 
   @react.component
   let make = (~items, ~rowPrefixIcon) => {
@@ -54,12 +57,9 @@ module BasicWithIcon = {
     }
     <ul className="divide-y divide-gray-300">
       {items
-      |> Array.map((item: Item.t) =>
-        // TODO: accessible link; indicate that link opens new tab
-        <li className="px-6 py-4" key=item.title>
-          {itemRow(item, rowPrefixIcon(~display="hidden lg:inline-block", ~marginRight="mr-3"))}
-        </li>
-      )
+      |> Array.map((item: Item.t) => {
+        itemRow(item, rowPrefixIcon(~display="hidden lg:inline-block", ~marginRight="mr-3"))
+      })
       |> React.array}
     </ul>
   }
@@ -77,19 +77,22 @@ module BasicWithAuxiliaryAttribute = {
   let rightArrow = {s(` -> `)}
 
   let itemRow = (item: Item.t) =>
-    // TODO: should w-full be passed a parameter?
-    // TODO: is it okay to make an "a" tag into a grid??
-    // TODO: these items should vertically align to the center of the row
-    // TODO: change from grid to flexbox
-    <a className="grid grid-cols-9 w-full " href=item.link target="_blank" key=item.title>
-      <div className="text-yellow-600 col-span-6 sm:col-span-5 font-semibold">
-        {s(item.title)}
-      </div>
-      <div className="text-gray-400 text-sm col-span-2 sm:col-span-3 ml-4">
-        {s(item.auxiliaryAttribute)}
-      </div>
-      <div className="text-right"> rightArrow </div>
-    </a>
+    // TODO: ensure link is accessible; indicator that link opens tab
+    <li className="p-6 cursor-pointer hover:bg-gray-200" key=item.title>
+      // TODO: should w-full be passed a parameter?
+      // TODO: is it okay to make an "a" tag into a grid??
+      // TODO: these items should vertically align to the center of the row
+      // TODO: change from grid to flexbox
+      <a className="grid grid-cols-9 w-full " href=item.link target="_blank" key=item.title>
+        <div className="text-yellow-600 col-span-6 sm:col-span-5 font-semibold">
+          {s(item.title)}
+        </div>
+        <div className="text-gray-400 text-sm col-span-2 sm:col-span-3 ml-4">
+          {s(item.auxiliaryAttribute)}
+        </div>
+        <div className="text-right"> rightArrow </div>
+      </a>
+    </li>
 
   @react.component
   let make = (~items) =>
@@ -97,13 +100,6 @@ module BasicWithAuxiliaryAttribute = {
     // TODO: why aren't these attributes directly on the "ul" below?
     // TODO: why is overflow-y-auto used?
     <div className="rounded-lg shadow overflow-y-auto relative">
-      <ul>
-        {items
-        |> Array.map((item: Item.t) =>
-          // TODO: ensure link is accessible; indicator that link opens tab
-          <li className="p-6 cursor-pointer hover:bg-gray-200" key=item.title> {itemRow(item)} </li>
-        )
-        |> React.array}
-      </ul>
+      <ul> {items |> Array.map((item: Item.t) => {itemRow(item)}) |> React.array} </ul>
     </div>
 }
