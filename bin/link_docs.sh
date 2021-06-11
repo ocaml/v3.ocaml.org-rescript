@@ -22,8 +22,8 @@ git pull origin $LIVE_BRANCH
 
 checkout_cmd=$(mktemp)
 
-echo "git branch -D local-$LIVE_BRANCH" > $checkout_cmd
 echo "git checkout main" >> $checkout_cmd
+echo "git branch -D local-$LIVE_BRANCH" > $checkout_cmd
 echo "git checkout -b local-$LIVE_BRANCH" >> $checkout_cmd
 
 for i in *; do
@@ -31,7 +31,7 @@ for i in *; do
   echo "git merge -m . $commit" >> $checkout_cmd
 done
 
-/bin/sh $checkout_cmd >out.txt 2>&1
+/bin/sh $checkout_cmd >/tmp/out.txt 2>&1
 
 cd ../public
 ln -sf ../alldocs/content/packages .
