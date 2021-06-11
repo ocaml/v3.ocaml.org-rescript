@@ -31,7 +31,7 @@ for i in *; do
   echo "git merge -m . $commit" >> checkout_cmd.sh
 done
 
-/bin/sh checkout_cmd.sh
+/bin/sh checkout_cmd.sh >out.txt 2>&1
 
 cd ../public
 ln -sf ../alldocs/content/packages .
