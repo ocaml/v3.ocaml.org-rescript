@@ -20,18 +20,18 @@ echo "Updating live branch"
 git checkout $LIVE_BRANCH
 git pull origin $LIVE_BRANCH 
 
-rm -f checkout_cmd.sh
+checkout_cmd=$(mktemp)
 
-echo "git branch -D local-$LIVE_BRANCH" > checkout_cmd.sh
-echo "git checkout main" >> checkout_cmd.sh
-echo "git checkout -b local-$LIVE_BRANCH" >> checkout_cmd.sh
+echo "git branch -D local-$LIVE_BRANCH" > $checkout_cmd
+echo "git checkout main" >> $checkout_cmd
+echo "git checkout -b local-$LIVE_BRANCH" >> $checkout_cmd
 
 for i in *; do
   commit=$(cat $i)
-  echo "git merge -m . $commit" >> checkout_cmd.sh
+  echo "git merge -m . $commit" >> $checkout_cmd
 done
 
-/bin/sh checkout_cmd.sh >out.txt 2>&1
+/bin/sh $checkout_cmd >out.txt 2>&1
 
 cd ../public
 ln -sf ../alldocs/content/packages .
