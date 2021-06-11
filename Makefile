@@ -26,6 +26,7 @@ endif
 	$(YARN) install
 	make vendor/ood && $(YARN) link ood
 	$(ESY) install
+	bin/link_docs.sh
 
 vendor/ood:
 	mkdir -p vendor && cd vendor && \
