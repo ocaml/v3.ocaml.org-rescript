@@ -26,7 +26,6 @@
   "scripts": {
     "next:debug": "NODE_OPTIONS='--inspect' next dev",
     "watch": "concurrently --raw \"bsb -make-world -w\" \"next dev\" ",
-    "watch-and-serve": "concurrently --raw \"bsb -make-world -w\" \"next dev\" \"http-server out\"",
     "build": "bsb -clean-world -make-world && next build && yarn total-dependencies-check",
     "start-test-server": "next start",
     "total-dependencies-check": "(test $(grep '^[a-zA-Z@].*:$' yarn.lock | wc -l) -lt 500 && echo ok) || (echo too many deps && exit 1) "
