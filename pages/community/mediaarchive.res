@@ -1,78 +1,82 @@
-let s = React.string
+module T = {
+  let s = React.string
 
-module MediaSection = {
-  module Item = {
-    type t = {
-      name: string,
-      author: string,
-      creationDate: string, // TODO: date type
-      link: string,
+  module MediaSection = {
+    module Item = {
+      type t = {
+        name: string,
+        author: string,
+        creationDate: string, // TODO: date type
+        link: string,
+      }
     }
+
+    // TODO: define complete content type; factor out content
+    type t = {
+      title: string,
+      image: string,
+      items: array<Item.t>,
+    }
+
+    @react.component
+    let make = (~content) =>
+      <SectionContainer.FullyResponsiveCentered paddingY="pt-6" paddingX="px-4">
+        <div className="rounded-lg shadow overflow-y-auto relative">
+          <img src=content.image />
+        </div>
+        <h2 className="font-semibold text-2xl py-9 sm:text-3xl"> {s(content.title)} </h2>
+        // Generic Highlight Component
+        <div className="rounded-lg shadow overflow-y-auto relative">
+          <ul>
+            {content.items
+            |> Array.mapi((idx, item: Item.t) =>
+              // TODO: ensure link is accessible; indicator that link opens tab
+              <a href=item.link target="_blank" key={Js.Int.toString(idx)}>
+                <li className="p-6 grid grid-cols-8 w-full cursor-pointer hover:bg-gray-100">
+                  <p className="text-yellow-600 col-span-5 font-semibold">
+                    {s(item.name ++ ` by ` ++ item.author)}
+                  </p>
+                  <p className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.creationDate)} </p>
+                  <p className="text-right"> {s(` -> `)} </p>
+                </li>
+              </a>
+            )
+            |> React.array}
+          </ul>
+        </div>
+        // TODO: enable link and create video archive page
+        <p className="text-right py-6 cursor-pointer hover:underline font-semibold text-yellow-600">
+          {s(content.title)}
+        </p>
+      </SectionContainer.FullyResponsiveCentered>
   }
 
-  // TODO: define complete content type; factor out content
   type t = {
     title: string,
-    image: string,
-    items: array<Item.t>,
+    pageDescription: string,
+    videosContent: MediaSection.t,
+    talksContent: MediaSection.t,
+    papersContent: MediaSection.t,
   }
 
   @react.component
-  let make = (~content) =>
-    <SectionContainer.FullyResponsiveCentered paddingY="pt-6" paddingX="px-4">
-      <div className="rounded-lg shadow overflow-y-auto relative"> <img src=content.image /> </div>
-      <h2 className="font-semibold text-2xl py-9 sm:text-3xl"> {s(content.title)} </h2>
-      // Generic Highlight Component
-      <div className="rounded-lg shadow overflow-y-auto relative">
-        <ul>
-          {content.items
-          |> Array.mapi((idx, item: Item.t) =>
-            // TODO: ensure link is accessible; indicator that link opens tab
-            <a href=item.link target="_blank" key={Js.Int.toString(idx)}>
-              <li className="p-6 grid grid-cols-8 w-full cursor-pointer hover:bg-gray-100">
-                <p className="text-yellow-600 col-span-5 font-semibold">
-                  {s(item.name ++ ` by ` ++ item.author)}
-                </p>
-                <p className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.creationDate)} </p>
-                <p className="text-right"> {s(` -> `)} </p>
-              </li>
-            </a>
-          )
-          |> React.array}
-        </ul>
-      </div>
-      // TODO: enable link and create video archive page
-      <p className="text-right py-6 cursor-pointer hover:underline font-semibold text-yellow-600">
-        {s(content.title)}
-      </p>
-    </SectionContainer.FullyResponsiveCentered>
-}
+  let make = (~content: t) => <>
+    <ConstructionBanner
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
+      playgroundLink=`/play/resources/mediaarchive`
+    />
+    <Page.Basic
+      title=content.title pageDescription=content.pageDescription addContainer=Page.Basic.Narrow>
+      <MediaSection content=content.videosContent />
+      <MediaSection content=content.talksContent />
+      <MediaSection content=content.papersContent />
+    </Page.Basic>
+  </>
 
-type t = {
-  title: string,
-  pageDescription: string,
-  videosContent: MediaSection.t,
-  talksContent: MediaSection.t,
-  papersContent: MediaSection.t,
-}
+  module Params = Page2.P2.Params.Lang
 
-@react.component
-let make = (~content: t) => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
-    playgroundLink=`/play/resources/mediaarchive`
-  />
-  <Page.Basic
-    title=content.title pageDescription=content.pageDescription addContainer=Page.Basic.Narrow>
-    <MediaSection content=content.videosContent />
-    <MediaSection content=content.talksContent />
-    <MediaSection content=content.papersContent />
-  </Page.Basic>
-</>
-
-include Page2.Make({
-  type content = t
-  let getContent = (lang: Lang.t) => {
+  let getContent = (params: Params.t) => {
+    let lang = params.lang
     let browseMore = s => {
       switch lang {
       | #en | #fr | #es => "Browse more " ++ s
@@ -145,6 +149,7 @@ include Page2.Make({
     | #en => en
     }
   }
+}
 
-  let component = (content: content) => make(makeProps(~content, ()))
-})
+include T
+include Page2.P2.Make(T)
