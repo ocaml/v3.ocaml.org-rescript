@@ -15,12 +15,14 @@ const config = {
   // and ensure local development and Vercel deployments
   // use the same rule.
   async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/:path*/index.html',
-      }
-    ]
+    return {
+      fallback: [
+        {
+          source: '/:path*',
+          destination: '/:path*/index.html',
+        },
+      ],
+    }
   },
   // Might need to move this to nginx or other config,
   // if deployment moves from Vercel to Netlify
