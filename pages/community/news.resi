@@ -36,4 +36,4 @@ type t = {
   weeklyNews: WeeklyNews.t,
 }
 
-include Page2.P2.S
+include Page2.S

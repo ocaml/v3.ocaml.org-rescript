@@ -43,4 +43,4 @@ type t = {
   spaces: array<string>,
 }
 
-include Page2.P2.S
+include Page2.S

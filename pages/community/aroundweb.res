@@ -415,7 +415,7 @@ module T = {
     }
   }
 
-  module Params = Page2.P2.Params.Lang
+  module Params = Page2.Params.Lang
 
   let getContent = (params: Params.t) => {
     let lang = params.lang
@@ -492,4 +492,4 @@ module T = {
 }
 
 include T
-include Page2.P2.Make(T)
+include Page2.Make(T)
