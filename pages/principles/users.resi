@@ -14,4 +14,4 @@ type t = {
   companies: array<Company.t>,
 }
 
-include Page2.S with type t := t
+include Page2.P2.S

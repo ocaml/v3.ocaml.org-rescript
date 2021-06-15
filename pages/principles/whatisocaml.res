@@ -1,20 +1,22 @@
-type t = {
-  title: string,
-  pageDescription: string,
-}
+module T = {
+  type t = {
+    title: string,
+    pageDescription: string,
+  }
 
-@react.component
-let make = (~content: t) => <>
-  <ConstructionBanner />
-  <Page.TopImage title=content.title pageDescription=content.pageDescription>
-    {<> </>}
-  </Page.TopImage>
-</>
+  @react.component
+  let make = (~content: t) => <>
+    <ConstructionBanner />
+    <Page.TopImage title=content.title pageDescription=content.pageDescription>
+      {<> </>}
+    </Page.TopImage>
+  </>
 
-include Page2.Make({
-  type content = t
+  module Params = Page2.P2.Params.Lang
 
-  let getContent = (lang: Lang.t) => {
+  let getContent = (params: Params.t) => {
+    let lang = params.lang
+
     let en = Js.Promise.resolve({
       title: `What is OCaml`,
       pageDescription: `A description of OCaml's features.`,
@@ -29,6 +31,7 @@ include Page2.Make({
     | #en => en
     }
   }
+}
 
-  let component = (content: content) => make(makeProps(~content, ()))
-})
+include T
+include Page2.P2.Make(T)

@@ -3,4 +3,4 @@ type t = {
   pageDescription: string,
 }
 
-include Page2.S with type t := t
+include Page2.P2.S
