@@ -27,8 +27,11 @@ module Params: {
 }
 
 module type S = {
+  type t
   type props
   type params
+  @react.component
+  let make: (~content: t) => React.element
   let getStaticProps: Next.GetStaticProps.t<props, params, void>
   let default: props => React.element
 }
@@ -44,4 +47,4 @@ module type Arg = {
   let make: (~content: t) => React.element
 }
 
-module Make: Arg => S
+module Make: (Arg: Arg) => (S with type t := Arg.t)

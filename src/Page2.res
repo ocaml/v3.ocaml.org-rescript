@@ -62,8 +62,11 @@ module Params = {
 }
 
 module type S = {
+  type t
   type props
   type params
+  @react.component
+  let make: (~content: t) => React.element
   let getStaticProps: Next.GetStaticProps.t<props, params, void>
   let default: props => React.element
 }
@@ -79,7 +82,7 @@ module type Arg = {
   let make: (~content: t) => React.element
 }
 
-module Make = (Arg: Arg): S => {
+module Make = (Arg: Arg): (S with type t := Arg.t) => {
   // let lang = Lang.ofString(ctx.Next.GetStaticProps.params.lang)
   type props = {"content": Arg.t}
   type params = Arg.Params.t
@@ -100,4 +103,5 @@ module Make = (Arg: Arg): S => {
   //   | Some(content: Arg.Content.t) => Arg.make(Arg.makeProps(~content, ()))
   //   }
   // }
+  include Arg
 }

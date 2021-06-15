@@ -25,4 +25,4 @@ type t = {
   papersContent: MediaSection.t,
 }
 
-include Page2.S
+include Page2.S with type t := t
