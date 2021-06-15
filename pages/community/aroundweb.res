@@ -417,8 +417,8 @@ module T = {
 
   module Params = Page2.P2.Params.Lang
 
-  let getContent = (_params: Params.t) => {
-    let lang = #en
+  let getContent = (params: Params.t) => {
+    let lang = params.lang
     let news = NewsItem.readAll()
     let pageContent = "pages/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
     let events = EventsData.readAll().events->Array.of_list
