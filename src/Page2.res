@@ -67,12 +67,8 @@ module type S = {
   @react.component
   let make: (~content: t) => React.element
   let getStaticProps: Next.GetStaticProps.t<props<t>, params, void>
-  let default: props<Js.Json.t> => React.element
-}
-
-module type SStaticPaths = {
-  include S
   let getStaticPaths: Next.GetStaticPaths.t<params>
+  let default: props<Js.Json.t> => React.element
 }
 
 module type Arg = {
@@ -82,6 +78,7 @@ module type Arg = {
   module Params: Params.S
 
   let getContent: Params.t => Js.Promise.t<t>
+  let getParams: unit => Js.Promise.t<array<Params.t>>
 
   @react.component
   let make: (~content: t) => React.element
@@ -113,6 +110,18 @@ module Make = (Arg: Arg): (S with type t := Arg.t and type params = Arg.Params.t
     | None => failwith("BUG: Unable to parse content")
     | Some(content: Arg.t) => Arg.make(Arg.makeProps(~content, ()))
     }
+  }
+
+  let getStaticPaths: Next.GetStaticPaths.t<Arg.Params.t> = () => {
+    let params = Arg.getParams()
+    params |> Js.Promise.then_(params =>
+      Js.Promise.resolve({
+        Next.GetStaticPaths.paths: params->Belt.Array.map(params => {
+          Next.GetStaticPaths.params: params,
+        }),
+        fallback: false,
+      })
+    )
   }
 
   include Arg

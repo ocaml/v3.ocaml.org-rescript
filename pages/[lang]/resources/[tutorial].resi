@@ -5,4 +5,4 @@ type t = {
   tableOfContents: MarkdownPage.TableOfContents.t,
 }
 
-include Page2.SStaticPaths with type t := t
+include Page2.S with type t := t

@@ -8,23 +8,30 @@ module T = {
   include UnsafeJsonable
 
   @react.component
-  let make = (~content) => <>
+  let make = (~content: t) => <>
     <ConstructionBanner />
-    <Page.Basic title=content.title pageDescription=content.pageDescription> {<> </>} </Page.Basic>
+    <Page.TopImage title=content.title pageDescription=content.pageDescription>
+      {<> </>}
+    </Page.TopImage>
   </>
 
   module Params = Page2.Params.Lang
 
+  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
+
   let getContent = (params: Params.t) => {
     let lang = params.lang
+
     let en = Js.Promise.resolve({
-      title: `Papers`,
-      pageDescription: `A selection of papers grouped by popular categories.`,
+      title: `What is OCaml`,
+      pageDescription: `A description of OCaml's features.`,
     })
+
     let lang = switch lang {
     | #en => #en
     | #fr | #es => Lang.default
     }
+
     switch lang {
     | #en => en
     }

@@ -8,18 +8,20 @@ module T = {
   include UnsafeJsonable
 
   @react.component
-  let make = (~content: t) => <>
+  let make = (~content) => <>
     <ConstructionBanner />
     <Page.Basic title=content.title pageDescription=content.pageDescription> {<> </>} </Page.Basic>
   </>
 
   module Params = Page2.Params.Lang
 
+  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
+
   let getContent = (params: Params.t) => {
     let lang = params.lang
     let en = Js.Promise.resolve({
-      title: `News Archive`,
-      pageDescription: `Archive of news presented in the News page.`,
+      title: `Papers`,
+      pageDescription: `A selection of papers grouped by popular categories.`,
     })
     let lang = switch lang {
     | #en => #en

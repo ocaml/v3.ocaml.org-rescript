@@ -15,18 +15,18 @@ module T = {
 
   module Params = Page2.Params.Lang
 
+  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
+
   let getContent = (params: Params.t) => {
     let lang = params.lang
     let en = Js.Promise.resolve({
-      title: `Terms and Conditions`,
+      title: `Privacy Policy`,
       pageDescription: ``,
     })
-
     let lang = switch lang {
     | #en => #en
     | #fr | #es => Lang.default
     }
-
     switch lang {
     | #en => en
     }

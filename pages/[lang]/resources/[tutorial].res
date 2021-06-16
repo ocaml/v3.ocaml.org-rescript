@@ -77,24 +77,16 @@ module T = {
     }
   }
 
-  let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
-    // TODO: move this logic into a module dedicated to fetching tutorials
-    // TODO: throw exception if any tutorials have the same filename or add more parts to the tutorials path
-    // TODO: throw exception if any entry is not a directory
+  let getParams = () => {
     let markdownFiles = Fs.readdirSyncEntries("data/tutorials/")
-
-    let ret = {
-      Next.GetStaticPaths.paths: Array.map((f: Fs.dirent) => {
-        Next.GetStaticPaths.params: {
-          // TODO: better error
-          Params.tutorial: Js.String.split(".", f.name)[0],
-          lang: #en,
-        },
-      }, markdownFiles),
-      // TODO: update bindings to always use "false"
-      fallback: false,
-    }
-    Js.Promise.resolve(ret)
+    let lang = #en
+    Js.Promise.resolve(
+      markdownFiles |> Array.map((f: Fs.dirent) => {
+        // TODO: better error
+        Params.tutorial: Js.String.split(".", f.name)[0],
+        lang: lang,
+      }),
+    )
   }
 }
 

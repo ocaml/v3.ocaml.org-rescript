@@ -33,12 +33,8 @@ module type S = {
   @react.component
   let make: (~content: t) => React.element
   let getStaticProps: Next.GetStaticProps.t<props<t>, params, void>
-  let default: props<Js.Json.t> => React.element
-}
-
-module type SStaticPaths = {
-  include S
   let getStaticPaths: Next.GetStaticPaths.t<params>
+  let default: props<Js.Json.t> => React.element
 }
 
 module type Arg = {
@@ -48,6 +44,7 @@ module type Arg = {
   module Params: Params.S
 
   let getContent: Params.t => Js.Promise.t<t>
+  let getParams: unit => Js.Promise.t<array<Params.t>>
 
   @react.component
   let make: (~content: t) => React.element

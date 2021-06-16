@@ -10,7 +10,7 @@ module T = {
   @react.component
   let make = (~content: t) => <>
     <ConstructionBanner
-      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=931%3A6483`
+      figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=927%3A5`
     />
     <Page.TopImage title=content.title pageDescription=content.pageDescription>
       {<> </>}
@@ -19,11 +19,13 @@ module T = {
 
   module Params = Page2.Params.Lang
 
+  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
+
   let getContent = (params: Params.t) => {
     let lang = params.lang
     let en = Js.Promise.resolve({
-      title: `Carbon Footprint`,
-      pageDescription: `Over the years, the OCaml community has become more and more proactive when it comes to reducing its environmental impact. As part of this journey we have documented our efforts towards becoming Carbon Zero.`,
+      title: `Opportunities`,
+      pageDescription: `This is a space where groups, companies, and organisations can advertise their projects directly to the OCaml community.`,
     })
     let lang = switch lang {
     | #en => #en

@@ -107,6 +107,8 @@ module T = {
 
   module Params = Page2.Params.Lang
 
+  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
+
   let getContent = (params: Params.t) => {
     let lang = params.lang
     let en = Js.Promise.resolve("data/history.yaml"->Fs.readFileSync->JsYaml.load()->decode)
