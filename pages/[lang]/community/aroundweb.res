@@ -425,7 +425,8 @@ module T = {
   let getContent = (params: Params.t) => {
     let lang = params.lang
     let news = NewsItem.readAll()
-    let pageContent = "pages/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
+    let pageContent =
+      "pages/[lang]/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
     let events = EventsData.readAll().events->Array.of_list
     let _ = Array.sort((a, b) => Event.compare_by_date(b, a), events)
     let events = Belt.Array.sliceToEnd(events, -3)
