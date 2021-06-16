@@ -91,7 +91,7 @@ let make = (~content, ~marginBottom=?) => {
 
   <SectionContainer.MediumCentered ?marginBottom paddingX="px-12">
     title
-    <div className="lg:grid lg:grid-cols-2 mb-9 gap-x-9 gap-y-3">
+    <div className="space-y-3 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-9 lg:gap-y-3 mb-9">
       {categoryHighlights(content.topLeftCategory)}
       {categoryHighlights(content.topRightCategory)}
       {categoryHighlights(content.bottomLeftCategory)}
