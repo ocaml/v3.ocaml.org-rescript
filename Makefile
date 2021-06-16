@@ -39,7 +39,7 @@ watch:
 
 .PHONY: build
 build:
-	$(ESY) build
+	# $(ESY) build
 	$(YARN) build
 
 .PHONY: serve
