@@ -1,8 +1,11 @@
+open! Import
+
 module T = {
   type t = {
     title: string,
     pageDescription: string,
   }
+  include UnsafeJsonable
 
   @react.component
   let make = (~content: t) => <>

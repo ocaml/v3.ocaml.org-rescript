@@ -4,17 +4,10 @@ module Timeline: {
   }
 }
 
-type pageContent = {
+type t = {
   title: string,
   pageDescription: string,
   timeline: array<Timeline.Item.t>,
 }
 
-@react.component
-let make: (~content: pageContent) => React.element
-
-type props = {content: pageContent}
-
-let getStaticProps: Next.GetStaticProps.t<props, unit, unit>
-
-let default: {"content": pageContent} => React.element
+include Page2.S with type t := t

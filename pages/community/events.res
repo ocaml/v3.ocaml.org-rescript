@@ -1,3 +1,7 @@
+open! Import
+
+let s = React.string
+
 module T = {
   type t = {
     title: string,
@@ -5,8 +9,7 @@ module T = {
     events: array<Event.t>,
     headers: array<string>,
   }
-
-  let s = React.string
+  include UnsafeJsonable
 
   let dedicated_page = (event: Event.t) => {
     // OCaml workshop pages

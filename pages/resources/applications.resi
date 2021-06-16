@@ -17,27 +17,11 @@ module UsingOcaml: {
   }
 }
 
-type prop = {
+type t = {
   title: string,
   pageDescription: string,
   developerGuidesContent: DeveloperGuides.t,
   usingOcamlContent: UsingOcaml.t,
 }
 
-@react.component
-let make: (
-  ~title: string,
-  ~pageDescription: string,
-  ~developerGuidesContent: DeveloperGuides.t,
-  ~usingOcamlContent: UsingOcaml.t,
-) => React.element
-
-// TODO: is there a better approach then using "unit" below?
-let getStaticProps: Next.GetStaticProps.t<prop, unit, unit>
-
-let default: {
-  "title": string,
-  "pageDescription": string,
-  "developerGuidesContent": DeveloperGuides.t,
-  "usingOcamlContent": UsingOcaml.t,
-} => React.element
+include Page2.S with type t := t

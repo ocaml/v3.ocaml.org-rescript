@@ -1,6 +1,8 @@
-module T = {
-  let s = React.string
+open! Import
 
+let s = React.string
+
+module T = {
   module Company = {
     type t = {
       logo: string,
@@ -61,6 +63,7 @@ module T = {
     pageDescription: string,
     companies: array<Company.t>,
   }
+  include UnsafeJsonable
 
   module LogoSection = {
     @react.component

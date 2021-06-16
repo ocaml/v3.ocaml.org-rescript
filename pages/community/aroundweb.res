@@ -1,6 +1,8 @@
-module T = {
-  let s = React.string
+open! Import
 
+let s = React.string
+
+module T = {
   module LatestNews = {
     type t = {
       latest: string,
@@ -186,6 +188,7 @@ module T = {
     spacesSectionHeader: string,
     spaces: array<string>,
   }
+  include UnsafeJsonable
 
   @react.component
   let make = (~content) => <>

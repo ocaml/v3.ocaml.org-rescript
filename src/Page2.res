@@ -30,7 +30,7 @@ module Params = {
     let read = json => json->ofJson->Belt.Option.getExn
 
     module Tutorial = {
-      type t = {lang: Lang.t, tutorial: int}
+      type t = {lang: Lang.t, tutorial: string}
       let ofJson = (json: Js.Json.t): option<t> => {
         let langT = read(json)
         json
@@ -40,8 +40,7 @@ module Params = {
           ->Js.Dict.get("tutorial")
           ->Belt.Option.flatMap(json =>
             json
-            ->Js.Json.decodeNumber
-            ->Belt.Option.map(Belt.Int.fromFloat)
+            ->Js.Json.decodeString
             ->Belt.Option.map(tutorial => {
               lang: langT.lang,
               tutorial: tutorial,
@@ -53,7 +52,7 @@ module Params = {
         Js.Json.object_(
           Js.Dict.fromArray([
             ("lang", t.lang->Lang.toJson),
-            ("tutorial", t.tutorial->Belt.Int.toFloat->Js.Json.number),
+            ("tutorial", t.tutorial->Js.Json.string),
           ]),
         )
       let read = (json: u) => json->ofJson->Belt.Option.getExn
@@ -63,16 +62,22 @@ module Params = {
 
 module type S = {
   type t
-  type props
+  type props<'a>
   type params
   @react.component
   let make: (~content: t) => React.element
-  let getStaticProps: Next.GetStaticProps.t<props, params, void>
-  let default: props => React.element
+  let getStaticProps: Next.GetStaticProps.t<props<t>, params, void>
+  let default: props<Js.Json.t> => React.element
+}
+
+module type SStaticPaths = {
+  include S
+  let getStaticPaths: Next.GetStaticPaths.t<params>
 }
 
 module type Arg = {
   type t
+  include Jsonable with type t := t
 
   module Params: Params.S
 
@@ -82,26 +87,33 @@ module type Arg = {
   let make: (~content: t) => React.element
 }
 
-module Make = (Arg: Arg): (S with type t := Arg.t) => {
+module Make = (Arg: Arg): (S with type t := Arg.t and type params = Arg.Params.t) => {
   // let lang = Lang.ofString(ctx.Next.GetStaticProps.params.lang)
-  type props = {"content": Arg.t}
-  type params = Arg.Params.t
-  let getStaticProps: Next.GetStaticProps.t<props, params, void> = ctx => {
-    Arg.getContent(ctx.params) |> Js.Promise.then_(content =>
-      Js.Promise.resolve({
-        "props": {"content": content},
-      })
-    )
+
+  module Props = {
+    type t<'content> = {content: 'content}
+    let toJson = (t: t<'content>, contentToJson: 'content => Js.Json.t): Js.Json.t =>
+      [("content", contentToJson(t.content))]->Js.Dict.fromArray->Js.Json.object_
   }
 
-  let default = (props: props) => {
-    Arg.make(Arg.makeProps(~content=props["content"], ()))
+  type props<'a> = Props.t<'a>
+  type params = Arg.Params.t
+
+  let getStaticProps: Next.GetStaticProps.t<props<Arg.t>, params, void> = ctx => {
+    Arg.getContent(ctx.params) |> Js.Promise.then_(content => {
+      let props = {Props.content: content}
+      Js.Promise.resolve({
+        "props": props->Props.toJson(Arg.toJson),
+      })
+    })
   }
-  // let default = (props: props) => {
-  //   switch Arg.Content.ofJson(props["content"]) {
-  //   | None => failwith("BUG: Unable to parse content")
-  //   | Some(content: Arg.Content.t) => Arg.make(Arg.makeProps(~content, ()))
-  //   }
-  // }
+
+  let default = (props: props<Js.Json.t>) => {
+    switch Arg.ofJson(props.content) {
+    | None => failwith("BUG: Unable to parse content")
+    | Some(content: Arg.t) => Arg.make(Arg.makeProps(~content, ()))
+    }
+  }
+
   include Arg
 }
