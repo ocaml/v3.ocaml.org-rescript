@@ -3,7 +3,4 @@ type t = {
   pageDescription: string,
 }
 
-@react.component
-let make: (~content: t=?) => React.element
-
-let default: {"content": option<t>} => React.element
+include Page2.S with type t := t
