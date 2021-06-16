@@ -34,8 +34,8 @@ done
 /bin/sh $checkout_cmd >/tmp/out.txt 2>&1
 
 cd ../public
-ln -sf ../alldocs/content/packages .
-ln -sf ../alldocs/content/universes .
+cp -R ../alldocs/content/packages .
+cp -R ../alldocs/content/universes .
 
 
 
