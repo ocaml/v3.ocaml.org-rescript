@@ -2,8 +2,6 @@ module Link = Next.Link
 
 let s = React.string
 
-// TODO: add .resi file
-
 // TODO: move this into its own top level module
 module Story = {
   type t = {
