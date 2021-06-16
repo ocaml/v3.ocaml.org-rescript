@@ -28,4 +28,7 @@ type t = {
 let seeAllArrowIcon: string => React.element
 
 @react.component
-let make: (~margins: string, ~content: t) => React.element
+let make: (
+  ~content: t,
+  ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
+) => React.element

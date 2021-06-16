@@ -116,7 +116,7 @@ module CategorizedNews = {
   }
 
   @react.component
-  let make = (~margins, ~content) => {
+  let make = (~content, ~marginBottom=?) => {
     let highlightContent = {
       HighlightsInQuadrants.title: content.otherNewsStories,
       topLeftCategory: NewsCategory.toHighlightsCategory(content.communityCategory, communityIcon),
@@ -126,7 +126,7 @@ module CategorizedNews = {
       archiveUrl: InternalUrls.communityNewsarchive,
       goToArchive: content.goToNewsArchive,
     }
-    <HighlightsInQuadrants margins content=highlightContent />
+    <HighlightsInQuadrants content=highlightContent ?marginBottom />
   }
 }
 
@@ -137,8 +137,8 @@ module WeeklyNews = {
   }
 
   @react.component
-  let make = (~content, ~margins) =>
-    <SectionContainer.MediumCentered margins>
+  let make = (~content, ~marginBottom=?) =>
+    <SectionContainer.MediumCentered ?marginBottom>
       <div className="lg:grid lg:grid-cols-2 items-center">
         <div className="lg:order-2">
           <h2 className="text-orangedark text-2xl font-bold text-center lg:text-4xl mb-9">
@@ -345,8 +345,11 @@ let make = (~content=contentEn) => <>
     title=content.title
     pageDescription=content.pageDescription
     highlightContent=content.highlightContent>
-    <CategorizedNews margins=`mb-10 lg:mb-32` content=content.categorizedNews />
-    <WeeklyNews margins=`mb-4` content=content.weeklyNews />
+    <CategorizedNews
+      marginBottom={Tailwind.ByBreakpoint.make(#mb10, ~lg=#mb32, ())}
+      content=content.categorizedNews
+    />
+    <WeeklyNews marginBottom={Tailwind.ByBreakpoint.make(#mb4, ())} content=content.weeklyNews />
   </Page.HighlightItem>
 </>
 

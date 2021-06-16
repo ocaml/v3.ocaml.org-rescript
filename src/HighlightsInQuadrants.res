@@ -43,7 +43,7 @@ let seeAllArrowIcon = display =>
   </svg>
 
 @react.component
-let make = (~margins, ~content) => {
+let make = (~content, ~marginBottom=?) => {
   let title =
     <h2 className="text-orangedark text-3xl mb-5 lg:text-4xl font-bold text-center">
       {s(content.title)}
@@ -89,7 +89,7 @@ let make = (~margins, ~content) => {
     </div>
   }
 
-  <SectionContainer.MediumCentered margins paddingX="px-12">
+  <SectionContainer.MediumCentered ?marginBottom paddingX="px-12">
     title
     <div className="lg:grid lg:grid-cols-2 mb-9 gap-x-9 gap-y-3">
       {categoryHighlights(content.topLeftCategory)}
