@@ -110,13 +110,18 @@ module CategoryHeaderIcon = {
     </svg>
 }
 
+module CategoryHeader = {
+  type t = {
+    title: string,
+    icon: CategoryHeaderIcon.t,
+  }
+}
+
 module Category = {
   type t = {
-    header: string,
-    seeAllInCategory: string,
-    seeAllLink: string,
+    header: CategoryHeader.t,
     stories: array<Story.t>,
-    icon: CategoryHeaderIcon.t,
+    seeAllInCategory: LabelledLink.t,
   }
 }
 
@@ -129,9 +134,9 @@ type t = {
   goToArchive: LabelledLink.t,
 }
 
-let seeAllArrowIcon = display =>
+let seeAllArrowIcon = (~display, ~marginRight) =>
   <svg
-    className={`${display} h-6 w-6`}
+    className={`${display} h-6 w-6 ${marginRight}`}
     viewBox="0 0 26 25"
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
@@ -144,53 +149,55 @@ let seeAllArrowIcon = display =>
 @react.component
 let make = (~content, ~marginBottom=?) => {
   let title =
-    <h2 className="text-orangedark text-3xl mb-5 lg:text-4xl font-bold text-center">
+    <h2 className="text-center text-3xl lg:text-4xl font-bold text-orangedark mb-5">
       {s(content.title)}
     </h2>
 
   let archiveButton =
     <div className="text-center">
       <Link href=content.goToArchive.link>
-        <a className="bg-orangedark text-white px-10 py-3 rounded">
+        <a className="rounded px-10 py-3 bg-orangedark hover:bg-orangedarker text-white">
           {s(content.goToArchive.label)}
         </a>
       </Link>
     </div>
 
   let categoryHighlights = (category: Category.t) => {
-    let headingIcon = switch category.icon {
+    let headingIcon = switch category.header.icon {
     | CategoryHeaderIcon.Meet => CategoryHeaderIcon.meetIcon
     | CategoryHeaderIcon.Package => CategoryHeaderIcon.packageIcon
     | CategoryHeaderIcon.Profit => CategoryHeaderIcon.profitIcon
     | CategoryHeaderIcon.Calendar => CategoryHeaderIcon.calendarIcon
     }
 
-    let heading =
-      <h3 className="text-orangedark text-2xl font-bold mb-2">
+    let heading = (~marginBottom: string) =>
+      <h3 className={`text-2xl font-bold text-orangedark ${marginBottom}`}>
         {headingIcon(~display="inline", ~marginLeft="ml-2", ~marginRight="mr-4")}
-        {s(category.header)}
+        {s(category.header.title)}
       </h3>
 
-    let newsItemRow = (idx, story: Story.t) =>
+    let newsItemRow = (story: Story.t) =>
       // TODO: use overflow hidden to truncate story text
-      <li className="font-bold" key={Js.Int.toString(idx)}>
+      <li className="font-bold" key={story.title}>
+        // TODO: for accessibility, provide indicator that the link opens a new tab
         <a href=story.link target="_blank"> {s(story.title)} </a>
       </li>
 
     let seeAll =
-      <p className="text-center">
-        <Link href=category.seeAllLink>
-          <a> {seeAllArrowIcon("inline")} {s(category.seeAllInCategory)} </a>
+      <p>
+        <Link href=category.seeAllInCategory.link>
+          <a className="flex justify-center items-baseline">
+            {seeAllArrowIcon(~display="inline", ~marginRight="mr-1")}
+            {s(category.seeAllInCategory.label)}
+          </a>
         </Link>
       </p>
 
     <div>
-      heading
-      <div className="bg-white rounded pt-4 px-8 pb-2">
+      {heading(~marginBottom="mb-2")}
+      <div className="rounded pt-4 pb-2 px-8 bg-white">
         <ul className="space-y-3 mb-2">
-          {category.stories
-          |> Js.Array.mapi((story, idx) => newsItemRow(idx, story))
-          |> React.array}
+          {category.stories |> Js.Array.map(story => newsItemRow(story)) |> React.array}
         </ul>
         seeAll
       </div>

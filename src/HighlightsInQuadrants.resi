@@ -16,13 +16,18 @@ module CategoryHeaderIcon: {
   type t = Meet | Package | Profit | Calendar
 }
 
+module CategoryHeader: {
+  type t = {
+    title: string,
+    icon: CategoryHeaderIcon.t,
+  }
+}
+
 module Category: {
   type t = {
-    header: string,
-    seeAllInCategory: string,
-    seeAllLink: string,
+    header: CategoryHeader.t,
     stories: array<Story.t>,
-    icon: CategoryHeaderIcon.t, // add ofString and accept string for now
+    seeAllInCategory: LabelledLink.t,
   }
 }
 
@@ -34,8 +39,6 @@ type t = {
   bottomRightCategory: Category.t,
   goToArchive: LabelledLink.t,
 }
-
-let seeAllArrowIcon: string => React.element
 
 @react.component
 let make: (

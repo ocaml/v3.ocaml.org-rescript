@@ -9,11 +9,15 @@ module NewsCategory = {
   }
 
   let toHighlightsCategory = (category, icon) => {
-    HighlightsInQuadrants.Category.header: category.header,
-    seeAllInCategory: category.seeAllNewsInCategory,
-    seeAllLink: category.seeAllLink,
+    HighlightsInQuadrants.Category.header: {
+      HighlightsInQuadrants.CategoryHeader.title: category.header,
+      icon: icon,
+    },
+    seeAllInCategory: {
+      label: category.seeAllNewsInCategory,
+      link: category.seeAllLink,
+    },
     stories: category.stories,
-    icon: icon,
   }
 }
 
