@@ -23,7 +23,6 @@ module Category: {
     seeAllLink: string,
     stories: array<Story.t>,
     icon: CategoryHeaderIcon.t,
-    // (~display: string, ~marginLeft: string, ~marginRight: string) => React.element,
   }
 }
 
