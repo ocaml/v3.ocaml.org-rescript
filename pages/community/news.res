@@ -16,7 +16,7 @@ module NewsCategory = {
     icon: icon,
   }
 }
-
+/*
 let communityIcon = (~display, ~marginLeft, ~marginRight) =>
   <svg
     className={`${display} h-14 w-14 ${marginLeft} ${marginRight}`}
@@ -104,6 +104,7 @@ let eventsIcon = (~display, ~marginLeft, ~marginRight) =>
       fill="#ED7109"
     />
   </svg>
+*/
 
 module CategorizedNews = {
   type t = {
@@ -119,10 +120,22 @@ module CategorizedNews = {
   let make = (~content, ~marginBottom=?) => {
     let highlightContent = {
       HighlightsInQuadrants.title: content.otherNewsStories,
-      topLeftCategory: NewsCategory.toHighlightsCategory(content.communityCategory, communityIcon),
-      topRightCategory: NewsCategory.toHighlightsCategory(content.releasesCategory, releasesIcon),
-      bottomLeftCategory: NewsCategory.toHighlightsCategory(content.industryCategory, industryIcon),
-      bottomRightCategory: NewsCategory.toHighlightsCategory(content.eventsCategory, eventsIcon),
+      topLeftCategory: NewsCategory.toHighlightsCategory(
+        content.communityCategory,
+        HighlightsInQuadrants.CategoryHeaderIcon.Meet,
+      ),
+      topRightCategory: NewsCategory.toHighlightsCategory(
+        content.releasesCategory,
+        HighlightsInQuadrants.CategoryHeaderIcon.Package,
+      ),
+      bottomLeftCategory: NewsCategory.toHighlightsCategory(
+        content.industryCategory,
+        HighlightsInQuadrants.CategoryHeaderIcon.Profit,
+      ),
+      bottomRightCategory: NewsCategory.toHighlightsCategory(
+        content.eventsCategory,
+        HighlightsInQuadrants.CategoryHeaderIcon.Calendar,
+      ),
       goToArchive: {
         label: content.goToNewsArchive,
         link: InternalUrls.communityNewsarchive,

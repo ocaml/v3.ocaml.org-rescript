@@ -12,13 +12,18 @@ module Story: {
   }
 }
 
+module CategoryHeaderIcon: {
+  type t = Meet | Package | Profit | Calendar
+}
+
 module Category: {
   type t = {
     header: string,
     seeAllInCategory: string,
     seeAllLink: string,
     stories: array<Story.t>,
-    icon: (~display: string, ~marginLeft: string, ~marginRight: string) => React.element,
+    icon: CategoryHeaderIcon.t,
+    // (~display: string, ~marginLeft: string, ~marginRight: string) => React.element,
   }
 }
 
