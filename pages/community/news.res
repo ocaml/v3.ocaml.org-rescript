@@ -4,18 +4,17 @@ module NewsCategory = {
   type t = {
     header: string,
     seeAllNewsInCategory: string,
-    seeAllLink: string,
     stories: array<HighlightsInQuadrants.Story.t>,
   }
 
-  let toHighlightsCategory = (category, icon) => {
+  let toHighlightsCategory = (category, seeAllLink, icon) => {
     HighlightsInQuadrants.Category.header: {
       HighlightsInQuadrants.CategoryHeader.title: category.header,
       icon: icon,
     },
     seeAllInCategory: {
       label: category.seeAllNewsInCategory,
-      link: category.seeAllLink,
+      link: seeAllLink,
     },
     stories: category.stories,
   }
@@ -31,32 +30,32 @@ module CategorizedNews = {
     goToNewsArchive: string,
   }
 
-  @react.component
-  let make = (~content, ~marginBottom=?) => {
-    let highlightContent = {
-      HighlightsInQuadrants.title: content.otherNewsStories,
-      topLeftCategory: NewsCategory.toHighlightsCategory(
-        content.communityCategory,
-        HighlightsInQuadrants.CategoryHeaderIcon.Meet,
-      ),
-      topRightCategory: NewsCategory.toHighlightsCategory(
-        content.releasesCategory,
-        HighlightsInQuadrants.CategoryHeaderIcon.Package,
-      ),
-      bottomLeftCategory: NewsCategory.toHighlightsCategory(
-        content.industryCategory,
-        HighlightsInQuadrants.CategoryHeaderIcon.Profit,
-      ),
-      bottomRightCategory: NewsCategory.toHighlightsCategory(
-        content.eventsCategory,
-        HighlightsInQuadrants.CategoryHeaderIcon.Calendar,
-      ),
-      goToArchive: {
-        label: content.goToNewsArchive,
-        link: InternalUrls.communityNewsarchive,
-      },
-    }
-    <HighlightsInQuadrants content=highlightContent ?marginBottom />
+  let toHighlightsInQuadrantsContent = t => {
+    HighlightsInQuadrants.title: t.otherNewsStories,
+    topLeftCategory: NewsCategory.toHighlightsCategory(
+      t.communityCategory,
+      InternalUrls.communityNewsarchive, // TODO: should we use a query parameter for the category?
+      HighlightsInQuadrants.CategoryHeaderIcon.Meet,
+    ),
+    topRightCategory: NewsCategory.toHighlightsCategory(
+      t.releasesCategory,
+      InternalUrls.communityNewsarchive,
+      HighlightsInQuadrants.CategoryHeaderIcon.Package,
+    ),
+    bottomLeftCategory: NewsCategory.toHighlightsCategory(
+      t.industryCategory,
+      InternalUrls.communityNewsarchive,
+      HighlightsInQuadrants.CategoryHeaderIcon.Profit,
+    ),
+    bottomRightCategory: NewsCategory.toHighlightsCategory(
+      t.eventsCategory,
+      InternalUrls.communityNewsarchive,
+      HighlightsInQuadrants.CategoryHeaderIcon.Calendar,
+    ),
+    goToArchive: {
+      label: t.goToNewsArchive,
+      link: InternalUrls.communityNewsarchive,
+    },
   }
 }
 
@@ -183,8 +182,6 @@ let contentEn = {
     communityCategory: {
       header: `Community`,
       seeAllNewsInCategory: `See all News in Community`,
-      // TODO: Should we use query parameters in each of the "seeAllLink" url's?
-      seeAllLink: InternalUrls.communityNewsarchive,
       stories: [
         {
           title: `The road ahead for Mirage OS in 2021`,
@@ -203,7 +200,6 @@ let contentEn = {
     releasesCategory: {
       header: `Releases`,
       seeAllNewsInCategory: `See all News in Releases`,
-      seeAllLink: InternalUrls.communityNewsarchive,
       stories: [
         {
           title: `Release of Alt-Ergo 2.4.0`,
@@ -222,7 +218,6 @@ let contentEn = {
     industryCategory: {
       header: `Industry`,
       seeAllNewsInCategory: `See all News in Industry`,
-      seeAllLink: InternalUrls.communityNewsarchive,
       stories: [
         {
           title: `Recent and Upcoming Changes to Merlin`,
@@ -241,7 +236,6 @@ let contentEn = {
     eventsCategory: {
       header: `Events`,
       seeAllNewsInCategory: `See all News in Events`,
-      seeAllLink: InternalUrls.communityNewsarchive,
       stories: [
         {
           title: `Tarides Sponsors the Oxbridge Women in ...`,
@@ -275,8 +269,8 @@ let make = (~content=contentEn) => <>
     title=content.title
     pageDescription=content.pageDescription
     highlightContent=content.highlightContent>
-    <CategorizedNews
-      content=content.categorizedNews
+    <HighlightsInQuadrants
+      t={CategorizedNews.toHighlightsInQuadrantsContent(content.categorizedNews)}
       marginBottom={Tailwind.ByBreakpoint.make(#mb10, ~lg=#mb32, ())}
     />
     <WeeklyNews marginBottom={Tailwind.ByBreakpoint.make(#mb4, ())} content=content.weeklyNews />

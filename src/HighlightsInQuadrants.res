@@ -147,17 +147,17 @@ let seeAllArrowIcon = (~display, ~marginRight) =>
   </svg>
 
 @react.component
-let make = (~content, ~marginBottom=?) => {
+let make = (~t, ~marginBottom=?) => {
   let title =
     <h2 className="text-center text-3xl lg:text-4xl font-bold text-orangedark mb-5">
-      {s(content.title)}
+      {s(t.title)}
     </h2>
 
   let archiveButton =
     <div className="text-center">
-      <Link href=content.goToArchive.link>
+      <Link href=t.goToArchive.link>
         <a className="rounded px-10 py-3 bg-orangedark hover:bg-orangedarker text-white">
-          {s(content.goToArchive.label)}
+          {s(t.goToArchive.label)}
         </a>
       </Link>
     </div>
@@ -177,9 +177,8 @@ let make = (~content, ~marginBottom=?) => {
       </h3>
 
     let newsItemRow = (story: Story.t) =>
-      // TODO: use overflow hidden to truncate story text
-      <li className="font-bold" key={story.title}>
-        // TODO: for accessibility, provide indicator that the link opens a new tab
+      <li className="font-bold lg:truncate" key={story.title}>
+        // TODO: provide indicator that the link opens a new tab, for accessibility
         <a href=story.link target="_blank"> {s(story.title)} </a>
       </li>
 
@@ -207,10 +206,10 @@ let make = (~content, ~marginBottom=?) => {
   <SectionContainer.MediumCentered ?marginBottom paddingX="px-12">
     title
     <div className="space-y-3 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-9 lg:gap-y-3 mb-9">
-      {categoryHighlights(content.topLeftCategory)}
-      {categoryHighlights(content.topRightCategory)}
-      {categoryHighlights(content.bottomLeftCategory)}
-      {categoryHighlights(content.bottomRightCategory)}
+      {categoryHighlights(t.topLeftCategory)}
+      {categoryHighlights(t.topRightCategory)}
+      {categoryHighlights(t.bottomLeftCategory)}
+      {categoryHighlights(t.bottomRightCategory)}
     </div>
     archiveButton
   </SectionContainer.MediumCentered>

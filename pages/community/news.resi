@@ -2,7 +2,6 @@ module NewsCategory: {
   type t = {
     header: string,
     seeAllNewsInCategory: string,
-    seeAllLink: string,
     stories: array<HighlightsInQuadrants.Story.t>,
   }
 }
