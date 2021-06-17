@@ -79,10 +79,11 @@ module General = {
     }
     switch colorStyle {
     | BackgroundFilled =>
-      <SectionContainer.NoneFilled margins={Belt.Option.getWithDefault(marginBottom, "")}>
+      <SectionContainer.NoneFilled ?marginBottom> mainFrame </SectionContainer.NoneFilled>
+    | _ =>
+      <div className={marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
         mainFrame
-      </SectionContainer.NoneFilled>
-    | _ => <div className={Belt.Option.getWithDefault(marginBottom, "")}> mainFrame </div>
+      </div>
     }
   }
 }

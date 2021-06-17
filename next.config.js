@@ -5,18 +5,24 @@ const withTM = require("next-transpile-modules")(transpileModules);
 
 const config = {
   webpack: (config, options) => {
-    const { isServer } = options;
-    if (!isServer) {
-      // We shim fs for things like the blog slugs component
-      // where we need fs access in the server-side part
-      config.resolve.fallback = {
-        fs: false
-      }
-    }
     config.experiments = {
       topLevelAwait: true,
     }
     return config
+  },
+  // We observed this undocumented behavior on Vercel, so
+  // we are adding this rewrite to make the behavior explicit
+  // and ensure local development and Vercel deployments
+  // use the same rule.
+  async rewrites() {
+    return {
+      fallback: [
+        {
+          source: '/:path*',
+          destination: '/:path*/index.html',
+        },
+      ],
+    }
   },
   // Might need to move this to nginx or other config,
   // if deployment moves from Vercel to Netlify

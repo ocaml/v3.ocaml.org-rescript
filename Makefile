@@ -1,19 +1,19 @@
-SHELL=/bin/bash
+SHELL = /bin/bash
+
 ifeq ($(VERCEL), 1)
   # The yarn version is picked from .engines in package.json
   YARN=yarn
   ESY=npx esy
   BSB=npx bsb
 else
-  NVM=source $$NVM_DIR/nvm.sh && nvm
   # Yarn version specified here because it can't bootstrap itself as a devDependency with npx.
-  YARN=$(NVM) use && npx yarn@1.22
-  ESY=$(NVM) use && npx esy
-  BSB=$(NVM) use && npx bsb
+  YARN=npx yarn@1.22
+  ESY=npx esy
+  BSB=npx bsb
 endif
 
 .PHONY: dev
-dev: install-deps watch-and-serve
+dev: install-deps watch
 
 .PHONY: install-deps
 install-deps:
@@ -22,8 +22,6 @@ ifeq ($(VERCEL), 1)
 	yum install perl-Digest-SHA
 	# Vercel doesn't correctly handle caching of esy
 	rm -rf _esy node_modules/esy node_modules/.bin/esy ~/.esy
-else
-	$(NVM) install
 endif
 	$(YARN) install
 	make vendor/ood && $(YARN) link ood
@@ -37,10 +35,6 @@ vendor/ood:
 .PHONY: watch
 watch:
 	$(YARN) watch
-
-.PHONY: watch-and-serve
-watch-and-serve:
-	$(YARN) watch-and-serve
 
 .PHONY: build
 build:
