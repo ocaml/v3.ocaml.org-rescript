@@ -22,7 +22,7 @@ module Category: {
     seeAllInCategory: string,
     seeAllLink: string,
     stories: array<Story.t>,
-    icon: CategoryHeaderIcon.t,
+    icon: CategoryHeaderIcon.t, // add ofString and accept string for now
   }
 }
 
