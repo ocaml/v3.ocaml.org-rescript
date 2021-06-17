@@ -3,6 +3,14 @@ module Link = Next.Link
 let s = React.string
 
 // TODO: move this into its own top level module
+module LabelledLink = {
+  type t = {
+    label: string,
+    link: string,
+  }
+}
+
+// TODO: move this into its own top level module
 module Story = {
   type t = {
     title: string,
@@ -26,8 +34,7 @@ type t = {
   topRightCategory: Category.t,
   bottomLeftCategory: Category.t,
   bottomRightCategory: Category.t,
-  archiveUrl: string,
-  goToArchive: string,
+  goToArchive: LabelledLink.t,
 }
 
 let seeAllArrowIcon = display =>
@@ -51,8 +58,10 @@ let make = (~content, ~marginBottom=?) => {
 
   let archiveButton =
     <div className="text-center">
-      <Link href=content.archiveUrl>
-        <a className="bg-orangedark text-white px-10 py-3 rounded"> {s(content.goToArchive)} </a>
+      <Link href=content.goToArchive.link>
+        <a className="bg-orangedark text-white px-10 py-3 rounded">
+          {s(content.goToArchive.label)}
+        </a>
       </Link>
     </div>
 

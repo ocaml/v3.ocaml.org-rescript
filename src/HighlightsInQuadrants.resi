@@ -1,3 +1,10 @@
+module LabelledLink: {
+  type t = {
+    label: string,
+    link: string,
+  }
+}
+
 module Story: {
   type t = {
     title: string,
@@ -21,8 +28,7 @@ type t = {
   topRightCategory: Category.t,
   bottomLeftCategory: Category.t,
   bottomRightCategory: Category.t,
-  archiveUrl: string,
-  goToArchive: string,
+  goToArchive: LabelledLink.t,
 }
 
 let seeAllArrowIcon: string => React.element

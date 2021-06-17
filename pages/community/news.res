@@ -123,8 +123,10 @@ module CategorizedNews = {
       topRightCategory: NewsCategory.toHighlightsCategory(content.releasesCategory, releasesIcon),
       bottomLeftCategory: NewsCategory.toHighlightsCategory(content.industryCategory, industryIcon),
       bottomRightCategory: NewsCategory.toHighlightsCategory(content.eventsCategory, eventsIcon),
-      archiveUrl: InternalUrls.communityNewsarchive,
-      goToArchive: content.goToNewsArchive,
+      goToArchive: {
+        label: content.goToNewsArchive,
+        link: InternalUrls.communityNewsarchive,
+      },
     }
     <HighlightsInQuadrants content=highlightContent ?marginBottom />
   }
@@ -346,8 +348,8 @@ let make = (~content=contentEn) => <>
     pageDescription=content.pageDescription
     highlightContent=content.highlightContent>
     <CategorizedNews
-      marginBottom={Tailwind.ByBreakpoint.make(#mb10, ~lg=#mb32, ())}
       content=content.categorizedNews
+      marginBottom={Tailwind.ByBreakpoint.make(#mb10, ~lg=#mb32, ())}
     />
     <WeeklyNews marginBottom={Tailwind.ByBreakpoint.make(#mb4, ())} content=content.weeklyNews />
   </Page.HighlightItem>
