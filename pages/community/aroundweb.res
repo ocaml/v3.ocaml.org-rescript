@@ -103,9 +103,9 @@ module Events = {
           <div className="md:ml-auto md:w-1/2 md:pl-10">
             <CallToAction.Embedded
               content={
-                CallToAction.Embedded.title: content.title,
+                CallToAction.title: content.title,
                 body: content.description,
-                buttonLink: InternalUrls.communityEvents,
+                buttonLink: Route(InternalUrls.communityEvents),
                 buttonText: content.callToAction,
               }
             />
@@ -144,7 +144,7 @@ let make = (~content) => <>
     title=content.title pageDescription=content.pageDescription addContainer=Page.Basic.NoContainer>
     <CallToAction.General
       content={
-        CallToAction.General.title: content.engageHeader,
+        CallToAction.title: content.engageHeader,
         body: content.engageBody,
         buttonLink: External("https://discuss.ocaml.org"),
         buttonText: content.engageButtonText,

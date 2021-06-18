@@ -5,16 +5,24 @@ let s = React.string
 // TODO: add interface file
 
 // TODO: move this into a future Link component
-type linkUrl = Route(string) | External(string)
+module LinkUrl = {
+  type t = Route(string) | External(string)
+
+  let render = (~t, ~buttonText, ~styling) =>
+    switch t {
+    | Route(url) => <Link href=url> <a className=styling> {s(buttonText)} </a> </Link>
+    | External(url) => <a href=url target="_blank" className=styling> {s(buttonText)} </a>
+    }
+}
+
+type t = {
+  title: string,
+  body: string,
+  buttonLink: LinkUrl.t,
+  buttonText: string,
+}
 
 module General = {
-  type t = {
-    title: string,
-    body: string,
-    buttonLink: linkUrl,
-    buttonText: string,
-  }
-
   type colorStyle = BackgroundFilled | Transparent | TransparentPlainHeader
 
   type width = Narrow | Regular
@@ -36,17 +44,16 @@ module General = {
       | Transparent => ("text-orangedark", "", "text-white", "bg-orangedark", "bg-orangedarker")
       | TransparentPlainHeader => ("", "", "text-white", "bg-orangedark", "bg-orangedarker")
       }
-      let buttonPadding = switch buttonStyle {
-      | Short => "px-8 py-1"
-      | Normal => "px-5 py-3"
-      }
-      // TODO: move this into a future Link component
-      let buttonStyling = `mt-8 w-full inline-flex items-center justify-center ${buttonPadding} border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`
-      let button = switch content.buttonLink {
-      | Route(url) =>
-        <Link href=url> <a className=buttonStyling> {s(content.buttonText)} </a> </Link>
-      | External(url) =>
-        <a href=url target="_blank" className=buttonStyling> {s(content.buttonText)} </a>
+      let button = {
+        let buttonPadding = switch buttonStyle {
+        | Short => "px-8 py-1"
+        | Normal => "px-5 py-3"
+        }
+        LinkUrl.render(
+          ~t=content.buttonLink,
+          ~buttonText=content.buttonText,
+          ~styling=`mt-8 w-full inline-flex items-center justify-center ${buttonPadding} border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`,
+        )
       }
       let essentialElements = (~centerBody) => <>
         <h2 className={`text-3xl font-extrabold ${headingTextColor} sm:text-4xl text-center`}>
@@ -88,23 +95,15 @@ module General = {
 }
 
 module Embedded = {
-  type t = {
-    title: string,
-    body: string,
-    buttonLink: string,
-    buttonText: string,
-  }
-
   @react.component
   let make = (~content) => {
     let button =
       <div className="inline-flex rounded-md shadow">
-        <Next.Link href=content.buttonLink>
-          <a
-            className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark">
-            {s(content.buttonText)}
-          </a>
-        </Next.Link>
+        {LinkUrl.render(
+          ~t=content.buttonLink,
+          ~buttonText=content.buttonText,
+          ~styling=`inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker sm:w-auto`,
+        )}
       </div>
 
     <>
