@@ -2,8 +2,6 @@ module Link = Next.Link
 
 let s = React.string
 
-// TODO: add interface file
-
 // TODO: move this into a future Link component
 module LinkUrl = {
   type t = Route(string) | External(string)
