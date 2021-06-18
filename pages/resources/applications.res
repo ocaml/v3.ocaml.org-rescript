@@ -187,48 +187,52 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
       marginBottom={Tailwind.ByBreakpoint.make(#mb2, ())} content=developerGuidesContent
     />
     // DELETE SOON, only used for testing
-    let callContent = {
-        CallToAction.General.title: "Events",
+
+    {
+      let callContent = {
+        CallToAction.title: "Events",
         body: `Several events take place in the OCaml community over the course of each year, in countr  qies all over the world. The calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
         buttonLink: Route(InternalUrls.communityEvents),
         buttonText: `Show me Events`,
       }
-
-    <CallToAction.General
-      content=callContent
-      colorStyle=CallToAction.General.Transparent
-      width=CallToAction.General.Narrow
-      buttonStyle=CallToAction.General.Normal
-      marginBottom="mb-20"
-    />
-    <CallToAction.General
-      content=callContent
-      colorStyle=CallToAction.General.TransparentPlainHeader
-      width=CallToAction.General.Narrow
-      buttonStyle=CallToAction.General.Normal
-      marginBottom="mb-20"
-    />
-    <CallToAction.General
-      content=callContent
-      colorStyle=CallToAction.General.BackgroundFilled
-      width=CallToAction.General.Narrow
-      buttonStyle=CallToAction.General.Normal
-      marginBottom="mb-20"
-    />
-    <CallToAction.General
-      content=callContent
-      colorStyle=CallToAction.General.TransparentPlainHeader
-      width=CallToAction.General.Regular
-      buttonStyle=CallToAction.General.Normal
-      marginBottom="mb-20"
-    />
-    <CallToAction.General
-      content=callContent
-      colorStyle=CallToAction.General.TransparentPlainHeader
-      width=CallToAction.General.Regular
-      buttonStyle=CallToAction.General.Short
-      marginBottom="mb-20"
-    />
+      <>
+        <CallToAction.General
+          content=callContent
+          colorStyle=CallToAction.General.Transparent
+          width=CallToAction.General.Narrow
+          buttonStyle=CallToAction.General.Normal
+          marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())}
+        />
+        <CallToAction.General
+          content=callContent
+          colorStyle=CallToAction.General.TransparentPlainHeader
+          width=CallToAction.General.Narrow
+          buttonStyle=CallToAction.General.Normal
+          marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())}
+        />
+        <CallToAction.General
+          content=callContent
+          colorStyle=CallToAction.General.BackgroundFilled
+          width=CallToAction.General.Narrow
+          buttonStyle=CallToAction.General.Normal
+          marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())}
+        />
+        <CallToAction.General
+          content=callContent
+          colorStyle=CallToAction.General.TransparentPlainHeader
+          width=CallToAction.General.Regular
+          buttonStyle=CallToAction.General.Normal
+          marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())}
+        />
+        <CallToAction.General
+          content=callContent
+          colorStyle=CallToAction.General.TransparentPlainHeader
+          width=CallToAction.General.Regular
+          buttonStyle=CallToAction.General.Short
+          marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())}
+        />
+      </>
+    }
     // DELETE ABOVE SOON
     <PlatformTools />
     <UsingOcaml marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} content=usingOcamlContent />
