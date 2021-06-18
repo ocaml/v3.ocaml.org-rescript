@@ -41,41 +41,38 @@ module General = {
       | Normal => "px-5 py-3"
       }
       // TODO: move this into a future Link component
+      let buttonStyling = `mt-8 w-full inline-flex items-center justify-center ${buttonPadding} border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`
       let button = switch content.buttonLink {
       | Route(url) =>
-        <Link href=url>
-          <a
-            className={`mt-8 w-full inline-flex items-center justify-center ${buttonPadding} border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`}>
-            {s(content.buttonText)}
-          </a>
-        </Link>
+        <Link href=url> <a className=buttonStyling> {s(content.buttonText)} </a> </Link>
       | External(url) =>
-        <a
-          href=url
-          target="_blank"
-          className={`mt-8 w-full inline-flex items-center justify-center ${buttonPadding} border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`}>
-          {s(content.buttonText)}
-        </a>
+        <a href=url target="_blank" className=buttonStyling> {s(content.buttonText)} </a>
       }
-      let essentialElements =
-        <>
-          <h2 className={`text-3xl font-extrabold ${headingTextColor} sm:text-4xl`}>
-            <span className="block"> {s(content.title)} </span>
-          </h2>
-          <p className={`mt-4 text-lg leading-6 ${bodyTextColor}`}> {s(content.body)} </p>
-          button
-        </>
+      let essentialElements = (~centerBody) => <>
+        <h2 className={`text-3xl font-extrabold ${headingTextColor} sm:text-4xl text-center`}>
+          <span className="block"> {s(content.title)} </span>
+        </h2>
+        {
+          let center = switch centerBody {
+          | true => "text-center"
+          | false => ""
+          }
+          <p className={`mt-4 text-lg leading-6 ${bodyTextColor} ${center}`}> {s(content.body)} </p>
+        }
+        <div className="flex justify-center"> button </div>
+      </>
 
       switch width {
       | Narrow =>
-        <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-          // TODO: is there an existing container for max-w-2xl mx-auto?
-          essentialElements
+        // TODO: is there an existing container for max-w-2xl mx-auto?
+        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+          {essentialElements(~centerBody=true)}
         </div>
       | Regular =>
+        // TODO: remove textCenter arg
         <SectionContainer.VerySmallCentered
-          paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2" textCenter=true>
-          essentialElements
+          paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2">
+          {essentialElements(~centerBody=false)}
         </SectionContainer.VerySmallCentered>
       }
     }
@@ -98,7 +95,6 @@ module Embedded = {
     buttonText: string,
   }
 
-  // TODO: define .resi
   @react.component
   let make = (~content) => {
     let button =

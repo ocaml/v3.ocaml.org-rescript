@@ -78,7 +78,7 @@ module DeveloperGuides = {
 module PlatformTools = {
   @react.component
   let make = () => <>
-    // TODO: factor out and define content type
+    // TODO: remove PlatformTools wrapper
     <CallToAction.General
       content={
         CallToAction.General.title: "Platform Tools",

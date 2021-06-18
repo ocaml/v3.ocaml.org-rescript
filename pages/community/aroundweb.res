@@ -146,7 +146,7 @@ let make = (~content) => <>
       content={
         CallToAction.General.title: content.engageHeader,
         body: content.engageBody,
-        buttonLink: Route(InternalUrls.communityEvents), // should this link to discuss?
+        buttonLink: External("https://discuss.ocaml.org"),
         buttonText: content.engageButtonText,
       }
       colorStyle=CallToAction.General.BackgroundFilled
