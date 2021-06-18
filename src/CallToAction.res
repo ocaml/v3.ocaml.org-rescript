@@ -69,7 +69,6 @@ module General = {
 
       switch width {
       | Narrow =>
-        // TODO: is there an existing container for max-w-2xl mx-auto?
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
           {essentialElements(~centerBody=true)}
         </div>
