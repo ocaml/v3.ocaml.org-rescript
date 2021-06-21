@@ -28,7 +28,7 @@ module General = {
   type buttonStyle = Short | Normal
 
   @react.component
-  let make = (~content, ~colorStyle, ~width, ~buttonStyle, ~marginBottom=?, ()) => {
+  let make = (~t, ~colorStyle, ~width, ~buttonStyle, ~marginBottom=?, ()) => {
     let mainFrame = {
       let (
         headingTextColor,
@@ -48,21 +48,21 @@ module General = {
         | Normal => "px-5 py-3"
         }
         LinkUrl.render(
-          ~t=content.buttonLink,
-          ~buttonText=content.buttonText,
+          ~t=t.buttonLink,
+          ~buttonText=t.buttonText,
           ~styling=`mt-8 w-full inline-flex items-center justify-center ${buttonPadding} border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`,
         )
       }
       let essentialElements = (~centerBody) => <>
         <h2 className={`text-3xl font-extrabold ${headingTextColor} sm:text-4xl text-center`}>
-          <span className="block"> {s(content.title)} </span>
+          <span className="block"> {s(t.title)} </span>
         </h2>
         {
           let center = switch centerBody {
           | true => "text-center"
           | false => ""
           }
-          <p className={`mt-4 text-lg leading-6 ${bodyTextColor} ${center}`}> {s(content.body)} </p>
+          <p className={`mt-4 text-lg leading-6 ${bodyTextColor} ${center}`}> {s(t.body)} </p>
         }
         <div className="flex justify-center"> button </div>
       </>
@@ -73,7 +73,6 @@ module General = {
           {essentialElements(~centerBody=true)}
         </div>
       | Regular =>
-        // TODO: remove textCenter arg
         <SectionContainer.VerySmallCentered
           paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2">
           {essentialElements(~centerBody=false)}
@@ -99,7 +98,7 @@ module Embedded = {
         {LinkUrl.render(
           ~t=content.buttonLink,
           ~buttonText=content.buttonText,
-          ~styling=`inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker sm:w-auto`,
+          ~styling=`inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker`,
         )}
       </div>
 

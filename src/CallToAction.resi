@@ -18,7 +18,7 @@ module General: {
 
   @react.component
   let make: (
-    ~content: t,
+    ~t: t,
     ~colorStyle: colorStyle,
     ~width: width,
     ~buttonStyle: buttonStyle,

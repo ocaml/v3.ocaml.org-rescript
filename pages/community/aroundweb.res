@@ -143,7 +143,7 @@ let make = (~content) => <>
   <Page.Basic
     title=content.title pageDescription=content.pageDescription addContainer=Page.Basic.NoContainer>
     <CallToAction.General
-      content={
+      t={
         CallToAction.title: content.engageHeader,
         body: content.engageBody,
         buttonLink: External("https://discuss.ocaml.org"),
