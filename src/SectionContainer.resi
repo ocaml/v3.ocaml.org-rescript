@@ -62,6 +62,5 @@ module VerySmallCentered: {
     ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
     ~paddingY: string=?,
     ~paddingX: string=?,
-    ~textCenter: bool=?,
   ) => React.element
 }
