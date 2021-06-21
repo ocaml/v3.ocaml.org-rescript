@@ -86,7 +86,6 @@ module PlatformTools = {
         buttonLink: Route(InternalUrls.resourcesPlatform),
         buttonText: `Visit Platform Tools`,
       }
-      marginBottom={Tailwind.ByBreakpoint.make(#mb20, ())}
     />
   </>
 }
