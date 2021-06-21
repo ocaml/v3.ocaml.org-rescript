@@ -75,21 +75,6 @@ module DeveloperGuides = {
     </div>
 }
 
-module PlatformTools = {
-  @react.component
-  let make = () => <>
-    // TODO: factor out and define content type
-    <CallToAction.TransparentWide
-      t={
-        CallToAction.title: "Platform Tools",
-        body: `The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`,
-        buttonLink: Route(InternalUrls.resourcesPlatform),
-        buttonText: `Visit Platform Tools`,
-      }
-    />
-  </>
-}
-
 module UsingOcaml = {
   type t = {
     usingOcamlLabel: string,
@@ -182,7 +167,15 @@ let make = (~title, ~pageDescription, ~developerGuidesContent, ~usingOcamlConten
     <DeveloperGuides
       marginBottom={Tailwind.ByBreakpoint.make(#mb2, ())} content=developerGuidesContent
     />
-    <PlatformTools />
+    // TODO: factor out and define content type
+    <CallToAction.TransparentWide
+      t={
+        CallToAction.title: "Platform Tools",
+        body: `The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`,
+        buttonLink: Route(InternalUrls.resourcesPlatform),
+        buttonText: `Visit Platform Tools`,
+      }
+    />
     <UsingOcaml marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} content=usingOcamlContent />
   </Page.Basic>
 </>
