@@ -10,18 +10,21 @@ type t = {
 }
 
 module General: {
-  type width = Narrow | Regular
-
-  type colorStyle = BackgroundFilled | Transparent | TransparentPlainHeader
-
-  type buttonStyle = Short | Normal
+  type colorStyle = BackgroundFilled | Transparent
 
   @react.component
   let make: (
     ~t: t,
     ~colorStyle: colorStyle,
-    ~width: width,
-    ~buttonStyle: buttonStyle,
+    ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
+    unit,
+  ) => React.element
+}
+
+module TransparentWide: {
+  @react.component
+  let make: (
+    ~t: t,
     ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
     unit,
   ) => React.element
@@ -29,5 +32,5 @@ module General: {
 
 module Embedded: {
   @react.component
-  let make: (~content: t) => React.element
+  let make: (~t: t) => React.element
 }

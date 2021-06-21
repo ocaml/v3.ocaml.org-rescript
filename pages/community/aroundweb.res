@@ -102,7 +102,7 @@ module Events = {
           // TODO: understand how md:w-1/2 works together with relative
           <div className="md:ml-auto md:w-1/2 md:pl-10">
             <CallToAction.Embedded
-              content={
+              t={
                 CallToAction.title: content.title,
                 body: content.description,
                 buttonLink: Route(InternalUrls.communityEvents),
@@ -150,8 +150,6 @@ let make = (~content) => <>
         buttonText: content.engageButtonText,
       }
       colorStyle=CallToAction.General.BackgroundFilled
-      width=CallToAction.General.Narrow
-      buttonStyle=CallToAction.General.Normal
       marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}
     />
     <LatestNews content=content.latestNewsContent />
