@@ -263,7 +263,7 @@ let contentEn = {
 let make = (~content=contentEn) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=952%3A422`
-    playgroundLink=`/play/community/news`
+    playgroundLink=`/play/community/blog`
   />
   <Page.HighlightItem
     title=content.title

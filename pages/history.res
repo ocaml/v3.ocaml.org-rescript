@@ -28,14 +28,6 @@ module Timeline = {
 
     type t = {date: string, description: string}
 
-    let decode = json => {
-      open Json.Decode
-      {
-        date: json |> field("date", string),
-        description: json |> field("description", string),
-      }
-    }
-
     @react.component
     let make = (~item) => {
       let bgColor = "bg-yellowdark"
@@ -76,15 +68,6 @@ type pageContent = {
   timeline: array<Timeline.Item.t>,
 }
 
-let decode = json => {
-  open Json.Decode
-  {
-    title: json |> field("title", string),
-    pageDescription: json |> field("pageDescription", string),
-    timeline: json |> field("timeline", array(Timeline.Item.decode)),
-  }
-}
-
 type props = {content: pageContent}
 
 @react.component
@@ -101,6 +84,14 @@ let make = (~content) => <>
 let default = make
 
 let getStaticProps = _ctxt => {
-  let pageContent = "data/history.yaml"->Fs.readFileSync->JsYaml.load()->decode
-  Js.Promise.resolve({"props": {content: pageContent}})
+  let timeline = []
+  Js.Promise.resolve({
+    "props": {
+      content: {
+        title: "",
+        pageDescription: "",
+        timeline: timeline,
+      },
+    },
+  })
 }

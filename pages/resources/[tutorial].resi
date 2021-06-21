@@ -9,7 +9,7 @@ let make: (
 type props = {
   source: string,
   title: string,
-  pageDescription: Js.Nullable.t<string>,
+  pageDescription: string,
   tableOfContents: MarkdownPage.TableOfContents.t,
 }
 

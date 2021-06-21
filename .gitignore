@@ -20,7 +20,7 @@ out
 # ReScript
 .bsb.lock
 .merlin
-/lib/bs/
+/lib/
 /src/*.js
 /pages/**/*.js
 !/pages/_app.js

@@ -2,7 +2,7 @@ let s = React.string
 
 module LatestNews = {
   // TODO: finish out extracting strings into content
-  type t = {news: array<NewsItem.t>}
+  type t = {news: array<Ood.News.t>}
 
   @react.component
   let make = (~content) =>
@@ -20,8 +20,8 @@ module LatestNews = {
         <div className="bg-white border border-gray-300 overflow-hidden rounded-md mb-2">
           <ul className="divide-y divide-gray-300">
             {
-              let toItem = (n: NewsItem.t) => {
-                StackedList.BasicWithIcon.Item.link: n.link,
+              let toItem = (n: Ood.News.t) => {
+                StackedList.BasicWithIcon.Item.link: n.url,
                 title: n.title,
               }
               <StackedList.BasicWithIcon
@@ -54,7 +54,7 @@ module Events = {
     title: string,
     description: string,
     callToAction: string,
-    latestEvents: array<Event.t>,
+    latestEvents: array<Ood.Event.t>,
   }
 
   @react.component
@@ -66,7 +66,7 @@ module Events = {
             // TODO: Implement the calendar approach
             <div className="flex flex-col justify-center h-full">
               {content.latestEvents
-              |> Array.mapi((idx, event: Event.t) =>
+              |> Array.mapi((idx, event: Ood.Event.t) =>
                 <div key={event.title}>
                   <div className="relative pb-8">
                     {idx !== Array.length(content.latestEvents) - 1
@@ -347,24 +347,13 @@ let make = (~content) => <>
   </Page.Basic>
 </>
 
-type pageContent = {spaces: array<string>}
-
-let decode = json => {
-  open Json.Decode
-  {
-    spaces: json |> field("spaces", array(string)),
-  }
-}
+let spaces = ["Github.com", "Reddit.com", "Twitter.com", "Discuss.ocaml.org"]
 
 let getStaticProps = _ctx => {
-  let news = NewsItem.readAll()
+  let news = Array.of_list(Ood.News.all->Next.stripUndefined)
 
-  let pageContent = "pages/community/aroundweb.yaml"->Fs.readFileSync->JsYaml.load()->decode
-
-  let events = EventsData.readAll().events->Array.of_list
-  let _ = Array.sort((a, b) => Event.compare_by_date(b, a), events)
+  let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
   let events = Belt.Array.sliceToEnd(events, -3)
-  let events = Array.map(event => Event.toJson(event)->Next.stripUndefined->Event.fromJson, events)
 
   let contentEn = {
     title: `OCaml Around the Web`,
@@ -415,7 +404,7 @@ let getStaticProps = _ctx => {
     ],
     blogArchiveText: `Go to the blog archive`,
     spacesSectionHeader: `Looking for More? Try these spaces:`,
-    spaces: pageContent.spaces,
+    spaces: spaces,
   }
 
   Js.Promise.resolve({

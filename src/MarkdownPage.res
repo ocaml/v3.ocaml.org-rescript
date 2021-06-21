@@ -10,9 +10,15 @@ module MarkdownPageBody = {
 }
 
 module TableOfContents = {
+  type rec toc = {
+    label: string,
+    id: string,
+    children: array<toc>,
+  }
+
   type t = {
     contents: string,
-    toc: Unified.MarkdownTableOfContents.t,
+    toc: array<toc>,
   }
 
   exception UnexpectedTOCHeadingDepth(int)
@@ -42,21 +48,19 @@ module TableOfContents = {
         // TODO: implement a completely general recursive traversal a toc forest
         <nav className="px-2 space-y-1" ariaLabel="Sidebar">
           {content.toc
-          ->Belt.List.mapWithIndex((idx, hdg) =>
+          ->Belt.Array.mapWithIndex((idx, hdg) =>
             <div key={Js.Int.toString(idx)} className="space-y-1">
               {
                 // Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300"
                 headingLink(2, hdg.id, hdg.label, ())
               }
               {hdg.children
-              ->Belt.List.mapWithIndex((idx, sub) => {
+              ->Belt.Array.mapWithIndex((idx, sub) => {
                 headingLink(3, sub.id, sub.label, ~idx, ())
               })
-              ->Belt.List.toArray
               ->React.array}
             </div>
           )
-          ->Belt.List.toArray
           ->React.array}
         </nav>
       </div>

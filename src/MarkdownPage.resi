@@ -4,9 +4,15 @@ module MarkdownPageBody: {
 }
 
 module TableOfContents: {
+  type rec toc = {
+    label: string,
+    id: string,
+    children: array<toc>,
+  }
+
   type t = {
     contents: string,
-    toc: Unified.MarkdownTableOfContents.t,
+    toc: array<toc>,
   }
 
   @react.component

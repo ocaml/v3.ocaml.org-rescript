@@ -2,12 +2,10 @@ module Params = {
   type t = {tutorial: string}
 }
 
-type t = {contents: string}
-
 type props = {
   source: string,
   title: string,
-  pageDescription: Js.Nullable.t<string>,
+  pageDescription: string,
   tableOfContents: MarkdownPage.TableOfContents.t,
 }
 
@@ -31,59 +29,32 @@ let make = (~source, ~title, ~pageDescription, ~tableOfContents) => {
   </>
 }
 
-let contentEn = {
-  contents: `Contents`,
-}
-
 let getStaticProps = ctx => {
   let {Params.tutorial: tutorial} = ctx.Next.GetStaticProps.params
-  let baseDirectory = "data/tutorials/"
-  // TODO: find the location of the tutorial
-  let contentFilePath = baseDirectory ++ tutorial ++ "/" ++ tutorial ++ ".md"
-  let parsed = Fs.readFileSync(contentFilePath)->GrayMatter.ofMarkdown
 
-  let resPromise =
-    parsed.content->Unified.process(
-      Unified.unified()
-      ->Unified.use(Unified.remarkParse)
-      ->Unified.use(Unified.remarkSlug)
-      ->Unified.use(MdastToc.plugin)
-      ->Unified.use(Unified.remark2rehype)
-      ->Unified.use(Unified.rehypeHighlight)
-      ->Unified.use(Unified.rehypeStringify),
-      _,
-    )
+  // TODO(tmattio): Get tutorial by slug
+  let tutorial = Ood.Tutorial.get_by_slug(tutorial)->Belt.Option.getExn->Next.stripUndefined
 
-  Js.Promise.then_((res: Unified.vfile) => {
-    let props = {
-      source: res.contents,
-      title: parsed.data.title,
-      pageDescription: switch parsed.data.pageDescription {
-      | None => Js.Nullable.null
-      | Some(v) => Js.Nullable.return(v)
-      },
+  Js.Promise.resolve({
+    "props": {
+      source: tutorial.body_html,
+      title: tutorial.title,
+      pageDescription: tutorial.description,
       tableOfContents: {
-        contents: contentEn.contents,
-        toc: res.toc,
+        contents: "",
+        toc: [],
       },
-    }
-    Js.Promise.resolve({"props": props})
-  }, resPromise)
+    },
+  })
 }
 
 let getStaticPaths: Next.GetStaticPaths.t<Params.t> = () => {
-  // TODO: move this logic into a module dedicated to fetching tutorials
-  // TODO: throw exception if any tutorials have the same filename or add more parts to the tutorials path
-  // TODO: throw exception if any entry is not a directory
-  let markdownFiles = Fs.readdirSyncEntries("data/tutorials/")
-
   let ret = {
-    Next.GetStaticPaths.paths: Array.map((f: Fs.dirent) => {
+    Next.GetStaticPaths.paths: Array.map(tutorial => {
       Next.GetStaticPaths.params: {
-        // TODO: better error
-        Params.tutorial: Js.String.split(".", f.name)[0],
+        Params.tutorial: tutorial.Ood.Tutorial.slug,
       },
-    }, markdownFiles),
+    }, Array.of_list(Ood.Tutorial.all)),
     // TODO: update bindings to always use "false"
     fallback: false,
   }
