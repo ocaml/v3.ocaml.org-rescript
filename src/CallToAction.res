@@ -2,7 +2,7 @@ module Link = Next.Link
 
 let s = React.string
 
-// TODO: move this into a future Link component
+// TODO: move this into a future Link component once the Url and Link types have been thought out
 module LinkUrl = {
   type t = Route(string) | External(string)
 
@@ -18,6 +18,19 @@ type t = {
   body: string,
   buttonLink: LinkUrl.t,
   buttonText: string,
+}
+
+let title = (~text, ~textColor) =>
+  <h2 className={`text-3xl font-extrabold ${textColor} sm:text-4xl text-center`}>
+    <span className="block"> {s(text)} </span>
+  </h2>
+
+let body = (~text, ~textColor, ~centered, ~marginTop="mt-4", ()) => {
+  let textCenter = switch centered {
+  | true => "text-center"
+  | false => ""
+  }
+  <p className={`${marginTop} text-lg leading-6 ${textColor} ${textCenter}`}> {s(text)} </p>
 }
 
 module General = {
@@ -43,17 +56,10 @@ module General = {
         ~styling=`mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`,
       )
 
-      let essentialElements =
-        <>
-          <h2 className={`text-3xl font-extrabold ${headingTextColor} sm:text-4xl text-center`}>
-            <span className="block"> {s(t.title)} </span>
-          </h2>
-          <p className={`mt-4 text-lg leading-6 ${bodyTextColor} text-center`}> {s(t.body)} </p>
-          <div className="flex justify-center"> button </div>
-        </>
-
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-        essentialElements
+        {title(~text=t.title, ~textColor=headingTextColor)}
+        {body(~text=t.body, ~textColor=bodyTextColor, ~centered=true, ())}
+        <div className="flex justify-center"> button </div>
       </div>
     }
     switch colorStyle {
@@ -78,10 +84,8 @@ module TransparentWide = {
 
     <div className={marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
       <SectionContainer.VerySmallCentered paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2">
-        <h2 className={`text-3xl font-extrabold sm:text-4xl text-center`}>
-          <span className="block"> {s(t.title)} </span>
-        </h2>
-        <p className={`mt-4 text-lg leading-6`}> {s(t.body)} </p>
+        {title(~text=t.title, ~textColor="")}
+        {body(~text=t.body, ~textColor="", ~centered=false, ())}
         <div className="flex justify-center"> button </div>
       </SectionContainer.VerySmallCentered>
     </div>
@@ -105,7 +109,7 @@ module Embedded = {
         className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
         {s(t.title)}
       </p>
-      <p className="mt-3 text-center text-lg text-gray-900"> {s(t.body)} </p>
+      {body(~text=t.body, ~textColor="text-gray-900", ~centered=true, ())}
       <div className="mt-8 text-center"> button </div>
     </>
   }
