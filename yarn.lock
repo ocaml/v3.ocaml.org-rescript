@@ -1953,10 +1953,10 @@ native-url@0.3.4:
   dependencies:
     querystring "^0.2.0"
 
-next-transpile-modules@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-7.1.0.tgz#f4cae86913c9f28e66926d19e1c672a33d28f653"
-  integrity sha512-om3XfamWztW0zAdirCoyjcMNiQg3zesUlCSWh1FS6t1LgqUT+AjH1Zc5OpLMZtj7qsbwmLIOeFN72qrnhbpefw==
+next-transpile-modules@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-8.0.0.tgz#56375cdc25ae5d23a834195f277fc2737b26cb97"
+  integrity sha512-Q2f2yB0zMJ8KJbIYAeZoIxG6cSfVk813zr6B5HzsLMBVcJ3FaF8lKr7WG66n0KlHCwjLSmf/6EkgI6QQVWHrDw==
   dependencies:
     enhanced-resolve "^5.7.0"
     escalade "^3.1.1"
