@@ -11,7 +11,9 @@ let contentEn = {
 @react.component
 let make = (~content=contentEn) => <>
   <ConstructionBanner />
-  <Page.Basic title=content.title pageDescription=content.pageDescription> {<> </>} </Page.Basic>
+  <Page.Basic title=content.title pageDescription=content.pageDescription>
+    <div className=""> <LogoCloud /> </div>
+  </Page.Basic>
 </>
 
 let default = make
