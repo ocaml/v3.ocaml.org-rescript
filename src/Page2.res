@@ -1,61 +1,62 @@
 open! Import
 
-module type Jsonable = {
-  type t
-  let toJson: t => Js.Json.t
-  let ofJson: Js.Json.t => option<t>
-}
-
 module Params = {
-  type u = Js.Json.t
+  // An exceedingly simple json object parser
+  module P: {
+    type t<'a>
+
+    let return: 'a => t<'a>
+    let map: (t<'a>, 'a => 'b) => t<'b>
+    let ap: (t<'a => 'b>, t<'a>) => t<'b>
+    let field: (string, Js.Json.t => option<'a>) => t<'a>
+    let parse: (t<'a>, Js.Json.t) => option<'a>
+  } = {
+    type t<'a> = Js.Dict.t<Js.Json.t> => option<'a>
+
+    let return = (x: 'a): t<'a> => _ => Some(x)
+
+    let map = (ta: t<'a>, f: 'a => 'b): t<'b> => dict => ta(dict)->Belt.Option.map(f)
+
+    let ap = (tf: t<'a => 'b>, ta: t<'a>): t<'b> =>
+      dict => {
+        switch (tf(dict), ta(dict)) {
+        | (Some(f), Some(a)) => Some(f(a))
+        | (_, _) => None
+        }
+      }
+
+    let field = (name: string, f: Js.Json.t => option<'a>): t<'a> =>
+      dict => dict->Js.Dict.get(name)->Belt.Option.flatMap(f)
+
+    let parse = (t: t<'a>, json): option<'a> => json->Js.Json.decodeObject->Belt.Option.flatMap(t)
+  }
+
   module type S = {
     type t
-    let read: u => t
-    include Jsonable with type t := t
+    include Jsonable.S with type t := t
   }
+
+  let lang = P.field("lang", Lang.ofJson)
+  let tutorial = P.field("tutorial", Js.Json.decodeString)
+
   module Lang = {
     type t = {lang: Lang.t}
-    let ofJson = (json: u): option<t> => {
-      json
-      ->Js.Json.decodeObject
-      ->Belt.Option.flatMap(dict =>
-        dict
-        ->Js.Dict.get("lang")
-        ->Belt.Option.flatMap(Lang.ofJson)
-        ->Belt.Option.map(lang => {lang: lang})
-      )
-    }
-    let toJson = (t: t): Js.Json.t =>
-      Js.Json.object_(Js.Dict.fromArray([("lang", t.lang->Lang.toJson)]))
-    let read = json => json->ofJson->Belt.Option.getExn
+    let make = lang => {lang: lang}
+
+    let ofJson = (json: Js.Json.t): option<t> => P.return(make)->P.ap(lang)->P.parse(json)
+    let toJson = ({lang}: t): Js.Json.t =>
+      Js.Json.object_(Js.Dict.fromArray([("lang", lang->Lang.toJson)]))
 
     module Tutorial = {
       type t = {lang: Lang.t, tutorial: string}
-      let ofJson = (json: Js.Json.t): option<t> => {
-        let langT = read(json)
-        json
-        ->Js.Json.decodeObject
-        ->Belt.Option.flatMap(dict =>
-          dict
-          ->Js.Dict.get("tutorial")
-          ->Belt.Option.flatMap(json =>
-            json
-            ->Js.Json.decodeString
-            ->Belt.Option.map(tutorial => {
-              lang: langT.lang,
-              tutorial: tutorial,
-            })
-          )
-        )
-      }
-      let toJson = (t: t): Js.Json.t =>
+      let make = (lang, tutorial) => {lang: lang, tutorial: tutorial}
+
+      let ofJson = (json: Js.Json.t): option<t> =>
+        P.return(make)->P.ap(lang)->P.ap(tutorial)->P.parse(json)
+      let toJson = ({lang, tutorial}: t): Js.Json.t =>
         Js.Json.object_(
-          Js.Dict.fromArray([
-            ("lang", t.lang->Lang.toJson),
-            ("tutorial", t.tutorial->Js.Json.string),
-          ]),
+          Js.Dict.fromArray([("lang", lang->Lang.toJson), ("tutorial", tutorial->Js.Json.string)]),
         )
-      let read = (json: u) => json->ofJson->Belt.Option.getExn
     }
   }
 }
@@ -64,6 +65,7 @@ module type S = {
   type t
   type props<'a>
   type params
+
   @react.component
   let make: (~content: t) => React.element
   let getStaticProps: Next.GetStaticProps.t<props<t>, params, void>
@@ -73,20 +75,18 @@ module type S = {
 
 module type Arg = {
   type t
-  include Jsonable with type t := t
+  include Jsonable.S with type t := t
+
+  @react.component
+  let make: (~content: t) => React.element
 
   module Params: Params.S
 
   let getContent: Params.t => Js.Promise.t<t>
   let getParams: unit => Js.Promise.t<array<Params.t>>
-
-  @react.component
-  let make: (~content: t) => React.element
 }
 
 module Make = (Arg: Arg): (S with type t := Arg.t and type params = Arg.Params.t) => {
-  // let lang = Lang.ofString(ctx.Next.GetStaticProps.params.lang)
-
   module Props = {
     type t<'content> = {content: 'content}
     let toJson = (t: t<'content>, contentToJson: 'content => Js.Json.t): Js.Json.t =>

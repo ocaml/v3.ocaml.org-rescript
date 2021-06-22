@@ -7,7 +7,7 @@ module T = {
     pageDescription: Js.Nullable.t<string>,
     tableOfContents: MarkdownPage.TableOfContents.t,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content: t) => {

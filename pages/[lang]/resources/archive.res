@@ -5,7 +5,7 @@ module T = {
     title: string,
     pageDescription: string,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content) => <>

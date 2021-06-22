@@ -60,7 +60,7 @@ module T = {
     talksContent: MediaSection.t,
     papersContent: MediaSection.t,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content: t) => <>

@@ -176,7 +176,7 @@ module T = {
     developerGuidesContent: DeveloperGuides.t,
     usingOcamlContent: UsingOcaml.t,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content: t) => <>

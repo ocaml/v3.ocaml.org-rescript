@@ -188,7 +188,7 @@ module T = {
     spacesSectionHeader: string,
     spaces: array<string>,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content) => <>

@@ -292,7 +292,7 @@ module T = {
     opamContent: OpamSection.t,
     testimonialContent: TestimonialSection.t,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content) =>

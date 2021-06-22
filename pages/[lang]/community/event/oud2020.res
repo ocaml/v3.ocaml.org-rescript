@@ -17,7 +17,7 @@ module T = {
     papers: array<Paper.t>,
     // Committee too ?
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   let pdf_or_head = paper => {
     switch Paper.get_pdf(paper) {

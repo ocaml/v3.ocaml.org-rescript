@@ -338,7 +338,7 @@ module T = {
     categorizedNews: CategorizedNews.t,
     weeklyNews: WeeklyNews.t,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content) => <>

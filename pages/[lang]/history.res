@@ -81,7 +81,7 @@ module T = {
     pageDescription: string,
     timeline: array<Timeline.Item.t>,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   let decode = json => {
     open Json.Decode

@@ -63,7 +63,7 @@ module T = {
     pageDescription: string,
     companies: array<Company.t>,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   module LogoSection = {
     @react.component

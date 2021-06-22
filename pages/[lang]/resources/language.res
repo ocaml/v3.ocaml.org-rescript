@@ -230,7 +230,7 @@ module T = {
     diversifying: UserLevelIntroduction.t,
     researching: UserLevelIntroduction.t,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content) => <>

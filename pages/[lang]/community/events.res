@@ -9,7 +9,7 @@ module T = {
     events: array<Event.t>,
     headers: array<string>,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   let dedicated_page = (event: Event.t) => {
     // OCaml workshop pages

@@ -8,7 +8,7 @@ module T = {
     pageDescription: string,
     papers: array<Paper.t>,
   }
-  include UnsafeJsonable
+  include Jsonable.Unsafe
 
   @react.component
   let make = (~content) => <>
