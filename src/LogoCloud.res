@@ -1,4 +1,3 @@
-// TODO: interface file
 module Company = {
   type t = {
     logoSrc: string,
