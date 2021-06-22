@@ -1,5 +1,3 @@
-// TODO:
-
 let s = React.string
 
 @react.component
