@@ -117,8 +117,8 @@ let make = (~content=contentEn) => <>
   </Page.Basic>
  */
   <Page.TitleOverBackgroundImage
-    title="Industrial Users of OCaml"
-    pageDescription=""
+    title=content.title
+    pageDescription=content.pageDescription
     backgroundImage={
       height: Tall,
       tailwindImageName: "bg-industry-bg",
