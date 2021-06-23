@@ -37,6 +37,7 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         'news-bg': "url('/static/news-bg.jpeg')",
+        'industry-bg': "url('/static/57d9f2659c5f6ad1877d63151e3e8d14.jpeg')"
       }),
       fontFamily: {
         'roboto': ['"Roboto Slab"', 'serif']

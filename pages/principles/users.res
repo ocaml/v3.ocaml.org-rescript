@@ -104,6 +104,7 @@ let make = (~content=contentEn) => <>
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
     playgroundLink=`/play/industry/users`
   />
+  /*
   <Page.Basic
     marginTop=`mt-2`
     title=content.title
@@ -114,6 +115,14 @@ let make = (~content=contentEn) => <>
     }>
     <LogoSection companies=content.companies />
   </Page.Basic>
+ */
+  <div
+    style={ReactDOM.Style.make(~height="40rem", ())}
+    className=" bg-industry-bg bg-cover bg-center max-w-7xl mx-auto flex justify-center items-center">
+    <h2 className="text-orangedark font-roboto font-bold text-5xl text-center sm:text-8xl">
+      {s("Industrial Users of OCaml")}
+    </h2>
+  </div>
 </>
 
 let default = make
