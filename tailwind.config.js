@@ -40,6 +40,7 @@ module.exports = {
         'industry-bg': "url('/static/57d9f2659c5f6ad1877d63151e3e8d14.jpeg')"
       }),
       fontFamily: {
+        // TODO: define more fallback fonts and possibly rename to "serif"
         'roboto': ['"Roboto Slab"', 'serif']
       }
     },

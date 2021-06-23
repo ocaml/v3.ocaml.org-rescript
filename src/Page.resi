@@ -63,3 +63,20 @@ module HighlightItem: {
     ~highlightContent: highlightContent,
   ) => React.element
 }
+
+module TitleOverBackgroundImage: {
+  module BackgroundImage: {
+    type t = {
+      height: string,
+      tailwindImageName: string,
+    }
+  }
+
+  @react.component
+  let make: (
+    ~children: React.element,
+    ~title: string,
+    ~pageDescription: string,
+    ~backgroundImage: BackgroundImage.t,
+  ) => React.element
+}

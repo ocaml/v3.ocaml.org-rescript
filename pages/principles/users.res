@@ -116,13 +116,15 @@ let make = (~content=contentEn) => <>
     <LogoSection companies=content.companies />
   </Page.Basic>
  */
-  <div
-    style={ReactDOM.Style.make(~height="40rem", ())}
-    className=" bg-industry-bg bg-cover bg-center max-w-7xl mx-auto flex justify-center items-center">
-    <h2 className="text-orangedark font-roboto font-bold text-5xl text-center sm:text-8xl">
-      {s("Industrial Users of OCaml")}
-    </h2>
-  </div>
+  <Page.TitleOverBackgroundImage
+    title="Industrial Users of OCaml"
+    pageDescription=""
+    backgroundImage={
+      height: "40rem",
+      tailwindImageName: "bg-industry-bg",
+    }>
+    {<> </>}
+  </Page.TitleOverBackgroundImage>
 </>
 
 let default = make
