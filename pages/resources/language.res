@@ -55,7 +55,7 @@ module Books = {
             let cover = Belt.Option.getWithDefault(book.cover, "")
 
             <div className="flex justify-center" key={Js.Int.toString(idx)}>
-              <img className="h-36 w-28" src={"/static/" ++ cover} alt={book.title} />
+              <img className="h-36 w-28" src={cover} alt={book.title} />
               {book.links
               |> List.mapi((_idx, link: Ood.Book.link) =>
                 // TODO: visual indicator that link opens new tab
