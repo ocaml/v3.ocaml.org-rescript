@@ -22,12 +22,6 @@ out
 .merlin
 /lib/
 /src/*.js
+/vendor/ood/src/*.js
 /pages/**/*.js
 !/pages/_app.js
-
-# OCaml
-/_build
-/_esy
-
-# Project Specific
-/vendor/ood

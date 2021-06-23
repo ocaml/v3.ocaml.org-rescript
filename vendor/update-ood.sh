@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=migrate-v3
+version=master
 
 set -e -o pipefail
 
@@ -12,7 +12,7 @@ mkdir -p ood/src
 
 (
   cd "$TMP"
-  git clone https://github.com/tmattio/ood.git
+  git clone https://github.com/ocaml/ood.git
   cd ood
   git checkout $version
 )

@@ -335,12 +335,6 @@ let make = (~content) => <>
           <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
             {s(content.spaces[3])}
           </a>
-          <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
-            {s(content.spaces[4])}
-          </a>
-          <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
-            {s(content.spaces[5])}
-          </a>
         </div>
       </div>
     </SectionContainer.LargeCentered>
@@ -353,7 +347,6 @@ let getStaticProps = _ctx => {
   let news = Array.of_list(Ood.News.all->Next.stripUndefined)
 
   let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
-  let events = Belt.Array.sliceToEnd(events, -3)
 
   let contentEn = {
     title: `OCaml Around the Web`,
