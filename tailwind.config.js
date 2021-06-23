@@ -42,6 +42,10 @@ module.exports = {
       fontFamily: {
         // TODO: define more fallback fonts and possibly rename to "serif"
         'roboto': ['"Roboto Slab"', 'serif']
+      },
+      spacing: {
+        // Note: this was introduced to accomodate a large image height
+        '160': '40rem',
       }
     },
     /* We override the default font-families with our own default prefs

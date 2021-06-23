@@ -65,9 +65,13 @@ module HighlightItem: {
 }
 
 module TitleOverBackgroundImage: {
+  module ImageHeight: {
+    type t = Tall
+  }
+
   module BackgroundImage: {
     type t = {
-      height: string,
+      height: ImageHeight.t,
       tailwindImageName: string,
     }
   }

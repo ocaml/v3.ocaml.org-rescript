@@ -131,11 +131,18 @@ module HighlightItem = {
 }
 
 module TitleOverBackgroundImage = {
+  module ImageHeight = {
+    type t = Tall
+
+    let toClassName = t =>
+      switch t {
+      | Tall => "h-160"
+      }
+  }
+
   module BackgroundImage = {
     type t = {
-      // TODO: add the possible height values to tailwind config and request tw value?
-      // TODO: use a variant to specify height
-      height: string,
+      height: ImageHeight.t,
       tailwindImageName: string,
     }
   }
@@ -144,13 +151,15 @@ module TitleOverBackgroundImage = {
   @react.component
   let make = (~children, ~title, ~pageDescription, ~backgroundImage: BackgroundImage.t) => {
     <MainContainer.Centered>
-      <div
-        style={ReactDOM.Style.make(~height=backgroundImage.height, ())}
-        className={`${backgroundImage.tailwindImageName} bg-cover bg-center flex justify-center items-center`}>
-        <h2 className="text-orangedark font-roboto font-bold text-5xl text-center sm:text-8xl">
-          {s(title)}
-        </h2>
-      </div>
+      {
+        let height = ImageHeight.toClassName(backgroundImage.height)
+        <div
+          className={`${height} ${backgroundImage.tailwindImageName} bg-cover bg-center flex justify-center items-center`}>
+          <h2 className="text-orangedark font-roboto font-bold text-5xl text-center sm:text-8xl">
+            {s(title)}
+          </h2>
+        </div>
+      }
       // TODO: output pageDescription here
       children
     </MainContainer.Centered>

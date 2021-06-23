@@ -120,7 +120,7 @@ let make = (~content=contentEn) => <>
     title="Industrial Users of OCaml"
     pageDescription=""
     backgroundImage={
-      height: "40rem",
+      height: Tall,
       tailwindImageName: "bg-industry-bg",
     }>
     {<> </>}
