@@ -21,3 +21,4 @@ SRC=$TMP/ood
 
 cp -v "$SRC"/LICENSE.md ood
 cp -v "$SRC"/src/ood/*.{ml,mli} ood/src
+cp -Rv "$SRC"/data/media/ ../public/
