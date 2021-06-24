@@ -131,48 +131,16 @@ module HighlightItem = {
 }
 
 module TitleOverBackgroundImage = {
-  module ImageHeight = {
-    type t = Tall
-
-    let toClassName = t =>
-      switch t {
-      | Tall => "h-160"
-      }
-  }
-
-  module BackgroundImage = {
-    type t = {
-      height: ImageHeight.t,
-      tailwindImageName: string,
-    }
-  }
-
-  // TODO: factor out titleheading
   @react.component
-  let make = (~children, ~title, ~pageDescription, ~backgroundImage: BackgroundImage.t) => {
-    let descr = switch Some(pageDescription) {
-    | Some(d) => <p className="max-w-4xl mt-5 mx-auto text-2xl "> {s(d)} </p>
-    | None => React.null
-    }
-
+  let make = (
+    ~children,
+    ~title,
+    ~backgroundImage: TitleHeading.OverBackgroundImage.BackgroundImage.t,
+    ~pageDescription=?,
+    (),
+  ) => {
     <MainContainer.Centered>
-      // sub components: title over image, description, call to act button
-
-      {
-        let height = ImageHeight.toClassName(backgroundImage.height)
-        <>
-          <div
-            className={`${height} ${backgroundImage.tailwindImageName} bg-cover bg-center flex justify-center items-center`}>
-            <h1 className="text-orangedark font-roboto font-bold text-5xl text-center sm:text-8xl">
-              {s(title)}
-            </h1>
-          </div>
-          // TODO: add padding between desc and call to act
-          <div className="mx-auto px-4 sm:px-6 lg:px-8 text-center"> descr </div>
-          // add call to action button here
-        </>
-      }
-      children
+      <TitleHeading.OverBackgroundImage title backgroundImage ?pageDescription /> children
     </MainContainer.Centered>
   }
 }
