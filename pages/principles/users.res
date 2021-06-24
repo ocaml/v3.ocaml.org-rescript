@@ -104,7 +104,6 @@ let make = (~content=contentEn) => <>
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
     playgroundLink=`/play/industry/users`
   />
-  /*
   <Page.Basic
     marginTop=`mt-2`
     title=content.title
@@ -115,16 +114,6 @@ let make = (~content=contentEn) => <>
     }>
     <LogoSection companies=content.companies />
   </Page.Basic>
- */
-  <Page.TitleOverBackgroundImage
-    title=content.title
-    pageDescription=content.pageDescription
-    backgroundImage={
-      height: Tall,
-      tailwindImageName: "bg-industry-bg",
-    }>
-    {<> </>}
-  </Page.TitleOverBackgroundImage>
 </>
 
 let default = make

@@ -37,14 +37,13 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         'news-bg': "url('/static/news-bg.jpeg')",
-        'industry-bg': "url('/static/57d9f2659c5f6ad1877d63151e3e8d14.jpeg')"
       }),
       fontFamily: {
         // TODO: define more fallback fonts and possibly rename to "serif"
         'roboto': ['"Roboto Slab"', 'serif']
       },
       spacing: {
-        // Note: this was introduced to accomodate a large image height
+        // Note: this was introduced to accommodate a large image height
         '160': '40rem',
       }
     },
