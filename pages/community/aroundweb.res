@@ -323,9 +323,7 @@ let make = (~content) => <>
       </h2>
       <div className="mx-auto max-w-4xl px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-          <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
-            {s(content.spaces[0])}
-          </a>
+          <ShortWideCard name={content.spaces[0]} logoSrc="" />
           <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
             {s(content.spaces[1])}
           </a>
