@@ -15,10 +15,6 @@ dev: install-deps watch
 
 .PHONY: install-deps
 install-deps:
-ifeq ($(VERCEL), 1)
-	npm config set user root
-	yum install perl-Digest-SHA
-endif
 	$(YARN) install
 	make vendor/ood
 
