@@ -268,7 +268,7 @@ module T = {
     }
   </>
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let contentEn = {
     let books = Ood.Book.all->Next.stripUndefined->Array.of_list
@@ -307,4 +307,4 @@ module T = {
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

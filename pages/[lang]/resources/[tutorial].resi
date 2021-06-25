@@ -5,4 +5,4 @@ type t = {
   tableOfContents: string,
 }
 
-include Page2.S with type t := t
+include Pages.S with type t := t

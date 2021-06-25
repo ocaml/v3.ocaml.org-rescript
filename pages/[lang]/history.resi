@@ -10,4 +10,4 @@ type t = {
   timeline: array<Timeline.Item.t>,
 }
 
-include Page2.S with type t := t
+include Pages.S with type t := t

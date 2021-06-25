@@ -27,7 +27,7 @@ module T = {
     </>
   }
 
-  module Params = Page2.Params.Lang.Tutorial
+  module Params = Pages.Params.Lang.Tutorial
 
   let content =
     Ood.Tutorial.all
@@ -48,4 +48,4 @@ module T = {
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

@@ -349,7 +349,7 @@ module T = {
 
   let spaces = ["Github.com", "Reddit.com", "Twitter.com", "Discuss.ocaml.org"]
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let contentEn = {
     let news = Array.of_list(Ood.News.all->Next.stripUndefined)
@@ -413,4 +413,4 @@ module T = {
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

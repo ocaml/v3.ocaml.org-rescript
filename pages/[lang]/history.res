@@ -127,10 +127,10 @@ module T = {
     ],
   }
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

@@ -116,7 +116,7 @@ module T = {
     </Page.Basic>
   </>
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let contentEn = {
     title: `Industrial Users of OCaml`,
@@ -128,4 +128,4 @@ module T = {
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

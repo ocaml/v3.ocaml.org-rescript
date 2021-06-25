@@ -13,7 +13,7 @@ module T = {
     <Page.Basic title=content.title pageDescription=content.pageDescription> {<> </>} </Page.Basic>
   </>
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let contentEn = {
     title: `Platform`,
@@ -24,4 +24,4 @@ module T = {
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

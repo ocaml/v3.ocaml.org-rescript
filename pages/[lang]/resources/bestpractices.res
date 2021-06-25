@@ -25,10 +25,10 @@ module T = {
     pageDescription: `Some guides to commonly used tools in OCaml development workflows.`,
   }
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

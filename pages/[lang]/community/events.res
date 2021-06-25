@@ -67,7 +67,7 @@ module T = {
     </Page.TopImage>
   </>
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let contentEn = {
     let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
@@ -82,4 +82,4 @@ module T = {
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)

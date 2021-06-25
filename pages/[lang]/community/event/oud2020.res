@@ -130,7 +130,7 @@ module T = {
     </Page.Basic>
   </>
 
-  module Params = Page2.Params.Lang
+  module Params = Pages.Params.Lang
 
   let contentEn = {
     let video_filter = List.filter((video: Ood.Video.t) => {
@@ -170,4 +170,4 @@ module T = {
 }
 
 include T
-include Page2.MakeSimple(T)
+include Pages.MakeSimple(T)
