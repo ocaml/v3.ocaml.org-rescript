@@ -8,8 +8,7 @@ let contentEn = {
   pageDescription: `Over the years, the OCaml community has become more and more proactive when it comes to reducing its environmental impact. As part of this journey we have documented our efforts towards becoming Carbon Zero.`,
 }
 
-@react.component
-let make = (~content=contentEn) => <>
+let render = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=931%3A6483`
   />
@@ -17,5 +16,8 @@ let make = (~content=contentEn) => <>
     {<> </>}
   </Page.TopImage>
 </>
+
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make
