@@ -98,8 +98,7 @@ module LogoSection = {
     </SectionContainer.ResponsiveCentered>
 }
 
-@react.component
-let make = (~content=contentEn) => <>
+let render = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
     playgroundLink=`/play/industry/users`
@@ -115,5 +114,8 @@ let make = (~content=contentEn) => <>
     <LogoSection companies=content.companies />
   </Page.Basic>
 </>
+
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make

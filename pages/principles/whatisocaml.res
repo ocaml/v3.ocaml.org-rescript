@@ -8,12 +8,14 @@ let contentEn = {
   pageDescription: `A description of OCaml's features.`,
 }
 
-@react.component
-let make = (~content=contentEn) => <>
+let render = (~content) => <>
   <ConstructionBanner />
   <Page.TopImage title=content.title pageDescription=content.pageDescription>
     {<> </>}
   </Page.TopImage>
 </>
+
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make
