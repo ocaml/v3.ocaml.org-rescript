@@ -323,8 +323,7 @@ let contentEn = {
   },
 }
 
-@react.component
-let make = (~content=contentEn) =>
+let render = (~content) =>
   <Page.Unstructured>
     <HeroSection content=content.heroContent />
     <StatsSection content=content.statsContent />
@@ -334,5 +333,8 @@ let make = (~content=contentEn) =>
       marginBottom={Tailwind.ByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
     />
   </Page.Unstructured>
+
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make
