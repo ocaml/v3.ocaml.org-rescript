@@ -27,7 +27,7 @@ module type S = {
   let default: props<Js.Json.t> => React.element
 }
 
-module type Arg = {
+module type ArgBase = {
   type t
   include Jsonable.S with type t := t
 
@@ -35,8 +35,18 @@ module type Arg = {
   let make: (~content: t) => React.element
 
   module Params: Params.S
-  let getContent: Params.t => Js.Promise.t<t>
+}
+
+module type Arg = {
+  include ArgBase
+  let getContent: Params.t => Js.Promise.t<option<t>>
   let getParams: unit => Js.Promise.t<array<Params.t>>
 }
 
+module type ArgSimple = {
+  include ArgBase
+  let content: array<(Params.t, t)>
+}
+
 module Make: (Arg: Arg) => (S with type t := Arg.t and type params = Arg.Params.t)
+module MakeSimple: (Arg: ArgSimple) => (S with type t := Arg.t and type params = Arg.Params.t)

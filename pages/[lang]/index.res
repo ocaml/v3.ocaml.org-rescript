@@ -249,10 +249,12 @@ module T = {
       </blockquote>
   }
 
+  // TODO: move this into general contaienrs?
   module TestimonialContainer = {
     @react.component
-    let make = (~margins, ~children) =>
-      <section className={margins ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
+    let make = (~marginBottom=?, ~children) =>
+      <section
+        className={marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> children </div>
       </section>
   }
@@ -266,8 +268,8 @@ module T = {
     }
 
     @react.component
-    let make = (~content, ~margins) =>
-      <TestimonialContainer margins>
+    let make = (~content, ~marginBottom=?) =>
+      <TestimonialContainer ?marginBottom>
         <FillPattern
           organizationName=content.organizationName
           position=`absolute`
@@ -300,56 +302,48 @@ module T = {
       <HeroSection content=content.heroContent />
       <StatsSection content=content.statsContent />
       <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16` />
-      <TestimonialSection content=content.testimonialContent margins=`mb-6 md:mb-4 lg:mb-6` />
+      <TestimonialSection
+        content=content.testimonialContent
+        marginBottom={Tailwind.ByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
+      />
     </Page.Unstructured>
 
-  module Params = Page2.Params.Lang
-
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let en = Js.Promise.resolve({
-      heroContent: {
-        heroHeader: `Welcome to a World of OCaml`,
-        heroBody: `OCaml is a general purpose industrial-strength programming language with an emphasis on expressiveness and 
+  let contentEn = {
+    heroContent: {
+      heroHeader: `Welcome to a World of OCaml`,
+      heroBody: `OCaml is a general purpose industrial-strength programming language with an emphasis on expressiveness and 
       safety.`,
-        installOcaml: `Install OCaml`,
-        aboutOcaml: `About OCaml`,
-      },
-      statsContent: {
-        statsTitle: `OCaml in Numbers`,
-        userSatisfaction: `Of users report feeling satisfied with the state of OCaml`,
-        workplaceUse: `Report that the use of OCaml is increasing or remaining stable in their workplace`,
-        easyMaintain: `Of users report feeling that OCaml software is easy to maintain`,
-        userSatisfactionPercent: `85%`,
-        workplaceUsePercent: `95%`,
-        easyMaintainPercent: `75%`,
-      },
-      opamContent: {
-        opamHeader: `Opam: the OCaml Package Manager`,
-        opamBody: `Opam is a source-based package manager for OCaml. It supports multiple simultaneous compiler 
+      installOcaml: `Install OCaml`,
+      aboutOcaml: `About OCaml`,
+    },
+    statsContent: {
+      statsTitle: `OCaml in Numbers`,
+      userSatisfaction: `Of users report feeling satisfied with the state of OCaml`,
+      workplaceUse: `Report that the use of OCaml is increasing or remaining stable in their workplace`,
+      easyMaintain: `Of users report feeling that OCaml software is easy to maintain`,
+      userSatisfactionPercent: `85%`,
+      workplaceUsePercent: `95%`,
+      easyMaintainPercent: `75%`,
+    },
+    opamContent: {
+      opamHeader: `Opam: the OCaml Package Manager`,
+      opamBody: `Opam is a source-based package manager for OCaml. It supports multiple simultaneous compiler 
       installations, flexible package constraints, and a Git-friendly development workflow.`,
-        opamLinkText: `Go to opam.ocaml.org`,
-      },
-      testimonialContent: {
-        quote: `OCaml helps us to quickly adopt to changing market conditions, and go from prototypes to production 
+      opamLinkText: `Go to opam.ocaml.org`,
+    },
+    testimonialContent: {
+      quote: `OCaml helps us to quickly adopt to changing market conditions, and go from prototypes to production 
       systems with less effort ... Billions of dollars of transactions flow through our systems every day, so getting 
       it right matters.`,
-        organizationName: `Jane Street`,
-        speaker: `Yaron Minsky`,
-        organizationLogo: `/static/js.svg`,
-      },
-    })
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
-    }
-    switch lang {
-    | #en => en
-    }
+      organizationName: `Jane Street`,
+      speaker: `Yaron Minsky`,
+      organizationLogo: `/static/js.svg`,
+    },
   }
+
+  module Params = Page2.Params.Lang
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

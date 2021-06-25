@@ -28,27 +28,18 @@ module T = {
         </div>
         <h2 className="font-semibold text-2xl py-9 sm:text-3xl"> {s(content.title)} </h2>
         // Generic Highlight Component
-        <div className="rounded-lg shadow overflow-y-auto relative">
-          <ul>
-            {content.items
-            |> Array.mapi((idx, item: Item.t) =>
-              // TODO: ensure link is accessible; indicator that link opens tab
-              <a href=item.link target="_blank" key={Js.Int.toString(idx)}>
-                <li className="p-6 grid grid-cols-8 w-full cursor-pointer hover:bg-gray-100">
-                  <p className="text-yellow-600 col-span-5 font-semibold">
-                    {s(item.name ++ ` by ` ++ item.author)}
-                  </p>
-                  <p className="text-gray-400 text-sm col-span-2 ml-4"> {s(item.creationDate)} </p>
-                  <p className="text-right"> {s(` -> `)} </p>
-                </li>
-              </a>
-            )
-            |> React.array}
-          </ul>
-        </div>
+
+        {
+          let toItem = (i: Item.t) => {
+            StackedList.BasicWithAuxiliaryAttribute.Item.link: i.link,
+            title: `${i.name} by ${i.author}`,
+            auxiliaryAttribute: i.creationDate,
+          }
+          <StackedList.BasicWithAuxiliaryAttribute items={content.items |> Array.map(toItem)} />
+        }
         // TODO: enable link and create video archive page
         <p className="text-right py-6 cursor-pointer hover:underline font-semibold text-yellow-600">
-          {s(content.title)}
+          {s(`Browse More ` ++ content.title)}
         </p>
       </SectionContainer.FullyResponsiveCentered>
   }
@@ -63,98 +54,78 @@ module T = {
   include Jsonable.Unsafe
 
   @react.component
-  let make = (~content: t) => <>
+  let make = (
+    ~content as {title, pageDescription, videosContent, talksContent, papersContent},
+  ) => <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
       playgroundLink=`/play/resources/mediaarchive`
     />
-    <Page.Basic
-      title=content.title pageDescription=content.pageDescription addContainer=Page.Basic.Narrow>
-      <MediaSection content=content.videosContent />
-      <MediaSection content=content.talksContent />
-      <MediaSection content=content.papersContent />
+    <Page.Basic title pageDescription addContainer=Page.Basic.Narrow>
+      <MediaSection content=videosContent />
+      <MediaSection content=talksContent />
+      <MediaSection content=papersContent />
     </Page.Basic>
   </>
 
-  module Params = Page2.Params.Lang
+  let contentEn = {
+    // TODO: define and read highlight items for each list
+    let talks = []
+    let fillerContent = [
+      {
+        MediaSection.Item.name: `How to Code a Camel 1`,
+        author: `Dr. Dromedary`,
+        creationDate: `02-01-2021`,
+        link: `https://youtube.com`,
+      },
+      {
+        MediaSection.Item.name: `How to Code a Camel 2`,
+        author: `Dr. Dromedary`,
+        creationDate: `02-01-2021`,
+        link: `https://youtube.com`,
+      },
+      {
+        MediaSection.Item.name: `How to Code a Camel 3`,
+        author: `Dr. Dromedary`,
+        creationDate: `02-01-2021`,
+        link: `https://youtube.com`,
+      },
+    ]
 
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let browseMore = s => {
-      switch lang {
-      | #en | #fr | #es => "Browse more " ++ s
-      }
+    // TODO: read videos
+    let videosContent = {
+      MediaSection.title: `Videos`,
+      image: `https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1640&q=80`,
+      items: fillerContent,
     }
-    let en = {
-      // TODO: define and read highlight items for each list
-      let talks = Array.map(t => {
-        MediaSection.Item.name: t.Talk.name,
-        author: t.author,
-        creationDate: t.creationDate,
-        link: t.link,
-      }, Talk.readAll())
-      let fillerContent = [
-        {
-          MediaSection.Item.name: `How to Code a Camel 1`,
-          author: `Dr. Dromedary`,
-          creationDate: `02-01-2021`,
-          link: `https://youtube.com`,
-        },
-        {
-          MediaSection.Item.name: `How to Code a Camel 2`,
-          author: `Dr. Dromedary`,
-          creationDate: `02-01-2021`,
-          link: `https://youtube.com`,
-        },
-        {
-          MediaSection.Item.name: `How to Code a Camel 3`,
-          author: `Dr. Dromedary`,
-          creationDate: `02-01-2021`,
-          link: `https://youtube.com`,
-        },
-      ]
-
-      // TODO: read videos
-      let videosContent = {
-        MediaSection.title: `Videos`,
-        image: `https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1640&q=80`,
-        items: fillerContent,
-      }
-      let talksContent = {
-        MediaSection.title: `Talks and Slides`,
-        image: `https://images.unsplash.com/photo-1560523160-754a9e25c68f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1320&q=80`,
-        items: talks,
-      }
-      // TODO: read papers
-      // TODO: read interviews
-      let papersContent = {
-        MediaSection.title: `Papers and Interviews`,
-        image: `https://www.cst.cam.ac.uk/sites/www.cst.cam.ac.uk/files/view_from_nw.jpg`,
-        items: fillerContent,
-      }
-
-      let title = `Media Archive`
-      let pageDescription = `This is where you can find archived videos, slides from talks, and other media produced by people in the OCaml Community.`
-
-      Js.Promise.resolve({
-        title: browseMore(title),
-        pageDescription: pageDescription,
-        videosContent: videosContent,
-        talksContent: talksContent,
-        papersContent: papersContent,
-      })
+    let talksContent = {
+      MediaSection.title: `Talks and Slides`,
+      image: `https://images.unsplash.com/photo-1560523160-754a9e25c68f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1320&q=80`,
+      items: talks,
     }
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
+    // TODO: read papers
+    // TODO: read interviews
+    let papersContent = {
+      MediaSection.title: `Papers and Interviews`,
+      image: `https://www.cst.cam.ac.uk/sites/www.cst.cam.ac.uk/files/view_from_nw.jpg`,
+      items: fillerContent,
     }
-    switch lang {
-    | #en => en
+
+    let title = `Media Archive`
+    let pageDescription = `This is where you can find archived videos, slides from talks, and other media produced by people in the OCaml Community.`
+    {
+      title: title,
+      pageDescription: pageDescription,
+      videosContent: videosContent,
+      talksContent: talksContent,
+      papersContent: papersContent,
     }
   }
+
+  module Params = Page2.Params.Lang
+
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

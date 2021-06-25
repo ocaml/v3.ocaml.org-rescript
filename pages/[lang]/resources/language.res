@@ -10,8 +10,8 @@ module T = {
     }
 
     @react.component
-    let make = (~content, ~margins) =>
-      <SectionContainer.SmallCentered margins otherLayout="flex items-center space-x-20">
+    let make = (~content, ~marginBottom=?, ()) =>
+      <SectionContainer.SmallCentered ?marginBottom otherLayout="flex items-center space-x-20">
         <div className="text-5xl font-bold text-orangedark flex-shrink-0">
           {s(content.level ++ ` -`)}
         </div>
@@ -22,16 +22,16 @@ module T = {
   module Books = {
     type t = {
       booksLabel: string,
-      books: array<Book.t>,
+      books: array<Ood.Book.t>,
     }
 
     @react.component
-    let make = (~margins, ~content) =>
+    let make = (~marginBottom=?, ~content) =>
       // TODO: define content type; extract content
       // TODO: use generic container
       <div
         className={"bg-white overflow-hidden shadow rounded-lg mx-10 mx-auto max-w-5xl " ++
-        margins}>
+        Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty(marginBottom)}>
         <div className="px-4 py-5 sm:px-6 sm:py-9">
           <h2 className="text-center text-orangedark text-7xl font-bold mb-8 uppercase">
             {s(content.booksLabel)}
@@ -54,14 +54,20 @@ module T = {
               </svg>
             </div>
             {content.books
-            |> Js.Array.mapi((b: Book.t, idx) =>
+            |> Js.Array.mapi((book: Ood.Book.t, idx) => {
+              let cover = Belt.Option.getWithDefault(book.cover, "")
+
               <div className="flex justify-center" key={Js.Int.toString(idx)}>
-                // TODO: visual indicator that link opens new tab
-                <a href=b.link target="_blank">
-                  <img className="h-36 w-28" src={"/static/" ++ b.image} alt={b.name ++ " book"} />
-                </a>
+                <img className="h-36 w-28" src={cover} alt={book.title} />
+                {book.links
+                |> List.mapi((_idx, link: Ood.Book.link) =>
+                  // TODO: visual indicator that link opens new tab
+                  <a href=link.uri target="_blank"> <span> {s(link.description)} </span> </a>
+                )
+                |> Array.of_list
+                |> React.array}
               </div>
-            )
+            })
             |> React.array}
             <div className="flex justify-center">
               <svg
@@ -84,9 +90,9 @@ module T = {
 
   module Manual = {
     @react.component
-    let make = (~margins) =>
+    let make = (~marginBottom=?) =>
       // TODO: define content type; factor out content
-      <SectionContainer.MediumCentered margins paddingY="pt-8 pb-14" filled=true>
+      <SectionContainer.MediumCentered ?marginBottom paddingY="pt-8 pb-14" filled=true>
         <h2 className="text-center text-white text-7xl font-bold mb-8">
           {s(`The OCaml Manual`)}
         </h2>
@@ -147,8 +153,8 @@ module T = {
 
   module Applications = {
     @react.component
-    let make = (~margins) =>
-      <SectionContainer.VerySmallCentered margins>
+    let make = (~marginBottom=?) =>
+      <SectionContainer.VerySmallCentered ?marginBottom>
         <h2 className="text-center text-orangedark text-7xl font-bold mb-8">
           {s(`Applications`)}
         </h2>
@@ -172,11 +178,12 @@ module T = {
 
   module Papers = {
     @react.component
-    let make = (~margins) =>
+    let make = (~marginBottom=?, ()) =>
       // TODO: define content type and factor out content
       // TODO: use generic container
       <div
-        className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++ margins}>
+        className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++
+        marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
         <div className="px-4 py-5 sm:p-6">
           <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`PAPERS`)} </h2>
           <div className="grid grid-cols-3 mb-14 px-9 space-x-6 px-14">
@@ -239,34 +246,34 @@ module T = {
       playgroundLink=`/play/resources/language`
     />
     // TODO: define a more narrow page type with preset params
-    <Page.Basic
-      marginTop=`mt-1`
-      headingMarginBottom=`mb-24`
-      addBottomBar=true
-      addContainer=Page.Basic.NoContainer
-      title=content.title
-      pageDescription=content.pageDescription>
-      <UserLevelIntroduction content=content.beginning margins=`mb-20` />
-      <UserLevelIntroduction content=content.growing margins=`mb-20` />
-      <Books margins=`mb-16` content=content.booksContent />
-      <UserLevelIntroduction content=content.expanding margins=`mb-20` />
-      <Manual margins=`mb-20` />
-      <UserLevelIntroduction content=content.diversifying margins=`mb-20` />
-      <Applications margins=`mb-36` />
-      <UserLevelIntroduction content=content.researching margins=`mb-20` />
-      <Papers margins=`mb-16` />
-    </Page.Basic>
+
+    {
+      let introMarginBottom = Tailwind.ByBreakpoint.make(#mb20, ())
+      <Page.Basic
+        marginTop=`mt-1`
+        addBottomBar=true
+        addContainer=Page.Basic.NoContainer
+        title=content.title
+        pageDescription=content.pageDescription>
+        <UserLevelIntroduction content=content.beginning marginBottom=introMarginBottom />
+        <UserLevelIntroduction content=content.growing marginBottom=introMarginBottom />
+        <Books marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} content=content.booksContent />
+        <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
+        <Manual marginBottom={Tailwind.ByBreakpoint.make(#mb20, ())} />
+        <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
+        <Applications marginBottom={Tailwind.ByBreakpoint.make(#mb36, ())} />
+        <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
+        <Papers marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} />
+      </Page.Basic>
+    }
   </>
 
   module Params = Page2.Params.Lang
 
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let books = Book.readAll()
+  let contentEn = {
+    let books = Ood.Book.all->Next.stripUndefined->Array.of_list
     // TODO: read book sorting and filtering information and adjust array
-    let en = Js.Promise.resolve({
+    {
       title: `Language`,
       pageDescription: `This is the home of learning and tutorials. Whether you're a beginner, a teacher, or a seasoned researcher, this is where you can find the resources you need to accomplish your goals in OCaml.`,
       beginning: {
@@ -293,16 +300,11 @@ module T = {
         level: `Researching`,
         introduction: `Aspiring towards greater understanding of the language? Want to push the limits and discover brand new things? Check out papers written by leading OCaml researchers:`,
       },
-    })
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
-    }
-    switch lang {
-    | #en => en
     }
   }
+
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

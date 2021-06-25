@@ -15,7 +15,7 @@ module Large = {
     ~callToAction=?,
     ~pageDescription: option<string>=?,
     ~marginTop="",
-    ~marginBottom="",
+    ~marginBottom=?,
     // ~addMaxWidth=false,
     ~addBottomBar=false,
     (),
@@ -52,11 +52,59 @@ module Large = {
           }}
         </div>
       </div>
-      {switch addBottomBar {
-      | true => <hr className={"bg-orangedark h-3 " ++ marginBottom} />
-      | false => React.null
-      }}
+      // TODO: should either add margin bottom when bottombar isn't specified
+      //  or only allow marginBottom to be specified with addBottomBar
+
+      {
+        let marginBottom = marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty
+        switch addBottomBar {
+        | true => <hr className={"bg-orangedark h-3 " ++ marginBottom} />
+        | false => React.null
+        }
+      }
     </>
+  }
+}
+
+module OverBackgroundImage = {
+  module ImageHeight = {
+    type t = Tall
+
+    let toClassName = t =>
+      switch t {
+      | Tall => "h-160"
+      }
+  }
+
+  module BackgroundImage = {
+    type t = {
+      height: ImageHeight.t,
+      tailwindImageName: string,
+    }
+  }
+
+  @react.component
+  let make = (~title, ~backgroundImage: BackgroundImage.t, ~pageDescription=?, ()) => {
+    let title = {
+      let height = ImageHeight.toClassName(backgroundImage.height)
+      <div
+        className={`${height} ${backgroundImage.tailwindImageName} bg-cover bg-center flex justify-center items-center`}>
+        <h1 className="text-orangedark font-roboto font-bold text-5xl text-center sm:text-8xl">
+          {s(title)}
+        </h1>
+      </div>
+    }
+
+    let description = (~marginTop) =>
+      switch pageDescription {
+      | Some(d) =>
+        <p className={`max-w-4xl ${marginTop} py-4 sm:py-8 mx-auto text-2xl text-center`}>
+          {s(d)}
+        </p>
+      | None => React.null
+      }
+
+    <> title {description(~marginTop="mt-5")} </>
   }
 }
 

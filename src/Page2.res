@@ -73,7 +73,7 @@ module type S = {
   let default: props<Js.Json.t> => React.element
 }
 
-module type Arg = {
+module type ArgBase = {
   type t
   include Jsonable.S with type t := t
 
@@ -81,9 +81,17 @@ module type Arg = {
   let make: (~content: t) => React.element
 
   module Params: Params.S
+}
 
-  let getContent: Params.t => Js.Promise.t<t>
+module type Arg = {
+  include ArgBase
+  let getContent: Params.t => Js.Promise.t<option<t>>
   let getParams: unit => Js.Promise.t<array<Params.t>>
+}
+
+module type ArgSimple = {
+  include ArgBase
+  let content: array<(Params.t, t)>
 }
 
 module Make = (Arg: Arg): (S with type t := Arg.t and type params = Arg.Params.t) => {
@@ -98,10 +106,17 @@ module Make = (Arg: Arg): (S with type t := Arg.t and type params = Arg.Params.t
 
   let getStaticProps: Next.GetStaticProps.t<props<Arg.t>, params, void> = ctx => {
     Arg.getContent(ctx.params) |> Js.Promise.then_(content => {
-      let props = {Props.content: content}
-      Js.Promise.resolve({
-        "props": props->Props.toJson(Arg.toJson),
-      })
+      switch content {
+      | None =>
+        failwith(
+          "BUG: No content found for params: " ++ ctx.params->Arg.Params.toJson->Js.Json.stringify,
+        )
+      | Some(content) =>
+        let props = {Props.content: content}
+        Js.Promise.resolve({
+          "props": props->Props.toJson(Arg.toJson),
+        })
+      }
     })
   }
 
@@ -126,3 +141,19 @@ module Make = (Arg: Arg): (S with type t := Arg.t and type params = Arg.Params.t
 
   include Arg
 }
+
+module MakeSimple = (Arg: ArgSimple): (
+  S with type t := Arg.t and type params = Arg.Params.t
+) => Make({
+  include Arg
+
+  let getParams = () =>
+    Js.Promise.resolve(content->Belt.Array.mapU((. (params, _content)) => params))
+
+  let getContent = (params: Params.t) =>
+    Js.Promise.resolve(
+      content
+      ->Belt.Array.getByU((. (key, _content)) => key == params)
+      ->Belt.Option.map(((_key, content)) => content),
+    )
+})

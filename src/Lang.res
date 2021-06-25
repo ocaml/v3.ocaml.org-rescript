@@ -34,5 +34,3 @@ let toString = t =>
 
 let toJson = t => t->toString->Js.Json.string
 let ofJson = json => json->Js.Json.decodeString->Belt.Option.map(ofString)
-
-let default = #en

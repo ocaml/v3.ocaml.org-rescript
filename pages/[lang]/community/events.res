@@ -6,12 +6,11 @@ module T = {
   type t = {
     title: string,
     pageDescription: string,
-    events: array<Event.t>,
-    headers: array<string>,
+    events: array<Ood.Event.t>,
   }
   include Jsonable.Unsafe
 
-  let dedicated_page = (event: Event.t) => {
+  let dedicated_page = (event: Ood.Event.t) => {
     // OCaml workshop pages
     switch List.find_opt(String.equal("ocaml-workshop"), event.tags) {
     | Some(_) =>
@@ -29,11 +28,11 @@ module T = {
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1176%3A0`
     />
     <Page.TopImage title=content.title pageDescription=content.pageDescription>
-      <SectionContainer.MediumCentered margins="mb-16">
+      <SectionContainer.MediumCentered marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}>
         <Table.Simple
           content={{
-            headers: content.headers,
-            data: Array.map((event: Event.t) => [
+            headers: ["Date", "Event Name", "Location", "Description"],
+            data: Array.map((event: Ood.Event.t) => [
               <p> {s(event.date |> Js.Date.fromString |> Js.Date.toDateString)} </p>,
               switch dedicated_page(event) {
               | Some(page) =>
@@ -70,35 +69,17 @@ module T = {
 
   module Params = Page2.Params.Lang
 
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let en = {
-      let title = `Events`
-      let pageDescription = `Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere.`
-      let headers = [`Date`, `Event Name`, `Location`, `Description`]
-      let events = EventsData.readAll().events->Array.of_list
-      let events = Array.map(
-        event => Event.toJson(event)->Next.stripUndefined->Event.fromJson,
-        events,
-      )
-      Js.Promise.resolve({
-        title: title,
-        pageDescription: pageDescription,
-        events: events,
-        headers: headers,
-      })
-    }
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
-    }
-    switch lang {
-    | #en => en
+  let contentEn = {
+    let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
+    {
+      title: `Events`,
+      pageDescription: `Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
+      events: events,
     }
   }
+
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

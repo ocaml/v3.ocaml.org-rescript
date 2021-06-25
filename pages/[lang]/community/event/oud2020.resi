@@ -8,8 +8,8 @@ type t = {
   pageDescription: string,
   introduction: string,
   dates: array<date>,
-  presentations: array<Video.t>,
-  papers: array<Paper.t>,
+  presentations: array<Ood.Video.t>,
+  papers: array<Ood.Paper.t>,
   // Committee too ?
 }
 

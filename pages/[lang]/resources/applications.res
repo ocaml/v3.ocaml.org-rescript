@@ -7,9 +7,9 @@ let s = React.string
 module T = {
   module ApiDocumentation = {
     @react.component
-    let make = (~margins) =>
+    let make = (~marginBottom=?) =>
       // TODO: factor out and define content type
-      <SectionContainer.MediumCentered margins paddingX="px-4 sm:px-32">
+      <SectionContainer.MediumCentered ?marginBottom paddingX="px-4 sm:px-32">
         <MediaObject imageHeight="h-56" image="api-img.jpeg" imageSide=MediaObject.Right>
           <h4 className="text-4xl font-bold mb-8"> {s(`API Documentation`)} </h4>
           <p className="mt-1 mb-8">
@@ -26,6 +26,60 @@ module T = {
       </SectionContainer.MediumCentered>
   }
 
+  module DeveloperGuide = {
+    type t = {
+      name: string,
+      description: string,
+      link: string,
+      image: string,
+    }
+
+    let all = [
+      {
+        link: "https=//docs.mirage.io/mirage/index.html",
+        name: "Mirage OS",
+        description: "Mirage OS Unikernels lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at tristique odio. Etiam sodales porta lectus ac malesuada. Proin in odio ultricies, faucibus ligula ut",
+        image: "app-image.png",
+      },
+      {
+        link: "https=//b0-system.github.io/odig/doc/js_of_ocaml/Js_of_ocaml/index.html",
+        name: "JS_of_OCaml",
+        description: "Browser programming dolor sit amet, consectetur adipiscing elit. Integer at tristique odio. Etiam sodales porta lectus ac maleuada. Proin in odio ultricies, faucibus ligula ut",
+        image: "jvs.png",
+      },
+    ]
+  }
+
+  module OcamlPoweredSoftware = {
+    type t = {
+      name: string,
+      link: string,
+      image: string,
+      description: string,
+    }
+
+    let all = [
+      {
+        name: "Unison",
+        link: "https://github.com/bcpierce00/unison/wiki/Downloading-Unison",
+        image: "unison2.png",
+        description: "Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.",
+      },
+      {
+        name: "Coq",
+        link: "https://coq.inria.fr/download",
+        image: "coq.png",
+        description: "Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.",
+      },
+      {
+        name: "Liquid Soap",
+        link: "https://www.liquidsoap.info/doc-1.4.4/install.html",
+        image: "liq.png",
+        description: "Dolor sit amet, consectetur adipiscing elit. Integer at tristique odio.",
+      },
+    ]
+  }
+
   module DeveloperGuides = {
     type t = {
       developerGuidesLabel: string,
@@ -34,16 +88,18 @@ module T = {
     }
 
     @react.component
-    let make = (~margins, ~content) =>
-      <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
+    let make = (~marginBottom=?, ~content) =>
+      <div
+        className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
+        marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
         <div className="px-4 py-5 sm:p-6">
           // TODO: factor out and define content type
           <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
             {s(content.developerGuidesLabel)}
           </h2>
           <MediaObject
-            marginBottom="mb-11"
-            imageHeight=content.topDeveloperGuide.imageHeight
+            marginBottom={Tailwind.ByBreakpoint.make(#mb11, ())}
+            imageHeight="h-32"
             image=content.topDeveloperGuide.image
             imageSide=MediaObject.Right>
             // <div className="flex mb-11">
@@ -58,8 +114,8 @@ module T = {
             </div>
           </MediaObject>
           <MediaObject
-            marginBottom="mb-11"
-            imageHeight=content.bottomDeveloperGuide.imageHeight
+            marginBottom={Tailwind.ByBreakpoint.make(#mb11, ())}
+            imageHeight="h-32"
             image=content.bottomDeveloperGuide.image
             imageSide=MediaObject.Left>
             <div>
@@ -79,26 +135,6 @@ module T = {
       </div>
   }
 
-  module PlatformTools = {
-    @react.component
-    let make = () =>
-      <SectionContainer.VerySmallCentered paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2">
-        // TODO: factor out and define content type
-        <h2 className="text-3xl font-bold sm:text-3xl text-center"> {s(`Platform Tools`)} </h2>
-        <p className="mt-4 text-lg leading-6">
-          {s(`The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`)}
-        </p>
-        <div className="flex justify-center">
-          <Link href=InternalUrls.resourcesPlatform>
-            <a
-              className="mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-white text-base font-medium rounded-md bg-orangedark hover:bg-orangedarker sm:w-auto">
-              {s(`Visit Platform Tools`)}
-            </a>
-          </Link>
-        </div>
-      </SectionContainer.VerySmallCentered>
-  }
-
   module UsingOcaml = {
     type t = {
       usingOcamlLabel: string,
@@ -110,9 +146,11 @@ module T = {
     }
 
     @react.component
-    let make = (~margins, ~content) =>
+    let make = (~marginBottom=?, ~content) =>
       // TODO: factor out and define content type
-      <div className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++ margins}>
+      <div
+        className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
+        marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
         <div className="px-4 py-5 sm:py-8 sm:px-24">
           <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
             {s(content.usingOcamlLabel)}
@@ -123,27 +161,27 @@ module T = {
               // TODO: visual indicator that link opens new tab
               <a href=content.softwareLeft.link target="_blank">
                 <img
-                  className={"border-1 " ++ content.softwareLeft.imageHeight}
+                  className={"border-1 h-32"}
                   src={"/static/" ++ content.softwareLeft.image}
-                  alt=content.softwareLeft.linkDescription
+                  alt=content.softwareLeft.name
                 />
               </a>
             </div>
             <div className="flex justify-center items-center mb-6">
               <a href=content.softwareMiddle.link target="_blank">
                 <img
-                  className={"border-1 " ++ content.softwareMiddle.imageHeight}
+                  className={"border-1 h-32"}
                   src={"/static/" ++ content.softwareMiddle.image}
-                  alt=content.softwareMiddle.linkDescription
+                  alt=content.softwareMiddle.name
                 />
               </a>
             </div>
             <div className="flex justify-center items-center mb-6">
               <a href=content.softwareRight.link target="_blank">
                 <img
-                  className={"border-1 " ++ content.softwareRight.imageHeight}
+                  className={"border-1 h-32"}
                   src={"/static/" ++ content.softwareRight.image}
-                  alt=content.softwareRight.linkDescription
+                  alt=content.softwareRight.name
                 />
               </a>
             </div>
@@ -179,33 +217,39 @@ module T = {
   include Jsonable.Unsafe
 
   @react.component
-  let make = (~content: t) => <>
+  let make = (~content) => <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=745%3A1`
       playgroundLink=`/play/resources/applications`
     />
     <Page.Basic
       marginTop=`mt-1`
-      headingMarginBottom=`mb-24`
       addBottomBar=true
       addContainer=Page.Basic.NoContainer
       title=content.title
       pageDescription=content.pageDescription>
-      <ApiDocumentation margins=`mb-24` />
-      <DeveloperGuides margins=`mb-2` content=content.developerGuidesContent />
-      <PlatformTools />
-      <UsingOcaml margins=`mb-16` content=content.usingOcamlContent />
+      <ApiDocumentation marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())} />
+      <DeveloperGuides
+        marginBottom={Tailwind.ByBreakpoint.make(#mb2, ())} content=content.developerGuidesContent
+      />
+      // TODO: factor out and define content type
+      <CallToAction.TransparentWide
+        t={
+          CallToAction.title: "Platform Tools",
+          body: `The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`,
+          buttonLink: Route(InternalUrls.resourcesPlatform),
+          buttonText: `Visit Platform Tools`,
+        }
+      />
+      <UsingOcaml
+        marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} content=content.usingOcamlContent
+      />
     </Page.Basic>
   </>
 
-  module Params = Page2.Params.Lang
-
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let developerGuides = DeveloperGuide.readAll()
-    let ocamlPoweredSoftare = OcamlPoweredSoftware.readAll()
+  let contentEn = {
+    let developerGuides = DeveloperGuide.all->Next.stripUndefined
+    let ocamlPoweredSoftare = OcamlPoweredSoftware.all->Next.stripUndefined
     // TODO: store ids of highlighted developer guides explicitly
     let title = `Applications`
     let pageDescription = `This is where you can find resources for working with the language itself. Whether you're building applications or maintaining libraries, this page has useful information for you.`
@@ -214,7 +258,7 @@ module T = {
       topDeveloperGuide: developerGuides[0],
       bottomDeveloperGuide: developerGuides[1],
     }
-    let en = Js.Promise.resolve({
+    {
       title: title,
       pageDescription: pageDescription,
       developerGuidesContent: developerGuidesContent,
@@ -227,16 +271,13 @@ module T = {
         softwareMiddle: ocamlPoweredSoftare[1],
         softwareRight: ocamlPoweredSoftare[2],
       },
-    })
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
-    }
-    switch lang {
-    | #en => en
     }
   }
+
+  module Params = Page2.Params.Lang
+
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

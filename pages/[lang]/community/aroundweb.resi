@@ -1,9 +1,5 @@
 module LatestNews: {
-  type t = {
-    latest: string,
-    news: array<NewsItem.t>,
-    newsArchive: string,
-  }
+  type t = {news: array<Ood.News.t>}
 }
 
 module Events: {
@@ -11,7 +7,7 @@ module Events: {
     title: string,
     description: string,
     callToAction: string,
-    latestEvents: array<Event.t>,
+    latestEvents: array<Ood.Event.t>,
   }
 }
 

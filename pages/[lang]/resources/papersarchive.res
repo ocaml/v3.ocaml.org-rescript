@@ -6,7 +6,7 @@ module T = {
   type t = {
     title: string,
     pageDescription: string,
-    papers: array<Paper.t>,
+    papers: array<Ood.Paper.t>,
   }
   include Jsonable.Unsafe
 
@@ -55,7 +55,7 @@ module T = {
                   </th>
                 </tr>
               </thead>
-              <tbody> {Array.map((paper: Paper.t) =>
+              <tbody> {Array.map((paper: Ood.Paper.t) =>
                   <tr
                     key={paper.title}
                     className="border-double border-t-4 border-gray-200 hover:bg-yellow-50">
@@ -105,27 +105,19 @@ module T = {
     </Page.Basic>
   </>
 
-  module Params = Page2.Params.Lang
-
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let papers = PapersData.readAll().papers->Array.of_list
-    let en = Js.Promise.resolve({
+  let contentEn = {
+    let papers = Array.of_list(Ood.Paper.all->Next.stripUndefined)
+    {
       title: `Papers Archive`,
       pageDescription: `A selection of OCaml papers through the ages. Filter by the tags or do a search over all of the text.`,
       papers: papers,
-    })
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
-    }
-    switch lang {
-    | #en => en
     }
   }
+
+  module Params = Page2.Params.Lang
+
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

@@ -13,14 +13,14 @@ module T = {
     pageDescription: string,
     introduction: string,
     dates: array<date>,
-    presentations: array<Video.t>,
-    papers: array<Paper.t>,
+    presentations: array<Ood.Video.t>,
+    papers: array<Ood.Paper.t>,
     // Committee too ?
   }
   include Jsonable.Unsafe
 
   let pdf_or_head = paper => {
-    switch Paper.get_pdf(paper) {
+    switch List.find_opt(Js.String.endsWith(".pdf"), paper.Ood.Paper.links) {
     | Some(link) => Some(link)
     | None => Belt.List.head(paper.links)
     }
@@ -33,10 +33,12 @@ module T = {
     />
     <Page.Basic title=content.title pageDescription=content.pageDescription>
       {<>
-        <SectionContainer.SmallCentered otherLayout="px-6" margins="mb-16">
+        <SectionContainer.SmallCentered
+          otherLayout="px-6" marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}>
           <h2> {s(content.introduction)} </h2>
         </SectionContainer.SmallCentered>
-        <SectionContainer.SmallCentered otherLayout="px-6" margins="mb-16">
+        <SectionContainer.SmallCentered
+          otherLayout="px-6" marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}>
           <h2 className="text-4xl font-bold mb-8"> {s("Important Dates")} </h2>
           <div className="flow-root rounded bg-white p-6">
             <ul className="-mb-8">
@@ -70,12 +72,12 @@ module T = {
             </ul>
           </div>
         </SectionContainer.SmallCentered>
-        <SectionContainer.SmallCentered margins="mb-16">
+        <SectionContainer.SmallCentered marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}>
           <h2 className="text-4xl font-bold mb-8"> {s("Presentations")} </h2>
           <Table.Simple
             content={{
               headers: ["", "Presentation"],
-              data: Array.map((video: Video.t) => {
+              data: Array.map((video: Ood.Video.t) => {
                 [
                   // TODO: Improve the embedding of videos from watch.ocaml.org
                   // which requires things like support for lazily loading iframes
@@ -96,12 +98,12 @@ module T = {
             }}
           />
         </SectionContainer.SmallCentered>
-        <SectionContainer.SmallCentered margins="mb-16">
+        <SectionContainer.SmallCentered marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}>
           <h2 className="text-4xl font-bold mb-8 px-6"> {s("Papers")} </h2>
           <Table.Simple
             content={{
               headers: ["Title", "Author(s)", "Link"],
-              data: Array.map((paper: Paper.t) => {
+              data: Array.map((paper: Ood.Paper.t) => {
                 [
                   <p className="font-bold"> {s(paper.title)} </p>,
                   <p> {s(String.concat(", ", paper.authors))} </p>,
@@ -130,26 +132,20 @@ module T = {
 
   module Params = Page2.Params.Lang
 
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let video_filter = List.filter((video: Video.t) => {
+  let contentEn = {
+    let video_filter = List.filter((video: Ood.Video.t) => {
       List.exists(String.equal("ocaml-workshop"), video.tags) && video.year === 2020
     })
 
-    let oud_filter = List.filter((paper: Paper.t) => {
+    let oud_filter = List.filter((paper: Ood.Paper.t) => {
       List.exists(String.equal("ocaml-workshop"), paper.tags) && paper.year === 2020
     })
 
     // TODO: Extract from media archive or watch.ocaml.org API
-    let presentations = VideosData.readAll().videos->video_filter->Array.of_list
-    let presentations = Array.map(
-      presentation => Video.toJson(presentation)->Next.stripUndefined->Video.fromJson,
-      presentations,
-    )
-    let papers = PapersData.readAll().papers->oud_filter->Array.of_list
-    let en = Js.Promise.resolve({
+    let presentations = Ood.Video.all->Next.stripUndefined->video_filter->Array.of_list
+    let papers = Ood.Paper.all->Next.stripUndefined->oud_filter->Array.of_list
+
+    {
       title: `OCaml Workshop 2020`,
       pageDescription: `The OCaml Users and Developers Workshop 2020`,
       introduction: `
@@ -167,16 +163,11 @@ module T = {
       ],
       presentations: presentations,
       papers: papers,
-    })
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
-    }
-    switch lang {
-    | #en => en
     }
   }
+
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

@@ -13,7 +13,7 @@ module T = {
     }
   }
 
-  let companies = (_lang: Lang.t) => [
+  let companies = [
     {
       Company.logo: `oclabs.png`,
       name: `OCaml Labs`,
@@ -67,16 +67,16 @@ module T = {
 
   module LogoSection = {
     @react.component
-    let make = (~margins, ~companies) =>
-      <SectionContainer.ResponsiveCentered margins>
+    let make = (~companies, ~marginBottom=?, ()) =>
+      <SectionContainer.ResponsiveCentered ?marginBottom>
         // TODO: try switching to a grid
         <div className="flex flex-wrap justify-center lg:justify-between ">
           {companies
-          |> Js.Array.mapi((c: Company.t, idx) =>
+          |> Js.Array.mapi((c, idx) =>
             <div key={Js.Int.toString(idx)} className="p-12 flex flex-col items-center">
               // TODO: considering accessibility, how many elements should the link span?
               <img
-                className={switch c.customWidth {
+                className={switch c.Company.customWidth {
                 | Some(width) => width
                 | None => ` w-32 `
                 } ++
@@ -99,48 +99,33 @@ module T = {
   }
 
   @react.component
-  let make = (~content: t) => <>
+  let make = (~content) => <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
       playgroundLink=`/play/industry/users`
     />
     <Page.Basic
       marginTop=`mt-2`
-      headingMarginBottom=`mb-6`
       title=content.title
       pageDescription=content.pageDescription
       callToAction={
         TitleHeading.Large.label: "Success Stories",
         url: InternalUrls.principlesSuccesses,
       }>
-      <LogoSection margins=`` companies=content.companies />
+      <LogoSection companies=content.companies />
     </Page.Basic>
   </>
 
   module Params = Page2.Params.Lang
 
-  let getParams = () => Js.Promise.resolve([{Params.lang: #en}])
-
-  let getContent = (params: Params.t) => {
-    let lang = params.lang
-    let companies = companies(lang)
-
-    let en = Js.Promise.resolve({
-      title: `Industrial Users of OCaml`,
-      pageDescription: `OCaml is a popular choice for companies who make use of its features in key aspects of their technologies. Some companies that use OCaml code are listed below:`,
-      companies: companies,
-    })
-
-    let lang = switch lang {
-    | #en => #en
-    | #fr | #es => Lang.default
-    }
-
-    switch lang {
-    | #en => en
-    }
+  let contentEn = {
+    title: `Industrial Users of OCaml`,
+    pageDescription: `OCaml is a popular choice for companies who make use of its features in key aspects of their technologies. Some companies that use OCaml code are listed below:`,
+    companies: companies,
   }
+
+  let content = [({Params.lang: #en}, contentEn)]
 }
 
 include T
-include Page2.Make(T)
+include Page2.MakeSimple(T)

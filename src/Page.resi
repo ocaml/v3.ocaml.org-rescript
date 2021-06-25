@@ -30,7 +30,6 @@ module Basic: {
     ~pageDescription: string,
     ~addContainer: container=?,
     ~marginTop: string=?,
-    ~headingMarginBottom: string=?,
     ~callToAction: TitleHeading.Large.callToAction=?,
     ~addBottomBar: bool=?,
     unit,
@@ -55,11 +54,6 @@ type highlightContent = {
   bgImageClass: string,
 }
 
-module HighlightSection: {
-  @react.component
-  let make: (~margins: string, ~content: highlightContent) => React.element
-}
-
 module HighlightItem: {
   @react.component
   let make: (
@@ -67,5 +61,16 @@ module HighlightItem: {
     ~title: string,
     ~pageDescription: string,
     ~highlightContent: highlightContent,
+  ) => React.element
+}
+
+module TitleOverBackgroundImage: {
+  @react.component
+  let make: (
+    ~children: React.element,
+    ~title: string,
+    ~backgroundImage: TitleHeading.OverBackgroundImage.BackgroundImage.t,
+    ~pageDescription: string=?,
+    unit,
   ) => React.element
 }

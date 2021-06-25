@@ -10,9 +10,29 @@ module Large: {
     ~callToAction: callToAction=?,
     ~pageDescription: string=?,
     ~marginTop: string=?,
-    ~marginBottom: string=?,
+    ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
     // ~addMaxWidth: bool=?,
     ~addBottomBar: bool=?,
+    unit,
+  ) => React.element
+}
+
+module OverBackgroundImage: {
+  module ImageHeight: {
+    type t = Tall
+  }
+  module BackgroundImage: {
+    type t = {
+      height: ImageHeight.t,
+      tailwindImageName: string,
+    }
+  }
+
+  @react.component
+  let make: (
+    ~title: string,
+    ~backgroundImage: BackgroundImage.t,
+    ~pageDescription: string=?,
     unit,
   ) => React.element
 }

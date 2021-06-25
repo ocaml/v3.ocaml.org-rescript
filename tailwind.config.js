@@ -1,15 +1,10 @@
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
+  mode: "jit",
   purge: {
     // Specify the paths to all of the template files in your project
     content: [
       './pages/**/*.res',
-      './src/*.res',
-      // need to include data files since they reference tailwind classes
-      './data/*.yaml',
+      './src/*.res'
     ],
     options: {
       whitelist: ["html", "body"],
@@ -39,7 +34,12 @@ module.exports = {
         'news-bg': "url('/static/news-bg.jpeg')",
       }),
       fontFamily: {
+        // TODO: define more fallback fonts and possibly rename to "serif"
         'roboto': ['"Roboto Slab"', 'serif']
+      },
+      spacing: {
+        // Note: this was introduced to accommodate a large image height
+        '160': '40rem',
       }
     },
     /* We override the default font-families with our own default prefs

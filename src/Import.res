@@ -14,7 +14,7 @@ module Jsonable = {
 
   module Unsafe: S1 with type t<'a> := 'a = {
     external toJson: 'a => Js.Json.t = "%identity"
-    let toJson = t => t->toJson->Json.stringify->Json.parseOrRaise
+    let toJson = t => t->toJson->Js.Json.stringify->Js.Json.parseExn
     external ofJson: Js.Json.t => 'a = "%identity"
     let ofJson = x => Some(ofJson(x))
   }
