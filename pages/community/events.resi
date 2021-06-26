@@ -1,14 +1,4 @@
-type t = {
-  title: string,
-  pageDescription: string,
-  events: array<Ood.Event.t>,
-}
-
 @react.component
-let make: (~content: t) => React.element
+let make: unit => React.element
 
-type props = {content: t}
-
-let getStaticProps: Next.GetStaticProps.t<props, unit, unit>
-
-let default: {"content": t} => React.element
+let default: {.} => React.element

@@ -259,8 +259,7 @@ let contentEn = {
   },
 }
 
-@react.component
-let make = (~content=contentEn) => <>
+let render = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=952%3A422`
     playgroundLink=`/play/community/blog`
@@ -276,5 +275,8 @@ let make = (~content=contentEn) => <>
     <WeeklyNews marginBottom={Tailwind.ByBreakpoint.make(#mb4, ())} content=content.weeklyNews />
   </Page.HighlightItem>
 </>
+
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make

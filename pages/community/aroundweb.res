@@ -132,10 +132,67 @@ type t = {
   spaces: array<string>,
 }
 
-type props = {content: t}
+let contentEn = {
+  let spaces = ["Github.com", "Reddit.com", "Twitter.com", "Discuss.ocaml.org"]
 
-@react.component
-let make = (~content) => <>
+  let news = Array.of_list(Ood.News.all->Next.stripUndefined)
+
+  let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
+
+  {
+    title: `OCaml Around the Web`,
+    pageDescription: `Looking to interact with people who are also interested in OCaml? Find out about upcoming events, read up on blogs from the community, sign up for OCaml mailing lists, and discover even more places to engage with people from the community!`,
+    engageHeader: `Want to engage with the OCaml Community?`,
+    engageBody: `Participate in discussions on everything OCaml over at discuss.ocaml.org, where members of the community post`,
+    engageButtonText: `Take me to Discuss`,
+    latestNewsContent: {
+      news: news,
+    },
+    events: {
+      Events.title: "Events",
+      description: "Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere. ",
+      callToAction: "Show me Events",
+      latestEvents: events,
+    },
+    blogSectionHeader: `Recent Blog Posts`,
+    blogSectionDescription: `Be inspired by the work of OCaml programmers all over the world and stay up-to-date on the latest developments.`,
+    blog: `Blog`,
+    blogEntries: [
+      {
+        title: `What I learned Coding from Home`,
+        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
+          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
+        author: `Roel Aufderehar`,
+        dateValue: `2020-03-16`,
+        date: `Mar 16, 2020`,
+        readingTime: `6`,
+      },
+      {
+        title: `Programming for a Better World`,
+        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
+          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
+        author: `Roel Aufderehar`,
+        dateValue: `2020-03-16`,
+        date: `Mar 16, 2020`,
+        readingTime: `6`,
+      },
+      {
+        title: `Methods for Irmin V2`,
+        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
+          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
+        author: `Daniela Metz`,
+        dateValue: `2020-02-12`,
+        date: `Feb 12, 2020`,
+        readingTime: `11`,
+      },
+    ],
+    blogArchiveText: `Go to the blog archive`,
+    spacesSectionHeader: `Looking for More? Try these spaces:`,
+    spaces: spaces,
+  }
+}
+
+let render = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1040%3A104`
     playgroundLink=`/play/community/aroundweb`
@@ -341,68 +398,7 @@ let make = (~content) => <>
   </Page.Basic>
 </>
 
-let spaces = ["Github.com", "Reddit.com", "Twitter.com", "Discuss.ocaml.org"]
-
-let getStaticProps = _ctx => {
-  let news = Array.of_list(Ood.News.all->Next.stripUndefined)
-
-  let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
-
-  let contentEn = {
-    title: `OCaml Around the Web`,
-    pageDescription: `Looking to interact with people who are also interested in OCaml? Find out about upcoming events, read up on blogs from the community, sign up for OCaml mailing lists, and discover even more places to engage with people from the community!`,
-    engageHeader: `Want to engage with the OCaml Community?`,
-    engageBody: `Participate in discussions on everything OCaml over at discuss.ocaml.org, where members of the community post`,
-    engageButtonText: `Take me to Discuss`,
-    latestNewsContent: {
-      news: news,
-    },
-    events: {
-      Events.title: "Events",
-      description: "Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere. ",
-      callToAction: "Show me Events",
-      latestEvents: events,
-    },
-    blogSectionHeader: `Recent Blog Posts`,
-    blogSectionDescription: `Be inspired by the work of OCaml programmers all over the world and stay up-to-date on the latest developments.`,
-    blog: `Blog`,
-    blogEntries: [
-      {
-        title: `What I learned Coding from Home`,
-        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
-          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
-        author: `Roel Aufderehar`,
-        dateValue: `2020-03-16`,
-        date: `Mar 16, 2020`,
-        readingTime: `6`,
-      },
-      {
-        title: `Programming for a Better World`,
-        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
-          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
-        author: `Roel Aufderehar`,
-        dateValue: `2020-03-16`,
-        date: `Mar 16, 2020`,
-        readingTime: `6`,
-      },
-      {
-        title: `Methods for Irmin V2`,
-        excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, 
-          ut atque fuga culpa, similique sequi cum eos quis dolorum.`,
-        author: `Daniela Metz`,
-        dateValue: `2020-02-12`,
-        date: `Feb 12, 2020`,
-        readingTime: `11`,
-      },
-    ],
-    blogArchiveText: `Go to the blog archive`,
-    spacesSectionHeader: `Looking for More? Try these spaces:`,
-    spaces: spaces,
-  }
-
-  Js.Promise.resolve({
-    "props": {content: contentEn},
-  })
-}
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make

@@ -39,7 +39,7 @@ module MediaSection = {
     </SectionContainer.FullyResponsiveCentered>
 }
 
-type prop = {
+type content = {
   title: string,
   pageDescription: string,
   videosContent: MediaSection.t,
@@ -47,20 +47,7 @@ type prop = {
   papersContent: MediaSection.t,
 }
 
-@react.component
-let make = (~title, ~pageDescription, ~videosContent, ~talksContent, ~papersContent) => <>
-  <ConstructionBanner
-    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
-    playgroundLink=`/play/resources/mediaarchive`
-  />
-  <Page.Basic title pageDescription addContainer=Page.Basic.Narrow>
-    <MediaSection content=videosContent />
-    <MediaSection content=talksContent />
-    <MediaSection content=papersContent />
-  </Page.Basic>
-</>
-
-let getStaticProps = _ctx => {
+let contentEn = {
   // TODO: define and read highlight items for each list
   let talks = []
   let fillerContent = [
@@ -105,15 +92,30 @@ let getStaticProps = _ctx => {
 
   let title = `Media Archive`
   let pageDescription = `This is where you can find archived videos, slides from talks, and other media produced by people in the OCaml Community.`
-  Js.Promise.resolve({
-    "props": {
-      title: title,
-      pageDescription: pageDescription,
-      videosContent: videosContent,
-      talksContent: talksContent,
-      papersContent: papersContent,
-    },
-  })
+
+  {
+    title: title,
+    pageDescription: pageDescription,
+    videosContent: videosContent,
+    talksContent: talksContent,
+    papersContent: papersContent,
+  }
 }
+
+let render = (~content) => <>
+  <ConstructionBanner
+    figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A25378`
+    playgroundLink=`/play/resources/mediaarchive`
+  />
+  <Page.Basic
+    title=content.title pageDescription=content.pageDescription addContainer=Page.Basic.Narrow>
+    <MediaSection content=content.videosContent />
+    <MediaSection content=content.talksContent />
+    <MediaSection content=content.papersContent />
+  </Page.Basic>
+</>
+
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make

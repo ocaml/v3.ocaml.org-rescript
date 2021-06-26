@@ -1,10 +1,28 @@
+let s = React.string
+
 type t = {
   title: string,
   pageDescription: string,
   events: array<Ood.Event.t>,
 }
 
-let s = React.string
+type pageContent = {
+  title: string,
+  pageDescription: string,
+}
+
+let contentEn = {
+  let pageContentEn = {
+    title: `Events`,
+    pageDescription: `Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
+  }
+  let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
+  {
+    title: pageContentEn.title,
+    pageDescription: pageContentEn.pageDescription,
+    events: events,
+  }
+}
 
 let dedicated_page = (event: Ood.Event.t) => {
   // OCaml workshop pages
@@ -18,8 +36,7 @@ let dedicated_page = (event: Ood.Event.t) => {
   }
 }
 
-@react.component
-let make = (~content) => <>
+let render = (~content) => <>
   <ConstructionBanner
     figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1176%3A0`
   />
@@ -63,28 +80,7 @@ let make = (~content) => <>
   </Page.TopImage>
 </>
 
-type props = {content: t}
-
-type pageContent = {
-  title: string,
-  pageDescription: string,
-}
-
-let getStaticProps = _ctx => {
-  let pageContentEn = {
-    title: `Events`,
-    pageDescription: `Several events take place in the OCaml community over the course of each year, in countries all over the world. This calendar will help you stay up to date on what is coming up in the OCaml sphere.`,
-  }
-  let events = Array.of_list(Ood.Event.all->Next.stripUndefined)
-  Js.Promise.resolve({
-    "props": {
-      content: {
-        title: pageContentEn.title,
-        pageDescription: pageContentEn.pageDescription,
-        events: events,
-      },
-    },
-  })
-}
+@react.component
+let make = () => render(~content=contentEn)
 
 let default = make
