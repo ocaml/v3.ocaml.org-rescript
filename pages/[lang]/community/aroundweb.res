@@ -120,6 +120,13 @@ module T = {
       </SectionContainer.LargeCentered>
   }
 
+  module Space = {
+    type t = {
+      logoSrc: string,
+      name: string,
+    }
+  }
+
   type t = {
     title: string,
     pageDescription: string,
@@ -134,7 +141,7 @@ module T = {
     blogEntries: array<BlogEntry.t>,
     blogArchiveText: string,
     spacesSectionHeader: string,
-    spaces: array<string>,
+    spaces: array<Space.t>,
   }
   include Jsonable.Unsafe
 
@@ -322,32 +329,49 @@ module T = {
           </a>
         </p>
       </SectionContainer.LargeCentered>
-      <SectionContainer.LargeCentered paddingY="pb-14">
+      // is this container larger than page container?
+      <div className="max-w-7xl mx-auto  pb-14">
         <h2
           className="text-center text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
           {s(content.spacesSectionHeader)}
         </h2>
         <div className="mx-auto max-w-4xl px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-            <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
-              {s(content.spaces[0])}
-            </a>
-            <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
-              {s(content.spaces[1])}
-            </a>
-            <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
-              {s(content.spaces[2])}
-            </a>
-            <a className="block text-center bg-white shadow overflow-hidden rounded-md px-36 py-4">
-              {s(content.spaces[3])}
-            </a>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-40 gap-y-4">
+            {content.spaces
+            ->Belt.Array.map(s => <ShortWideCard name=s.name logoSrc=s.logoSrc />)
+            ->React.array}
           </div>
         </div>
-      </SectionContainer.LargeCentered>
+      </div>
     </Page.Basic>
   </>
 
-  let spaces = ["Github.com", "Reddit.com", "Twitter.com", "Discuss.ocaml.org"]
+  let spaces = [
+    {
+      Space.name: "Github.com/ocaml/ocaml",
+      logoSrc: "/static/github.png",
+    },
+    {
+      name: "Discord.com",
+      logoSrc: "/static/discord.png",
+    },
+    {
+      name: "Reddit.com",
+      logoSrc: "/static/reddit.png",
+    },
+    {
+      name: "Caml-list",
+      logoSrc: "/static/camllist.png",
+    },
+    {
+      name: "Twitter.com",
+      logoSrc: "/static/twitter.png",
+    },
+    {
+      name: "OCaml IRC Chat",
+      logoSrc: "/static/irc.png",
+    },
+  ]
 
   module Params = Pages.Params.Lang
 
