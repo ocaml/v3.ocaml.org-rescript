@@ -26,6 +26,7 @@ module Space: {
   type t = {
     logoSrc: string,
     name: string,
+    url: string,
   }
 }
 

@@ -124,6 +124,7 @@ module T = {
     type t = {
       logoSrc: string,
       name: string,
+      url: string,
     }
   }
 
@@ -330,19 +331,17 @@ module T = {
         </p>
       </SectionContainer.LargeCentered>
       // is this container larger than page container?
-      <div className="max-w-7xl mx-auto  pb-14">
+      <SectionContainer.LargeCentered paddingY="pb-14">
         <h2
-          className="text-center text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
+          className="font-roboto text-center text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
           {s(content.spacesSectionHeader)}
         </h2>
-        <div className="mx-auto max-w-4xl px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-40 gap-y-4">
-            {content.spaces
-            ->Belt.Array.map(s => <ShortWideCard name=s.name logoSrc=s.logoSrc />)
-            ->React.array}
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-40 gap-y-4">
+          {content.spaces
+          ->Belt.Array.map(s => <ShortWideCard name=s.name logoSrc=s.logoSrc url=s.url />)
+          ->React.array}
         </div>
-      </div>
+      </SectionContainer.LargeCentered>
     </Page.Basic>
   </>
 
@@ -350,26 +349,32 @@ module T = {
     {
       Space.name: "Github.com/ocaml/ocaml",
       logoSrc: "/static/github.png",
+      url: "https://github.com/ocaml/ocaml",
     },
     {
       name: "Discord.com",
       logoSrc: "/static/discord.png",
+      url: "https://discord.gg/cCYQbqN",
     },
     {
       name: "Reddit.com",
       logoSrc: "/static/reddit.png",
+      url: "https://www.reddit.com/r/ocaml",
     },
     {
       name: "Caml-list",
       logoSrc: "/static/camllist.png",
+      url: "https://sympa.inria.fr/sympa/arc/caml-list",
     },
     {
       name: "Twitter.com",
       logoSrc: "/static/twitter.png",
+      url: "https://twitter.com/search?q=%23ocaml",
     },
     {
       name: "OCaml IRC Chat",
       logoSrc: "/static/irc.png",
+      url: "irc://irc.libera.chat/#ocaml",
     },
   ]
 
