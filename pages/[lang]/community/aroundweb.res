@@ -138,8 +138,10 @@ module T = {
   }
   include Jsonable.Unsafe
 
+  module Params = Pages.Params.Lang
+
   @react.component
-  let make = (~content) => <>
+  let make = (~content, ~params as {Params.lang: _}) => <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1040%3A104`
       playgroundLink=`/play/community/aroundweb`
@@ -348,8 +350,6 @@ module T = {
   </>
 
   let spaces = ["Github.com", "Reddit.com", "Twitter.com", "Discuss.ocaml.org"]
-
-  module Params = Pages.Params.Lang
 
   let contentEn = {
     let news = Belt.List.toArray(Ood.News.all)
