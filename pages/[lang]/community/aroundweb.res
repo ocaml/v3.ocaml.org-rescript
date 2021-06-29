@@ -331,15 +331,11 @@ module T = {
         </p>
       </SectionContainer.LargeCentered>
       <SectionContainer.LargeCentered paddingY="pb-14">
-        <h2
-          className="font-roboto text-center text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl py-6 px-4 sm:py-12 sm:px-6 lg:px-8">
-          {s(content.spacesSectionHeader)}
-        </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-40 gap-y-4 px-8">
-          {content.spaces
-          ->Belt.Array.map(s => <ShortWideCard name=s.name logoSrc=s.logoSrc url=s.url />)
-          ->React.array}
-        </div>
+        <CardGrid
+          cardData=content.spaces
+          renderCard={s => <ShortWideCard name=s.name logoSrc=s.logoSrc url=s.url />}
+          title=content.spacesSectionHeader
+        />
       </SectionContainer.LargeCentered>
     </Page.Basic>
   </>
