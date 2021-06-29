@@ -1,7 +1,5 @@
 let s = React.string
 
-// TODO: add inteface file
-
 @react.component
 let make = (~name: string, ~url: string, ~logoSrc: string) => {
   // TODO: for accessibilty, add visual indicator that link opens a tab
