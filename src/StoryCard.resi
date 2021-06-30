@@ -5,5 +5,11 @@ module CornerTitleLogo: {
 
 module CornerLogoCenterTitle: {
   @react.component
-  let make: (~title: string, ~graphicUrl: string, ~body: string) => React.element
+  let make: (
+    ~title: string,
+    ~graphicUrl: string,
+    ~body: string,
+    ~buttonText: string=?,
+    unit,
+  ) => React.element
 }
