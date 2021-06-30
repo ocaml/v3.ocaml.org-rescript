@@ -53,6 +53,8 @@ module P = {
     </p>
 }
 
+// TODO: add container around hero
+// TODO: implement reverse hero for events page design
 @react.component
 let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ()) =>
   // TODO: should lg:relative be provided as a parameter?

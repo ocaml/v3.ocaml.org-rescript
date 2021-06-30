@@ -33,6 +33,7 @@ let make = () => <>
       />
     </SectionContainer.SmallCentered>
   </div>
+  // TODO: demonstrate using the reverse hero
 </>
 
 let default = make
