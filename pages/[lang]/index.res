@@ -5,6 +5,7 @@ module Link = Next.Link
 let s = React.string
 
 module T = {
+  /*
   module Button = {
     @react.component
     let make = (~href, ~text, ~colors, ~margins) =>
@@ -42,6 +43,7 @@ module T = {
         children
       </p>
   }
+ */
 
   module HeroSection = {
     type t = {
@@ -53,34 +55,18 @@ module T = {
 
     @react.component
     let make = (~content) =>
-      <div className="lg:relative">
-        <HeroTextContainer textAlign=`text-center lg:text-left`>
-          <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
-            <H1> {s(content.heroHeader)} </H1>
-            <P margins="mt-3 md:mt-5"> {s(content.heroBody)} </P>
-            <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-              <Button
-                colors=`text-white bg-orangedark hover:bg-orangedarker`
-                href=InternalUrls.resourcesInstallocaml
-                text=content.installOcaml
-                margins=``
-              />
-              <Button
-                colors=`text-orangedark bg-white hover:bg-gray-50`
-                href=InternalUrls.principlesWhatisocaml
-                text=content.aboutOcaml
-                margins=`mt-3 sm:mt-0 sm:ml-3`
-              />
-            </div>
-          </div>
-        </HeroTextContainer>
-        <div
-          className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
-          <img
-            className="absolute inset-0 w-full h-full object-cover" src="/static/oc-sq.jpeg" alt=""
-          />
-        </div>
-      </div>
+      <Hero
+        imageSrc="/static/oc-sq.jpeg"
+        header=content.heroHeader
+        body=content.heroBody
+        buttonLinks={
+          Hero.primaryButton: {
+            label: content.installOcaml,
+            url: InternalUrls.resourcesInstallocaml,
+          },
+          secondaryButton: {label: content.aboutOcaml, url: InternalUrls.principlesWhatisocaml},
+        }
+      />
   }
 
   module H2 = {
