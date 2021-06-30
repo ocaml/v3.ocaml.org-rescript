@@ -7,11 +7,13 @@ module Company: {
     website: string,
   }
 }
-
+type highlightContent = {
+  highlightItem: string,
+  bgImageClass: string,
+}
 type t = {
-  title: string,
-  pageDescription: string,
   companies: array<Company.t>,
+  highlightContent: highlightContent,
 }
 
 include Pages.S with type t := t
