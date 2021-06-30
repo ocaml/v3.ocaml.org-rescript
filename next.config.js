@@ -4,12 +4,13 @@ const transpileModules = ["bs-platform"].concat(bsconfig["bs-dependencies"]);
 const withTM = require("next-transpile-modules")(transpileModules);
 
 const config = {
-  webpack: (config, options) => {
-    config.experiments = {
-      topLevelAwait: true,
-    }
-    return config
-  },
+  // By default Next.js will redirect urls with trailing slashes
+  // to their counterpart without a trailing slash.
+  // For example /about/ will redirect to /about.
+  // `trailingSlash: true` configures this behavior to act the opposite way,
+  // where urls without trailing slashes are redirected to their
+  // counterparts with trailing slashes.
+  trailingSlash: true,
   // We observed this undocumented behavior on Vercel, so
   // we are adding this rewrite to make the behavior explicit
   // and ensure local development and Vercel deployments
