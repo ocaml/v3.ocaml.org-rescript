@@ -36,7 +36,9 @@
     "watch": "concurrently --raw \"bsb -make-world -w\" \"next dev\" ",
     "build": "bsb -clean-world -make-world && next build && yarn total-dependencies-check",
     "start-test-server": "next start",
-    "total-dependencies-check": "(test $(grep '^[a-zA-Z@].*:$' yarn.lock | wc -l) -lt 500 && echo ok) || (echo too many deps && exit 1) "
+    "total-dependencies-check": "(test $(grep '^[a-zA-Z@].*:$' yarn.lock | wc -l) -lt 500 && echo ok) || (echo too many deps && exit 1) ",
+    "clean": "bsb -clean || rm -rf .next || rm -rf out",
+    "distclean": "yarn clean || rm -rf node_modules || rm -f yarn-error.log"
   },
   "scriptsDescription": {
     "total-dependencies-check": "Test, approximately, whether the current transitiive dependencies has grown significantly."
