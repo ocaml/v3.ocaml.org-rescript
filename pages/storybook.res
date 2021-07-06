@@ -33,6 +33,79 @@ let make = () => <>
       />
     </SectionContainer.SmallCentered>
   </div>
+  <div className="bg-green-100 py-4">
+    <LogoCloud
+      companies={[
+        {
+          logoSrc: "/static/oclabs.png",
+          name: "OCaml Labs",
+          website: "https://ocamllabs.io",
+        },
+        {
+          logoSrc: "/static/trd.png",
+          name: "Tarides",
+          website: "https://tarides.com",
+        },
+        {
+          logoSrc: "/static/slv2.png",
+          name: "Solvuu",
+          website: "https://solvuu.com",
+        },
+        {
+          logoSrc: "/static/js2.jpeg",
+          name: "Jane Street",
+          website: "https://janestreet.com",
+        },
+        {
+          logoSrc: "/static/lxf.png",
+          name: "LexiFi",
+          website: "https://lexifi.com",
+        },
+        {
+          logoSrc: "/static/tz.png",
+          name: "Tezos",
+          website: "https://tezos.com",
+        },
+      ]}
+    />
+  </div>
+  <div className="bg-green-100 py-4">
+    <LogoCloud
+      companies={[
+        {
+          logoSrc: "/static/oclabs.png",
+          name: "OCaml Labs",
+          website: "https://ocamllabs.io",
+        },
+        {
+          logoSrc: "/static/trd.png",
+          name: "Tarides",
+          website: "https://tarides.com",
+        },
+        {
+          logoSrc: "/static/slv2.png",
+          name: "Solvuu",
+          website: "https://solvuu.com",
+        },
+        {
+          logoSrc: "/static/js2.jpeg",
+          name: "Jane Street",
+          website: "https://janestreet.com",
+        },
+        {
+          logoSrc: "/static/lxf.png",
+          name: "LexiFi",
+          website: "https://lexifi.com",
+        },
+        {
+          logoSrc: "/static/tz.png",
+          name: "Tezos dfsdfdsssss",
+          website: "https://tezos.com",
+        },
+      ]}
+      addNameText=true
+    />
+  </div>
 </>
 
 let default = make
