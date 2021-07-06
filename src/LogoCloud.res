@@ -11,7 +11,7 @@ module Company = {
 @react.component
 let make = (~companies, ~addNameText=false) =>
   <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-    <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
+    <div className="mt-6 grid grid-cols-1 gap-0.5 md:grid-cols-3 lg:mt-8">
       {companies
       ->Js.Array2.map((c: Company.t) =>
         // TODO: accessibility - should the link include the div or only the contents?
