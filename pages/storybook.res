@@ -33,80 +33,26 @@ let make = () => <>
       />
     </SectionContainer.SmallCentered>
   </div>
-  // let testCompanies = ...
-  <div className="bg-green-100 py-4">
-    <LogoCloud
-      companies={[
-        {
-          logoSrc: Some("/static/oclabs.png"),
-          name: "OCaml Labs",
-          website: "https://ocamllabs.io",
+  {
+    let testCompanies = (~withMissingLogo) =>
+      Belt.Array.range(1, 6)->Belt.Array.map(i => {
+        LogoCloud.Company.logoSrc: if withMissingLogo && i == 2 {
+          None
+        } else {
+          Some("/static/oclabs.png")
         },
-        {
-          logoSrc: Some("/static/trd.png"),
-          name: "Tarides",
-          website: "https://tarides.com",
-        },
-        {
-          logoSrc: Some("/static/slv2.png"),
-          name: "Solvuu",
-          website: "https://solvuu.com",
-        },
-        {
-          logoSrc: Some("/static/js2.jpeg"),
-          name: "Jane Street",
-          website: "https://janestreet.com",
-        },
-        {
-          logoSrc: Some("/static/lxf.png"),
-          name: "LexiFi",
-          website: "https://lexifi.com",
-        },
-        {
-          logoSrc: Some("/static/tz.png"),
-          name: "Tezos",
-          website: "https://tezos.com",
-        },
-      ]}
-    />
-  </div>
-  <div className="bg-green-100 py-4">
-    <LogoCloud
-      companies={[
-        {
-          logoSrc: Some("/static/oclabs.png"),
-          name: "OCaml Labs",
-          website: "https://ocamllabs.io",
-        },
-        {
-          logoSrc: Some("/static/trd.png"),
-          name: "Tarides",
-          website: "https://tarides.com",
-        },
-        {
-          logoSrc: Some("/static/slv2.png"),
-          name: "Solvuu",
-          website: "https://solvuu.com",
-        },
-        {
-          logoSrc: None,
-          name: "Jane Street",
-          website: "https://janestreet.com",
-        },
-        {
-          logoSrc: Some("/static/lxf.png"),
-          name: "LexiFi",
-          website: "https://lexifi.com",
-        },
-        {
-          logoSrc: Some("/static/tz.png"),
-          name: "Tezos dfsdfdsssss",
-          website: "https://tezos.com",
-        },
-      ]}
-      addNameText=true
-    />
-  </div>
+        name: "OCaml Labs",
+        website: "https://ocamllabs.io",
+      })
+    <>
+      <div className="bg-green-100 py-4">
+        <LogoCloud companies={testCompanies(~withMissingLogo=false)} />
+      </div>
+      <div className="bg-green-100 py-4">
+        <LogoCloud companies={testCompanies(~withMissingLogo=true)} addNameText=true />
+      </div>
+    </>
+  }
 </>
 
 let default = make
