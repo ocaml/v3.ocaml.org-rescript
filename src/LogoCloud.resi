@@ -1,6 +1,6 @@
 module Company: {
   type t = {
-    logoSrc: string,
+    logoSrc: option<string>,
     name: string,
     website: string,
   }
