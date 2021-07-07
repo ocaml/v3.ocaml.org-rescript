@@ -36,7 +36,7 @@
     "build": "bsb -clean-world -make-world && next build && yarn total-dependencies-check && yarn missing-interface-check",
     "start-test-server": "next start",
     "total-dependencies-check": "(test $(grep '^[a-zA-Z@].*:$' yarn.lock | wc -l) -lt 500 && echo ok) || (echo too many deps && exit 1) ",
-    "missing-interface-check": "(find pages/ src/ -name *.res | grep -v 'src/Import.res' | xargs -I % ls %i 1>/dev/null) || (echo 'missing interface file' && exit 1)"
+    "missing-interface-check": "(find pages/ src/ -name *.res | grep -v 'src/Import.res' | xargs -I % ls %i 1>/dev/null) || (echo 'missing interface file(s)' && exit 1)"
   },
   "scriptsDescription": {
     "total-dependencies-check": "Test, approximately, whether the current transitiive dependencies has grown significantly."
