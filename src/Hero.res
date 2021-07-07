@@ -69,7 +69,7 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
   | true => ("text-left", "", "justify-start")
   | false => ("text-center", "flex", "justify-center")
   }
-  <HeroTextContainer textAlign={`text-center lg:${lgTextAlign} lg:${lgContainerDisplay}`}>
+  <HeroTextContainer textAlign={`text-center lg:${lgTextAlign} lg:${containerDisplay}`}>
     {switch imageOnRight {
     | true => <> </>
     | false => <div className="lg:w-1/2" />
