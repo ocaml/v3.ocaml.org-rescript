@@ -60,6 +60,43 @@ let make = () => <>
       <div className="bg-green-100 py-4"> <LogoCloud companies=testCompaniesOptional /> </div>
     </>
   }
+  {<>
+    <hr className="bg-green-100 h-4" />
+    <Hero
+      imageSrc="/static/oc-sq.jpeg"
+      header="A Header"
+      body="Some body text here that should be in latin. Some more body text here and here. Text text text text text text text text text text text text text."
+      buttonLinks={
+        Hero.primaryButton: {
+          label: "Main Action",
+          url: "/en",
+        },
+        secondaryButton: {
+          label: "Other Action",
+          url: "/en",
+        },
+      }
+    />
+    <hr className="bg-green-100 h-4" />
+    <hr className="bg-green-100 h-4" />
+    <Hero
+      imageSrc="/static/oc-sq.jpeg"
+      header="A Header"
+      body="Some body text here that should be in latin. Some more body text here and here. Text text text text text text text text text text text text text."
+      buttonLinks={
+        Hero.primaryButton: {
+          label: "Main Action",
+          url: "/en",
+        },
+        secondaryButton: {
+          label: "Other Action",
+          url: "/en",
+        },
+      }
+      imageOnRight=false
+    />
+    <hr className="bg-green-100 h-4" />
+  </>}
 </>
 
 let default = make

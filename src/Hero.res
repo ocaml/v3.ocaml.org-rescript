@@ -53,38 +53,48 @@ module P = {
     </p>
 }
 
+let image = (~imageSrc, ~imageOnRight) => {
+  let horizontalPlace = switch imageOnRight {
+  | true => "right-0"
+  | false => "left-0"
+  }
+  <div
+    className={`relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:${horizontalPlace} lg:w-1/2 lg:h-full`}>
+    <img className="absolute inset-0 w-full h-full object-cover" src=imageSrc alt="" />
+  </div>
+}
+
+let callToActionArea = (~header, ~body, ~buttonLinks) =>
+  <HeroTextContainer textAlign=`text-center lg:text-left`>
+    <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
+      <H1> {s(header)} </H1>
+      <P margins="mt-3 md:mt-5"> {s(body)} </P>
+      {switch buttonLinks {
+      | Some(buttonLinks) =>
+        <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+          <Button
+            colors=`text-white bg-orangedark hover:bg-orangedarker`
+            href=buttonLinks.primaryButton.url
+            text=buttonLinks.primaryButton.label
+            margins=``
+          />
+          <Button
+            colors=`text-orangedark bg-white hover:bg-gray-50`
+            href=buttonLinks.secondaryButton.url
+            text=buttonLinks.secondaryButton.label
+            margins=`mt-3 sm:mt-0 sm:ml-3`
+          />
+        </div>
+      | None => <> </>
+      }}
+    </div>
+  </HeroTextContainer>
+
 // TODO: add container around hero
 // TODO: implement reverse hero for events page design
 @react.component
-let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ()) =>
+let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ~imageOnRight=true, ()) =>
   // TODO: should lg:relative be provided as a parameter?
   <div className="lg:relative">
-    <HeroTextContainer textAlign=`text-center lg:text-left`>
-      <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
-        <H1> {s(header)} </H1>
-        <P margins="mt-3 md:mt-5"> {s(body)} </P>
-        {switch buttonLinks {
-        | Some(buttonLinks) =>
-          <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <Button
-              colors=`text-white bg-orangedark hover:bg-orangedarker`
-              href=buttonLinks.primaryButton.url
-              text=buttonLinks.primaryButton.label
-              margins=``
-            />
-            <Button
-              colors=`text-orangedark bg-white hover:bg-gray-50`
-              href=buttonLinks.secondaryButton.url
-              text=buttonLinks.secondaryButton.label
-              margins=`mt-3 sm:mt-0 sm:ml-3`
-            />
-          </div>
-        | None => <> </>
-        }}
-      </div>
-    </HeroTextContainer>
-    <div
-      className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
-      <img className="absolute inset-0 w-full h-full object-cover" src=imageSrc alt="" />
-    </div>
+    {callToActionArea(~header, ~body, ~buttonLinks)} {image(~imageSrc, ~imageOnRight)}
   </div>

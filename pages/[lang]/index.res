@@ -1,7 +1,5 @@
 open! Import
 
-module Link = Next.Link
-
 let s = React.string
 
 module T = {
