@@ -64,14 +64,22 @@ let image = (~imageSrc, ~imageOnRight) => {
   </div>
 }
 
-let callToActionArea = (~header, ~body, ~buttonLinks) =>
-  <HeroTextContainer textAlign=`text-center lg:text-left`>
+let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
+  let (lgTextAlign, lgContainerDisplay, lgJustifyButtons) = switch imageOnRight {
+  | true => ("text-left", "", "justify-start")
+  | false => ("text-center", "flex", "justify-center")
+  }
+  <HeroTextContainer textAlign={`text-center lg:${lgTextAlign} lg:${lgContainerDisplay}`}>
+    {switch imageOnRight {
+    | true => <> </>
+    | false => <div className="lg:w-1/2" />
+    }}
     <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
       <H1> {s(header)} </H1>
       <P margins="mt-3 md:mt-5"> {s(body)} </P>
       {switch buttonLinks {
       | Some(buttonLinks) =>
-        <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+        <div className={`mt-10 sm:flex sm:justify-center lg:${lgJustifyButtons}}`}>
           <Button
             colors=`text-white bg-orangedark hover:bg-orangedarker`
             href=buttonLinks.primaryButton.url
@@ -89,12 +97,12 @@ let callToActionArea = (~header, ~body, ~buttonLinks) =>
       }}
     </div>
   </HeroTextContainer>
+}
 
 // TODO: add container around hero
-// TODO: implement reverse hero for events page design
 @react.component
 let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ~imageOnRight=true, ()) =>
-  // TODO: should lg:relative be provided as a parameter?
   <div className="lg:relative">
-    {callToActionArea(~header, ~body, ~buttonLinks)} {image(~imageSrc, ~imageOnRight)}
+    {callToActionArea(~header, ~body, ~buttonLinks, ~imageOnRight)}
+    {image(~imageSrc, ~imageOnRight)}
   </div>
