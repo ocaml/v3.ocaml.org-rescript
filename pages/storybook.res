@@ -1,5 +1,5 @@
 // NOTE: This is a temporary page to display and test components until
-//  we adopt StoryBook,  or a similar technology.
+//  we adopt StoryBook or a similar technology.
 
 @react.component
 let make = () => <>
