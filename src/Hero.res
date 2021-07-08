@@ -1,5 +1,3 @@
-// TODO: .resi
-
 module Link = Next.Link
 
 let s = React.string
@@ -69,6 +67,7 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
   | true => ("text-left", "", "justify-start")
   | false => ("text-center", "flex", "justify-center")
   }
+  // TODO: pass more parameters to HeroTextContainer
   <HeroTextContainer textAlign={`text-center lg:${lgTextAlign} lg:${lgContainerDisplay}`}>
     {switch imageOnRight {
     | true => <> </>
