@@ -1,7 +1,7 @@
 const { height } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  mode: "jit",
+  // mode: "jit",
   purge: {
     // Specify the paths to all of the template files in your project
     content: [
