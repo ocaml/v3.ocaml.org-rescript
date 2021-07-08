@@ -228,27 +228,30 @@ module T = {
   module Params = Pages.Params.Lang
 
   @react.component
-  let make = (~content, ~params as {Params.lang: _}) =>
+  let make = (
+    ~content as {heroContent, statsContent, opamContent, testimonialContent},
+    ~params as {Params.lang: lang},
+  ) =>
     <Page.Unstructured>
       <Hero
         imageSrc="/static/oc-sq.jpeg"
-        header=content.heroContent.heroHeader
-        body=content.heroContent.heroBody
+        header=heroContent.heroHeader
+        body=heroContent.heroBody
         buttonLinks={
           Hero.primaryButton: {
-            label: content.heroContent.installOcaml,
-            url: InternalUrls.resourcesInstallocaml,
+            label: heroContent.installOcaml,
+            url: #resourcesInstallocaml->Route.toString(lang),
           },
           secondaryButton: {
-            label: content.heroContent.aboutOcaml,
-            url: InternalUrls.principlesWhatisocaml,
+            label: heroContent.aboutOcaml,
+            url: #principlesWhatisocaml->Route.toString(lang),
           },
         }
       />
-      <StatsSection content=content.statsContent />
-      <OpamSection content=content.opamContent margins=`mt-12 sm:mt-16` />
+      <StatsSection content=statsContent />
+      <OpamSection content=opamContent margins=`mt-12 sm:mt-16` />
       <TestimonialSection
-        content=content.testimonialContent
+        content=testimonialContent
         marginBottom={Tailwind.ByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
       />
     </Page.Unstructured>
