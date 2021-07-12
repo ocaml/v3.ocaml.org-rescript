@@ -101,7 +101,9 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
 // TODO: add container around hero
 @react.component
 let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ~imageOnRight=true, ()) =>
-  <div className="lg:relative">
-    {callToActionArea(~header, ~body, ~buttonLinks, ~imageOnRight)}
-    {image(~imageSrc, ~imageOnRight)}
-  </div>
+  <SectionContainer.LargeCentered>
+    <div className="lg:relative">
+      {callToActionArea(~header, ~body, ~buttonLinks, ~imageOnRight)}
+      {image(~imageSrc, ~imageOnRight)}
+    </div>
+  </SectionContainer.LargeCentered>
