@@ -30,8 +30,10 @@ module Button = {
 
 module HeroTextContainer = {
   @react.component
-  let make = (~textAlign, ~children) =>
-    <div className={"mx-auto max-w-7xl w-full pt-16 pb-20 lg:py-48 " ++ textAlign}> children </div>
+  let make = (~textAlign, ~display, ~children) =>
+    <div className={`mx-auto max-w-7xl w-full pt-16 pb-20 lg:py-48 ${textAlign} ${display}`}>
+      children
+    </div>
 }
 
 module H1 = {
@@ -67,8 +69,8 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
   | true => ("text-left", "", "justify-start")
   | false => ("text-center", "flex", "justify-center")
   }
-  // TODO: pass more parameters to HeroTextContainer
-  <HeroTextContainer textAlign={`text-center lg:${lgTextAlign} lg:${lgContainerDisplay}`}>
+  <HeroTextContainer
+    textAlign={`text-center lg:${lgTextAlign}`} display={`lg:${lgContainerDisplay}`}>
     {switch imageOnRight {
     | true => <> </>
     | false => <div className="lg:w-1/2" />
