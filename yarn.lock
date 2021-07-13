@@ -252,13 +252,13 @@ ast-types@0.13.2:
   resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.13.2.tgz#df39b677a911a83f3a049644fb74fdded23cea48"
   integrity sha512-uWMHxJxtfj/1oZClOxDEV1sQ1HCDkA4MG8Gr69KKeBjEVH0R84WlejZ0y2DcwyBlpAEMltmVYkVgqfLFb2oyiA==
 
-autoprefixer@^10.2.6:
-  version "10.2.6"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.2.6.tgz#aadd9ec34e1c98d403e01950038049f0eb252949"
-  integrity sha512-8lChSmdU6dCNMCQopIf4Pe5kipkAGj/fvTMslCsih0uHpOrXOPUEVOmYMMqmw3cekQkSD7EhIeuYl5y0BLdKqg==
+autoprefixer@^10.3.1:
+  version "10.3.1"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.3.1.tgz#954214821d3aa06692406c6a0a9e9d401eafbed2"
+  integrity sha512-L8AmtKzdiRyYg7BUXJTzigmhbQRCXFKz6SA1Lqo0+AR2FBbQ4aTAPFSDlOutnFkjhiz8my4agGXog1xlMjPJ6A==
   dependencies:
     browserslist "^4.16.6"
-    caniuse-lite "^1.0.30001230"
+    caniuse-lite "^1.0.30001243"
     colorette "^1.2.2"
     fraction.js "^4.1.1"
     normalize-range "^0.1.2"
@@ -451,10 +451,10 @@ camelcase-css@^2.0.1:
   resolved "https://registry.yarnpkg.com/camelcase-css/-/camelcase-css-2.0.1.tgz#ee978f6947914cc30c6b44741b6ed1df7f043fd5"
   integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
-caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001230:
-  version "1.0.30001239"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001239.tgz#66e8669985bb2cb84ccb10f68c25ce6dd3e4d2b8"
-  integrity sha512-cyBkXJDMeI4wthy8xJ2FvDU6+0dtcZSJW3voUF8+e9f1bBeuvyZfc3PNbkOETyhbR+dGCPzn9E7MA3iwzusOhQ==
+caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001243:
+  version "1.0.30001244"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001244.tgz#a6dc49ad5fa02d81d04373ec3f5ceabc3da06abf"
+  integrity sha512-Wb4UFZPkPoJoKKVfELPWytRzpemjP/s0pe22NriANru1NoI+5bGNxzKtk7edYL8rmCWTfQO8eRiF0pn1Dqzx7Q==
 
 chalk@2.4.2, chalk@^2.0.0:
   version "2.4.2"
