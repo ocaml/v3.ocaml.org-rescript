@@ -41,15 +41,15 @@ let heading = text =>
   </h1>
 
 let bodyText = (~margins, ~text) =>
-  <p className={margins ++ " max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:max-w-3xl"}>
+  <p className={`${margins} max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:max-w-3xl`}>
     {s(text)}
   </p>
 
 let button = (~href, ~text, ~colors, ~margins) =>
-  <div className={margins ++ " rounded-md shadow "}>
+  <div className={`${margins} rounded-md shadow `}>
     <Link href>
       <a
-        className={colors ++ " w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10"}>
+        className={`${colors} w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10`}>
         {s(text)}
       </a>
     </Link>
