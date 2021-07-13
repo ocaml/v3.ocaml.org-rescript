@@ -99,7 +99,6 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
   </HeroTextContainer>
 }
 
-// TODO: add container around hero
 @react.component
 let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ~imageOnRight=true, ()) =>
   <SectionContainer.LargeCentered>
