@@ -79,7 +79,7 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
       <P margins="mt-3 md:mt-5"> {s(body)} </P>
       {switch buttonLinks {
       | Some(buttonLinks) =>
-        <div className={`mt-10 sm:flex sm:justify-center ${lgJustifyButtons}}`}>
+        <div className={`mt-10 sm:flex sm:justify-center ${lgJustifyButtons}`}>
           <Button
             colors=`text-white bg-orangedark hover:bg-orangedarker`
             href=buttonLinks.primaryButton.url
