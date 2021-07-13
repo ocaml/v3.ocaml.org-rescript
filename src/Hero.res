@@ -55,11 +55,11 @@ module P = {
 
 let image = (~imageSrc, ~imageOnRight) => {
   let horizontalPlace = switch imageOnRight {
-  | true => "right-0"
-  | false => "left-0"
+  | true => "lg:right-0"
+  | false => "lg:left-0"
   }
   <div
-    className={`relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:${horizontalPlace} lg:w-1/2 lg:h-full`}>
+    className={`relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 ${horizontalPlace} lg:w-1/2 lg:h-full`}>
     <img className="absolute inset-0 w-full h-full object-cover" src=imageSrc alt="" />
   </div>
 }
