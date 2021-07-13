@@ -74,7 +74,7 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
     | true => <> </>
     | false => <div className="lg:w-1/2" />
     }}
-    <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
+    <div className="lg:w-1/2 px-4 sm:px-8 xl:pr-16">
       <H1> {s(header)} </H1>
       <P margins="mt-3 md:mt-5"> {s(body)} </P>
       {switch buttonLinks {
