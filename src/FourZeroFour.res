@@ -1,7 +1,11 @@
-// TODO: Make this look better
-module Redirecting = {
+// TODO: Improve the styling of the Redirect component
+module Redirect = {
   @react.component
   let make = (~path) => {
+    React.useEffect0(() => {
+      router->Next.Router.push(path)
+      None
+    })
     <div>
       {<>
         {React.string("Redirecting.  If you aren't redirected immediately, please ")}
@@ -17,28 +21,21 @@ let make = () => {
   let defaultLang = #en
   let sep = "/"
   let router = Next.Router.useRouter()
-  let tmp = Js.String.split(sep, router.asPath)
-  let status = switch Lang.ofString(tmp[1]) {
+  let splitPath = Js.String.split(sep, router.asPath)
+  let state = switch Lang.ofString(splitPath[1]) {
   | None =>
-    switch tmp[0] {
+    switch splitPath[0] {
     | "" => #Redirect(sep ++ Lang.toString(defaultLang))
     | _ => #NotFound
     }
   | Some(#en) => #NotFound
   | Some(_) =>
-    tmp[1] = Lang.toString(defaultLang)
-    let path = Js.Array.joinWith(sep, tmp)
+    splitPath[1] = Lang.toString(defaultLang)
+    let path = Js.Array.joinWith(sep, splitPath)
     #Redirect(path)
   }
-  React.useEffect0(() => {
-    switch status {
-    | #Redirect(path) => router->Next.Router.push(path)
-    | _ => ()
-    }
-    None
-  })
-  switch status {
+  switch state {
   | #NotFound => <Next.Error statusCode=404 />
-  | #Redirect(path) => <Redirecting path />
+  | #Redirect(path) => <Redirect path />
   }
 }
