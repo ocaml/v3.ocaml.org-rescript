@@ -2,6 +2,7 @@
 module Redirect = {
   @react.component
   let make = (~path) => {
+    let router = Next.Router.useRouter()
     React.useEffect0(() => {
       router->Next.Router.push(path)
       None
