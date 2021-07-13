@@ -66,11 +66,10 @@ let image = (~imageSrc, ~imageOnRight) => {
 
 let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
   let (lgTextAlign, lgContainerDisplay, lgJustifyButtons) = switch imageOnRight {
-  | true => ("text-left", "", "justify-start")
-  | false => ("text-center", "flex", "justify-center")
+  | true => ("lg:text-left", "", "lg:justify-start")
+  | false => ("lg:text-center", "lg:flex", "lg:justify-center")
   }
-  <HeroTextContainer
-    textAlign={`text-center lg:${lgTextAlign}`} display={`lg:${lgContainerDisplay}`}>
+  <HeroTextContainer textAlign={`text-center ${lgTextAlign}`} display=lgContainerDisplay>
     {switch imageOnRight {
     | true => <> </>
     | false => <div className="lg:w-1/2" />
@@ -80,7 +79,7 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
       <P margins="mt-3 md:mt-5"> {s(body)} </P>
       {switch buttonLinks {
       | Some(buttonLinks) =>
-        <div className={`mt-10 sm:flex sm:justify-center lg:${lgJustifyButtons}}`}>
+        <div className={`mt-10 sm:flex sm:justify-center ${lgJustifyButtons}}`}>
           <Button
             colors=`text-white bg-orangedark hover:bg-orangedarker`
             href=buttonLinks.primaryButton.url
