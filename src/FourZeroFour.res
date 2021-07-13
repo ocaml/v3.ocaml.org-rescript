@@ -1,3 +1,5 @@
+open! Import
+
 // TODO: Improve the styling of the Redirect component
 module Redirect = {
   @react.component
