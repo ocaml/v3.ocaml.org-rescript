@@ -69,7 +69,7 @@ module T = {
   include Jsonable.Unsafe
   module PageHeading = {
     @react.component
-    let make = (~marginBottom=?, ~content) => <>
+    let make = (~marginBottom=?, ~content, ~lang) => <>
       <div
         className={content.bgImageClass ++
         "  bg-center bg-no-repeat flex flex-wrap align-bottom place-content-center sm:h-34 bg-cover  " ++
@@ -92,7 +92,7 @@ With its strong security features and high performance, several companies rely o
             </p>
             //CallToAction Button
             <div className="text-center mt-7">
-              <Link href=InternalUrls.principlesSuccesses>
+              <Link href={#principlesSuccesses->Route.toString(lang)}>
                 <a
                   className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedarker">
                   {s("Success Stories")}
@@ -142,13 +142,13 @@ With its strong security features and high performance, several companies rely o
   module Params = Pages.Params.Lang
 
   @react.component
-  let make = (~content, ~params as {Params.lang: _}) => <>
+  let make = (~content, ~params as {Params.lang: lang}) => <>
     <ConstructionBanner
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=430%3A36400`
       playgroundLink=`/play/industry/users`
     />
     <PageHeading
-      marginBottom={Tailwind.ByBreakpoint.make(#mb6, ())} content=content.highlightContent
+      marginBottom={Tailwind.ByBreakpoint.make(#mb6, ())} content=content.highlightContent lang
     />
     <LogoSection companies=content.companies />
   </>
