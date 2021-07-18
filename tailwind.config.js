@@ -48,7 +48,7 @@ module.exports = {
       spacing: {
         // Note: this was introduced to accommodate a large image height
         '160': '40rem',
-        '34': '34rem',
+
       }
     },
     /* We override the default font-families with our own default prefs
