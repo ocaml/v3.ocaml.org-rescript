@@ -78,45 +78,25 @@ module T = {
       </div>
   }
 
-  module H2Small = {
-    @react.component
-    let make = (~children) => <h2 className="text-2xl font-bold"> children </h2>
-  }
-
-  module A = {
-    @react.component
-    let make = (~href, ~text) => <a className="text-orangedark" href target="_blank"> {s(text)} </a>
-  }
-
-  module OpamContainer = {
-    @react.component
-    let make = (~margins, ~display, ~children) =>
-      <div className={margins ++ ` ` ++ display ++ ` sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
-        children
-      </div>
-  }
-
   module OpamSection = {
     type t = {
-      opamHeader: string,
-      opamBody: string,
-      opamLinkText: string,
+      header: string,
+      body: string,
+      linkText: string,
     }
 
     @react.component
-    let make = (~content, ~margins) =>
-      <OpamContainer margins display=`sm:flex`>
-        <div className="mb-4 sm:flex-shrink-0 sm:mb-0 sm:mr-4">
-          <img className="h-36" src="/static/opam.png" ariaHidden=true />
-        </div>
-        <div>
-          <H2Small> {s(content.opamHeader)} </H2Small>
-          <p className="mt-1"> {s(content.opamBody)} </p>
-          <p className="text-right pr-5">
-            <A href="https://opam.ocaml.org" text={content.opamLinkText ++ ` >`} />
-          </p>
-        </div>
-      </OpamContainer>
+    let make = (~content as {header, body, linkText}) => {
+      <div className={`mt-12 sm:mt-16 sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
+        <MediaObject.Small
+          header
+          body
+          link="https://opam.ocaml.org"
+          linkText={linkText ++ ` >`}
+          image="/static/opam.png"
+        />
+      </div>
+    }
   }
 
   module FillIcon = {
@@ -249,7 +229,7 @@ module T = {
         }
       />
       <StatsSection content=statsContent />
-      <OpamSection content=opamContent margins=`mt-12 sm:mt-16` />
+      <OpamSection content=opamContent />
       <TestimonialSection
         content=testimonialContent
         marginBottom={Tailwind.ByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
@@ -274,10 +254,10 @@ module T = {
       easyMaintainPercent: `75%`,
     },
     opamContent: {
-      opamHeader: `Opam: the OCaml Package Manager`,
-      opamBody: `Opam is a source-based package manager for OCaml. It supports multiple simultaneous compiler 
+      OpamSection.header: `Opam: the OCaml Package Manager`,
+      body: `Opam is a source-based package manager for OCaml. It supports multiple simultaneous compiler 
       installations, flexible package constraints, and a Git-friendly development workflow.`,
-      opamLinkText: `Go to opam.ocaml.org`,
+      linkText: `Go to opam.ocaml.org`,
     },
     testimonialContent: {
       quote: `OCaml helps us to quickly adopt to changing market conditions, and go from prototypes to production 
