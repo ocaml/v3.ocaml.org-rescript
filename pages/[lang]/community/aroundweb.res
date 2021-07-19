@@ -19,7 +19,7 @@ module T = {
           imageWidth="w-28 sm:w-64"
           isRounded=true
           image="typewriter.jpeg"
-          imageSide=MediaObject.Left>
+          imageSide=#Left>
           <div className="bg-white border border-gray-300 overflow-hidden rounded-md mb-2">
             <ul className="divide-y divide-gray-300">
               {
