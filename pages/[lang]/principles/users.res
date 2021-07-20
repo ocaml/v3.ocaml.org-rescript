@@ -3,7 +3,7 @@ module Link = Next.Link
 let s = React.string
 
 module T = {
-  let companies = [
+  /* let companies = [
     {
       LogoCloud.CompanyOptionalLogo.logoSrc: Some(`/static/oclabs.png`),
       name: `OCaml Labs`,
@@ -34,7 +34,7 @@ module T = {
       name: `Tezos`,
       website: `https://tezos.com`,
     },
-  ]
+  ] */
 
   type t = {
     companies: LogoCloud.t,
@@ -74,13 +74,23 @@ module T = {
   </>
 
   let contentEn = {
-    companies: LogoWithText(companies),
-    title: `Industrial Users of OCaml`,
-    pageDescription: `With its strong security features and high performance, several companies rely on OCaml to keep their data operating both safely and efficiently. On this page, you can get an overview of the companies in the community and learn more about how they use OCaml.`,
-    backgroundImage: {
-      height: Tall,
-      tailwindImageName: `bg-user-bg`,
-    },
+    let companyArray = Ood.Industrial_user.all->Belt.List.toArray
+
+    let companies = companyArray->Belt.Array.map((c: Ood.Industrial_user.t) => {
+      LogoCloud.CompanyOptionalLogo.logoSrc: c.Ood.Industrial_user.image,
+      name: c.name,
+      website: c.site,
+    })
+
+    {
+      companies: LogoWithText(companies),
+      title: `Industrial Users of OCaml`,
+      pageDescription: `With its strong security features and high performance, several companies rely on OCaml to keep their data operating both safely and efficiently. On this page, you can get an overview of the companies in the community and learn more about how they use OCaml.`,
+      backgroundImage: {
+        height: Tall,
+        tailwindImageName: `bg-user-bg`,
+      },
+    }
   }
 
   let content = [({Params.lang: #en}, contentEn)]

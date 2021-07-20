@@ -25,9 +25,9 @@ module CompanyCard = {
     | Optional(CompanyOptionalLogo.t)
     | Required(Company.t)
 
-  let logo = (~src, ~name) => <img className="rounded max-h-20" src alt=name />
+  let logo = (~src, ~name) => <img className="w-24 my-9 rounded max-h-20" src alt=name />
 
-  let logoFiller = <span className="h-20" />
+  let logoFiller = <span className="h-20 my-9 pl-4" />
 
   @react.component
   let make = (~company) => {
@@ -37,8 +37,9 @@ module CompanyCard = {
     }
     // TODO: accessibility - should the link include the div or only the contents?
     // TODO: accessibility - warn opening a new tab
-    <a href=website target="_blank">
-      <div className="col-span-1 flex justify-center items-center space-x-8 py-8 px-4 bg-gray-50">
+    <a href=website target="_blank" className="py-1 px-1">
+      <div
+        className="col-span-1 flex justify-center items-center space-x-8 py-8 px-4 bg-gray-50 h-40">
         {switch company {
         | Optional({logoSrc: Some(logoSrc)}) => logo(~src=logoSrc, ~name)
         | Optional(_) => logoFiller
@@ -46,7 +47,7 @@ module CompanyCard = {
         }}
         {switch company {
         | Optional(_) =>
-          <span className="text-center text-3xl font-bold font-roboto"> {s(name)} </span>
+          <span className="text-center text-lg font-bold font-roboto my-9 "> {s(name)} </span>
         | Required(_) => <> </>
         }}
       </div>
