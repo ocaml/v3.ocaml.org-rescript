@@ -163,7 +163,7 @@ module T = {
     @react.component
     let make = (~marginBottom=?, ~children) =>
       <section
-        className={marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
+        className={marginBottom->Tailwind.Option.toClassName ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> children </div>
       </section>
   }
@@ -232,7 +232,7 @@ module T = {
       <OpamSection content=opamContent />
       <TestimonialSection
         content=testimonialContent
-        marginBottom={Tailwind.ByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
+        marginBottom={Tailwind.Breakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
       />
     </Page.Unstructured>
 

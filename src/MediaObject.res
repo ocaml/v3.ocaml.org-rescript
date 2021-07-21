@@ -30,7 +30,7 @@ let make = (
   ~imageSide,
   ~children,
 ) => {
-  let marginBottom = marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty
+  let marginBottom = marginBottom->Tailwind.Option.toClassName
   <div className={`flex flex-col items-center sm:flex-row sm:justify-evenly ${marginBottom}`}>
     {
       let rounded = switch isRounded {

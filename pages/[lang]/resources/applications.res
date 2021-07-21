@@ -89,14 +89,14 @@ module T = {
     let make = (~marginBottom=?, ~content) =>
       <div
         className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-        marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
+        marginBottom->Tailwind.Option.toClassName}>
         <div className="px-4 py-5 sm:p-6">
           // TODO: factor out and define content type
           <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
             {s(content.developerGuidesLabel)}
           </h2>
           <MediaObject
-            marginBottom={Tailwind.ByBreakpoint.make(#mb11, ())}
+            marginBottom={Tailwind.Breakpoint.make(#mb11, ())}
             imageHeight="h-32"
             image=content.topDeveloperGuide.image
             imageSide=#Right>
@@ -112,7 +112,7 @@ module T = {
             </div>
           </MediaObject>
           <MediaObject
-            marginBottom={Tailwind.ByBreakpoint.make(#mb11, ())}
+            marginBottom={Tailwind.Breakpoint.make(#mb11, ())}
             imageHeight="h-32"
             image=content.bottomDeveloperGuide.image
             imageSide=#Left>
@@ -148,7 +148,7 @@ module T = {
       // TODO: factor out and define content type
       <div
         className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-        marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty}>
+        marginBottom->Tailwind.Option.toClassName}>
         <div className="px-4 py-5 sm:py-8 sm:px-24">
           <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
             {s(content.usingOcamlLabel)}
@@ -228,9 +228,9 @@ module T = {
       addContainer=Page.Basic.NoContainer
       title=content.title
       pageDescription=content.pageDescription>
-      <ApiDocumentation marginBottom={Tailwind.ByBreakpoint.make(#mb24, ())} />
+      <ApiDocumentation marginBottom={Tailwind.Breakpoint.make(#mb24, ())} />
       <DeveloperGuides
-        marginBottom={Tailwind.ByBreakpoint.make(#mb2, ())} content=content.developerGuidesContent
+        marginBottom={Tailwind.Breakpoint.make(#mb2, ())} content=content.developerGuidesContent
       />
       // TODO: factor out and define content type
       <CallToAction.TransparentWide
@@ -242,7 +242,7 @@ module T = {
         }
       />
       <UsingOcaml
-        marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())} content=content.usingOcamlContent lang
+        marginBottom={Tailwind.Breakpoint.make(#mb16, ())} content=content.usingOcamlContent lang
       />
     </Page.Basic>
   </>

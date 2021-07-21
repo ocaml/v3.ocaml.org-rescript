@@ -166,7 +166,7 @@ module T = {
           buttonText: content.engageButtonText,
         }
         colorStyle=CallToAction.General.BackgroundFilled
-        marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}
+        marginBottom={Tailwind.Breakpoint.make(#mb16, ())}
       />
       <LatestNews content=content.latestNewsContent />
       <Events content=content.events lang />
