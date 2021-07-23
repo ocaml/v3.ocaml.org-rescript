@@ -105,6 +105,27 @@ module Categories = {
             ),
           ]}
         </Item>
+        <Item name="StackedList.BasicWithIcon" docs="StackedList.BasicWithIcon">
+          {[
+            (
+              "Default",
+              {
+                let items = [
+                  {
+                    StackedList.BasicWithIcon.Item.link: "example.com",
+                    title: "Title1",
+                  },
+                  {
+                    link: "example.com",
+                    title: "Title2",
+                  },
+                ]
+                let rowPrefixIcon = StackedList.BasicWithIcon.RowPrefixIcon.PaperScroll
+                <StackedList.BasicWithIcon items rowPrefixIcon />
+              },
+            ),
+          ]}
+        </Item>
       </Category>
   }
 
