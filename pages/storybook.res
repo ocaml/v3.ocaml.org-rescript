@@ -266,8 +266,37 @@ module Categories = {
       </Category>
   }
 
+  module ComponenetCollection = {
   @react.component
-  let make = () => <> <BasicComponents /> <Sections /> </>
+    let make = () =>
+      <Category name="Component Collection">
+        <Item name="CardGrid" docs="This as a CardGrid">
+          {[
+            (
+              "CardGrid rendered with strings for each element",
+              {
+                let cardData = ["abc", "def", "ghi", "jkl"]
+                let renderCard = React.string
+                let title = "Example"
+                <CardGrid cardData renderCard title />
+              },
+            ),
+            (
+              "CardGrid rendered with Cards for each element",
+              {
+                let cardData = ["abc", "def", "ghi", "jkl"]
+                let renderCard = s => <Card title="<Card>" kind={#opaque}> {React.string(s)} </Card>
+                let title = "Example"
+                <CardGrid cardData renderCard title />
+              },
+            ),
+          ]}
+        </Item>
+      </Category>
+  }
+
+  @react.component
+  let make = () => <> <BasicComponents /> <ComponenetCollection /> <Sections /> </>
 }
 
 @react.component
