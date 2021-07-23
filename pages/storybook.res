@@ -160,10 +160,49 @@ module Categories = {
           </Item>
         }
       }
+
+      module HighlightsInQuadrants = {
+        @react.component
+        let make = () => {
+          let category = icon => {
+            HighlightsInQuadrants.Category.header: {
+              HighlightsInQuadrants.CategoryHeader.title: "CategoryHeader",
+              icon: icon,
+            },
+            stories: [
+              {HighlightsInQuadrants.Story.title: "Story1", link: "link"},
+              {HighlightsInQuadrants.Story.title: "Story2", link: "link"},
+            ],
+            seeAllInCategory: {
+              HighlightsInQuadrants.LabelledLink.label: "seeAllInCategory",
+              link: "seeAllInCategory",
+            },
+          }
+
+          let t = {
+            HighlightsInQuadrants.title: "Example",
+            topLeftCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Profit),
+            topRightCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Calendar),
+            bottomLeftCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Meet),
+            bottomRightCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Package),
+            goToArchive: {
+              HighlightsInQuadrants.LabelledLink.label: "Example Link",
+              link: "link",
+            },
+          }
+
+          <Item name="HighlightsInQuadrants" docs="A highlights in quadrants component">
+            {[("Default", <HighlightsInQuadrants t />)]}
+          </Item>
+        }
+      }
     }
 
     @react.component
-    let make = () => <Category name="Sections"> <Items.LogoCloud /> <Items.Hero /> </Category>
+    let make = () =>
+      <Category name="Sections">
+        <Items.LogoCloud /> <Items.Hero /> <Items.HighlightsInQuadrants />
+      </Category>
   }
 
   @react.component
