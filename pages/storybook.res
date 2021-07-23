@@ -89,6 +89,22 @@ module Categories = {
             ),
           ]}
         </Item>
+        <Item name="CallToAction.Embedded" docs="CallToAction.Embedded">
+          {[
+            (
+              "Default",
+              {
+                let t = {
+                  CallToAction.title: "Title",
+                  body: "Body",
+                  buttonLink: CallToAction.LinkUrl.External("example.com"),
+                  buttonText: "Go to example.com",
+                }
+                <CallToAction.Embedded t />
+              },
+            ),
+          ]}
+        </Item>
       </Category>
   }
 
