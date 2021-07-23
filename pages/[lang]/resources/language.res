@@ -29,9 +29,9 @@ module T = {
       let right =
         <div className="flex h-full items-center justify-center">
           <ul className="list-disc pb-8 sm:pb-0 leading-10">
-            {Array.map(
-              (t: Ood.Tutorial.t) =>
-                <li>
+            {Array.mapi(
+              (i, t: Ood.Tutorial.t) =>
+                <li key={string_of_int(i)}>
                   <Route _to={#resourcesTutorial(t.slug)} lang>
                     <a className="text-orangedark text-xl underline"> {s(t.title)} </a>
                   </Route>
@@ -117,7 +117,14 @@ module T = {
             <div className="grid grid-cols-8 items-center mb-8 px-6">
               // TODO: define state to track location within books list, activate navigation
               <div
+                tabIndex={0}
                 className="flex justify-start cursor-pointer"
+                // TODO: Improve the navigation using a keyboard
+                onKeyDown={e => {
+                  if ReactEvent.Keyboard.keyCode(e) === 13 {
+                    setIdx(prev => handle_click(Left, prev))
+                  }
+                }}
                 onClick={_ => setIdx(prev => handle_click(Left, prev))}>
                 // TODO: make navigation arrows accesssible
                 <svg
@@ -156,7 +163,13 @@ module T = {
                 }, content.books) |> React.array}
               </div>
               <div
+                tabIndex={0}
                 className="flex justify-end cursor-pointer"
+                onKeyDown={e => {
+                  if ReactEvent.Keyboard.keyCode(e) === 13 {
+                    setIdx(prev => handle_click(Right, prev))
+                  }
+                }}
                 onClick={_ => setIdx(prev => handle_click(Right, prev))}>
                 <svg
                   className="h-20"
