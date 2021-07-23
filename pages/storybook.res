@@ -76,6 +76,19 @@ module Categories = {
             ),
           ]}
         </Item>
+        <Item name="ShortWideCard" docs="Short wide card">
+          {[
+            (
+              "Default",
+              {
+                let name = "Github.com"
+                let logoSrc = "/static/github.png"
+                let url = "https://github.com/ocaml/ocaml"
+                <ShortWideCard name url logoSrc />
+              },
+            ),
+          ]}
+        </Item>
       </Category>
   }
 
