@@ -126,6 +126,30 @@ module Categories = {
             ),
           ]}
         </Item>
+        <Item
+          name="StackedList.BasicWithAuxiliaryAttribute"
+          docs="StackedList.BasicWithAuxiliaryAttribute">
+          {[
+            (
+              "Default",
+              {
+                let items = [
+                  {
+                    StackedList.BasicWithAuxiliaryAttribute.Item.link: "example.com",
+                    title: "Title1",
+                    auxiliaryAttribute: "AuxiliaryAttribute1",
+                  },
+                  {
+                    link: "example.com",
+                    title: "Title2",
+                    auxiliaryAttribute: "AuxiliaryAttribute2",
+                  },
+                ]
+                <StackedList.BasicWithAuxiliaryAttribute items />
+              },
+            ),
+          ]}
+        </Item>
       </Category>
   }
 
