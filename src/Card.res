@@ -1,12 +1,11 @@
 open! Import
 
 @react.component
-let make = (
-  ~title=?,
-  ~borderStyle="bg-white shadow-md rounded-md",
-  ~titleTextColor="",
-  ~children,
-) => {
+let make = (~title=?, ~kind, ~titleTextColor="", ~children) => {
+  let borderStyle = switch kind {
+  | #transparent => ""
+  | #opaque => "bg-white shadow-md rounded-md"
+  }
   let title = switch title {
   | None => React.null
   | Some(title) =>
