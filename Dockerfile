@@ -1,7 +1,8 @@
 # Install dependencies only when needed
-FROM node:14-alpine AS deps
+# Seems it is broken on alpine https://github.com/rescript-lang/rescript-compiler/issues/3666 ? 
+FROM node:14-buster-slim AS deps
 
-RUN apk add --update --no-cache python g++ make
+RUN apt-get update && apt-get install -y python g++ make
 
 WORKDIR /app
 
@@ -10,7 +11,7 @@ COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
-FROM node:14-alpine AS builder
+FROM node:14-buster-slim AS builder
 
 WORKDIR /app
 
