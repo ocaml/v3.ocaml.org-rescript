@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-# Seems it is broken on alpine https://github.com/rescript-lang/rescript-compiler/issues/3666 ? 
+# Seems ReScript is broken on alpine https://github.com/rescript-lang/rescript-compiler/issues/3666 ? 
 FROM node:14-buster-slim AS deps
 
 RUN apt-get update && apt-get install -y python g++ make
