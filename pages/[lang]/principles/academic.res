@@ -133,7 +133,7 @@ module T = {
     let make = (~marginBottom=?) => <>
       <SectionContainer.MediumCentered ?marginBottom paddingX="px-12">
         <h2 className="mb-16 text-grey-900 text-3xl mb-5 lg:text-4xl font-bold text-center">
-          {s("Ocaml Courses around the World")}
+          {s("OCaml Courses around the World")}
         </h2>
       </SectionContainer.MediumCentered>
       <SectionContainer.ResponsiveCentered ?marginBottom>
