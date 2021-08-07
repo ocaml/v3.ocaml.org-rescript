@@ -19,7 +19,7 @@ module T = {
               t={
                 CallToAction.title: content.title,
                 body: content.description,
-                buttonLink: Route(#resourcesTutorials, lang),
+                buttonLink: #Route(#resourcesTutorials, lang),
                 buttonText: "See All Tutorials",
               }
             />
@@ -70,8 +70,6 @@ module T = {
       books: array<Ood.Book.t>,
     }
 
-    type direction = Left | Right
-
     @react.component
     let make = (~marginBottom=?, ~content) => {
       let (idx, setIdx) = React.useState(() => 0)
@@ -88,8 +86,8 @@ module T = {
 
       let handle_click = (dir, current) => {
         let new_idx = switch dir {
-        | Left => current - 1
-        | Right => current + 1
+        | #Left => current - 1
+        | #Right => current + 1
         }
 
         let length = Array.length(content.books)
@@ -122,10 +120,10 @@ module T = {
                 // TODO: Improve the navigation using a keyboard
                 onKeyDown={e => {
                   if ReactEvent.Keyboard.keyCode(e) === 13 {
-                    setIdx(prev => handle_click(Left, prev))
+                    setIdx(prev => handle_click(#Left, prev))
                   }
                 }}
-                onClick={_ => setIdx(prev => handle_click(Left, prev))}>
+                onClick={_ => setIdx(prev => handle_click(#Left, prev))}>
                 // TODO: make navigation arrows accesssible
                 <svg
                   className="h-20"
@@ -167,10 +165,10 @@ module T = {
                 className="flex justify-end cursor-pointer"
                 onKeyDown={e => {
                   if ReactEvent.Keyboard.keyCode(e) === 13 {
-                    setIdx(prev => handle_click(Right, prev))
+                    setIdx(prev => handle_click(#Right, prev))
                   }
                 }}
-                onClick={_ => setIdx(prev => handle_click(Right, prev))}>
+                onClick={_ => setIdx(prev => handle_click(#Right, prev))}>
                 <svg
                   className="h-20"
                   viewBox="0 0 90 159"
@@ -383,7 +381,7 @@ module T = {
       <Page.Basic
         marginTop=`mt-1`
         addBottomBar=true
-        addContainer=Page.Basic.NoContainer
+        addContainer=#NoContainer
         title=content.title
         pageDescription=content.pageDescription>
         <Tutorials content=content.tutorials lang />

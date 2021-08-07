@@ -225,7 +225,7 @@ module T = {
     <Page.Basic
       marginTop=`mt-1`
       addBottomBar=true
-      addContainer=Page.Basic.NoContainer
+      addContainer=#NoContainer
       title=content.title
       pageDescription=content.pageDescription>
       <ApiDocumentation marginBottom={Tailwind.Breakpoint.make(#mb24, ())} />
@@ -237,7 +237,7 @@ module T = {
         t={
           CallToAction.title: "Platform Tools",
           body: `The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`,
-          buttonLink: Route(#resourcesPlatform, lang),
+          buttonLink: #Route(#resourcesPlatform, lang),
           buttonText: `Visit Platform Tools`,
         }
       />

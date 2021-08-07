@@ -16,11 +16,6 @@ type content = {
   openMenu: string,
 }
 
-type activatedEntry =
-  | Principles
-  | Resources
-  | Community
-
 @react.component
 let make = (~content) => {
   let (activeMenu, setActiveMenu) = React.useState(_ => None)
@@ -54,7 +49,7 @@ let make = (~content) => {
         <nav className="hidden md:flex space-x-10 ">
           <div className="relative">
             <button
-              onClick={toggleMenu(Principles)}
+              onClick={toggleMenu(#Principles)}
               type_="button"
               className="text-gray-500  pl-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark"
               ariaExpanded=false>
@@ -75,7 +70,7 @@ let make = (~content) => {
             <div
               className={"absolute z-10 left-1/2 transform -translate-x-1/4 mt-3 px-2 w-screen max-w-sm sm:px-0 " ++
               switch activeMenu {
-              | Some(Principles) => " opacity-100 translate-y-0 "
+              | Some(#Principles) => " opacity-100 translate-y-0 "
               | _ => " hidden "
               }}>
               <div
@@ -107,7 +102,7 @@ let make = (~content) => {
           </div>
           <div className="relative">
             <button
-              onClick={toggleMenu(Resources)}
+              onClick={toggleMenu(#Resources)}
               type_="button"
               className="text-gray-500 pl-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark"
               ariaExpanded=false>
@@ -128,7 +123,7 @@ let make = (~content) => {
             <div
               className={"absolute z-10 left-1/2 transform -translate-x-1/3 mt-3 px-2 w-screen max-w-sm sm:px-0 " ++
               switch activeMenu {
-              | Some(Resources) => " opacity-100 translate-y-0 "
+              | Some(#Resources) => " opacity-100 translate-y-0 "
               | _ => " hidden "
               }}>
               <div
@@ -160,7 +155,7 @@ let make = (~content) => {
           </div>
           <div className="relative">
             <button
-              onClick={toggleMenu(Community)}
+              onClick={toggleMenu(#Community)}
               type_="button"
               className="text-gray-500  pl-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark"
               ariaExpanded=false>
@@ -181,7 +176,7 @@ let make = (~content) => {
             <div
               className={"absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-sm sm:px-0 " ++
               switch activeMenu {
-              | Some(Community) => " opacity-100 translate-y-0 "
+              | Some(#Community) => " opacity-100 translate-y-0 "
               | _ => " hidden "
               }}>
               <div

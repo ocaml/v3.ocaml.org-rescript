@@ -143,7 +143,7 @@ module Categories = {
                 let t = {
                   CallToAction.title: "Title",
                   body: "Body",
-                  buttonLink: CallToAction.LinkUrl.External("example.com"),
+                  buttonLink: #External("example.com"),
                   buttonText: "Go to example.com",
                 }
                 <CallToAction.Embedded t />
@@ -316,7 +316,7 @@ module Categories = {
                     name: "OCaml Labs",
                     website: "https://ocamllabs.io",
                   })
-                  ->LogoCloud.LogoOnly
+                  ->#LogoOnly
                 <LogoCloud companies=testCompanies />
               },
             ),
@@ -334,7 +334,7 @@ module Categories = {
                     name: "OCaml Labs",
                     website: "https://ocamllabs.io",
                   })
-                  ->LogoCloud.LogoWithText
+                  ->#LogoWithText
                 <LogoCloud companies=testCompaniesOptional />
               },
             ),
@@ -390,10 +390,10 @@ module Categories = {
 
         let t = {
           HighlightsInQuadrants.title: "Example",
-          topLeftCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Profit),
-          topRightCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Calendar),
-          bottomLeftCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Meet),
-          bottomRightCategory: category(HighlightsInQuadrants.CategoryHeaderIcon.Package),
+          topLeftCategory: category(#Profit),
+          topRightCategory: category(#Calendar),
+          bottomLeftCategory: category(#Meet),
+          bottomRightCategory: category(#Package),
           goToArchive: {
             HighlightsInQuadrants.LabelledLink.label: "Example Link",
             link: "link",
@@ -417,26 +417,26 @@ module Categories = {
               let t = {
                 CallToAction.title: "Title",
                 body: "Body",
-                buttonLink: CallToAction.LinkUrl.External("example.com"),
+                buttonLink: #External("example.com"),
                 buttonText: "Go to example.com",
               }
               [
                 (
                   "Transparent color style.",
                   {
-                    <CallToAction.General t colorStyle={CallToAction.General.Transparent} />
+                    <CallToAction.General t colorStyle={#Transparent} />
                   },
                 ),
                 (
                   "BackgroundFilled color style.",
                   {
-                    <CallToAction.General t colorStyle={CallToAction.General.BackgroundFilled} />
+                    <CallToAction.General t colorStyle={#BackgroundFilled} />
                   },
                 ),
                 (
                   "BackgroundFilled color style.",
                   {
-                    <CallToAction.General t colorStyle={CallToAction.General.BackgroundFilled} />
+                    <CallToAction.General t colorStyle={#BackgroundFilled} />
                   },
                 ),
                 (
@@ -444,7 +444,7 @@ module Categories = {
                   {
                     <CallToAction.General
                       t
-                      colorStyle={CallToAction.General.BackgroundFilled}
+                      colorStyle={#BackgroundFilled}
                       marginBottom={Tailwind.Breakpoint.make(#mb10, ())}
                     />
                   },
@@ -465,7 +465,7 @@ module Categories = {
               let t = {
                 CallToAction.title: "Title",
                 body: "Body",
-                buttonLink: CallToAction.LinkUrl.External("example.com"),
+                buttonLink: #External("example.com"),
                 buttonText: "Go to example.com",
               }
               [

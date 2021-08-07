@@ -13,7 +13,7 @@ module Story: {
 }
 
 module CategoryHeaderIcon: {
-  type t = Meet | Package | Profit | Calendar
+  type t = [#Meet | #Package | #Profit | #Calendar]
 }
 
 module CategoryHeader: {

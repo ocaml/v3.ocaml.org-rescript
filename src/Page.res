@@ -27,14 +27,14 @@ module Unstructured = {
 }
 
 module Basic = {
-  type container = NoContainer | Regular | Narrow
+  type container = [#NoContainer | #Regular | #Narrow]
 
   @react.component
   let make = (
     ~children,
     ~title,
     ~pageDescription,
-    ~addContainer=Regular,
+    ~addContainer=#Regular,
     ~marginTop=?,
     ~callToAction=?,
     ~addBottomBar=?,
@@ -64,9 +64,9 @@ module Basic = {
       }
     }
     switch addContainer {
-    | Regular => <MainContainer.Centered> heading children </MainContainer.Centered>
-    | Narrow => <MainContainer.NarrowCentered> heading children </MainContainer.NarrowCentered>
-    | NoContainer => <MainContainer.None> heading children </MainContainer.None>
+    | #Regular => <MainContainer.Centered> heading children </MainContainer.Centered>
+    | #Narrow => <MainContainer.NarrowCentered> heading children </MainContainer.NarrowCentered>
+    | #NoContainer => <MainContainer.None> heading children </MainContainer.None>
     }
   }
 }

@@ -15,7 +15,7 @@ module T = {
     <Page.Basic
       marginTop=`mt-1`
       addBottomBar=true
-      addContainer=Page.Basic.NoContainer
+      addContainer=#NoContainer
       title=content.title
       pageDescription=content.pageDescription>
       {<> </>}

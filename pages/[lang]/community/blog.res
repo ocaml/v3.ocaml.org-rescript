@@ -48,22 +48,22 @@ module T = {
       topLeftCategory: NewsCategory.toHighlightsCategory(
         communityCategory,
         #communityNewsarchive->Route.toString(lang), // TODO: should we use a query parameter for the category?
-        HighlightsInQuadrants.CategoryHeaderIcon.Meet,
+        #Meet,
       ),
       topRightCategory: NewsCategory.toHighlightsCategory(
         releasesCategory,
         #communityNewsarchive->Route.toString(lang),
-        HighlightsInQuadrants.CategoryHeaderIcon.Package,
+        #Package,
       ),
       bottomLeftCategory: NewsCategory.toHighlightsCategory(
         industryCategory,
         #communityNewsarchive->Route.toString(lang),
-        HighlightsInQuadrants.CategoryHeaderIcon.Profit,
+        #Profit,
       ),
       bottomRightCategory: NewsCategory.toHighlightsCategory(
         eventsCategory,
         #communityNewsarchive->Route.toString(lang),
-        HighlightsInQuadrants.CategoryHeaderIcon.Calendar,
+        #Calendar,
       ),
       goToArchive: {
         label: goToNewsArchive,

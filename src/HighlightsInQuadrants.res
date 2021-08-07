@@ -19,7 +19,7 @@ module Story = {
 }
 
 module CategoryHeaderIcon = {
-  type t = Meet | Package | Profit | Calendar
+  type t = [#Meet | #Package | #Profit | #Calendar]
 
   let meetIcon = (~display, ~marginLeft, ~marginRight) =>
     <svg
@@ -164,10 +164,10 @@ let make = (~t, ~marginBottom=?) => {
 
   let categoryHighlights = (category: Category.t) => {
     let headingIcon = switch category.header.icon {
-    | CategoryHeaderIcon.Meet => CategoryHeaderIcon.meetIcon
-    | CategoryHeaderIcon.Package => CategoryHeaderIcon.packageIcon
-    | CategoryHeaderIcon.Profit => CategoryHeaderIcon.profitIcon
-    | CategoryHeaderIcon.Calendar => CategoryHeaderIcon.calendarIcon
+    | #Meet => CategoryHeaderIcon.meetIcon
+    | #Package => CategoryHeaderIcon.packageIcon
+    | #Profit => CategoryHeaderIcon.profitIcon
+    | #Calendar => CategoryHeaderIcon.calendarIcon
     }
 
     let heading = (~marginBottom: string) =>

@@ -50,7 +50,7 @@ module T = {
     })
 
     {
-      companies: LogoWithText(companies),
+      companies: #LogoWithText(companies),
       title: `Industrial Users of OCaml`,
       pageDescription: `With its strong security features and high performance, several companies rely on OCaml to keep their data operating both safely and efficiently. On this page, you can get an overview of the companies in the community and learn more about how they use OCaml.`,
       backgroundImage: {

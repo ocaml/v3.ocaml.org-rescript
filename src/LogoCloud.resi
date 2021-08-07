@@ -14,9 +14,10 @@ module Company: {
   }
 }
 
-type t =
-  | LogoOnly(array<Company.t>)
-  | LogoWithText(array<CompanyOptionalLogo.t>)
+type t = [
+  | #LogoOnly(array<Company.t>)
+  | #LogoWithText(array<CompanyOptionalLogo.t>)
+]
 
 @react.component
 let make: (~companies: t) => React.element

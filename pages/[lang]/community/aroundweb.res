@@ -105,7 +105,7 @@ module T = {
               t={
                 CallToAction.title: content.title,
                 body: content.description,
-                buttonLink: Route(#communityEvents, lang),
+                buttonLink: #Route(#communityEvents, lang),
                 buttonText: content.callToAction,
               }
             />
@@ -150,17 +150,15 @@ module T = {
       playgroundLink=`/play/community/aroundweb`
     />
     <Page.Basic
-      title=content.title
-      pageDescription=content.pageDescription
-      addContainer=Page.Basic.NoContainer>
+      title=content.title pageDescription=content.pageDescription addContainer=#NoContainer>
       <CallToAction.General
         t={
           CallToAction.title: content.engageHeader,
           body: content.engageBody,
-          buttonLink: External("https://discuss.ocaml.org"),
+          buttonLink: #External("https://discuss.ocaml.org"),
           buttonText: content.engageButtonText,
         }
-        colorStyle=CallToAction.General.BackgroundFilled
+        colorStyle=#BackgroundFilled
         marginBottom={Tailwind.Breakpoint.make(#mb16, ())}
       />
       <LatestNews content=content.latestNewsContent />

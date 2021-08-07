@@ -1,5 +1,5 @@
 module LinkUrl: {
-  type t = Route(Route.t, Lang.t) | External(string)
+  type t = [#Route(Route.t, Lang.t) | #External(string)]
 }
 
 type t = {
@@ -10,7 +10,7 @@ type t = {
 }
 
 module General: {
-  type colorStyle = BackgroundFilled | Transparent
+  type colorStyle = [#BackgroundFilled | #Transparent]
 
   @react.component
   let make: (

@@ -2,12 +2,12 @@ let s = React.string
 
 // TODO: move this into a future Link component once the Url and Link types have been thought out
 module LinkUrl = {
-  type t = Route(Route.t, Lang.t) | External(string)
+  type t = [#Route(Route.t, Lang.t) | #External(string)]
 
   let render = (~t, ~buttonText, ~styling) =>
     switch t {
-    | Route(_to, lang) => <Route _to lang> <a className=styling> {s(buttonText)} </a> </Route>
-    | External(url) => <a href=url target="_blank" className=styling> {s(buttonText)} </a>
+    | #Route(_to, lang) => <Route _to lang> <a className=styling> {s(buttonText)} </a> </Route>
+    | #External(url) => <a href=url target="_blank" className=styling> {s(buttonText)} </a>
     }
 }
 
@@ -32,7 +32,7 @@ let body = (~text, ~textColor, ~centered, ~marginTop="mt-4", ()) => {
 }
 
 module General = {
-  type colorStyle = BackgroundFilled | Transparent
+  type colorStyle = [#BackgroundFilled | #Transparent]
 
   @react.component
   let make = (~t, ~colorStyle, ~marginBottom=?, ()) => {
@@ -45,8 +45,8 @@ module General = {
         buttonHover,
       ) = switch colorStyle {
       // TODO: use the light orange color noted in Figma instead of bg-gray-100
-      | BackgroundFilled => ("text-white", "text-white", "", "bg-white", "bg-gray-100")
-      | Transparent => ("", "", "text-white", "bg-orangedark", "bg-orangedarker")
+      | #BackgroundFilled => ("text-white", "text-white", "", "bg-white", "bg-gray-100")
+      | #Transparent => ("", "", "text-white", "bg-orangedark", "bg-orangedarker")
       }
       let button = LinkUrl.render(
         ~t=t.buttonLink,
@@ -61,9 +61,9 @@ module General = {
       </div>
     }
     switch colorStyle {
-    | BackgroundFilled =>
+    | #BackgroundFilled =>
       <SectionContainer.NoneFilled ?marginBottom> mainFrame </SectionContainer.NoneFilled>
-    | _ => <div className={marginBottom->Tailwind.Option.toClassName}> mainFrame </div>
+    | #Transparent => <div className={marginBottom->Tailwind.Option.toClassName}> mainFrame </div>
     }
   }
 }
