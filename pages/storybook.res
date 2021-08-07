@@ -17,16 +17,20 @@ module Item = {
       | #green => "bg-green-100"
       | #yellow => "bg-yellow-100"
       }
-    <Card title={`<${name} />`} kind={#transparent}>
-      <div className="mb-2"> {docsElement} </div>
+    <div>
+      <h2> {React.string(`<${name} />`)} </h2>
+      <div className="mb-4 mt-8"> {docsElement} </div>
       {React.array(
         children->Belt.Array.map(((color, (doc, child))) => {
-          <div className={`${colorClass(color)} py-4`}>
-            <div className="mb-2"> {React.string(doc)} </div> {child}
+          <div
+            className={`shadow overflow-hidden border-b border-gray-200 sm:rounded-lg ${colorClass(
+                color,
+              )} p-8 mb-8`}>
+            <div className="mb-2"> {React.string(doc)} </div> <hr /> {child}
           </div>
         }),
       )}
-    </Card>
+    </div>
   }
 }
 
@@ -34,7 +38,8 @@ module Category = {
   @react.component
   let make = (~name, ~children) => {
     <SectionContainer.FullyResponsiveCentered>
-      <Card title=name kind={#transparent}> {children} </Card>
+      <div className="bg-white"> <Card title=name kind={#transparent}> {children} </Card> </div>
+      <hr />
     </SectionContainer.FullyResponsiveCentered>
   }
 }
@@ -480,7 +485,9 @@ module Categories = {
       module Simple = {
         @react.component
         let make = () => {
-          <Item name="Table.Simple" docs="TODO">
+          <Item
+            name="Table.Simple"
+            docs="A component for rendering tabular data with optional headers.">
             {[
               (
                 "Table.Simple with no data at all.",
@@ -588,7 +595,7 @@ module Categories = {
       module Body = {
         @react.component
         let make = () => {
-          <Item name="MarkdownPage.Body" docs="TODO">
+          <Item name="MarkdownPage.Body" docs="This element renders HTML.">
             {[
               (
                 "A string with HTML and Markdown, to see which gets rendered.",
@@ -635,7 +642,9 @@ module Categories = {
     module VerySmallCentered = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.VerySmallCentered" docs="TODO">
+        <Item
+          name="SectionContainer.VerySmallCentered"
+          docs="A very small and centered section container.">
           {[
             (
               defaultDoc,
@@ -648,7 +657,7 @@ module Categories = {
     module SmallCentered = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.SmallCentered" docs="TODO">
+        <Item name="SectionContainer.SmallCentered" docs="A small and centered section container.">
           {[
             (
               defaultDoc,
@@ -661,7 +670,8 @@ module Categories = {
     module MediumCentered = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.MediumCentered" docs="TODO">
+        <Item
+          name="SectionContainer.MediumCentered" docs="A medium and centered section container.">
           {[
             (
               defaultDoc,
@@ -674,7 +684,8 @@ module Categories = {
     module MediumCentered2 = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.MediumCentered2" docs="TODO">
+        <Item
+          name="SectionContainer.MediumCentered2" docs="A meduim and centered section container.">
           {[
             (
               defaultDoc,
@@ -687,7 +698,7 @@ module Categories = {
     module LargeCentered = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.LargeCentered" docs="TODO">
+        <Item name="SectionContainer.LargeCentered" docs="A large and centered section container.">
           {[
             (
               defaultDoc,
@@ -700,7 +711,9 @@ module Categories = {
     module ResponsiveCentered = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.ResponsiveCentered" docs="TODO">
+        <Item
+          name="SectionContainer.ResponsiveCentered"
+          docs="A responsive and centered section container.">
           {[
             (
               defaultDoc,
@@ -713,7 +726,9 @@ module Categories = {
     module FullyResponsiveCentered = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.FullyResponsiveCentered" docs="TODO">
+        <Item
+          name="SectionContainer.FullyResponsiveCentered"
+          docs="A fully responsive and centered section container.">
           {[
             (
               defaultDoc,
@@ -728,7 +743,7 @@ module Categories = {
     module NoneFilled = {
       @react.component
       let make = () =>
-        <Item name="SectionContainer.NoneFilled" docs="TODO">
+        <Item name="SectionContainer.NoneFilled" docs="A none filled section container.">
           {[(defaultDoc, <SectionContainer.NoneFilled> {child} </SectionContainer.NoneFilled>)]}
         </Item>
     }
