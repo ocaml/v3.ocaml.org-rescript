@@ -3,7 +3,7 @@ open! Import
 module Small = {
   @react.component
   let make = (~header, ~body, ~link, ~linkText, ~image) => {
-    <>
+    <div className={`mt-12 sm:mt-16 sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
       <div className="mb-4 sm:flex-shrink-0 sm:mb-0 sm:mr-4">
         <img className="h-36" src={image} ariaHidden=true />
       </div>
@@ -16,7 +16,7 @@ module Small = {
           </a>
         </p>
       </div>
-    </>
+    </div>
   }
 }
 

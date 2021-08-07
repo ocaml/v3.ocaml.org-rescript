@@ -87,15 +87,13 @@ module T = {
 
     @react.component
     let make = (~content as {header, body, linkText}) => {
-      <div className={`mt-12 sm:mt-16 sm:flex sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
-        <MediaObject.Small
-          header
-          body
-          link="https://opam.ocaml.org"
-          linkText={linkText ++ ` >`}
-          image="/static/opam.png"
-        />
-      </div>
+      <MediaObject.Small
+        header
+        body
+        link="https://opam.ocaml.org"
+        linkText={linkText ++ ` >`}
+        image="/static/opam.png"
+      />
     }
   }
 
