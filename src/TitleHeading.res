@@ -1,5 +1,3 @@
-module Link = Next.Link
-
 // TODO: move this module inside of Page once Markdown layout has finalized
 module Large = {
   @react.component
@@ -33,7 +31,7 @@ module Large = {
           </h1>
           descr
           {switch callToAction {
-          | Some(callToAction: CallToAction.Simple.t) =>
+          | Some(callToAction: CallToAction.Simple.t) => <CallToAction.Simple t=callToAction />
           | None => <> </>
           }}
         </div>
