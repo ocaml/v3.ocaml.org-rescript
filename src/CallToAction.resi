@@ -5,6 +5,16 @@ type t = {
   buttonText: string,
 }
 
+module Simple: {
+  type t = {
+    label: string,
+    url: string,
+  }
+
+  @react.component
+  let make: (~t: t) => React.element
+}
+
 module General: {
   @react.component
   let make: (

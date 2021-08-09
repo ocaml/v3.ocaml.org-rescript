@@ -2,11 +2,6 @@ module Link = Next.Link
 
 // TODO: move this module inside of Page once Markdown layout has finalized
 module Large = {
-  type callToAction = {
-    label: string,
-    url: string,
-  }
-
   @react.component
   let make = (
     ~title,
@@ -38,15 +33,7 @@ module Large = {
           </h1>
           descr
           {switch callToAction {
-          | Some(callToAction) =>
-            <div className="text-center mt-7">
-              <Link href=callToAction.url>
-                <a
-                  className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedarker">
-                  {React.string(callToAction.label)}
-                </a>
-              </Link>
-            </div>
+          | Some(callToAction: CallToAction.Simple.t) =>
           | None => <> </>
           }}
         </div>

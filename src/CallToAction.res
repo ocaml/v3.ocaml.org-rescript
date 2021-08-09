@@ -17,6 +17,23 @@ type t = {
   buttonText: string,
 }
 
+module Simple = {
+  type t = {
+    label: string,
+    url: string,
+  }
+  @react.component
+  let make = (~t: t) =>
+    <div className="text-center mt-7">
+      <Next.Link href=t.url>
+        <a
+          className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedarker">
+          {React.string(t.label)}
+        </a>
+      </Next.Link>
+    </div>
+}
+
 let title = (~text, ~textColor) =>
   <h2 className={`text-3xl font-extrabold ${textColor} sm:text-4xl text-center`}>
     <span className="block"> {React.string(text)} </span>

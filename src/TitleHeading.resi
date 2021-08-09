@@ -1,13 +1,8 @@
 module Large: {
-  type callToAction = {
-    label: string,
-    url: string,
-  }
-
   @react.component
   let make: (
     ~title: string,
-    ~callToAction: callToAction=?,
+    ~callToAction: CallToAction.Simple.t=?,
     ~pageDescription: string=?,
     ~marginTop: Tailwind.Breakpoint.t<Tailwind.Margin.Top.t>=?,
     ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,

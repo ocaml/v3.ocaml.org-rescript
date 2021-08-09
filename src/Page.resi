@@ -28,7 +28,7 @@ module Basic: {
     ~pageDescription: string,
     ~addContainer: [#NoContainer | #Regular | #Narrow]=?,
     ~marginTop: Tailwind.Breakpoint.t<Tailwind.Margin.Top.t>=?,
-    ~callToAction: TitleHeading.Large.callToAction=?,
+    ~callToAction: CallToAction.Simple.t=?,
     ~addBottomBar: bool=?,
     unit,
   ) => React.element
