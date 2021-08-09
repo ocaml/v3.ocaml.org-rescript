@@ -56,7 +56,7 @@ module Large = {
       //  or only allow marginBottom to be specified with addBottomBar
 
       {
-        let marginBottom = marginBottom->Tailwind.Option.toClassName
+        let marginBottom = (marginBottom :> option<Tailwind.t>)->Tailwind.Option.toClassName
         switch addBottomBar {
         | true => <hr className={"bg-orangedark h-3 " ++ marginBottom} />
         | false => React.null

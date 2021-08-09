@@ -63,7 +63,9 @@ module General = {
     switch colorStyle {
     | #BackgroundFilled =>
       <SectionContainer.NoneFilled ?marginBottom> mainFrame </SectionContainer.NoneFilled>
-    | #Transparent => <div className={marginBottom->Tailwind.Option.toClassName}> mainFrame </div>
+    | #Transparent =>
+      let marginBottom = (marginBottom :> option<Tailwind.t>)
+      <div className={marginBottom->Tailwind.Option.toClassName}> mainFrame </div>
     }
   }
 }
@@ -77,7 +79,7 @@ module TransparentWide = {
       ~styling=`mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker sm:w-auto`,
     )
 
-    <div className={marginBottom->Tailwind.Option.toClassName}>
+    <div className={(marginBottom :> option<Tailwind.t>)->Tailwind.Option.toClassName}>
       <SectionContainer.VerySmallCentered paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2">
         {title(~text=t.title, ~textColor="")}
         {body(~text=t.body, ~textColor="", ~centered=false, ())}

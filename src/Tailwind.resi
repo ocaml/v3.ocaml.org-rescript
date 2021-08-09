@@ -7,6 +7,21 @@ module ClassName: {
 }
 
 module Margin: {
+  module Top: {
+    type t = [
+      | #mt2
+      | #mt4
+      | #mt6
+      | #mt10
+      | #mt11
+      | #mt16
+      | #mt20
+      | #mt24
+      | #mt32
+      | #mt36
+    ]
+  }
+
   module Bottom: {
     type t = [
       | #mb2
@@ -24,6 +39,7 @@ module Margin: {
 
   type t = [
     | Bottom.t
+    | Top.t
   ]
 }
 
@@ -34,8 +50,14 @@ module Breakpointable: {
 }
 
 module Breakpoint: {
-  type item<'a>
-  type t<'a> = [#breakpoint(item<'a>)] constraint 'a = [< Breakpointable.t]
+  type item<+'a> = {
+    base: 'a,
+    sm: option<'a>,
+    md: option<'a>,
+    lg: option<'a>,
+  } constraint 'a = [< Breakpointable.t]
+
+  type t<'a> = [#breakpoint(item<'a>)]
 
   let make: ('a, ~sm: 'a=?, ~md: 'a=?, ~lg: 'a=?, unit) => t<'a>
 }
