@@ -1,7 +1,5 @@
 module Link = Next.Link
 
-let s = React.string
-
 // TODO: move this into its own top level module
 module LabelledLink = {
   type t = {
@@ -150,14 +148,14 @@ let seeAllArrowIcon = (~display, ~marginRight) =>
 let make = (~t, ~marginBottom=?) => {
   let title =
     <h2 className="text-center text-3xl lg:text-4xl font-bold text-orangedark mb-5">
-      {s(t.title)}
+      {React.string(t.title)}
     </h2>
 
   let archiveButton =
     <div className="text-center">
       <Link href=t.goToArchive.link>
         <a className="rounded px-10 py-3 bg-orangedark hover:bg-orangedarker text-white">
-          {s(t.goToArchive.label)}
+          {React.string(t.goToArchive.label)}
         </a>
       </Link>
     </div>
@@ -173,13 +171,13 @@ let make = (~t, ~marginBottom=?) => {
     let heading = (~marginBottom: string) =>
       <h3 className={`text-2xl font-bold text-orangedark ${marginBottom}`}>
         {headingIcon(~display="inline", ~marginLeft="ml-2", ~marginRight="mr-4")}
-        {s(category.header.title)}
+        {React.string(category.header.title)}
       </h3>
 
     let newsItemRow = (story: Story.t) =>
       <li className="font-bold lg:truncate" key={story.title}>
         // TODO: provide indicator that the link opens a new tab, for accessibility
-        <a href=story.link target="_blank"> {s(story.title)} </a>
+        <a href=story.link target="_blank"> {React.string(story.title)} </a>
       </li>
 
     let seeAll =
@@ -187,7 +185,7 @@ let make = (~t, ~marginBottom=?) => {
         <Link href=category.seeAllInCategory.link>
           <a className="flex justify-center items-baseline">
             {seeAllArrowIcon(~display="inline", ~marginRight="mr-1")}
-            {s(category.seeAllInCategory.label)}
+            {React.string(category.seeAllInCategory.label)}
           </a>
         </Link>
       </p>

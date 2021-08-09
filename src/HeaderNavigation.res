@@ -1,7 +1,5 @@
 module Link = Next.Link
 
-let s = React.string
-
 // TODO: change NavEntry.t to HeaderNavEntry.t, which has additional info like icon
 type section = {
   header: string,
@@ -53,7 +51,7 @@ let make = (~content) => {
               type_="button"
               className="text-gray-500  pl-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark"
               ariaExpanded=false>
-              <span> {s(content.principlesSection.header)} </span>
+              <span> {React.string(content.principlesSection.header)} </span>
               <svg
                 className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,10 +86,10 @@ let make = (~content) => {
                         </div>
                         <dt>
                           <p className="ml-10 text-sm font-semibold text-gray-900">
-                            {s(e.label)}
+                            {React.string(e.label)}
                           </p>
                         </dt>
-                        <dd className="ml-10 text-sm text-gray-500"> {s(e.text)} </dd>
+                        <dd className="ml-10 text-sm text-gray-500"> {React.string(e.text)} </dd>
                       </a>
                     </Link>
                   )
@@ -106,7 +104,7 @@ let make = (~content) => {
               type_="button"
               className="text-gray-500 pl-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark"
               ariaExpanded=false>
-              <span> {s(content.resourcesSection.header)} </span>
+              <span> {React.string(content.resourcesSection.header)} </span>
               <svg
                 className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
@@ -141,10 +139,10 @@ let make = (~content) => {
                         </div>
                         <dt>
                           <p className="ml-10 text-sm font-semibold text-gray-900">
-                            {s(e.label)}
+                            {React.string(e.label)}
                           </p>
                         </dt>
-                        <dd className="ml-10 text-sm text-gray-500"> {s(e.text)} </dd>
+                        <dd className="ml-10 text-sm text-gray-500"> {React.string(e.text)} </dd>
                       </a>
                     </Link>
                   )
@@ -159,7 +157,7 @@ let make = (~content) => {
               type_="button"
               className="text-gray-500  pl-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedark"
               ariaExpanded=false>
-              <span> {s(content.communitySection.header)} </span>
+              <span> {React.string(content.communitySection.header)} </span>
               <svg
                 className="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
@@ -194,10 +192,10 @@ let make = (~content) => {
                         </div>
                         <dt>
                           <p className="ml-10 text-sm font-semibold text-gray-900">
-                            {s(e.label)}
+                            {React.string(e.label)}
                           </p>
                         </dt>
-                        <dd className="ml-10 text-sm text-gray-500"> {s(e.text)} </dd>
+                        <dd className="ml-10 text-sm text-gray-500"> {React.string(e.text)} </dd>
                       </a>
                     </Link>
                   )
@@ -209,7 +207,7 @@ let make = (~content) => {
         </nav>
         <div className="flex-1 flex items-center justify-center px-2 md:justify-end ">
           <div className="max-w-lg w-full md:max-w-xs">
-            <label htmlFor="search" className="sr-only"> {s(content.search)} </label>
+            <label htmlFor="search" className="sr-only"> {React.string(content.search)} </label>
             <form id="searchform" method="get" action="https://duckduckgo.com/">
               <input type_="hidden" name="sites" value="ocaml.org" />
               <div className="relative">
@@ -244,7 +242,7 @@ let make = (~content) => {
             type_="button"
             onClick=showMobileMenu
             className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-            <span className="sr-only"> {s(content.openMenu)} </span>
+            <span className="sr-only"> {React.string(content.openMenu)} </span>
             <svg
               className="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -279,7 +277,7 @@ let make = (~content) => {
                 type_="button"
                 onClick=hideMobileMenu
                 className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                <span className="sr-only"> {s(` Close menu `)} </span>
+                <span className="sr-only"> {React.string(` Close menu `)} </span>
                 <svg
                   className="h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -313,14 +311,14 @@ let make = (~content) => {
                                 className="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-5 w-5 stroke-current fill-current stroke-2">
                                 {e.icon}
                               </span>
-                              <span className="font-bold"> {s(e.label)} </span>
+                              <span className="font-bold"> {React.string(e.label)} </span>
                             </a>
                           </Link>,
                         section.entries,
                       ),
                       [
                         <h3 className="ml-6 mt-2 px-3 font-semibold text-gray-400 uppercase">
-                          {s(section.header)}
+                          {React.string(section.header)}
                         </h3>,
                       ],
                     ),

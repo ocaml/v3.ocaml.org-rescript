@@ -1,7 +1,5 @@
 //  TODO: combine the components below into one variant type
 
-let s = React.string
-
 module MainContainer = {
   module None = {
     @react.component
@@ -102,13 +100,13 @@ module HighlightSection = {
       <div className="bg-white overflow-hidden shadow rounded-lg mb-2 lg:mb-7 mt-56 mx-5 max-w-4xl">
         <div className="px-4 py-5 sm:p-6">
           <h2 className="font-bold text-orangedark text-3xl lg:text-4xl text-center mb-2">
-            {s(content.highlightItem)}
+            {React.string(content.highlightItem)}
           </h2>
-          <p className="text-xl"> {s(content.highlightItemSummary.preview)} </p>
+          <p className="text-xl"> {React.string(content.highlightItemSummary.preview)} </p>
           <p className="text-xl text-center lg:text-right">
             // TODO: more descriptive link text (or use aria attribute) for accessibility
             <a href=content.highlightItemSummary.url className="underline text-orangedark">
-              {s(content.clickToRead ++ ` >`)}
+              {React.string(content.clickToRead ++ ` >`)}
             </a>
           </p>
         </div>

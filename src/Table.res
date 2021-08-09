@@ -1,5 +1,3 @@
-let s = React.string
-
 module Simple = {
   type t = {
     headers: array<string>,
@@ -21,7 +19,7 @@ module Simple = {
                       key={header}
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                      {s(header)}
+                      {React.string(header)}
                     </th>
                   )
                   |> React.array}

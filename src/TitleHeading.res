@@ -1,7 +1,5 @@
 module Link = Next.Link
 
-let s = React.string
-
 // TODO: move this module inside of Page once Markdown layout has finalized
 module Large = {
   type callToAction = {
@@ -22,7 +20,7 @@ module Large = {
   ) => {
     let marginTop = (marginTop :> option<Tailwind.t>)
     let descr = switch pageDescription {
-    | Some(d) => <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500"> {s(d)} </p>
+    | Some(d) => <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500"> {React.string(d)} </p>
     | None => React.null
     }
     <>
@@ -36,7 +34,7 @@ module Large = {
         <div className="text-center">
           <h1
             className={marginTop->Tailwind.Option.toClassName ++ " text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"}>
-            {s(title)}
+            {React.string(title)}
           </h1>
           descr
           {switch callToAction {
@@ -45,7 +43,7 @@ module Large = {
               <Link href=callToAction.url>
                 <a
                   className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedarker">
-                  {s(callToAction.label)}
+                  {React.string(callToAction.label)}
                 </a>
               </Link>
             </div>
@@ -91,7 +89,7 @@ module OverBackgroundImage = {
       <div
         className={`${height} ${backgroundImage.tailwindImageName} bg-cover bg-center flex justify-center items-center`}>
         <h1 className="text-orangedark font-roboto font-bold text-5xl text-center sm:text-8xl">
-          {s(title)}
+          {React.string(title)}
         </h1>
       </div>
     }
@@ -100,7 +98,7 @@ module OverBackgroundImage = {
       switch pageDescription {
       | Some(d) =>
         <p className={`max-w-4xl ${marginTop} py-4 sm:py-8 mx-auto text-2xl text-center`}>
-          {s(d)}
+          {React.string(d)}
         </p>
       | None => React.null
       }
@@ -113,7 +111,7 @@ module MarkdownMedium = {
   @react.component
   let make = (~title, ~pageDescription) => {
     let descr = switch pageDescription {
-    | Some(d) => <p className="mt-8 text-xl text-gray-500 leading-8"> {s(d)} </p>
+    | Some(d) => <p className="mt-8 text-xl text-gray-500 leading-8"> {React.string(d)} </p>
     | None => React.null
     }
 
@@ -121,7 +119,7 @@ module MarkdownMedium = {
       <h1>
         <span
           className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          {s(title)}
+          {React.string(title)}
         </span>
       </h1>
       descr

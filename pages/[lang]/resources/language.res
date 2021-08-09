@@ -1,7 +1,5 @@
 open! Import
 
-let s = React.string
-
 module T = {
   module Tutorials = {
     type t = {
@@ -33,7 +31,7 @@ module T = {
               (i, t: Ood.Tutorial.t) =>
                 <li key={string_of_int(i)}>
                   <Route _to={#resourcesTutorial(t.slug)} lang>
-                    <a className="text-orangedark text-xl underline"> {s(t.title)} </a>
+                    <a className="text-orangedark text-xl underline"> {React.string(t.title)} </a>
                   </Route>
                 </li>,
               content.tutorials,
@@ -54,9 +52,9 @@ module T = {
     let make = (~content, ~marginBottom=?, ()) =>
       <SectionContainer.SmallCentered ?marginBottom otherLayout="flex items-center space-x-20">
         <div className="text-5xl font-bold text-orangedark flex-shrink-0">
-          {s(content.level ++ ` -`)}
+          {React.string(content.level ++ ` -`)}
         </div>
-        <div className="font-bold text-xl"> {s(content.introduction)} </div>
+        <div className="font-bold text-xl"> {React.string(content.introduction)} </div>
       </SectionContainer.SmallCentered>
   }
 
@@ -110,7 +108,7 @@ module T = {
           Tailwind.Option.toClassName(marginBottom)}>
           <div className="px-4 py-5 sm:px-6 sm:py-9">
             <h2 className="text-center text-orangedark text-5xl font-bold mb-8">
-              {s(content.booksLabel)}
+              {React.string(content.booksLabel)}
             </h2>
             <div className="grid grid-cols-8 items-center mb-8 px-6">
               // TODO: define state to track location within books list, activate navigation
@@ -186,8 +184,10 @@ module T = {
             <div className="w-full px-10">
               {switch Belt.Array.get(content.books, idx) {
               | Some(book) => <>
-                  <p className="mt-2 text-lg font-medium text-gray-900"> {s(book.title)} </p>
-                  <p className="mt-2 text-md text-gray-900"> {s(book.description)} </p>
+                  <p className="mt-2 text-lg font-medium text-gray-900">
+                    {React.string(book.title)}
+                  </p>
+                  <p className="mt-2 text-md text-gray-900"> {React.string(book.description)} </p>
                   <p className=" text-sm font-medium text-gray-500">
                     {book.links
                     |> List.mapi((
@@ -196,15 +196,15 @@ module T = {
                     ) => // TODO: visual indicator that link opens new tab
                     <>
                       <a href=link.uri className="text-orangedarker" target="_blank">
-                        <span> {s(link.description)} </span>
+                        <span> {React.string(link.description)} </span>
                       </a>
-                      <span className="inline-block px-2"> {s("|")} </span>
+                      <span className="inline-block px-2"> {React.string("|")} </span>
                     </>)
                     |> Array.of_list
                     |> React.array}
                   </p>
                 </>
-              | None => <p> {s("Somethings gone wrong")} </p>
+              | None => <p> {React.string("Somethings gone wrong")} </p>
               }}
             </div>
           </div>
@@ -219,7 +219,7 @@ module T = {
       // TODO: define content type; factor out content
       <SectionContainer.MediumCentered ?marginBottom paddingY="pt-8 pb-14" filled=true>
         <h2 className="text-center text-white text-7xl font-bold mb-8">
-          {s(`The OCaml Manual`)}
+          {React.string(`The OCaml Manual`)}
         </h2>
         <div className="mx-24 grid grid-cols-3 px-28 mx-auto max-w-4xl">
           <div className="border-r-4 border-b-4">
@@ -227,7 +227,7 @@ module T = {
               className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
               <p className="text-center">
                 <a href="https://ocaml.org/manual/index.html#sec6">
-                  {s(`Introduction Tutorials`)}
+                  {React.string(`Introduction Tutorials`)}
                 </a>
               </p>
             </div>
@@ -236,7 +236,7 @@ module T = {
             <div
               className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
               <p className="text-center">
-                <a href="https://ocaml.org/manual/stdlib.html"> {s(`StdLib`)} </a>
+                <a href="https://ocaml.org/manual/stdlib.html"> {React.string(`StdLib`)} </a>
               </p>
             </div>
           </div>
@@ -244,7 +244,7 @@ module T = {
             <div
               className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
               <p className="text-center">
-                <a href="https://ocaml.org/api/index.html"> {s(`API Docs`)} </a>
+                <a href="https://ocaml.org/api/index.html"> {React.string(`API Docs`)} </a>
               </p>
             </div>
           </div>
@@ -252,7 +252,7 @@ module T = {
             <div
               className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
               <p className="text-center">
-                <a href="https://ocaml.org/manual/index.html#sec72"> {s(`Lang`)} </a>
+                <a href="https://ocaml.org/manual/index.html#sec72"> {React.string(`Lang`)} </a>
               </p>
             </div>
           </div>
@@ -260,7 +260,7 @@ module T = {
             <div
               className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
               <p className="text-center">
-                <a href="https://ocaml.org/manual/extn.html#sec238"> {s(`Ext`)} </a>
+                <a href="https://ocaml.org/manual/extn.html#sec238"> {React.string(`Ext`)} </a>
               </p>
             </div>
           </div>
@@ -268,7 +268,7 @@ module T = {
             <div
               className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
               <p className="text-center">
-                <a href="https://ocaml.org/manual"> {s(`Something Else`)} </a>
+                <a href="https://ocaml.org/manual"> {React.string(`Something Else`)} </a>
               </p>
             </div>
           </div>
@@ -281,16 +281,18 @@ module T = {
     let make = (~marginBottom=?, ~lang) =>
       <SectionContainer.VerySmallCentered ?marginBottom>
         <h2 className="text-center text-orangedark text-7xl font-bold mb-8">
-          {s(`Applications`)}
+          {React.string(`Applications`)}
         </h2>
         <div className="sm:flex items-center space-x-32 mb-20">
           <div className="mb-4 sm:mb-0 sm:mr-4">
             <p className="mt-1 mb-4 text-lg">
-              {s(`Looking to learn more about the ways in which OCaml is used in real-world applications? Visit our Applications page to find out about different ways of using OCaml.`)}
+              {React.string(`Looking to learn more about the ways in which OCaml is used in real-world applications? Visit our Applications page to find out about different ways of using OCaml.`)}
             </p>
             <p className="text-right">
               <Route _to={#resourcesApplications} lang>
-                <a className="text-orangedark underline"> {s(`Go to Applications >`)} </a>
+                <a className="text-orangedark underline">
+                  {React.string(`Go to Applications >`)}
+                </a>
               </Route>
             </p>
           </div>
@@ -310,42 +312,44 @@ module T = {
         className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++
         marginBottom->Tailwind.Option.toClassName}>
         <div className="px-4 py-5 sm:p-6">
-          <h2 className="text-center text-orangedark text-7xl font-bold mb-8"> {s(`PAPERS`)} </h2>
+          <h2 className="text-center text-orangedark text-7xl font-bold mb-8">
+            {React.string(`PAPERS`)}
+          </h2>
           <div className="grid grid-cols-3 mb-14 px-9 space-x-6 px-14">
             <div className="">
-              <p className="text-orangedark text-7xl font-bold"> {s(`1.`)} </p>
+              <p className="text-orangedark text-7xl font-bold"> {React.string(`1.`)} </p>
               // TODO: visual indicator that link will open new tab
               <p className="font-bold">
                 <a href="https://arxiv.org/abs/1905.06543" target="_blank">
-                  {s(`Extending OCaml's Open`)}
+                  {React.string(`Extending OCaml's Open`)}
                 </a>
               </p>
-              <p> {s(`by Runhang Li, Jeremey Yallop`)} </p>
+              <p> {React.string(`by Runhang Li, Jeremey Yallop`)} </p>
             </div>
             <div className="">
-              <p className="text-orangedark text-7xl font-bold"> {s(`2.`)} </p>
+              <p className="text-orangedark text-7xl font-bold"> {React.string(`2.`)} </p>
               <p className="font-bold">
                 <a href="https://kcsrk.info/papers/memory_model_ocaml17.pdf" target="_blank">
-                  {s(`A Memory Model for Multicore OCaml`)}
+                  {React.string(`A Memory Model for Multicore OCaml`)}
                 </a>
               </p>
-              <p> {s(`by Stephen Dolan, KC Sivaramakrishnan`)} </p>
+              <p> {React.string(`by Stephen Dolan, KC Sivaramakrishnan`)} </p>
             </div>
             <div className="">
-              <p className="text-orangedark text-7xl font-bold"> {s(`3.`)} </p>
+              <p className="text-orangedark text-7xl font-bold"> {React.string(`3.`)} </p>
               <p className="font-bold">
                 <a href="https://arxiv.org/abs/1812.11664" target="_blank">
-                  {s(`Eff Directly in OCaml`)}
+                  {React.string(`Eff Directly in OCaml`)}
                 </a>
               </p>
-              <p> {s(`by Oleg Kiselyov, KC Sivaramakrishnan`)} </p>
+              <p> {React.string(`by Oleg Kiselyov, KC Sivaramakrishnan`)} </p>
             </div>
           </div>
           <div className="flex justify-center">
             <Route _to={#resourcesPapers} lang>
               <a
                 className="font-bold inline-flex items-center px-10 py-3 border border-transparent text-base leading-4 font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker">
-                {s(`Go to Papers`)}
+                {React.string(`Go to Papers`)}
               </a>
             </Route>
           </div>

@@ -1,7 +1,5 @@
 module Link = Next.Link
 
-let s = React.string
-
 // TODO: move into a general Link module
 module ButtonLink = {
   type t = {
@@ -37,12 +35,12 @@ let image = (~src, ~pos) => {
 let heading = text =>
   <h1
     className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-    {s(text)}
+    {React.string(text)}
   </h1>
 
 let bodyText = (~margins, ~text) =>
   <p className={`${margins} max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:max-w-3xl`}>
-    {s(text)}
+    {React.string(text)}
   </p>
 
 let button = (~href, ~text, ~colors, ~margins) =>
@@ -50,7 +48,7 @@ let button = (~href, ~text, ~colors, ~margins) =>
     <Link href>
       <a
         className={`${colors} w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10`}>
-        {s(text)}
+        {React.string(text)}
       </a>
     </Link>
   </div>

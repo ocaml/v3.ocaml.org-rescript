@@ -1,5 +1,3 @@
-let s = React.string
-
 module CompanyOptionalLogo = {
   type t = {
     logoSrc: option<string>,
@@ -49,7 +47,9 @@ module CompanyCard = {
         }}
         {switch company {
         | #Optional(_) =>
-          <span className="text-center text-lg font-bold font-roboto my-9 "> {s(name)} </span>
+          <span className="text-center text-lg font-bold font-roboto my-9 ">
+            {React.string(name)}
+          </span>
         | #Required(_) => <> </>
         }}
       </div>

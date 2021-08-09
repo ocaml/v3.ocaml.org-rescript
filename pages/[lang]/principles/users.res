@@ -1,6 +1,5 @@
 open! Import
 module Link = Next.Link
-let s = React.string
 
 module T = {
   type t = {
@@ -17,7 +16,7 @@ module T = {
         <Link href={#principlesSuccesses->Route.toString(lang)}>
           <a
             className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedarker">
-            {s("Success Stories")}
+            {React.string("Success Stories")}
           </a>
         </Link>
       </div>

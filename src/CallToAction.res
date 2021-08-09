@@ -1,13 +1,13 @@
-let s = React.string
-
 // TODO: move this into a future Link component once the Url and Link types have been thought out
 module LinkUrl = {
   type t = [#Route(Route.t, Lang.t) | #External(string)]
 
   let render = (~t, ~buttonText, ~styling) =>
     switch t {
-    | #Route(_to, lang) => <Route _to lang> <a className=styling> {s(buttonText)} </a> </Route>
-    | #External(url) => <a href=url target="_blank" className=styling> {s(buttonText)} </a>
+    | #Route(_to, lang) =>
+      <Route _to lang> <a className=styling> {React.string(buttonText)} </a> </Route>
+    | #External(url) =>
+      <a href=url target="_blank" className=styling> {React.string(buttonText)} </a>
     }
 }
 
@@ -20,7 +20,7 @@ type t = {
 
 let title = (~text, ~textColor) =>
   <h2 className={`text-3xl font-extrabold ${textColor} sm:text-4xl text-center`}>
-    <span className="block"> {s(text)} </span>
+    <span className="block"> {React.string(text)} </span>
   </h2>
 
 let body = (~text, ~textColor, ~centered, ~marginTop="mt-4", ()) => {
@@ -28,7 +28,9 @@ let body = (~text, ~textColor, ~centered, ~marginTop="mt-4", ()) => {
   | true => "text-center"
   | false => ""
   }
-  <p className={`${marginTop} text-lg leading-6 ${textColor} ${textCenter}`}> {s(text)} </p>
+  <p className={`${marginTop} text-lg leading-6 ${textColor} ${textCenter}`}>
+    {React.string(text)}
+  </p>
 }
 
 module General = {
@@ -104,7 +106,7 @@ module Embedded = {
     <>
       <p
         className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-        {s(t.title)}
+        {React.string(t.title)}
       </p>
       {body(~text=t.body, ~textColor="text-gray-900", ~centered=true, ())}
       <div className="mt-8 text-center"> button </div>
