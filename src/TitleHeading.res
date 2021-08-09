@@ -14,12 +14,13 @@ module Large = {
     ~title,
     ~callToAction=?,
     ~pageDescription: option<string>=?,
-    ~marginTop="",
+    ~marginTop=?,
     ~marginBottom=?,
     // ~addMaxWidth=false,
     ~addBottomBar=false,
     (),
   ) => {
+    let marginTop = (marginTop :> option<Tailwind.t>)
     let descr = switch pageDescription {
     | Some(d) => <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500"> {s(d)} </p>
     | None => React.null
@@ -34,7 +35,7 @@ module Large = {
         } */ ++ " mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8"}>
         <div className="text-center">
           <h1
-            className={marginTop ++ " text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"}>
+            className={marginTop->Tailwind.Option.toClassName ++ " text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"}>
             {s(title)}
           </h1>
           descr

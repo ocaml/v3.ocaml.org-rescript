@@ -9,6 +9,7 @@ module ClassName = {
 module Margin = {
   module Top = {
     type t = [
+      | #mt1
       | #mt2
       | #mt4
       | #mt6
@@ -23,6 +24,7 @@ module Margin = {
 
     let toClassName = mb =>
       switch mb {
+      | #mt1 => "mt-1"
       | #mt2 => "mt-2"
       | #mt4 => "mt-4"
       | #mt6 => "mt-6"

@@ -379,7 +379,7 @@ module T = {
     {
       let introMarginBottom = Tailwind.Breakpoint.make(#mb20, ())
       <Page.Basic
-        marginTop=`mt-1`
+        marginTop={Tailwind.Breakpoint.make(#mt1, ())}
         addBottomBar=true
         addContainer=#NoContainer
         title=content.title

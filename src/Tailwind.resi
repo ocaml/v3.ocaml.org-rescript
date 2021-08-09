@@ -9,6 +9,7 @@ module ClassName: {
 module Margin: {
   module Top: {
     type t = [
+      | #mt1
       | #mt2
       | #mt4
       | #mt6

@@ -13,7 +13,7 @@ module T = {
   let make = (~content, ~params as {Params.lang: _}) => <>
     <ConstructionBanner />
     <Page.Basic
-      marginTop=`mt-1`
+      marginTop={Tailwind.Breakpoint.make(#mt1, ())}
       addBottomBar=true
       addContainer=#NoContainer
       title=content.title

@@ -9,7 +9,7 @@ module Large: {
     ~title: string,
     ~callToAction: callToAction=?,
     ~pageDescription: string=?,
-    ~marginTop: string=?,
+    ~marginTop: Tailwind.Breakpoint.t<Tailwind.Margin.Top.t>=?,
     ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
     // ~addMaxWidth: bool=?,
     ~addBottomBar: bool=?,

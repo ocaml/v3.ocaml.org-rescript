@@ -41,12 +41,11 @@ module Basic = {
     (),
   ) => {
     let heading = {
-      let marginTop = Js.Option.getWithDefault(``, marginTop)
       let addBottomBar = Js.Option.getWithDefault(false, addBottomBar)
       switch callToAction {
       | Some(callToAction) =>
         <TitleHeading.Large
-          marginTop
+          ?marginTop
           marginBottom={Tailwind.Breakpoint.make(#mb6, ())}
           addBottomBar
           title
@@ -59,7 +58,7 @@ module Basic = {
         | false => None
         }
         <TitleHeading.Large
-          marginTop marginBottom=?headingMarginBottom addBottomBar title pageDescription
+          ?marginTop marginBottom=?headingMarginBottom addBottomBar title pageDescription
         />
       }
     }

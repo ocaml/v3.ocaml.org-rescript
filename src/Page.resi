@@ -29,7 +29,7 @@ module Basic: {
     ~title: string,
     ~pageDescription: string,
     ~addContainer: container=?,
-    ~marginTop: string=?,
+    ~marginTop: Tailwind.Breakpoint.t<Tailwind.Margin.Top.t>=?,
     ~callToAction: TitleHeading.Large.callToAction=?,
     ~addBottomBar: bool=?,
     unit,
