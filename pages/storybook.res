@@ -151,6 +151,20 @@ module Categories = {
             ),
           ]}
         </Item>
+        <Item name="CallToAction.Simple" docs="Contains a label and a url.">
+          {[
+            (
+              defaultDoc,
+              {
+                let t = {
+                  CallToAction.Simple.label: "Label",
+                  url: "example.com",
+                }
+                <CallToAction.Simple t />
+              },
+            ),
+          ]}
+        </Item>
         <Item
           name="StackedList.BasicWithIcon"
           docs="Arranges items into a vertical list.  Each item is very similar to a Short Wide card, and contains a value, an icon, and a link which can be clicked.">
