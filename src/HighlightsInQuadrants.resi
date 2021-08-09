@@ -12,14 +12,10 @@ module Story: {
   }
 }
 
-module CategoryHeaderIcon: {
-  type t = [#Meet | #Package | #Profit | #Calendar]
-}
-
 module CategoryHeader: {
   type t = {
     title: string,
-    icon: CategoryHeaderIcon.t,
+    icon: [#Meet | #Package | #Profit | #Calendar],
   }
 }
 

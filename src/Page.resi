@@ -21,14 +21,12 @@ module Unstructured: {
 }
 
 module Basic: {
-  type container = [#NoContainer | #Regular | #Narrow]
-
   @react.component
   let make: (
     ~children: React.element,
     ~title: string,
     ~pageDescription: string,
-    ~addContainer: container=?,
+    ~addContainer: [#NoContainer | #Regular | #Narrow]=?,
     ~marginTop: Tailwind.Breakpoint.t<Tailwind.Margin.Top.t>=?,
     ~callToAction: TitleHeading.Large.callToAction=?,
     ~addBottomBar: bool=?,

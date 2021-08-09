@@ -1,21 +1,15 @@
-module LinkUrl: {
-  type t = [#Route(Route.t, Lang.t) | #External(string)]
-}
-
 type t = {
   title: string,
   body: string,
-  buttonLink: LinkUrl.t,
+  buttonLink: [#Route(Route.t, Lang.t) | #External(string)],
   buttonText: string,
 }
 
 module General: {
-  type colorStyle = [#BackgroundFilled | #Transparent]
-
   @react.component
   let make: (
     ~t: t,
-    ~colorStyle: colorStyle,
+    ~colorStyle: [#BackgroundFilled | #Transparent],
     ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
     unit,
   ) => React.element

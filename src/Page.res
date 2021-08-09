@@ -25,8 +25,6 @@ module Unstructured = {
 }
 
 module Basic = {
-  type container = [#NoContainer | #Regular | #Narrow]
-
   @react.component
   let make = (
     ~children,

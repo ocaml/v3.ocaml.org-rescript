@@ -1,9 +1,8 @@
 // TODO: move this into a future Link component once the Url and Link types have been thought out
 module LinkUrl = {
-  type t = [#Route(Route.t, Lang.t) | #External(string)]
-
-  let render = (~t, ~buttonText, ~styling) =>
-    switch t {
+  @react.component
+  let make = (~_to, ~buttonText, ~styling) =>
+    switch _to {
     | #Route(_to, lang) =>
       <Route _to lang> <a className=styling> {React.string(buttonText)} </a> </Route>
     | #External(url) =>
@@ -14,7 +13,7 @@ module LinkUrl = {
 type t = {
   title: string,
   body: string,
-  buttonLink: LinkUrl.t,
+  buttonLink: [#Route(Route.t, Lang.t) | #External(string)],
   buttonText: string,
 }
 
@@ -34,8 +33,6 @@ let body = (~text, ~textColor, ~centered, ~marginTop="mt-4", ()) => {
 }
 
 module General = {
-  type colorStyle = [#BackgroundFilled | #Transparent]
-
   @react.component
   let make = (~t, ~colorStyle, ~marginBottom=?, ()) => {
     let mainFrame = {
@@ -50,11 +47,12 @@ module General = {
       | #BackgroundFilled => ("text-white", "text-white", "", "bg-white", "bg-gray-100")
       | #Transparent => ("", "", "text-white", "bg-orangedark", "bg-orangedarker")
       }
-      let button = LinkUrl.render(
-        ~t=t.buttonLink,
-        ~buttonText=t.buttonText,
-        ~styling=`mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`,
-      )
+      let button =
+        <LinkUrl
+          _to=t.buttonLink
+          buttonText=t.buttonText
+          styling={`mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md ${buttonTextColor} ${buttonBackground} hover:${buttonHover} sm:w-auto`}
+        />
 
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
         {title(~text=t.title, ~textColor=headingTextColor)}
@@ -75,11 +73,12 @@ module General = {
 module TransparentWide = {
   @react.component
   let make = (~t, ~marginBottom=?, ()) => {
-    let button = LinkUrl.render(
-      ~t=t.buttonLink,
-      ~buttonText=t.buttonText,
-      ~styling=`mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker sm:w-auto`,
-    )
+    let button =
+      <LinkUrl
+        _to=t.buttonLink
+        buttonText=t.buttonText
+        styling=`mt-8 w-full inline-flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker sm:w-auto`
+      />
 
     <div className={(marginBottom :> option<Tailwind.t>)->Tailwind.Option.toClassName}>
       <SectionContainer.VerySmallCentered paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2">
@@ -96,11 +95,11 @@ module Embedded = {
   let make = (~t) => {
     let button =
       <div className="inline-flex rounded-md shadow">
-        {LinkUrl.render(
-          ~t=t.buttonLink,
-          ~buttonText=t.buttonText,
-          ~styling=`inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker`,
-        )}
+        <LinkUrl
+          _to=t.buttonLink
+          buttonText=t.buttonText
+          styling=`inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orangedark hover:bg-orangedarker`
+        />
       </div>
 
     <>
