@@ -1,12 +1,19 @@
 open! Import
 
 module Link = Next.Link
+
 module T = {
   type t = {acads: array<Ood.Academic_institution.t>}
 
   let s = React.string
   include Jsonable.Unsafe
   //PageBasicDetail Module
+  let map: React.component<{
+    "props": Map.props,
+  }> = Next.Dynamic.dynamic(
+    () => Next.Dynamic.import_("../../../src/Map.js"),
+    Next.Dynamic.options(~ssr=false, ~loading=() => <p> {s("loading...")} </p>, ()),
+  )
   module PageBasic = {
     @react.component
     let make = (~lang) => <>
@@ -127,23 +134,6 @@ module T = {
       </>
     }
   }
-  //TODO: Implement Map
-  module Map = {
-    @react.component
-    let make = (~marginBottom=?) => <>
-      <SectionContainer.MediumCentered ?marginBottom paddingX="px-12">
-        <h2 className="mb-16 text-grey-900 text-3xl mb-5 lg:text-4xl font-bold text-center">
-          {s("Ocaml Courses around the World")}
-        </h2>
-      </SectionContainer.MediumCentered>
-      <SectionContainer.ResponsiveCentered ?marginBottom>
-        // TODO: try switching to a grid
-        <div className="bg-white flex flex-wrap justify-center lg:justify-between ">
-          <img src={`/static/worldmap.jpg`} alt="" />
-        </div>
-      </SectionContainer.ResponsiveCentered>
-    </>
-  }
 
   module Params = Pages.Params.Lang
 
@@ -151,7 +141,35 @@ module T = {
   let make = (~content, ~params as {Params.lang: lang}) => <>
     <PageBasic lang />
     <University marginBottom={Tailwind.Breakpoint.make(#mb10, ~lg=#mb32, ())} content />
-    <Map marginBottom={Tailwind.Breakpoint.make(#mb10, ~lg=#mb32, ())} />
+    {React.createElement(
+      map,
+      Map.makeProps(
+        ~props={
+          "marginBottom": Some({Tailwind.Breakpoint.make(#mb10, ~lg=#mb32, ())}),
+          "zoom": 0.5,
+          "center": {
+            LatLng.lat: 0.0,
+            lng: 0.0,
+          },
+          "position": content.acads,
+          "maxBound": {
+            LatLng.mib: {
+              lat: 85.0511,
+              lng: -180.0,
+            },
+            LatLng.mab: {
+              lat: -85.0511,
+              lng: 180.0,
+            },
+          },
+          "minZoom": 1.9,
+          "scrollWheelZoom": true,
+          "attribution": "<a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
+          "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        },
+        (),
+      ),
+    )}
   </>
 
   let contentEn = {
