@@ -1,5 +1,3 @@
-module Link = Next.Link
-
 // TODO: move into a general Link module
 module ButtonLink = {
   type t = {
@@ -45,12 +43,12 @@ let bodyText = (~margins, ~text) =>
 
 let button = (~href, ~text, ~colors, ~margins) =>
   <div className={`${margins} rounded-md shadow `}>
-    <Link href>
+    <Next.Link href>
       <a
         className={`${colors} w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10`}>
         {React.string(text)}
       </a>
-    </Link>
+    </Next.Link>
   </div>
 
 let callToActionArea = (~header, ~body, ~buttonLinks, ~imagePos) => {

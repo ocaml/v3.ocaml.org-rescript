@@ -1,5 +1,4 @@
 open! Import
-module Link = Next.Link
 
 module T = {
   type t = {
@@ -13,12 +12,12 @@ module T = {
     @react.component
     let make = (~lang) => <>
       <div className="text-center">
-        <Link href={#PrinciplesSuccesses->Route.toString(lang)}>
+        <Next.Link href={#PrinciplesSuccesses->Route.toString(lang)}>
           <a
             className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedarker">
             {React.string("Success Stories")}
           </a>
-        </Link>
+        </Next.Link>
       </div>
     </>
   }

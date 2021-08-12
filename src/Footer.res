@@ -1,5 +1,3 @@
-module Link = Next.Link
-
 module SocialIconLink = {
   @react.component
   let make = (~href, ~label, ~children) =>
@@ -68,9 +66,9 @@ module LogoSection = {
 module MutedLink = {
   @react.component
   let make = (~href, ~text) =>
-    <Link href>
+    <Next.Link href>
       <a className="text-base text-gray-500 hover:text-gray-900"> {React.string(text)} </a>
-    </Link>
+    </Next.Link>
 }
 
 module H3 = {
@@ -140,7 +138,9 @@ module MainLinksSection = {
 module BasicLink = {
   @react.component
   let make = (~href, ~text) =>
-    <Link href> <a className="text-orangedark underline"> {React.string(text)} </a> </Link>
+    <Next.Link href>
+      <a className="text-orangedark underline"> {React.string(text)} </a>
+    </Next.Link>
 }
 
 module SponsorsSection = {

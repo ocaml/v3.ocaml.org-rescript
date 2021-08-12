@@ -1,5 +1,3 @@
-module Link = Next.Link
-
 // TODO: change NavEntry.t to HeaderNavEntry.t, which has additional info like icon
 type section = {
   header: string,
@@ -76,7 +74,7 @@ let make = (~content) => {
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-6 sm:p-8">
                   {content.principlesSection.entries
                   |> Js.Array.mapi((e: NavEntry.t, idx) =>
-                    <Link href=e.url key={Js.Int.toString(idx)}>
+                    <Next.Link href=e.url key={Js.Int.toString(idx)}>
                       <a
                         onClick=hideMenu
                         className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
@@ -91,7 +89,7 @@ let make = (~content) => {
                         </dt>
                         <dd className="ml-10 text-sm text-gray-500"> {React.string(e.text)} </dd>
                       </a>
-                    </Link>
+                    </Next.Link>
                   )
                   |> React.array}
                 </div>
@@ -129,7 +127,7 @@ let make = (~content) => {
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-6 sm:p-8">
                   {content.resourcesSection.entries
                   |> Js.Array.mapi((e: NavEntry.t, idx) =>
-                    <Link href=e.url key={Js.Int.toString(idx)}>
+                    <Next.Link href=e.url key={Js.Int.toString(idx)}>
                       <a
                         onClick=hideMenu
                         className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
@@ -144,7 +142,7 @@ let make = (~content) => {
                         </dt>
                         <dd className="ml-10 text-sm text-gray-500"> {React.string(e.text)} </dd>
                       </a>
-                    </Link>
+                    </Next.Link>
                   )
                   |> React.array}
                 </div>
@@ -182,7 +180,7 @@ let make = (~content) => {
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-6 sm:p-8">
                   {content.communitySection.entries
                   |> Js.Array.mapi((e: NavEntry.t, idx) =>
-                    <Link href=e.url key={Js.Int.toString(idx)}>
+                    <Next.Link href=e.url key={Js.Int.toString(idx)}>
                       <a
                         onClick=hideMenu
                         className="-m-3 p-3 block rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
@@ -197,7 +195,7 @@ let make = (~content) => {
                         </dt>
                         <dd className="ml-10 text-sm text-gray-500"> {React.string(e.text)} </dd>
                       </a>
-                    </Link>
+                    </Next.Link>
                   )
                   |> React.array}
                 </div>
@@ -303,7 +301,7 @@ let make = (~content) => {
                     Js.Array.concat(
                       Js.Array.mapi(
                         (e: NavEntry.t, idx) =>
-                          <Link href=e.url key={Js.Int.toString(idx)}>
+                          <Next.Link href=e.url key={Js.Int.toString(idx)}>
                             <a
                               onClick=hideMobileMenu
                               className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
@@ -313,7 +311,7 @@ let make = (~content) => {
                               </span>
                               <span className="font-bold"> {React.string(e.label)} </span>
                             </a>
-                          </Link>,
+                          </Next.Link>,
                         section.entries,
                       ),
                       [

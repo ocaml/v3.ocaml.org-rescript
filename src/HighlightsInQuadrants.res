@@ -1,5 +1,3 @@
-module Link = Next.Link
-
 // TODO: move this into its own top level module
 module LabelledLink = {
   type t = {
@@ -173,11 +171,11 @@ let make = (~t, ~marginBottom=?) => {
 
   let archiveButton =
     <div className="text-center">
-      <Link href=t.goToArchive.link>
+      <Next.Link href=t.goToArchive.link>
         <a className="rounded px-10 py-3 bg-orangedark hover:bg-orangedarker text-white">
           {React.string(t.goToArchive.label)}
         </a>
-      </Link>
+      </Next.Link>
     </div>
 
   let categoryHighlights = (category: Category.t) => {
@@ -197,12 +195,12 @@ let make = (~t, ~marginBottom=?) => {
 
     let seeAll =
       <p>
-        <Link href=category.seeAllInCategory.link>
+        <Next.Link href=category.seeAllInCategory.link>
           <a className="flex justify-center items-baseline">
             {seeAllArrowIcon(~display="inline", ~marginRight="mr-1")}
             {React.string(category.seeAllInCategory.label)}
           </a>
-        </Link>
+        </Next.Link>
       </p>
 
     <div>
