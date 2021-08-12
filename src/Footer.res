@@ -1,3 +1,5 @@
+open! Import
+
 module SocialIconLink = {
   @react.component
   let make = (~href, ~label, ~children) =>

@@ -1,3 +1,5 @@
+open! Import
+
 module CornerTitleLogo = {
   @react.component
   let make = (

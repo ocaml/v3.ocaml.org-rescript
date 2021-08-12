@@ -1,3 +1,5 @@
+open! Import
+
 module CompanyOptionalLogo: {
   type t = {
     logoSrc: option<string>,

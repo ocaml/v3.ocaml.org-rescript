@@ -1,3 +1,5 @@
+open! Import
+
 module MainContainer: {
   module None: {
     @react.component

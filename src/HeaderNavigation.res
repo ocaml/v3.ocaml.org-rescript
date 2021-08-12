@@ -1,3 +1,5 @@
+open! Import
+
 // TODO: change NavEntry.t to HeaderNavEntry.t, which has additional info like icon
 type section = {
   header: string,

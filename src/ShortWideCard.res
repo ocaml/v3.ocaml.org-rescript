@@ -1,3 +1,5 @@
+open! Import
+
 @react.component
 let make = (~name: string, ~url: string, ~logoSrc: string) => {
   // TODO: for accessibilty, add visual indicator that link opens a tab

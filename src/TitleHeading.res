@@ -1,3 +1,5 @@
+open! Import
+
 // TODO: move this module inside of Page once Markdown layout has finalized
 module Large = {
   @react.component

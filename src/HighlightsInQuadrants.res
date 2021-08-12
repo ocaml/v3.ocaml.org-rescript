@@ -1,3 +1,5 @@
+open! Import
+
 // TODO: move this into its own top level module
 module LabelledLink = {
   type t = {

@@ -1,3 +1,5 @@
+open! Import
+
 // TODO: move this into a future Link component once the Url and Link types have been thought out
 module LinkUrl = {
   @react.component

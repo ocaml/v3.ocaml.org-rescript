@@ -1,3 +1,5 @@
+open! Import
+
 @react.component
 let make = (~figmaLink=?, ~playgroundLink=?) =>
   <div className="relative bg-indigo-600">

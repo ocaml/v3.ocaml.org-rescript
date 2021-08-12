@@ -1,3 +1,5 @@
+open! Import
+
 module Large: {
   @react.component
   let make: (

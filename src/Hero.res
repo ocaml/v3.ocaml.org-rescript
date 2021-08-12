@@ -1,3 +1,5 @@
+open! Import
+
 // TODO: move into a general Link module
 module ButtonLink = {
   type t = {

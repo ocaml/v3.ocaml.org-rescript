@@ -1,3 +1,5 @@
+open! Import
+
 module ButtonLink: {
   type t = {
     label: string,

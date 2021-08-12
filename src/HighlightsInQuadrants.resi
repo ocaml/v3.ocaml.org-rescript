@@ -5,6 +5,8 @@ module LabelledLink: {
   }
 }
 
+open! Import
+
 module Story: {
   type t = {
     title: string,

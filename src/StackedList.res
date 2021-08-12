@@ -1,3 +1,5 @@
+open! Import
+
 module BasicWithIcon = {
   // generalize this type to: { link: string, attributes: 'a } and move it to top level module
   module Item = {
