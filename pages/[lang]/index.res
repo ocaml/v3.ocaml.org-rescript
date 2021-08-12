@@ -215,7 +215,7 @@ module T = {
     <Page.Unstructured>
       <Hero
         imageSrc="/static/oc-sq.jpeg"
-        imagePos={#right}
+        imagePos={#Right}
         header=heroContent.heroHeader
         body=heroContent.heroBody
         buttonLinks={

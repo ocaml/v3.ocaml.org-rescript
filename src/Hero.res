@@ -23,8 +23,8 @@ module HeroTextContainer = {
 
 let image = (~src, ~pos) => {
   let horizontalPlace = switch pos {
-  | #right => "lg:right-0"
-  | #left => "lg:left-0"
+  | #Right => "lg:right-0"
+  | #Left => "lg:left-0"
   }
   <div
     className={`relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 ${horizontalPlace} lg:w-1/2 lg:h-full`}>
@@ -55,13 +55,13 @@ let button = (~href, ~text, ~colors, ~margins) =>
 
 let callToActionArea = (~header, ~body, ~buttonLinks, ~imagePos) => {
   let (lgTextAlign, lgContainerDisplay, lgJustifyButtons) = switch imagePos {
-  | #right => ("lg:text-left", "", "lg:justify-start")
-  | #left => ("lg:text-center", "lg:flex", "lg:justify-center")
+  | #Right => ("lg:text-left", "", "lg:justify-start")
+  | #Left => ("lg:text-center", "lg:flex", "lg:justify-center")
   }
   <HeroTextContainer textAlign={`text-center ${lgTextAlign}`} display=lgContainerDisplay>
     {switch imagePos {
-    | #right => <> </>
-    | #left => <div className="lg:w-1/2" />
+    | #Right => <> </>
+    | #Left => <div className="lg:w-1/2" />
     }}
     <div className="lg:w-1/2 px-4 sm:px-8 xl:pr-16">
       {heading(header)}

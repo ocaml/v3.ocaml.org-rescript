@@ -38,7 +38,7 @@ module Category = {
   @react.component
   let make = (~name, ~children) => {
     <SectionContainer.FullyResponsiveCentered>
-      <div className="bg-white"> <Card title=name kind={#transparent}> {children} </Card> </div>
+      <div className="bg-white"> <Card title=name kind={#Transparent}> {children} </Card> </div>
       <hr />
     </SectionContainer.FullyResponsiveCentered>
   }
@@ -377,8 +377,8 @@ module Categories = {
           name="Hero"
           docs="A large component that can be used an the main introductory element of a page. It contains an image, a title, some text, and some buttons.">
           {[
-            ("imagePos=#right", <Hero imageSrc imagePos={#right} header body buttonLinks />),
-            ("imagePos=#left", <Hero imageSrc imagePos={#left} header body buttonLinks />),
+            ("imagePos=#Right", <Hero imageSrc imagePos={#Right} header body buttonLinks />),
+            ("imagePos=#Left", <Hero imageSrc imagePos={#Left} header body buttonLinks />),
           ]}
         </Item>
       }
@@ -798,7 +798,7 @@ module Categories = {
                 "CardGrid rendered with Cards for each element",
                 {
                   let renderCard = s =>
-                    <Card title="<Card>" kind={#opaque}> {React.string(s)} </Card>
+                    <Card title="<Card>" kind={#Opaque}> {React.string(s)} </Card>
                   let title = "Example"
                   <CardGrid cardData renderCard title />
                 },
