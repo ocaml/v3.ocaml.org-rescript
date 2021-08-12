@@ -23,7 +23,6 @@ module General: {
     ~t: t,
     ~colorStyle: [#BackgroundFilled | #Transparent],
     ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
-    unit,
   ) => React.element
 }
 
@@ -32,7 +31,6 @@ module TransparentWide: {
   let make: (
     ~t: t,
     ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
-    unit,
   ) => React.element
 }
 

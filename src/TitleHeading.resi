@@ -10,7 +10,6 @@ module Large: {
     ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
     // ~addMaxWidth: bool=?,
     ~addBottomBar: bool=?,
-    unit,
   ) => React.element
 }
 
@@ -30,7 +29,6 @@ module OverBackgroundImage: {
     ~title: string,
     ~backgroundImage: BackgroundImage.t,
     ~pageDescription: string=?,
-    unit,
   ) => React.element
 }
 
