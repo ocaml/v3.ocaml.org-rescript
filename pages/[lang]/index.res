@@ -221,11 +221,11 @@ module T = {
         buttonLinks={
           Hero.primaryButton: {
             label: heroContent.installOcaml,
-            url: #resourcesInstallocaml->Route.toString(lang),
+            url: #ResourcesInstallocaml->Route.toString(lang),
           },
           secondaryButton: {
             label: heroContent.aboutOcaml,
-            url: #principlesWhatisocaml->Route.toString(lang),
+            url: #PrinciplesWhatisocaml->Route.toString(lang),
           },
         }
       />

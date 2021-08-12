@@ -10,7 +10,7 @@ module Tutorial = {
         <h2> {React.string(tutorial.Ood.Tutorial.title)} </h2>
         <p> {React.string(tutorial.description)} </p>
       </div>
-      <Route _to={#resourcesTutorial(tutorial.slug)} lang>
+      <Route _to={#ResourcesTutorial(tutorial.slug)} lang>
         <a className="text-orangedark"> {React.string("Read more...")} </a>
       </Route>
     </div>

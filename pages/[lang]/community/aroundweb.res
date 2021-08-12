@@ -105,7 +105,7 @@ module T = {
               t={
                 CallToAction.title: content.title,
                 body: content.description,
-                buttonLink: #Route(#communityEvents, lang),
+                buttonLink: #Route(#CommunityEvents, lang),
                 buttonText: content.callToAction,
               }
             />

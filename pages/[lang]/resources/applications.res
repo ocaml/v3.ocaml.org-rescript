@@ -201,7 +201,7 @@ module T = {
             </div>
           </div>
           <p className="text-right font-bold">
-            <Route _to={#resourcesUsingocaml} lang>
+            <Route _to={#ResourcesUsingocaml} lang>
               // TODO: descriptive link text
               <a className="text-orangedark underline"> {React.string(content.seeMore ++ ` >`)} </a>
             </Route>
@@ -241,7 +241,7 @@ module T = {
         t={
           CallToAction.title: "Platform Tools",
           body: `The OCaml Platform is a collection of tools that allow programmers to be productive in the OCaml language. It has been an iterative process of refinement as new tools are added and older tools are updated. Different tools accomplish different workflows and are used at different points of a project's life.`,
-          buttonLink: #Route(#resourcesPlatform, lang),
+          buttonLink: #Route(#ResourcesPlatform, lang),
           buttonText: `Visit Platform Tools`,
         }
       />

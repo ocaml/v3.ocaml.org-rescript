@@ -45,27 +45,27 @@ module T = {
       HighlightsInQuadrants.title: otherNewsStories,
       topLeftCategory: NewsCategory.toHighlightsCategory(
         communityCategory,
-        #communityNewsarchive->Route.toString(lang), // TODO: should we use a query parameter for the category?
+        #CommunityNewsarchive->Route.toString(lang), // TODO: should we use a query parameter for the category?
         #Meet,
       ),
       topRightCategory: NewsCategory.toHighlightsCategory(
         releasesCategory,
-        #communityNewsarchive->Route.toString(lang),
+        #CommunityNewsarchive->Route.toString(lang),
         #Package,
       ),
       bottomLeftCategory: NewsCategory.toHighlightsCategory(
         industryCategory,
-        #communityNewsarchive->Route.toString(lang),
+        #CommunityNewsarchive->Route.toString(lang),
         #Profit,
       ),
       bottomRightCategory: NewsCategory.toHighlightsCategory(
         eventsCategory,
-        #communityNewsarchive->Route.toString(lang),
+        #CommunityNewsarchive->Route.toString(lang),
         #Calendar,
       ),
       goToArchive: {
         label: goToNewsArchive,
-        link: #communityNewsarchive->Route.toString(lang),
+        link: #CommunityNewsarchive->Route.toString(lang),
       },
     }
   }

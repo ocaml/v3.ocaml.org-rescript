@@ -17,7 +17,7 @@ module T = {
               t={
                 CallToAction.title: content.title,
                 body: content.description,
-                buttonLink: #Route(#resourcesTutorials, lang),
+                buttonLink: #Route(#ResourcesTutorials, lang),
                 buttonText: "See All Tutorials",
               }
             />
@@ -30,7 +30,7 @@ module T = {
             {Array.mapi(
               (i, t: Ood.Tutorial.t) =>
                 <li key={string_of_int(i)}>
-                  <Route _to={#resourcesTutorial(t.slug)} lang>
+                  <Route _to={#ResourcesTutorial(t.slug)} lang>
                     <a className="text-orangedark text-xl underline"> {React.string(t.title)} </a>
                   </Route>
                 </li>,
@@ -289,7 +289,7 @@ module T = {
               {React.string(`Looking to learn more about the ways in which OCaml is used in real-world applications? Visit our Applications page to find out about different ways of using OCaml.`)}
             </p>
             <p className="text-right">
-              <Route _to={#resourcesApplications} lang>
+              <Route _to={#ResourcesApplications} lang>
                 <a className="text-orangedark underline">
                   {React.string(`Go to Applications >`)}
                 </a>
@@ -346,7 +346,7 @@ module T = {
             </div>
           </div>
           <div className="flex justify-center">
-            <Route _to={#resourcesPapers} lang>
+            <Route _to={#ResourcesPapers} lang>
               <a
                 className="font-bold inline-flex items-center px-10 py-3 border border-transparent text-base leading-4 font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker">
                 {React.string(`Go to Papers`)}

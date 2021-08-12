@@ -13,7 +13,7 @@ module T = {
     @react.component
     let make = (~lang) => <>
       <div className="text-center">
-        <Link href={#principlesSuccesses->Route.toString(lang)}>
+        <Link href={#PrinciplesSuccesses->Route.toString(lang)}>
           <a
             className="justify-center inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orangedarker">
             {React.string("Success Stories")}

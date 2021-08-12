@@ -13,7 +13,7 @@ module T = {
     switch List.find_opt(String.equal("ocaml-workshop"), event.tags) {
     | Some(_) =>
       switch Js.Date.fromString(event.date)->Js.Date.getFullYear {
-      | 2020. => Some(#communityEventOud2020)
+      | 2020. => Some(#CommunityEventOud2020)
       | _ => None
       }
     | None => None
