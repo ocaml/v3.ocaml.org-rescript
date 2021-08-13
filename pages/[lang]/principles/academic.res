@@ -1,7 +1,5 @@
 open! Import
 
-module Link = Next.Link
-
 module T = {
   type t = {acads: array<Ood.Academic_institution.t>}
   let s = React.string
@@ -133,7 +131,6 @@ module T = {
       </>
     }
   }
-
 
   module Params = Pages.Params.Lang
 
