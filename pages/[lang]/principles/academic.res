@@ -4,7 +4,7 @@ module Link = Next.Link
 
 module T = {
   type t = {acads: array<Ood.Academic_institution.t>}
-
+  let s = React.string
   include Jsonable.Unsafe
   //PageBasicDetail Module
   let map: React.component<{
