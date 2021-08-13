@@ -148,16 +148,16 @@ module T = {
           "marginBottom": Some({Tailwind.Breakpoint.make(#mb10, ~lg=#mb32, ())}),
           "zoom": 0.5,
           "center": {
-            LatLng.lat: 0.0,
+            Mapbinding.LatLng.lat: 0.0,
             lng: 0.0,
           },
           "position": content.acads,
           "maxBound": {
-            LatLng.mib: {
+            Mapbinding.LatLng.mib: {
               lat: 85.0511,
               lng: -180.0,
             },
-            LatLng.mab: {
+            Mapbinding.LatLng.mab: {
               lat: -85.0511,
               lng: 180.0,
             },

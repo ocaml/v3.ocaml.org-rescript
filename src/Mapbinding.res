@@ -1,3 +1,19 @@
+module LatLng = {
+  type t = {
+    lat: float,
+    lng: float,
+  }
+  type bound = {
+    mib: t,
+    mab: t,
+  }
+}
+module Point = {
+  type t = {
+    x: float,
+    y: float,
+  }
+}
 module MapContainer = {
   @module("react-leaflet") @react.component
   external make: (

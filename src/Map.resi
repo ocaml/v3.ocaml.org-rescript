@@ -1,6 +1,6 @@
 module MarkArray: {
   type t = {
-    positions: LatLng.t,
+    positions: Mapbinding.LatLng.t,
     name: string,
   }
 }
@@ -8,12 +8,12 @@ type props = {
   "marginBottom": option<Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>>,
   "zoom": float,
   "minZoom": float,
-  "center": LatLng.t,
+  "center": Mapbinding.LatLng.t,
   "position": array<Ood.Academic_institution.t>,
   "scrollWheelZoom": bool,
   "attribution": string,
   "url": string,
-  "maxBound": LatLng.bound,
+  "maxBound": Mapbinding.LatLng.bound,
 }
 
 @react.component

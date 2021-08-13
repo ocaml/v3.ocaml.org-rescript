@@ -34,6 +34,4 @@ nav.toc > ul > li > ul > li > ul > li {
   @apply pl-8
 }
 
-#mapid{
-  @apply h-160
-}
+

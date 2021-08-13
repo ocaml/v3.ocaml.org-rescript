@@ -7,7 +7,7 @@ module Marker = Mapbinding.Marker
 //TODO: Implement Map
 module MarkArray = {
   type t = {
-    positions: LatLng.t,
+    positions: Mapbinding.LatLng.t,
     name: string,
   }
 }
@@ -16,12 +16,12 @@ type props = {
   "marginBottom": option<Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>>,
   "zoom": float,
   "minZoom": float,
-  "center": LatLng.t,
+  "center": Mapbinding.LatLng.t,
   "position": array<Ood.Academic_institution.t>,
   "scrollWheelZoom": bool,
   "attribution": string,
   "url": string,
-  "maxBound": LatLng.bound,
+  "maxBound": Mapbinding.LatLng.bound,
 }
 @react.component
 let make = (~props: props) => {
@@ -49,7 +49,7 @@ let make = (~props: props) => {
   let p = acads->Belt.Array.map((c: Ood.Academic_institution.t) => {
     MarkArray.name: c.Ood.Academic_institution.name,
     MarkArray.positions: {
-      LatLng.lat: switch c.Ood.Academic_institution.location {
+      Mapbinding.LatLng.lat: switch c.Ood.Academic_institution.location {
       | None => 0.0
       | Some(location) => location.lat
       },
@@ -63,14 +63,14 @@ let make = (~props: props) => {
   <>
     <SectionContainer.MediumCentered ?marginBottom paddingX="px-12">
       <h2 className="mb-16 text-grey-900 text-3xl mb-5 lg:text-4xl font-bold text-center">
-        {s("Ocaml Courses around the World")}
+        {s("OCaml Courses around the World")}
       </h2>
     </SectionContainer.MediumCentered>
     <SectionContainer.ResponsiveCentered ?marginBottom>
       // TODO: try switching to a grid
       <div className="bg-white flex-wrap justify-center lg:justify-between m-8 ">
         // <img src={`/static/worldmap.jpg`} alt="" />
-        <MapContainer center zoom scrollWheelZoom maxBounds=maxBound minZoom id="mapid">
+        <MapContainer center zoom scrollWheelZoom maxBounds=maxBound minZoom className="h-160">
           <TileLayer attribution url noWrap=true />
           {p
           |> Array.mapi((idx, c) =>
