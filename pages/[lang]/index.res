@@ -1,7 +1,5 @@
 open! Import
 
-let s = React.string
-
 module T = {
   module HeroSection = {
     type t = {
@@ -15,7 +13,7 @@ module T = {
   module H2 = {
     @react.component
     let make = (~text) =>
-      <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl"> {s(text)} </h2>
+      <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl"> {React.string(text)} </h2>
   }
 
   module StatBox = {
@@ -23,9 +21,11 @@ module T = {
     let make = (~label, ~statValue, ~borderSizes) =>
       <div className={`flex flex-col border-gray-100 py-16 px-4 text-center ` ++ borderSizes}>
         <dt className="order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70">
-          {s(label)}
+          {React.string(label)}
         </dt>
-        <dd className="order-1 text-5xl font-extrabold text-orangedark"> {s(statValue)} </dd>
+        <dd className="order-1 text-5xl font-extrabold text-orangedark">
+          {React.string(statValue)}
+        </dd>
       </div>
   }
 
@@ -78,45 +78,23 @@ module T = {
       </div>
   }
 
-  module H2Small = {
-    @react.component
-    let make = (~children) => <h2 className="text-2xl font-bold"> children </h2>
-  }
-
-  module A = {
-    @react.component
-    let make = (~href, ~text) => <a className="text-orangedark" href target="_blank"> {s(text)} </a>
-  }
-
-  module OpamContainer = {
-    @react.component
-    let make = (~margins, ~display, ~children) =>
-      <div className={margins ++ ` ` ++ display ++ ` sm:max-w-5xl sm:mx-auto px-4 sm:px-6 lg:px-8`}>
-        children
-      </div>
-  }
-
   module OpamSection = {
     type t = {
-      opamHeader: string,
-      opamBody: string,
-      opamLinkText: string,
+      header: string,
+      body: string,
+      linkText: string,
     }
 
     @react.component
-    let make = (~content, ~margins) =>
-      <OpamContainer margins display=`sm:flex`>
-        <div className="mb-4 sm:flex-shrink-0 sm:mb-0 sm:mr-4">
-          <img className="h-36" src="/static/opam.png" ariaHidden=true />
-        </div>
-        <div>
-          <H2Small> {s(content.opamHeader)} </H2Small>
-          <p className="mt-1"> {s(content.opamBody)} </p>
-          <p className="text-right pr-5">
-            <A href="https://opam.ocaml.org" text={content.opamLinkText ++ ` >`} />
-          </p>
-        </div>
-      </OpamContainer>
+    let make = (~content as {header, body, linkText}) => {
+      <MediaObject.Small
+        header
+        body
+        link="https://opam.ocaml.org"
+        linkText={linkText ++ ` >`}
+        image="/static/opam.png"
+      />
+    }
   }
 
   module FillIcon = {
@@ -138,7 +116,7 @@ module T = {
         viewBox="0 0 404 404"
         role="img"
         ariaLabelledby="svg-testimonial-org">
-        <title id="svg-testimonial-org"> {s(organizationName)} </title>
+        <title id="svg-testimonial-org"> {React.string(organizationName)} </title>
         <defs> <FillIcon id=`ad119f34-7694-4c31-947f-5c9d249b21f3` /> </defs>
         <rect width="404" height="404" fill="url(#ad119f34-7694-4c31-947f-5c9d249b21f3)" />
       </svg>
@@ -161,17 +139,19 @@ module T = {
       <blockquote className=margins>
         <div className="max-w-3xl mx-auto text-center text-2xl leading-9 font-medium text-gray-900">
           <p>
-            <span className="text-orangedark"> {s(`”`)} </span>
-            {s(quote)}
-            <span className="text-orangedark"> {s(`”`)} </span>
+            <span className="text-orangedark"> {React.string(`”`)} </span>
+            {React.string(quote)}
+            <span className="text-orangedark"> {React.string(`”`)} </span>
           </p>
         </div>
         <footer className="mt-0">
           <div className="md:flex md:items-center md:justify-center">
             <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-              <div className="text-base font-medium text-gray-900"> {s(speaker)} </div>
+              <div className="text-base font-medium text-gray-900"> {React.string(speaker)} </div>
               <SlashIcon margins=`mx-1` />
-              <div className="text-base font-medium text-gray-500"> {s(organizationName)} </div>
+              <div className="text-base font-medium text-gray-500">
+                {React.string(organizationName)}
+              </div>
             </div>
           </div>
         </footer>
@@ -183,7 +163,7 @@ module T = {
     @react.component
     let make = (~marginBottom=?, ~children) =>
       <section
-        className={marginBottom->Tailwind.MarginBottomByBreakpoint.toClassNamesOrEmpty ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
+        className={marginBottom->Tailwind.Option.toClassName ++ ` py-12 overflow-hidden md:py-20 lg:py-24 `}>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> children </div>
       </section>
   }
@@ -235,24 +215,25 @@ module T = {
     <Page.Unstructured>
       <Hero
         imageSrc="/static/oc-sq.jpeg"
+        imagePos={#Right}
         header=heroContent.heroHeader
         body=heroContent.heroBody
         buttonLinks={
           Hero.primaryButton: {
             label: heroContent.installOcaml,
-            url: #resourcesInstallocaml->Route.toString(lang),
+            url: #ResourcesInstallocaml->Route.toString(lang),
           },
           secondaryButton: {
             label: heroContent.aboutOcaml,
-            url: #principlesWhatisocaml->Route.toString(lang),
+            url: #PrinciplesWhatisocaml->Route.toString(lang),
           },
         }
       />
       <StatsSection content=statsContent />
-      <OpamSection content=opamContent margins=`mt-12 sm:mt-16` />
+      <OpamSection content=opamContent />
       <TestimonialSection
         content=testimonialContent
-        marginBottom={Tailwind.ByBreakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
+        marginBottom={Tailwind.Breakpoint.make(#mb6, ~md=#mb4, ~lg=#mb6, ())}
       />
     </Page.Unstructured>
 
@@ -274,10 +255,10 @@ module T = {
       easyMaintainPercent: `75%`,
     },
     opamContent: {
-      opamHeader: `Opam: the OCaml Package Manager`,
-      opamBody: `Opam is a source-based package manager for OCaml. It supports multiple simultaneous compiler 
+      OpamSection.header: `Opam: the OCaml Package Manager`,
+      body: `Opam is a source-based package manager for OCaml. It supports multiple simultaneous compiler 
       installations, flexible package constraints, and a Git-friendly development workflow.`,
-      opamLinkText: `Go to opam.ocaml.org`,
+      linkText: `Go to opam.ocaml.org`,
     },
     testimonialContent: {
       quote: `OCaml helps us to quickly adopt to changing market conditions, and go from prototypes to production 

@@ -1,6 +1,4 @@
-module Link = Next.Link
-
-let s = React.string
+open! Import
 
 // TODO: move into a general Link module
 module ButtonLink = {
@@ -23,47 +21,47 @@ module HeroTextContainer = {
     </div>
 }
 
-let image = (~imageSrc, ~imageOnRight) => {
-  let horizontalPlace = switch imageOnRight {
-  | true => "lg:right-0"
-  | false => "lg:left-0"
+let image = (~src, ~pos) => {
+  let horizontalPlace = switch pos {
+  | #Right => "lg:right-0"
+  | #Left => "lg:left-0"
   }
   <div
     className={`relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 ${horizontalPlace} lg:w-1/2 lg:h-full`}>
-    <img className="absolute inset-0 w-full h-full object-cover" src=imageSrc alt="" />
+    <img className="absolute inset-0 w-full h-full object-cover" src alt="" />
   </div>
 }
 
 let heading = text =>
   <h1
     className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-    {s(text)}
+    {React.string(text)}
   </h1>
 
 let bodyText = (~margins, ~text) =>
   <p className={`${margins} max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:max-w-3xl`}>
-    {s(text)}
+    {React.string(text)}
   </p>
 
 let button = (~href, ~text, ~colors, ~margins) =>
   <div className={`${margins} rounded-md shadow `}>
-    <Link href>
+    <Next.Link href>
       <a
         className={`${colors} w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10`}>
-        {s(text)}
+        {React.string(text)}
       </a>
-    </Link>
+    </Next.Link>
   </div>
 
-let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
-  let (lgTextAlign, lgContainerDisplay, lgJustifyButtons) = switch imageOnRight {
-  | true => ("lg:text-left", "", "lg:justify-start")
-  | false => ("lg:text-center", "lg:flex", "lg:justify-center")
+let callToActionArea = (~header, ~body, ~buttonLinks, ~imagePos) => {
+  let (lgTextAlign, lgContainerDisplay, lgJustifyButtons) = switch imagePos {
+  | #Right => ("lg:text-left", "", "lg:justify-start")
+  | #Left => ("lg:text-center", "lg:flex", "lg:justify-center")
   }
   <HeroTextContainer textAlign={`text-center ${lgTextAlign}`} display=lgContainerDisplay>
-    {switch imageOnRight {
-    | true => <> </>
-    | false => <div className="lg:w-1/2" />
+    {switch imagePos {
+    | #Right => <> </>
+    | #Left => <div className="lg:w-1/2" />
     }}
     <div className="lg:w-1/2 px-4 sm:px-8 xl:pr-16">
       {heading(header)}
@@ -91,10 +89,10 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imageOnRight) => {
 }
 
 @react.component
-let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ~imageOnRight=true, ()) =>
+let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ~imagePos, ()) =>
   <SectionContainer.LargeCentered>
     <div className="lg:relative">
-      {callToActionArea(~header, ~body, ~buttonLinks, ~imageOnRight)}
-      {image(~imageSrc, ~imageOnRight)}
+      {callToActionArea(~header, ~body, ~buttonLinks, ~imagePos)}
+      {image(~src=imageSrc, ~pos=imagePos)}
     </div>
   </SectionContainer.LargeCentered>

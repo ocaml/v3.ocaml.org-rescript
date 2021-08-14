@@ -1,7 +1,5 @@
 open! Import
 
-let s = React.string
-
 module T = {
   type t = {
     title: string,
@@ -15,7 +13,7 @@ module T = {
     switch List.find_opt(String.equal("ocaml-workshop"), event.tags) {
     | Some(_) =>
       switch Js.Date.fromString(event.date)->Js.Date.getFullYear {
-      | 2020. => Some(#communityEventOud2020)
+      | 2020. => Some(#CommunityEventOud2020)
       | _ => None
       }
     | None => None
@@ -30,21 +28,21 @@ module T = {
       figmaLink=`https://www.figma.com/file/36JnfpPe1Qoc8PaJq8mGMd/V1-Pages-Next-Step?node-id=1176%3A0`
     />
     <Page.TopImage title=content.title pageDescription=content.pageDescription>
-      <SectionContainer.MediumCentered marginBottom={Tailwind.ByBreakpoint.make(#mb16, ())}>
+      <SectionContainer.MediumCentered marginBottom={Tailwind.Breakpoint.make(#mb16, ())}>
         <Table.Simple
           content={{
             headers: ["Date", "Event Name", "Location", "Description"],
             data: Array.map((event: Ood.Event.t) => [
-              <p> {s(event.date |> Js.Date.fromString |> Js.Date.toDateString)} </p>,
+              <p> {React.string(event.date |> Js.Date.fromString |> Js.Date.toDateString)} </p>,
               switch dedicatedPage(event) {
               | Some(page) =>
                 <Next.Link href={page->Route.toString(lang)}>
-                  <a className="text-orangedark underline"> {s(event.title)} </a>
+                  <a className="text-orangedark underline"> {React.string(event.title)} </a>
                 </Next.Link>
-              | None => <p> {s(event.title)} </p>
+              | None => <p> {React.string(event.title)} </p>
               },
               <p>
-                {s(
+                {React.string(
                   switch event.textual_location {
                   | Some(v) =>
                     if event.online {
@@ -61,7 +59,7 @@ module T = {
                   },
                 )}
               </p>,
-              <p> {s(event.description)} </p>,
+              <p> {React.string(event.description)} </p>,
             ], content.events),
           }}
         />

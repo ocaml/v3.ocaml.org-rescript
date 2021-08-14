@@ -1,3 +1,5 @@
+open! Import
+
 module MediumCentered2: {
   @react.component
   let make: (~children: React.element) => React.element
@@ -7,7 +9,7 @@ module ResponsiveCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
   ) => React.element
 }
 
@@ -15,7 +17,7 @@ module MediumCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
     ~paddingX: string=?,
     ~paddingY: string=?,
     ~otherLayout: string=?,
@@ -32,7 +34,7 @@ module NoneFilled: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
   ) => React.element
 }
 
@@ -50,7 +52,7 @@ module SmallCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
     ~otherLayout: string=?,
   ) => React.element
 }
@@ -59,7 +61,7 @@ module VerySmallCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
+    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
     ~paddingY: string=?,
     ~paddingX: string=?,
   ) => React.element

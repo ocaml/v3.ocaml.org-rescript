@@ -5,6 +5,8 @@ module LabelledLink: {
   }
 }
 
+open! Import
+
 module Story: {
   type t = {
     title: string,
@@ -12,14 +14,10 @@ module Story: {
   }
 }
 
-module CategoryHeaderIcon: {
-  type t = Meet | Package | Profit | Calendar
-}
-
 module CategoryHeader: {
   type t = {
     title: string,
-    icon: CategoryHeaderIcon.t,
+    icon: [#Meet | #Package | #Profit | #Calendar],
   }
 }
 
@@ -41,7 +39,4 @@ type t = {
 }
 
 @react.component
-let make: (
-  ~t: t,
-  ~marginBottom: Tailwind.ByBreakpoint.t<Tailwind.MarginBottom.t>=?,
-) => React.element
+let make: (~t: t, ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?) => React.element
