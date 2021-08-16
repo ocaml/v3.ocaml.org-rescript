@@ -1,12 +1,5 @@
 open! Import
 
-module UserLevelIntroduction: {
-  type t = {
-    level: string,
-    introduction: string,
-  }
-}
-
 module Tutorials: {
   type t = {
     title: string,

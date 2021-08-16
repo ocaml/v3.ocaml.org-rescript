@@ -42,10 +42,6 @@ module T = {
     }
   }
 
-  // TODO: Better bindings for this
-  type options = {inline: string, behaviour: string, block: string}
-  @send external scrollIntoView: (Dom.element, options) => unit = "scrollIntoView"
-
   module Books = {
     type t = {
       booksLabel: string,
@@ -54,146 +50,46 @@ module T = {
 
     @react.component
     let make = (~marginBottom=?, ~content) => {
-      let (idx, setIdx) = React.useState(() => 0)
-      let booksRef = React.useRef(Array.init(Array.length(content.books), _ => Js.Nullable.null))
-      let setBookRef = (idx, element) => {
-        booksRef.current[idx] = element
-      }
-
-      let handle_book_change = index => {
-        Js.Nullable.iter(booksRef.current[index], (. el) =>
-          scrollIntoView(el, {inline: "center", behaviour: "smooth", block: "center"})
-        )
-      }
-
-      let handle_click = (dir, current) => {
-        let new_idx = switch dir {
-        | #Left => current - 1
-        | #Right => current + 1
-        }
-
-        let length = Array.length(content.books)
-        let new_idx = if new_idx < 0 {
-          length + new_idx
-        } else if new_idx >= length {
-          new_idx - length
-        } else {
-          new_idx
-        }
-        handle_book_change(new_idx)
-        new_idx
-      }
-
-      // TODO: define content type; extract content
-      // TODO: use generic container
-      <SectionContainer.LargeCentered paddingY="pt-16 pb-3 lg:pt-24 lg:pb-8">
-        <div
-          className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-5xl " ++
-          Tailwind.Option.toClassName(marginBottom)}>
-          <div className="px-4 py-5 sm:px-6 sm:py-9">
-            <h2 className="text-center text-orangedark text-5xl font-bold mb-8">
-              {React.string(content.booksLabel)}
-            </h2>
-            <div className="grid grid-cols-8 items-center mb-8 px-6">
-              // TODO: define state to track location within books list, activate navigation
-              <div
-                tabIndex={0}
-                className="flex justify-start cursor-pointer"
-                // TODO: Improve the navigation using a keyboard
-                onKeyDown={e => {
-                  if ReactEvent.Keyboard.keyCode(e) === 13 {
-                    setIdx(prev => handle_click(#Left, prev))
-                  }
-                }}
-                onClick={_ => setIdx(prev => handle_click(#Left, prev))}>
-                // TODO: make navigation arrows accesssible
-                <svg
-                  className="h-20"
-                  viewBox="0 0 90 159"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M2.84806 86.0991L72.1515 155.595C76.1863 159.39 82.3571 159.39 86.1546 155.595C89.952 151.8 89.952 145.396 86.1546 141.601L23.734 79.2206L86.1546 16.8403C89.952 12.8081 89.952 6.64125 86.1546 2.84625C82.3571 -0.94875 76.1863 -0.94875 72.1515 2.84625L2.84806 72.105C-0.949387 76.1372 -0.949387 82.3041 2.84806 86.0991Z"
-                    fill="#ED7109"
-                  />
-                </svg>
-              </div>
-              <div className="col-span-6 py-2 flex m-w-full overflow-x-hidden">
-                {Array.mapi((id, book: Ood.Book.t) => {
-                  // TODO: Better default image
-                  let cover = Belt.Option.getWithDefault(book.cover, "/static/logo1.jpeg")
-                  <div
-                    className="px-4 flex items-center justify-center"
-                    key={string_of_int(id)}
-                    ref={ReactDOM.Ref.callbackDomRef(dom => setBookRef(id, dom))}>
-                    <div className="w-40 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
-                      <img
-                        src=cover
-                        alt=book.title
-                        className={"object-fit w-full shadow-lg rounded-lg " ++ if id == idx {
-                          "ring-4 ring-orangedarker"
-                        } else {
-                          ""
-                        }}
-                      />
-                    </div>
-                  </div>
-                }, content.books) |> React.array}
-              </div>
-              <div
-                tabIndex={0}
-                className="flex justify-end cursor-pointer"
-                onKeyDown={e => {
-                  if ReactEvent.Keyboard.keyCode(e) === 13 {
-                    setIdx(prev => handle_click(#Right, prev))
-                  }
-                }}
-                onClick={_ => setIdx(prev => handle_click(#Right, prev))}>
-                <svg
-                  className="h-20"
-                  viewBox="0 0 90 159"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M86.1546 72.3423L16.8512 2.84625C12.8164 -0.948746 6.64553 -0.948746 2.84809 2.84625C-0.949362 6.64127 -0.949362 13.0453 2.84809 16.8403L65.2686 79.2207L2.84809 141.601C-0.949362 145.633 -0.949362 151.8 2.84809 155.595C6.64553 159.39 12.8164 159.39 16.8512 155.595L86.1546 86.3363C89.952 82.3041 89.952 76.1373 86.1546 72.3423Z"
-                    fill="#ED7109"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div className="w-full px-10">
-              {switch Belt.Array.get(content.books, idx) {
-              | Some(book) => <>
-                  <p className="mt-2 text-lg font-medium text-gray-900">
-                    {React.string(book.title)}
-                  </p>
-                  <p className="mt-2 text-md text-gray-900"> {React.string(book.description)} </p>
-                  <p className=" text-sm font-medium text-gray-500">
-                    {book.links
-                    |> List.mapi((
-                      _idx,
-                      link: Ood.Book.link,
-                    ) => // TODO: visual indicator that link opens new tab
-                    <>
-                      <a href=link.uri className="text-orangedarker" target="_blank">
-                        <span> {React.string(link.description)} </span>
-                      </a>
-                      <span className="inline-block px-2"> {React.string("|")} </span>
-                    </>)
-                    |> Array.of_list
-                    |> React.array}
-                  </p>
-                </>
-              | None => <p> {React.string("Somethings gone wrong")} </p>
-              }}
-            </div>
-          </div>
+      let iconComponent = (id: int, idx: int, book: Ood.Book.t) => {
+        // TODO: Better default image
+        let cover = Belt.Option.getWithDefault(book.cover, "/static/logo1.jpeg")
+        <div className="w-40 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
+          <img
+            src=cover
+            alt=book.title
+            className={"object-fit w-full shadow-lg rounded-lg " ++ if id == idx {
+              "ring-4 ring-orangedarker"
+            } else {
+              ""
+            }}
+          />
         </div>
-      </SectionContainer.LargeCentered>
+      }
+
+      let detailsComponent = (book: Ood.Book.t) => {
+        <>
+          <p className="mt-2 text-lg font-medium text-gray-900"> {React.string(book.title)} </p>
+          <p className="mt-2 text-md text-gray-900"> {React.string(book.description)} </p>
+          <p className=" text-sm font-medium text-gray-500">
+            {book.links
+            |> List.mapi((
+              _idx,
+              link: Ood.Book.link,
+            ) => // TODO: visual indicator that link opens new tab
+            <>
+              <a href=link.uri className="text-orangedarker" target="_blank">
+                <span> {React.string(link.description)} </span>
+              </a>
+              <span className="inline-block px-2"> {React.string("|")} </span>
+            </>)
+            |> Array.of_list
+            |> React.array}
+          </p>
+        </>
+      }
+      <MediaCarousel
+        ?marginBottom label=content.booksLabel items=content.books iconComponent detailsComponent
+      />
     }
   }
 
