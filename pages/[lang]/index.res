@@ -10,33 +10,6 @@ module T = {
     }
   }
 
-  module H2 = {
-    @react.component
-    let make = (~text) =>
-      <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl"> {React.string(text)} </h2>
-  }
-
-  module StatBox = {
-    @react.component
-    let make = (~label, ~statValue, ~borderSizes) =>
-      <div className={`flex flex-col border-gray-100 py-16 px-4 text-center ` ++ borderSizes}>
-        <dt className="order-2 mt-2 text-lg leading-6 font-bold text-black text-opacity-70">
-          {React.string(label)}
-        </dt>
-        <dd className="order-1 text-5xl font-extrabold text-orangedark">
-          {React.string(statValue)}
-        </dd>
-      </div>
-  }
-
-  module StatsRowContainer = {
-    @react.component
-    let make = (~textAlign, ~children) =>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={"max-w-4xl mx-auto " ++ textAlign}> children </div>
-      </div>
-  }
-
   module StatsSection = {
     type t = {
       statsTitle: string,
@@ -50,32 +23,22 @@ module T = {
 
     @react.component
     let make = (~content) =>
-      <div className="pt-12 sm:pt-16">
-        <StatsRowContainer textAlign=`text-center`>
-          <H2 text=content.statsTitle />
-        </StatsRowContainer>
-        <div className="mt-10 pb-12 sm:pb-16">
-          <StatsRowContainer textAlign=``>
-            <dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
-              <StatBox
-                label=content.userSatisfaction
-                statValue=content.userSatisfactionPercent
-                borderSizes=`border-b sm:border-0 sm:border-r`
-              />
-              <StatBox
-                label=content.workplaceUse
-                statValue=content.workplaceUsePercent
-                borderSizes=`border-t border-b sm:border-0 sm:border-l sm:border-r`
-              />
-              <StatBox
-                label=content.easyMaintain
-                statValue=content.easyMaintainPercent
-                borderSizes=`border-t sm:border-0 sm:border-l`
-              />
-            </dl>
-          </StatsRowContainer>
-        </div>
-      </div>
+      <Stats title=content.statsTitle>
+        [
+          {
+            Stats.Item.label: content.userSatisfaction,
+            value: content.userSatisfactionPercent,
+          },
+          {
+            label: content.workplaceUse,
+            value: content.workplaceUsePercent,
+          },
+          {
+            label: content.easyMaintain,
+            value: content.easyMaintainPercent,
+          },
+        ]
+      </Stats>
   }
 
   module OpamSection = {
