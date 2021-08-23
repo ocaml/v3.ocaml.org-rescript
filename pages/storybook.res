@@ -1216,7 +1216,42 @@ let make = () => {
       </Page.Basic>
     </PageItem>
     <PageItem>
-      <Page.Basic title="Page.Basic" pageDescription="Page description: Example Page.Basic">
+      <Page.Basic title="Page.Basic" pageDescription="Page description: Default Page.Basic">
+        {exampleContent}
+      </Page.Basic>
+    </PageItem>
+    <PageItem>
+      <Page.Basic
+        title="Page.Basic"
+        pageDescription="Page description: Example Page.Basic with no container"
+        addContainer=#NoContainer>
+        {exampleContent}
+      </Page.Basic>
+    </PageItem>
+    <PageItem>
+      <Page.Basic
+        title="Page.Basic"
+        pageDescription="Page description: Example Page.Basic with regular container"
+        addContainer=#Regular>
+        {exampleContent}
+      </Page.Basic>
+    </PageItem>
+    <PageItem>
+      <Page.Basic
+        title="Page.Basic"
+        pageDescription="Page description: Example Page.Basic with narrow container"
+        addContainer=#Narrow>
+        {exampleContent}
+      </Page.Basic>
+    </PageItem>
+    <PageItem>
+      <Page.Basic
+        title="Page.Basic"
+        pageDescription="Page description: Example Page.Basic with default container and a callToAction."
+        callToAction={
+          CallToAction.Simple.label: "callToAction Label",
+          url: "http://ocaml.org",
+        }>
         {exampleContent}
       </Page.Basic>
     </PageItem>
@@ -1268,12 +1303,8 @@ let make = () => {
     <PageItem last=true>
       <Page.Basic
         title="Main Storybook Content"
-        pageDescription="The following section demonstrates the non-Page elements.">
-        <div className="text-xl">
-          {React.string(
-            "Note: Individual examples of components are rendered using different background colors in order to distinguish them, and also to see how the element behaves with a given background color. For example, this may be useful if the element has a transparent background.",
-          )}
-        </div>
+        pageDescription="The following section demonstrates the non-Page elements. Note: Individual examples of components are rendered using different background colors in order to distinguish them, and also to see how the element behaves with a given background color. For example, this may be useful if the element has a transparent background."
+        addContainer=#NoContainer>
         <Categories />
       </Page.Basic>
     </PageItem>
