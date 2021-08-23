@@ -17,8 +17,9 @@ module Item = {
       | #green => "bg-green-100"
       | #yellow => "bg-yellow-100"
       }
-    <div>
-      <h2> {React.string(`<${name} />`)} </h2>
+    <div
+      className="bg-white mb-8 p-12 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+      <h2 className="font-black text-4xl"> {React.string(`<${name} />`)} </h2>
       <div className="mb-4 mt-8"> {docsElement} </div>
       {React.array(
         children->Belt.Array.map(((color, (doc, child))) => {
@@ -38,8 +39,7 @@ module Category = {
   @react.component
   let make = (~name, ~children) => {
     <SectionContainer.FullyResponsiveCentered>
-      <div className="bg-white"> <Card title=name kind={#Transparent}> {children} </Card> </div>
-      <hr />
+      <Card title=name kind={#Transparent}> {children} </Card> <hr />
     </SectionContainer.FullyResponsiveCentered>
   }
 }
@@ -967,7 +967,7 @@ module Categories = {
             //   />,
             // ),
             // (
-            //   "Blog2 with 2 entry.",
+            //   "Blog2 with 2 entries.",
             //   <Blog2
             //     header="Header"
             //     description="Description"
@@ -977,7 +977,7 @@ module Categories = {
             //   />,
             // ),
             (
-              "Blog2 with 3 entry.",
+              "Blog2 with 3 entries.",
               <Blog2
                 header="Header"
                 description="Description"
@@ -987,7 +987,7 @@ module Categories = {
               />,
             ),
             (
-              "Blog2 with 10 entry.",
+              "Blog2 with 10 entries.",
               <Blog2
                 header="Header"
                 description="Description"
@@ -1196,7 +1196,88 @@ module Categories = {
   </>
 }
 
+module PageItem = {
+  @react.component
+  let make = (~children, ~last=false) => <>
+    <div className="mt-4 mb-4"> {children} </div> {last ? React.null : <hr />}
+  </>
+}
+
 @react.component
-let make = () => <Page.Unstructured> <Categories /> </Page.Unstructured>
+let make = () => {
+  let exampleContent =
+    <Card title="Example Content" kind=#Opaque> {React.string("Hello World")} </Card>
+  <>
+    <PageItem>
+      <Page.Basic
+        title="Examples of Pages"
+        pageDescription="The following section demonstrates the Page elements together with the same example content. Each page is separated by an <hr> element.">
+        {<> </>}
+      </Page.Basic>
+    </PageItem>
+    <PageItem>
+      <Page.Basic title="Page.Basic" pageDescription="Page description: Example Page.Basic">
+        {exampleContent}
+      </Page.Basic>
+    </PageItem>
+    <PageItem>
+      {
+        let highlightContent = {
+          Page.highlightItem: `Highlight Item`,
+          clickToRead: `Click to Read`,
+          highlightItemSummary: {
+            preview: `Highlight summary preview`,
+            url: `/storybook`,
+          },
+          bgImageClass: `bg-news-bg`,
+        }
+        <Page.HighlightItem
+          title="Page.HighlightItem"
+          pageDescription="Page description: Example Page.HighlightItem"
+          highlightContent>
+          {exampleContent}
+        </Page.HighlightItem>
+      }
+    </PageItem>
+    <PageItem>
+      <Page.TitleOverBackgroundImage
+        title="Page.TitleOverBackgroundImage"
+        backgroundImage={
+          TitleHeading.OverBackgroundImage.BackgroundImage.height: Tall,
+          tailwindImageName: `bg-user-bg`,
+        }
+        pageDescription="Page description: Example Page.TitleOverBackgroundImage">
+        {exampleContent}
+      </Page.TitleOverBackgroundImage>
+    </PageItem>
+    <PageItem>
+      <Page.TopImage
+        title="Page.TopImage" pageDescription="Page description: Example Page.TopImage">
+        {exampleContent}
+      </Page.TopImage>
+    </PageItem>
+    <PageItem>
+      <Page.Unstructured>
+        <Card title="Example" kind=#Opaque>
+          {React.string(
+            "NOTE: This is an example of a Page.Unstructured. Since the <Page.Unstructured> element takes no arguments, this description is actually located inside a <Card> which is a child of the <Page.Unstructured> element.",
+          )}
+        </Card>
+      </Page.Unstructured>
+    </PageItem>
+    <PageItem last=true>
+      <Page.Basic
+        title="Main Storybook Content"
+        pageDescription="The following section demonstrates the non-Page elements.">
+        <div className="text-xl">
+          {React.string(
+            "Note: Individual examples of components are rendered using different background colors in order to distinguish them, and also to see how the element behaves with a given background color. For example, this may be useful if the element has a transparent background.",
+          )}
+        </div>
+        <Categories />
+      </Page.Basic>
+    </PageItem>
+  </>
+}
 
 let default = make
