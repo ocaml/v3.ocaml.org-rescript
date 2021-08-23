@@ -215,6 +215,79 @@ module Categories = {
       </Category>
   }
 
+  module PageTitles = {
+    @react.component
+    let make = () =>
+      <Category name="Page Titles">
+        <Item name="TitleHeading.Large" docs="An example TitleHeading.Large">
+          {[
+            (
+              "This is the default look of this component.",
+              {
+                <TitleHeading.Large title="Title" />
+              },
+            ),
+            (
+              "TitleHeading.Large with a call to action.",
+              {
+                <TitleHeading.Large
+                  title="Title"
+                  callToAction={
+                    CallToAction.Simple.label: "callToAction Label",
+                    url: "",
+                  }
+                />
+              },
+            ),
+            (
+              "TitleHeading.Large with a call to action and bottom bar.",
+              {
+                <TitleHeading.Large
+                  title="Title"
+                  callToAction={
+                    CallToAction.Simple.label: "callToAction Label",
+                    url: "",
+                  }
+                  addBottomBar=true
+                />
+              },
+            ),
+          ]}
+        </Item>
+        <Item
+          name="TitleHeading.OverBackgroundImage"
+          docs="An example TitleHeading.OverBackgroundImage">
+          {[
+            (
+              "This is the default look of this component.",
+              {
+                <TitleHeading.OverBackgroundImage
+                  title="Title"
+                  backgroundImage={
+                    TitleHeading.OverBackgroundImage.BackgroundImage.tailwindImageName: "bg-user-bg",
+                    height: Tall,
+                  }
+                  pageDescription="pageDescription"
+                />
+              },
+            ),
+          ]}
+        </Item>
+        <Item name="TitleHeading.MarkdownMedium" docs="An example TitleHeading.MarkdownMedium">
+          {[
+            (
+              "This is the default look of this component.",
+              {
+                <TitleHeading.MarkdownMedium
+                  title="Title" pageDescription={Some("Page Description")}
+                />
+              },
+            ),
+          ]}
+        </Item>
+      </Category>
+  }
+
   module Sections = {
     module MediaObject = {
       module Small = {
@@ -1192,7 +1265,7 @@ module Categories = {
 
   @react.component
   let make = () => <>
-    <BasicComponents /> <ComponentCollection /> <Sections /> <SectionContainer />
+    <PageTitles /> <BasicComponents /> <ComponentCollection /> <Sections /> <SectionContainer />
   </>
 }
 
@@ -1211,7 +1284,9 @@ let make = () => {
     <PageItem>
       <Page.Basic
         title="Examples of Pages"
-        pageDescription="The following section demonstrates the Page elements together with the same example content. Each page is separated by an <hr> element.">
+        pageDescription="The following section demonstrates the Page elements together with the same example content. Each page is separated by an <hr> element."
+        addContainer=#NoContainer
+        addBottomBar=true>
         {<> </>}
       </Page.Basic>
     </PageItem>
@@ -1304,7 +1379,8 @@ let make = () => {
       <Page.Basic
         title="Main Storybook Content"
         pageDescription="The following section demonstrates the non-Page elements. Note: Individual examples of components are rendered using different background colors in order to distinguish them, and also to see how the element behaves with a given background color. For example, this may be useful if the element has a transparent background."
-        addContainer=#NoContainer>
+        addContainer=#NoContainer
+        addBottomBar=true>
         <Categories />
       </Page.Basic>
     </PageItem>
