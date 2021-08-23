@@ -603,6 +603,166 @@ module Categories = {
           </Item>
         }
       }
+
+      module Regular = {
+        type exampleMap = {
+          foo: int,
+          bar: string,
+        }
+
+        let rows = [{foo: 42, bar: "hello"}, {foo: 1337, bar: "world"}]
+
+        @react.component
+        let make = () => {
+          <Item name="Table.Regular" docs="A component for rendering generic data in as a table.">
+            {[
+              (
+                "Table.Regular with no data at all.",
+                {
+                  <Table.Regular rows=[]> [] </Table.Regular>
+                },
+              ),
+              (
+                "Table.Regular with rows, but no columns specs.",
+                {
+                  <Table.Regular rows> [] </Table.Regular>
+                },
+              ),
+              (
+                "Table.Regular with rows, with one column spec.",
+                {
+                  <Table.Regular rows>
+                    [
+                      {
+                        Table.Regular.title: "foo",
+                        component: (map: exampleMap) => {
+                          React.string(string_of_int(map.foo))
+                        },
+                        className: "p-3",
+                      },
+                    ]
+                  </Table.Regular>
+                },
+              ),
+              (
+                "Table.Regular with rows, with two column specs.",
+                {
+                  <Table.Regular rows>
+                    [
+                      {
+                        Table.Regular.title: "foo",
+                        component: (map: exampleMap) => {
+                          React.string(string_of_int(map.foo))
+                        },
+                        className: "p-3",
+                      },
+                      {
+                        Table.Regular.title: "bar",
+                        component: (map: exampleMap) => {
+                          React.string(map.bar)
+                        },
+                        className: "text-ocamlorange font-black",
+                      },
+                    ]
+                  </Table.Regular>
+                },
+              ),
+            ]}
+          </Item>
+        }
+      }
+    }
+
+    module Stats = {
+      @react.component
+      let make = () => {
+        <Item name="Stats" docs="<TODO>">
+          {[
+            (
+              "Stats with no data at all.",
+              {
+                <Stats title="No Data"> [] </Stats>
+              },
+            ),
+            (
+              "Stats with 1 entry.",
+              {
+                <Stats title="Foobar">
+                  [
+                    {
+                      Stats.Item.value: "42",
+                      label: "foo",
+                    },
+                  ]
+                </Stats>
+              },
+            ),
+            (
+              "Stats with 2 entries.",
+              {
+                <Stats title="Foobar">
+                  [
+                    {
+                      Stats.Item.value: "42",
+                      label: "foo",
+                    },
+                    {
+                      Stats.Item.value: "1337",
+                      label: "bar",
+                    },
+                  ]
+                </Stats>
+              },
+            ),
+            (
+              "Stats with 3 entries.",
+              {
+                <Stats title="Foobar">
+                  [
+                    {
+                      Stats.Item.value: "42",
+                      label: "foo",
+                    },
+                    {
+                      Stats.Item.value: "1337",
+                      label: "bar",
+                    },
+                    {
+                      Stats.Item.value: "3.14",
+                      label: "baz",
+                    },
+                  ]
+                </Stats>
+              },
+            ),
+            (
+              "Stats with 4 entries.",
+              {
+                <Stats title="Foobar">
+                  [
+                    {
+                      Stats.Item.value: "42",
+                      label: "foo",
+                    },
+                    {
+                      Stats.Item.value: "1337",
+                      label: "bar",
+                    },
+                    {
+                      Stats.Item.value: "3.14",
+                      label: "baz",
+                    },
+                    {
+                      Stats.Item.value: "11",
+                      label: "quux",
+                    },
+                  ]
+                </Stats>
+              },
+            ),
+          ]}
+        </Item>
+      }
     }
 
     module MarkdownPage = {
@@ -627,17 +787,238 @@ module Categories = {
       }
     }
 
+    module Testimonials = {
+      @react.component
+      let make = () => {
+        <Item name="Testimonials" docs="This is a testimonials element.">
+          {[
+            (
+              "A typewriter telling us OCaml is cool.",
+              {
+                <Testimonials
+                  content={
+                    Testimonials.quote: "OCaml is pretty cool.",
+                    organizationName: "Acme Inc.",
+                    speaker: "A Typewriter",
+                    organizationLogo: "/static/typewriter.jpeg",
+                  }
+                />
+              },
+            ),
+            (
+              "Opam agreeing that OCaml is cool.",
+              {
+                <Testimonials
+                  content={
+                    Testimonials.quote: "The typewriter above me is telling the truth.",
+                    organizationName: "Foobar Inc.",
+                    speaker: "Opam",
+                    organizationLogo: "/static/opam.png",
+                  }
+                />
+              },
+            ),
+          ]}
+        </Item>
+      }
+    }
+
+    module Timeline = {
+      @react.component
+      let make = () => {
+        let data = n => {
+          let rec data = list{{Timeline.Item.date: "Date", description: "Description"}, ...data}
+          data->Belt.List.take(n)->Belt.Option.getExn->Belt.List.toArray
+        }
+        <Item name="Timeline" docs="This is a timeline element.">
+          {[
+            (
+              "A timeline with no data.",
+              {
+                <Timeline content={data(0)} />
+              },
+            ),
+            (
+              "A timeline with 1 entry.",
+              {
+                <Timeline content={data(1)} />
+              },
+            ),
+            (
+              "A timeline with 5 entries.",
+              {
+                <Timeline content={data(5)} />
+              },
+            ),
+          ]}
+        </Item>
+      }
+    }
+
+    module UserLevelIntroduction = {
+      @react.component
+      let make = () => {
+        <Item name="UserLevelIntroduction" docs="UserLevelIntroduction element.">
+          {[
+            (
+              "Example 1",
+              {
+                <UserLevelIntroduction
+                  content={
+                    UserLevelIntroduction.level: "Level 1",
+                    introduction: "Introduction",
+                  }
+                />
+              },
+            ),
+            (
+              "Example 2",
+              {
+                <UserLevelIntroduction
+                  content={
+                    UserLevelIntroduction.level: "Level 2",
+                    introduction: "Introduction",
+                  }
+                />
+              },
+            ),
+          ]}
+        </Item>
+      }
+    }
+
+    module MediaCarousel = {
+      @react.component
+      let make = () => {
+        let iconComponent = (n, m, a: {"item": [#Foo | #Bar]}) => {
+          switch a["item"] {
+          | #Foo =>
+            <div className="text-ocamlorange font-black">
+              {React.string(Printf.sprintf("Foo-%d-%d", n, m))}
+            </div>
+          | #Bar =>
+            Js.log(a)
+            React.string(Printf.sprintf("Bar-%d-%d", n, m))
+          }
+        }
+        let detailsComponent = foobar => {
+          React.string(
+            switch foobar["item"] {
+            | #Foo => "This is a #foo."
+            | #Bar => "This is a #bar."
+            },
+          )
+        }
+        <Item name="UserLevelIntroduction" docs="UserLevelIntroduction element.">
+          {[
+            (
+              "Media Carousel with no items.",
+              <MediaCarousel label="Label" items=[] iconComponent detailsComponent />,
+            ),
+            (
+              "Media Carousel with one item.",
+              <MediaCarousel label="Label" items=[#Foo] iconComponent detailsComponent />,
+            ),
+            (
+              "Media Carousel with items=[#Foo, #Bar, #Foo, #Bar, #Bar]",
+              <MediaCarousel
+                label="Label" items=[#Foo, #Bar, #Foo, #Bar, #Bar] iconComponent detailsComponent
+              />,
+            ),
+          ]}
+        </Item>
+      }
+    }
+
+    module Blog2 = {
+      @react.component
+      let make = () => {
+        let entry = n => {
+          Blog2.Entry.title: "Title" ++ n,
+          excerpt: "Excerpt" ++ n,
+          author: "Author" ++ n,
+          dateValue: "DateValue" ++ n,
+          date: "Date" ++ n,
+          readingTime: "ReadingTime" ++ n,
+        }
+        let entries = n => Belt.Array.makeBy(n, i => entry(string_of_int(i)))
+        <Item
+          name="Blog2"
+          docs="Blog2 element. NOTE: Blog2 must have 3 elements. Any more will be ignored, any less will result in an exception.">
+          {[
+            // (
+            //   "Blog2 with no entries.",
+            //   <Blog2
+            //     header="Header"
+            //     description="Description"
+            //     blog="Blog"
+            //     archiveText="ArchiveText"
+            //     entries={entries(0)}
+            //   />,
+            // ),
+            // (
+            //   "Blog2 with 1 entry.",
+            //   <Blog2
+            //     header="Header"
+            //     description="Description"
+            //     blog="Blog"
+            //     archiveText="ArchiveText"
+            //     entries={entries(1)}
+            //   />,
+            // ),
+            // (
+            //   "Blog2 with 2 entry.",
+            //   <Blog2
+            //     header="Header"
+            //     description="Description"
+            //     blog="Blog"
+            //     archiveText="ArchiveText"
+            //     entries={entries(2)}
+            //   />,
+            // ),
+            (
+              "Blog2 with 3 entry.",
+              <Blog2
+                header="Header"
+                description="Description"
+                blog="Blog"
+                archiveText="ArchiveText"
+                entries={entries(3)}
+              />,
+            ),
+            (
+              "Blog2 with 10 entry.",
+              <Blog2
+                header="Header"
+                description="Description"
+                blog="Blog"
+                archiveText="ArchiveText"
+                entries={entries(10)}
+              />,
+            ),
+          ]}
+        </Item>
+      }
+    }
+
     @react.component
     let make = () =>
       <Category name="Sections">
         <LogoCloud />
         <Hero />
         <HighlightsInQuadrants />
+        <MediaCarousel />
+        <Blog2 />
+        <Stats />
+        <Testimonials />
+        <Timeline />
+        <UserLevelIntroduction />
         <MediaObject />
         <MediaObject.Small />
         <CallToAction.General />
         <CallToAction.TransparentWide />
         <Table.Simple />
+        <Table.Regular />
         <MarkdownPage.Body />
       </Category>
   }

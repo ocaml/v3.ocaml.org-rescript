@@ -50,7 +50,8 @@ module T = {
 
     @react.component
     let make = (~marginBottom=?, ~content) => {
-      let iconComponent = (id: int, idx: int, book: Ood.Book.t) => {
+      let iconComponent = (id: int, idx: int, item: {"item": Ood.Book.t}) => {
+        let book = item["item"]
         // TODO: Better default image
         let cover = Belt.Option.getWithDefault(book.cover, "/static/logo1.jpeg")
         <div className="w-40 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
@@ -66,7 +67,8 @@ module T = {
         </div>
       }
 
-      let detailsComponent = (book: Ood.Book.t) => {
+      let detailsComponent = (item: {"item": Ood.Book.t}) => {
+        let book = item["item"]
         <>
           <p className="mt-2 text-lg font-medium text-gray-900"> {React.string(book.title)} </p>
           <p className="mt-2 text-md text-gray-900"> {React.string(book.description)} </p>

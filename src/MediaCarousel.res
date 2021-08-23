@@ -9,8 +9,8 @@ let make = (
   ~marginBottom=?,
   ~label,
   ~items: array<'a>,
-  ~iconComponent: (int, int, 'a) => React.element,
-  ~detailsComponent: 'a => React.element,
+  ~iconComponent: (int, int, {"item": 'a}) => React.element,
+  ~detailsComponent: {"item": 'a} => React.element,
 ) => {
   let marginBottom = (marginBottom :> option<Tailwind.t>)
   let (idx, setIdx) = React.useState(() => 0)
@@ -79,11 +79,12 @@ let make = (
           <div className="col-span-6 py-2 flex m-w-full overflow-x-hidden">
             {items
             ->Belt.Array.mapWithIndex((id, item) => {
+              Js.log(item)
               <div
                 className="px-4 flex items-center justify-center"
                 key={string_of_int(id)}
                 ref={ReactDOM.Ref.callbackDomRef(dom => setItemsRef(id, dom))}>
-                {React.createElement(iconComponent(id, idx), item)}
+                {React.createElement(iconComponent(id, idx), {"item": item})}
               </div>
             })
             ->React.array}
@@ -110,7 +111,7 @@ let make = (
         </div>
         <div className="w-full px-10">
           {switch items->Belt.Array.get(idx) {
-          | Some(item) => React.createElement(detailsComponent, item)
+          | Some(item) => React.createElement(detailsComponent, {"item": item})
           | None => <p> {React.string("Somethings gone wrong")} </p>
           }}
         </div>
