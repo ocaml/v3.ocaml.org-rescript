@@ -51,7 +51,7 @@ let toString = (t: t, lang) => {
   | #LegalCarbonfootprint => "legal/carbonfootprint"
   | #LegalPrivacy => "legal/privacy"
   | #LegalTerms => "legal/terms"
-  | #ResourcesInstallocaml => "resources/installocaml"
+  | #ResourcesInstallocaml => "resources/tutorials/up-and-running-with-ocaml/#installing-ocaml"
   | #ResourcesApplications => "resources/applications"
   | #ResourcesArchive => "resources/archive"
   | #ResourcesBestpractices => "resources/bestpractices"
