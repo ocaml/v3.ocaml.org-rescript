@@ -15,6 +15,18 @@ module Books: {
   }
 }
 
+module Manual: {
+  type item = {
+    link: string,
+    text: string,
+  }
+
+  type t = {
+    title: string,
+    items: array<item>,
+  }
+}
+
 type t = {
   title: string,
   pageDescription: string,
@@ -25,6 +37,7 @@ type t = {
   expanding: UserLevelIntroduction.t,
   diversifying: UserLevelIntroduction.t,
   researching: UserLevelIntroduction.t,
+  manual: Manual.t,
 }
 
 include Pages.S with type t := t

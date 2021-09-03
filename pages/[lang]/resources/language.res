@@ -42,6 +42,30 @@ module T = {
     }
   }
 
+  module Manual = {
+    type item = {
+      link: string,
+      text: string,
+    }
+
+    type t = {
+      title: string,
+      items: array<item>,
+    }
+
+    @react.component
+    let make = (~content: t, ~cols, ~marginBottom=?) => {
+      <SectionContainer.MediumCentered ?marginBottom paddingY="pt-8 pb-14" filled=true>
+        <ContentGrid
+          title=content.title
+          cols
+          renderChild={(item: item) => <a href={item.link}> {React.string(item.text)} </a>}>
+          {content.items}
+        </ContentGrid>
+      </SectionContainer.MediumCentered>
+    }
+  }
+
   module Books = {
     type t = {
       booksLabel: string,
@@ -93,69 +117,6 @@ module T = {
         ?marginBottom label=content.booksLabel items=content.books iconComponent detailsComponent
       />
     }
-  }
-
-  module Manual = {
-    @react.component
-    let make = (~marginBottom=?) =>
-      // TODO: define content type; factor out content
-      <SectionContainer.MediumCentered ?marginBottom paddingY="pt-8 pb-14" filled=true>
-        <h2 className="text-center text-white text-7xl font-bold mb-8">
-          {React.string(`The OCaml Manual`)}
-        </h2>
-        <div className="mx-24 grid grid-cols-3 px-28 mx-auto max-w-4xl">
-          <div className="border-r-4 border-b-4">
-            <div
-              className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
-              <p className="text-center">
-                <a href="https://ocaml.org/manual/index.html#sec6">
-                  {React.string(`Introduction Tutorials`)}
-                </a>
-              </p>
-            </div>
-          </div>
-          <div className="border-r-4 border-b-4">
-            <div
-              className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
-              <p className="text-center">
-                <a href="https://ocaml.org/manual/stdlib.html"> {React.string(`StdLib`)} </a>
-              </p>
-            </div>
-          </div>
-          <div className="border-b-4">
-            <div
-              className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
-              <p className="text-center">
-                <a href="https://ocaml.org/api/index.html"> {React.string(`API Docs`)} </a>
-              </p>
-            </div>
-          </div>
-          <div className="border-r-4">
-            <div
-              className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
-              <p className="text-center">
-                <a href="https://ocaml.org/manual/index.html#sec72"> {React.string(`Lang`)} </a>
-              </p>
-            </div>
-          </div>
-          <div className="border-r-4">
-            <div
-              className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
-              <p className="text-center">
-                <a href="https://ocaml.org/manual/extn.html#sec238"> {React.string(`Ext`)} </a>
-              </p>
-            </div>
-          </div>
-          <div>
-            <div
-              className="h-24 flex items-center justify-center px-4 font-bold bg-white mx-8 my-3 rounded">
-              <p className="text-center">
-                <a href="https://ocaml.org/manual"> {React.string(`Something Else`)} </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </SectionContainer.MediumCentered>
   }
 
   module Applications = {
@@ -249,6 +210,7 @@ module T = {
     expanding: UserLevelIntroduction.t,
     diversifying: UserLevelIntroduction.t,
     researching: UserLevelIntroduction.t,
+    manual: Manual.t,
   }
   include Jsonable.Unsafe
 
@@ -273,7 +235,9 @@ module T = {
         <Tutorials content=content.tutorials lang />
         <Books marginBottom={Tailwind.Breakpoint.make(#mb16, ())} content=content.booksContent />
         <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
-        <Manual marginBottom={Tailwind.Breakpoint.make(#mb20, ())} />
+        <Manual
+          content=content.manual cols=#_3 marginBottom={Tailwind.Breakpoint.make(#mb20, ())}
+        />
         <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
         <Applications marginBottom={Tailwind.Breakpoint.make(#mb36, ())} lang />
         <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
@@ -317,6 +281,35 @@ module T = {
       researching: {
         level: `Researching`,
         introduction: `Aspiring towards greater understanding of the language? Want to push the limits and discover brand new things? Check out papers written by leading OCaml researchers:`,
+      },
+      manual: {
+        title: `The OCaml Manual`,
+        items: [
+          {
+            link: "https://ocaml.org/manual/index.html#sec6",
+            text: `Introduction Tutorials`,
+          },
+          {
+            link: "https://ocaml.org/manual/stdlib.html",
+            text: `Stdlib`,
+          },
+          {
+            link: "https://ocaml.org/api/index.html",
+            text: `API Docs`,
+          },
+          {
+            link: "https://ocaml.org/manual/index.html#sec72",
+            text: `Lang`,
+          },
+          {
+            link: "https://ocaml.org/manual/extn.html#sec238",
+            text: `Ext`,
+          },
+          {
+            link: "https://ocaml.org/manual",
+            text: `Something Else`,
+          },
+        ],
       },
     }
   }
