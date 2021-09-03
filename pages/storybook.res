@@ -1375,6 +1375,36 @@ let make = () => {
         </Card>
       </Page.Unstructured>
     </PageItem>
+    <PageItem>
+      <Page.Unstructured>
+        <Card title="Page Sections" kind=#Transparent>
+          {React.string(
+            "The contents of this page demonstrate the use of the Page Section containers.",
+          )}
+        </Card>
+        <Page.MainContainer.Centered>
+          <div className="mb-8">
+            <Card kind=#Opaque>
+              {React.string("This <Card> is inside a <Page.MainContainer.Centered>")}
+            </Card>
+          </div>
+        </Page.MainContainer.Centered>
+        <Page.MainContainer.NarrowCentered>
+          <div className="mb-8">
+            <Card kind=#Opaque>
+              {React.string("This <Card> is inside a <Page.MainContainer.NarrowCentered>")}
+            </Card>
+          </div>
+        </Page.MainContainer.NarrowCentered>
+        <Page.MainContainer.None>
+          <div className="mb-8">
+            <Card kind=#Opaque>
+              {React.string("This <Card> is inside a <Page.MainContainer.None>")}
+            </Card>
+          </div>
+        </Page.MainContainer.None>
+      </Page.Unstructured>
+    </PageItem>
     <PageItem last=true>
       <Page.Basic
         title="Main Storybook Content"
