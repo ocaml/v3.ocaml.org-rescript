@@ -1123,6 +1123,39 @@ module Categories = {
       }
     }
 
+    module VerticalHighlightCard = {
+      @react.component
+      let make = () => {
+        <Item name="VerticalHighlightCard" docs="VerticalHighlightCard element.">
+          {[
+            (
+              defaultDoc,
+              <VerticalHighlightCard
+                title="Title" buttonText="ButtonText" buttonRoute=#Index lang=#en>
+                {(
+                  {
+                    VerticalHighlightCard.title: "item1Title",
+                    description: "item1Description",
+                    url: "item1Url",
+                  },
+                  {
+                    VerticalHighlightCard.title: "item2Title",
+                    description: "item2Description",
+                    url: "item2Url",
+                  },
+                  {
+                    VerticalHighlightCard.title: "item3Title",
+                    description: "item3Description",
+                    url: "item3Url",
+                  },
+                )}
+              </VerticalHighlightCard>,
+            ),
+          ]}
+        </Item>
+      }
+    }
+
     @react.component
     let make = () =>
       <Category name="Sections">
@@ -1143,6 +1176,7 @@ module Categories = {
         <Table.Regular />
         <MarkdownPage.Body />
         <ContentGrid />
+        <VerticalHighlightCard />
       </Category>
   }
 
