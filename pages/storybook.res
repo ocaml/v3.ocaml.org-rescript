@@ -982,7 +982,7 @@ module Categories = {
             },
           )
         }
-        <Item name="UserLevelIntroduction" docs="UserLevelIntroduction element.">
+        <Item name="MediaCarousel" docs="MediaCarousel  element.">
           {[
             (
               "Media Carousel with no items.",
@@ -1074,6 +1074,55 @@ module Categories = {
       }
     }
 
+    module ContentGrid = {
+      @react.component
+      let make = () => {
+        let renderChild = x => <div className="font-black text-2xl"> {React.string(x)} </div>
+        <Item name="ContentGrid" docs="ContentGrid element.">
+          {[
+            (
+              "ContentGrid with no items.",
+              <ContentGrid title="ContentGrid" renderChild cols=#_2> [] </ContentGrid>,
+            ),
+            (
+              "ContentGrid with 2 cols and 1 item.",
+              <ContentGrid title="ContentGrid" renderChild cols=#_2> ["foo"] </ContentGrid>,
+            ),
+            (
+              "ContentGrid with 2 cols and 2 items.",
+              <ContentGrid title="ContentGrid" renderChild cols=#_2> ["foo", "bar"] </ContentGrid>,
+            ),
+            (
+              "ContentGrid with 2 cols and 3 items.",
+              <ContentGrid title="ContentGrid" renderChild cols=#_2>
+                ["foo", "bar", "baz"]
+              </ContentGrid>,
+            ),
+            (
+              "ContentGrid with 3 cols and 3 items.",
+              <ContentGrid title="ContentGrid" renderChild cols=#_3>
+                ["foo", "bar", "baz"]
+              </ContentGrid>,
+            ),
+            (
+              "ContentGrid with 3 cols and 4 items.",
+              <ContentGrid title="ContentGrid" renderChild cols=#_3>
+                ["foo", "bar", "baz", "quux"]
+              </ContentGrid>,
+            ),
+            (
+              "ContentGrid with 2 cols and 4 items wrapped in a SectionContainer.",
+              <SectionContainer.MediumCentered paddingY="pt-8 pb-14" filled=true>
+                <ContentGrid title="ContentGrid" renderChild cols=#_2>
+                  ["foo", "bar", "baz", "quux"]
+                </ContentGrid>
+              </SectionContainer.MediumCentered>,
+            ),
+          ]}
+        </Item>
+      }
+    }
+
     @react.component
     let make = () =>
       <Category name="Sections">
@@ -1093,6 +1142,7 @@ module Categories = {
         <Table.Simple />
         <Table.Regular />
         <MarkdownPage.Body />
+        <ContentGrid />
       </Category>
   }
 
