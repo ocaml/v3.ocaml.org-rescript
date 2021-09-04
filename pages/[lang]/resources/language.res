@@ -147,56 +147,22 @@ module T = {
   }
 
   module Papers = {
+    type t = {
+      title: string,
+      item1: VerticalHighlightCard.item,
+      item2: VerticalHighlightCard.item,
+      item3: VerticalHighlightCard.item,
+      buttonText: string,
+      route: Route.t,
+    }
+
     @react.component
-    let make = (~marginBottom=?, ~lang, ()) =>
-      // TODO: define content type and factor out content
-      // TODO: use generic container
-      <div
-        className={"bg-white overflow-hidden shadow rounded-lg py-3 mx-auto max-w-5xl " ++
-        marginBottom->Tailwind.Option.toClassName}>
-        <div className="px-4 py-5 sm:p-6">
-          <h2 className="text-center text-orangedark text-7xl font-bold mb-8">
-            {React.string(`PAPERS`)}
-          </h2>
-          <div className="grid grid-cols-3 mb-14 px-9 space-x-6 px-14">
-            <div className="">
-              <p className="text-orangedark text-7xl font-bold"> {React.string(`1.`)} </p>
-              // TODO: visual indicator that link will open new tab
-              <p className="font-bold">
-                <a href="https://arxiv.org/abs/1905.06543" target="_blank">
-                  {React.string(`Extending OCaml's Open`)}
-                </a>
-              </p>
-              <p> {React.string(`by Runhang Li, Jeremey Yallop`)} </p>
-            </div>
-            <div className="">
-              <p className="text-orangedark text-7xl font-bold"> {React.string(`2.`)} </p>
-              <p className="font-bold">
-                <a href="https://kcsrk.info/papers/memory_model_ocaml17.pdf" target="_blank">
-                  {React.string(`A Memory Model for Multicore OCaml`)}
-                </a>
-              </p>
-              <p> {React.string(`by Stephen Dolan, KC Sivaramakrishnan`)} </p>
-            </div>
-            <div className="">
-              <p className="text-orangedark text-7xl font-bold"> {React.string(`3.`)} </p>
-              <p className="font-bold">
-                <a href="https://arxiv.org/abs/1812.11664" target="_blank">
-                  {React.string(`Eff Directly in OCaml`)}
-                </a>
-              </p>
-              <p> {React.string(`by Oleg Kiselyov, KC Sivaramakrishnan`)} </p>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <Route _to={#ResourcesPapers} lang>
-              <a
-                className="font-bold inline-flex items-center px-10 py-3 border border-transparent text-base leading-4 font-medium rounded-md shadow-sm text-white bg-orangedark hover:bg-orangedarker">
-                {React.string(`Go to Papers`)}
-              </a>
-            </Route>
-          </div>
-        </div>
+    let make = (~content: t, ~marginBottom=?, ~lang) =>
+      <div className={marginBottom->Tailwind.Option.toClassName}>
+        <VerticalHighlightCard
+          title=content.title buttonText=content.buttonText buttonRoute=content.route lang>
+          {(content.item1, content.item2, content.item3)}
+        </VerticalHighlightCard>
       </div>
   }
 
@@ -211,6 +177,7 @@ module T = {
     diversifying: UserLevelIntroduction.t,
     researching: UserLevelIntroduction.t,
     manual: Manual.t,
+    papers: Papers.t,
   }
   include Jsonable.Unsafe
 
@@ -241,7 +208,7 @@ module T = {
         <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
         <Applications marginBottom={Tailwind.Breakpoint.make(#mb36, ())} lang />
         <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
-        <Papers marginBottom={Tailwind.Breakpoint.make(#mb16, ())} lang />
+        <Papers content=content.papers marginBottom={Tailwind.Breakpoint.make(#mb16, ())} lang />
       </Page.Basic>
     }
   </>
@@ -310,6 +277,26 @@ module T = {
             text: `Something Else`,
           },
         ],
+      },
+      papers: {
+        title: `PAPERS`,
+        item1: {
+          title: `Extending OCaml's Open`,
+          description: `by Runhang Li, Jeremey Yallop`,
+          url: `https://arxiv.org/abs/1905.06543`,
+        },
+        item2: {
+          title: `A Memory Model for Multicore OCaml`,
+          description: `by Stephen Dolan, KC Sivaramakrishnan`,
+          url: `https://kcsrk.info/papers/memory_model_ocaml17.pdf`,
+        },
+        item3: {
+          title: `Eff Directly in OCaml`,
+          description: `by Oleg Kiselyov, KC Sivaramakrishnan`,
+          url: `https://arxiv.org/abs/1812.11664`,
+        },
+        buttonText: `Go to Papers`,
+        route: #ResourcesPapers,
       },
     }
   }
