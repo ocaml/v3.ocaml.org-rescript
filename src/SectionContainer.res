@@ -72,15 +72,8 @@ module LargeCentered = {
 
 module SmallCentered = {
   @react.component
-  let make = (~children, ~marginBottom=?, ~otherLayout="") => {
-    let marginBottom = (marginBottom :> option<Tailwind.t>)
-    <div
-      className={"mx-auto max-w-4xl " ++
-      otherLayout ++
-      " " ++
-      marginBottom->Tailwind.Option.toClassName}>
-      children
-    </div>
+  let make = (~children, ~otherLayout="") => {
+    <div className={"mx-auto max-w-4xl " ++ otherLayout}> children </div>
   }
 }
 

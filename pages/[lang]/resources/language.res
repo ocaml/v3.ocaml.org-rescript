@@ -190,7 +190,10 @@ module T = {
     // TODO: define a more narrow page type with preset params
 
     {
-      let introMarginBottom = Tailwind.Breakpoint.make(#mb20, ())
+      module Intro = {
+        @react.component
+        let make = (~content) => <div className="mb-20"> <UserLevelIntroduction content /> </div>
+      }
       <Page.Basic
         marginTop={Tailwind.Breakpoint.make(#mt1, ())}
         addBottomBar=true
@@ -199,13 +202,13 @@ module T = {
         pageDescription=content.pageDescription>
         <Tutorials content=content.tutorials lang />
         <div className="mb-16"> <Books content=content.booksContent /> </div>
-        <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
+        <Intro content=content.expanding />
         <Manual
           content=content.manual cols=#_3 marginBottom={Tailwind.Breakpoint.make(#mb20, ())}
         />
-        <UserLevelIntroduction content=content.diversifying marginBottom=introMarginBottom />
+        <Intro content=content.diversifying />
         <Applications marginBottom={Tailwind.Breakpoint.make(#mb36, ())} lang />
-        <UserLevelIntroduction content=content.researching marginBottom=introMarginBottom />
+        <Intro content=content.researching />
         <Papers content=content.papers marginBottom={Tailwind.Breakpoint.make(#mb16, ())} lang />
       </Page.Basic>
     }
