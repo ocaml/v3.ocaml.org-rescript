@@ -8,15 +8,8 @@ module MediumCentered2 = {
 
 module ResponsiveCentered = {
   @react.component
-  let make = (
-    ~children,
-    ~marginBottom: option<Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>>=?,
-  ) => {
-    let marginBottom = (marginBottom :> option<Tailwind.t>)
-    <div
-      className={marginBottom->Tailwind.Option.toClassName ++ " mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"}>
-      children
-    </div>
+  let make = (~children) => {
+    <div className="mx-auto sm:max-w-screen-sm lg:max-w-screen-lg"> children </div>
   }
 }
 
