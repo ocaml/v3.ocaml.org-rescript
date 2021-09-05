@@ -119,8 +119,8 @@ module T = {
 
   module Applications = {
     @react.component
-    let make = (~marginBottom=?, ~lang) =>
-      <SectionContainer.VerySmallCentered ?marginBottom>
+    let make = (~lang) =>
+      <SectionContainer.VerySmallCentered>
         <h2 className="text-center text-orangedark text-7xl font-bold mb-8">
           {React.string(`Applications`)}
         </h2>
@@ -205,7 +205,7 @@ module T = {
         <Intro content=content.expanding />
         <div className="mb-20"> <Manual content=content.manual cols=#_3 /> </div>
         <Intro content=content.diversifying />
-        <Applications marginBottom={Tailwind.Breakpoint.make(#mb36, ())} lang />
+        <div className="mb-36"> <Applications lang /> </div>
         <Intro content=content.researching />
         <Papers content=content.papers marginBottom={Tailwind.Breakpoint.make(#mb16, ())} lang />
       </Page.Basic>

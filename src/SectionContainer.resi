@@ -54,10 +54,5 @@ module SmallCentered: {
 
 module VerySmallCentered: {
   @react.component
-  let make: (
-    ~children: React.element,
-    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
-    ~paddingY: string=?,
-    ~paddingX: string=?,
-  ) => React.element
+  let make: (~children: React.element, ~paddingY: string=?, ~paddingX: string=?) => React.element
 }

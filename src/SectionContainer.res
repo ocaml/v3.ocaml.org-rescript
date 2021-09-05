@@ -70,16 +70,7 @@ module SmallCentered = {
 
 module VerySmallCentered = {
   @react.component
-  let make = (~children, ~marginBottom=?, ~paddingY="", ~paddingX="") => {
-    let marginBottom = (marginBottom :> option<Tailwind.t>)
-    <div
-      className={"mx-auto max-w-3xl " ++
-      marginBottom->Tailwind.Option.toClassName ++
-      " " ++
-      paddingY ++
-      " " ++
-      paddingX}>
-      children
-    </div>
+  let make = (~children, ~paddingY="", ~paddingX="") => {
+    <div className={"mx-auto max-w-3xl " ++ paddingY ++ " " ++ paddingX}> children </div>
   }
 }
