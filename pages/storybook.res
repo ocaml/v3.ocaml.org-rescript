@@ -526,16 +526,6 @@ module Categories = {
                     <CallToAction.General t colorStyle={#BackgroundFilled} />
                   },
                 ),
-                (
-                  "BackgroundFilled color style marginBottom=10.",
-                  {
-                    <CallToAction.General
-                      t
-                      colorStyle={#BackgroundFilled}
-                      marginBottom={Tailwind.Breakpoint.make(#mb10, ())}
-                    />
-                  },
-                ),
               ]
             }
           </Item>
