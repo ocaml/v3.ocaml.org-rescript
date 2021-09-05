@@ -285,10 +285,11 @@ module T = {
       title=content.title
       pageDescription=content.pageDescription
       highlightContent=content.highlightContent>
-      <HighlightsInQuadrants
-        t={CategorizedNews.toHighlightsInQuadrantsContent(content.categorizedNews, lang)}
-        marginBottom={Tailwind.Breakpoint.make(#mb10, ~lg=#mb32, ())}
-      />
+      <div className="mb-10 lg:mb-32">
+        <HighlightsInQuadrants
+          t={CategorizedNews.toHighlightsInQuadrantsContent(content.categorizedNews, lang)}
+        />
+      </div>
       <WeeklyNews marginBottom={Tailwind.Breakpoint.make(#mb4, ())} content=content.weeklyNews />
     </Page.HighlightItem>
   </>
