@@ -73,7 +73,7 @@ module T = {
     }
 
     @react.component
-    let make = (~marginBottom=?, ~content) => {
+    let make = (~content) => {
       let iconComponent = (id: int, idx: int, item: {"item": Ood.Book.t}) => {
         let book = item["item"]
         // TODO: Better default image
@@ -113,9 +113,7 @@ module T = {
           </p>
         </>
       }
-      <MediaCarousel
-        ?marginBottom label=content.booksLabel items=content.books iconComponent detailsComponent
-      />
+      <MediaCarousel label=content.booksLabel items=content.books iconComponent detailsComponent />
     }
   }
 
@@ -200,7 +198,7 @@ module T = {
         title=content.title
         pageDescription=content.pageDescription>
         <Tutorials content=content.tutorials lang />
-        <Books marginBottom={Tailwind.Breakpoint.make(#mb16, ())} content=content.booksContent />
+        <div className="mb-16"> <Books content=content.booksContent /> </div>
         <UserLevelIntroduction content=content.expanding marginBottom=introMarginBottom />
         <Manual
           content=content.manual cols=#_3 marginBottom={Tailwind.Breakpoint.make(#mb20, ())}
