@@ -54,8 +54,8 @@ module T = {
     }
 
     @react.component
-    let make = (~content: t, ~cols, ~marginBottom=?) => {
-      <SectionContainer.MediumCentered ?marginBottom paddingY="pt-8 pb-14" filled=true>
+    let make = (~content: t, ~cols) => {
+      <SectionContainer.MediumCentered paddingY="pt-8 pb-14" filled=true>
         <ContentGrid
           title=content.title
           cols
@@ -203,9 +203,7 @@ module T = {
         <Tutorials content=content.tutorials lang />
         <div className="mb-16"> <Books content=content.booksContent /> </div>
         <Intro content=content.expanding />
-        <Manual
-          content=content.manual cols=#_3 marginBottom={Tailwind.Breakpoint.make(#mb20, ())}
-        />
+        <div className="mb-20"> <Manual content=content.manual cols=#_3 /> </div>
         <Intro content=content.diversifying />
         <Applications marginBottom={Tailwind.Breakpoint.make(#mb36, ())} lang />
         <Intro content=content.researching />

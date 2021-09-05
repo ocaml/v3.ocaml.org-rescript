@@ -17,7 +17,6 @@ module MediumCentered: {
   @react.component
   let make: (
     ~children: React.element,
-    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
     ~paddingX: string=?,
     ~paddingY: string=?,
     ~otherLayout: string=?,

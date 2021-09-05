@@ -22,18 +22,9 @@ module ResponsiveCentered = {
 
 module MediumCentered = {
   @react.component
-  let make = (
-    ~children,
-    ~marginBottom=?,
-    ~paddingX="",
-    ~paddingY="",
-    ~otherLayout="",
-    ~filled=false,
-  ) => {
-    let marginBottom = (marginBottom :> option<Tailwind.t>)
+  let make = (~children, ~paddingX="", ~paddingY="", ~otherLayout="", ~filled=false) => {
     <div
-      className={marginBottom->Tailwind.Option.toClassName ++
-      " max-w-5xl mx-auto " ++
+      className={" max-w-5xl mx-auto " ++
       paddingX ++
       " " ++
       paddingY ++

@@ -3,9 +3,9 @@ open! Import
 module T = {
   module ApiDocumentation = {
     @react.component
-    let make = (~marginBottom=?) =>
+    let make = () =>
       // TODO: factor out and define content type
-      <SectionContainer.MediumCentered ?marginBottom paddingX="px-4 sm:px-32">
+      <SectionContainer.MediumCentered paddingX="px-4 sm:px-32">
         <MediaObject imageHeight="h-56" image="api-img.jpeg" imageSide=#Right>
           <h4 className="text-4xl font-bold mb-8"> {React.string(`API Documentation`)} </h4>
           <p className="mt-1 mb-8">
@@ -228,7 +228,7 @@ module T = {
       addContainer=#NoContainer
       title=content.title
       pageDescription=content.pageDescription>
-      <ApiDocumentation marginBottom={Tailwind.Breakpoint.make(#mb24, ())} />
+      <div className="mb-24"> <ApiDocumentation /> </div>
       <DeveloperGuides
         marginBottom={Tailwind.Breakpoint.make(#mb2, ())} content=content.developerGuidesContent
       />
