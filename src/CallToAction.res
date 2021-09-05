@@ -53,7 +53,7 @@ let body = (~text, ~textColor, ~centered, ~marginTop="mt-4", ()) => {
 
 module General = {
   @react.component
-  let make = (~t, ~colorStyle, ~marginBottom=?, ()) => {
+  let make = (~t, ~colorStyle) => {
     let mainFrame = {
       let (
         headingTextColor,
@@ -80,11 +80,8 @@ module General = {
       </div>
     }
     switch colorStyle {
-    | #BackgroundFilled =>
-      <SectionContainer.NoneFilled ?marginBottom> mainFrame </SectionContainer.NoneFilled>
-    | #Transparent =>
-      let marginBottom = (marginBottom :> option<Tailwind.t>)
-      <div className={marginBottom->Tailwind.Option.toClassName}> mainFrame </div>
+    | #BackgroundFilled => <SectionContainer.NoneFilled> mainFrame </SectionContainer.NoneFilled>
+    | #Transparent => mainFrame
     }
   }
 }

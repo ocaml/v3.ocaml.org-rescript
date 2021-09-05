@@ -19,11 +19,7 @@ module Simple: {
 
 module General: {
   @react.component
-  let make: (
-    ~t: t,
-    ~colorStyle: [#BackgroundFilled | #Transparent],
-    ~marginBottom: Tailwind.Breakpoint.t<Tailwind.Margin.Bottom.t>=?,
-  ) => React.element
+  let make: (~t: t, ~colorStyle: [#BackgroundFilled | #Transparent]) => React.element
 }
 
 module TransparentWide: {
