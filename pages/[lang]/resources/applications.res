@@ -91,40 +91,38 @@ module T = {
           <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
             {React.string(content.developerGuidesLabel)}
           </h2>
-          <MediaObject
-            marginBottom={Tailwind.Breakpoint.make(#mb11, ())}
-            imageHeight="h-24"
-            image=content.topDeveloperGuide.image
-            imageSide=#Right>
-            // <div className="flex mb-11">
-            <div>
-              <h4 className="text-base font-bold mb-3">
-                // TODO: visual indicator that link is opening new tab
-                <a className="hover:underline" href=content.topDeveloperGuide.link target="_blank">
-                  {React.string(content.topDeveloperGuide.name)}
-                </a>
-              </h4>
-              <p className="mt-1"> {React.string(content.topDeveloperGuide.description)} </p>
-            </div>
-          </MediaObject>
-          <MediaObject
-            marginBottom={Tailwind.Breakpoint.make(#mb11, ())}
-            imageHeight="h-24"
-            image=content.bottomDeveloperGuide.image
-            imageSide=#Left>
-            <div>
-              <h4 className="text-base font-bold mb-3">
-                // TODO: visual indicator that link is opening new tab
-                <a
-                  className="hover:underline"
-                  href=content.bottomDeveloperGuide.link
-                  target="_blank">
-                  {React.string(content.bottomDeveloperGuide.name)}
-                </a>
-              </h4>
-              <p className="mt-1"> {React.string(content.bottomDeveloperGuide.description)} </p>
-            </div>
-          </MediaObject>
+          <div className="mb-11">
+            <MediaObject imageHeight="h-24" image=content.topDeveloperGuide.image imageSide=#Right>
+              // <div className="flex mb-11">
+              <div>
+                <h4 className="text-base font-bold mb-3">
+                  // TODO: visual indicator that link is opening new tab
+                  <a
+                    className="hover:underline" href=content.topDeveloperGuide.link target="_blank">
+                    {React.string(content.topDeveloperGuide.name)}
+                  </a>
+                </h4>
+                <p className="mt-1"> {React.string(content.topDeveloperGuide.description)} </p>
+              </div>
+            </MediaObject>
+          </div>
+          <div className="mb-11">
+            <MediaObject
+              imageHeight="h-24" image=content.bottomDeveloperGuide.image imageSide=#Left>
+              <div>
+                <h4 className="text-base font-bold mb-3">
+                  // TODO: visual indicator that link is opening new tab
+                  <a
+                    className="hover:underline"
+                    href=content.bottomDeveloperGuide.link
+                    target="_blank">
+                    {React.string(content.bottomDeveloperGuide.name)}
+                  </a>
+                </h4>
+                <p className="mt-1"> {React.string(content.bottomDeveloperGuide.description)} </p>
+              </div>
+            </MediaObject>
+          </div>
         </div>
       </div>
   }
