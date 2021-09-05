@@ -40,9 +40,8 @@ module FullyResponsiveCentered = {
 
 module NoneFilled = {
   @react.component
-  let make = (~children, ~marginBottom=?) => {
-    let marginBottom = (marginBottom :> option<Tailwind.t>)
-    <div className={"bg-orangedark " ++ marginBottom->Tailwind.Option.toClassName}> children </div>
+  let make = (~children) => {
+    <div className="bg-orangedark"> children </div>
   }
 }
 
