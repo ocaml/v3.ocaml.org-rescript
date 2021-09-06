@@ -4,7 +4,6 @@ module TileLayer = Mapbinding.TileLayer
 module Popup = Mapbinding.Popup
 module Marker = Mapbinding.Marker
 
-//TODO: Implement Map
 module MarkArray = {
   type t = {
     positions: Mapbinding.LatLng.t,
@@ -69,13 +68,12 @@ let make = (~props: props) => {
     <SectionContainer.ResponsiveCentered ?marginBottom>
       // TODO: try switching to a grid
       <div className="bg-white flex-wrap justify-center lg:justify-between m-8 ">
-        // <img src={`/static/worldmap.jpg`} alt="" />
         <MapContainer center zoom scrollWheelZoom maxBounds=maxBound minZoom className="h-160">
           <TileLayer attribution url noWrap=true />
           {p
-          |> Array.mapi((idx, c) =>
-            <Marker position=c.MarkArray.positions icon>
-              <Popup className="h-16 font-bold text-xl italic font-serif text-center ">
+          |> Array.map(c =>
+            <Marker key={c.name} position=c.MarkArray.positions icon>
+              <Popup className="h-16 font-bold text-md text-center ">
                 {React.string(c.name)}
               </Popup>
             </Marker>
