@@ -4,7 +4,10 @@
 @import "./_hljs.css";
 @import "./_fonts.css";
 
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind utilities;
+
 
 nav.toc {
   @apply hidden lg:sticky lg:self-start lg:top-2 lg:flex lg:flex-col lg:col-span-2 border-r border-gray-200 pt-5 pb-4 overflow-y-auto
@@ -30,3 +33,5 @@ nav.toc > ul > li > ul > li {
 nav.toc > ul > li > ul > li > ul > li {
   @apply pl-8
 }
+
+

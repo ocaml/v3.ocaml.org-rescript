@@ -93,3 +93,18 @@ module Head = {
   @module("next/head") @react.component
   external make: (~children: React.element) => React.element = "default"
 }
+
+module Dynamic = {
+  @deriving(abstract)
+  type options = {
+    @optional
+    ssr: bool,
+    @optional
+    loading: unit => React.element,
+  }
+
+  @module("next/dynamic")
+  external dynamic: (unit => Js.Promise.t<'a>, options) => 'a = "default"
+
+  @val external import_: string => Js.Promise.t<'a> = "import"
+}
