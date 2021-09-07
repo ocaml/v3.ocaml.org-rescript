@@ -52,15 +52,14 @@ module Basic = {
           />
         </div>
       | None =>
-        let headingMarginBottom = switch addBottomBar {
-        | true => Some(Tailwind.Breakpoint.make(#mb24, ()))
-        | false => None
-        }
-        <div className="mb-6">
+        let titleHeading =
           <TitleHeading.Large
             headerClassName=?titleHeadingHeaderClassName addBottomBar title pageDescription
           />
-        </div>
+        switch addBottomBar {
+        | true => <div className="mb-24"> titleHeading </div>
+        | false => titleHeading
+        }
       }
     }
     switch addContainer {
