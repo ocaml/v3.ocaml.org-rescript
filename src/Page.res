@@ -33,7 +33,7 @@ module Basic = {
     ~title,
     ~pageDescription,
     ~addContainer=#Regular,
-    ~marginTop=?,
+    ~titleHeadingHeaderClassName=?,
     ~callToAction=?,
     ~addBottomBar=?,
     (),
@@ -42,22 +42,25 @@ module Basic = {
       let addBottomBar = Js.Option.getWithDefault(false, addBottomBar)
       switch callToAction {
       | Some(callToAction) =>
-        <TitleHeading.Large
-          ?marginTop
-          marginBottom={Tailwind.Breakpoint.make(#mb6, ())}
-          addBottomBar
-          title
-          pageDescription
-          callToAction
-        />
+        <div className="mb-6">
+          <TitleHeading.Large
+            headerClassName=?titleHeadingHeaderClassName
+            addBottomBar
+            title
+            pageDescription
+            callToAction
+          />
+        </div>
       | None =>
         let headingMarginBottom = switch addBottomBar {
         | true => Some(Tailwind.Breakpoint.make(#mb24, ()))
         | false => None
         }
-        <TitleHeading.Large
-          ?marginTop marginBottom=?headingMarginBottom addBottomBar title pageDescription
-        />
+        <div className="mb-6">
+          <TitleHeading.Large
+            headerClassName=?titleHeadingHeaderClassName addBottomBar title pageDescription
+          />
+        </div>
       }
     }
     switch addContainer {

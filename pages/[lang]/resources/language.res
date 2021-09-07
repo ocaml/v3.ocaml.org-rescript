@@ -195,7 +195,7 @@ module T = {
         let make = (~content) => <div className="mb-20"> <UserLevelIntroduction content /> </div>
       }
       <Page.Basic
-        marginTop={Tailwind.Breakpoint.make(#mt1, ())}
+        titleHeadingHeaderClassName="mt-1"
         addBottomBar=true
         addContainer=#NoContainer
         title=content.title

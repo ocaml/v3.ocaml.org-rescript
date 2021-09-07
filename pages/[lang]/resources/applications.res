@@ -223,7 +223,7 @@ module T = {
       playgroundLink=`/play/resources/applications`
     />
     <Page.Basic
-      marginTop={Tailwind.Breakpoint.make(#mt1, ())}
+      titleHeadingHeaderClassName="mt-1"
       addBottomBar=true
       addContainer=#NoContainer
       title=content.title

@@ -1365,6 +1365,21 @@ let make = () => {
       </Page.Basic>
     </PageItem>
     <PageItem>
+      <Page.Basic
+        title="Page.Basic"
+        pageDescription="PAge description: Default Page.Basic"
+        titleHeadingHeaderClassName="mt-24">
+        {exampleContent}
+      </Page.Basic>
+    </PageItem>
+    <PageItem>
+      <div className="mt-24">
+        <Page.Basic title="pAge.Basic" pageDescription="Page description: Default Page.Basic">
+          {exampleContent}
+        </Page.Basic>
+      </div>
+    </PageItem>
+    <PageItem>
       <Page.Basic title="Page.Basic" pageDescription="Page description: Default Page.Basic">
         {exampleContent}
       </Page.Basic>
