@@ -155,13 +155,11 @@ module T = {
     }
 
     @react.component
-    let make = (~content: t, ~marginBottom=?, ~lang) =>
-      <div className={marginBottom->Tailwind.Option.toClassName}>
-        <VerticalHighlightCard
-          title=content.title buttonText=content.buttonText buttonRoute=content.route lang>
-          {(content.item1, content.item2, content.item3)}
-        </VerticalHighlightCard>
-      </div>
+    let make = (~content: t, ~lang) =>
+      <VerticalHighlightCard
+        title=content.title buttonText=content.buttonText buttonRoute=content.route lang>
+        {(content.item1, content.item2, content.item3)}
+      </VerticalHighlightCard>
   }
 
   type t = {
@@ -207,7 +205,7 @@ module T = {
         <Intro content=content.diversifying />
         <div className="mb-36"> <Applications lang /> </div>
         <Intro content=content.researching />
-        <Papers content=content.papers marginBottom={Tailwind.Breakpoint.make(#mb16, ())} lang />
+        <div className="mb-16"> <Papers content=content.papers lang /> </div>
       </Page.Basic>
     }
   </>

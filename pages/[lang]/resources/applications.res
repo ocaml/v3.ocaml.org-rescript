@@ -82,10 +82,8 @@ module T = {
     }
 
     @react.component
-    let make = (~marginBottom=?, ~content) =>
-      <div
-        className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-        marginBottom->Tailwind.Option.toClassName}>
+    let make = (~content) =>
+      <div className="bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl">
         <div className="px-4 py-5 sm:p-6">
           // TODO: factor out and define content type
           <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
@@ -138,11 +136,9 @@ module T = {
     }
 
     @react.component
-    let make = (~marginBottom=?, ~content, ~lang) =>
+    let make = (~content, ~lang) =>
       // TODO: factor out and define content type
-      <div
-        className={"bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl " ++
-        marginBottom->Tailwind.Option.toClassName}>
+      <div className="bg-white overflow-hidden shadow rounded-lg mx-auto max-w-3xl">
         <div className="px-4 py-5 sm:py-8 sm:px-24">
           <h2 className="text-center text-orangedark text-4xl font-bold mb-8">
             {React.string(content.usingOcamlLabel)}
@@ -229,9 +225,7 @@ module T = {
       title=content.title
       pageDescription=content.pageDescription>
       <div className="mb-24"> <ApiDocumentation /> </div>
-      <DeveloperGuides
-        marginBottom={Tailwind.Breakpoint.make(#mb2, ())} content=content.developerGuidesContent
-      />
+      <div className="mb-2"> <DeveloperGuides content=content.developerGuidesContent /> </div>
       // TODO: factor out and define content type
       <CallToAction.TransparentWide
         t={
@@ -241,9 +235,7 @@ module T = {
           buttonText: `Visit Platform Tools`,
         }
       />
-      <UsingOcaml
-        marginBottom={Tailwind.Breakpoint.make(#mb16, ())} content=content.usingOcamlContent lang
-      />
+      <div className="mb-16"> <UsingOcaml content=content.usingOcamlContent lang /> </div>
     </Page.Basic>
   </>
 
