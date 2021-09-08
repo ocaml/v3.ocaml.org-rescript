@@ -36,15 +36,10 @@ module Large = {
           }}
         </div>
       </div>
-      {
-        // TODO: should either add margin bottom when bottombar isn't specified
-        //  or only allow marginBottom to be specified with addBottomBar
-
-        switch addBottomBar {
-        | true => <hr className="bg-orangedark h-3" />
-        | false => React.null
-        }
-      }
+      {switch addBottomBar {
+      | true => <hr className="bg-orangedark h-3" />
+      | false => React.null
+      }}
     </>
   }
 }
