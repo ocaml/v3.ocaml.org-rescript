@@ -51,7 +51,7 @@ module T = {
 
   module University = {
     @react.component
-    let make = (~content) => {
+    let make = (~content, ~sectionMargin) => {
       //filter University based on Continents
       let (filteredData, setFilteredData) = React.useState(_ => content.acads)
       let onChange = evt => {
@@ -69,7 +69,6 @@ module T = {
         }
         setFilteredData(_prev => result)
       }
-      let sectionMargin = "mb-10 lg:mb-32"
       <>
         //University and Courses
         <div className=sectionMargin>
@@ -134,8 +133,7 @@ module T = {
   //TODO: Implement Map
   module Map = {
     @react.component
-    let make = () => {
-      let sectionMargin = "mb-10 lg:mb-32"
+    let make = (~sectionMargin) => {
       <>
         <div className=sectionMargin>
           <SectionContainer.MediumCentered paddingX="px-12">
@@ -159,9 +157,10 @@ module T = {
   module Params = Pages.Params.Lang
 
   @react.component
-  let make = (~content, ~params as {Params.lang: lang}) => <>
-    <PageBasic lang /> <University content /> <Map />
-  </>
+  let make = (~content, ~params as {Params.lang: lang}) => {
+    let sectionMargin = "mb-10 lg:mb-32"
+    <> <PageBasic lang /> <University content sectionMargin /> <Map sectionMargin /> </>
+  }
 
   let contentEn = {
     let acads = Ood.Academic_institution.all->Belt.List.toArray
