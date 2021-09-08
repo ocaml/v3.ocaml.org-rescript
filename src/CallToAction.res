@@ -96,7 +96,7 @@ module TransparentWide = {
 
     <SectionContainer.VerySmallCentered paddingY="py-16 sm:py-20" paddingX="px-4 sm:px-6 lg:px-2">
       {title(~text=t.title, ~textColor="")}
-      {body(~text=t.body, ~textColor="", ~centered=false, ())}
+      <div className="mt-4"> {body(~text=t.body, ~textColor="", ~centered=false)} </div>
       <div className="flex justify-center"> button </div>
     </SectionContainer.VerySmallCentered>
   }
@@ -119,7 +119,7 @@ module Embedded = {
         className="mt-2 text-orangedark text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
         {React.string(t.title)}
       </p>
-      {body(~text=t.body, ~textColor="text-gray-900", ~centered=true, ())}
+      <div className="mt-4"> {body(~text=t.body, ~textColor="text-gray-900", ~centered=true)} </div>
       <div className="mt-8 text-center"> button </div>
     </>
   }
