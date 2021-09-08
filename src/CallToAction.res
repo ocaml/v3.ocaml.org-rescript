@@ -41,14 +41,12 @@ let title = (~text, ~textColor) =>
     <span className="block"> {React.string(text)} </span>
   </h2>
 
-let body = (~text, ~textColor, ~centered, ~marginTop="mt-4", ()) => {
+let body = (~text, ~textColor, ~centered) => {
   let textCenter = switch centered {
   | true => "text-center"
   | false => ""
   }
-  <p className={`${marginTop} text-lg leading-6 ${textColor} ${textCenter}`}>
-    {React.string(text)}
-  </p>
+  <p className={`text-lg leading-6 ${textColor} ${textCenter}`}> {React.string(text)} </p>
 }
 
 module General = {
@@ -75,7 +73,7 @@ module General = {
 
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
         {title(~text=t.title, ~textColor=headingTextColor)}
-        {body(~text=t.body, ~textColor=bodyTextColor, ~centered=true, ())}
+        <div className="mt-4"> {body(~text=t.body, ~textColor=bodyTextColor, ~centered=true)} </div>
         <div className="flex justify-center"> button </div>
       </div>
     }
