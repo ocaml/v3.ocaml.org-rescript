@@ -181,8 +181,8 @@ let make = (~t) => {
     </div>
 
   let categoryHighlights = (category: Category.t) => {
-    let heading = (~marginBottom: string) =>
-      <h3 className={`text-2xl font-bold text-orangedark ${marginBottom}`}>
+    let heading =
+      <h3 className=`text-2xl font-bold text-orangedark`>
         <CategoryHeaderIcon
           icon=category.header.icon display="inline" marginLeft="ml-2" marginRight="mr-4"
         />
@@ -206,7 +206,7 @@ let make = (~t) => {
       </p>
 
     <div>
-      {heading(~marginBottom="mb-2")}
+      <div className=`mb-2`> {heading} </div>
       <div className="rounded pt-4 pb-2 px-8 bg-white">
         <ul className="space-y-3 mb-2">
           {category.stories |> Js.Array.map(story => newsItemRow(story)) |> React.array}
