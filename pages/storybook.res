@@ -959,9 +959,7 @@ module Categories = {
             <div className="text-ocamlorange font-black">
               {React.string(Printf.sprintf("Foo-%d-%d", n, m))}
             </div>
-          | #Bar =>
-            Js.log(a)
-            React.string(Printf.sprintf("Bar-%d-%d", n, m))
+          | #Bar => React.string(Printf.sprintf("Bar-%d-%d", n, m))
           }
         }
         let detailsComponent = foobar => {
