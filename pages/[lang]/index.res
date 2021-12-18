@@ -77,7 +77,13 @@ module T = {
   ) =>
     <Page.Unstructured>
       <Hero
-        imageSrc="/static/oc-sq.jpeg"
+        imageSrc="/static/hero-caml-400w.jpeg"
+        imageSrcSet="/static/hero-caml-400w.jpeg 400w,
+                     /static/hero-caml-600w.jpeg 600w,
+                     /static/hero-caml-800w.jpeg 800w"
+        imageSizes="(max-width: 599px) 200px, 
+                    (max-width: 799px) 300px, 
+                    (min-width: 800px) 400px"
         imagePos={#Right}
         header=heroContent.heroHeader
         body=heroContent.heroBody
