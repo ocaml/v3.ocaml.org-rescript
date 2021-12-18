@@ -14,6 +14,8 @@ type buttonLinks = {
 
 @react.component
 let make: (
+  ~imageSrcSet: string=?,
+  ~imageSizes: string=?,
   ~imageSrc: string,
   ~header: string,
   ~body: string,

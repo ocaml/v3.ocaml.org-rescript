@@ -21,14 +21,14 @@ module HeroTextContainer = {
     </div>
 }
 
-let image = (~src, ~pos) => {
+let image = (~srcSet="", ~sizes="", ~src, ~pos) => {
   let horizontalPlace = switch pos {
   | #Right => "lg:right-0"
   | #Left => "lg:left-0"
   }
   <div
     className={`relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 ${horizontalPlace} lg:w-1/2 lg:h-full`}>
-    <img className="absolute inset-0 w-full h-full object-cover" src alt="" />
+    <img className="absolute inset-0 w-full h-full object-cover" src srcSet sizes alt="" />
   </div>
 }
 
@@ -89,10 +89,10 @@ let callToActionArea = (~header, ~body, ~buttonLinks, ~imagePos) => {
 }
 
 @react.component
-let make = (~imageSrc, ~header, ~body, ~buttonLinks=?, ~imagePos, ()) =>
-  <SectionContainer.LargeCentered>
+let make = (~imageSrcSet="", ~imageSizes="", ~imageSrc, ~header, ~body, ~buttonLinks=?, ~imagePos, ()) =>
+  <SectionContainer.LargeCentered> 
     <div className="lg:relative">
       {callToActionArea(~header, ~body, ~buttonLinks, ~imagePos)}
-      {image(~src=imageSrc, ~pos=imagePos)}
+      {image(~srcSet=imageSrcSet, ~sizes=imageSizes, ~src=imageSrc, ~pos=imagePos)}
     </div>
   </SectionContainer.LargeCentered>

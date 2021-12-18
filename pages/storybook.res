@@ -434,7 +434,7 @@ module Categories = {
     module Hero = {
       @react.component
       let make = () => {
-        let imageSrc = "/static/oc-sq.jpeg"
+        let imageSrc = "/static/hero-caml-800w.jpeg"
         let header = "A Header"
         let body = "Some body text here that should be in latin. Some more body text here and here. Text text text text text text text text text text text text text."
         let buttonLinks = {
