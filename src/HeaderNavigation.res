@@ -41,7 +41,7 @@ let make = (~content) => {
       <div className="flex justify-between items-center md:justify-start py-6 md:space-x-10 ">
         <div className="flex justify-start ">
           <a href="/" className="">
-            <img className="h-8 w-auto sm:h-10" src="/static/logo1.jpeg" alt="" />
+            <img className="h-8 w-auto sm:h-10" src="/static/ocaml-logo.jpeg" alt="" />
           </a>
         </div>
         <nav className="hidden md:flex space-x-10 ">
@@ -271,7 +271,7 @@ let make = (~content) => {
         className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
         <div className="pt-5 pb-6 px-5">
           <div className="flex items-center justify-between">
-            <div> <img className="h-8 w-auto sm:h-10" src="/static/logo1.jpeg" alt="" /> </div>
+            <div> <img className="h-8 w-auto sm:h-10" src="/static/ocaml-logo.jpeg" alt="" /> </div>
             <div className="-mr-2">
               <button
                 type_="button"

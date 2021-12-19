@@ -77,7 +77,7 @@ module T = {
       let iconComponent = (id: int, idx: int, item: {"item": Ood.Book.t}) => {
         let book = item["item"]
         // TODO: Better default image
-        let cover = Belt.Option.getWithDefault(book.cover, "/static/logo1.jpeg")
+        let cover = Belt.Option.getWithDefault(book.cover, "/static/ocaml-logo.jpeg")
         <div className="w-40 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
           <img
             src=cover
